@@ -7,6 +7,7 @@ signal shoot(bullet, direction, location)
 @onready var bullets_per_second: Timer = $"Bullets Per Second"
 @onready var dash_cooldown: Timer = $"Dash Cooldown"
 @onready var dash_invulnerability_time: Timer = $"Dash Invulnerability Time"
+@onready var inventory: Control = $"Inventory"
 
 var bullet = preload('res:///Scenes/Player/Player Bullets/Player Bullet.tscn')
 
@@ -73,3 +74,5 @@ func _on_shoot(bullet, direction, location):
 	bullet_instance.velocity = (get_global_mouse_position() - bullet_instance.global_position).normalized()
 	bullet_instance.rotation = bullet_instance.velocity.angle()
 	bullets_per_second.start()
+	
+

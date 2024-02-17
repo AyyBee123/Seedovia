@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="character_stats" load_steps=2 format=3 uid="uid://c1dh3fetdciy7"]
 
-[ext_resource type="Script" path="res://Scripts/Stats/character_stats.gd" id="1_lefcw"]
+[ext_resource type="Script" path="res://Scripts/Stats/character_stats.gd" id="1_bsirb"]
 
 [resource]
-script = ExtResource("1_lefcw")
+script = ExtResource("1_bsirb")
 max_health = 3
 speed = 300.0
 dash_rate = 1.0

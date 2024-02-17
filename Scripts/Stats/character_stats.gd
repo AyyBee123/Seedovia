@@ -40,14 +40,14 @@ func increase_max_health(amount):
 func take_damage(hit_source):
 	health -= hit_source.damage
 	health = max(0, health)
-	emit_signal("health_changed", health)
+	health_changed.emit(health)
 	if health <= 0:
-		emit_signal("health_depleted")
+		health_depleted.emit()
 		
 func heal(amount):
 	health += amount
 	health = min(health, max_health)
-	emit_signal("health_changed", health)
+	health_changed.emit(health)
 	
 func _increase_max_health(amount):
 	max_health += amount

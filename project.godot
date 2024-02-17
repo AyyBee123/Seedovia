@@ -14,6 +14,10 @@ config/name="Roguelike"
 run/main_scene="res://Scenes/Levels/Test Level.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 
+[autoload]
+
+PlayerInventory="*res://Scripts/Inventory/player_inventory.gd"
+
 [display]
 
 window/size/viewport_width=1920
