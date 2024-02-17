@@ -5,6 +5,7 @@ const slot_class = preload("res://Scripts/Inventory/inventory_slot.gd")
 var holding_item = null
 
 func _ready():
+	visible = false
 	var slots = inventory_slots.get_children()
 	print(slots.size())
 	for i in range(slots.size()):
