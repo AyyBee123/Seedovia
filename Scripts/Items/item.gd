@@ -1,7 +1,7 @@
 extends Node2D
 
 var player_in_area = false
-@export var item: inventory_item
+
 var player = null
 
 func _process(delta):
@@ -16,5 +16,5 @@ func _on_pickable_area_body_entered(body):
 		player = body
 		
 func pick_up():
-	player.pick_up_item(item)
+	#player.pick_up_item(item)
 	queue_free()

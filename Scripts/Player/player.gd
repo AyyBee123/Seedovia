@@ -3,7 +3,6 @@ extends CharacterBody2D
 signal shoot(bullet, direction, location)
 
 @export var player_stats: character_stats
-@export var inv: inventory
 
 @onready var bullets_per_second: Timer = $"Bullets Per Second"
 @onready var dash_cooldown: Timer = $"Dash Cooldown"
@@ -74,6 +73,3 @@ func _on_shoot(bullet, direction, location):
 	bullet_instance.velocity = (get_global_mouse_position() - bullet_instance.global_position).normalized()
 	bullet_instance.rotation = bullet_instance.velocity.angle()
 	bullets_per_second.start()
-	
-func pick_up_item(item: inventory_item):
-	inv.insert(item)

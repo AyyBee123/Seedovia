@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://ib5jajhddwcf"]
+
+[ext_resource type="Texture2D" uid="uid://xs8qyp302740" path="res://Sprites/Inventory/Inventory Slot.png" id="1_wuw65"]
+
+[sub_resource type="GDScript" id="GDScript_dy7jo"]
+script/source = "extends Panel
+
+@onready var item_visual: Sprite2D = $\"CenterContainer/Panel/Item Display\"
+
+func update(item: inventory_item):
+	if !item:
+		item_visual.visible = false
+	else:
+		item_visual.visible = true
+		item_visual.texture = item.texture
+"
+
+[node name="Inventory UI Slot" type="Panel"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(32, 32)
+offset_right = 32.0
+offset_bottom = 32.0
+script = SubResource("GDScript_dy7jo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_wuw65")
+centered = false
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+
+[node name="Panel" type="Panel" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="Item Display" type="Sprite2D" parent="CenterContainer/Panel"]

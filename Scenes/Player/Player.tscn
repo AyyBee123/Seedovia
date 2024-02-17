@@ -1,17 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://cu63rxmy71bcg"]
+[gd_scene load_steps=5 format=3 uid="uid://cu63rxmy71bcg"]
 
 [ext_resource type="Script" path="res://Scripts/Player/player.gd" id="1_3ahea"]
 [ext_resource type="Resource" uid="uid://c1dh3fetdciy7" path="res://Scenes/Player/player_stats.tres" id="2_re8g3"]
 [ext_resource type="Texture2D" uid="uid://cka7qr3s1mk6h" path="res://Sprites/Player/Player.png" id="2_v1qk3"]
-[ext_resource type="Resource" uid="uid://dhiahiqyk8nb6" path="res://Scenes/Inventory/inventory.tres" id="3_nh4f6"]
 [ext_resource type="PackedScene" uid="uid://b51uuhjac0hmd" path="res://Scenes/Inventory/inventory_ui.tscn" id="5_l4oa0"]
 
 [node name="Player" type="CharacterBody2D" groups=["Players"]]
 collision_layer = 2
-collision_mask = 21
+collision_mask = 53
 script = ExtResource("1_3ahea")
 player_stats = ExtResource("2_re8g3")
-inv = ExtResource("3_nh4f6")
 
 [node name="Hitbox" type="CollisionPolygon2D" parent="."]
 position = Vector2(5, 0)
