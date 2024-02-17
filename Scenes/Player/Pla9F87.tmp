@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://cu63rxmy71bcg"]
+
+[ext_resource type="Script" path="res://Player/Player.gd" id="1_nhh02"]
+[ext_resource type="Texture2D" uid="uid://cka7qr3s1mk6h" path="res://Sprites/Player/Player.png" id="2_v1qk3"]
+
+[node name="Player" type="CharacterBody2D" groups=["Players"]]
+collision_layer = 2
+collision_mask = 21
+script = ExtResource("1_nhh02")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(5, 0)
+rotation = 1.5708
+polygon = PackedVector2Array(0, 9, -15, 15, 0, -15, 15, 15)
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(31, 0)
+scale = Vector2(2, 2)
+
+[node name="Player" type="Sprite2D" parent="."]
+position = Vector2(5, 0)
+rotation = 1.5708
+texture = ExtResource("2_v1qk3")
+
+[node name="Fire Rate Timer" type="Timer" parent="."]
+one_shot = true

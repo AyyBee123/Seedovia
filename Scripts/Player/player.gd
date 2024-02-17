@@ -1,0 +1,79 @@
+extends CharacterBody2D
+
+signal shoot(bullet, direction, location)
+
+@export var player_stats: character_stats
+@export var inv: inventory
+
+@onready var bullets_per_second: Timer = $"Bullets Per Second"
+@onready var dash_cooldown: Timer = $"Dash Cooldown"
+@onready var dash_invulnerability_time: Timer = $"Dash Invulnerability Time"
+
+var bullet = preload('res:///Scenes/Player/Player Bullets/Player Bullet.tscn')
+
+var can_be_damaged : bool = true
+
+func _ready():
+	player_stats.initialize(player_stats)
+	bullets_per_second.wait_time = 1.0/player_stats.fire_rate
+	bullets_per_second.start()
+	dash_cooldown.wait_time = player_stats.dash_rate
+	dash_cooldown.start()
+	dash_invulnerability_time.wait_time = player_stats.dash_invunerability
+
+func _physics_process(delta):
+	# movement
+	_move()
+	
+	# look at mouse
+	look_at(get_global_mouse_position())
+	
+	# shoot bullet
+	if Input.is_action_pressed("shoot") and bullets_per_second.is_stopped():
+		shoot.emit(bullet, get_global_mouse_position().angle(), $Marker2D.get_global_position())
+		
+	# dash
+	if Input.is_action_just_pressed("dash") and dash_cooldown.is_stopped():
+		_dash()
+	if dash_invulnerability_time.is_stopped():
+		can_be_damaged = true
+		
+	# die if health is 0 (or less)
+	if player_stats.health <= 0:
+		_die()
+		
+	if can_be_damaged:
+		$Hitbox.disabled = false
+	else:
+		$Hitbox.disabled = true
+		
+func _move():
+	var input_direction = Input.get_vector("left", "right", "up", "down")
+	if input_direction.length() > 0:
+		velocity = velocity.lerp(input_direction.normalized() * player_stats.speed, player_stats.acceleration)
+	else:
+		velocity = velocity.lerp(Vector2.ZERO, player_stats.friction)
+	move_and_slide()
+	
+func _die():
+	hide() # temporary death effect
+	# TODO: add death animation
+	# TODO: pause game and add options to restart and go back to menu
+	
+func _dash():
+	can_be_damaged = false
+	var input_direction = Input.get_vector("left", "right", "up", "down")
+	velocity = velocity.lerp((input_direction.normalized() if input_direction else Vector2(0,1)) * player_stats.dash_distance, 1)
+	dash_cooldown.start()
+	dash_invulnerability_time.start()
+
+func _on_shoot(bullet, direction, location):
+	var bullet_instance = bullet.instantiate()
+	get_parent().add_child(bullet_instance)
+	bullet_instance.global_position = location
+	bullet_instance.velocity = (get_global_mouse_position() - bullet_instance.global_position).normalized()
+	bullet_instance.rotation = bullet_instance.velocity.angle()
+	bullets_per_second.start()
+	
+func pick_up_item(item: inventory_item):
+	inv.insert(item)

@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://cu63rxmy71bcg"]
+
+[ext_resource type="Script" path="res://Scripts/Player/player.gd" id="1_3ahea"]
+[ext_resource type="Resource" uid="uid://c1dh3fetdciy7" path="res://Scenes/Player/player_stats.tres" id="2_re8g3"]
+[ext_resource type="Texture2D" uid="uid://cka7qr3s1mk6h" path="res://Sprites/Player/Player.png" id="2_v1qk3"]
+[ext_resource type="Resource" uid="uid://dhiahiqyk8nb6" path="res://Scenes/Inventory/inventory.tres" id="3_nh4f6"]
+[ext_resource type="PackedScene" uid="uid://b51uuhjac0hmd" path="res://Scenes/Inventory/inventory_ui.tscn" id="5_l4oa0"]
+
+[node name="Player" type="CharacterBody2D" groups=["Players"]]
+collision_layer = 2
+collision_mask = 21
+script = ExtResource("1_3ahea")
+player_stats = ExtResource("2_re8g3")
+inv = ExtResource("3_nh4f6")
+
+[node name="Hitbox" type="CollisionPolygon2D" parent="."]
+position = Vector2(5, 0)
+rotation = 1.5708
+polygon = PackedVector2Array(0, 9, -15, 15, 0, -15, 15, 15)
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(31, 0)
+scale = Vector2(2, 2)
+
+[node name="Player" type="Sprite2D" parent="."]
+position = Vector2(5, 0)
+rotation = 1.5708
+texture = ExtResource("2_v1qk3")
+
+[node name="Bullets Per Second" type="Timer" parent="."]
+one_shot = true
+
+[node name="Dash Invulnerability Time" type="Timer" parent="."]
+one_shot = true
+
+[node name="Dash Cooldown" type="Timer" parent="."]
+one_shot = true
+
+[node name="Inventory UI" parent="." instance=ExtResource("5_l4oa0")]
+offset_left = 318.0
+offset_top = -471.0
+offset_right = 479.0
+offset_bottom = -218.0
+scale = Vector2(3.745, 3.745)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[connection signal="shoot" from="." to="." method="_on_shoot"]

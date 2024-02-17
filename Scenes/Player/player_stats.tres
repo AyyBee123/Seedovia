@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="character_stats" load_steps=2 format=3 uid="uid://c1dh3fetdciy7"]
+
+[ext_resource type="Script" path="res://Scripts/Stats/character_stats.gd" id="1_lefcw"]
+
+[resource]
+script = ExtResource("1_lefcw")
+max_health = 3
+speed = 300.0
+dash_rate = 1.0
+dash_distance = 2000.0
+dash_invunerability = 0.25
+fire_rate = 10.0
+contact_damage = 0.0
+acceleration = 0.1
+friction = 0.25
