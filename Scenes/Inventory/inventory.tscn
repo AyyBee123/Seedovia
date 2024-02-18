@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b51uuhjac0hmd"]
+[gd_scene load_steps=10 format=3 uid="uid://b51uuhjac0hmd"]
 
 [ext_resource type="Script" path="res://Scripts/Inventory/inventory.gd" id="1_s1ohi"]
 [ext_resource type="Texture2D" uid="uid://osvetf3hj5du" path="res://Sprites/Inventory/Inventory Background.png" id="2_o2jp8"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://Scripts/Inventory/inventory_slot.gd" id="4_gqdv4"]
 [ext_resource type="Texture2D" uid="uid://o8ymbll3yeui" path="res://Sprites/Inventory/Button Hover.png" id="4_vtta4"]
 [ext_resource type="FontFile" uid="uid://cuikskpsdoxgb" path="res://Fonts/Kenney Pixel.ttf" id="5_3k1w7"]
+[ext_resource type="Script" path="res://Scripts/Inventory/equipment.gd" id="8_xmf1g"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7ppds"]
 texture = ExtResource("3_oonp7")
@@ -171,61 +172,63 @@ layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_7ppds")
 script = ExtResource("4_gqdv4")
 
-[node name="Equipment Slots" type="GridContainer" parent="NinePatchRect"]
-layout_mode = 0
-offset_left = 43.0
+[node name="Equipment" type="Node2D" parent="NinePatchRect"]
+script = ExtResource("8_xmf1g")
+
+[node name="Equipment Slots" type="GridContainer" parent="NinePatchRect/Equipment"]
+offset_left = 47.0
 offset_top = 7.0
-offset_right = 147.0
+offset_right = 151.0
 offset_bottom = 123.0
 columns = 3
 
-[node name="Empty1" type="Panel" parent="NinePatchRect/Equipment Slots"]
+[node name="Empty1" type="Panel" parent="NinePatchRect/Equipment/Equipment Slots"]
 self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 
-[node name="Slot1" type="Panel" parent="NinePatchRect/Equipment Slots"]
+[node name="Slot1" type="Panel" parent="NinePatchRect/Equipment/Equipment Slots"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_7ppds")
 script = ExtResource("4_gqdv4")
 
-[node name="Empty2" type="Panel" parent="NinePatchRect/Equipment Slots"]
+[node name="Empty2" type="Panel" parent="NinePatchRect/Equipment/Equipment Slots"]
 self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 
-[node name="Slot2" type="Panel" parent="NinePatchRect/Equipment Slots"]
+[node name="Slot2" type="Panel" parent="NinePatchRect/Equipment/Equipment Slots"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_7ppds")
 script = ExtResource("4_gqdv4")
 
-[node name="Slot3" type="Panel" parent="NinePatchRect/Equipment Slots"]
+[node name="Slot3" type="Panel" parent="NinePatchRect/Equipment/Equipment Slots"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_7ppds")
 script = ExtResource("4_gqdv4")
 
-[node name="Slot4" type="Panel" parent="NinePatchRect/Equipment Slots"]
+[node name="Slot4" type="Panel" parent="NinePatchRect/Equipment/Equipment Slots"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_7ppds")
 script = ExtResource("4_gqdv4")
 
-[node name="Slot5" type="Panel" parent="NinePatchRect/Equipment Slots"]
+[node name="Slot5" type="Panel" parent="NinePatchRect/Equipment/Equipment Slots"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_7ppds")
 script = ExtResource("4_gqdv4")
 
-[node name="Slot6" type="Panel" parent="NinePatchRect/Equipment Slots"]
+[node name="Slot6" type="Panel" parent="NinePatchRect/Equipment/Equipment Slots"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_7ppds")
 script = ExtResource("4_gqdv4")
 
-[node name="Slot7" type="Panel" parent="NinePatchRect/Equipment Slots"]
+[node name="Slot7" type="Panel" parent="NinePatchRect/Equipment/Equipment Slots"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_7ppds")
