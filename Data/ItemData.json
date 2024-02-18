@@ -13,6 +13,12 @@
         "ItemCategory": "Helmet",
         "Rarity": 1,
         "ItemProperties": ["+1 Max_Health", "-200 Dash_Distance"],
-        "Description": "A sturdy helmet."
+        "Description": "Not great, but it gets the job done."
+    },
+    "Basic Body Armour": {
+        "ItemCategory": "Body",
+        "Rarity": 1,
+        "ItemProperties": ["+1 Max_Health", "+0.2 Dash_Rate"],
+        "Description": "Not great, but it gets the job done."
     }
 }

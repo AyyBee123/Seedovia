@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://rbmu2rx5fk8i"]
+
+[ext_resource type="Script" path="res://Scripts/Items/item.gd" id="1_6hs6w"]
+[ext_resource type="Script" path="res://Scripts/Stats/item_stats.gd" id="3_81161"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sj3lt"]
+radius = 17.0
+
+[node name="Item" type="Node2D" node_paths=PackedStringArray("i_stats")]
+script = ExtResource("1_6hs6w")
+i_stats = NodePath("Item Stats")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(0, -2)
+
+[node name="Pickable Area" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 2
+
+[node name="Radius" type="CollisionShape2D" parent="Pickable Area"]
+shape = SubResource("CircleShape2D_sj3lt")
+
+[node name="Item Stats" type="Node" parent="."]
+script = ExtResource("3_81161")
+item_name = "Apple"
