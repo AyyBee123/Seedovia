@@ -1,7 +1,7 @@
 extends Control
 
 const slot_class = preload("res://Scripts/Inventory/inventory_slot.gd")
-@onready var inventory_slots = $NinePatchRect/GridContainer
+@onready var inventory_slots = $"NinePatchRect/Inventory Slots"
 @onready var drop_button = $"NinePatchRect/Drop Button"
 @onready var player := $"../Player"
 var holding_item = null

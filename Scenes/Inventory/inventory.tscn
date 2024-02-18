@@ -82,7 +82,7 @@ theme_override_fonts/normal_font = ExtResource("5_3k1w7")
 theme_override_font_sizes/normal_font_size = 16
 text = "Equip/Use"
 
-[node name="GridContainer" type="GridContainer" parent="NinePatchRect"]
+[node name="Inventory Slots" type="GridContainer" parent="NinePatchRect"]
 custom_minimum_size = Vector2(76, 60)
 layout_mode = 1
 anchors_preset = -1
@@ -99,73 +99,133 @@ theme_override_constants/h_separation = 4
 theme_override_constants/v_separation = 4
 columns = 4
 
-[node name="Slot1" type="Panel" parent="NinePatchRect/GridContainer"]
+[node name="Slot1" type="Panel" parent="NinePatchRect/Inventory Slots"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_7ppds")
 script = ExtResource("4_gqdv4")
 
-[node name="Slot2" type="Panel" parent="NinePatchRect/GridContainer"]
+[node name="Slot2" type="Panel" parent="NinePatchRect/Inventory Slots"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_7ppds")
 script = ExtResource("4_gqdv4")
 
-[node name="Slot3" type="Panel" parent="NinePatchRect/GridContainer"]
+[node name="Slot3" type="Panel" parent="NinePatchRect/Inventory Slots"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_7ppds")
 script = ExtResource("4_gqdv4")
 
-[node name="Slot4" type="Panel" parent="NinePatchRect/GridContainer"]
+[node name="Slot4" type="Panel" parent="NinePatchRect/Inventory Slots"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_7ppds")
 script = ExtResource("4_gqdv4")
 
-[node name="Slot5" type="Panel" parent="NinePatchRect/GridContainer"]
+[node name="Slot5" type="Panel" parent="NinePatchRect/Inventory Slots"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_7ppds")
 script = ExtResource("4_gqdv4")
 
-[node name="Slot6" type="Panel" parent="NinePatchRect/GridContainer"]
+[node name="Slot6" type="Panel" parent="NinePatchRect/Inventory Slots"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_7ppds")
 script = ExtResource("4_gqdv4")
 
-[node name="Slot7" type="Panel" parent="NinePatchRect/GridContainer"]
+[node name="Slot7" type="Panel" parent="NinePatchRect/Inventory Slots"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_7ppds")
 script = ExtResource("4_gqdv4")
 
-[node name="Slot8" type="Panel" parent="NinePatchRect/GridContainer"]
+[node name="Slot8" type="Panel" parent="NinePatchRect/Inventory Slots"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_7ppds")
 script = ExtResource("4_gqdv4")
 
-[node name="Slot9" type="Panel" parent="NinePatchRect/GridContainer"]
+[node name="Slot9" type="Panel" parent="NinePatchRect/Inventory Slots"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_7ppds")
 script = ExtResource("4_gqdv4")
 
-[node name="Slot10" type="Panel" parent="NinePatchRect/GridContainer"]
+[node name="Slot10" type="Panel" parent="NinePatchRect/Inventory Slots"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_7ppds")
 script = ExtResource("4_gqdv4")
 
-[node name="Slot11" type="Panel" parent="NinePatchRect/GridContainer"]
+[node name="Slot11" type="Panel" parent="NinePatchRect/Inventory Slots"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_7ppds")
 script = ExtResource("4_gqdv4")
 
-[node name="Slot12" type="Panel" parent="NinePatchRect/GridContainer"]
+[node name="Slot12" type="Panel" parent="NinePatchRect/Inventory Slots"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_7ppds")
+script = ExtResource("4_gqdv4")
+
+[node name="Equipment Slots" type="GridContainer" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 7.0
+offset_right = 147.0
+offset_bottom = 123.0
+columns = 3
+
+[node name="Empty1" type="Panel" parent="NinePatchRect/Equipment Slots"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Slot1" type="Panel" parent="NinePatchRect/Equipment Slots"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_7ppds")
+script = ExtResource("4_gqdv4")
+
+[node name="Empty2" type="Panel" parent="NinePatchRect/Equipment Slots"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Slot2" type="Panel" parent="NinePatchRect/Equipment Slots"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_7ppds")
+script = ExtResource("4_gqdv4")
+
+[node name="Slot3" type="Panel" parent="NinePatchRect/Equipment Slots"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_7ppds")
+script = ExtResource("4_gqdv4")
+
+[node name="Slot4" type="Panel" parent="NinePatchRect/Equipment Slots"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_7ppds")
+script = ExtResource("4_gqdv4")
+
+[node name="Slot5" type="Panel" parent="NinePatchRect/Equipment Slots"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_7ppds")
+script = ExtResource("4_gqdv4")
+
+[node name="Slot6" type="Panel" parent="NinePatchRect/Equipment Slots"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_7ppds")
+script = ExtResource("4_gqdv4")
+
+[node name="Slot7" type="Panel" parent="NinePatchRect/Equipment Slots"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_7ppds")
