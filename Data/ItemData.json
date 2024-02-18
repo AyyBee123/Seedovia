@@ -6,7 +6,7 @@
     },
     "Crystal Tear": {
         "ItemCategory": "Consumable",
-        "ItemProperties": ["Spawn 1 Seed Rarity:Any"],
+        "ItemProperties": ["Spawn 1 Seed"],
         "Description": "Spawns a random seed."
     },
     "Basic Helmet": {

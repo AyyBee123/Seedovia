@@ -12,7 +12,7 @@ var size = _bullet_stats.size
 var damage = _bullet_stats.damage
 
 func _ready():
-	starting_position = player.get_node("Marker2D").get_global_position()
+	starting_position = player.get_node("Rotation Point/Marker2D").get_global_position()
 
 func _physics_process(delta):
 	var _collision_detect = move_and_collide(velocity * delta * speed)

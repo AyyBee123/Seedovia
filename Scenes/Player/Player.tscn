@@ -1,14 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://cu63rxmy71bcg"]
+[gd_scene load_steps=7 format=3 uid="uid://cu63rxmy71bcg"]
 
 [ext_resource type="Script" path="res://Scripts/Stats/character_stats.gd" id="1_ayrw4"]
+[ext_resource type="Texture2D" uid="uid://ddxlo3x3ru7hr" path="res://Sprites/Player/Hand.png" id="2_6om3g"]
 [ext_resource type="Script" path="res://Scripts/Player/player.gd" id="2_f7nwd"]
+[ext_resource type="Texture2D" uid="uid://bdjm8bu0l6v08" path="res://Sprites/Player/Player.png" id="3_mwqvg"]
 [ext_resource type="PackedScene" uid="uid://b51uuhjac0hmd" path="res://Scenes/Inventory/inventory.tscn" id="4_px6lr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iqaxp"]
 size = Vector2(12, 20)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6xpyl"]
-load_path = "res://.godot/imported/Player.png-4323daa4a8c0f70026098f60b2e26bf9.ctex"
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("player_stats") groups=["Players"]]
 collision_layer = 2
@@ -16,16 +15,24 @@ collision_mask = 53
 script = ExtResource("2_f7nwd")
 player_stats = NodePath("Player Stats")
 
-[node name="Hitbox" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_iqaxp")
-
-[node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(21, 0)
-scale = Vector2(2, 2)
-
 [node name="Player" type="Sprite2D" parent="."]
 position = Vector2(0, -9)
-texture = SubResource("CompressedTexture2D_6xpyl")
+texture = ExtResource("3_mwqvg")
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+z_index = 1
+shape = SubResource("RectangleShape2D_iqaxp")
+
+[node name="Rotation Point" type="Marker2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="Rotation Point"]
+position = Vector2(9, 0)
+scale = Vector2(2, 2)
+
+[node name="Hand" type="Sprite2D" parent="Rotation Point/Marker2D"]
+position = Vector2(-0.5, 0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_6om3g")
 
 [node name="Bullets Per Second" type="Timer" parent="."]
 one_shot = true
