@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://8d04vgfqgn1b"]
 
 [ext_resource type="Script" path="res://Scripts/Items/item.gd" id="1_2t158"]
-[ext_resource type="Texture2D" uid="uid://b0dlqtfnmoy55" path="res://Sprites/Items/Tear.png" id="2_muvpr"]
+[ext_resource type="Texture2D" uid="uid://b0dlqtfnmoy55" path="res://Sprites/Items/Crystal Tear.png" id="2_muvpr"]
 [ext_resource type="Script" path="res://Scripts/Stats/item_stats.gd" id="3_sb4kf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_36yma"]
@@ -24,7 +24,7 @@ shape = SubResource("CircleShape2D_36yma")
 
 [node name="Item Stats" type="Node" parent="."]
 script = ExtResource("3_sb4kf")
-item_name = "Tear"
+item_name = "Crystal Tear"
 
 [connection signal="body_entered" from="Pickable Area" to="." method="_on_pickable_area_body_entered"]
 [connection signal="body_exited" from="Pickable Area" to="." method="_on_pickable_area_body_exited"]

@@ -6,7 +6,7 @@ const slot_class = preload("res://Scripts/Inventory/inventory_slot.gd")
 const NUM_INVENTORY_SLOTS = 12
 
 var inventory = {
-	1: "Apple", 3: "Tear"
+	1: "Apple", 3: "Crystal Tear"
 }
 
 func add_item(item_name):

@@ -67,7 +67,8 @@ func _on_drop_button_pressed():
 		holding_item = null
 		
 func drop_item(item):
-	var item_scene = load("res://Scenes/Items/" + item.i_stats.item_name.to_lower() + ".tscn")
+	var item_scene_name = item.i_stats.item_name.to_lower().replace(" ", "_")
+	var item_scene = load("res://Scenes/Items/" + item_scene_name + ".tscn")
 	var current_item = item_scene.instantiate()
 	get_tree().current_scene.add_child(current_item)
 	current_item.global_position = player.global_position

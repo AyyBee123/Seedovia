@@ -1,6 +1,6 @@
 extends Panel
 
-var item_class = preload("res://Scenes/Items/apple.tscn") # load any item scene
+var item_class = null
 var item = null
 var slot_index
 
@@ -18,6 +18,8 @@ func put_into_slot(new_item):
 	add_child(item)
 	
 func initialize_item(item_name):
+	var item_scene_name = item_name.to_lower().replace(" ", "_")
+	item_class = load("res://Scenes/Items/" + item_scene_name + ".tscn")
 	if item == null:
 		item = item_class.instantiate()
 		add_child(item)
