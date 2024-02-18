@@ -5,9 +5,7 @@ const slot_class = preload("res://Scripts/Inventory/inventory_slot.gd")
 
 const NUM_INVENTORY_SLOTS = 12
 
-var inventory = {
-	1: "Apple", 3: "Crystal Tear"
-}
+var inventory = {}
 
 func add_item(item_name):
 	for i in range(NUM_INVENTORY_SLOTS):
@@ -16,7 +14,7 @@ func add_item(item_name):
 			return
 
 func add_item_to_empty_slot(item: item_class, slot: slot_class):
-	inventory[slot.slot_index] = item.item_name
+	inventory[slot.slot_index] = item.i_stats.item_name
 	
 func remove_item(slot: slot_class):
 	inventory.erase(slot.slot_index)

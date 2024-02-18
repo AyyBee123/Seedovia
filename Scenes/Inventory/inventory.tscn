@@ -172,4 +172,3 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_7ppds")
 script = ExtResource("4_gqdv4")
 
 [connection signal="pressed" from="NinePatchRect/Drop Button" to="." method="_on_drop_button_pressed"]
-[connection signal="pressed" from="NinePatchRect/Equip_Use Button" to="." method="_on_drop_button_pressed"]
