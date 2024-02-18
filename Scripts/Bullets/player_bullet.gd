@@ -28,5 +28,5 @@ func _on_bullet_hitbox_area_entered(area):
 	
 func _collide(body):
 	if body.is_in_group("Enemies"):
-		body.get_parent().health -= damage
+		body.get_parent().health -= damage # TODO: change to signal instead
 	queue_free()

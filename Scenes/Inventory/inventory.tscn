@@ -1,9 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://b51uuhjac0hmd"]
+[gd_scene load_steps=9 format=3 uid="uid://b51uuhjac0hmd"]
 
 [ext_resource type="Script" path="res://Scripts/Inventory/inventory.gd" id="1_s1ohi"]
 [ext_resource type="Texture2D" uid="uid://osvetf3hj5du" path="res://Sprites/Inventory/Inventory Background.png" id="2_o2jp8"]
+[ext_resource type="Texture2D" uid="uid://gdy28civkl3o" path="res://Sprites/Inventory/Button.png" id="3_jj0hn"]
 [ext_resource type="Texture2D" uid="uid://xs8qyp302740" path="res://Sprites/Inventory/Inventory Slot.png" id="3_oonp7"]
 [ext_resource type="Script" path="res://Scripts/Inventory/inventory_slot.gd" id="4_gqdv4"]
+[ext_resource type="Texture2D" uid="uid://o8ymbll3yeui" path="res://Sprites/Inventory/Button Hover.png" id="4_vtta4"]
+[ext_resource type="FontFile" uid="uid://cuikskpsdoxgb" path="res://Fonts/Kenney Pixel.ttf" id="5_3k1w7"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7ppds"]
 texture = ExtResource("3_oonp7")
@@ -26,6 +29,58 @@ patch_margin_left = 1
 patch_margin_top = 1
 patch_margin_right = 1
 patch_margin_bottom = 1
+
+[node name="Drop Button" type="TextureButton" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 123.0
+offset_right = 79.0
+offset_bottom = 139.0
+texture_normal = ExtResource("3_jj0hn")
+texture_pressed = ExtResource("4_vtta4")
+texture_hover = ExtResource("4_vtta4")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="NinePatchRect/Drop Button"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 1.0
+offset_right = -20.0
+offset_bottom = -1.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("5_3k1w7")
+theme_override_font_sizes/normal_font_size = 16
+text = "Drop"
+
+[node name="Equip_Use Button" type="TextureButton" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 83.0
+offset_top = 123.0
+offset_right = 147.0
+offset_bottom = 139.0
+texture_normal = ExtResource("3_jj0hn")
+texture_pressed = ExtResource("4_vtta4")
+texture_hover = ExtResource("4_vtta4")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="NinePatchRect/Equip_Use Button"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 1.0
+offset_right = -6.0
+offset_bottom = -1.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("5_3k1w7")
+theme_override_font_sizes/normal_font_size = 16
+text = "Equip/Use"
 
 [node name="GridContainer" type="GridContainer" parent="NinePatchRect"]
 custom_minimum_size = Vector2(76, 60)
@@ -50,27 +105,11 @@ layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_7ppds")
 script = ExtResource("4_gqdv4")
 
-[node name="CenterContainer" type="CenterContainer" parent="NinePatchRect/GridContainer/Slot1"]
-layout_mode = 2
-offset_right = 32.0
-offset_bottom = 32.0
-
-[node name="Panel" type="Panel" parent="NinePatchRect/GridContainer/Slot1/CenterContainer"]
-layout_mode = 2
-
 [node name="Slot2" type="Panel" parent="NinePatchRect/GridContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_7ppds")
 script = ExtResource("4_gqdv4")
-
-[node name="CenterContainer" type="CenterContainer" parent="NinePatchRect/GridContainer/Slot2"]
-layout_mode = 2
-offset_right = 32.0
-offset_bottom = 32.0
-
-[node name="Panel" type="Panel" parent="NinePatchRect/GridContainer/Slot2/CenterContainer"]
-layout_mode = 2
 
 [node name="Slot3" type="Panel" parent="NinePatchRect/GridContainer"]
 custom_minimum_size = Vector2(32, 32)
@@ -78,27 +117,11 @@ layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_7ppds")
 script = ExtResource("4_gqdv4")
 
-[node name="CenterContainer" type="CenterContainer" parent="NinePatchRect/GridContainer/Slot3"]
-layout_mode = 2
-offset_right = 32.0
-offset_bottom = 32.0
-
-[node name="Panel" type="Panel" parent="NinePatchRect/GridContainer/Slot3/CenterContainer"]
-layout_mode = 2
-
 [node name="Slot4" type="Panel" parent="NinePatchRect/GridContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_7ppds")
 script = ExtResource("4_gqdv4")
-
-[node name="CenterContainer" type="CenterContainer" parent="NinePatchRect/GridContainer/Slot4"]
-layout_mode = 2
-offset_right = 32.0
-offset_bottom = 32.0
-
-[node name="Panel" type="Panel" parent="NinePatchRect/GridContainer/Slot4/CenterContainer"]
-layout_mode = 2
 
 [node name="Slot5" type="Panel" parent="NinePatchRect/GridContainer"]
 custom_minimum_size = Vector2(32, 32)
@@ -106,27 +129,11 @@ layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_7ppds")
 script = ExtResource("4_gqdv4")
 
-[node name="CenterContainer" type="CenterContainer" parent="NinePatchRect/GridContainer/Slot5"]
-layout_mode = 2
-offset_right = 32.0
-offset_bottom = 32.0
-
-[node name="Panel" type="Panel" parent="NinePatchRect/GridContainer/Slot5/CenterContainer"]
-layout_mode = 2
-
 [node name="Slot6" type="Panel" parent="NinePatchRect/GridContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_7ppds")
 script = ExtResource("4_gqdv4")
-
-[node name="CenterContainer" type="CenterContainer" parent="NinePatchRect/GridContainer/Slot6"]
-layout_mode = 2
-offset_right = 32.0
-offset_bottom = 32.0
-
-[node name="Panel" type="Panel" parent="NinePatchRect/GridContainer/Slot6/CenterContainer"]
-layout_mode = 2
 
 [node name="Slot7" type="Panel" parent="NinePatchRect/GridContainer"]
 custom_minimum_size = Vector2(32, 32)
@@ -134,27 +141,11 @@ layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_7ppds")
 script = ExtResource("4_gqdv4")
 
-[node name="CenterContainer" type="CenterContainer" parent="NinePatchRect/GridContainer/Slot7"]
-layout_mode = 2
-offset_right = 32.0
-offset_bottom = 32.0
-
-[node name="Panel" type="Panel" parent="NinePatchRect/GridContainer/Slot7/CenterContainer"]
-layout_mode = 2
-
 [node name="Slot8" type="Panel" parent="NinePatchRect/GridContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_7ppds")
 script = ExtResource("4_gqdv4")
-
-[node name="CenterContainer" type="CenterContainer" parent="NinePatchRect/GridContainer/Slot8"]
-layout_mode = 2
-offset_right = 32.0
-offset_bottom = 32.0
-
-[node name="Panel" type="Panel" parent="NinePatchRect/GridContainer/Slot8/CenterContainer"]
-layout_mode = 2
 
 [node name="Slot9" type="Panel" parent="NinePatchRect/GridContainer"]
 custom_minimum_size = Vector2(32, 32)
@@ -162,27 +153,11 @@ layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_7ppds")
 script = ExtResource("4_gqdv4")
 
-[node name="CenterContainer" type="CenterContainer" parent="NinePatchRect/GridContainer/Slot9"]
-layout_mode = 2
-offset_right = 32.0
-offset_bottom = 32.0
-
-[node name="Panel" type="Panel" parent="NinePatchRect/GridContainer/Slot9/CenterContainer"]
-layout_mode = 2
-
 [node name="Slot10" type="Panel" parent="NinePatchRect/GridContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_7ppds")
 script = ExtResource("4_gqdv4")
-
-[node name="CenterContainer" type="CenterContainer" parent="NinePatchRect/GridContainer/Slot10"]
-layout_mode = 2
-offset_right = 32.0
-offset_bottom = 32.0
-
-[node name="Panel" type="Panel" parent="NinePatchRect/GridContainer/Slot10/CenterContainer"]
-layout_mode = 2
 
 [node name="Slot11" type="Panel" parent="NinePatchRect/GridContainer"]
 custom_minimum_size = Vector2(32, 32)
@@ -190,24 +165,11 @@ layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_7ppds")
 script = ExtResource("4_gqdv4")
 
-[node name="CenterContainer" type="CenterContainer" parent="NinePatchRect/GridContainer/Slot11"]
-layout_mode = 2
-offset_right = 32.0
-offset_bottom = 32.0
-
-[node name="Panel" type="Panel" parent="NinePatchRect/GridContainer/Slot11/CenterContainer"]
-layout_mode = 2
-
 [node name="Slot12" type="Panel" parent="NinePatchRect/GridContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_7ppds")
 script = ExtResource("4_gqdv4")
 
-[node name="CenterContainer" type="CenterContainer" parent="NinePatchRect/GridContainer/Slot12"]
-layout_mode = 2
-offset_right = 32.0
-offset_bottom = 32.0
-
-[node name="Panel" type="Panel" parent="NinePatchRect/GridContainer/Slot12/CenterContainer"]
-layout_mode = 2
+[connection signal="pressed" from="NinePatchRect/Drop Button" to="." method="_on_drop_button_pressed"]
+[connection signal="pressed" from="NinePatchRect/Equip_Use Button" to="." method="_on_drop_button_pressed"]

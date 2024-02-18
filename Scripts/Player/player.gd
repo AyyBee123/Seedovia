@@ -57,6 +57,7 @@ func _move():
 	
 func _die():
 	hide() # temporary death effect
+	set_physics_process(false)
 	# TODO: add death animation
 	# TODO: pause game and add options to restart and go back to menu
 	
@@ -69,10 +70,8 @@ func _dash():
 
 func _on_shoot(bullet, direction, location):
 	var bullet_instance = bullet.instantiate()
-	get_parent().add_child(bullet_instance)
+	get_tree().current_scene.add_child(bullet_instance)
 	bullet_instance.global_position = location
 	bullet_instance.velocity = (get_global_mouse_position() - bullet_instance.global_position).normalized()
 	bullet_instance.rotation = bullet_instance.velocity.angle()
 	bullets_per_second.start()
-	
-

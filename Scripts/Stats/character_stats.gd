@@ -1,4 +1,4 @@
-class_name character_stats extends Resource
+class_name character_stats extends Node
 
 signal health_changed(new_health) # send signal that current health changed
 signal max_health_changed(new_max_health) # send signal that max health changed
@@ -35,7 +35,7 @@ func set_max_health(value):
 	
 func increase_max_health(amount):
 	max_health += amount
-	emit_signal("max_health_changed", max_health)
+	max_health_changed.emit(max_health)
 	
 func take_damage(hit_source):
 	health -= hit_source.damage
@@ -57,4 +57,3 @@ func add_modifier(id, modifier):
 	
 func remove_modifier(id):
 	modifiers.erase(id)
-	
