@@ -1,11 +1,13 @@
 extends Node
 
+var item_data: Dictionary
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	item_data = LoadData("res://Data/ItemData.json")
+	print(item_data)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func LoadData(file_path):
+	var text = FileAccess.get_file_as_string(file_path)
+	var dict = JSON.parse_string(text)
+	return dict
+	

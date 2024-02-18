@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b51uuhjac0hmd"]
+[gd_scene load_steps=9 format=3 uid="uid://b51uuhjac0hmd"]
 
 [ext_resource type="Script" path="res://Scripts/Inventory/inventory.gd" id="1_s1ohi"]
 [ext_resource type="Texture2D" uid="uid://osvetf3hj5du" path="res://Sprites/Inventory/Inventory Background.png" id="2_o2jp8"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" path="res://Scripts/Inventory/inventory_slot.gd" id="4_gqdv4"]
 [ext_resource type="Texture2D" uid="uid://o8ymbll3yeui" path="res://Sprites/Inventory/Button Hover.png" id="4_vtta4"]
 [ext_resource type="FontFile" uid="uid://cuikskpsdoxgb" path="res://Fonts/Kenney Pixel.ttf" id="5_3k1w7"]
-[ext_resource type="Script" path="res://Scripts/Inventory/equipment.gd" id="8_xmf1g"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7ppds"]
 texture = ExtResource("3_oonp7")
@@ -173,7 +172,6 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_7ppds")
 script = ExtResource("4_gqdv4")
 
 [node name="Equipment" type="Node2D" parent="NinePatchRect"]
-script = ExtResource("8_xmf1g")
 
 [node name="Equipment Slots" type="GridContainer" parent="NinePatchRect/Equipment"]
 offset_left = 47.0

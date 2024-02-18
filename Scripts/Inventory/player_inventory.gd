@@ -6,6 +6,7 @@ const slot_class = preload("res://Scripts/Inventory/inventory_slot.gd")
 const NUM_INVENTORY_SLOTS = 12
 
 var inventory = {}
+var equipment = {}
 
 func add_item(item_name):
 	for i in range(NUM_INVENTORY_SLOTS):
