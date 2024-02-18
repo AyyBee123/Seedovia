@@ -1,17 +1,18 @@
 {
     "Apple": {
         "ItemCategory": "Consumable",
-        "AddHealth": 1,
+        "ItemProperties": ["+1 Health"],
         "Description": "Heals 1 health."
     },
     "Crystal Tear": {
         "ItemCategory": "Consumable",
-        "Spawns": "Seed",
+        "ItemProperties": ["Spawn 1 Seed Rarity:Any"],
         "Description": "Spawns a random seed."
     },
     "Basic Helmet": {
         "ItemCategory": "Helmet",
-        "ItemProperties": ["+1 Max Health", "-200 Dash Distance"],
+        "Rarity": 1,
+        "ItemProperties": ["+1 Max_Health", "-200 Dash_Distance"],
         "Description": "A sturdy helmet."
     }
 }
