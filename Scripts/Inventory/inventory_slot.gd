@@ -34,7 +34,7 @@ func initialize_item(item_name, slot_item):
 	item_instance = load("res://Scenes/Items/item.tscn")
 	if item == null:
 		item = item_instance.instantiate()
-		item.set_new_item(item_name)
+		item.set_item(PlayerInventory.picked_up_item)
 		add_child(item)
 		item.position = Vector2(size.x / 2, size.y / 2)
 	else:

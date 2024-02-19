@@ -25,9 +25,5 @@ func _on_pickable_area_body_exited(body):
 		player_in_area = false
 		
 func pick_up():
-	PlayerInventory.add_item(item.get_item_name())
+	PlayerInventory.add_item(item.get_item_name(), item)
 	queue_free()
-	
-func set_new_item(item_name):
-	$Sprite.texture = load("res://Sprites/Items/" + item_name + ".png")
-	item = load("res://Resources/Items/" + item_name + ".tres")
