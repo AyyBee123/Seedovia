@@ -1,16 +1,20 @@
-[gd_scene load_steps=10 format=3 uid="uid://b51uuhjac0hmd"]
+[gd_scene load_steps=12 format=3 uid="uid://b51uuhjac0hmd"]
 
 [ext_resource type="Script" path="res://Scripts/Inventory/inventory.gd" id="1_s1ohi"]
 [ext_resource type="Texture2D" uid="uid://osvetf3hj5du" path="res://Sprites/Inventory/Inventory Background.png" id="2_o2jp8"]
 [ext_resource type="Texture2D" uid="uid://gdy28civkl3o" path="res://Sprites/Inventory/Button.png" id="3_jj0hn"]
-[ext_resource type="Texture2D" uid="uid://xs8qyp302740" path="res://Sprites/Inventory/Inventory Slot.png" id="3_oonp7"]
 [ext_resource type="Script" path="res://Scripts/Inventory/inventory_slot.gd" id="4_gqdv4"]
 [ext_resource type="Texture2D" uid="uid://o8ymbll3yeui" path="res://Sprites/Inventory/Button Hover.png" id="4_vtta4"]
 [ext_resource type="FontFile" uid="uid://cuikskpsdoxgb" path="res://Fonts/Kenney Pixel.ttf" id="5_3k1w7"]
+[ext_resource type="Texture2D" uid="uid://bn8ohqrnr01ka" path="res://Sprites/Inventory/Seed Slot.png" id="6_2hcdt"]
 [ext_resource type="Texture2D" uid="uid://bgqhx75ytpcut" path="res://Sprites/Inventory/Head.png" id="8_fgvwo"]
+[ext_resource type="Texture2D" uid="uid://bd11oobrf6yka" path="res://Sprites/Inventory/Seed Slot Link.png" id="9_c3yfu"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7ppds"]
-texture = ExtResource("3_oonp7")
+texture = ExtResource("6_2hcdt")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s7kfb"]
+texture = ExtResource("6_2hcdt")
 
 [node name="Inventory" type="Control"]
 top_level = true
@@ -245,5 +249,44 @@ custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_7ppds")
 script = ExtResource("4_gqdv4")
+
+[node name="Seed Slots" type="GridContainer" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 7.0
+offset_right = 35.0
+offset_bottom = 116.0
+
+[node name="SeedSlotLink" type="Sprite2D" parent="NinePatchRect/Seed Slots"]
+position = Vector2(12, 26)
+texture = ExtResource("9_c3yfu")
+
+[node name="SeedSlotLink2" type="Sprite2D" parent="NinePatchRect/Seed Slots"]
+position = Vector2(12, 54)
+texture = ExtResource("9_c3yfu")
+
+[node name="SeedSlotLink3" type="Sprite2D" parent="NinePatchRect/Seed Slots"]
+position = Vector2(12, 82)
+texture = ExtResource("9_c3yfu")
+
+[node name="Slot1" type="Panel" parent="NinePatchRect/Seed Slots"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_s7kfb")
+
+[node name="Slot2" type="Panel" parent="NinePatchRect/Seed Slots"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_s7kfb")
+
+[node name="Slot3" type="Panel" parent="NinePatchRect/Seed Slots"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_s7kfb")
+
+[node name="Slot4" type="Panel" parent="NinePatchRect/Seed Slots"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_s7kfb")
 
 [connection signal="pressed" from="NinePatchRect/Drop Button" to="." method="_on_drop_button_pressed"]
