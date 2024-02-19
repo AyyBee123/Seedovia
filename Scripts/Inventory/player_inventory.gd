@@ -31,7 +31,14 @@ func add_item(item, player, inv):
 			inventory[i] = item
 			return
 	# if inventory is full
-	inv.drop_item(item, player)
+	drop_item(item, player)
+	
+func drop_item(item, player):
+	var current_item = load("res://Scenes/Items/item.tscn").instantiate()
+	# set the dropped item's resource values from the holding item or dropped item if inventory is full
+	current_item.set_item(item)
+	get_tree().current_scene.add_child(current_item)
+	current_item.global_position = player.global_position
 
 func add_item_to_empty_slot(item: item_instance, slot: slot_class):
 	if slot.slot_type == slot_class.slot_types.INVENTORY:

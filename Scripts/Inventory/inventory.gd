@@ -88,16 +88,9 @@ func left_click_select_item(slot: slot_class):
 	
 func _on_drop_button_pressed():
 	if holding_item != null:
-		drop_item(holding_item.item, player)
+		PlayerInventory.drop_item(holding_item.item, player)
 		holding_item.queue_free()
 		holding_item = null
-		
-func drop_item(item, player):
-	var current_item = load("res://Scenes/Items/item.tscn").instantiate()
-	# set the dropped item's resource values from the holding item or dropped item if inventory is full
-	current_item.set_item(item)
-	get_tree().current_scene.add_child(current_item)
-	current_item.global_position = player.global_position
 	
 func get_number_of_slots():
 	return inventory_slots.size()
