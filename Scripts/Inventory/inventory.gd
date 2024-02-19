@@ -33,6 +33,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("inventory"):
 		# toggle inventory UI to open/close
 		visible = !visible
+	# return item to inventory when exiting the inventory UI while holding an item (or drop when inventory is full)
 	if not visible && holding_item != null:
 		PlayerInventory.add_item(holding_item.item)
 		holding_item.queue_free()
