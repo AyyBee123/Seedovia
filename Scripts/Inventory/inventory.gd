@@ -32,7 +32,11 @@ func _ready():
 func _process(delta):
 	if Input.is_action_just_pressed("inventory"):
 		# toggle inventory UI to open/close
-		visible = not visible
+		visible = !visible
+	if not visible && holding_item != null:
+		PlayerInventory.add_item(holding_item.item)
+		holding_item.queue_free()
+		holding_item = null
 		
 func slot_gui_input(event: InputEvent, slot: slot_class):
 	if event is InputEventMouseButton:
