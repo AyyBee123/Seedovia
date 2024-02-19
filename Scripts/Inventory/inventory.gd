@@ -93,9 +93,8 @@ func _on_drop_button_pressed():
 		holding_item = null
 		
 func drop_item(item, player):
-	var item_scene = load("res://Scenes/Items/item.tscn")
-	var current_item = item_scene.instantiate()
-	# sets the dropped item's resource values from the holding item or dropped item if inventory is full
+	var current_item = load("res://Scenes/Items/item.tscn").instantiate()
+	# set the dropped item's resource values from the holding item or dropped item if inventory is full
 	current_item.set_item(item)
 	get_tree().current_scene.add_child(current_item)
 	current_item.global_position = player.global_position
