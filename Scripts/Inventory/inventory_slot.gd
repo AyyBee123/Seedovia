@@ -30,12 +30,12 @@ func put_into_slot(new_item):
 	inventory_node.remove_child(item)
 	add_child(item)
 	
-func initialize_item(item_name):
+func initialize_item(item_name, slot_item):
 	item_instance = load("res://Scenes/Items/item.tscn")
 	if item == null:
 		item = item_instance.instantiate()
+		item.set_new_item(item_name)
 		add_child(item)
 		item.position = Vector2(size.x / 2, size.y / 2)
-		item.set_new_item(item_name)
 	else:
-		item.set_new_item(item_name)
+		item.set_item(slot_item.item)

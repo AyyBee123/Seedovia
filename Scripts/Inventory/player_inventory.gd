@@ -21,7 +21,6 @@ func add_item_to_empty_slot(item: item_instance, slot: slot_class):
 	else:
 		equipment[slot.slot_index] = item.item.get_item_name()
 	
-	
 func remove_item(slot: slot_class):
 	if slot.slot_type == slot_class.slot_types.INVENTORY:
 		inventory.erase(slot.slot_index)

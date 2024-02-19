@@ -1,7 +1,6 @@
 extends Control
 
 const slot_class = preload("res://Scripts/Inventory/inventory_slot.gd")
-const item_instance = preload("res://Scripts/Items/item.gd")
 @onready var drop_button = $"NinePatchRect/Drop Button"
 @onready var player = $"../Player"
 @onready var inventory_slots = $"NinePatchRect/Inventory Slots".get_children()
@@ -48,18 +47,19 @@ func slot_gui_input(event: InputEvent, slot: slot_class):
 				
 func _input(event):
 	inititialize_inventory()
+	inititialize_equipment()
 	if holding_item:
 		holding_item.global_position = get_global_mouse_position()
 		
 func inititialize_inventory():
 	for i in range(inventory_slots.size()):
 		if PlayerInventory.inventory.has(i):
-			inventory_slots[i].initialize_item(PlayerInventory.inventory[i])
+			inventory_slots[i].initialize_item(PlayerInventory.inventory[i], inventory_slots[i].item)
 			
 func inititialize_equipment():
 	for i in range(equip_slots.size()):
 		if PlayerInventory.equipment.has(i):
-			equip_slots[i].initialize_item(PlayerInventory.equipment[i])
+			equip_slots[i].initialize_item(PlayerInventory.equipment[i], equip_slots[i].item)
 			
 func left_click_place_item(slot: slot_class):
 	PlayerInventory.add_item_to_empty_slot(holding_item, slot)
@@ -89,7 +89,7 @@ func _on_drop_button_pressed():
 func drop_item(item):
 	var item_scene = load("res://Scenes/Items/item.tscn")
 	var current_item = item_scene.instantiate()
-	current_item.set_item(item.item)
+	current_item.set_item(item.item) # sets the dropped item's resource values from the holding item
 	get_tree().current_scene.add_child(current_item)
 	current_item.global_position = player.global_position
 	item.queue_free()

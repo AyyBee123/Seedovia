@@ -31,9 +31,3 @@ func pick_up():
 func set_new_item(item_name):
 	$Sprite.texture = load("res://Sprites/Items/" + item_name + ".png")
 	item = load("res://Resources/Items/" + item_name + ".tres")
-	
-
-func find_child_by_type(type: String):
-	for child in get_children():
-		if child.get_class() == type:
-			return child
