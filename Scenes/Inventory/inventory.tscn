@@ -16,7 +16,7 @@ texture = ExtResource("6_2hcdt")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s7kfb"]
 texture = ExtResource("6_2hcdt")
 
-[node name="Inventory" type="Control"]
+[node name="Inventory" type="Control" groups=["Persist"]]
 top_level = true
 layout_mode = 3
 anchors_preset = 0

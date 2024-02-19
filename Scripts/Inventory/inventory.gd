@@ -35,7 +35,7 @@ func _process(delta):
 		visible = !visible
 	# return item to inventory when exiting the inventory UI while holding an item (or drop when inventory is full)
 	if not visible && holding_item != null:
-		PlayerInventory.add_item(holding_item.item)
+		PlayerInventory.add_item(holding_item.item, player, self)
 		holding_item.queue_free()
 		holding_item = null
 		
@@ -59,12 +59,12 @@ func _input(event):
 func inititialize_inventory():
 	for i in range(inventory_slots.size()):
 		if PlayerInventory.inventory.has(i):
-			inventory_slots[i].initialize_item(PlayerInventory.inventory[i], inventory_slots[i].item)
+			inventory_slots[i].initialize_item(PlayerInventory.inventory[i])
 			
 func inititialize_equipment():
 	for i in range(equip_slots.size()):
 		if PlayerInventory.equipment.has(i):
-			equip_slots[i].initialize_item(PlayerInventory.equipment[i], equip_slots[i].item)
+			equip_slots[i].initialize_item(PlayerInventory.equipment[i])
 			
 func left_click_place_item(slot: slot_class):
 	PlayerInventory.add_item_to_empty_slot(holding_item, slot)
@@ -88,13 +88,17 @@ func left_click_select_item(slot: slot_class):
 	
 func _on_drop_button_pressed():
 	if holding_item != null:
-		drop_item(holding_item)
+		drop_item(holding_item.item, player)
+		holding_item.queue_free()
 		holding_item = null
 		
-func drop_item(item):
+func drop_item(item, player):
 	var item_scene = load("res://Scenes/Items/item.tscn")
 	var current_item = item_scene.instantiate()
-	current_item.set_item(item.item) # sets the dropped item's resource values from the holding item
+	print(item)
+	current_item.set_item(item) # sets the dropped item's resource values from the holding item
 	get_tree().current_scene.add_child(current_item)
 	current_item.global_position = player.global_position
-	item.queue_free()
+	
+func get_number_of_slots():
+	return inventory_slots.size()

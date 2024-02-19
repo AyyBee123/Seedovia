@@ -25,5 +25,5 @@ func _on_pickable_area_body_exited(body):
 		player_in_area = false
 		
 func pick_up():
-	PlayerInventory.add_item(item)
+	PlayerInventory.add_item(item, player, inventory)
 	queue_free()
