@@ -32,7 +32,6 @@ func add_item(item, player, inv):
 			return
 	# if inventory is full
 	inv.drop_item(item, player)
-	
 
 func add_item_to_empty_slot(item: item_instance, slot: slot_class):
 	if slot.slot_type == slot_class.slot_types.INVENTORY:

@@ -2,7 +2,7 @@ extends Control
 
 const slot_class = preload("res://Scripts/Inventory/inventory_slot.gd")
 @onready var drop_button = $"NinePatchRect/Drop Button"
-@onready var player = $"../Player"
+@onready var player = $".."
 @onready var inventory_slots = $"NinePatchRect/Inventory Slots".get_children()
 @onready var equip_slots = $"NinePatchRect/Equipment Slots".get_children()
 var holding_item = null # the item that is currently being held by the cursor in the inventory
@@ -95,7 +95,6 @@ func _on_drop_button_pressed():
 func drop_item(item, player):
 	var item_scene = load("res://Scenes/Items/item.tscn")
 	var current_item = item_scene.instantiate()
-	print(item)
 	current_item.set_item(item) # sets the dropped item's resource values from the holding item
 	get_tree().current_scene.add_child(current_item)
 	current_item.global_position = player.global_position

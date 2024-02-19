@@ -29,7 +29,7 @@ func _physics_process(delta):
 	$"Rotation Point".look_at(get_global_mouse_position())
 	
 	# flip player sprite based of mouse position
-	$Player.flip_h = false if get_global_mouse_position().x > global_position.x else true
+	$"Player Sprite".flip_h = false if get_global_mouse_position().x > global_position.x else true
 	
 	# shoot bullet
 	if Input.is_action_pressed("shoot") and bullets_per_second.is_stopped():
