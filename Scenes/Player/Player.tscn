@@ -59,6 +59,7 @@ acceleration = 0.1
 friction = 0.25
 
 [node name="Inventory" parent="." instance=ExtResource("4_px6lr")]
+visible = false
 offset_left = 318.0
 offset_top = -471.0
 offset_right = 479.0
