@@ -11,10 +11,10 @@ const NUM_INVENTORY_SLOTS = 12
 var inventory = {}
 var equipment = {}#{1: "Basic Helmet", 3: "Basic Body Armour"}
 
-func add_item(item_name, item):
+func add_item(item):
 	for i in range(NUM_INVENTORY_SLOTS):
 		if not inventory.has(i): # checks for space in inventory
-			inventory[i] = item_name
+			inventory[i] = item.item_name
 			picked_up_item = item
 			return
 		else: # if inventory is full
