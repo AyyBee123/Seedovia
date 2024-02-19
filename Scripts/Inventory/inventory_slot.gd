@@ -36,6 +36,6 @@ func initialize_item(item_name):
 		item = item_instance.instantiate()
 		add_child(item)
 		item.position = Vector2(size.x / 2, size.y / 2)
-		item.set_item(item_name)
+		item.set_new_item(item_name)
 	else:
-		item.set_item(item_name)
+		item.set_new_item(item_name)

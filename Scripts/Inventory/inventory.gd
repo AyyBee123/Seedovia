@@ -89,7 +89,7 @@ func _on_drop_button_pressed():
 func drop_item(item):
 	var item_scene = load("res://Scenes/Items/item.tscn")
 	var current_item = item_scene.instantiate()
-	current_item.set_new_item(item.item)
+	current_item.set_item(item.item)
 	get_tree().current_scene.add_child(current_item)
 	current_item.global_position = player.global_position
 	item.queue_free()

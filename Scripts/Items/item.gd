@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var item: Resource: set = set_new_item
+@export var item: Resource: set = set_item
 
 var player_in_area = false
 var player = null
@@ -11,7 +11,7 @@ func _process(delta):
 		if Input.is_action_just_pressed("pick up"):
 			pick_up()
 			
-func set_new_item(new_item: Resource):
+func set_item(new_item: Resource):
 	item = new_item
 	$Sprite.texture = new_item.get_texture()
 
@@ -28,7 +28,7 @@ func pick_up():
 	PlayerInventory.add_item(item.get_item_name())
 	queue_free()
 	
-func set_item(item_name):
+func set_new_item(item_name):
 	$Sprite.texture = load("res://Sprites/Items/" + item_name + ".png")
 	item = load("res://Resources/Items/" + item_name + ".tres")
 	
