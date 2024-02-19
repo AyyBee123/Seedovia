@@ -10,7 +10,7 @@ const NUM_INVENTORY_SLOTS = 12
 
 
 var inventory = {}
-var equipment = {}#{1: "Basic Helmet", 3: "Basic Body Armour"}
+var equipment = {}
 
 func add_item(item, player, inv):
 	for i in range(NUM_INVENTORY_SLOTS):
