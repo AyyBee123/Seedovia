@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b51uuhjac0hmd"]
+[gd_scene load_steps=10 format=3 uid="uid://b51uuhjac0hmd"]
 
 [ext_resource type="Script" path="res://Scripts/Inventory/inventory.gd" id="1_s1ohi"]
 [ext_resource type="Texture2D" uid="uid://osvetf3hj5du" path="res://Sprites/Inventory/Inventory Background.png" id="2_o2jp8"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://Scripts/Inventory/inventory_slot.gd" id="4_gqdv4"]
 [ext_resource type="Texture2D" uid="uid://o8ymbll3yeui" path="res://Sprites/Inventory/Button Hover.png" id="4_vtta4"]
 [ext_resource type="FontFile" uid="uid://cuikskpsdoxgb" path="res://Fonts/Kenney Pixel.ttf" id="5_3k1w7"]
+[ext_resource type="Texture2D" uid="uid://bgqhx75ytpcut" path="res://Sprites/Inventory/Head.png" id="8_fgvwo"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7ppds"]
 texture = ExtResource("3_oonp7")
@@ -171,62 +172,75 @@ layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_7ppds")
 script = ExtResource("4_gqdv4")
 
-[node name="Equipment" type="Node2D" parent="NinePatchRect"]
-
-[node name="Equipment Slots" type="GridContainer" parent="NinePatchRect/Equipment"]
+[node name="Equipment Slots" type="GridContainer" parent="NinePatchRect"]
+layout_mode = 0
 offset_left = 47.0
 offset_top = 7.0
 offset_right = 151.0
 offset_bottom = 123.0
 columns = 3
 
-[node name="Empty1" type="Panel" parent="NinePatchRect/Equipment/Equipment Slots"]
+[node name="Empty0" type="Panel" parent="NinePatchRect/Equipment Slots" groups=["Empty Slot"]]
 self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 
-[node name="Slot1" type="Panel" parent="NinePatchRect/Equipment/Equipment Slots"]
+[node name="SlotHead" type="Panel" parent="NinePatchRect/Equipment Slots"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_7ppds")
 script = ExtResource("4_gqdv4")
 
-[node name="Empty2" type="Panel" parent="NinePatchRect/Equipment/Equipment Slots"]
+[node name="TextureRect" type="TextureRect" parent="NinePatchRect/Equipment Slots/SlotHead"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 6.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_fgvwo")
+stretch_mode = 2
+
+[node name="Empty2" type="Panel" parent="NinePatchRect/Equipment Slots" groups=["Empty Slot"]]
 self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 
-[node name="Slot2" type="Panel" parent="NinePatchRect/Equipment/Equipment Slots"]
+[node name="SlotArms" type="Panel" parent="NinePatchRect/Equipment Slots"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_7ppds")
 script = ExtResource("4_gqdv4")
 
-[node name="Slot3" type="Panel" parent="NinePatchRect/Equipment/Equipment Slots"]
+[node name="SlotBody" type="Panel" parent="NinePatchRect/Equipment Slots"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_7ppds")
 script = ExtResource("4_gqdv4")
 
-[node name="Slot4" type="Panel" parent="NinePatchRect/Equipment/Equipment Slots"]
+[node name="SlotShoulders" type="Panel" parent="NinePatchRect/Equipment Slots"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_7ppds")
 script = ExtResource("4_gqdv4")
 
-[node name="Slot5" type="Panel" parent="NinePatchRect/Equipment/Equipment Slots"]
+[node name="SlotLegs" type="Panel" parent="NinePatchRect/Equipment Slots"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_7ppds")
 script = ExtResource("4_gqdv4")
 
-[node name="Slot6" type="Panel" parent="NinePatchRect/Equipment/Equipment Slots"]
+[node name="SlotWaist" type="Panel" parent="NinePatchRect/Equipment Slots"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_7ppds")
 script = ExtResource("4_gqdv4")
 
-[node name="Slot7" type="Panel" parent="NinePatchRect/Equipment/Equipment Slots"]
+[node name="SlotFeet" type="Panel" parent="NinePatchRect/Equipment Slots"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_7ppds")

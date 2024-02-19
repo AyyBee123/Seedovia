@@ -1,8 +1,21 @@
 extends Panel
 
-var item_class = null
+var item_instance = null
 var item = null
-var slot_index
+var slot_index: int
+
+enum slot_types {
+	INVENTORY,
+	HEAD,
+	ARMS,
+	BODY,
+	SHOULDERS,
+	LEGS,
+	WAIST,
+	FEET
+}
+
+var slot_type = null
 
 func pick_from_slot():
 	remove_child(item)
@@ -18,10 +31,9 @@ func put_into_slot(new_item):
 	add_child(item)
 	
 func initialize_item(item_name):
-	var item_scene_name = item_name.to_lower().replace(" ", "_")
-	item_class = load("res://Scenes/Items/" + item_scene_name + ".tscn")
+	item_instance = load("res://Scenes/Items/item.tscn")
 	if item == null:
-		item = item_class.instantiate()
+		item = item_instance.instantiate()
 		add_child(item)
 		item.position = Vector2(size.x / 2, size.y / 2)
 		item.set_item(item_name)

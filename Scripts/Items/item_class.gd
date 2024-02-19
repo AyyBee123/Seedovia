@@ -1,0 +1,16 @@
+class_name item_class extends Resource
+
+@export var item_name: String
+@export var texture: Texture
+@export_multiline var description: String
+
+func initialize(item: item_class):
+	item_name = item.item_name
+	texture = item.texture
+	description = item.description
+	
+func get_item_name() -> String:
+	return item_name
+	
+func get_texture() -> Texture:
+	return texture

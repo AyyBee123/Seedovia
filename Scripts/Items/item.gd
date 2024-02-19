@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var i_stats: item_stats
+@export var item: Resource: set = set_new_item
 
 var player_in_area = false
 var player = null
@@ -10,6 +10,10 @@ func _process(delta):
 	if player_in_area:
 		if Input.is_action_just_pressed("pick up"):
 			pick_up()
+			
+func set_new_item(new_item: Resource):
+	item = new_item
+	$Sprite.texture = new_item.get_texture()
 
 func _on_pickable_area_body_entered(body):
 	if body.is_in_group("Players"):
@@ -21,11 +25,13 @@ func _on_pickable_area_body_exited(body):
 		player_in_area = false
 		
 func pick_up():
-	PlayerInventory.add_item(i_stats.item_name)
+	PlayerInventory.add_item(item.get_item_name())
 	queue_free()
 	
 func set_item(item_name):
-	find_child_by_type("Sprite2D").texture = load("res://Sprites/Items/" + item_name + ".png")
+	$Sprite.texture = load("res://Sprites/Items/" + item_name + ".png")
+	item = load("res://Resources/Items/" + item_name + ".tres")
+	
 
 func find_child_by_type(type: String):
 	for child in get_children():

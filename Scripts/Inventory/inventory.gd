@@ -1,18 +1,34 @@
 extends Control
 
 const slot_class = preload("res://Scripts/Inventory/inventory_slot.gd")
-@onready var inventory_slots = $"NinePatchRect/Inventory Slots"
+const item_instance = preload("res://Scripts/Items/item.gd")
 @onready var drop_button = $"NinePatchRect/Drop Button"
-@onready var player := $"../Player"
-var holding_item = null
+@onready var player = $"../Player"
+@onready var inventory_slots = $"NinePatchRect/Inventory Slots".get_children()
+@onready var equip_slots = $"NinePatchRect/Equipment Slots".get_children()
+var holding_item = null # the item that is currently being held by the cursor in the inventory
 
 func _ready():
+	equip_slots.remove_at(2) # remove the second empty panel (Empty 2) from the array
+	equip_slots.remove_at(0) # remove the first empty panel (Empty 0) from the array
 	visible = false
-	var slots = inventory_slots.get_children()
-	for i in range(slots.size()):
-		slots[i].gui_input.connect(slot_gui_input.bind(slots[i]))
-		slots[i].slot_index = i
+	for i in range(inventory_slots.size()):
+		inventory_slots[i].gui_input.connect(slot_gui_input.bind(inventory_slots[i]))
+		inventory_slots[i].slot_index = i
+		inventory_slots[i].slot_type = slot_class.slot_types.INVENTORY
+		
+	for i in range(equip_slots.size()):
+		equip_slots[i].gui_input.connect(slot_gui_input.bind(equip_slots[i]))
+		equip_slots[i].slot_index = i
+	equip_slots[0].slot_type = slot_class.slot_types.HEAD
+	equip_slots[1].slot_type = slot_class.slot_types.ARMS
+	equip_slots[2].slot_type = slot_class.slot_types.BODY
+	equip_slots[3].slot_type = slot_class.slot_types.SHOULDERS
+	equip_slots[4].slot_type = slot_class.slot_types.LEGS
+	equip_slots[5].slot_type = slot_class.slot_types.WAIST
+	equip_slots[6].slot_type = slot_class.slot_types.FEET
 	inititialize_inventory()
+	inititialize_equipment()
 	
 func _process(delta):
 	if Input.is_action_just_pressed("inventory"):
@@ -36,10 +52,14 @@ func _input(event):
 		holding_item.global_position = get_global_mouse_position()
 		
 func inititialize_inventory():
-	var slots = inventory_slots.get_children()
-	for i in range(slots.size()):
+	for i in range(inventory_slots.size()):
 		if PlayerInventory.inventory.has(i):
-			slots[i].initialize_item(PlayerInventory.inventory[i])
+			inventory_slots[i].initialize_item(PlayerInventory.inventory[i])
+			
+func inititialize_equipment():
+	for i in range(equip_slots.size()):
+		if PlayerInventory.equipment.has(i):
+			equip_slots[i].initialize_item(PlayerInventory.equipment[i])
 			
 func left_click_place_item(slot: slot_class):
 	PlayerInventory.add_item_to_empty_slot(holding_item, slot)
@@ -67,9 +87,9 @@ func _on_drop_button_pressed():
 		holding_item = null
 		
 func drop_item(item):
-	var item_scene_name = item.i_stats.item_name.to_lower().replace(" ", "_")
-	var item_scene = load("res://Scenes/Items/" + item_scene_name + ".tscn")
+	var item_scene = load("res://Scenes/Items/item.tscn")
 	var current_item = item_scene.instantiate()
+	current_item.set_new_item(item.item)
 	get_tree().current_scene.add_child(current_item)
 	current_item.global_position = player.global_position
 	item.queue_free()
