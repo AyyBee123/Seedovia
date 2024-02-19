@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://cu63rxmy71bcg" path="res://Scenes/Player/Player.tscn" id="2_3q0y2"]
 [ext_resource type="Texture2D" uid="uid://cw4586xydqwsm" path="res://Sprites/Wall/Tile Placeholder.png" id="3_ap3fh"]
 [ext_resource type="PackedScene" uid="uid://b3ibupvqneqor" path="res://Scenes/Items/item.tscn" id="3_ygume"]
-[ext_resource type="Resource" uid="uid://dfop5her3ojbj" path="res://Resources/Items/Apple.tres" id="4_iotfb"]
-[ext_resource type="Resource" uid="uid://ckqiallc73lpu" path="res://Resources/Items/Basic Helmet.tres" id="5_gqe8h"]
+[ext_resource type="Resource" uid="uid://dfop5her3ojbj" path="res://Resources/Items/Consumables/apple.tres" id="4_iotfb"]
+[ext_resource type="Resource" uid="uid://ckqiallc73lpu" path="res://Resources/Items/Equipment/basic_helmet.tres" id="5_gqe8h"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ne3hj"]
 texture = ExtResource("3_ap3fh")
