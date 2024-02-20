@@ -8,6 +8,7 @@ signal shoot(bullet, direction, location)
 @onready var dash_cooldown: Timer = $"Dash Cooldown"
 @onready var dash_invulnerability_time: Timer = $"Dash Invulnerability Time"
 @onready var inventory: Control = $"Inventory"
+@onready var inventory_screen: NinePatchRect = $"Inventory/NinePatchRect"
 
 var bullet = preload('res:///Scenes/Player/Player Bullets/Player Bullet.tscn')
 
