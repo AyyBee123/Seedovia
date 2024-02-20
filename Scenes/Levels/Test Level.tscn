@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dr8qdmnfjxopo"]
+[gd_scene load_steps=10 format=3 uid="uid://dr8qdmnfjxopo"]
 
 [ext_resource type="Script" path="res://Scenes/Levels/Level.gd" id="1_yv4rh"]
 [ext_resource type="PackedScene" uid="uid://cu63rxmy71bcg" path="res://Scenes/Player/Player.tscn" id="2_3q0y2"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b3ibupvqneqor" path="res://Scenes/Items/item.tscn" id="3_ygume"]
 [ext_resource type="Resource" uid="uid://dfop5her3ojbj" path="res://Resources/Items/Consumables/apple.tres" id="4_iotfb"]
 [ext_resource type="Resource" uid="uid://ckqiallc73lpu" path="res://Resources/Items/Equipment/basic_helmet.tres" id="5_gqe8h"]
+[ext_resource type="Resource" uid="uid://bwmlrwbo6dvh4" path="res://Resources/Items/Equipment/basic_body_armour.tres" id="6_c15ep"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ne3hj"]
 texture = ExtResource("3_ap3fh")
@@ -33,6 +34,10 @@ item = ExtResource("4_iotfb")
 [node name="Item2" parent="." instance=ExtResource("3_ygume")]
 position = Vector2(453, 313)
 item = ExtResource("5_gqe8h")
+
+[node name="Item3" parent="." instance=ExtResource("3_ygume")]
+position = Vector2(452, 391)
+item = ExtResource("6_c15ep")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_dsidl")

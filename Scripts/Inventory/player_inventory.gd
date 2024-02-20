@@ -2,7 +2,6 @@ extends Node
 
 const item_instance = preload("res://Scripts/Items/item.gd")
 const slot_class = preload("res://Scripts/Inventory/inventory_slot.gd")
-const inventory_ui = preload("res://Scripts/Inventory/inventory.gd")
 
 var picked_up_item = null
 
