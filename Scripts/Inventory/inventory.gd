@@ -95,6 +95,8 @@ func left_click_place_item(slot: slot_class): # place holding item into a slot
 	if able_to_put_into_slot(slot):
 		PlayerInventory.add_item_to_empty_slot(holding_item, slot)
 		slot.put_into_slot(holding_item)
+		if slot.slot_type != slot_class.slot_types.INVENTORY: # replace silhouette sprite with item sprite
+			slot.get_node("Silhouette").visible = false
 		holding_item = null
 	
 func left_click_swap_item(event: InputEvent, slot: slot_class): # swap holding item with item in slot
@@ -111,6 +113,8 @@ func left_click_select_item(slot: slot_class): # left clicking an item while not
 	PlayerInventory.remove_item(slot)
 	holding_item = slot.item
 	slot.pick_from_slot()
+	if slot.slot_type != slot_class.slot_types.INVENTORY: # replace item sprite with silhouette sprite
+		slot.get_node("Silhouette").visible = true
 	holding_item.global_position = get_global_mouse_position()
 	
 func _on_drop_button_pressed():

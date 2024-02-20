@@ -195,7 +195,7 @@ layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_7ppds")
 script = ExtResource("4_gqdv4")
 
-[node name="TextureRect" type="TextureRect" parent="NinePatchRect/Equipment Slots/SlotHead"]
+[node name="Silhouette" type="TextureRect" parent="NinePatchRect/Equipment Slots/SlotHead"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -220,7 +220,7 @@ layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_7ppds")
 script = ExtResource("4_gqdv4")
 
-[node name="TextureRect" type="TextureRect" parent="NinePatchRect/Equipment Slots/SlotArms"]
+[node name="Silhouette" type="TextureRect" parent="NinePatchRect/Equipment Slots/SlotArms"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -240,7 +240,7 @@ layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_7ppds")
 script = ExtResource("4_gqdv4")
 
-[node name="TextureRect" type="TextureRect" parent="NinePatchRect/Equipment Slots/SlotBody"]
+[node name="Silhouette" type="TextureRect" parent="NinePatchRect/Equipment Slots/SlotBody"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -260,7 +260,7 @@ layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_7ppds")
 script = ExtResource("4_gqdv4")
 
-[node name="TextureRect" type="TextureRect" parent="NinePatchRect/Equipment Slots/SlotShoulders"]
+[node name="Silhouette" type="TextureRect" parent="NinePatchRect/Equipment Slots/SlotShoulders"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -280,7 +280,7 @@ layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_7ppds")
 script = ExtResource("4_gqdv4")
 
-[node name="TextureRect" type="TextureRect" parent="NinePatchRect/Equipment Slots/SlotLegs"]
+[node name="Silhouette" type="TextureRect" parent="NinePatchRect/Equipment Slots/SlotLegs"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -300,7 +300,7 @@ layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_7ppds")
 script = ExtResource("4_gqdv4")
 
-[node name="TextureRect" type="TextureRect" parent="NinePatchRect/Equipment Slots/SlotWaist"]
+[node name="Silhouette" type="TextureRect" parent="NinePatchRect/Equipment Slots/SlotWaist"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -320,7 +320,7 @@ layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_7ppds")
 script = ExtResource("4_gqdv4")
 
-[node name="TextureRect" type="TextureRect" parent="NinePatchRect/Equipment Slots/SlotFeet"]
+[node name="Silhouette" type="TextureRect" parent="NinePatchRect/Equipment Slots/SlotFeet"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
