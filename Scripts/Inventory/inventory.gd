@@ -66,21 +66,45 @@ func inititialize_equipment():
 		if PlayerInventory.equipment.has(i):
 			equip_slots[i].initialize_item(PlayerInventory.equipment[i])
 			
-func left_click_place_item(slot: slot_class):
-	PlayerInventory.add_item_to_empty_slot(holding_item, slot)
-	slot.put_into_slot(holding_item)
-	holding_item = null
+func able_to_put_into_slot(slot: slot_class) -> bool:
+	if holding_item == null:
+		return true
+	var holding_item_category = "INVENTORY" if not "category" in holding_item.item else holding_item.item.category
+	# check the slot type of the slot
+	if slot.slot_type == slot_class.slot_types.HEAD:
+		return holding_item_category == "HEAD"
+	elif slot.slot_type == slot_class.slot_types.ARMS:
+		return holding_item_category == "ARMS"
+	elif slot.slot_type == slot_class.slot_types.BODY:
+		return holding_item_category == "BODY"
+	elif slot.slot_type == slot_class.slot_types.SHOULDERS:
+		return holding_item_category == "SHOULDERS"
+	elif slot.slot_type == slot_class.slot_types.LEGS:
+		return holding_item_category == "LEGS"
+	elif slot.slot_type == slot_class.slot_types.WAIST:
+		return holding_item_category == "WAIST"
+	elif slot.slot_type == slot_class.slot_types.FEET:
+		return holding_item_category == "FEET"
+	else: # if the category is INVENTORY (since inventory can fit anything, it will return true)
+		return true
+			
+func left_click_place_item(slot: slot_class): # place holding item into a slot
+	if able_to_put_into_slot(slot):
+		PlayerInventory.add_item_to_empty_slot(holding_item, slot)
+		slot.put_into_slot(holding_item)
+		holding_item = null
 	
-func left_click_swap_item(event: InputEvent, slot: slot_class):
-	PlayerInventory.remove_item(slot)
-	PlayerInventory.add_item_to_empty_slot(holding_item, slot)
-	var temp_item = slot.item
-	slot.pick_from_slot()
-	temp_item.global_position = event.global_position
-	slot.put_into_slot(holding_item)
-	holding_item = temp_item
+func left_click_swap_item(event: InputEvent, slot: slot_class): # swap holding item with item in slot
+	if able_to_put_into_slot(slot):
+		PlayerInventory.remove_item(slot)
+		PlayerInventory.add_item_to_empty_slot(holding_item, slot)
+		var temp_item = slot.item
+		slot.pick_from_slot()
+		temp_item.global_position = event.global_position
+		slot.put_into_slot(holding_item)
+		holding_item = temp_item
 	
-func left_click_select_item(slot: slot_class):
+func left_click_select_item(slot: slot_class): # left clicking an item while not currently holding an item
 	PlayerInventory.remove_item(slot)
 	holding_item = slot.item
 	slot.pick_from_slot()
