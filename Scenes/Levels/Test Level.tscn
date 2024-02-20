@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dr8qdmnfjxopo"]
+[gd_scene load_steps=11 format=3 uid="uid://dr8qdmnfjxopo"]
 
 [ext_resource type="Script" path="res://Scenes/Levels/Level.gd" id="1_yv4rh"]
 [ext_resource type="PackedScene" uid="uid://cu63rxmy71bcg" path="res://Scenes/Player/Player.tscn" id="2_3q0y2"]
@@ -7,6 +7,7 @@
 [ext_resource type="Resource" uid="uid://dfop5her3ojbj" path="res://Resources/Items/Consumables/apple.tres" id="4_iotfb"]
 [ext_resource type="Resource" uid="uid://ckqiallc73lpu" path="res://Resources/Items/Equipment/basic_helmet.tres" id="5_gqe8h"]
 [ext_resource type="Resource" uid="uid://bwmlrwbo6dvh4" path="res://Resources/Items/Equipment/basic_body_armour.tres" id="6_c15ep"]
+[ext_resource type="PackedScene" uid="uid://civnfvhref4lg" path="res://Scenes/Stats/player_stats_ui.tscn" id="8_k4lp5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ne3hj"]
 texture = ExtResource("3_ap3fh")
@@ -46,3 +47,9 @@ layer_0/tile_data = PackedInt32Array(0, 1, 0, 65536, 1, 0, 131072, 1, 0, 196608,
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 320)
+
+[node name="Player Stats" parent="." instance=ExtResource("8_k4lp5")]
+offset_left = -374.0
+offset_top = 28.0
+offset_right = -374.0
+offset_bottom = 28.0

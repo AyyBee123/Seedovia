@@ -1,0 +1,57 @@
+[gd_scene load_steps=3 format=3 uid="uid://civnfvhref4lg"]
+
+[ext_resource type="FontFile" uid="uid://cuikskpsdoxgb" path="res://Fonts/Kenney Pixel.ttf" id="1_2ctd8"]
+[ext_resource type="Script" path="res://Scripts/Stats/display_player_stats.gd" id="1_pr6de"]
+
+[node name="Player Stats" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pr6de")
+
+[node name="Stats UI" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.227
+anchor_bottom = 0.468
+offset_right = 0.159973
+offset_bottom = -0.440033
+
+[node name="Health" type="Label" parent="Stats UI"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_2ctd8")
+theme_override_font_sizes/font_size = 48
+text = "dwdwdwdw"
+
+[node name="Speed" type="Label" parent="Stats UI"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_2ctd8")
+theme_override_font_sizes/font_size = 48
+text = "dwdwdwdw"
+
+[node name="Dash Rate" type="Label" parent="Stats UI"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_2ctd8")
+theme_override_font_sizes/font_size = 48
+text = "dwdwdwdw"
+
+[node name="Dash Distance" type="Label" parent="Stats UI"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_2ctd8")
+theme_override_font_sizes/font_size = 48
+text = "dwdwdwdw"
+
+[node name="Dash Invulnerability" type="Label" parent="Stats UI"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_2ctd8")
+theme_override_font_sizes/font_size = 48
+text = "dwdwdwdw"
+
+[node name="Fire Rate" type="Label" parent="Stats UI"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_2ctd8")
+theme_override_font_sizes/font_size = 48
+text = "dwdwdwdw"

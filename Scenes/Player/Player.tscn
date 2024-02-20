@@ -1,19 +1,19 @@
 [gd_scene load_steps=7 format=3 uid="uid://cu63rxmy71bcg"]
 
-[ext_resource type="Script" path="res://Scripts/Stats/character_stats.gd" id="1_ayrw4"]
 [ext_resource type="Texture2D" uid="uid://ddxlo3x3ru7hr" path="res://Sprites/Player/Hand.png" id="2_6om3g"]
 [ext_resource type="Script" path="res://Scripts/Player/player.gd" id="2_f7nwd"]
+[ext_resource type="Resource" uid="uid://c1dh3fetdciy7" path="res://Resources/Player/player_stats.tres" id="2_i314n"]
 [ext_resource type="Texture2D" uid="uid://bdjm8bu0l6v08" path="res://Sprites/Player/Player.png" id="3_mwqvg"]
 [ext_resource type="PackedScene" uid="uid://b51uuhjac0hmd" path="res://Scenes/Inventory/inventory.tscn" id="4_px6lr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iqaxp"]
 size = Vector2(12, 20)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("player_stats") groups=["Players"]]
+[node name="Player" type="CharacterBody2D" groups=["Players"]]
 collision_layer = 2
 collision_mask = 53
 script = ExtResource("2_f7nwd")
-player_stats = NodePath("Player Stats")
+player_stats = ExtResource("2_i314n")
 
 [node name="Player Sprite" type="Sprite2D" parent="."]
 z_index = 1
@@ -46,17 +46,6 @@ one_shot = true
 
 [node name="Dash Cooldown" type="Timer" parent="."]
 one_shot = true
-
-[node name="Player Stats" type="Node" parent="."]
-script = ExtResource("1_ayrw4")
-max_health = 3
-speed = 300.0
-dash_rate = 1.0
-dash_distance = 2000.0
-dash_invunerability = 0.25
-fire_rate = 10.0
-acceleration = 0.1
-friction = 0.25
 
 [node name="Inventory" parent="." instance=ExtResource("4_px6lr")]
 visible = false

@@ -12,7 +12,8 @@ enum slot_types {
 	SHOULDERS,
 	LEGS,
 	WAIST,
-	FEET
+	FEET,
+	SEED
 }
 
 var slot_type = null

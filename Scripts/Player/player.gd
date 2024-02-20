@@ -20,7 +20,7 @@ func _ready():
 	bullets_per_second.start()
 	dash_cooldown.wait_time = player_stats.dash_rate
 	dash_cooldown.start()
-	dash_invulnerability_time.wait_time = player_stats.dash_invunerability
+	dash_invulnerability_time.wait_time = player_stats.dash_invulnerability
 
 func _physics_process(delta):
 	# movement

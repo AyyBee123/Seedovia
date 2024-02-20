@@ -1,4 +1,4 @@
-class_name character_stats extends Node
+class_name character_stats extends Resource
 
 signal health_changed(new_health) # send signal that current health changed
 signal max_health_changed(new_max_health) # send signal that max health changed
@@ -11,7 +11,7 @@ var modifiers = {}
 @export var speed: float # movement speed
 @export var dash_rate: float # dash rate (in dashes/sec)
 @export var dash_distance: float # distance the player dashes from their original position
-@export var dash_invunerability: float # invulnerability time in seconds after dashing
+@export var dash_invulnerability: float # invulnerability time in seconds after dashing
 @export var fire_rate: float # fire rate (in shots/sec)
 @export var contact_damage: float # this is mainly for the enemy
 @export var acceleration: float # movement acceleration
@@ -23,7 +23,7 @@ func initialize(stats: character_stats):
 	speed = stats.speed
 	dash_rate = stats.dash_rate
 	dash_distance = stats.dash_distance
-	dash_invunerability = stats.dash_invunerability
+	dash_invulnerability = stats.dash_invulnerability
 	fire_rate = stats.fire_rate
 	contact_damage = stats.contact_damage
 	acceleration = stats.acceleration
