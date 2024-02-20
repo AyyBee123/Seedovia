@@ -3,6 +3,7 @@ extends Panel
 var item_instance = null
 var item = null
 var slot_index: int
+const equip_stats = preload("res://Scripts/Equipment/equipment_stats.gd")
 
 enum slot_types {
 	INVENTORY,
@@ -23,6 +24,7 @@ func pick_from_slot():
 	var inventory_node = find_parent("Inventory")
 	inventory_node.add_child(item)
 	item = null
+	equip_stats.remove_stats(item)
 	
 func put_into_slot(new_item):
 	item = new_item
@@ -30,6 +32,7 @@ func put_into_slot(new_item):
 	var inventory_node = find_parent("Inventory")
 	inventory_node.remove_child(item)
 	add_child(item)
+	
 	
 func initialize_item(slot_item):
 	item_instance = load("res://Scenes/Items/item.tscn")
