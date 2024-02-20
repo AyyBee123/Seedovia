@@ -8,14 +8,14 @@ var modifiers = {}
 
 # base values
 @export var max_health: int # max health
-@export var speed: float #= 300.0 # movement speed
-@export var dash_rate: float #= 1.0 # dash rate (in dashes/sec)
-@export var dash_distance: float #= 2000.0 # distance the player dashes from their original position
-@export var dash_invunerability: float #= 0.25 # invulnerability time in seconds after dashing
-@export var fire_rate: float #= 10.0 # fire rate (in shots/sec)
-@export var contact_damage: float #= 0.0 # this is mainly for the enemy
-@export var acceleration: float #= 0.1 # movement acceleration
-@export var friction: float #= 0.25 # movement friction/deceleration
+@export var speed: float # movement speed
+@export var dash_rate: float # dash rate (in dashes/sec)
+@export var dash_distance: float # distance the player dashes from their original position
+@export var dash_invunerability: float # invulnerability time in seconds after dashing
+@export var fire_rate: float # fire rate (in shots/sec)
+@export var contact_damage: float # this is mainly for the enemy
+@export var acceleration: float # movement acceleration
+@export var friction: float # movement friction/deceleration
 var health: int
 
 func initialize(stats: character_stats):
