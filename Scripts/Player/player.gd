@@ -13,6 +13,7 @@ signal shoot(bullet, direction, location)
 var bullet = preload('res:///Scenes/Player/Player Bullets/Player Bullet.tscn')
 
 var can_be_damaged := true
+var mouse_in_inventory := false
 
 func _ready():
 	_player_stats.set_health(_player_stats.max_health)
@@ -23,6 +24,9 @@ func _ready():
 	dash_invulnerability_time.wait_time = _player_stats.dash_invulnerability
 
 func _physics_process(delta):
+	# check if the mouse is in the inventory and if the inventory is visible to detect if the player can shoot
+	mouse_in_inventory = inventory.get_global_rect().has_point(inventory.get_global_mouse_position()) and inventory.is_visible_in_tree()
+	
 	# movement
 	move()
 	
@@ -33,7 +37,7 @@ func _physics_process(delta):
 	$"Player Sprite".flip_h = false if get_global_mouse_position().x > global_position.x else true
 	
 	# shoot bullet
-	if Input.is_action_pressed("shoot") and bullets_per_second.is_stopped():
+	if Input.is_action_pressed("shoot") and bullets_per_second.is_stopped() and not mouse_in_inventory:
 		shoot.emit(bullet, get_global_mouse_position().angle(), $"Rotation Point/Marker2D".get_global_position())
 		
 	# dash
