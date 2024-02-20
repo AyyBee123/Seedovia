@@ -19,6 +19,7 @@ func _ready():
 	for i in range(equip_slots.size()):
 		equip_slots[i].gui_input.connect(slot_gui_input.bind(equip_slots[i]))
 		equip_slots[i].slot_index = i
+	# initialize all the equipment slots' categories
 	equip_slots[0].slot_type = slot_class.slot_types.HEAD
 	equip_slots[1].slot_type = slot_class.slot_types.ARMS
 	equip_slots[2].slot_type = slot_class.slot_types.BODY
