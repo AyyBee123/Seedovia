@@ -3,7 +3,8 @@ extends Panel
 var item_instance = null
 var item = null
 var slot_index: int
-const equip_stats = preload("res://Scripts/Equipment/equipment_stats.gd")
+
+@onready var player = $"../../../.."
 
 enum slot_types {
 	INVENTORY,
@@ -20,11 +21,13 @@ enum slot_types {
 var slot_type = null
 
 func pick_from_slot():
+	if not (slot_type == slot_types.INVENTORY or slot_type == slot_types.SEED):
+		PlayerEquipment.remove_stats(item, player)
 	remove_child(item)
 	var inventory_node = find_parent("Inventory")
 	inventory_node.add_child(item)
 	item = null
-	equip_stats.remove_stats(item)
+	
 	
 func put_into_slot(new_item):
 	item = new_item
@@ -32,7 +35,8 @@ func put_into_slot(new_item):
 	var inventory_node = find_parent("Inventory")
 	inventory_node.remove_child(item)
 	add_child(item)
-	
+	if not (slot_type == slot_types.INVENTORY or slot_type == slot_types.SEED):
+		PlayerEquipment.add_stats(item, player)
 	
 func initialize_item(slot_item):
 	item_instance = load("res://Scenes/Items/item.tscn")

@@ -2,25 +2,25 @@ extends CharacterBody2D
 
 signal shoot(bullet, direction, location)
 
-@export var player_stats: character_stats
+@export var _player_stats: player_stats
 
-@onready var bullets_per_second: Timer = $"Bullets Per Second"
-@onready var dash_cooldown: Timer = $"Dash Cooldown"
-@onready var dash_invulnerability_time: Timer = $"Dash Invulnerability Time"
-@onready var inventory: Control = $"Inventory"
-@onready var inventory_screen: NinePatchRect = $"Inventory/NinePatchRect"
+@onready var bullets_per_second := $"Bullets Per Second"
+@onready var dash_cooldown := $"Dash Cooldown"
+@onready var dash_invulnerability_time := $"Dash Invulnerability Time"
+@onready var inventory := $"Inventory"
+@onready var inventory_screen := $"Inventory/NinePatchRect"
 
 var bullet = preload('res:///Scenes/Player/Player Bullets/Player Bullet.tscn')
 
-var can_be_damaged : bool = true
+var can_be_damaged := true
 
 func _ready():
-	player_stats.initialize(player_stats)
-	bullets_per_second.wait_time = 1.0/player_stats.fire_rate
+	_player_stats.set_health(_player_stats.max_health)
+	bullets_per_second.wait_time = 1.0/_player_stats.fire_rate
 	bullets_per_second.start()
-	dash_cooldown.wait_time = player_stats.dash_rate
+	dash_cooldown.wait_time = _player_stats.dash_rate
 	dash_cooldown.start()
-	dash_invulnerability_time.wait_time = player_stats.dash_invulnerability
+	dash_invulnerability_time.wait_time = _player_stats.dash_invulnerability
 
 func _physics_process(delta):
 	# movement
@@ -43,7 +43,7 @@ func _physics_process(delta):
 		can_be_damaged = true
 		
 	# die if health is 0 (or less)
-	if player_stats.health <= 0:
+	if _player_stats.health <= 0:
 		die()
 		
 	if can_be_damaged:
@@ -54,9 +54,9 @@ func _physics_process(delta):
 func move():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	if input_direction.length() > 0:
-		velocity = velocity.lerp(input_direction.normalized() * player_stats.speed, player_stats.acceleration)
+		velocity = velocity.lerp(input_direction.normalized() * _player_stats.speed, _player_stats.acceleration)
 	else:
-		velocity = velocity.lerp(Vector2.ZERO, player_stats.friction)
+		velocity = velocity.lerp(Vector2.ZERO, _player_stats.friction)
 	move_and_slide()
 	
 func die():
@@ -68,7 +68,7 @@ func die():
 func dash():
 	can_be_damaged = false
 	var input_direction = Input.get_vector("left", "right", "up", "down")
-	velocity = velocity.lerp((input_direction.normalized() if input_direction else Vector2(0,1)) * player_stats.dash_distance, 1)
+	velocity = velocity.lerp((input_direction.normalized() if input_direction else Vector2(0,1)) * _player_stats.dash_distance, 1)
 	dash_cooldown.start()
 	dash_invulnerability_time.start()
 

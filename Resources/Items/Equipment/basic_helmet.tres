@@ -8,6 +8,7 @@ script = ExtResource("1_tq4bq")
 category = "HEAD"
 rarity = 0
 properties = Array[String](["+1 Max_Health", "-200 Dash_Distance"])
+special_properties = Array[String]([])
 item_name = "Basic Helmet"
 texture = ExtResource("2_n70br")
 description = "A basic helmet"

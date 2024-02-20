@@ -17,7 +17,7 @@ config/features=PackedStringArray("4.2", "Forward Plus")
 [autoload]
 
 PlayerInventory="*res://Scripts/Inventory/player_inventory.gd"
-PlayerEquipment="*res://Scripts/Equipment/player_equipment.gd"
+PlayerEquipment="*res://Scripts/Items/player_equipment.gd"
 
 [display]
 

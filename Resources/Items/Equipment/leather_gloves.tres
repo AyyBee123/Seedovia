@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="equipment_item_class" load_steps=3 format=3 uid="uid://i4wg1hx83q3m"]
+
+[ext_resource type="Script" path="res://Scripts/Items/equipment_item_class.gd" id="1_bqk5d"]
+[ext_resource type="Texture2D" uid="uid://bdj6yabamxxf6" path="res://Sprites/Items/Leather Gloves.png" id="2_bdb67"]
+
+[resource]
+script = ExtResource("1_bqk5d")
+category = "ARMS"
+rarity = 0
+properties = Array[String](["+10% Fire_Rate"])
+special_properties = Array[String]([])
+item_name = "Leather Gloves"
+texture = ExtResource("2_bdb67")
+description = "Leather gloves"

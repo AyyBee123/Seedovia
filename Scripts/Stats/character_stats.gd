@@ -16,21 +16,17 @@ var modifiers = {}
 @export var contact_damage: float # this is mainly for the enemy
 @export var acceleration: float # movement acceleration
 @export var friction: float # movement friction/deceleration
-var health: int
 
-func initialize(stats: character_stats):
-	max_health = stats.max_health
-	speed = stats.speed
-	dash_rate = stats.dash_rate
-	dash_distance = stats.dash_distance
-	dash_invulnerability = stats.dash_invulnerability
-	fire_rate = stats.fire_rate
-	contact_damage = stats.contact_damage
-	acceleration = stats.acceleration
-	friction = stats.friction
-	health = max_health
+# weapon values
+@export var weapon_speed: float # speed of the weapon
+@export var weapon_range: float # range of the weapon before it gets destroyed
+@export var weapon_size: float # size of the weapon
+@export var weapon_damage: float # damage of the weapon
+
+# the player's current health
+var health: int
 	
-func set_max_health(value):
+func set_health(value):
 	health = max(0, value)
 	
 func increase_max_health(amount):

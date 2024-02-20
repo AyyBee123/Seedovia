@@ -7,11 +7,11 @@ func _ready():
 	initialize_stats()
 	
 func initialize_stats():
-	stats[0].text = stats[0].name + ": " + str(player.player_stats.health)
-	stats[1].text = stats[1].name + ": " + str(player.player_stats.speed)
-	stats[2].text = stats[2].name + ": " + str(player.player_stats.dash_rate)
-	stats[3].text = stats[3].name + ": " + str(player.player_stats.dash_distance)
-	stats[4].text = stats[4].name + ": " + str(player.player_stats.dash_invulnerability)
-	stats[5].text = stats[5].name + ": " + str(player.player_stats.fire_rate)
+	stats[0].text = stats[0].name + ": " + str(player._player_stats.health)
+	stats[1].text = stats[1].name + ": " + str(player._player_stats.speed)
+	stats[2].text = stats[2].name + ": " + str(player._player_stats.dash_rate)
+	stats[3].text = stats[3].name + ": " + str(player._player_stats.dash_distance)
+	stats[4].text = stats[4].name + ": " + str(player._player_stats.dash_invulnerability)
+	stats[5].text = stats[5].name + ": " + str(player._player_stats.fire_rate)
 	
 

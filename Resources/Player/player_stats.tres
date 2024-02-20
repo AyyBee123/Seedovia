@@ -1,15 +1,19 @@
-[gd_resource type="Resource" script_class="character_stats" load_steps=2 format=3 uid="uid://c1dh3fetdciy7"]
+[gd_resource type="Resource" script_class="player_stats" load_steps=2 format=3 uid="uid://bvjfk72dlusnu"]
 
-[ext_resource type="Script" path="res://Scripts/Stats/character_stats.gd" id="1_bsirb"]
+[ext_resource type="Script" path="res://Scripts/Stats/player_stats.gd" id="1_474xu"]
 
 [resource]
-script = ExtResource("1_bsirb")
+script = ExtResource("1_474xu")
 max_health = 3
 speed = 300.0
 dash_rate = 1.0
 dash_distance = 2000.0
-dash_invunerability = 0.25
+dash_invulnerability = 0.25
 fire_rate = 10.0
 contact_damage = 0.0
 acceleration = 0.1
 friction = 0.25
+weapon_speed = 500.0
+weapon_range = 500.0
+weapon_size = 10.0
+weapon_damage = 10.0
