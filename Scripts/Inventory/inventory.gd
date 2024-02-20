@@ -69,6 +69,8 @@ func inititialize_equipment():
 func able_to_put_into_slot(slot: slot_class) -> bool:
 	if holding_item == null:
 		return true
+	# set the category as INVENTORY if there is no category property in the item resource
+	# consumable items don't have a category property, so their category is always INVENTORY
 	var holding_item_category = "INVENTORY" if not "category" in holding_item.item else holding_item.item.category
 	# check the slot type of the slot
 	if slot.slot_type == slot_class.slot_types.HEAD:
