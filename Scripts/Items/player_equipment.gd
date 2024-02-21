@@ -56,8 +56,33 @@ func add_stats(item, player): # add stats when slotting an equipment item to an 
 			amount = player._player_stats.stats[property]["base"] * amount / 100
 		player._player_stats.stats[property][operation] += amount
 		player._player_stats.update_stat(property)
-		print(player._player_stats.health)
 		
-	
-func remove_stats(item, player): # remove stats when slotting an equipment item out of an equipment slot in the inventory
-	pass
+func remove_stats(item, player): # remove stats when slotting an item out of an equipment slot in the inventory
+	var properties = item.item.properties
+	for i in range(properties.size()):
+		var key_words = properties[i].split(" ")
+		var property = key_words[1]
+		var operation = null
+		if key_words[0].left(1) == "+":
+			operation = key_words[0].left(1)
+			key_words[0] = key_words[0].right(-1)
+		elif key_words[0].left(1) == "-":
+			operation = key_words[0].left(1)
+			key_words[0] = key_words[0].right(-1)
+		if key_words[0].right(1) == "%":
+			key_words[0] = key_words[0].left(-1)
+			is_percent = true
+		elif key_words[0].right(1) == "x":
+			key_words[0] = key_words[0].left(-1)
+			operation = key_words[0].right(1)
+			is_percent = false
+		else:
+			is_percent = false
+		var amount = float(key_words[0])
+		if operation == "-":
+			amount *= -1
+			operation = "+"
+		if is_percent:
+			amount = player._player_stats.stats[property]["base"] * amount / 100
+		player._player_stats.stats[property][operation] -= amount
+		player._player_stats.update_stat(property)
