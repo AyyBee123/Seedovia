@@ -18,6 +18,12 @@ enum properties {
 var is_percent = false
 
 func add_stats(item, player): # add stats when slotting an equipment item to an equipment slot in the inventory
+	setup_property(item, player, 1)
+		
+func remove_stats(item, player): # remove stats when slotting an item out of an equipment slot in the inventory
+	setup_property(item, player, -1)
+		
+func setup_property(item, player, sign):
 	var properties = item.item.properties
 	for i in range(properties.size()):
 		# split the key words. ex: split "+10% Fire_Rate" to ["+10%, "Fire_Rate"]
@@ -46,7 +52,7 @@ func add_stats(item, player): # add stats when slotting an equipment item to an 
 		else:
 			is_percent = false
 		# turn the string to a float type now that the string is just the number. ex: "10" -> 10
-		var amount = float(key_words[0])
+		var amount = float(key_words[0]) * sign
 		# basically make it add a negative number
 		if operation == "-":
 			amount *= -1
@@ -55,34 +61,4 @@ func add_stats(item, player): # add stats when slotting an equipment item to an 
 			# convert the amount to a decimal value
 			amount = player._player_stats.stats[property]["base"] * amount / 100
 		player._player_stats.stats[property][operation] += amount
-		player._player_stats.update_stat(property)
-		
-func remove_stats(item, player): # remove stats when slotting an item out of an equipment slot in the inventory
-	var properties = item.item.properties
-	for i in range(properties.size()):
-		var key_words = properties[i].split(" ")
-		var property = key_words[1]
-		var operation = null
-		if key_words[0].left(1) == "+":
-			operation = key_words[0].left(1)
-			key_words[0] = key_words[0].right(-1)
-		elif key_words[0].left(1) == "-":
-			operation = key_words[0].left(1)
-			key_words[0] = key_words[0].right(-1)
-		if key_words[0].right(1) == "%":
-			key_words[0] = key_words[0].left(-1)
-			is_percent = true
-		elif key_words[0].right(1) == "x":
-			key_words[0] = key_words[0].left(-1)
-			operation = key_words[0].right(1)
-			is_percent = false
-		else:
-			is_percent = false
-		var amount = float(key_words[0])
-		if operation == "-":
-			amount *= -1
-			operation = "+"
-		if is_percent:
-			amount = player._player_stats.stats[property]["base"] * amount / 100
-		player._player_stats.stats[property][operation] -= amount
 		player._player_stats.update_stat(property)
