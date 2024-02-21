@@ -75,13 +75,14 @@ func initialize_base_stats():
 func get_stat(stat: String):
 	return stats[stat]["x"] * (stats[stat]["base"] + stats[stat]["+"])
 	
-func update_stat(stat: String):
+func update_stat(stat: String, was_equipped: bool):
 	match stat:
 		"Max_Health":
 			var previous_max_health = max_health
 			max_health = get_stat(stat)
 			# heal current health by the increase in max health. ex: if max health increases by 1, heal by 1
-			health = min(health + max_health - previous_max_health, max_health)
+			if not was_equipped:
+				health = min(health + max_health - previous_max_health, max_health)
 		"Speed":
 			speed = get_stat(stat)
 		"Dash_Rate":

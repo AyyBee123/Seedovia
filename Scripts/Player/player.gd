@@ -18,11 +18,13 @@ var mouse_in_inventory := false
 func _ready():
 	_player_stats.initialize_base_stats()
 	_player_stats.set_health(_player_stats.max_health)
+	_player_stats.health = 1
 	bullets_per_second.wait_time = 1.0/_player_stats.fire_rate
 	bullets_per_second.start()
 	dash_cooldown.wait_time = _player_stats.dash_rate
 	dash_cooldown.start()
 	dash_invulnerability_time.wait_time = _player_stats.dash_invulnerability
+	_player_stats.health_changed.connect(set_new_health)
 
 func _physics_process(delta):
 	# check if the mouse is in the inventory and if the inventory is visible to detect if the player can shoot
@@ -84,3 +86,6 @@ func _on_shoot(bullet, direction, location):
 	bullet_instance.velocity = (get_global_mouse_position() - bullet_instance.global_position).normalized()
 	bullet_instance.rotation = bullet_instance.velocity.angle()
 	bullets_per_second.start()
+
+func set_new_health(health):
+	_player_stats.health = health

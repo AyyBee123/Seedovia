@@ -17,13 +17,13 @@ enum properties {
 }
 var is_percent = false
 
-func add_stats(item, player): # add stats when slotting an equipment item to an equipment slot in the inventory
-	setup_property(item, player, 1)
+func add_stats(item, player, was_equipped): # add stats when slotting an equipment item to an equipment slot in the inventory
+	setup_property(item, player, 1, was_equipped)
 		
-func remove_stats(item, player): # remove stats when slotting an item out of an equipment slot in the inventory
-	setup_property(item, player, -1)
+func remove_stats(item, player, was_equipped): # remove stats when slotting an item out of an equipment slot in the inventory
+	setup_property(item, player, -1, was_equipped)
 		
-func setup_property(item, player, sign):
+func setup_property(item, player, sign, was_equipped):
 	var properties = item.item.properties
 	for i in range(properties.size()):
 		# split the key words. ex: split "+10% Fire_Rate" to ["+10%, "Fire_Rate"]
@@ -61,4 +61,4 @@ func setup_property(item, player, sign):
 			# convert the amount to a decimal value
 			amount = player._player_stats.stats[property]["base"] * amount / 100
 		player._player_stats.stats[property][operation] += amount
-		player._player_stats.update_stat(property)
+		player._player_stats.update_stat(property, was_equipped)

@@ -7,7 +7,7 @@
 script = ExtResource("1_gyc5d")
 category = "BODY"
 rarity = 0
-properties = Array[String](["+1 Max_Health", "-100 Speed"])
+properties = Array[String](["+1 Max_Health", "-200 Dash_Distance"])
 special_properties = Array[String]([])
 item_name = "Basic Body Armour"
 texture = ExtResource("2_a2jkb")

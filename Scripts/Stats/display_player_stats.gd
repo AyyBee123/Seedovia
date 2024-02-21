@@ -13,5 +13,3 @@ func initialize_stats():
 	stats[3].text = stats[3].name + ": " + str(player._player_stats.dash_distance)
 	stats[4].text = stats[4].name + ": " + str(player._player_stats.dash_invulnerability)
 	stats[5].text = stats[5].name + ": " + str(player._player_stats.fire_rate)
-	
-
