@@ -16,6 +16,7 @@ var can_be_damaged := true
 var mouse_in_inventory := false
 
 func _ready():
+	_player_stats.initialize_base_stats()
 	_player_stats.set_health(_player_stats.max_health)
 	bullets_per_second.wait_time = 1.0/_player_stats.fire_rate
 	bullets_per_second.start()

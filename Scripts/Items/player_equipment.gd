@@ -22,31 +22,42 @@ func add_stats(item, player): # add stats when slotting an equipment item to an 
 	for i in range(properties.size()):
 		# split the key words. ex: split "+10% Fire_Rate" to ["+10%, "Fire_Rate"]
 		var key_words = properties[i].split(" ")
+		# get the property name and modify it in the player_stats class
+		var property = key_words[1]
+		var operation = null
 		# get the first character of the first split string to get the operation. ex: first character of "+10%" = "+"
-		var operation = key_words[0].left(1)
-		# get the value after declaring the operation. ex: "+10%" -> "10%"
-		key_words[0] = key_words[0].right(-1)
+		if key_words[0].left(1) == "+":
+			operation = key_words[0].left(1)
+			# get the value after declaring the operation. ex: "+10%" -> "10%"
+			key_words[0] = key_words[0].right(-1)
+		elif key_words[0].left(1) == "-":
+			operation = key_words[0].left(1)
+			# get the value after declaring the operation. ex: "+10%" -> "10%"
+			key_words[0] = key_words[0].right(-1)
 		# check if the value has a percent to change it to a decimal value. ex: "10%" -> 10% * fire_rate
 		# checks the last charcter of the string to see if it's a "%"
 		if key_words[0].right(1) == "%":
 			key_words[0] = key_words[0].left(-1)
 			is_percent = true
+		elif key_words[0].right(1) == "x":
+			key_words[0] = key_words[0].left(-1)
+			operation = key_words[0].right(1)
+			is_percent = false
 		else:
-			is_percent = true
+			is_percent = false
 		# turn the string to a float type now that the string is just the number. ex: "10" -> 10
 		var amount = float(key_words[0])
+		# basically make it add a negative number
+		if operation == "-":
+			amount *= -1
+			operation = "+"
+		if is_percent:
+			# convert the amount to a decimal value
+			amount = player._player_stats.stats[property]["base"] * amount / 100
+		player._player_stats.stats[property][operation] += amount
+		player._player_stats.update_stat(property)
+		print(player._player_stats.health)
 		
-		if operation == "+": # check if the first character is a "+"
-			pass
 	
 func remove_stats(item, player): # remove stats when slotting an equipment item out of an equipment slot in the inventory
 	pass
-	
-func check_property(word: String, item, player):
-	match word:
-		"Max_Health":
-			return player.player_stats.max_health
-		"Fire_rate":
-			return player.player_stats.fire_rate
-	
-

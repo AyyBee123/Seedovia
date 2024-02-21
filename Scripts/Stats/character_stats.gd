@@ -4,9 +4,7 @@ signal health_changed(new_health) # send signal that current health changed
 signal max_health_changed(new_max_health) # send signal that max health changed
 signal health_depleted() # send signal that health reached 0 (death)
 
-var modifiers = {}
-
-# base values
+# player values
 @export var max_health: int # max health
 @export var speed: float # movement speed
 @export var dash_rate: float # dash rate (in dashes/sec)
@@ -44,12 +42,3 @@ func heal(amount):
 	health += amount
 	health = min(health, max_health)
 	health_changed.emit(health)
-	
-func _increase_max_health(amount):
-	max_health += amount
-	
-func add_modifier(id, modifier):
-	modifiers[id] = modifier
-	
-func remove_modifier(id):
-	modifiers.erase(id)
