@@ -1,5 +1,7 @@
 class_name player_stats extends "res://Scripts/Stats/character_stats.gd"
 
+signal change_stat(new_stat)
+
 var stats = {
 	"Max_Health": {
 		"base": max_health,
@@ -103,3 +105,4 @@ func update_stat(stat: String, was_equipped: bool):
 			weapon_size = get_stat(stat)
 		"Weapon_Damage":
 			weapon_size = get_stat(stat)
+	change_stat.emit(stat)
