@@ -1,8 +1,8 @@
 class_name player_stats extends "res://Scripts/Stats/character_stats.gd"
 
-signal change_stat(new_stat)
+signal change_stat()
 
-var stats = {
+var stats := {
 	"Max_Health": {
 		"base": max_health,
 		"+": 0,
@@ -85,6 +85,7 @@ func update_stat(stat: String, was_equipped: bool):
 			# heal current health by the increase in max health. ex: if max health increases by 1, heal by 1
 			if not was_equipped:
 				health = min(health + max_health - previous_max_health, max_health)
+			health = min(health, max_health)
 		"Speed":
 			speed = get_stat(stat)
 		"Dash_Rate":
@@ -105,4 +106,4 @@ func update_stat(stat: String, was_equipped: bool):
 			weapon_size = get_stat(stat)
 		"Weapon_Damage":
 			weapon_size = get_stat(stat)
-	change_stat.emit(stat)
+	change_stat.emit()

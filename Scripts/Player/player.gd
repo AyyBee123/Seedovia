@@ -10,7 +10,7 @@ signal shoot(bullet, direction, location)
 @onready var inventory := $"Inventory"
 @onready var inventory_screen := $"Inventory/NinePatchRect"
 
-var bullet = preload('res:///Scenes/Player/Player Bullets/Player Bullet.tscn')
+var bullet := preload('res:///Scenes/Player/Player Bullets/Player Bullet.tscn')
 
 var can_be_damaged := true
 var mouse_in_inventory := false
@@ -89,3 +89,6 @@ func _on_shoot(bullet, direction, location):
 	bullet_instance.velocity = (get_global_mouse_position() - bullet_instance.global_position).normalized()
 	bullet_instance.rotation = bullet_instance.velocity.angle()
 	bullets_per_second.start()
+	
+func update_stats():
+	pass

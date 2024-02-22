@@ -46,8 +46,8 @@ func setup_property(item, player, sign, was_equipped):
 			key_words[0] = key_words[0].left(-1)
 			is_percent = true
 		elif key_words[0].right(1) == "x":
-			key_words[0] = key_words[0].left(-1)
 			operation = key_words[0].right(1)
+			key_words[0] = key_words[0].left(-1)
 			is_percent = false
 		else:
 			is_percent = false
@@ -60,5 +60,11 @@ func setup_property(item, player, sign, was_equipped):
 		if is_percent:
 			# convert the amount to a decimal value
 			amount = player._player_stats.stats[property]["base"] * amount / 100
-		player._player_stats.stats[property][operation] += amount
+		if operation == "+" or operation == "-":
+			player._player_stats.stats[property][operation] += amount
+		elif operation == "x":
+			if sign > 0:
+				player._player_stats.stats[property][operation] *= amount
+			else:
+				player._player_stats.stats[property][operation] /= -amount
 		player._player_stats.update_stat(property, was_equipped)
