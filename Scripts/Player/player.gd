@@ -17,13 +17,9 @@ var mouse_in_inventory := false
 
 func _ready():
 	_player_stats.initialize_base_stats()
+	_player_stats.change_stat.connect(update_timers)
+	update_timers()
 	_player_stats.set_health(_player_stats.max_health)
-	_player_stats.health = 1
-	bullets_per_second.wait_time = 1.0/_player_stats.fire_rate
-	bullets_per_second.start()
-	dash_cooldown.wait_time = _player_stats.dash_rate
-	dash_cooldown.start()
-	dash_invulnerability_time.wait_time = _player_stats.dash_invulnerability
 
 func _physics_process(delta):
 	# check if the mouse is in the inventory and if the inventory is visible to detect if the player can shoot
@@ -72,9 +68,6 @@ func die():
 	# TODO: pause game and add a menu with options to restart and go back to menu
 	
 func dash():
-	dash_cooldown.wait_time = _player_stats.dash_rate
-	dash_cooldown.start()
-	dash_invulnerability_time.wait_time = _player_stats.dash_invulnerability
 	can_be_damaged = false
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	velocity = velocity.lerp((input_direction.normalized() if input_direction else Vector2(0,1)) * _player_stats.dash_distance, 1)
@@ -82,7 +75,6 @@ func dash():
 	dash_invulnerability_time.start()
 
 func _on_shoot(bullet, direction, location):
-	bullets_per_second.wait_time = 1.0/_player_stats.fire_rate
 	var bullet_instance = bullet.instantiate()
 	get_tree().current_scene.add_child(bullet_instance)
 	bullet_instance.global_position = location
@@ -90,5 +82,9 @@ func _on_shoot(bullet, direction, location):
 	bullet_instance.rotation = bullet_instance.velocity.angle()
 	bullets_per_second.start()
 	
-func update_stats():
-	pass
+func update_timers():
+	bullets_per_second.wait_time = 1.0/_player_stats.fire_rate
+	dash_cooldown.wait_time = _player_stats.dash_rate
+	dash_invulnerability_time.wait_time = _player_stats.dash_invulnerability
+	bullets_per_second.start()
+	dash_cooldown.start()
