@@ -5,7 +5,6 @@
 
 [node name="Basic Enemy" type="CharacterBody2D" groups=["Enemies"]]
 collision_layer = 0
-collision_mask = 0
 script = ExtResource("1_2xsal")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
@@ -18,7 +17,7 @@ texture = ExtResource("1_13vxj")
 
 [node name="Enemy Hitbox" type="Area2D" parent="." groups=["Enemies"]]
 collision_layer = 4
-collision_mask = 11
+collision_mask = 10
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Enemy Hitbox"]
 rotation = 1.5708
