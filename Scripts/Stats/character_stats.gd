@@ -28,6 +28,7 @@ var health: int
 # this is to prevent abusing the healing getting increased max health gives when wearing equipment that do so
 # ex: wearing an armour-piece that gives +1 max health will also heal the player's current health for 1 health
 # the purpose of overcapped health is to prevent constantly healing when unequipping and re-equipping the armour
+# this stat is only for the player, but it's added in this class to make initializing it easier
 var overcapped_health: int
 	
 func set_health(value):
