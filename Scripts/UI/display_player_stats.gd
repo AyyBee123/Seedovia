@@ -13,11 +13,11 @@ func _ready():
 
 func initialize_stats():
 	set_health()
-	stats[0].text = stats[0].name + ": " + str(player._player_stats.speed)
-	stats[1].text = stats[1].name + ": " + str(player._player_stats.dash_rate)
-	stats[2].text = stats[2].name + ": " + str(player._player_stats.dash_distance)
-	stats[3].text = stats[3].name + ": " + str(player._player_stats.dash_invulnerability)
-	stats[4].text = stats[4].name + ": " + str(player._player_stats.fire_rate)
+	stats[0].text = stats[0].name + ": " + str(player._player_stats.get_stat("Speed"))
+	stats[1].text = stats[1].name + ": " + str(player._player_stats.get_stat("Dash_Rate"))
+	stats[2].text = stats[2].name + ": " + str(player._player_stats.get_stat("Dash_Distance"))
+	stats[3].text = stats[3].name + ": " + str(player._player_stats.get_stat("Dash_Invulnerability"))
+	stats[4].text = stats[4].name + ": " + str(player._player_stats.get_stat("Fire_Rate"))
 	
 func set_health():
 	# remove all hearts in the health ui

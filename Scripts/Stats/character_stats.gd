@@ -21,6 +21,7 @@ signal health_depleted() # send signal that health reached 0 (death)
 @export var weapon_range: float # range of the weapon before it gets destroyed
 @export var weapon_size: float # size of the weapon
 @export var weapon_damage: float # damage of the weapon
+@export var weapon_blast_radius: float # blast/splash radius of the weapon
 
 # the player's current health
 var health: int
