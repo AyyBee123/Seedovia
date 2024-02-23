@@ -61,6 +61,7 @@ func setup_property(item, player, sign, was_equipped):
 		if is_percent:
 			# convert the amount to a decimal value
 			amount = player._player_stats.stats[property]["base"] * amount / 100
+		var old_stat_value = player._player_stats.get_stat(property)
 		if operation == "+" or operation == "-":
 			player._player_stats.stats[property][operation] += amount
 		elif operation == "x":
@@ -68,4 +69,4 @@ func setup_property(item, player, sign, was_equipped):
 				player._player_stats.stats[property][operation] *= amount
 			else:
 				player._player_stats.stats[property][operation] /= -amount
-		player._player_stats.update_stat(property, was_equipped)
+		player._player_stats.update_stat(property, was_equipped, old_stat_value)

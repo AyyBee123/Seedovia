@@ -21,7 +21,7 @@ func _ready():
 	_player_stats.change_stat.connect(update_timers)
 	_player_stats.health_changed.connect(update_health)
 	update_timers()
-	_player_stats.set_health(_player_stats.max_health)
+	_player_stats.set_health(_player_stats.get_stat("Max_Health"))
 
 func _physics_process(delta):
 	# check if the mouse is in the inventory and if the inventory is visible to detect if the player can shoot
@@ -58,9 +58,9 @@ func _physics_process(delta):
 func move():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	if input_direction.length() > 0:
-		velocity = velocity.lerp(input_direction.normalized() * _player_stats.speed, _player_stats.acceleration)
+		velocity = velocity.lerp(input_direction.normalized() * _player_stats.get_stat("Speed"), _player_stats.get_stat("Acceleration"))
 	else:
-		velocity = velocity.lerp(Vector2.ZERO, _player_stats.get_stat("F"))
+		velocity = velocity.lerp(Vector2.ZERO, _player_stats.get_stat("Friction"))
 	move_and_slide()
 	
 func die():
@@ -86,8 +86,8 @@ func _on_shoot(bullet, direction, location):
 	
 func update_timers():
 	bullets_per_second.wait_time = 1.0/_player_stats.get_stat("Fire_Rate")
-	dash_cooldown.wait_time = _player_stats.dash_rate
-	dash_invulnerability_time.wait_time = _player_stats.dash_invulnerability
+	dash_cooldown.wait_time = _player_stats.get_stat("Dash_Rate")
+	dash_invulnerability_time.wait_time = _player_stats.get_stat("Dash_Invulnerability")
 	bullets_per_second.start()
 	dash_cooldown.start()
 	

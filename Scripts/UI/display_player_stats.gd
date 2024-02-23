@@ -29,7 +29,7 @@ func set_health():
 		i.queue_free()
 
 	# add hearts in the hearts ui
-	for i in range(player._player_stats.max_health): # add empty heart containers
+	for i in range(player._player_stats.get_stat("Max_Health")): # add empty heart containers
 		var heart_instance = empty_heart.instantiate()
 		max_health.add_child(heart_instance)
 	for i in range(player._player_stats.health): # add filled heart containers
