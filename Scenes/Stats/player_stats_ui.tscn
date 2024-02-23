@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://civnfvhref4lg"]
 
 [ext_resource type="FontFile" uid="uid://cuikskpsdoxgb" path="res://Fonts/Kenney Pixel.ttf" id="1_2ctd8"]
-[ext_resource type="Script" path="res://Scripts/Stats/display_player_stats.gd" id="1_pr6de"]
+[ext_resource type="Script" path="res://Scripts/UI/display_player_stats.gd" id="1_fjrdo"]
 
 [node name="Player Stats" type="Control"]
 layout_mode = 3
@@ -10,47 +10,58 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_pr6de")
+mouse_filter = 2
+script = ExtResource("1_fjrdo")
 
-[node name="Stats UI" type="GridContainer" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.227
-anchor_bottom = 0.468
-offset_right = 0.159973
-offset_bottom = -0.440033
+[node name="Layout" type="GridContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="Health" type="Label" parent="Stats UI"]
+[node name="PanelContainer" type="PanelContainer" parent="Layout"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="Current Health UI" type="GridContainer" parent="Layout/PanelContainer"]
+layout_mode = 2
+mouse_filter = 2
+columns = 6
+
+[node name="Max Health UI" type="GridContainer" parent="Layout/PanelContainer"]
+layout_mode = 2
+mouse_filter = 2
+columns = 6
+
+[node name="Stats UI" type="GridContainer" parent="Layout"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Speed" type="Label" parent="Layout/Stats UI"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_2ctd8")
 theme_override_font_sizes/font_size = 48
 text = "dwdwdwdw"
 
-[node name="Speed" type="Label" parent="Stats UI"]
+[node name="Dash Rate" type="Label" parent="Layout/Stats UI"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_2ctd8")
 theme_override_font_sizes/font_size = 48
 text = "dwdwdwdw"
 
-[node name="Dash Rate" type="Label" parent="Stats UI"]
+[node name="Dash Distance" type="Label" parent="Layout/Stats UI"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_2ctd8")
 theme_override_font_sizes/font_size = 48
 text = "dwdwdwdw"
 
-[node name="Dash Distance" type="Label" parent="Stats UI"]
+[node name="Dash Invulnerability" type="Label" parent="Layout/Stats UI"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_2ctd8")
 theme_override_font_sizes/font_size = 48
 text = "dwdwdwdw"
 
-[node name="Dash Invulnerability" type="Label" parent="Stats UI"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("1_2ctd8")
-theme_override_font_sizes/font_size = 48
-text = "dwdwdwdw"
-
-[node name="Fire Rate" type="Label" parent="Stats UI"]
+[node name="Fire Rate" type="Label" parent="Layout/Stats UI"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_2ctd8")
 theme_override_font_sizes/font_size = 48

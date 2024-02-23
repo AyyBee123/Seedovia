@@ -6,6 +6,7 @@ const slot_class = preload("res://Scripts/Inventory/inventory_slot.gd")
 @onready var inventory_slots = $"NinePatchRect/Inventory Slots".get_children()
 @onready var equip_slots = $"NinePatchRect/Equipment Slots".get_children()
 var holding_item = null # the item that is currently being held by the cursor in the inventory
+#var mouse_in_inventory = self.get_global_rect().has_point(self.get_global_mouse_position()) and is_visible_in_tree()
 
 func _ready():
 	equip_slots.remove_at(2) # remove the second empty panel (Empty 2) from the array
@@ -44,6 +45,8 @@ func slot_gui_input(event: InputEvent, slot: slot_class):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT && event.pressed:
 			if holding_item != null:
+				#if not mouse_in_inventory:
+					#PlayerInventory.drop_item(holding_item, player)
 				if !slot.item: # place holding item into a slot
 					left_click_place_item(slot)
 				else: # swap holding item with item in slot
