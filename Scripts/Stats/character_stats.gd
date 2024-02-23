@@ -2,7 +2,7 @@ class_name character_stats extends Resource
 
 signal health_changed(new_health) # send signal that current health changed
 signal max_health_changed(new_max_health) # send signal that max health changed
-signal health_depleted() # send signal that health reached 0 (death)
+signal health_depleted # send signal that health reached 0 (death)
 
 # player values
 @export var max_health: int # max health
