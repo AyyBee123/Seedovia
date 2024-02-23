@@ -23,17 +23,26 @@ signal health_depleted() # send signal that health reached 0 (death)
 
 # the player's current health
 var health: int
+
+# overcapped health is used to determine the amount of "health" in the background after taking equipment into account
+# this is to prevent abusing the healing getting increased max health gives when wearing equipment that do so
+# ex: wearing an armour-piece that gives +1 max health will also heal the player's current health for 1 health
+# the purpose of overcapped health is to prevent constantly healing when unequipping and re-equipping the armour
+var overcapped_health: int
 	
 func set_health(value):
 	health = max(0, value)
+	overcapped_health = max(0, value)
 	
 func increase_max_health(amount):
 	max_health += amount
 	max_health_changed.emit(max_health)
 	
-func take_damage(hit_source):
-	health -= hit_source.damage
+func take_damage(source):
+	health -= source.damage
+	overcapped_health -= source.damage
 	health = max(0, health)
+	overcapped_health = max(0, health)
 	health_changed.emit(health)
 	if health <= 0:
 		health_depleted.emit()

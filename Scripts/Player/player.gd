@@ -9,6 +9,7 @@ signal shoot(bullet, direction, location)
 @onready var dash_invulnerability_time := $"Dash Invulnerability Time"
 @onready var inventory := $"Inventory"
 @onready var inventory_screen := $"Inventory/NinePatchRect"
+@onready var player_stats_ui := $"../Player Stats"
 
 var bullet := preload('res:///Scenes/Player/Player Bullets/Player Bullet.tscn')
 
@@ -18,6 +19,7 @@ var mouse_in_inventory := false
 func _ready():
 	_player_stats.initialize_base_stats()
 	_player_stats.change_stat.connect(update_timers)
+	_player_stats.health_changed.connect(update_health)
 	update_timers()
 	_player_stats.set_health(_player_stats.max_health)
 
@@ -88,3 +90,6 @@ func update_timers():
 	dash_invulnerability_time.wait_time = _player_stats.dash_invulnerability
 	bullets_per_second.start()
 	dash_cooldown.start()
+	
+func update_health(new_health):
+	player_stats_ui.set_health()
