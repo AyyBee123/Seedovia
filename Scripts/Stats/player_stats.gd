@@ -38,6 +38,11 @@ var stats := {
 		"+": 0,
 		"x": 1
 	},
+	"Invulnerability_Time": {
+		"base": invulnerability_time,
+		"+": 0,
+		"x": 1
+	},
 	"Weapon_Speed": {
 		"base": weapon_speed,
 		"+": 0,
@@ -57,11 +62,13 @@ var stats := {
 		"base": weapon_damage,
 		"+": 0,
 		"x": 1
-	}
+	},
 }
 
 # initialize the base stats in the player script because exports don't get assigned until _ready() is called
 func initialize_base_stats():
+	for i in stats:
+		print(i)
 	stats["Max_Health"]["base"] = max_health
 	stats["Speed"]["base"] = speed
 	stats["Dash_Rate"]["base"] = dash_rate
@@ -69,10 +76,12 @@ func initialize_base_stats():
 	stats["Dash_Invulnerability"]["base"] = dash_invulnerability
 	stats["Fire_Rate"]["base"] = fire_rate
 	stats["Contact_Damage"]["base"] = contact_damage
+	stats["Invulnerability_Time"]["base"] = invulnerability_time
 	stats["Weapon_Speed"]["base"] = weapon_speed
 	stats["Weapon_Range"]["base"] = weapon_range
 	stats["Weapon_Size"]["base"] = weapon_size
 	stats["Weapon_Damage"]["base"] = weapon_damage
+	
 
 func get_stat(stat: String):
 	return stats[stat]["x"] * (stats[stat]["base"] + stats[stat]["+"])
@@ -111,4 +120,6 @@ func update_stat(stat: String, was_equipped: bool):
 			weapon_size = get_stat(stat)
 		"Weapon_Damage":
 			weapon_size = get_stat(stat)
+		"Invulnerability_Time":
+			invulnerability_time = get_stat(stat)
 	change_stat.emit()

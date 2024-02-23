@@ -12,6 +12,7 @@ signal health_depleted() # send signal that health reached 0 (death)
 @export var dash_invulnerability: float # invulnerability time in seconds after dashing
 @export var fire_rate: float # fire rate (in shots/sec)
 @export var contact_damage: float # this is mainly for the enemy
+@export var invulnerability_time: float # time before player can take damage after taking damage (in seconds)
 @export var acceleration: float # movement acceleration
 @export var friction: float # movement friction/deceleration
 

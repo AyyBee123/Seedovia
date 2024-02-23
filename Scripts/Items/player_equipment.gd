@@ -13,7 +13,8 @@ enum properties {
 	weapon_speed,
 	weapon_range,
 	weapon_size,
-	weapon_damage
+	weapon_damage,
+	invulnerability_time
 }
 var is_percent = false
 
