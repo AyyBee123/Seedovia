@@ -4,12 +4,13 @@ extends Control
 @onready var stats = $"Layout/Stats UI".get_children()
 @onready var max_health = $"Layout/PanelContainer/Max Health UI"
 @onready var current_health = $"Layout/PanelContainer/Current Health UI"
+
 var empty_heart = preload("res://Scenes/UI/empty_heart.tscn")
 var filled_heart = preload("res://Scenes/UI/filled_heart.tscn")
 
 func _ready():
 	initialize_stats()
-	
+
 func initialize_stats():
 	set_health()
 	stats[0].text = stats[0].name + ": " + str(player._player_stats.speed)
