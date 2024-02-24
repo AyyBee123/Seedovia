@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="seed_class" load_steps=4 format=3 uid="uid://cuy80aorwngdg"]
+
+[ext_resource type="Script" path="res://Scripts/Stats/seed_stats.gd" id="1_1q7pv"]
+[ext_resource type="Texture2D" uid="uid://bt331vmhmcr2x" path="res://Sprites/Items/Bullet Seed.png" id="2_4acpb"]
+[ext_resource type="Texture2D" uid="uid://c6vshawxebrpr" path="res://Sprites/Seeds/Player Bullet.png" id="3_6x56s"]
+
+[resource]
+script = ExtResource("1_1q7pv")
+weapon_texture = ExtResource("3_6x56s")
+item_name = "Bullet"
+texture = ExtResource("2_4acpb")
+description = "Bullet"

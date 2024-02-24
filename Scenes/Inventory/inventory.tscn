@@ -186,9 +186,7 @@ offset_right = 151.0
 offset_bottom = 123.0
 columns = 3
 
-[node name="Empty0" type="Panel" parent="NinePatchRect/Equipment Slots" groups=["Empty Slot"]]
-self_modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(32, 32)
+[node name="Empty" type="TextureRect" parent="NinePatchRect/Equipment Slots"]
 layout_mode = 2
 
 [node name="SlotHead" type="Panel" parent="NinePatchRect/Equipment Slots"]
@@ -211,9 +209,7 @@ grow_vertical = 2
 texture = ExtResource("8_fgvwo")
 stretch_mode = 2
 
-[node name="Empty2" type="Panel" parent="NinePatchRect/Equipment Slots" groups=["Empty Slot"]]
-self_modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(32, 32)
+[node name="Empty2" type="TextureRect" parent="NinePatchRect/Equipment Slots"]
 layout_mode = 2
 
 [node name="SlotArms" type="Panel" parent="NinePatchRect/Equipment Slots"]
@@ -343,18 +339,11 @@ offset_top = 19.0
 offset_right = 35.0
 offset_bottom = 99.0
 
-[node name="SeedSlotLink" type="Sprite2D" parent="NinePatchRect/Seed Slots"]
-position = Vector2(12, 26)
-texture = ExtResource("9_c3yfu")
-
-[node name="SeedSlotLink2" type="Sprite2D" parent="NinePatchRect/Seed Slots"]
-position = Vector2(12, 54)
-texture = ExtResource("9_c3yfu")
-
 [node name="Slot1" type="Panel" parent="NinePatchRect/Seed Slots"]
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_s7kfb")
+script = ExtResource("4_gqdv4")
 
 [node name="Silhouette" type="TextureRect" parent="NinePatchRect/Seed Slots/Slot1"]
 custom_minimum_size = Vector2(16, 16)
@@ -365,26 +354,38 @@ offset_right = 20.0
 offset_bottom = 20.0
 texture = ExtResource("11_cvujl")
 
+[node name="SeedSlotLink" type="Sprite2D" parent="NinePatchRect/Seed Slots/Slot1"]
+position = Vector2(12, 26)
+texture = ExtResource("9_c3yfu")
+
 [node name="Slot2" type="Panel" parent="NinePatchRect/Seed Slots"]
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_s7kfb")
+script = ExtResource("4_gqdv4")
 
 [node name="Silhouette" type="TextureRect" parent="NinePatchRect/Seed Slots/Slot2"]
 custom_minimum_size = Vector2(16, 16)
+layout_mode = 0
 offset_left = 4.0
 offset_top = 4.0
 offset_right = 20.0
 offset_bottom = 20.0
 texture = ExtResource("11_cvujl")
 
+[node name="SeedSlotLink2" type="Sprite2D" parent="NinePatchRect/Seed Slots/Slot2"]
+position = Vector2(12, 26)
+texture = ExtResource("9_c3yfu")
+
 [node name="Slot3" type="Panel" parent="NinePatchRect/Seed Slots"]
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_s7kfb")
+script = ExtResource("4_gqdv4")
 
 [node name="Silhouette" type="TextureRect" parent="NinePatchRect/Seed Slots/Slot3"]
 custom_minimum_size = Vector2(16, 16)
+layout_mode = 0
 offset_left = 4.0
 offset_top = 4.0
 offset_right = 20.0

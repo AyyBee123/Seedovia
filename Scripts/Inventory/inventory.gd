@@ -5,18 +5,30 @@ const slot_class = preload("res://Scripts/Inventory/inventory_slot.gd")
 @onready var player = $".."
 @onready var inventory_slots = $"NinePatchRect/Inventory Slots".get_children()
 @onready var equip_slots = $"NinePatchRect/Equipment Slots".get_children()
+@onready var seed_slots = $"NinePatchRect/Seed Slots".get_children()
 var holding_item = null # the item that is currently being held by the cursor in the inventory
 #var mouse_in_inventory = self.get_global_rect().has_point(self.get_global_mouse_position()) and is_visible_in_tree()
 
 func _ready():
-	equip_slots.remove_at(2) # remove the second empty panel (Empty 2) from the array
-	equip_slots.remove_at(0) # remove the first empty panel (Empty 0) from the array
-	visible = false
+	visible = false # make inventory not visible on starting the game
+	# initialize all the inventory slots and their categories
 	for i in range(inventory_slots.size()):
 		inventory_slots[i].gui_input.connect(slot_gui_input.bind(inventory_slots[i]))
 		inventory_slots[i].slot_index = i
 		inventory_slots[i].slot_type = slot_class.slot_types.INVENTORY
 		
+	# remove the empty space nodes (TextureRects) from the equipment grid container
+	for i in range(seed_slots.size()):
+		if not equip_slots[i] is Panel:
+			equip_slots.remove_at(i)
+			continue
+	# initialize all the seed slots and their categories
+	for i in range(seed_slots.size()):
+		seed_slots[i].gui_input.connect(slot_gui_input.bind(seed_slots[i]))
+		seed_slots[i].slot_index = i
+		seed_slots[i].slot_type = slot_class.slot_types.SEED
+		
+	# initialize all the equipment slots
 	for i in range(equip_slots.size()):
 		equip_slots[i].gui_input.connect(slot_gui_input.bind(equip_slots[i]))
 		equip_slots[i].slot_index = i
@@ -28,6 +40,7 @@ func _ready():
 	equip_slots[4].slot_type = slot_class.slot_types.LEGS
 	equip_slots[5].slot_type = slot_class.slot_types.WAIST
 	equip_slots[6].slot_type = slot_class.slot_types.FEET
+	
 	inititialize_inventory()
 	inititialize_equipment()
 	
@@ -57,6 +70,7 @@ func slot_gui_input(event: InputEvent, slot: slot_class):
 func _input(event):
 	inititialize_inventory()
 	inititialize_equipment()
+	inititialize_seeds()
 	if holding_item:
 		holding_item.global_position = get_global_mouse_position()
 		
@@ -69,6 +83,11 @@ func inititialize_equipment():
 	for i in range(equip_slots.size()):
 		if PlayerInventory.equipment.has(i):
 			equip_slots[i].initialize_item(PlayerInventory.equipment[i])
+			
+func inititialize_seeds():
+	for i in range(seed_slots.size()):
+		if PlayerInventory.seeds.has(i):
+			seed_slots[i].initialize_item(PlayerInventory.seeds[i])
 			
 func able_to_put_into_slot(slot: slot_class) -> bool:
 	if holding_item == null:

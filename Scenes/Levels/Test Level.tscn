@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dr8qdmnfjxopo"]
+[gd_scene load_steps=14 format=3 uid="uid://dr8qdmnfjxopo"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_yv4rh"]
 [ext_resource type="PackedScene" uid="uid://cu63rxmy71bcg" path="res://Scenes/Player/Player.tscn" id="2_3q0y2"]
@@ -8,6 +8,7 @@
 [ext_resource type="Resource" uid="uid://ckqiallc73lpu" path="res://Resources/Items/Equipment/basic_helmet.tres" id="5_gqe8h"]
 [ext_resource type="Resource" uid="uid://bwmlrwbo6dvh4" path="res://Resources/Items/Equipment/basic_body_armour.tres" id="6_c15ep"]
 [ext_resource type="Resource" uid="uid://i4wg1hx83q3m" path="res://Resources/Items/Equipment/leather_gloves.tres" id="7_v0bmo"]
+[ext_resource type="Resource" uid="uid://cuy80aorwngdg" path="res://Resources/Items/Seeds/bullet.tres" id="8_j7al0"]
 [ext_resource type="PackedScene" uid="uid://civnfvhref4lg" path="res://Scenes/Stats/player_stats_ui.tscn" id="8_k4lp5"]
 [ext_resource type="PackedScene" uid="uid://bit62xejx6ldr" path="res://Scenes/Enemies/Basic Enemy.tscn" id="9_2kn6u"]
 
@@ -45,6 +46,10 @@ item = ExtResource("6_c15ep")
 [node name="Item4" parent="." instance=ExtResource("3_ygume")]
 position = Vector2(659, 393)
 item = ExtResource("7_v0bmo")
+
+[node name="Item5" parent="." instance=ExtResource("3_ygume")]
+position = Vector2(552, 455)
+item = ExtResource("8_j7al0")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_dsidl")

@@ -6,10 +6,13 @@ const slot_class = preload("res://Scripts/Inventory/inventory_slot.gd")
 var picked_up_item = null
 
 const NUM_INVENTORY_SLOTS = 12
+const NUM_EQUIPMENT_SLOTS = 7
+const NUM_SEED_SLOTS = 3
 
 
 var inventory = {}
 var equipment = {}
+var seeds = {}
 
 func add_item(item, player, inv):
 	for i in range(NUM_INVENTORY_SLOTS):
@@ -30,11 +33,15 @@ func drop_item(item, player):
 func add_item_to_empty_slot(item: item_instance, slot: slot_class):
 	if slot.slot_type == slot_class.slot_types.INVENTORY:
 		inventory[slot.slot_index] = item.item
+	elif slot.slot_type == slot_class.slot_types.SEED:
+		seeds[slot.slot_index] = item.item
 	else:
 		equipment[slot.slot_index] = item.item
 	
 func remove_item(slot: slot_class):
 	if slot.slot_type == slot_class.slot_types.INVENTORY:
 		inventory.erase(slot.slot_index)
+	elif slot.slot_type == slot_class.slot_types.SEED:
+		seeds.erase(slot.slot_index)
 	else:
 		equipment.erase(slot.slot_index)

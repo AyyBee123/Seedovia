@@ -4,4 +4,4 @@ class_name equipment_item_class extends "res://Scripts/Items/item_class.gd"
 @export_enum("COMMON", "UNCOMMON", "RARE", "EPIC", "LEGENDARY", "N/A:-1") var rarity: int
 @export var properties: Array[String]
 @export var special_properties: Array[String]
-var was_already_equipped = false # this is to not abuse getting max health every time the item is equipped
+var was_already_equipped = false # this is to not abuse getting healed each time the item is equipped
