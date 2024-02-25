@@ -1,12 +1,13 @@
 extends CharacterBody2D
 
 @onready var player := $"../Player"
-var _seed_stats := seed_class.new()
 @onready var _player_stats = player._player_stats
 
 var starting_position: Vector2 # gets the starting position from where the bullet is fired
 var distance_travelled: float # gets the current range travelled by the bullet
 
+# this value is set because the weapon's position is not updated until after the ready fuction. 
+# That's why it's called in the physics process function instead of the ready function
 var position_initialized := false
 
 func _physics_process(delta):

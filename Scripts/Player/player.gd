@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 signal shoot(bullet, direction, location)
+signal shot(bullet, direction, location)
 
 @export var _player_stats: player_stats
 
@@ -11,7 +12,7 @@ signal shoot(bullet, direction, location)
 @onready var inventory_screen := $"Inventory/NinePatchRect"
 @onready var player_stats_ui := $"../Player Stats"
 
-var bullet := preload('res:///Scenes/Player/Player Bullets/Player Bullet.tscn')
+var current_weapon: PackedScene = null
 
 var can_be_damaged := true
 var mouse_in_inventory := false
@@ -38,9 +39,10 @@ func _physics_process(delta):
 	
 	# shoot bullet
 	if Input.is_action_pressed("shoot") and bullets_per_second.is_stopped() and not mouse_in_inventory:
-		if inventory.seed_slots[0].item != null:
-			shoot.emit(bullet, get_global_mouse_position().angle(), $"Rotation Point/Marker2D".get_global_position())
-		
+		var weapon = PlayerSeeds.load_weapon()
+		if weapon != null:
+			shoot.emit(weapon, get_global_mouse_position().angle(), $"Rotation Point/Marker2D".get_global_position())
+
 	# dash
 	if Input.is_action_just_pressed("dash") and dash_cooldown.is_stopped():
 		dash()

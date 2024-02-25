@@ -1,21 +1,5 @@
 extends Node
 
-enum properties {
-	max_health,
-	speed,
-	dash_rate,
-	dash_distance,
-	dash_invulnerability,
-	fire_rate,
-	contact_damage,
-	acceleration,
-	friction,
-	weapon_speed,
-	weapon_range,
-	weapon_size,
-	weapon_damage,
-	invulnerability_time
-}
 var is_percent = false
 
 func add_stats(item, player, was_equipped): # add stats when slotting an equipment item to an equipment slot in the inventory
