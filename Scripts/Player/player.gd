@@ -38,7 +38,8 @@ func _physics_process(delta):
 	
 	# shoot bullet
 	if Input.is_action_pressed("shoot") and bullets_per_second.is_stopped() and not mouse_in_inventory:
-		shoot.emit(bullet, get_global_mouse_position().angle(), $"Rotation Point/Marker2D".get_global_position())
+		if inventory.seed_slots[0].item != null:
+			shoot.emit(bullet, get_global_mouse_position().angle(), $"Rotation Point/Marker2D".get_global_position())
 		
 	# dash
 	if Input.is_action_just_pressed("dash") and dash_cooldown.is_stopped():

@@ -12,7 +12,7 @@ const NUM_SEED_SLOTS = 3
 
 var inventory = {}
 var equipment = {}
-var seeds = {}
+var seeds = {0: load("res://Resources/Items/Seeds/bullet.tres")}
 
 func add_item(item, player, inv):
 	for i in range(NUM_INVENTORY_SLOTS):
