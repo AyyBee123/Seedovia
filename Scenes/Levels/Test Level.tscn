@@ -66,6 +66,12 @@ position = Vector2(576, 320)
 [node name="Basic Enemy" parent="." instance=ExtResource("9_2kn6u")]
 position = Vector2(145, 172)
 
+[node name="Basic Enemy2" parent="." instance=ExtResource("9_2kn6u")]
+position = Vector2(308, 220)
+
+[node name="Basic Enemy3" parent="." instance=ExtResource("9_2kn6u")]
+position = Vector2(430, 130)
+
 [node name="Player Stats" parent="." instance=ExtResource("8_k4lp5")]
 offset_left = -374.0
 offset_top = 28.0

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="seed_class" load_steps=2 format=3 uid="uid://6r7y2c1r006r"]
+
+[ext_resource type="Script" path="res://Scripts/Stats/seed_stats.gd" id="1_t1tr5"]
+
+[resource]
+script = ExtResource("1_t1tr5")
+item_name = ""
+description = ""
