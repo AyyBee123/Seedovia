@@ -42,7 +42,7 @@ func put_into_slot(new_item):
 		item.item.was_already_equipped = true
 		player_stats_ui.initialize_stats()
 	if slot_type == slot_types.SEED:
-			PlayerSeeds.set_slot_index()
+			PlayerSeeds.load_weapons()
 
 func initialize_item(slot_item):
 	item_instance = load("res://Scenes/Items/item.tscn")
@@ -50,7 +50,7 @@ func initialize_item(slot_item):
 		item = item_instance.instantiate()
 		item.set_item(slot_item)
 		if slot_type == slot_types.SEED:
-			PlayerSeeds.set_slot_index()
+			PlayerSeeds.load_weapons()
 		add_child(item)
 		item.position = Vector2(size.x / 2, size.y / 2)
 	else:

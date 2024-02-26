@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bg0xjmkfe0uqd"]
 
-[ext_resource type="Script" path="res://Scripts/Seeds/bullet_seed.gd" id="1_60due"]
+[ext_resource type="Script" path="res://Scripts/Seeds/orb_seed.gd" id="1_rog5s"]
 [ext_resource type="Texture2D" uid="uid://cb2u073k8qjem" path="res://Sprites/Seeds/Orb.png" id="2_5uyb5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bio3k"]
@@ -12,7 +12,10 @@ radius = 12.0
 [node name="Orb" type="CharacterBody2D"]
 collision_layer = 0
 collision_mask = 0
-script = ExtResource("1_60due")
+script = ExtResource("1_rog5s")
+speed_multiplier = 0.5
+damage_multiplier = 3.0
+fire_rate_multiplier = 0.75
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1.78814e-07, 0)
@@ -28,6 +31,9 @@ collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bullet Hitbox"]
 shape = SubResource("CircleShape2D_1s1yq")
+
+[node name="Fire Rate" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="area_entered" from="Bullet Hitbox" to="." method="_on_bullet_hitbox_area_entered"]
 [connection signal="body_entered" from="Bullet Hitbox" to="." method="_on_bullet_hitbox_body_entered"]

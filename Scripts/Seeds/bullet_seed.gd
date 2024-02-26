@@ -17,6 +17,14 @@ var short_distance_travelled: float # this lets the projectile move a little bef
 
 var slot_index: int
 
+# initialize multipliers
+@export var speed_multiplier: float = 1 # shot speed multiplier of the weapon
+@export var range_multiplier: float = 1 # range multiplier of the weapon before it gets destroyed
+@export var size_multiplier: float = 1 # size multiplier of the weapon
+@export var damage_multiplier: float = 1 # damage multiplier of the weapon
+@export var blast_radius_multiplier: float = 1 # blast/splash radius multiplier of the weapon
+@export var fire_rate_multiplier: float = 1 # fire rate multiplier of the weapon
+
 func _physics_process(delta):
 	initialize_position()
 	collision_detect(delta)
@@ -32,9 +40,9 @@ func _on_bullet_hitbox_area_entered(area):
 func _collide(body):
 	if not ignore_first_collision:
 		if body.is_in_group("Enemies"):
-			body.get_parent()._enemy_stats.take_damage(_player_stats.get_stat("Weapon_Damage"))
+			body.get_parent()._enemy_stats.take_damage(_player_stats.get_stat("Weapon_Damage") * damage_multiplier)
 		for i in range(seed_slots.size()):
-			var weapon = PlayerSeeds.load_weapon(slot_index + 1)
+			var weapon = null if PlayerSeeds.seeds.size() <= 1 + slot_index or slot_index >= 2 else PlayerSeeds.seeds[slot_index + 1]
 			if weapon != null:
 				shoot_next_weapon(weapon, body)
 			break
@@ -74,17 +82,15 @@ func initialize_location(weapon_instance, nearest_enemy):
 	
 func initialize_position():
 	if not position_initialized:
-		if initial_weapon:
-			slot_index = 0
 		starting_position = global_position
 		position_initialized = true
 
 func collision_detect(delta):
-	var collision_detect = move_and_collide(velocity * delta * _player_stats.get_stat("Weapon_Speed"))
+	var collision_detect = move_and_collide(velocity * delta * _player_stats.get_stat("Weapon_Speed") * speed_multiplier)
 	
 func travelled_distance():
 	distance_travelled = starting_position.distance_to(self.global_position)
-	if distance_travelled >= _player_stats.get_stat("Weapon_Range"):
+	if distance_travelled >= _player_stats.get_stat("Weapon_Range") * range_multiplier:
 		queue_free()
 		
 func distance_after_collision():
