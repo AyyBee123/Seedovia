@@ -43,6 +43,7 @@ func _ready():
 	
 	inititialize_inventory()
 	inititialize_equipment()
+	inititialize_seeds()
 	
 func _process(delta):
 	if Input.is_action_just_pressed("inventory"):
@@ -82,11 +83,13 @@ func inititialize_inventory():
 func inititialize_equipment():
 	for i in range(equip_slots.size()):
 		if PlayerInventory.equipment.has(i):
+			equip_slots[i].get_node("Silhouette").visible = false
 			equip_slots[i].initialize_item(PlayerInventory.equipment[i])
 			
 func inititialize_seeds():
 	for i in range(seed_slots.size()):
 		if PlayerInventory.seeds.has(i):
+			seed_slots[i].get_node("Silhouette").visible = false
 			seed_slots[i].initialize_item(PlayerInventory.seeds[i])
 			
 func able_to_put_into_slot(slot: slot_class) -> bool:

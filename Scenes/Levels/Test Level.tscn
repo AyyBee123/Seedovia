@@ -51,6 +51,10 @@ item = ExtResource("7_v0bmo")
 position = Vector2(552, 455)
 item = ExtResource("8_j7al0")
 
+[node name="Item6" parent="." instance=ExtResource("3_ygume")]
+position = Vector2(552, 455)
+item = ExtResource("8_j7al0")
+
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_dsidl")
 format = 2

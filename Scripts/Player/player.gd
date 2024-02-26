@@ -40,7 +40,7 @@ func _physics_process(delta):
 	if Input.is_action_pressed("shoot") and bullets_per_second.is_stopped() and not mouse_in_inventory:
 		var weapon = PlayerSeeds.load_weapon()
 		if weapon != null:
-			shoot.emit(weapon, get_global_mouse_position().angle(), $"Rotation Point/Marker2D".get_global_position())
+			shoot.emit(weapon, $"Rotation Point/Marker2D".get_global_position())
 
 	# dash
 	if Input.is_action_just_pressed("dash") and dash_cooldown.is_stopped():
@@ -78,12 +78,12 @@ func dash():
 	dash_cooldown.start()
 	dash_invulnerability_time.start()
 
-func _on_shoot(bullet, direction, location):
-	var bullet_instance = bullet.instantiate()
-	get_tree().current_scene.add_child(bullet_instance)
-	bullet_instance.global_position = location
-	bullet_instance.velocity = (get_global_mouse_position() - bullet_instance.global_position).normalized()
-	bullet_instance.rotation = bullet_instance.velocity.angle()
+func _on_shoot(weapon, location):
+	var weapon_instance = weapon.instantiate()
+	get_tree().current_scene.add_child(weapon_instance)
+	weapon_instance.global_position = location
+	weapon_instance.velocity = (get_global_mouse_position() - weapon_instance.global_position).normalized()
+	weapon_instance.rotation = weapon_instance.velocity.angle()
 	bullets_per_second.start()
 	
 func update_timers():
