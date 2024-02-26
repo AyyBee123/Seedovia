@@ -19,7 +19,7 @@ position = Vector2(1.78814e-07, 0)
 scale = Vector2(0.89, 0.89)
 shape = SubResource("RectangleShape2D_ggn4a")
 
-[node name="PlayerBullet" type="Sprite2D" parent="."]
+[node name="Bullet Sprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_1n5dh")
 
 [node name="Bullet Hitbox" type="Area2D" parent="."]

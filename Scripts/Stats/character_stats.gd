@@ -17,7 +17,7 @@ signal health_depleted # send signal that health reached 0 (death)
 @export var friction: float # movement friction/deceleration
 
 # weapon values
-@export var weapon_speed: float # speed of the weapon
+@export var weapon_speed: float # shot speed of the weapon
 @export var weapon_range: float # range of the weapon before it gets destroyed
 @export var weapon_size: float # size of the weapon
 @export var weapon_damage: float # damage of the weapon
