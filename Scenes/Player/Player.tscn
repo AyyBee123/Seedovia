@@ -59,6 +59,5 @@ size_flags_vertical = 3
 metadata/_edit_use_anchors_ = true
 
 [connection signal="shoot" from="." to="." method="_on_shoot"]
-[connection signal="shot" from="." to="." method="_on_shot"]
 [connection signal="mouse_entered" from="Inventory" to="." method="_on_inventory_mouse_entered"]
 [connection signal="mouse_exited" from="Inventory" to="." method="_on_inventory_mouse_exited"]

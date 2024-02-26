@@ -1,7 +1,6 @@
 extends CharacterBody2D
 
 signal shoot(bullet, direction, location)
-signal shot(bullet, direction, location)
 
 @export var _player_stats: player_stats
 
@@ -68,7 +67,7 @@ func move():
 	
 func die():
 	hide() # temporary death effect
-	set_physics_process(false)
+	process_mode = 4 # = Mode: Disabled
 	# TODO: add death animation
 	# TODO: pause game and add a menu with options to restart and go back to menu
 	
