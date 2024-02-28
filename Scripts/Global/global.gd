@@ -2,10 +2,9 @@ extends Node
 
 #%APPDATA%\Roaming\Godot\app_userdata\Roguelike
 var SAVE_PATH := "user://player_inventory.res"
-var inventory_data = player_inventory_data.new()
+var data = player_data.new()
 
 func _ready():
-	pass
 	load_inventory()
 
 func _physics_process(delta):
@@ -13,12 +12,12 @@ func _physics_process(delta):
 		Global.save_inventory()
 
 func save_inventory():
-	inventory_data.get_inventory()
-	ResourceSaver.save(inventory_data, SAVE_PATH)
+	data.get_inventory()
+	ResourceSaver.save(data, SAVE_PATH)
 	
 func load_inventory():
 	if ResourceLoader.exists(SAVE_PATH):
-		inventory_data = ResourceLoader.load(SAVE_PATH)
-		PlayerInventory.inventory = inventory_data.inventory
-		PlayerInventory.equipment = inventory_data.equipment
-		PlayerInventory.seeds = inventory_data.seeds
+		data = ResourceLoader.load(SAVE_PATH)
+		PlayerInventory.inventory = data.inventory
+		PlayerInventory.equipment = data.equipment
+		PlayerInventory.seeds = data.seeds

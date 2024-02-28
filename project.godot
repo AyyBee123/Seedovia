@@ -20,6 +20,7 @@ PlayerInventory="*res://Scripts/Inventory/player_inventory.gd"
 PlayerEquipment="*res://Scripts/Items/player_equipment.gd"
 PlayerSeeds="*res://Scripts/Seeds/player_seeds.gd"
 Global="*res://Scripts/Global/global.gd"
+PlayerInventoryData="*res://Scripts/Save Data/player_data.gd"
 
 [display]
 

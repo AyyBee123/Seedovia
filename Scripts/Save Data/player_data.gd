@@ -1,4 +1,4 @@
-class_name player_inventory_data extends Resource
+class_name player_data extends Resource
 
 @export var inventory: Dictionary = PlayerInventory.inventory
 @export var equipment: Dictionary = PlayerInventory.equipment
