@@ -41,7 +41,13 @@ func _physics_process(delta):
 		current_weapon = null if PlayerSeeds.seeds.size() == 0 else PlayerSeeds.load_weapons()[0]
 		if current_weapon != null:
 			shoot.emit(current_weapon, $"Rotation Point/Marker2D".get_global_position())
-
+			
+	# pause game or close inventory, or stat sheet
+	if Input.is_action_just_pressed("escape"):
+		if inventory.visible: # only inventory for now. Will add stat sheet when it's made
+			inventory.visible = false
+		else:
+			pass # will add pause here, but it's not made yet
 	# dash
 	if Input.is_action_just_pressed("dash") and dash_cooldown.is_stopped():
 		dash()
