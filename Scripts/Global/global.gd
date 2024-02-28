@@ -19,6 +19,4 @@ func load_inventory():
 	if not ResourceLoader.exists(SAVE_PATH):
 		return
 	data = ResourceLoader.load(SAVE_PATH)
-	PlayerInventory.inventory = data.inventory
-	PlayerInventory.equipment = data.equipment
-	PlayerInventory.seeds = data.seeds
+	data.set_inventory()

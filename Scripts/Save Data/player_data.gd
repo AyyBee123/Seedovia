@@ -1,8 +1,8 @@
 class_name player_data extends Resource
 
-@export var inventory: Dictionary = PlayerInventory.inventory
-@export var equipment: Dictionary = PlayerInventory.equipment
-@export var seeds: Dictionary = PlayerInventory.seeds
+var inventory: Dictionary = PlayerInventory.inventory
+var equipment: Dictionary = PlayerInventory.equipment
+var seeds: Dictionary = PlayerInventory.seeds
 
 func get_inventory():
 	inventory = PlayerInventory.inventory
