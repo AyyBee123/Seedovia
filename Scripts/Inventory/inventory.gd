@@ -113,6 +113,8 @@ func able_to_put_into_slot(slot: slot_class) -> bool:
 		return holding_item_category == "WAIST"
 	elif slot.slot_type == slot_class.slot_types.FEET:
 		return holding_item_category == "FEET"
+	elif slot.slot_type == slot_class.slot_types.SEED:
+		return holding_item_category == "SEED"
 	else: # if the category is INVENTORY (since inventory can fit anything, it will return true)
 		return true
 			

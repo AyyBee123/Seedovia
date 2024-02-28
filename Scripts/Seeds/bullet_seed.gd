@@ -50,13 +50,14 @@ func _collide(body):
 	else:
 		ignore_first_collision = false
 	
-func shoot_next_weapon(weapon, enemy):
+func shoot_next_weapon(weapon, enemy = null):
 	var enemies = get_tree().get_nodes_in_group("Enemies")
-	# removes the hit enemy from the array so that the projectile does not target it when "buncing"
-	for i in range(enemies.size()): 
-		if enemies[i] == enemy:
-			enemies.remove_at(i)
-			break # break out of the loop because only one enemy is hit anyway, so it's reduntent to continue
+	if enemy != null:
+		# removes the hit enemy from the array so that the projectile does not target it when "bouncing"
+		for i in range(enemies.size()): 
+			if enemies[i] == enemy:
+				enemies.remove_at(i)
+				break # break out of the loop because only one enemy is hit anyway, so it's reduntent to continue
 	var nearest_enemy = null
 	var nearest_distance = null
 	for i in enemies.size():
@@ -91,6 +92,9 @@ func collision_detect(delta):
 func travelled_distance():
 	distance_travelled = starting_position.distance_to(self.global_position)
 	if distance_travelled >= _player_stats.get_stat("Weapon_Range") * range_multiplier:
+		var weapon = null if PlayerSeeds.seeds.size() <= 1 + slot_index or slot_index >= 2 else PlayerSeeds.seeds[slot_index + 1]
+		if weapon != null:
+			shoot_next_weapon(weapon)
 		queue_free()
 		
 func distance_after_collision():

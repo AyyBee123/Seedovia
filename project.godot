@@ -101,8 +101,8 @@ escape={
 2d_physics/layer_1="Wall"
 2d_physics/layer_2="Player"
 2d_physics/layer_3="Enemy"
-2d_physics/layer_4="Player Bullet"
-2d_physics/layer_5="Enemy Bullet"
+2d_physics/layer_4="Player Weapon"
+2d_physics/layer_5="Enemy Weapon"
 2d_physics/layer_6="Item"
 2d_physics/canvas_textures/default_texture_filter=1
 
