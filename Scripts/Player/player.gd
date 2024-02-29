@@ -94,7 +94,12 @@ func _on_shoot(weapon, location):
 	bullets_per_second.start()
 	
 func update_timers():
-	bullets_per_second.wait_time = 1.0/_player_stats.get_stat("Fire_Rate")
+	current_weapon = null if PlayerSeeds.seeds.size() == 0 else PlayerSeeds.load_weapons()[0]
+	if current_weapon != null:
+		bullets_per_second.wait_time = 1.0/_player_stats.get_stat("Fire_Rate")
+		print(PlayerSeeds.get_weapon(0).get_state().get_node_property_name(0, 1))
+	else:
+		bullets_per_second.wait_time = 1.0/_player_stats.get_stat("Fire_Rate")
 	dash_cooldown.wait_time = _player_stats.get_stat("Dash_Rate")
 	dash_invulnerability_time.wait_time = _player_stats.get_stat("Dash_Invulnerability")
 	bullets_per_second.start()
