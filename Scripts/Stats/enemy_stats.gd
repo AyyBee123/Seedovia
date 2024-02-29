@@ -11,7 +11,7 @@ signal health_depleted # send signal that health reached 0 (death)
 @export var acceleration = 0.1 # movement acceleration
 @export var friction = 0.25 # movement friction/deceleration
 
-var health # enemy's currnt health
+var health # enemy's current health
 
 # as the game/run progresses, the enemies' health will go up by a little to counteract the player increasing in power
 func _increase_max_health(amount):
