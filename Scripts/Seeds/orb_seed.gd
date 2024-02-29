@@ -3,13 +3,13 @@ extends "res://Scripts/Seeds/seed_template.gd"
 @onready var orb_fire_rate := $"Fire Rate"
 
 var shot_direction := Vector2(0,-1)
+@export var orb_fire_rate_multiplier: float = 1
 
 func _ready():
-	orb_fire_rate.wait_time = 1.0/(player._player_stats.get_stat("Fire_Rate") * fire_rate_multiplier)
-	orb_fire_rate.start()
+	orb_fire_rate.wait_time = 1.0/(player._player_stats.get_stat("Fire_Rate") * orb_fire_rate_multiplier)
+	orb_fire_rate.start(orb_fire_rate.wait_time)
 
-func _physics_process(delta):
-	collision_detect(delta)
+func _process(delta):
 	for i in range(seed_slots.size()):
 		var weapon = null if PlayerSeeds.seeds.size() <= 1 + slot_index or slot_index >= 2 else PlayerSeeds.seeds[slot_index + 1]
 		if weapon != null:

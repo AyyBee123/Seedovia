@@ -15,7 +15,7 @@ collision_mask = 0
 script = ExtResource("1_rog5s")
 speed_multiplier = 0.5
 damage_multiplier = 3.0
-fire_rate_multiplier = 0.75
+fire_rate_multiplier = 0.15
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1.78814e-07, 0)

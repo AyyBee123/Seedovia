@@ -25,7 +25,8 @@ func pick_from_slot():
 	if not (slot_type == slot_types.INVENTORY or slot_type == slot_types.SEED):
 		PlayerEquipment.remove_stats(item, player, item.item.was_already_equipped)
 		player_stats_ui.initialize_stats()
-		
+	if slot_type == slot_types.SEED:
+		player.update_timers()
 	remove_child(item)
 	var inventory_node = find_parent("Inventory")
 	inventory_node.add_child(item)
@@ -43,6 +44,7 @@ func put_into_slot(new_item):
 		player_stats_ui.initialize_stats()
 	if slot_type == slot_types.SEED:
 			PlayerSeeds.load_weapons()
+			player.update_timers()
 
 func initialize_item(slot_item):
 	item_instance = load("res://Scenes/Items/item.tscn")
