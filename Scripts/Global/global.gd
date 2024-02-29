@@ -1,6 +1,6 @@
 extends Node
 
-#%APPDATA%\Roaming\Godot\app_userdata\Roguelike
+# %APPDATA%\Roaming\Godot\app_userdata\Roguelike
 var SAVE_PATH := "user://player_inventory.res"
 var data := player_data.new()
 
