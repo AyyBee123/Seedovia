@@ -1,15 +1,14 @@
 extends "res://Scripts/State/state_machine.gd"
 
-@onready var timer := $Timer
+var timer = Timer.new()
 
 func _ready():
 	add_state("idle")
 	add_state("jump")
 	add_state("idle_from_jump")
 	add_state("shoot")
-	timer.one_shot = true
-	timer.start(1)
 	call_deferred("set_state", states.jump)
+	create_timer()
 
 func _state_logic(delta):
 	parent.move_and_slide()
@@ -49,3 +48,8 @@ func _enter_state(new_state, old_state):
 
 func _exit_state(old_state, new_state):
 	pass
+	
+func create_timer():
+	add_child(timer)
+	timer.one_shot = true
+	timer.start(1)

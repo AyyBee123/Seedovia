@@ -19,10 +19,6 @@ _enemy_stats = ExtResource("2_hw1h5")
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("3_67bo1")
 
-[node name="Timer" type="Timer" parent="StateMachine"]
-one_shot = true
-autostart = true
-
 [node name="CollisionPolygon2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_j8q5q")
