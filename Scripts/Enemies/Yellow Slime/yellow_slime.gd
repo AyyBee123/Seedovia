@@ -3,12 +3,15 @@ extends "res://Scripts/Enemies/enemy.gd"
 @onready var hitbox := $"Enemy Hitbox"
 @onready var initial_collision_layer: int = $"Enemy Hitbox".get_collision_layer()
 @onready var fire_time := $"Fire Time"
+var bullet = preload("res://Scenes/Enemies/Weapons/Bullet.tscn")
 var number_of_shots := 3
-
 var timer = Timer.new()
 
 func _ready():
 	super._ready()
+	
+func _physics_process(delta):
+	$"Rotation Point".look_at(player.global_position)
 
 func jump():
 	var direction = player.global_position - self.global_position
@@ -16,14 +19,24 @@ func jump():
 	hitbox.set_collision_layer(0)
 
 func idle():
-	velocity = Vector2.ZERO
-
-func idle_from_jump():
 	hitbox.set_collision_layer(initial_collision_layer)
-	velocity = Vector2.ZERO
+	velocity = velocity.lerp(Vector2.ZERO, _enemy_stats.friction)
 
 func shoot():
-	var shots_left := number_of_shots
-	if fire_time.time_left == 0:
-		#print("shoot")
-		shots_left -= 1
+	var can_fire = false
+	if fire_time.is_stopped():
+		can_fire = true
+		fire_time.start(1.0/number_of_shots)
+	if can_fire:
+		shoot_bullet()
+
+func shoot_bullet():
+	var bullet_instance = bullet.instantiate()
+	bullet_instance.damage = _enemy_stats.weapon_damage
+	bullet_instance.range = _enemy_stats.weapon_range
+	bullet_instance.speed = _enemy_stats.weapon_speed
+	get_tree().current_scene.add_child(bullet_instance)
+	bullet_instance.global_position = $"Rotation Point/Marker2D".global_position
+	bullet_instance.velocity = (player.global_position - bullet_instance.global_position).normalized()
+	bullet_instance.rotation = bullet_instance.velocity.angle()
+	

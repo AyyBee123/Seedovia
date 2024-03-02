@@ -5,6 +5,7 @@ signal max_health_changed(new_max_health) # send signal that max health changed
 signal health_depleted # send signal that health reached 0 (death)
 
 # player values
+@export_group("Player Stats")
 @export var max_health: int # max health
 @export var speed: float # movement speed
 @export var dash_rate: float # dash rate (in dashes/sec)
@@ -17,6 +18,7 @@ signal health_depleted # send signal that health reached 0 (death)
 @export var friction: float # movement friction/deceleration
 
 # weapon values
+@export_group("Weapon Stats")
 @export var weapon_speed: float # shot speed of the weapon
 @export var weapon_range: float # range of the weapon before it gets destroyed
 @export var weapon_size: float # size of the weapon

@@ -20,7 +20,7 @@ func _state_logic(delta):
 	if state == states.shoot:
 		parent.shoot()
 	if state == states.idle_from_jump:
-		parent.idle_from_jump()
+		parent.idle()
 
 func _get_transition(delta):
 	match state:

@@ -1,14 +1,15 @@
-[gd_resource type="Resource" script_class="enemy_stats" load_steps=2 format=3 uid="uid://brcskpgydvpwh"]
+[gd_resource type="Resource" script_class="enemy_stats" load_steps=2 format=3 uid="uid://b6x5rnatpqtid"]
 
 [ext_resource type="Script" path="res://Scripts/Stats/enemy_stats.gd" id="1_4fagk"]
 
 [resource]
-resource_local_to_scene = true
 script = ExtResource("1_4fagk")
 max_health = 40.0
 speed = 100.0
-fire_rate = 3.0
+fire_rate = 1.0
 damage = 1.0
 acceleration = 0.25
-friction = 0.1
+friction = 1.0
 weapon_damage = 1.0
+weapon_range = 300.0
+weapon_speed = 150.0

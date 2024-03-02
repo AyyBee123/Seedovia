@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Enemies/Yellow Slime/yellow_slime.gd" id="1_4pfp0"]
 [ext_resource type="Texture2D" uid="uid://bulbtp8ysidpu" path="res://Sprites/Enemies/Yellow Slime.png" id="2_cu2pf"]
-[ext_resource type="Resource" uid="uid://brcskpgydvpwh" path="res://Resources/Enemies/yellow_slime.tres" id="2_hw1h5"]
+[ext_resource type="Resource" uid="uid://b6x5rnatpqtid" path="res://Resources/Enemies/yellow_slime.tres" id="2_hw1h5"]
 [ext_resource type="Script" path="res://Scripts/Enemies/Yellow Slime/StateMachine.gd" id="3_67bo1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j8q5q"]
@@ -37,6 +37,14 @@ shape = SubResource("CapsuleShape2D_5p2e0")
 [node name="Fire Time" type="Timer" parent="."]
 wait_time = 0.333
 one_shot = true
+
+[node name="Rotation Point" type="Marker2D" parent="."]
+z_index = 2
+
+[node name="Marker2D" type="Marker2D" parent="Rotation Point"]
+z_index = 2
+position = Vector2(17, 0)
+scale = Vector2(2, 2)
 
 [connection signal="area_entered" from="Enemy Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="body_entered" from="Enemy Hitbox" to="." method="_on_hitbox_body_entered"]

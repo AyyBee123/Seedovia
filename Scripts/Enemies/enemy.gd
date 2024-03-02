@@ -10,8 +10,8 @@ func _ready():
 	_enemy_stats.health_depleted.connect(die)
 
 func _on_hitbox_body_entered(body):
-	if body.is_in_group("Players") and player.can_be_damaged:
-		player._player_stats.take_damage(self._enemy_stats)
+	if body.is_in_group("Players"):
+		player._player_stats.take_damage(_enemy_stats)
 		
 func die():
 	process_mode = 4 # = Mode: Disabled

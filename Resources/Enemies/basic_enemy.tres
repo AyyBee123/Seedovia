@@ -12,3 +12,5 @@ damage = 1.0
 acceleration = 0.25
 friction = 0.1
 weapon_damage = 0.0
+weapon_range = 0.0
+weapon_speed = 0.0

@@ -110,7 +110,7 @@ func _should_move() -> bool:
 	
 func _should_stop() -> bool:
 	var input_direction = Input.get_vector("left", "right", "up", "down")
-	return input_direction.length() == 0
+	return is_zero_approx(input_direction.length())
 	
 func _should_dash() -> bool:
 	return Input.is_action_just_pressed("dash") and dash_cooldown.is_stopped()
