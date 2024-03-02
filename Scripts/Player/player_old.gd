@@ -28,6 +28,9 @@ func _physics_process(delta):
 	# check if the mouse is in the inventory and if the inventory is visible to detect if the player can shoot
 	mouse_in_inventory = inventory.get_global_rect().has_point(inventory.get_global_mouse_position()) and inventory.is_visible_in_tree()
 	
+	# movement
+	move()
+	
 	# make player's hand look at mouse
 	$"Rotation Point".look_at(get_global_mouse_position())
 	
@@ -47,6 +50,8 @@ func _physics_process(delta):
 		else:
 			pass # will add pause here, but it's not made yet
 	# dash
+	if Input.is_action_just_pressed("dash") and dash_cooldown.is_stopped():
+		dash()
 	if dash_invulnerability_time.is_stopped():
 		can_be_damaged = true
 		
@@ -63,9 +68,9 @@ func move():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	if input_direction.length() > 0:
 		velocity = velocity.lerp(input_direction.normalized() * _player_stats.get_stat("Speed"), _player_stats.get_stat("Acceleration"))
-		
-func stop():
-	velocity = velocity.lerp(Vector2.ZERO, _player_stats.get_stat("Friction"))
+	else:
+		velocity = velocity.lerp(Vector2.ZERO, _player_stats.get_stat("Friction"))
+	move_and_slide()
 	
 func die():
 	hide() # temporary death effect
@@ -103,14 +108,3 @@ func update_timers():
 	
 func update_health(new_health):
 	player_stats_ui.set_health()
-	
-func _should_move() -> bool:
-	var input_direction = Input.get_vector("left", "right", "up", "down")
-	return input_direction.length() > 0
-	
-func _should_stop() -> bool:
-	var input_direction = Input.get_vector("left", "right", "up", "down")
-	return input_direction.length() == 0
-	
-func _should_dash() -> bool:
-	return Input.is_action_just_pressed("dash") and dash_cooldown.is_stopped()

@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://behuntfkbbwui"]
+
+[ext_resource type="Script" path="res://Scripts/Enemies/Yellow Slime/yellow_slime.gd" id="1_4pfp0"]
+[ext_resource type="Texture2D" uid="uid://bulbtp8ysidpu" path="res://Sprites/Enemies/Yellow Slime.png" id="2_cu2pf"]
+[ext_resource type="Resource" uid="uid://brcskpgydvpwh" path="res://Resources/Enemies/yellow_slime.tres" id="2_hw1h5"]
+[ext_resource type="Script" path="res://Scripts/Enemies/Yellow Slime/StateMachine.gd" id="3_67bo1"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j8q5q"]
+height = 26.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5p2e0"]
+height = 26.0
+
+[node name="Yellow Slime" type="CharacterBody2D"]
+collision_layer = 0
+script = ExtResource("1_4pfp0")
+_enemy_stats = ExtResource("2_hw1h5")
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("3_67bo1")
+
+[node name="Timer" type="Timer" parent="StateMachine"]
+one_shot = true
+autostart = true
+
+[node name="CollisionPolygon2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_j8q5q")
+
+[node name="YellowSlime" type="Sprite2D" parent="."]
+texture = ExtResource("2_cu2pf")
+
+[node name="Enemy Hitbox" type="Area2D" parent="." groups=["Enemies"]]
+collision_layer = 4
+collision_mask = 10
+
+[node name="CollisionPolygon2D" type="CollisionShape2D" parent="Enemy Hitbox"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_5p2e0")
+
+[node name="Fire Time" type="Timer" parent="."]
+wait_time = 0.333
+one_shot = true
+
+[connection signal="area_entered" from="Enemy Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="body_entered" from="Enemy Hitbox" to="." method="_on_hitbox_body_entered"]

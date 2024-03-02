@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dr8qdmnfjxopo"]
+[gd_scene load_steps=16 format=3 uid="uid://dr8qdmnfjxopo"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_yv4rh"]
 [ext_resource type="PackedScene" uid="uid://cu63rxmy71bcg" path="res://Scenes/Player/Player.tscn" id="2_3q0y2"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://Scripts/Stats/enemy_stats.gd" id="8_e2kyk"]
 [ext_resource type="Resource" uid="uid://cuy80aorwngdg" path="res://Resources/Items/Seeds/bullet.tres" id="8_j7al0"]
 [ext_resource type="PackedScene" uid="uid://civnfvhref4lg" path="res://Scenes/Stats/player_stats_ui.tscn" id="8_k4lp5"]
+[ext_resource type="PackedScene" uid="uid://bit62xejx6ldr" path="res://Scenes/Enemies/Basic Enemy.tscn" id="9_2kn6u"]
 [ext_resource type="PackedScene" uid="uid://behuntfkbbwui" path="res://Scenes/Enemies/Yellow Slime.tscn" id="9_pjhan"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ne3hj"]
@@ -22,16 +23,38 @@ physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 30
 sources/1 = SubResource("TileSetAtlasSource_ne3hj")
 
-[sub_resource type="Resource" id="Resource_pdso0"]
+[sub_resource type="Resource" id="Resource_fmnf3"]
 resource_local_to_scene = true
 script = ExtResource("8_e2kyk")
-max_health = 40.0
-speed = 100.0
-fire_rate = 3.0
+max_health = 50.0
+speed = 30.0
+fire_rate = 1.0
 damage = 1.0
 acceleration = 0.25
 friction = 0.1
-weapon_damage = 1.0
+weapon_damage = 0.0
+
+[sub_resource type="Resource" id="Resource_vbj60"]
+resource_local_to_scene = true
+script = ExtResource("8_e2kyk")
+max_health = 50.0
+speed = 30.0
+fire_rate = 1.0
+damage = 1.0
+acceleration = 0.25
+friction = 0.1
+weapon_damage = 0.0
+
+[sub_resource type="Resource" id="Resource_peq6t"]
+resource_local_to_scene = true
+script = ExtResource("8_e2kyk")
+max_health = 50.0
+speed = 30.0
+fire_rate = 1.0
+damage = 1.0
+acceleration = 0.25
+friction = 0.1
+weapon_damage = 0.0
 
 [node name="Level" type="Node2D"]
 position = Vector2(-576, -320)
@@ -56,9 +79,20 @@ layer_0/tile_data = PackedInt32Array(0, 1, 0, 65536, 1, 0, 131072, 1, 0, 196608,
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 320)
 
+[node name="Basic Enemy" parent="." instance=ExtResource("9_2kn6u")]
+position = Vector2(145, 172)
+_enemy_stats = SubResource("Resource_fmnf3")
+
+[node name="Basic Enemy2" parent="." instance=ExtResource("9_2kn6u")]
+position = Vector2(308, 220)
+_enemy_stats = SubResource("Resource_vbj60")
+
+[node name="Basic Enemy3" parent="." instance=ExtResource("9_2kn6u")]
+position = Vector2(430, 130)
+_enemy_stats = SubResource("Resource_peq6t")
+
 [node name="Yellow Slime" parent="." instance=ExtResource("9_pjhan")]
 position = Vector2(830, 180)
-_enemy_stats = SubResource("Resource_pdso0")
 
 [node name="Player Stats" parent="." instance=ExtResource("8_k4lp5")]
 offset_left = -374.0

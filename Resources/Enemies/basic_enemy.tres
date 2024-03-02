@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="enemy_stats" load_steps=2 format=3 uid="uid://d0d5pkl04gbin"]
+
+[ext_resource type="Script" path="res://Scripts/Stats/enemy_stats.gd" id="1_btrs1"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_btrs1")
+max_health = 50.0
+speed = 30.0
+fire_rate = 1.0
+damage = 1.0
+acceleration = 0.25
+friction = 0.1
+weapon_damage = 0.0

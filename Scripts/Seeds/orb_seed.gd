@@ -9,7 +9,8 @@ func _ready():
 	orb_fire_rate.wait_time = 1.0/(player._player_stats.get_stat("Fire_Rate") * orb_fire_rate_multiplier)
 	orb_fire_rate.start(orb_fire_rate.wait_time)
 
-func _process(delta):
+func _physics_process(delta):
+	super._physics_process(delta)
 	for i in range(seed_slots.size()):
 		var weapon = null if PlayerSeeds.seeds.size() <= 1 + slot_index or slot_index >= 2 else PlayerSeeds.seeds[slot_index + 1]
 		if weapon != null:
