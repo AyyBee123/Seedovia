@@ -1,5 +1,13 @@
 extends "res://Scripts/Seeds/seed_template.gd"
 
+var hit_enemy = null
+
+func _physics_process(delta):
+	initialize_position()
+	travelled_distance()
+	distance_after_collision()
+	update_position(delta)
+
 func _collide(body):
 	if not ignore_first_collision:
 		if body.is_in_group("Enemies"):
@@ -12,8 +20,45 @@ func _collide(body):
 		queue_free()
 	else:
 		ignore_first_collision = false
+		
+func initialize_position():
+	if not position_initialized:
+		starting_position = global_position
+		if slot_index == 0:
+			direction = global_position.direction_to(get_global_mouse_position())
+		else:
+			var nearest_enemy = get_nearest_enemy(hit_enemy)
+			direction = desired_direction
+		
+		position_initialized = true
 	
 func shoot_next_weapon(weapon, enemy = null):
+	var weapon_instance = weapon.instantiate()
+	if get_nearest_enemy(enemy) != null:
+		weapon_instance.desired_direction = get_nearest_enemy(enemy).global_position
+	else:
+		weapon_instance.desired_direction = global_position.direction_to(player.global_position)
+	weapon_instance.hit_enemy = enemy
+	weapon_instance.initial_weapon = false
+	weapon_instance.ignore_first_collision = true
+	weapon_instance.slot_index = slot_index + 1
+	call_deferred("initialize_location", weapon_instance)
+	
+func initialize_location(weapon_instance):
+	get_tree().current_scene.add_child(weapon_instance)
+	weapon_instance.global_position = global_position
+	
+func travelled_distance():
+	distance_travelled = starting_position.distance_to(self.global_position)
+	if distance_travelled >= _player_stats.get_stat("Weapon_Range") * range_multiplier:
+		for i in range(seed_slots.size()):
+			var weapon = null if PlayerSeeds.seeds.size() <= 1 + slot_index or slot_index >= 2 else PlayerSeeds.seeds[slot_index + 1]
+			if weapon != null:
+				shoot_next_weapon(weapon)
+			break
+		queue_free()
+		
+func get_nearest_enemy(enemy):
 	var enemies = get_tree().get_nodes_in_group("Enemies")
 	if enemy != null:
 		# removes the hit enemy from the array so that the projectile does not target it when "bouncing"
@@ -31,25 +76,4 @@ func shoot_next_weapon(weapon, enemy = null):
 			if nearest_distance > enemies[i].global_position.distance_squared_to(global_position):
 				nearest_distance = enemies[i].global_position.distance_squared_to(global_position)
 				nearest_enemy = enemies[i]
-	
-	var weapon_instance = weapon.instantiate()
-	weapon_instance.initial_weapon = false
-	weapon_instance.ignore_first_collision = true
-	weapon_instance.slot_index = slot_index + 1
-	call_deferred("initialize_location", weapon_instance, nearest_enemy)
-	
-func initialize_location(weapon_instance, nearest_enemy):
-	get_tree().current_scene.add_child(weapon_instance)
-	weapon_instance.global_position = global_position
-	weapon_instance.velocity = -velocity if nearest_enemy == null else (nearest_enemy.global_position - global_position).normalized()
-	weapon_instance.rotation = weapon_instance.velocity.angle()
-	
-func travelled_distance():
-	distance_travelled = starting_position.distance_to(self.global_position)
-	if distance_travelled >= _player_stats.get_stat("Weapon_Range") * range_multiplier:
-		for i in range(seed_slots.size()):
-			var weapon = null if PlayerSeeds.seeds.size() <= 1 + slot_index or slot_index >= 2 else PlayerSeeds.seeds[slot_index + 1]
-			if weapon != null:
-				shoot_next_weapon(weapon)
-			break
-		queue_free()
+	return nearest_enemy

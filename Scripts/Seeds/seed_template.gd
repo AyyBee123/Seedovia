@@ -1,8 +1,10 @@
-extends CharacterBody2D
+extends Sprite2D
 
 @onready var player := $"../Player"
 @onready var _player_stats = player._player_stats
 @onready var seed_slots := $"../Player/Inventory/NinePatchRect/Seed Slots".get_children()
+
+var desired_direction: Vector2
 
 var starting_position: Vector2 # gets the starting position from where the bullet is fired
 var distance_travelled: float # gets the current range travelled by the bullet
@@ -17,6 +19,8 @@ var short_distance_travelled: float # this lets the projectile move a little bef
 
 var slot_index: int
 
+var direction: Vector2 
+
 # initialize multipliers
 @export var speed_multiplier: float = 1 # shot speed multiplier of the weapon
 @export var range_multiplier: float = 1 # range multiplier of the weapon before it gets destroyed
@@ -27,17 +31,18 @@ var slot_index: int
 
 func _physics_process(delta):
 	initialize_position()
-	collision_detect(delta)
 	travelled_distance()
 	distance_after_collision()
+	update_position(delta)
 	
 func initialize_position():
 	if not position_initialized:
 		starting_position = global_position
+		if slot_index == 0:
+			direction = global_position.direction_to(get_global_mouse_position())
+		else:
+			direction = desired_direction
 		position_initialized = true
-
-func collision_detect(delta):
-	var collision_detect = move_and_collide(velocity * delta * _player_stats.get_stat("Weapon_Speed") * speed_multiplier)
 	
 func travelled_distance():
 	distance_travelled = starting_position.distance_to(self.global_position)
@@ -65,3 +70,8 @@ func _collide(body):
 		
 func shoot_next_weapon(weapon):
 	pass
+	
+func update_position(delta):
+	var current_velocity: Vector2 = direction * _player_stats.get_stat("Weapon_Speed") * speed_multiplier
+	position += current_velocity * delta
+	look_at(global_position + current_velocity)

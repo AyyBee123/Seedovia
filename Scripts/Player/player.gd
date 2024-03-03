@@ -85,8 +85,6 @@ func _on_shoot(weapon, location):
 	weapon_instance.slot_index = 0
 	get_tree().current_scene.add_child(weapon_instance)
 	weapon_instance.global_position = location
-	weapon_instance.velocity = (get_global_mouse_position() - weapon_instance.global_position).normalized()
-	weapon_instance.rotation = weapon_instance.velocity.angle()
 	bullets_per_second.start()
 	
 func update_timers():
