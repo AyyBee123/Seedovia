@@ -43,3 +43,13 @@ func initialize_location(weapon_instance, nearest_enemy):
 	weapon_instance.global_position = global_position
 	weapon_instance.velocity = -velocity if nearest_enemy == null else (nearest_enemy.global_position - global_position).normalized()
 	weapon_instance.rotation = weapon_instance.velocity.angle()
+	
+func travelled_distance():
+	distance_travelled = starting_position.distance_to(self.global_position)
+	if distance_travelled >= _player_stats.get_stat("Weapon_Range") * range_multiplier:
+		for i in range(seed_slots.size()):
+			var weapon = null if PlayerSeeds.seeds.size() <= 1 + slot_index or slot_index >= 2 else PlayerSeeds.seeds[slot_index + 1]
+			if weapon != null:
+				shoot_next_weapon(weapon)
+			break
+		queue_free()
