@@ -29,7 +29,6 @@ func initialize_stats(stats: enemy_stats):
 	weapon_damage = stats.weapon_damage
 	weapon_range = stats.weapon_range
 	weapon_speed = stats.weapon_speed
-	print_debug(stats.weapon_range)
 	health = max_health
 
 # as the game/run progresses, the enemies' health will go up by a little to counteract the player increasing in power
