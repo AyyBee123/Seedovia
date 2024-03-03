@@ -16,6 +16,7 @@ signal health_depleted # send signal that health reached 0 (death)
 @export var invulnerability_time: float # time before player can take damage after taking damage (in seconds)
 @export var acceleration: float # movement acceleration
 @export var friction: float # movement friction/deceleration
+@export var luck: float # affects chances, like proc chances and maybe drops
 
 # weapon values
 @export_group("Weapon Stats")

@@ -78,6 +78,11 @@ var stats := {
 		"+": 0,
 		"x": 1
 	},
+	"Luck": {
+		"base": luck,
+		"+": 0,
+		"x": 1
+	},
 }
 
 # initialize the base stats in the player script because exports don't get assigned until _ready() is called
@@ -97,6 +102,7 @@ func initialize_base_stats():
 	stats["Weapon_Size"]["base"] = weapon_size
 	stats["Weapon_Damage"]["base"] = weapon_damage
 	stats["Weapon_Blast_Radius"]["base"] = weapon_blast_radius
+	stats["Luck"]["base"] = luck
 	
 func get_health(was_equipped: bool):
 	var previous_max_health = max_health
