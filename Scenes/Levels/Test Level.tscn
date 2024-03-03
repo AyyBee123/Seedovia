@@ -1,11 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://dr8qdmnfjxopo"]
+[gd_scene load_steps=9 format=3 uid="uid://dr8qdmnfjxopo"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_yv4rh"]
 [ext_resource type="PackedScene" uid="uid://cu63rxmy71bcg" path="res://Scenes/Player/Player.tscn" id="2_3q0y2"]
 [ext_resource type="Texture2D" uid="uid://cw4586xydqwsm" path="res://Sprites/Wall/Tile Placeholder.png" id="3_ap3fh"]
-[ext_resource type="PackedScene" uid="uid://b3ibupvqneqor" path="res://Scenes/Items/item.tscn" id="3_ygume"]
-[ext_resource type="Resource" uid="uid://6r7y2c1r006r" path="res://Resources/Items/Seeds/orb.tres" id="5_qdl3y"]
-[ext_resource type="Resource" uid="uid://cuy80aorwngdg" path="res://Resources/Items/Seeds/bullet.tres" id="8_j7al0"]
+[ext_resource type="Script" path="res://Scenes/Levels/fps.gd" id="5_x8o24"]
+[ext_resource type="FontFile" uid="uid://cuikskpsdoxgb" path="res://Fonts/Kenney Pixel.ttf" id="6_1usef"]
 [ext_resource type="PackedScene" uid="uid://civnfvhref4lg" path="res://Scenes/Stats/player_stats_ui.tscn" id="8_k4lp5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ne3hj"]
@@ -27,18 +26,6 @@ script = ExtResource("1_yv4rh")
 [node name="Player" parent="." instance=ExtResource("2_3q0y2")]
 position = Vector2(602, 292)
 
-[node name="Item5" parent="." instance=ExtResource("3_ygume")]
-position = Vector2(552, 455)
-item = ExtResource("8_j7al0")
-
-[node name="Item6" parent="." instance=ExtResource("3_ygume")]
-position = Vector2(472, 376)
-item = ExtResource("5_qdl3y")
-
-[node name="Item7" parent="." instance=ExtResource("3_ygume")]
-position = Vector2(472, 288)
-item = ExtResource("5_qdl3y")
-
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_dsidl")
 format = 2
@@ -52,3 +39,20 @@ offset_left = -374.0
 offset_top = 28.0
 offset_right = -374.0
 offset_bottom = 28.0
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 331.0
+offset_bottom = 40.0
+script = ExtResource("5_x8o24")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 257.0
+offset_bottom = 68.0
+theme_override_fonts/normal_font = ExtResource("6_1usef")
+theme_override_font_sizes/normal_font_size = 48
+text = "asasasasass"
