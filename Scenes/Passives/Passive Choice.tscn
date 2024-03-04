@@ -1,0 +1,58 @@
+[gd_scene load_steps=5 format=3 uid="uid://dfafxnw5132qr"]
+
+[ext_resource type="Script" path="res://Scripts/UI/passive_choice.gd" id="1_7x1m1"]
+[ext_resource type="Texture2D" uid="uid://cmhhfcqibnxtw" path="res://Sprites/Passive UI/Passive Background.png" id="1_ayyp6"]
+[ext_resource type="FontFile" uid="uid://cuikskpsdoxgb" path="res://Fonts/Kenney Pixel.ttf" id="3_w5l52"]
+[ext_resource type="Texture2D" uid="uid://cbgu0fp1f5ewh" path="res://Sprites/Passive UI/Passive Choice.png" id="4_3krng"]
+
+[node name="PassiveChoice" type="Control"]
+z_index = 5
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7x1m1")
+
+[node name="PassiveBackground" type="TextureRect" parent="."]
+layout_mode = 2
+offset_left = -512.0
+offset_top = -512.0
+offset_right = -256.0
+offset_bottom = -256.0
+scale = Vector2(4, 4)
+texture = ExtResource("1_ayyp6")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PassiveBackground"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 13.25
+offset_right = 253.0
+offset_bottom = 38.25
+theme_override_fonts/normal_font = ExtResource("3_w5l52")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[center]Choose 1 Upgrade"
+
+[node name="GridContainer" type="GridContainer" parent="PassiveBackground"]
+layout_mode = 0
+offset_left = 11.5
+offset_top = 43.5
+offset_right = 242.5
+offset_bottom = 251.5
+theme_override_constants/v_separation = 20
+
+[node name="TextureButton" type="TextureButton" parent="PassiveBackground/GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_3krng")
+
+[node name="TextureButton2" type="TextureButton" parent="PassiveBackground/GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_3krng")
+
+[node name="TextureButton3" type="TextureButton" parent="PassiveBackground/GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_3krng")
