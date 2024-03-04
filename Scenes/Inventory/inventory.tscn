@@ -20,6 +20,7 @@ texture = ExtResource("6_2hcdt")
 
 [node name="Inventory" type="Control" groups=["Persist"]]
 top_level = true
+z_index = 3
 layout_mode = 3
 anchors_preset = 0
 offset_right = 161.0
