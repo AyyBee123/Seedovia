@@ -5,7 +5,7 @@
 [ext_resource type="FontFile" uid="uid://bkn7gmgx1wxgx" path="res://Fonts/Name Font.ttf" id="3_4afso"]
 [ext_resource type="Texture2D" uid="uid://cbgu0fp1f5ewh" path="res://Sprites/Passive UI/Passive Choice.png" id="4_3krng"]
 [ext_resource type="Texture2D" uid="uid://bw488sd3i0ynn" path="res://Sprites/Passive UI/Passive Border.png" id="5_kbpep"]
-[ext_resource type="Texture2D" uid="uid://dc186h5pvg1wi" path="res://Sprites/Passives/Explosive Trigger.png" id="5_yjevb"]
+[ext_resource type="Texture2D" uid="uid://dc186h5pvg1wi" path="res://Sprites/Passives/Icons/Explosive Trigger.png" id="5_yjevb"]
 [ext_resource type="FontFile" uid="uid://wbj0boqv37y6" path="res://Fonts/Description Font.ttf" id="7_f1dvr"]
 
 [node name="PassiveChoice" type="Control"]
@@ -35,7 +35,7 @@ offset_left = 2.5
 offset_top = 8.5
 offset_right = 254.5
 offset_bottom = 32.5
-theme_override_fonts/normal_font = ExtResource("3_4afso")
+theme_override_fonts/normal_font = ExtResource("7_f1dvr")
 theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "[center]CHOOSE ONE UPGRADE"
@@ -98,7 +98,7 @@ mouse_filter = 2
 theme_override_fonts/normal_font = ExtResource("3_4afso")
 theme_override_font_sizes/normal_font_size = 16
 bbcode_enabled = true
-text = "[rainbow][wave amp=15 freq=6.5]Explosive Trigger"
+text = "Explosive Trigger"
 fit_content = true
 scroll_active = false
 

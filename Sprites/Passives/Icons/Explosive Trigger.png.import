@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dc186h5pvg1wi"
-path="res://.godot/imported/Explosive Trigger.png-c5ad366cd3270825438ed24961e9712e.ctex"
+path="res://.godot/imported/Explosive Trigger.png-2351fe91431106a605ac31f40948e113.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Passives/Explosive Trigger.png"
-dest_files=["res://.godot/imported/Explosive Trigger.png-c5ad366cd3270825438ed24961e9712e.ctex"]
+source_file="res://Sprites/Passives/Icons/Explosive Trigger.png"
+dest_files=["res://.godot/imported/Explosive Trigger.png-2351fe91431106a605ac31f40948e113.ctex"]
 
 [params]
 
