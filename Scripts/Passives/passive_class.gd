@@ -1,4 +1,4 @@
-class_name passive_class extends Node
+class_name passive_class extends Resource
 
 @export var passive_name: String
 @export var sprite: Texture
