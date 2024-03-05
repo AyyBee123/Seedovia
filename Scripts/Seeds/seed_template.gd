@@ -5,6 +5,7 @@ extends Sprite2D
 @onready var seed_slots := $"../Player/Inventory/NinePatchRect/Seed Slots".get_children()
 
 var desired_direction: Vector2
+var hit_enemy = null
 
 var starting_position: Vector2 # gets the starting position from where the bullet is fired
 var distance_travelled: float # gets the current range travelled by the bullet
@@ -41,7 +42,7 @@ func initialize_position():
 		if slot_index == 0:
 			direction = global_position.direction_to(get_global_mouse_position())
 		else:
-			direction = desired_direction
+			direction = desired_direction.normalized()
 		position_initialized = true
 	
 func travelled_distance():
@@ -73,5 +74,6 @@ func shoot_next_weapon(weapon):
 	
 func update_position(delta):
 	var current_velocity: Vector2 = direction * _player_stats.get_stat("Weapon_Speed") * speed_multiplier
+	print(current_velocity)
 	position += current_velocity * delta
 	look_at(global_position + current_velocity)

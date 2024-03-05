@@ -1,7 +1,5 @@
 extends "res://Scripts/Seeds/seed_template.gd"
 
-var hit_enemy = null
-
 func _physics_process(delta):
 	initialize_position()
 	travelled_distance()
@@ -35,7 +33,7 @@ func initialize_position():
 func shoot_next_weapon(weapon, enemy = null):
 	var weapon_instance = weapon.instantiate()
 	if get_nearest_enemy(enemy) != null:
-		weapon_instance.desired_direction = get_nearest_enemy(enemy).global_position
+		weapon_instance.desired_direction = global_position.direction_to(get_nearest_enemy(enemy).global_position)
 	else:
 		weapon_instance.desired_direction = global_position.direction_to(player.global_position)
 	weapon_instance.hit_enemy = enemy
