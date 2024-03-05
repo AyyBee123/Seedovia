@@ -7,6 +7,7 @@
 [resource]
 script = ExtResource("1_t1tr5")
 scene = ExtResource("1_7crlc")
+rarity = 1
 item_name = "Orb"
 texture = ExtResource("3_5yqqr")
 description = "Orb"
