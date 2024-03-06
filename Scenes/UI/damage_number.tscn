@@ -86,8 +86,8 @@ autoplay = "Rise and Fall"
 
 [node name="LabelContainer" type="Node2D" parent="."]
 unique_name_in_owner = true
-modulate = Color(1, 1, 1, 0.999653)
-scale = Vector2(0.999653, 0.999653)
+modulate = Color(1, 1, 1, 0)
+scale = Vector2(1e-05, 1e-05)
 
 [node name="Label" type="Label" parent="LabelContainer"]
 unique_name_in_owner = true
