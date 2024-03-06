@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qbv06"]
 size = Vector2(14, 8)
 
-[node name="Bullet" type="Sprite2D"]
+[node name="Bullet" type="Sprite2D" groups=["Weapon"]]
 texture = ExtResource("2_1n5dh")
 script = ExtResource("1_0klqm")
 

@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 signal shoot(bullet, direction, location)
+signal weapon_fired
 
 @export var _player_stats: player_stats
 
@@ -11,6 +12,7 @@ signal shoot(bullet, direction, location)
 @onready var inventory_screen := $"Inventory/NinePatchRect"
 @onready var player_stats_ui := $"../Player Stats"
 @onready var initial_collision_layer := get_collision_layer()
+@onready var player_passives := $Passives
 
 var current_weapon: PackedScene = null
 
@@ -36,7 +38,7 @@ func _physics_process(delta):
 	
 	# shoot bullet
 	if Input.is_action_pressed("shoot") and bullets_per_second.is_stopped() and not mouse_in_inventory:
-		current_weapon = null if PlayerSeeds.seeds.size() == 0 else PlayerSeeds.load_weapons()[0]
+		current_weapon = null if PlayerInventory.seeds.size() == 0 else PlayerSeeds.load_weapons()[0]
 		if current_weapon != null:
 			shoot.emit(current_weapon, $"Rotation Point/Marker2D".get_global_position())
 			
@@ -86,9 +88,10 @@ func _on_shoot(weapon, location):
 	get_tree().current_scene.add_child(weapon_instance)
 	weapon_instance.global_position = location
 	bullets_per_second.start()
+	weapon_fired.emit()
 	
 func update_timers():
-	current_weapon = null if PlayerSeeds.seeds.size() == 0 else PlayerSeeds.load_weapons()[0]
+	current_weapon = null if PlayerInventory.seeds.size() == 0 else PlayerSeeds.load_weapons()[0]
 	if current_weapon != null:
 		var weapon = current_weapon.instantiate()
 		bullets_per_second.wait_time = 1.0/(_player_stats.get_stat("Fire_Rate") * weapon.fire_rate_multiplier)

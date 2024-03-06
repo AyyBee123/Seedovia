@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_1s1yq"]
 radius = 12.0
 
-[node name="Orb" type="Sprite2D"]
+[node name="Orb" type="Sprite2D" groups=["Weapon"]]
 texture = ExtResource("2_5uyb5")
 script = ExtResource("1_rog5s")
 speed_multiplier = 0.5

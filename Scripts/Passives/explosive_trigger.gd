@@ -1,11 +1,16 @@
-extends Node
+extends "res://Scripts/Passives/passive_behaviour.gd"
 
+@onready var resource_preloader := $ResourcePreloader
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+func add_tally():
+	super.add_tally()
+	if (tally_count % 3 == 0 and tally_count != 0):
+		explode()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func explode():
+	var explosion = resource_preloader.get_resource("Explosion").instantiate()
+	get_tree().current_scene.add_child(explosion)
+	explosion.global_position = player.global_position
+	explosion.player = player
+	explosion.damage = player._player_stats.get_stat("Weapon_Damage")
+	explosion.damage_multiplier = 5
