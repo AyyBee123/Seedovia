@@ -13,4 +13,4 @@ func explode():
 	explosion.global_position = player.global_position
 	explosion.player = player
 	explosion.damage = player._player_stats.get_stat("Weapon_Damage")
-	explosion.damage_multiplier = 5
+	explosion.damage_multiplier = 3
