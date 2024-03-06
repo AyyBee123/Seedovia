@@ -11,7 +11,7 @@ func remove():
 	queue_free()
 	
 func set_and_animate_damage(value: float, start_pos: Vector2, height: float, spread: float) -> void:
-	label.text = str(value)
+	label.text = set_value(int(round(value)))
 	ap.play("Rise and Fall")
 	
 	var tween = get_tree().create_tween()
@@ -19,3 +19,10 @@ func set_and_animate_damage(value: float, start_pos: Vector2, height: float, spr
 	var tween_length = ap.get_animation("Rise and Fall").length
 	
 	tween.tween_property(label_container, "position", end_pos, tween_length)
+	
+func set_value(value):
+	var text = ""
+	while value >= 1000:
+		text += ",%03d" % (value % 1000)
+		value /= 1000
+	return str(value) + text
