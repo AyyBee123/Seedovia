@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://dovc3jnyptwgu"]
 
-[ext_resource type="Script" path="res://Scripts/Passives/Abilities/banana_bomb.gd" id="1_e77rc"]
+[ext_resource type="Script" path="res://Scripts/Passives/Abilities/banana_mine.gd" id="1_jsfwh"]
 [ext_resource type="PackedScene" uid="uid://c2bmb024gpggu" path="res://Scenes/Passives/Effects/Banana.tscn" id="2_bjywd"]
 
 [node name="BananaMine" type="Node"]
-script = ExtResource("1_e77rc")
+script = ExtResource("1_jsfwh")
 
 [node name="ResourcePreloader" type="ResourcePreloader" parent="."]
 resources = [PackedStringArray("Banana"), [ExtResource("2_bjywd")]]

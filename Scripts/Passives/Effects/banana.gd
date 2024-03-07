@@ -13,8 +13,9 @@ var spread: float
 var speed: float
 var speed_multiplier: float
 
-@onready var life_time = $Lifetime
-@onready var resource_preloader = $ResourcePreloader
+@onready var projectile_speed_timer := $"Projectile Deceleration"
+@onready var life_time := $Lifetime
+@onready var resource_preloader := $ResourcePreloader
 
 func _ready():
 	spread = deg_to_rad(randf_range(-20,20))
@@ -26,11 +27,11 @@ func _physics_process(delta):
 func initialize_position():
 	if not position_initialized:
 		starting_position = global_position
-		direction = global_position.direction_to(get_global_mouse_position())
+		direction = global_position.direction_to(get_global_mouse_position()).rotated(spread)
 		position_initialized = true
 
 func update_position(delta):
-	var current_velocity: Vector2 = direction.rotated(spread) * speed * speed_multiplier
+	var current_velocity: Vector2 = direction * speed * speed_multiplier * projectile_speed_timer.time_left
 	position += current_velocity * delta
 	look_at(global_position + current_velocity)
 
