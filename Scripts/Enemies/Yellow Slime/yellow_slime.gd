@@ -3,6 +3,7 @@ extends "res://Scripts/Enemies/enemy.gd"
 @onready var hitbox := $"Enemy Hitbox"
 @onready var initial_collision_layer: int = $"Enemy Hitbox".get_collision_layer()
 @onready var fire_time := $"Fire Time"
+
 var bullet = preload("res://Scenes/Enemies/Weapons/Bullet.tscn")
 var number_of_shots := 3
 var timer = Timer.new()

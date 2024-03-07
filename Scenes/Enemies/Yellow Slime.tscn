@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://behuntfkbbwui"]
+[gd_scene load_steps=9 format=3 uid="uid://behuntfkbbwui"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/Yellow Slime/yellow_slime.gd" id="1_4pfp0"]
 [ext_resource type="Texture2D" uid="uid://bulbtp8ysidpu" path="res://Sprites/Enemies/Yellow Slime.png" id="2_cu2pf"]
 [ext_resource type="Resource" uid="uid://b6x5rnatpqtid" path="res://Resources/Enemies/yellow_slime.tres" id="2_hw1h5"]
 [ext_resource type="Script" path="res://Scripts/Enemies/Yellow Slime/StateMachine.gd" id="3_67bo1"]
+[ext_resource type="Texture2D" uid="uid://di216pisnnku2" path="res://Sprites/UI/Enemy Health Bar.png" id="5_ii5ru"]
+[ext_resource type="Texture2D" uid="uid://l7w6x0k13ni4" path="res://Sprites/UI/Enemy Filled Health.png" id="6_11ile"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j8q5q"]
 height = 26.0
@@ -45,6 +47,14 @@ z_index = 2
 z_index = 2
 position = Vector2(17, 0)
 scale = Vector2(2, 2)
+
+[node name="Health Bar" type="TextureProgressBar" parent="."]
+offset_left = -22.0
+offset_top = -24.0
+offset_right = 22.0
+offset_bottom = -16.0
+texture_under = ExtResource("5_ii5ru")
+texture_progress = ExtResource("6_11ile")
 
 [connection signal="area_entered" from="Enemy Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="body_entered" from="Enemy Hitbox" to="." method="_on_hitbox_body_entered"]

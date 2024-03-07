@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @onready var player := $"../Player"
+@onready var health_bar := $"Health Bar"
 @export var _enemy_stats: enemy_stats
 
 var damage_number = preload("res://Scenes/UI/damage_number.tscn")
@@ -8,6 +9,7 @@ var damage_number = preload("res://Scenes/UI/damage_number.tscn")
 func _ready():
 	_enemy_stats.initialize_stats(_enemy_stats)
 	_enemy_stats.set_health(_enemy_stats.max_health)
+	set_health_bar(_enemy_stats.max_health)
 	_enemy_stats.health_changed.connect(update_health)
 	_enemy_stats.health_depleted.connect(die)
 	_enemy_stats.spawn_damage_number.connect(spawn_damage_number)
@@ -23,6 +25,7 @@ func die():
 	
 func update_health(new_health):
 	_enemy_stats.health = new_health
+	health_bar.value = new_health
 	
 func spawn_damage_number(damage: float):
 	var value = str(round(damage))
@@ -33,3 +36,7 @@ func spawn_damage_number(damage: float):
 	get_tree().current_scene.add_child(damage_text, true)
 	damage_text.global_position = global_position
 	damage_text.set_and_animate_damage(damage, pos, height, spread)
+	
+func set_health_bar(max_health):
+	health_bar.max_value = max_health
+	health_bar.value = max_health
