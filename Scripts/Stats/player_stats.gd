@@ -79,7 +79,7 @@ var stats := {
 		"x": 1
 	},
 	"Luck": {
-		"base": luck,
+		# base luck is the base chance from an item or passive, not from the player (that's why it's not here)
 		"+": 0,
 		"x": 1
 	},
@@ -102,7 +102,6 @@ func initialize_base_stats():
 	stats["Weapon_Size"]["base"] = weapon_size
 	stats["Weapon_Damage"]["base"] = weapon_damage
 	stats["Weapon_Blast_Radius"]["base"] = weapon_blast_radius
-	stats["Luck"]["base"] = luck
 	
 func get_health(was_equipped: bool):
 	var previous_max_health = max_health
