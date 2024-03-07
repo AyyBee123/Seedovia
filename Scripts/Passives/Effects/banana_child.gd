@@ -17,9 +17,6 @@ var speed_multiplier: float
 @onready var life_time := $Lifetime
 @onready var resource_preloader := $ResourcePreloader
 
-func _ready():
-	spread = deg_to_rad(randf_range(-20,20))
-
 func _physics_process(delta):
 	initialize_position()
 	update_position(delta)
@@ -27,7 +24,6 @@ func _physics_process(delta):
 func initialize_position():
 	if not position_initialized:
 		starting_position = global_position
-		direction = global_position.direction_to(get_global_mouse_position()).rotated(spread)
 		position_initialized = true
 
 func update_position(delta):
@@ -51,18 +47,4 @@ func explode():
 	explosion.get_node("AnimatedSprite2D").self_modulate = Color(1,1,0)
 	get_tree().current_scene.add_child(explosion)
 	explosion.global_position = self.global_position
-	spawn_child_bananas()
 	queue_free()
-
-func spawn_child_bananas():
-	# split the banana mine into 3 smaller bananas with the indicated launch directions
-	var directions = [Vector2.UP, Vector2(-sqrt(3)/2,0.5), Vector2(sqrt(3)/2,0.5)]
-	for direction in directions:
-		var banana_child = resource_preloader.get_resource("Banana Child").instantiate()
-		banana_child.damage = damage * 0.35
-		banana_child.damage_multiplier = damage_multiplier
-		banana_child.speed = speed
-		banana_child.speed_multiplier = 1.2
-		get_tree().current_scene.add_child(banana_child)
-		banana_child.global_position = self.global_position
-		banana_child.direction = direction
