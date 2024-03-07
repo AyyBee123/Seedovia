@@ -37,9 +37,6 @@ offset_bottom = 320.0
 grow_horizontal = 1
 grow_vertical = 1
 
-[node name="Player" parent="." instance=ExtResource("2_3q0y2")]
-position = Vector2(460, 366)
-
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_dsidl")
 format = 2
@@ -56,3 +53,6 @@ offset_bottom = 28.0
 
 [node name="Dummy" parent="." instance=ExtResource("6_k688d")]
 position = Vector2(157, 153)
+
+[node name="Player" parent="." instance=ExtResource("2_3q0y2")]
+position = Vector2(477, 306)
