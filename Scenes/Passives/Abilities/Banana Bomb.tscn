@@ -1,3 +1,10 @@
-[gd_scene format=3 uid="uid://dovc3jnyptwgu"]
+[gd_scene load_steps=3 format=3 uid="uid://dovc3jnyptwgu"]
+
+[ext_resource type="PackedScene" uid="uid://c2bmb024gpggu" path="res://Scenes/Passives/Effects/Banana.tscn" id="1_jpxv6"]
+[ext_resource type="Script" path="res://Scripts/Passives/Abilities/banana_bomb.gd" id="1_wqtgw"]
 
 [node name="BananaBomb" type="Node"]
+script = ExtResource("1_wqtgw")
+
+[node name="ResourcePreloader" type="ResourcePreloader" parent="."]
+resources = [PackedStringArray("Banana"), [ExtResource("1_jpxv6")]]

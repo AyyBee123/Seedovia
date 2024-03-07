@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://cp3hdtxn75uyt"]
 
+[ext_resource type="Script" path="res://Scripts/Passives/Effects/explosion.gd" id="1_0q7g4"]
 [ext_resource type="Texture2D" uid="uid://cgykm81v6v4hq" path="res://Sprites/Passives/Effects/Explosion.png" id="1_7k8yw"]
-[ext_resource type="Script" path="res://Scripts/Passives/explosion.gd" id="1_433ts"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w3ufp"]
 atlas = ExtResource("1_7k8yw")
@@ -85,7 +85,7 @@ animations = [{
 radius = 20.0111
 
 [node name="ExplosiveTrigger" type="Node2D"]
-script = ExtResource("1_433ts")
+script = ExtResource("1_0q7g4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(5, 5)

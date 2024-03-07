@@ -1,12 +1,16 @@
 extends Node2D
 
 # these values are declared in the passive script that triggers the explosion
-var player
+var object
 var damage: float
 var damage_multiplier: float
 
+func _ready():
+	if object == null:
+		set_physics_process(false)
+
 func _physics_process(delta):
-	global_position = player.global_position
+	global_position = object.global_position
 
 func _on_animated_sprite_2d_animation_finished():
 	queue_free()

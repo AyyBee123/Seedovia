@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://blj4gbudleafp"]
 
-[ext_resource type="Script" path="res://Scripts/Passives/explosive_trigger.gd" id="1_831dv"]
+[ext_resource type="Script" path="res://Scripts/Passives/Abilities/explosive_trigger.gd" id="1_akf1v"]
 [ext_resource type="PackedScene" uid="uid://cp3hdtxn75uyt" path="res://Scenes/Passives/Effects/Explosion.tscn" id="2_cthae"]
 
 [node name="ExplosiveTrigger" type="Node"]
-script = ExtResource("1_831dv")
+script = ExtResource("1_akf1v")
 
 [node name="ResourcePreloader" type="ResourcePreloader" parent="."]
 resources = [PackedStringArray("Explosion"), [ExtResource("2_cthae")]]

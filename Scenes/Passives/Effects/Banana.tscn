@@ -1,3 +1,41 @@
-[gd_scene format=3 uid="uid://c2bmb024gpggu"]
+[gd_scene load_steps=6 format=3 uid="uid://c2bmb024gpggu"]
 
-[node name="Banana" type="Node"]
+[ext_resource type="Texture2D" uid="uid://07mogisnw6m" path="res://Sprites/Passives/Effects/Banana.png" id="1_nvd3o"]
+[ext_resource type="Script" path="res://Scripts/Passives/Effects/banana.gd" id="2_82g1y"]
+[ext_resource type="PackedScene" uid="uid://cp3hdtxn75uyt" path="res://Scenes/Passives/Effects/Explosion.tscn" id="3_e5itn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qa7cx"]
+radius = 24.0208
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r7qac"]
+radius = 12.0
+
+[node name="Banana" type="Sprite2D"]
+texture = ExtResource("1_nvd3o")
+script = ExtResource("2_82g1y")
+
+[node name="ResourcePreloader" type="ResourcePreloader" parent="."]
+resources = [PackedStringArray("Explosion"), [ExtResource("3_e5itn")]]
+
+[node name="Lifetime" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[node name="EnemyDetect" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetect"]
+shape = SubResource("CircleShape2D_qa7cx")
+
+[node name="WallDetect" type="Area2D" parent="."]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallDetect"]
+shape = SubResource("CircleShape2D_r7qac")
+
+[connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]
+[connection signal="area_entered" from="EnemyDetect" to="." method="_on_enemy_detect_area_entered"]
+[connection signal="area_entered" from="WallDetect" to="." method="_on_wall_detect_area_entered"]
+[connection signal="body_entered" from="WallDetect" to="." method="_on_wall_detect_body_entered"]

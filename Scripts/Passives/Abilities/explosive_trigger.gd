@@ -1,4 +1,4 @@
-extends "res://Scripts/Passives/passive_behaviour.gd"
+extends "res://Scripts/Passives/Classes/passive_tally.gd"
 
 @onready var resource_preloader := $ResourcePreloader
 
@@ -11,7 +11,7 @@ func explode():
 	var explosion = resource_preloader.get_resource("Explosion").instantiate()
 	get_tree().current_scene.add_child(explosion)
 	explosion.global_position = player.global_position
-	explosion.player = player
+	explosion.object = player
 	explosion.damage = player._player_stats.get_stat("Weapon_Damage")
 	explosion.damage_multiplier = 3
 	explosion.get_node("AnimatedSprite2D").self_modulate = Color(1,1,0)
