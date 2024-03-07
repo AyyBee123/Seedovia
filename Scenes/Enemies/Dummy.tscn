@@ -23,6 +23,7 @@ _enemy_stats = ExtResource("2_3p7vb")
 shape = SubResource("CapsuleShape2D_j8q5q")
 
 [node name="Dummy" type="Sprite2D" parent="."]
+position = Vector2(-1, 0)
 scale = Vector2(2, 2)
 texture = ExtResource("3_db4vc")
 
