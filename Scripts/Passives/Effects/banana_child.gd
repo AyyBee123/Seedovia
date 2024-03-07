@@ -47,6 +47,9 @@ func explode():
 	explosion.damage_multiplier = damage_multiplier
 	explosion.size = explosion_size
 	explosion.get_node("AnimatedSprite2D").self_modulate = Color(1,1,0)
-	get_tree().current_scene.add_child(explosion)
-	explosion.global_position = self.global_position
+	call_deferred("create_child", explosion)
 	queue_free()
+	
+func create_child(child):
+	get_tree().current_scene.add_child(child)
+	child.global_position = self.global_position

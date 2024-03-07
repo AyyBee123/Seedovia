@@ -51,8 +51,7 @@ func explode():
 	explosion.damage_multiplier = damage_multiplier
 	explosion.size = explosion_size
 	explosion.get_node("AnimatedSprite2D").self_modulate = Color(1,1,0)
-	get_tree().current_scene.add_child(explosion)
-	explosion.global_position = self.global_position
+	call_deferred("create_child", explosion)
 	spawn_child_bananas()
 	queue_free()
 
@@ -66,6 +65,9 @@ func spawn_child_bananas():
 		banana_child.speed = speed
 		banana_child.speed_multiplier = 1.2
 		banana_child.explosion_size = 0.65
-		get_tree().current_scene.add_child(banana_child)
-		banana_child.global_position = self.global_position
 		banana_child.direction = direction
+		call_deferred("create_child", banana_child)
+
+func create_child(child):
+	get_tree().current_scene.add_child(child)
+	child.global_position = self.global_position
