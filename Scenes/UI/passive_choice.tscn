@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dfafxnw5132qr"]
+[gd_scene load_steps=10 format=3 uid="uid://dfafxnw5132qr"]
 
 [ext_resource type="Script" path="res://Scripts/UI/passive_choice.gd" id="1_7x1m1"]
 [ext_resource type="Texture2D" uid="uid://cmhhfcqibnxtw" path="res://Sprites/Passive UI/Passive Background.png" id="1_ayyp6"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dc186h5pvg1wi" path="res://Sprites/Passives/Icons/Explosive Trigger.png" id="5_yjevb"]
 [ext_resource type="FontFile" uid="uid://wbj0boqv37y6" path="res://Fonts/Description Font.ttf" id="7_f1dvr"]
 [ext_resource type="Texture2D" uid="uid://bpkva3bwyblw1" path="res://Sprites/Passives/Icons/Banana Bomb.png" id="8_0e54s"]
+[ext_resource type="Texture2D" uid="uid://dissosonsok68" path="res://Sprites/Passives/Icons/Fire Flower.png" id="9_ga1yx"]
 
 [node name="PassiveChoice" type="Control"]
 z_index = 5
@@ -178,7 +179,7 @@ offset_left = -0.25
 offset_top = 0.25
 offset_right = 43.75
 offset_bottom = 44.25
-texture = ExtResource("5_yjevb")
+texture = ExtResource("9_ga1yx")
 stretch_mode = 3
 
 [node name="Description" type="RichTextLabel" parent="PassiveBackground/GridContainer/Button3"]
@@ -191,7 +192,7 @@ mouse_filter = 2
 theme_override_fonts/normal_font = ExtResource("7_f1dvr")
 theme_override_font_sizes/normal_font_size = 16
 bbcode_enabled = true
-text = "Every 3 attacks, an explosion triggers around you."
+text = "Seeds have a 30% chance to ignite enemies on hit."
 fit_content = true
 scroll_active = false
 
@@ -205,6 +206,6 @@ mouse_filter = 2
 theme_override_fonts/normal_font = ExtResource("3_4afso")
 theme_override_font_sizes/normal_font_size = 16
 bbcode_enabled = true
-text = "Explosive Trigger"
+text = "Fire Flower"
 fit_content = true
 scroll_active = false

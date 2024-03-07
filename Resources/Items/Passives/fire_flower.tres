@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="passive_class" load_steps=3 format=3 uid="uid://bh1c8r3lvy26p"]
+
+[ext_resource type="Script" path="res://Scripts/Passives/Classes/passive_class.gd" id="1_tbswc"]
+[ext_resource type="Texture2D" uid="uid://dissosonsok68" path="res://Sprites/Passives/Icons/Fire Flower.png" id="2_o7624"]
+
+[resource]
+script = ExtResource("1_tbswc")
+passive_name = "Fire Flower"
+sprite = ExtResource("2_o7624")
+description = "Seeds have a 30% chance to ignite enemies on hit."
