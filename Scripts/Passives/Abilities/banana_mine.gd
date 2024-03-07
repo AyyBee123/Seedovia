@@ -16,3 +16,4 @@ func trigger():
 	banana.damage_multiplier = 1.5
 	banana.speed = player._player_stats.get_stat("Weapon_Speed")
 	banana.speed_multiplier = 1
+	banana.explosion_size = player._player_stats.get_stat("Weapon_Blast_Radius")

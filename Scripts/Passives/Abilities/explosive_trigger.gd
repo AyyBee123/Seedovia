@@ -14,4 +14,5 @@ func explode():
 	explosion.object = player
 	explosion.damage = player._player_stats.get_stat("Weapon_Damage")
 	explosion.damage_multiplier = 3
+	explosion.size = player._player_stats.get_stat("Weapon_Blast_Radius")
 	explosion.get_node("AnimatedSprite2D").self_modulate = Color(1,1,0)

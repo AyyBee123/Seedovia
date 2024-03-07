@@ -7,6 +7,7 @@ var starting_position: Vector2 # gets the starting position from where the bulle
 var object
 var damage: float
 var damage_multiplier: float
+var explosion_size: float
 
 var spread: float
 
@@ -44,6 +45,7 @@ func explode():
 	var explosion = resource_preloader.get_resource("Explosion").instantiate()
 	explosion.damage = damage
 	explosion.damage_multiplier = damage_multiplier
+	explosion.size = explosion_size
 	explosion.get_node("AnimatedSprite2D").self_modulate = Color(1,1,0)
 	get_tree().current_scene.add_child(explosion)
 	explosion.global_position = self.global_position

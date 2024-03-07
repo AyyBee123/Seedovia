@@ -7,6 +7,7 @@ var starting_position: Vector2 # gets the starting position from where the bulle
 var object
 var damage: float
 var damage_multiplier: float
+var explosion_size: float
 
 var spread: float
 
@@ -48,6 +49,7 @@ func explode():
 	var explosion = resource_preloader.get_resource("Explosion").instantiate()
 	explosion.damage = damage
 	explosion.damage_multiplier = damage_multiplier
+	explosion.size = explosion_size
 	explosion.get_node("AnimatedSprite2D").self_modulate = Color(1,1,0)
 	get_tree().current_scene.add_child(explosion)
 	explosion.global_position = self.global_position
@@ -63,6 +65,7 @@ func spawn_child_bananas():
 		banana_child.damage_multiplier = damage_multiplier
 		banana_child.speed = speed
 		banana_child.speed_multiplier = 1.2
+		banana_child.explosion_size = 0.65
 		get_tree().current_scene.add_child(banana_child)
 		banana_child.global_position = self.global_position
 		banana_child.direction = direction

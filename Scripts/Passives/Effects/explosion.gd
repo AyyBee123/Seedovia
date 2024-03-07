@@ -4,8 +4,10 @@ extends Node2D
 var object
 var damage: float
 var damage_multiplier: float
+var size: float
 
 func _ready():
+	scale = Vector2(size, size)
 	if object == null:
 		set_physics_process(false)
 
