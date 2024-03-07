@@ -8,13 +8,16 @@ var object
 var damage: float
 var damage_multiplier: float
 
-var spread: float = 10
+var spread: float
 
 var speed: float
 var speed_multiplier: float
 
 @onready var life_time = $Lifetime
 @onready var resource_preloader = $ResourcePreloader
+
+func _ready():
+	spread = deg_to_rad(randf_range(-20,20))
 
 func _physics_process(delta):
 	initialize_position()
@@ -27,7 +30,7 @@ func initialize_position():
 		position_initialized = true
 
 func update_position(delta):
-	var current_velocity: Vector2 = direction * speed * speed_multiplier
+	var current_velocity: Vector2 = direction.rotated(spread) * speed * speed_multiplier
 	position += current_velocity * delta
 	look_at(global_position + current_velocity)
 
