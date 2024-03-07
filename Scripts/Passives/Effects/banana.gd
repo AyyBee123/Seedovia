@@ -58,6 +58,7 @@ func explode():
 func spawn_child_bananas():
 	# split the banana mine into 3 smaller bananas with the indicated launch directions
 	var directions = [Vector2.UP, Vector2(-sqrt(3)/2,0.5), Vector2(sqrt(3)/2,0.5)]
+	var spread = deg_to_rad(randf_range(-45, 45))
 	for direction in directions:
 		var banana_child = resource_preloader.get_resource("Banana Child").instantiate()
 		banana_child.damage = damage * 0.35
@@ -65,7 +66,7 @@ func spawn_child_bananas():
 		banana_child.speed = speed
 		banana_child.speed_multiplier = 1.2
 		banana_child.explosion_size = 0.65
-		banana_child.direction = direction
+		banana_child.direction = direction.rotated(spread)
 		call_deferred("create_child", banana_child)
 
 func create_child(child):
