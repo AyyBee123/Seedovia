@@ -11,7 +11,7 @@ func get_chance(base_chance: float) -> float:
 	
 func chance_to_trigger():
 	var random_value = randf()
-	var probability = max(min(get_chance(chance), 1), 0)
+	var probability = max(min(get_chance(chance), 1), 0) # 0 <= probability value <= 1
 	
 	if random_value < probability:
 		trigger()
