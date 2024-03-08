@@ -14,6 +14,6 @@ func ready():
 	player.weapon_fired.connect(chance_to_trigger)
 	super._ready()
 
-func trigger():
+func trigger(weapon = null):
 	pass
 	

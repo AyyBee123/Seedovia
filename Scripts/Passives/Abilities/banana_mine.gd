@@ -7,7 +7,7 @@ func _ready():
 	player.weapon_fired.connect(chance_to_trigger)
 	super._ready()
 
-func trigger():
+func trigger(weapon = null):
 	var banana = resource_preloader.get_resource("Banana").instantiate()
 	get_tree().current_scene.add_child(banana)
 	banana.global_position = player.global_position

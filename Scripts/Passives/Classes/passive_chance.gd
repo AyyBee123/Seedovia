@@ -14,7 +14,7 @@ func chance_to_trigger(weapon = null):
 	var probability = max(min(get_chance(chance), 1), 0) # 0 <= probability value <= 1
 	
 	if random_value < probability:
-		trigger()
+		trigger(weapon)
 		
-func trigger(): # call this in sub-classes to trigger whatever that sub-class wants to do
+func trigger(weapon = null): # call this in sub-classes to trigger whatever that sub-class wants to do
 	pass
