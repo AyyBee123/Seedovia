@@ -4,7 +4,7 @@ extends "res://Scripts/Passives/Classes/passive_tally.gd"
 
 func add_tally(weapon = null):
 	super.add_tally()
-	if (tally_count % 3 == 0 and tally_count != 0):
+	if tally_count % 3 == 0 and tally_count != 0:
 		explode()
 
 func explode():
