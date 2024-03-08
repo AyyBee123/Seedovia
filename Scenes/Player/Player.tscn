@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cu63rxmy71bcg"]
+[gd_scene load_steps=8 format=3 uid="uid://cu63rxmy71bcg"]
 
 [ext_resource type="Texture2D" uid="uid://ddxlo3x3ru7hr" path="res://Sprites/Player/Hand.png" id="2_6om3g"]
 [ext_resource type="Script" path="res://Scripts/Player/player.gd" id="2_f7nwd"]
@@ -6,8 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://bdjm8bu0l6v08" path="res://Sprites/Player/Player.png" id="3_mwqvg"]
 [ext_resource type="Script" path="res://Scripts/Player/StateMachine.gd" id="3_ojktk"]
 [ext_resource type="PackedScene" uid="uid://b51uuhjac0hmd" path="res://Scenes/Inventory/inventory.tscn" id="4_px6lr"]
-[ext_resource type="PackedScene" uid="uid://dovc3jnyptwgu" path="res://Scenes/Passives/Abilities/Banana Mine.tscn" id="4_tud1n"]
-[ext_resource type="PackedScene" uid="uid://blj4gbudleafp" path="res://Scenes/Passives/Abilities/Explosive Trigger.tscn" id="5_javyn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iqaxp"]
 size = Vector2(12, 20)
@@ -22,10 +20,6 @@ _player_stats = ExtResource("2_i314n")
 script = ExtResource("3_ojktk")
 
 [node name="Passives" type="Node" parent="."]
-
-[node name="ExplosiveTrigger" parent="Passives" instance=ExtResource("5_javyn")]
-
-[node name="BananaMine" parent="Passives" instance=ExtResource("4_tud1n")]
 
 [node name="Item Passives" type="Node" parent="."]
 
