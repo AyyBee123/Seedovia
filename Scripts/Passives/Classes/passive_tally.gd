@@ -6,7 +6,7 @@ var tally_count := 0
 func _ready():
 	player.weapon_fired.connect(add_tally)
 
-func add_tally():
+func add_tally(weapon = null):
 	if self.get_children().size() > 0:
 		tally_count += 1
 	return

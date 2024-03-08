@@ -8,9 +8,6 @@ extends Control
 var empty_heart = preload("res://Scenes/UI/empty_heart.tscn")
 var filled_heart = preload("res://Scenes/UI/filled_heart.tscn")
 
-func _ready():
-	initialize_stats()
-
 func initialize_stats():
 	set_health()
 	stats[0].text = stats[0].name + ": " + str(player._player_stats.get_stat("Speed"))

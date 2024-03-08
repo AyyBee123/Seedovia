@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 signal shoot(bullet, direction, location)
-signal weapon_fired
+signal weapon_fired(weapon)
 
 @export var _player_stats: player_stats
 
@@ -25,6 +25,7 @@ func _ready():
 	_player_stats.health_changed.connect(update_health)
 	update_timers()
 	_player_stats.set_health(_player_stats.get_stat("Max_Health"))
+	player_stats_ui.initialize_stats()
 
 func _physics_process(delta):
 	# check if the mouse is in the inventory and if the inventory is visible to detect if the player can shoot
@@ -88,7 +89,7 @@ func _on_shoot(weapon, location):
 	get_tree().current_scene.add_child(weapon_instance)
 	weapon_instance.global_position = location
 	bullets_per_second.start()
-	weapon_fired.emit()
+	weapon_fired.emit(weapon_instance)
 	
 func update_timers():
 	current_weapon = null if PlayerInventory.seeds.size() == 0 else PlayerSeeds.load_weapons()[0]
