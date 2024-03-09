@@ -8,6 +8,7 @@ func _physics_process(delta):
 
 func _collide(body):
 	if not ignore_first_collision:
+		has_collided.emit(body)
 		if body.is_in_group("Enemies"):
 			body.get_parent()._enemy_stats.take_damage(_player_stats.get_stat("Weapon_Damage") * damage_multiplier)
 		for i in range(seed_slots.size()):
@@ -15,7 +16,7 @@ func _collide(body):
 			if weapon != null:
 				shoot_next_weapon(weapon, body)
 			break
-		queue_free()
+		call_deferred("free")
 	else:
 		ignore_first_collision = false
 		
@@ -58,7 +59,7 @@ func travelled_distance():
 			if weapon != null:
 				shoot_next_weapon(weapon)
 			break
-		queue_free()
+		call_deferred("free")
 		
 func get_nearest_enemy(enemy):
 	var enemies = get_tree().get_nodes_in_group("Enemies")

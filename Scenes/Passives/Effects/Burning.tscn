@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bo6ku1yadjytf"]
+
+[ext_resource type="Script" path="res://Scripts/Passives/Effects/burning.gd" id="1_c3syr"]
+
+[node name="Burning" type="Node" groups=["Burn"]]
+script = ExtResource("1_c3syr")

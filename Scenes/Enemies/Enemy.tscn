@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://b2yef1t2humjd"]
+
+[ext_resource type="Script" path="res://Scripts/Enemies/enemy.gd" id="1_fr2sb"]
+[ext_resource type="Texture2D" uid="uid://di216pisnnku2" path="res://Sprites/UI/Enemy Health Bar.png" id="4_b4tjw"]
+[ext_resource type="PackedScene" uid="uid://bfpmq41k18tdi" path="res://Scenes/Passives/Effects/Burn Stacks.tscn" id="4_fymte"]
+[ext_resource type="Texture2D" uid="uid://l7w6x0k13ni4" path="res://Sprites/UI/Enemy Filled Health.png" id="5_q8gkv"]
+
+[node name="Enemy" type="CharacterBody2D"]
+collision_layer = 0
+script = ExtResource("1_fr2sb")
+
+[node name="CollisionPolygon2D" type="CollisionShape2D" parent="."]
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(-1, 0)
+scale = Vector2(2, 2)
+
+[node name="Enemy Hitbox" type="Area2D" parent="." groups=["Enemies"]]
+collision_layer = 4
+collision_mask = 10
+
+[node name="CollisionPolygon2D" type="CollisionShape2D" parent="Enemy Hitbox"]
+
+[node name="Health Bar" type="TextureProgressBar" parent="."]
+offset_left = -22.0
+offset_top = -34.0
+offset_right = 22.0
+offset_bottom = -26.0
+texture_under = ExtResource("4_b4tjw")
+texture_progress = ExtResource("5_q8gkv")
+
+[node name="Burn Stacks" parent="." instance=ExtResource("4_fymte")]
+
+[connection signal="area_entered" from="Enemy Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="body_entered" from="Enemy Hitbox" to="." method="_on_hitbox_body_entered"]

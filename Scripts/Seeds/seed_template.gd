@@ -1,6 +1,7 @@
 extends Sprite2D
 
 signal weapon_fired(weapon)
+signal has_collided(object)
 
 @onready var player := $"../Player"
 @onready var _player_stats = player._player_stats
@@ -25,7 +26,7 @@ var slot_index: int # the index to determine the order the weapon is fired
 var seed_slot_number: int # determines which slot the weapon is in, in the inventory
 var seed_slot_number_index: int # increments the seed slot number array in the player seed script
 
-var direction: Vector2 
+var direction: Vector2
 
 # initialize multipliers
 @export var speed_multiplier: float = 1 # shot speed multiplier of the weapon
@@ -40,7 +41,7 @@ func _physics_process(delta):
 	travelled_distance()
 	distance_after_collision()
 	update_position(delta)
-	
+
 func initialize_position():
 	if not position_initialized:
 		starting_position = global_position
@@ -49,34 +50,35 @@ func initialize_position():
 		else:
 			direction = desired_direction.normalized()
 		position_initialized = true
-	
+
 func travelled_distance():
 	distance_travelled = starting_position.distance_to(self.global_position)
 	if distance_travelled >= _player_stats.get_stat("Weapon_Range") * range_multiplier:
-		queue_free()
-		
+		call_deferred("free")
+
 func distance_after_collision():
 	short_distance_travelled = starting_position.distance_to(self.global_position)
 	if short_distance_travelled >= 1:
 		ignore_first_collision = false
-		
+
 func _on_bullet_hitbox_body_entered(body):
 	_collide(body)
-	
+
 func _on_bullet_hitbox_area_entered(area):
 	_collide(area)
-	
+
 func _collide(body):
 	if not ignore_first_collision:
+		has_collided.emit(body)
 		if body.is_in_group("Enemies"):
 			body.get_parent()._enemy_stats.take_damage(_player_stats.get_stat("Weapon_Damage") * damage_multiplier)
-		queue_free()
+		call_deferred("free")
 	else:
 		ignore_first_collision = false
-		
+
 func shoot_next_weapon(weapon):
 	pass
-	
+
 func update_position(delta):
 	var current_velocity: Vector2 = direction * _player_stats.get_stat("Weapon_Speed") * speed_multiplier
 	position += current_velocity * delta

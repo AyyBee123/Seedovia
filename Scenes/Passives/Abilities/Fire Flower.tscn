@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://b1ityh857h0fx"]
+[gd_scene load_steps=3 format=3 uid="uid://b1ityh857h0fx"]
 
 [ext_resource type="Script" path="res://Scripts/Passives/Abilities/fire_flower.gd" id="1_pwqck"]
+[ext_resource type="PackedScene" uid="uid://bdfjfp4piyikm" path="res://Scenes/Passives/Effects/Burning Weapon.tscn" id="2_gx2h6"]
 
 [node name="FireFlower" type="Node"]
 script = ExtResource("1_pwqck")
+
+[node name="ResourcePreloader" type="ResourcePreloader" parent="."]
+resources = [PackedStringArray("Burning Weapon"), [ExtResource("2_gx2h6")]]

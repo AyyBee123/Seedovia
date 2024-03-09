@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdfjfp4piyikm"]
+
+[ext_resource type="Script" path="res://Scripts/Passives/Effects/burning_weapon.gd" id="1_lhoqw"]
+[ext_resource type="PackedScene" uid="uid://bo6ku1yadjytf" path="res://Scenes/Passives/Effects/Burning.tscn" id="2_cox33"]
+
+[node name="BurningWeapon" type="Node"]
+script = ExtResource("1_lhoqw")
+
+[node name="ResourcePreloader" type="ResourcePreloader" parent="."]
+resources = [PackedStringArray("Burning"), [ExtResource("2_cox33")]]

@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bagmkum7q0yxi"]
+[gd_scene load_steps=9 format=3 uid="uid://bagmkum7q0yxi"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/enemy.gd" id="1_dds8a"]
 [ext_resource type="Resource" uid="uid://bc1p8m0xc01dk" path="res://Resources/Enemies/dummy.tres" id="2_3p7vb"]
 [ext_resource type="Texture2D" uid="uid://c3h0lpk7sn7ex" path="res://Sprites/Enemies/Dummy.png" id="3_db4vc"]
 [ext_resource type="Texture2D" uid="uid://di216pisnnku2" path="res://Sprites/UI/Enemy Health Bar.png" id="4_umgia"]
 [ext_resource type="Texture2D" uid="uid://l7w6x0k13ni4" path="res://Sprites/UI/Enemy Filled Health.png" id="5_7g85u"]
+[ext_resource type="PackedScene" uid="uid://bfpmq41k18tdi" path="res://Scenes/Passives/Effects/Burn Stacks.tscn" id="6_mwgg3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j8q5q"]
 radius = 12.0
@@ -41,6 +42,8 @@ offset_right = 22.0
 offset_bottom = -26.0
 texture_under = ExtResource("4_umgia")
 texture_progress = ExtResource("5_7g85u")
+
+[node name="Burn Stacks" parent="." instance=ExtResource("6_mwgg3")]
 
 [connection signal="area_entered" from="Enemy Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="body_entered" from="Enemy Hitbox" to="." method="_on_hitbox_body_entered"]

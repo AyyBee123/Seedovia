@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfpmq41k18tdi"]
+
+[ext_resource type="Script" path="res://Scripts/Passives/Effects/burn_stacks.gd" id="1_psrh8"]
+
+[node name="BurnStacks" type="Node" groups=["Burn Stacks"]]
+script = ExtResource("1_psrh8")

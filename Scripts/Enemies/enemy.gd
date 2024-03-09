@@ -21,7 +21,7 @@ func _on_hitbox_body_entered(body):
 func die():
 	process_mode = 4 # = Mode: Disabled
 	# TODO: add death animation
-	self.queue_free()
+	call_deferred("free")
 	
 func update_health(new_health):
 	_enemy_stats.health = new_health

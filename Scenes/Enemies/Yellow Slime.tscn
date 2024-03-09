@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://behuntfkbbwui"]
+[gd_scene load_steps=10 format=3 uid="uid://behuntfkbbwui"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/Yellow Slime/yellow_slime.gd" id="1_4pfp0"]
 [ext_resource type="Texture2D" uid="uid://bulbtp8ysidpu" path="res://Sprites/Enemies/Yellow Slime.png" id="2_cu2pf"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/Enemies/Yellow Slime/StateMachine.gd" id="3_67bo1"]
 [ext_resource type="Texture2D" uid="uid://di216pisnnku2" path="res://Sprites/UI/Enemy Health Bar.png" id="5_ii5ru"]
 [ext_resource type="Texture2D" uid="uid://l7w6x0k13ni4" path="res://Sprites/UI/Enemy Filled Health.png" id="6_11ile"]
+[ext_resource type="PackedScene" uid="uid://bfpmq41k18tdi" path="res://Scenes/Passives/Effects/Burn Stacks.tscn" id="7_qr7ro"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j8q5q"]
 height = 26.0
@@ -55,6 +56,8 @@ offset_right = 22.0
 offset_bottom = -16.0
 texture_under = ExtResource("5_ii5ru")
 texture_progress = ExtResource("6_11ile")
+
+[node name="Burn Stacks" parent="." instance=ExtResource("7_qr7ro")]
 
 [connection signal="area_entered" from="Enemy Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="body_entered" from="Enemy Hitbox" to="." method="_on_hitbox_body_entered"]
