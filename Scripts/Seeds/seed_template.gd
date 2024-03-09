@@ -22,6 +22,7 @@ var short_distance_travelled: float # this lets the projectile move a little bef
 
 var slot_index: int
 var seed_slot_number: int
+var seed_slot_number_index: int
 
 var direction: Vector2 
 

@@ -41,6 +41,8 @@ func shoot_next_weapon(weapon, enemy = null):
 	weapon_instance.initial_weapon = false
 	weapon_instance.ignore_first_collision = true
 	weapon_instance.slot_index = slot_index + 1
+	weapon_instance.seed_slot_number = PlayerSeeds.seed_indices[seed_slot_number_index + 1]
+	weapon_instance.seed_slot_number_index = seed_slot_number_index + 1
 	call_deferred("initialize_location", weapon_instance)
 	
 func initialize_location(weapon_instance):
