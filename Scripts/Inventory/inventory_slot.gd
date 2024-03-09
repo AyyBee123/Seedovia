@@ -30,6 +30,7 @@ func pick_from_slot():
 	inventory_node.add_child(item)
 	item = null
 	if slot_type == slot_types.SEED:
+		PlayerSeeds.load_weapons()
 		player.update_timers()
 	
 func put_into_slot(new_item):

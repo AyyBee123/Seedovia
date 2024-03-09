@@ -55,4 +55,4 @@ offset_bottom = 28.0
 position = Vector2(157, 153)
 
 [node name="Player" parent="." instance=ExtResource("2_3q0y2")]
-position = Vector2(477, 306)
+position = Vector2(502, 329)

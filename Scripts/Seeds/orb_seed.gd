@@ -25,6 +25,7 @@ func shoot_next_weapon(weapon):
 	weapon_instance.slot_index = slot_index + 1
 	weapon_instance.desired_direction = shot_direction.normalized()
 	get_tree().current_scene.add_child(weapon_instance)
+	weapon_fired.emit(weapon_instance)
 	weapon_instance.global_position = global_position
 	change_direction()
 	orb_fire_rate.start()

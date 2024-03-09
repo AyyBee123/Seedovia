@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1ityh857h0fx"]
+
+[ext_resource type="Script" path="res://Scripts/Passives/Abilities/fire_flower.gd" id="1_pwqck"]
+
+[node name="FireFlower" type="Node"]
+script = ExtResource("1_pwqck")

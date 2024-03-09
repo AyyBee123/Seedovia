@@ -1,5 +1,7 @@
 extends Sprite2D
 
+signal weapon_fired(weapon)
+
 @onready var player := $"../Player"
 @onready var _player_stats = player._player_stats
 @onready var seed_slots := $"../Player/Inventory/NinePatchRect/Seed Slots".get_children()
@@ -19,6 +21,7 @@ var ignore_first_collision := false # this is to let the projectiles spawn witho
 var short_distance_travelled: float # this lets the projectile move a little before enabling collisions again
 
 var slot_index: int
+var seed_slot_number: int
 
 var direction: Vector2 
 

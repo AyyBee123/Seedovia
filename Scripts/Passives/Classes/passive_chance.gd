@@ -10,6 +10,8 @@ func get_chance(base_chance: float) -> float:
 	return player._player_stats.stats["Luck"]["x"] * ((base_chance * 100) + player._player_stats.stats["Luck"]["+"]) / 100
 	
 func chance_to_trigger(weapon = null):
+	if weapon == null:
+		return
 	var random_value = randf()
 	var probability = max(min(get_chance(chance), 1), 0) # 0 <= probability value <= 1
 	

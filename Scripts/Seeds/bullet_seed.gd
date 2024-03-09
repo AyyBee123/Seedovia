@@ -31,6 +31,7 @@ func initialize_position():
 		position_initialized = true
 	
 func shoot_next_weapon(weapon, enemy = null):
+	super.shoot_next_weapon(weapon)
 	var weapon_instance = weapon.instantiate()
 	if get_nearest_enemy(enemy) != null:
 		weapon_instance.desired_direction = global_position.direction_to(get_nearest_enemy(enemy).global_position)
@@ -45,6 +46,7 @@ func shoot_next_weapon(weapon, enemy = null):
 func initialize_location(weapon_instance):
 	get_tree().current_scene.add_child(weapon_instance)
 	weapon_instance.global_position = global_position
+	weapon_fired.emit(weapon_instance)
 	
 func travelled_distance():
 	distance_travelled = starting_position.distance_to(self.global_position)
