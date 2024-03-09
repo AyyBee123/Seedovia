@@ -20,7 +20,7 @@ var initial_weapon := true
 var ignore_first_collision := false # this is to let the projectiles spawn without instantly colliding with an object
 var short_distance_travelled: float # this lets the projectile move a little before enabling collisions again
 
-# these variables are declared in the player script and then passed over from weapon to weapon
+# these variables are declared in the player script (for the first weapon) and then passed over from weapon to weapon
 var slot_index: int # the index to determine the order the weapon is fired
 var seed_slot_number: int # determines which slot the weapon is in, in the inventory
 var seed_slot_number_index: int # increments the seed slot number array in the player seed script
