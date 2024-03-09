@@ -11,4 +11,4 @@ func trigger(weapon = null):
 	effect_sprite.texture = weapon.texture
 	effect_sprite.self_modulate = effect_color
 	weapon.add_child(effect_sprite)
-	weapon.weapon_fired.connect(chance_to_trigger)
+	weapon.weapon_fired.connect(trigger)
