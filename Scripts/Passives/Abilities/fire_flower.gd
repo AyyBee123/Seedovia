@@ -3,7 +3,6 @@ extends "res://Scripts/Passives/Classes/passive_chance.gd"
 func _ready():
 	chance = 0.3
 	player.weapon_fired.connect(chance_to_trigger)
-	
 	super._ready()
 
 func trigger(weapon = null):
