@@ -15,4 +15,4 @@ func explode():
 	explosion.size = player._player_stats.get_stat("Weapon_Blast_Radius") * 1.5
 	get_tree().current_scene.add_child(explosion)
 	explosion.global_position = player.global_position
-	explosion.get_node("AnimatedSprite2D").self_modulate = Color(1,0.5,0)
+	explosion.get_node("AnimatedSprite2D").self_modulate = Color.GOLD

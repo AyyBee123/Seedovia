@@ -45,7 +45,7 @@ func explode():
 	var explosion = resource_preloader.get_resource("Explosion").instantiate()
 	explosion.damage = damage * damage_multiplier
 	explosion.size = explosion_size
-	explosion.get_node("AnimatedSprite2D").self_modulate = Color(1,1,0)
+	explosion.get_node("AnimatedSprite2D").self_modulate = Color.YELLOW
 	call_deferred("create_child", explosion)
 	queue_free()
 	

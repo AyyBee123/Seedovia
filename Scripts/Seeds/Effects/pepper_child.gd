@@ -58,11 +58,7 @@ func explode():
 		if weapon != null:
 			shoot_next_weapon(weapon)
 		break
-	queue_free()
-	
-func create_child(child):
-	get_tree().current_scene.add_child(child)
-	child.global_position = self.global_position
+	call_deferred("free")
 
 func shoot_next_weapon(weapon):
 	var directions = [Vector2.UP, Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT]
@@ -73,10 +69,10 @@ func shoot_next_weapon(weapon):
 		weapon_instance.slot_index = slot_index + 1
 		weapon_instance.seed_slot_number = PlayerSeeds.seed_indices[seed_slot_number_index + 1]
 		weapon_instance.seed_slot_number_index = seed_slot_number_index + 1
-		weapon_fired.emit(weapon_instance)
 		weapon_instance.desired_direction = direction
-		call_deferred("spawn_child", weapon_instance)
+		call_deferred("create_child", weapon_instance)
 
-func spawn_child(weapon_instance):
-	get_tree().current_scene.add_child(weapon_instance)
-	weapon_instance.global_position = global_position
+func create_child(child):
+	get_tree().current_scene.add_child(child)
+	weapon_fired.emit(child)
+	child.global_position = global_position

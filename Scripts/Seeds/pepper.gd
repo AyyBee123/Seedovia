@@ -40,9 +40,9 @@ func spawn_child_peppers():
 		pepper_child.seed_slots = seed_slots
 		pepper_child.slot_index = slot_index
 		pepper_child.seed_slot_number_index = seed_slot_number_index
-		weapon_fired.emit(pepper_child)
 		call_deferred("create_child", pepper_child)
 
 func create_child(child):
 	get_tree().current_scene.add_child(child)
+	weapon_fired.emit(child)
 	child.global_position = self.global_position

@@ -1,5 +1,7 @@
 extends Node2D
 
+signal has_collided(object)
+
 # these values are declared in the passive script that triggers the explosion
 var object
 var damage: float
@@ -17,5 +19,6 @@ func _on_animated_sprite_2d_animation_finished():
 	queue_free()
 
 func _on_area_2d_area_entered(area):
+	has_collided.emit(area)
 	if area.is_in_group("Enemies"):
 		area.get_parent()._enemy_stats.take_damage(damage)
