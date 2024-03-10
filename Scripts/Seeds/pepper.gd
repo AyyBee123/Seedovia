@@ -12,11 +12,6 @@ func _collide(body):
 		has_collided.emit(body)
 		if body.is_in_group("Enemies"):
 			body.get_parent()._enemy_stats.take_damage(_player_stats.get_stat("Weapon_Damage") * damage_multiplier / 2)
-		#for i in range(seed_slots.size()):
-			#var weapon = null if PlayerSeeds.seeds.size() <= 1 + slot_index or slot_index >= 2 else PlayerSeeds.seeds[slot_index + 1]
-			#if weapon != null:
-				#shoot_next_weapon(weapon)
-			#break
 		explode()
 	else:
 		ignore_first_collision = false
@@ -42,6 +37,9 @@ func spawn_child_peppers():
 		pepper_child.speed = _player_stats.get_stat("Weapon_Speed") * speed_multiplier
 		pepper_child.explosion_size = _player_stats.get_stat("Weapon_Blast_Radius") * blast_radius_multiplier * 0.55
 		pepper_child.direction = direction
+		pepper_child.seed_slots = seed_slots
+		pepper_child.slot_index = slot_index
+		pepper_child.seed_slot_number_index = seed_slot_number_index
 		call_deferred("create_child", pepper_child)
 
 func create_child(child):
