@@ -1,6 +1,7 @@
 extends Sprite2D
 
 signal weapon_fired(weapon)
+signal has_collided(object)
 
 var position_initialized = false
 var direction
@@ -34,11 +35,13 @@ func update_position(delta):
 	look_at(global_position + current_velocity)
 
 func _on_hitbox_area_entered(area):
+	has_collided.emit(area)
 	if area.is_in_group("Enemies"):
 			area.get_parent()._enemy_stats.take_damage(damage / 2)
 	explode()
 
 func _on_hitbox_body_entered(body):
+	has_collided.emit(body)
 	explode()
 
 func _on_lifetime_timeout():
