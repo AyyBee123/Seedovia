@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://csi1g5071kvtk"]
+
+[ext_resource type="Texture2D" uid="uid://bhl3dp80njw2q" path="res://Sprites/Seeds/Explosive Pepper Child.png" id="1_t0alk"]
+[ext_resource type="Script" path="res://Scripts/Seeds/Effects/pepper_child.gd" id="2_gmm82"]
+[ext_resource type="PackedScene" uid="uid://cp3hdtxn75uyt" path="res://Scenes/Passives/Effects/Explosion.tscn" id="3_cxekc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fu6k5"]
+radius = 9.33333
+
+[node name="PepperChild" type="Sprite2D"]
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("1_t0alk")
+script = ExtResource("2_gmm82")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_fu6k5")
+
+[node name="ResourcePreloader" type="ResourcePreloader" parent="."]
+resources = [PackedStringArray("Explosion"), [ExtResource("3_cxekc")]]
+
+[node name="Projectile Deceleration" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+autostart = true
+
+[node name="Lifetime" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+autostart = true
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]

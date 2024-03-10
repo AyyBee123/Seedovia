@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bffy58rjriwmv"]
 
-[ext_resource type="Script" path="res://Scripts/Seeds/bullet_seed.gd" id="1_0klqm"]
+[ext_resource type="Script" path="res://Scripts/Seeds/bullet.gd" id="1_0klqm"]
 [ext_resource type="Texture2D" uid="uid://c6vshawxebrpr" path="res://Sprites/Seeds/Player Bullet.png" id="2_1n5dh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qbv06"]

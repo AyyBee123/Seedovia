@@ -1,12 +1,12 @@
 [gd_resource type="Resource" script_class="seed_class" load_steps=4 format=3 uid="uid://6r7y2c1r006r"]
 
-[ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Orb.tscn" id="1_7crlc"]
+[ext_resource type="PackedScene" uid="uid://dh0rggkyjbnqk" path="res://Scenes/Seeds/Orb.tscn" id="1_aa5sw"]
 [ext_resource type="Script" path="res://Scripts/Stats/seed_stats.gd" id="1_t1tr5"]
 [ext_resource type="Texture2D" uid="uid://cb2u073k8qjem" path="res://Sprites/Seeds/Orb.png" id="3_5yqqr"]
 
 [resource]
 script = ExtResource("1_t1tr5")
-scene = ExtResource("1_7crlc")
+scene = ExtResource("1_aa5sw")
 rarity = 1
 item_name = "Orb"
 texture = ExtResource("3_5yqqr")

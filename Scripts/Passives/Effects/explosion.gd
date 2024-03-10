@@ -3,7 +3,6 @@ extends Node2D
 # these values are declared in the passive script that triggers the explosion
 var object
 var damage: float
-var damage_multiplier: float
 var size: float
 
 func _ready():
@@ -19,4 +18,4 @@ func _on_animated_sprite_2d_animation_finished():
 
 func _on_area_2d_area_entered(area):
 	if area.is_in_group("Enemies"):
-		area.get_parent()._enemy_stats.take_damage(damage * damage_multiplier)
+		area.get_parent()._enemy_stats.take_damage(damage)

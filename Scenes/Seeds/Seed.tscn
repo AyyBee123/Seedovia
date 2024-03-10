@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://bg0xjmkfe0uqd"]
+
+[ext_resource type="Script" path="res://Scripts/Seeds/seed_template.gd" id="1_jrnia"]
+
+[node name="Seed" type="Sprite2D" groups=["Weapon"]]
+script = ExtResource("1_jrnia")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_bullet_hitbox_area_entered"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_bullet_hitbox_body_entered"]
