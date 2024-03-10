@@ -1,15 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://dr8qdmnfjxopo"]
+[gd_scene load_steps=9 format=3 uid="uid://dr8qdmnfjxopo"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_yv4rh"]
 [ext_resource type="PackedScene" uid="uid://cu63rxmy71bcg" path="res://Scenes/Player/Player.tscn" id="2_3q0y2"]
 [ext_resource type="PackedScene" uid="uid://dfafxnw5132qr" path="res://Scenes/UI/passive_choice.tscn" id="2_s6ley"]
 [ext_resource type="Texture2D" uid="uid://cw4586xydqwsm" path="res://Sprites/Wall/Tile Placeholder.png" id="3_ap3fh"]
 [ext_resource type="PackedScene" uid="uid://bagmkum7q0yxi" path="res://Scenes/Enemies/Dummy.tscn" id="6_k688d"]
-[ext_resource type="PackedScene" uid="uid://b3ibupvqneqor" path="res://Scenes/Items/item.tscn" id="7_3iu7w"]
-[ext_resource type="Resource" uid="uid://ckqiallc73lpu" path="res://Resources/Items/Equipment/basic_helmet.tres" id="8_77qcv"]
 [ext_resource type="PackedScene" uid="uid://civnfvhref4lg" path="res://Scenes/Stats/player_stats_ui.tscn" id="8_k4lp5"]
-[ext_resource type="Resource" uid="uid://i4wg1hx83q3m" path="res://Resources/Items/Equipment/leather_gloves.tres" id="9_8ck2o"]
-[ext_resource type="Resource" uid="uid://bwmlrwbo6dvh4" path="res://Resources/Items/Equipment/basic_body_armour.tres" id="10_7lk22"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ne3hj"]
 texture = ExtResource("3_ap3fh")
@@ -60,15 +56,3 @@ position = Vector2(157, 153)
 
 [node name="Player" parent="." instance=ExtResource("2_3q0y2")]
 position = Vector2(502, 329)
-
-[node name="Item" parent="." instance=ExtResource("7_3iu7w")]
-position = Vector2(720, 250)
-item = ExtResource("8_77qcv")
-
-[node name="Item2" parent="." instance=ExtResource("7_3iu7w")]
-position = Vector2(800, 366)
-item = ExtResource("9_8ck2o")
-
-[node name="Item3" parent="." instance=ExtResource("7_3iu7w")]
-position = Vector2(624, 372)
-item = ExtResource("10_7lk22")
