@@ -5,6 +5,7 @@ var image = preload("res://Sprites/Debuff Icons/Burn.png")
 @onready var debuffs_ui := $"../Debuffs UI"
 
 var burn
+var max_stacks := 10
 
 var has_debuff := false
 
@@ -25,5 +26,5 @@ func _process(delta):
 			debuffs_ui.remove_child(burn)
 			has_debuff = false
 	
-	if get_child_count() > 10: # max of 10 burn stacks, the oldest stack get removed if over 10
+	if get_child_count() > max_stacks: # max of <max stacks> burn stacks, the oldest stack get removed if over max stacks
 		get_children()[0].queue_free()
