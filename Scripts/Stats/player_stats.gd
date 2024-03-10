@@ -82,7 +82,7 @@ var stats := {
 		# base luck is the base chance from an item or passive (maybe drop chances; we'll see), not from the player
 		# (that's why it's not here)
 		"+": 0,
-		"x": 4
+		"x": 1
 	},
 }
 
