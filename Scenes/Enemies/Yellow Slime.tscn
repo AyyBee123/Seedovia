@@ -1,70 +1,51 @@
-[gd_scene load_steps=10 format=3 uid="uid://behuntfkbbwui"]
+[gd_scene load_steps=8 format=3 uid="uid://dk7s8c4gd7p25"]
 
-[ext_resource type="Script" path="res://Scripts/Enemies/Yellow Slime/yellow_slime.gd" id="1_4pfp0"]
-[ext_resource type="Texture2D" uid="uid://bulbtp8ysidpu" path="res://Sprites/Enemies/Yellow Slime.png" id="2_cu2pf"]
-[ext_resource type="Resource" uid="uid://b6x5rnatpqtid" path="res://Resources/Enemies/yellow_slime.tres" id="2_hw1h5"]
-[ext_resource type="Script" path="res://Scripts/Enemies/Yellow Slime/StateMachine.gd" id="3_67bo1"]
-[ext_resource type="Texture2D" uid="uid://di216pisnnku2" path="res://Sprites/UI/Enemy Health Bar.png" id="5_ii5ru"]
-[ext_resource type="Texture2D" uid="uid://l7w6x0k13ni4" path="res://Sprites/UI/Enemy Filled Health.png" id="6_11ile"]
-[ext_resource type="PackedScene" uid="uid://bfpmq41k18tdi" path="res://Scenes/Passives/Effects/Burn Stacks.tscn" id="7_qr7ro"]
+[ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_f1xw5"]
+[ext_resource type="Resource" uid="uid://b6x5rnatpqtid" path="res://Resources/Enemies/yellow_slime.tres" id="2_ckw3e"]
+[ext_resource type="Script" path="res://Scripts/Enemies/Yellow Slime/yellow_slime.gd" id="2_vgxx0"]
+[ext_resource type="Script" path="res://Scripts/Enemies/Yellow Slime/StateMachine.gd" id="3_b4qd2"]
+[ext_resource type="Texture2D" uid="uid://bulbtp8ysidpu" path="res://Sprites/Enemies/Yellow Slime.png" id="4_e5fpm"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j8q5q"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ovc8c"]
 height = 26.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5p2e0"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kk57w"]
 height = 26.0
 
-[node name="Yellow Slime" type="CharacterBody2D"]
-collision_layer = 0
-script = ExtResource("1_4pfp0")
-_enemy_stats = ExtResource("2_hw1h5")
+[node name="Yellow Slime" instance=ExtResource("1_f1xw5")]
+script = ExtResource("2_vgxx0")
+_enemy_stats = ExtResource("2_ckw3e")
 
-[node name="StateMachine" type="Node" parent="."]
-script = ExtResource("3_67bo1")
+[node name="StateMachine" type="Node" parent="." index="0"]
+script = ExtResource("3_b4qd2")
 
-[node name="CollisionPolygon2D" type="CollisionShape2D" parent="."]
+[node name="CollisionPolygon2D" parent="." index="1"]
 rotation = 1.5708
-shape = SubResource("CapsuleShape2D_j8q5q")
+shape = SubResource("CapsuleShape2D_ovc8c")
 
-[node name="YellowSlime" type="Sprite2D" parent="."]
-texture = ExtResource("2_cu2pf")
+[node name="Sprite" parent="." index="2"]
+texture = ExtResource("4_e5fpm")
 
-[node name="Enemy Hitbox" type="Area2D" parent="." groups=["Enemies"]]
-collision_layer = 4
-collision_mask = 10
-
-[node name="CollisionPolygon2D" type="CollisionShape2D" parent="Enemy Hitbox"]
+[node name="CollisionPolygon2D" parent="Enemy Hitbox" index="0"]
 rotation = 1.5708
-shape = SubResource("CapsuleShape2D_5p2e0")
+shape = SubResource("CapsuleShape2D_kk57w")
 
-[node name="Fire Time" type="Timer" parent="."]
+[node name="Fire Time" type="Timer" parent="." index="4"]
 wait_time = 0.333
 one_shot = true
 
-[node name="Rotation Point" type="Marker2D" parent="."]
+[node name="Rotation Point" type="Marker2D" parent="." index="5"]
 z_index = 2
 
-[node name="Marker2D" type="Marker2D" parent="Rotation Point"]
+[node name="Marker2D" type="Marker2D" parent="Rotation Point" index="0"]
 z_index = 2
 position = Vector2(17, 0)
 scale = Vector2(2, 2)
 
-[node name="Health Bar" type="TextureProgressBar" parent="."]
-offset_left = -22.0
-offset_top = -24.0
-offset_right = 22.0
-offset_bottom = -16.0
-texture_under = ExtResource("5_ii5ru")
-texture_progress = ExtResource("6_11ile")
+[node name="Health Bar" parent="." index="6"]
+offset_top = -25.0
+offset_bottom = -17.0
 
-[node name="Debuffs UI" type="GridContainer" parent="."]
-offset_left = -44.0
-offset_top = -73.0
-offset_bottom = -59.0
-theme_override_constants/h_separation = 12
-columns = 1024
-
-[node name="Burn Stacks" parent="." instance=ExtResource("7_qr7ro")]
-
-[connection signal="area_entered" from="Enemy Hitbox" to="." method="_on_hitbox_area_entered"]
-[connection signal="body_entered" from="Enemy Hitbox" to="." method="_on_hitbox_body_entered"]
+[node name="Debuffs UI" parent="." index="7"]
+offset_top = -40.0
+offset_bottom = -26.0
