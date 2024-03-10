@@ -1,11 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://dr8qdmnfjxopo"]
+[gd_scene load_steps=9 format=3 uid="uid://dr8qdmnfjxopo"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_yv4rh"]
 [ext_resource type="PackedScene" uid="uid://cu63rxmy71bcg" path="res://Scenes/Player/Player.tscn" id="2_3q0y2"]
 [ext_resource type="PackedScene" uid="uid://dfafxnw5132qr" path="res://Scenes/UI/passive_choice.tscn" id="2_s6ley"]
 [ext_resource type="Texture2D" uid="uid://cw4586xydqwsm" path="res://Sprites/Wall/Tile Placeholder.png" id="3_ap3fh"]
 [ext_resource type="PackedScene" uid="uid://bagmkum7q0yxi" path="res://Scenes/Enemies/Dummy.tscn" id="6_k688d"]
-[ext_resource type="PackedScene" uid="uid://dk7s8c4gd7p25" path="res://Scenes/Enemies/Yellow Slime.tscn" id="7_5m216"]
 [ext_resource type="PackedScene" uid="uid://civnfvhref4lg" path="res://Scenes/Stats/player_stats_ui.tscn" id="8_k4lp5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ne3hj"]
@@ -57,6 +56,3 @@ position = Vector2(157, 153)
 
 [node name="Player" parent="." instance=ExtResource("2_3q0y2")]
 position = Vector2(502, 329)
-
-[node name="Yellow Slime" parent="." instance=ExtResource("7_5m216")]
-position = Vector2(748, 245)
