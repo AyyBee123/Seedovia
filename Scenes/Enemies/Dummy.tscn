@@ -43,6 +43,14 @@ offset_bottom = -26.0
 texture_under = ExtResource("4_umgia")
 texture_progress = ExtResource("5_7g85u")
 
+[node name="Debuffs UI" type="GridContainer" parent="."]
+offset_left = -22.0
+offset_top = -49.0
+offset_right = 22.0
+offset_bottom = -35.0
+theme_override_constants/h_separation = 12
+columns = 1024
+
 [node name="Burn Stacks" parent="." instance=ExtResource("6_mwgg3")]
 
 [connection signal="area_entered" from="Enemy Hitbox" to="." method="_on_hitbox_area_entered"]

@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2ssqhsybloke"]
+
+[ext_resource type="Texture2D" uid="uid://d0vfcioka8toi" path="res://Sprites/Debuff Icons/Burn.png" id="1_b87vv"]
+[ext_resource type="FontFile" uid="uid://wbj0boqv37y6" path="res://Fonts/Description Font.ttf" id="2_u2udb"]
+
+[node name="Debuff UI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Sprite" type="TextureRect" parent="."]
+layout_mode = 0
+offset_top = -4.0
+offset_right = 15.0
+offset_bottom = 20.0
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("1_b87vv")
+stretch_mode = 2
+
+[node name="Amount" type="RichTextLabel" parent="."]
+z_index = 1
+layout_mode = 0
+offset_left = 8.0
+offset_top = 4.0
+offset_right = 25.0
+offset_bottom = 17.0
+theme_override_fonts/normal_font = ExtResource("2_u2udb")
+theme_override_font_sizes/normal_font_size = 16
+text = "1"
+scroll_active = false
