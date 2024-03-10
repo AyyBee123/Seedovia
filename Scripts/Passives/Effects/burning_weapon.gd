@@ -4,8 +4,8 @@ extends Node
 @onready var resource_preloader := $ResourcePreloader
 
 var duration: float = 4 # duration of the burn, in seconds
-var tick: float = 1 # cooldown between each burn damage tick, in seconds
-var damage: float
+var tick: float = 1 # tick rate, in seconds
+var damage: float # damage of each burn tick
 
 var burning
 
