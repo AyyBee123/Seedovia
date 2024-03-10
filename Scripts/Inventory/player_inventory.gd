@@ -6,9 +6,8 @@ const slot_class = preload("res://Scripts/Inventory/inventory_slot.gd")
 var picked_up_item = null
 
 const NUM_INVENTORY_SLOTS = 12
-const NUM_EQUIPMENT_SLOTS = 7
+const NUM_EQUIPMENT_SLOTS = 4
 const NUM_SEED_SLOTS = 3
-
 
 var inventory = {}
 var equipment = {}

@@ -12,10 +12,7 @@ enum slot_types {
 	HEAD,
 	ARMS,
 	BODY,
-	SHOULDERS,
 	LEGS,
-	WAIST,
-	FEET,
 	SEED
 }
 

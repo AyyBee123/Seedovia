@@ -18,10 +18,12 @@ func _ready():
 		inventory_slots[i].slot_type = slot_class.slot_types.INVENTORY
 		
 	# remove the empty space nodes (TextureRects) from the equipment grid container
-	for i in range(seed_slots.size()):
-		if not equip_slots[i] is Panel:
-			equip_slots.remove_at(i)
+	var temp_equip_slots = []
+	for slot in equip_slots:
+		if slot is Panel:
+			temp_equip_slots.append(slot)
 			continue
+	equip_slots = temp_equip_slots
 	# initialize all the seed slots and their categories
 	for i in range(seed_slots.size()):
 		seed_slots[i].gui_input.connect(slot_gui_input.bind(seed_slots[i]))
@@ -36,10 +38,7 @@ func _ready():
 	equip_slots[0].slot_type = slot_class.slot_types.HEAD
 	equip_slots[1].slot_type = slot_class.slot_types.ARMS
 	equip_slots[2].slot_type = slot_class.slot_types.BODY
-	equip_slots[3].slot_type = slot_class.slot_types.SHOULDERS
-	equip_slots[4].slot_type = slot_class.slot_types.LEGS
-	equip_slots[5].slot_type = slot_class.slot_types.WAIST
-	equip_slots[6].slot_type = slot_class.slot_types.FEET
+	equip_slots[3].slot_type = slot_class.slot_types.LEGS
 	
 	inititialize_inventory()
 	inititialize_equipment()
@@ -105,14 +104,8 @@ func able_to_put_into_slot(slot: slot_class) -> bool:
 		return holding_item_category == "ARMS"
 	elif slot.slot_type == slot_class.slot_types.BODY:
 		return holding_item_category == "BODY"
-	elif slot.slot_type == slot_class.slot_types.SHOULDERS:
-		return holding_item_category == "SHOULDERS"
 	elif slot.slot_type == slot_class.slot_types.LEGS:
 		return holding_item_category == "LEGS"
-	elif slot.slot_type == slot_class.slot_types.WAIST:
-		return holding_item_category == "WAIST"
-	elif slot.slot_type == slot_class.slot_types.FEET:
-		return holding_item_category == "FEET"
 	elif slot.slot_type == slot_class.slot_types.SEED:
 		return holding_item_category == "SEED"
 	else: # if the category is INVENTORY (since inventory can fit anything, it will return true)
