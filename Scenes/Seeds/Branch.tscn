@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://d2fnfpo1p55kp"]
+
+[ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_xq4sv"]
+[ext_resource type="Texture2D" uid="uid://c5256gi5c4u52" path="res://Sprites/Seeds/Branch.png" id="2_jiyem"]
+[ext_resource type="Script" path="res://Scripts/Seeds/branch.gd" id="3_ttefw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ct47"]
+size = Vector2(2, 23)
+
+[node name="Branch" instance=ExtResource("1_xq4sv")]
+position = Vector2(0, -12)
+texture = ExtResource("2_jiyem")
+script = ExtResource("3_ttefw")
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_3ct47")
+
+[node name="Marker2D" type="Marker2D" parent="." index="1"]
+position = Vector2(0, -10)
