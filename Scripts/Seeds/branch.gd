@@ -27,7 +27,7 @@ func initialize_position():
 			lifetime.start(player.bullets_per_second.wait_time)
 		else:
 			swing_direction == true
-			rotation = desired_direction.angle()
+			rotation = desired_direction.angle() + deg_to_rad(90)
 			lifetime.start(anim.current_animation_length)
 		position_initialized = true
 
@@ -45,6 +45,9 @@ func _collide(body):
 func update_position(delta):
 	if slot_index == 0:
 		global_position = player.global_position
+	else:
+		if previous_weapon != null:
+			global_position = previous_weapon.global_position
 
 func shoot_next_weapon(_weapon):
 	if weapon == null:

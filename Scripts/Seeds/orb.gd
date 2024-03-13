@@ -26,8 +26,10 @@ func shoot_next_weapon(weapon):
 	weapon_instance.seed_slot_number = PlayerSeeds.seed_indices[seed_slot_number_index + 1]
 	weapon_instance.seed_slot_number_index = seed_slot_number_index + 1
 	weapon_instance.desired_direction = shot_direction.normalized()
+	weapon_instance.previous_weapon = self
 	get_tree().current_scene.add_child(weapon_instance)
 	weapon_fired.emit(weapon_instance)
+	orb_fire_rate.wait_time = 1.0/(player._player_stats.get_stat("Fire_Rate") * orb_fire_rate_multiplier * weapon_instance.fire_rate_multiplier * 2)
 	weapon_instance.global_position = global_position
 	change_direction()
 	orb_fire_rate.start()
