@@ -21,7 +21,7 @@ func _physics_process(delta):
 func shoot_next_weapon(weapon):
 	var weapon_instance = weapon.instantiate()
 	weapon_instance.initial_weapon = false
-	weapon_instance.ignore_first_collision = true
+	weapon_instance.ignore_first_collision = false
 	weapon_instance.slot_index = slot_index + 1
 	weapon_instance.seed_slot_number = PlayerSeeds.seed_indices[seed_slot_number_index + 1]
 	weapon_instance.seed_slot_number_index = seed_slot_number_index + 1
