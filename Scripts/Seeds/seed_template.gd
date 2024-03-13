@@ -20,7 +20,7 @@ var position_initialized := false
 var initial_weapon := true
 var ignore_first_collision := false # this is to let the projectiles spawn without instantly colliding with an object
 var short_distance_travelled: float # this lets the projectile move a little before enabling collisions again
-var previous_weapon = null
+var previous_weapon = null # this is used for weapons that persist and move as they're spawning the next weapon
 
 # these variables are declared in the player script (for the first weapon) and then passed over from weapon to weapon
 var slot_index: int # the index to determine the order the weapon is fired
