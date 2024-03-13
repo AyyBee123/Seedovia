@@ -2,19 +2,20 @@ extends "res://Scripts/Passives/Classes/passive_chance.gd"
 
 @onready var resource_preloader := $ResourcePreloader
 
+var damage_multiplier := 0.25
+
 func _ready():
 	chance = 0.3
 	player.weapon_fired.connect(chance_to_trigger)
 	super._ready()
 
 func trigger(weapon = null):
-	var effect_color = Color(1, 0.5, 0, 0.5)
-	var effect_sprite = Sprite2D.new()
 	var fire_effect = resource_preloader.get_resource("Burning Weapon").instantiate()
 	if weapon.is_in_group("Weapon"):
-		effect_sprite.texture = weapon.texture
-		effect_sprite.self_modulate = effect_color
+		if weapon.modulate == Color.WHITE:
+			weapon.modulate *= Color.DARK_ORANGE
+		else:
+			weapon.modulate += Color.DARK_ORANGE
 		weapon.weapon_fired.connect(trigger)
-	weapon.add_child(effect_sprite)
-	fire_effect.damage = player._player_stats.get_stat("Weapon_Damage") / 4
+	fire_effect.damage = player._player_stats.get_stat("Weapon_Damage") * damage_multiplier
 	weapon.add_child(fire_effect)
