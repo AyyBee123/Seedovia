@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://de0gxtit8o3cu"]
+
+[ext_resource type="Texture2D" uid="uid://di216pisnnku2" path="res://Sprites/UI/Enemy Health Bar.png" id="1_k252n"]
+[ext_resource type="Texture2D" uid="uid://l7w6x0k13ni4" path="res://Sprites/UI/Enemy Filled Health.png" id="2_bby4n"]
+[ext_resource type="Texture2D" uid="uid://tlxuc123h2gf" path="res://Sprites/UI/Enemy Damaged Health.png" id="2_pon5w"]
+[ext_resource type="Script" path="res://Scripts/UI/health_bar.gd" id="3_jdjej"]
+
+[node name="Health Bar" type="TextureProgressBar"]
+z_index = -1
+offset_left = -22.0
+offset_top = -34.0
+offset_right = 22.0
+offset_bottom = -26.0
+value = 90.0
+texture_under = ExtResource("1_k252n")
+texture_progress = ExtResource("2_pon5w")
+texture_progress_offset = Vector2(1, 1)
+script = ExtResource("3_jdjej")
+
+[node name="Enemy Health" type="TextureProgressBar" parent="."]
+z_index = 1
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 43.0
+offset_bottom = 7.0
+value = 60.0
+texture_progress = ExtResource("2_bby4n")
+
+[node name="White Bar Delay" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="timeout" from="White Bar Delay" to="." method="_on_white_bar_delay_timeout"]

@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b2yef1t2humjd"]
+[gd_scene load_steps=4 format=3 uid="uid://b2yef1t2humjd"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/enemy.gd" id="1_fr2sb"]
-[ext_resource type="Texture2D" uid="uid://di216pisnnku2" path="res://Sprites/UI/Enemy Health Bar.png" id="4_b4tjw"]
+[ext_resource type="PackedScene" uid="uid://de0gxtit8o3cu" path="res://Scenes/UI/health_bar.tscn" id="2_61l3x"]
 [ext_resource type="PackedScene" uid="uid://bfpmq41k18tdi" path="res://Scenes/Passives/Effects/Burn Stacks.tscn" id="4_fymte"]
-[ext_resource type="Texture2D" uid="uid://l7w6x0k13ni4" path="res://Sprites/UI/Enemy Filled Health.png" id="5_q8gkv"]
 
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 0
@@ -19,13 +18,7 @@ collision_mask = 10
 
 [node name="CollisionPolygon2D" type="CollisionShape2D" parent="Enemy Hitbox"]
 
-[node name="Health Bar" type="TextureProgressBar" parent="."]
-offset_left = -22.0
-offset_top = -34.0
-offset_right = 22.0
-offset_bottom = -26.0
-texture_under = ExtResource("4_b4tjw")
-texture_progress = ExtResource("5_q8gkv")
+[node name="Health Bar" parent="." instance=ExtResource("2_61l3x")]
 
 [node name="Debuffs UI" type="GridContainer" parent="."]
 offset_left = -22.0
