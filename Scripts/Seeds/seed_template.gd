@@ -37,6 +37,9 @@ var direction: Vector2
 @export var blast_radius_multiplier: float = 1 # blast/splash radius multiplier of the weapon
 @export var fire_rate_multiplier: float = 1 # fire rate multiplier of the weapon
 
+func _ready():
+	pass
+
 func _physics_process(delta):
 	initialize_position()
 	travelled_distance()

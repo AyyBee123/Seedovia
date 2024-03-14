@@ -11,6 +11,7 @@ var source = player
 static var swing_direction := true
 
 func _ready():
+	super._ready()
 	sprite.texture = self.texture
 	if swing_direction:
 		anim.play("Swing")

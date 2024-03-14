@@ -6,6 +6,7 @@ var shot_direction := Vector2(0,-1)
 @export var orb_fire_rate_multiplier: float = 1
 
 func _ready():
+	super._ready()
 	orb_fire_rate.wait_time = 1.0/(player._player_stats.get_stat("Fire_Rate") * orb_fire_rate_multiplier)
 	orb_fire_rate.start(orb_fire_rate.wait_time)
 
