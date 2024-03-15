@@ -1,19 +1,7 @@
-extends Sprite2D
-
-signal weapon_fired(weapon)
-signal has_collided(object)
-signal attempted_fire
+extends "res://Scripts/Seeds/seed_template.gd"
 
 var parent
 
-var position_initialized = false
-var direction
-var starting_position: Vector2 # gets the starting position from where the bullet is fired
-
-var seed_slots
-var slot_index
-var seed_slot_number
-var seed_slot_number_index
 
 var damage: float
 var explosion_size: float
@@ -74,13 +62,7 @@ func shoot_next_weapon(weapon):
 	var directions = [Vector2.UP, Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT]
 	for direction in directions:
 		var weapon_instance = weapon.instantiate()
-		weapon_instance.initial_weapon = false
-		weapon_instance.ignore_first_collision = false
-		weapon_instance.slot_index = slot_index + 1
-		weapon_instance.seed_slot_number = PlayerSeeds.seed_indices[seed_slot_number_index + 1]
-		weapon_instance.seed_slot_number_index = seed_slot_number_index + 1
-		weapon_instance.desired_direction = direction
-		call_deferred("create_child", weapon_instance)
+		get_weapon_properties(weapon_instance, direction)
 
 func shoot_different_weapon(weapon):
 	var directions = [Vector2.UP, Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT]
