@@ -16,9 +16,9 @@ func _physics_process(delta):
 	if orb_fire_rate.is_stopped():
 		attempted_fire.emit()
 		if weapon != null:
-			shoot.emit(weapon)
+			shoot_next_weapon(weapon)
 
-func _on_shoot(weapon):
+func shoot_next_weapon(weapon):
 	var weapon_instance = weapon.instantiate()
 	get_weapon_properties(weapon_instance, shot_direction.normalized())
 	orb_fire_rate.wait_time = 1.0/(player._player_stats.get_stat("Fire_Rate") * orb_fire_rate_multiplier * weapon_instance.fire_rate_multiplier * 2)

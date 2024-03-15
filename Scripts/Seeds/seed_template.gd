@@ -3,7 +3,6 @@ extends Sprite2D
 signal weapon_fired(weapon)
 signal has_collided(object)
 signal attempted_fire
-signal shoot(weapon)
 
 @onready var player := $"../Player"
 @onready var _player_stats = player._player_stats
