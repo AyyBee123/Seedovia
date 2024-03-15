@@ -16,21 +16,12 @@ func _physics_process(delta):
 	if orb_fire_rate.is_stopped():
 		attempted_fire.emit()
 		if weapon != null:
-			shoot_next_weapon(weapon)
-	
-func shoot_next_weapon(weapon):
+			shoot.emit(weapon)
+
+func _on_shoot(weapon):
 	var weapon_instance = weapon.instantiate()
-	weapon_instance.initial_weapon = false
-	weapon_instance.ignore_first_collision = false
-	weapon_instance.slot_index = slot_index + 1
-	weapon_instance.seed_slot_number = PlayerSeeds.seed_indices[seed_slot_number_index + 1]
-	weapon_instance.seed_slot_number_index = seed_slot_number_index + 1
-	weapon_instance.desired_direction = shot_direction.normalized()
-	weapon_instance.previous_weapon = self
-	get_tree().current_scene.add_child(weapon_instance)
-	weapon_fired.emit(weapon_instance)
+	get_weapon_properties(weapon_instance, shot_direction.normalized())
 	orb_fire_rate.wait_time = 1.0/(player._player_stats.get_stat("Fire_Rate") * orb_fire_rate_multiplier * weapon_instance.fire_rate_multiplier * 2)
-	weapon_instance.global_position = global_position
 	change_direction()
 	orb_fire_rate.start()
 

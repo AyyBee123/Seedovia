@@ -35,17 +35,10 @@ func initialize_position():
 func shoot_next_weapon(weapon):
 	super.shoot_next_weapon(weapon)
 	var weapon_instance = weapon.instantiate()
+	var direction = global_position.direction_to(player.global_position)
 	if get_nearest_enemy(enemy) != null:
-		weapon_instance.desired_direction = global_position.direction_to(get_nearest_enemy(enemy).global_position)
-	else:
-		weapon_instance.desired_direction = global_position.direction_to(player.global_position)
-	weapon_instance.hit_enemy = enemy
-	weapon_instance.initial_weapon = false
-	weapon_instance.ignore_first_collision = true
-	weapon_instance.slot_index = slot_index + 1
-	weapon_instance.seed_slot_number = PlayerSeeds.seed_indices[seed_slot_number_index + 1]
-	weapon_instance.seed_slot_number_index = seed_slot_number_index + 1
-	call_deferred("initialize_location", weapon_instance)
+		direction = global_position.direction_to(get_nearest_enemy(enemy).global_position)
+	get_weapon_properties(weapon_instance, direction, true, enemy)
 
 func shoot_different_weapon(weapon):
 	if get_nearest_enemy(enemy) != null:

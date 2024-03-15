@@ -3,6 +3,7 @@ extends Sprite2D
 signal weapon_fired(weapon)
 signal has_collided(object)
 signal attempted_fire
+signal shoot(weapon)
 
 @onready var player := $"../Player"
 @onready var _player_stats = player._player_stats
@@ -83,6 +84,22 @@ func _collide(body):
 
 func shoot_next_weapon(weapon):
 	pass
+
+func get_weapon_properties(weapon, _desired_direction, _ignore_first_collision = false, _enemy = null):
+	weapon.initial_weapon = false
+	weapon.ignore_first_collision = _ignore_first_collision
+	weapon.slot_index = slot_index + 1
+	weapon.seed_slot_number = PlayerSeeds.seed_indices[seed_slot_number_index + 1]
+	weapon.seed_slot_number_index = seed_slot_number_index + 1
+	weapon.desired_direction = _desired_direction
+	weapon.previous_weapon = self
+	weapon.hit_enemy = _enemy
+	call_deferred("initialize_location", weapon)
+
+func initialize_location(weapon):
+	get_tree().current_scene.add_child(weapon)
+	weapon.global_position = global_position
+	weapon_fired.emit(weapon)
 
 # this is used to shoot a weapon that is outside the default list of slotted seed weapons
 # this function will always be called outside of the respective weapons' scripts (ex: from a passive, or item)
