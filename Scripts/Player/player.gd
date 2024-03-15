@@ -89,7 +89,6 @@ func _on_shoot(weapon, location):
 	weapon_instance.initial_weapon = true
 	weapon_instance.slot_index = 0
 	weapon_instance.seed_slot_number = PlayerSeeds.seed_indices[0]
-	weapon_instance.seed_slot_number_index = 0
 	get_tree().current_scene.add_child(weapon_instance)
 	weapon_instance.global_position = location
 	bullets_per_second.start()

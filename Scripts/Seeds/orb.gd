@@ -25,18 +25,6 @@ func shoot_next_weapon(weapon):
 	change_direction()
 	orb_fire_rate.start()
 
-func shoot_different_weapon(weapon):
-	weapon.initial_weapon = false
-	weapon.ignore_first_collision = false
-	weapon.desired_direction = shot_direction.normalized()
-	weapon.previous_weapon = self
-	get_tree().current_scene.add_child(weapon)
-	weapon_fired.emit(weapon)
-	orb_fire_rate.wait_time = 1.0/(player._player_stats.get_stat("Fire_Rate") * orb_fire_rate_multiplier * weapon.fire_rate_multiplier * 2)
-	weapon.global_position = global_position
-	change_direction()
-	orb_fire_rate.start()
-
 func change_direction():
 	match shot_direction:
 		Vector2(0,-1):

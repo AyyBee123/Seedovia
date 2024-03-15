@@ -8,6 +8,7 @@ signal attempted_fire
 @onready var _player_stats = player._player_stats
 @onready var seed_slots := $"../Player/Inventory/NinePatchRect/Seed Slots".get_children()
 
+var weapon_direction: Vector2
 var desired_direction: Vector2
 var hit_enemy = null
 
@@ -19,14 +20,13 @@ var distance_travelled: float # gets the current range travelled by the bullet
 var position_initialized := false
 
 var initial_weapon := false
-var ignore_first_collision := false # this is to let the projectiles spawn without instantly colliding with an object
+var ignore_first_collision := false # this lets the projectiles spawn without instantly colliding with an object
 var short_distance_travelled: float # this lets the projectile move a little before enabling collisions again
 var previous_weapon = null # this is used for weapons that persist and move as they're spawning the next weapon
 
-# these variables are declared in the player script (for the first weapon) and then passed over from weapon to weapon
+# these are declared in the player script (for the first weapon) and then passed over from weapon to weapon
 var slot_index: int # the index to determine the order the weapon is fired
 var seed_slot_number: int # determines which slot the weapon is in, in the inventory
-var seed_slot_number_index: int # increments the seed slot number array in the player seed script
 
 var direction: Vector2
 
@@ -82,28 +82,26 @@ func _collide(body):
 		ignore_first_collision = false
 
 func shoot_next_weapon(weapon):
-	pass
+	var weapon_instance = weapon.instantiate()
+	get_weapon_properties(weapon_instance, weapon_direction)
 
 func get_weapon_properties(weapon, _desired_direction, _ignore_first_collision = false, _enemy = null):
 	weapon.initial_weapon = false
 	weapon.ignore_first_collision = _ignore_first_collision
-	weapon.slot_index = slot_index + 1
-	weapon.seed_slot_number = PlayerSeeds.seed_indices[seed_slot_number_index + 1]
-	weapon.seed_slot_number_index = seed_slot_number_index + 1
 	weapon.desired_direction = _desired_direction
 	weapon.previous_weapon = self
 	weapon.hit_enemy = _enemy
+	weapon.slot_index = slot_index + 1
+	if seed_slot_number < 2:
+		weapon.seed_slot_number = PlayerSeeds.seed_indices[slot_index + 1]
+	else:
+		weapon.seed_slot_number = 3
 	call_deferred("initialize_location", weapon)
 
 func initialize_location(weapon):
 	get_tree().current_scene.add_child(weapon)
 	weapon.global_position = global_position
 	weapon_fired.emit(weapon)
-
-# this is used to shoot a weapon that is outside the default list of slotted seed weapons
-# this function will always be called outside of the respective weapons' scripts (ex: from a passive, or item)
-func shoot_different_weapon(weapon):
-	pass
 
 func update_position(delta):
 	var current_velocity: Vector2 = direction * _player_stats.get_stat("Weapon_Speed") * speed_multiplier

@@ -51,27 +51,20 @@ func update_position(delta):
 		if previous_weapon != null:
 			global_position = previous_weapon.global_position
 
-func shoot_next_weapon(_weapon):
+func shoot_next_weapon(weapon):
+	weapon_direction = global_position.direction_to(marker.global_position)
+	super.shoot_next_weapon(weapon)
+
+func shoot_attempt():
 	attempted_fire.emit()
-	if weapon == null:
-		return
-	var weapon_instance = weapon.instantiate()
-	get_weapon_properties(weapon_instance, global_position.direction_to(marker.global_position))
+	if weapon != null:
+		shoot_next_weapon(weapon)
 
 # function in seed template script
 func initialize_location(weapon):
 	get_tree().current_scene.add_child(weapon)
 	weapon.global_position = marker.global_position
 	weapon_fired.emit(weapon)
-
-func shoot_different_weapon(weapon):
-	weapon.initial_weapon = false
-	weapon.ignore_first_collision = false
-	weapon.desired_direction = global_position.direction_to(marker.global_position)
-	weapon.previous_weapon = self
-	get_tree().current_scene.add_child(weapon)
-	weapon_fired.emit(weapon)
-	weapon.global_position = marker.global_position
 
 func _on_hitbox_area_entered(area):
 	_collide(area)

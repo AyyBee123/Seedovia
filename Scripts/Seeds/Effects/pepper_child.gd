@@ -2,39 +2,34 @@ extends "res://Scripts/Seeds/seed_template.gd"
 
 var parent
 
-
-var damage: float
-var explosion_size: float
-
-var speed: float
-
-var parent_scene = PackedScene.new()
-
 @onready var projectile_speed_timer := $"Projectile Deceleration"
 @onready var life_time := $Lifetime
 @onready var resource_preloader := $ResourcePreloader
 
 func _ready():
-	parent_scene.pack(parent)
+	projectile_speed_timer.start()
+	life_time.start()
 
 func _physics_process(delta):
 	initialize_position()
 	update_position(delta)
+	distance_after_collision()
 
 func initialize_position():
 	if not position_initialized:
 		starting_position = global_position
+		direction = desired_direction
 		position_initialized = true
 
 func update_position(delta):
-	var current_velocity: Vector2 = direction * speed * projectile_speed_timer.time_left
+	var current_velocity: Vector2 = direction * _player_stats.get_stat("Weapon_Speed") * speed_multiplier * projectile_speed_timer.time_left
 	position += current_velocity * delta
 	look_at(global_position + current_velocity)
 
 func _on_hitbox_area_entered(area):
 	has_collided.emit(area)
 	if area.is_in_group("Enemies"):
-			area.get_parent()._enemy_stats.take_damage(damage / 2)
+			area.get_parent()._enemy_stats.take_damage(_player_stats.get_stat("Weapon_Damage") * damage_multiplier / 2)
 	explode()
 
 func _on_hitbox_body_entered(body):
@@ -46,8 +41,8 @@ func _on_lifetime_timeout():
 
 func explode():
 	var explosion = resource_preloader.get_resource("Explosion").instantiate()
-	explosion.damage = damage
-	explosion.size = explosion_size
+	explosion.damage = _player_stats.get_stat("Weapon_Damage") * damage_multiplier
+	explosion.size = _player_stats.get_stat("Weapon_Blast_Radius") * blast_radius_multiplier
 	explosion.get_node("AnimatedSprite2D").self_modulate = Color.ORANGE_RED
 	call_deferred("create_child", explosion)
 	attempted_fire.emit()
@@ -61,28 +56,8 @@ func explode():
 func shoot_next_weapon(weapon):
 	var directions = [Vector2.UP, Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT]
 	for direction in directions:
-		var weapon_instance = weapon.instantiate()
-		get_weapon_properties(weapon_instance, direction)
-
-func shoot_different_weapon(weapon):
-	var directions = [Vector2.UP, Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT]
-	for direction in directions:
-		var weapon_instance = weapon.instantiate()
-		weapon_instance.ignore_first_collision = false
-		weapon_instance.desired_direction = direction
-		call_deferred("create_child", weapon_instance)
-
-
-func shoot_parent_recursion_passive(weapon):
-	var directions = [Vector2.UP, Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT]
-	for direction in directions:
-		var weapon_instance = weapon.instantiate()
-		weapon_instance.initial_weapon = false
-		weapon_instance.slot_index = 3
-		weapon_instance.ignore_first_collision = false
-		weapon_instance.desired_direction = direction
-		call_deferred("create_child", weapon_instance)
-
+		weapon_direction = direction
+		super.shoot_next_weapon(weapon)
 
 func create_child(child):
 	get_tree().current_scene.add_child(child)

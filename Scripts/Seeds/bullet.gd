@@ -33,22 +33,12 @@ func initialize_position():
 		position_initialized = true
 	
 func shoot_next_weapon(weapon):
-	super.shoot_next_weapon(weapon)
-	var weapon_instance = weapon.instantiate()
-	var direction = global_position.direction_to(player.global_position)
 	if get_nearest_enemy(enemy) != null:
-		direction = global_position.direction_to(get_nearest_enemy(enemy).global_position)
-	get_weapon_properties(weapon_instance, direction, true, enemy)
-
-func shoot_different_weapon(weapon):
-	if get_nearest_enemy(enemy) != null:
-		weapon.desired_direction = global_position.direction_to(get_nearest_enemy(enemy).global_position)
+		weapon_direction = global_position.direction_to(get_nearest_enemy(enemy).global_position)
 	else:
-		weapon.desired_direction = global_position.direction_to(player.global_position)
-	weapon.hit_enemy = enemy
-	weapon.initial_weapon = false
-	weapon.ignore_first_collision = true
-	call_deferred("initialize_location", weapon)
+		weapon_direction = global_position.direction_to(player.global_position)
+	var weapon_instance = weapon.instantiate()
+	get_weapon_properties(weapon_instance, weapon_direction, true, enemy)
 
 func initialize_location(weapon_instance):
 	get_tree().current_scene.add_child(weapon_instance)

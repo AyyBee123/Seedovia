@@ -19,14 +19,14 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0.025, 0.05, 0.075, 0.1),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "values": [{
-"args": [null],
-"method": &"shoot_next_weapon"
+"args": [],
+"method": &"shoot_attempt"
 }, {
-"args": [null],
-"method": &"shoot_next_weapon"
+"args": [],
+"method": &"shoot_attempt"
 }, {
-"args": [null],
-"method": &"shoot_next_weapon"
+"args": [],
+"method": &"shoot_attempt"
 }, {
 "args": [],
 "method": &"end_of_animation"
@@ -58,14 +58,14 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0.025, 0.05, 0.075, 0.1),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "values": [{
-"args": [null],
-"method": &"shoot_next_weapon"
+"args": [],
+"method": &"shoot_attempt"
 }, {
-"args": [null],
-"method": &"shoot_next_weapon"
+"args": [],
+"method": &"shoot_attempt"
 }, {
-"args": [null],
-"method": &"shoot_next_weapon"
+"args": [],
+"method": &"shoot_attempt"
 }, {
 "args": [],
 "method": &"end_of_animation"
@@ -101,7 +101,7 @@ fire_rate_multiplier = 0.2
 
 [node name="Branch" type="Sprite2D" parent="."]
 position = Vector2(4.44089e-16, 0)
-rotation = -1.0472
+rotation = 1.0472
 texture = ExtResource("2_jiyem")
 offset = Vector2(0, -12)
 
