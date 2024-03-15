@@ -18,9 +18,13 @@ func _physics_process(delta):
 func save_inventory():
 	data.get_inventory()
 	ResourceSaver.save(data, SAVE_PATH)
-	
+
 func load_inventory():
 	if not ResourceLoader.exists(SAVE_PATH):
 		return
 	data = ResourceLoader.load(SAVE_PATH)
 	data.set_inventory()
+
+func pause():
+	if Input.is_action_just_pressed("esc"):
+		get_tree().paused = !get_tree().paused

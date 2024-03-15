@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bdd4x3rlrnpdo"]
+
+[ext_resource type="Script" path="res://Scripts/Passives/Effects/recursive_weapon.gd" id="1_n1jj2"]
+
+[node name="RecursiveWeapon" type="Node"]
+script = ExtResource("1_n1jj2")

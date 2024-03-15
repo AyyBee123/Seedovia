@@ -2,6 +2,7 @@ extends Sprite2D
 
 signal weapon_fired(weapon)
 signal has_collided(object)
+signal attempted_fire
 
 @onready var player := $"../Player"
 @onready var _player_stats = player._player_stats
@@ -17,7 +18,7 @@ var distance_travelled: float # gets the current range travelled by the bullet
 # That's why it's called in the physics process function instead of the ready function
 var position_initialized := false
 
-var initial_weapon := true
+var initial_weapon := false
 var ignore_first_collision := false # this is to let the projectiles spawn without instantly colliding with an object
 var short_distance_travelled: float # this lets the projectile move a little before enabling collisions again
 var previous_weapon = null # this is used for weapons that persist and move as they're spawning the next weapon
@@ -65,11 +66,11 @@ func distance_after_collision():
 	if short_distance_travelled >= 1:
 		ignore_first_collision = false
 
-func _on_bullet_hitbox_body_entered(body):
-	_collide(body)
-
-func _on_bullet_hitbox_area_entered(area):
+func _on_hitbox_area_entered(area):
 	_collide(area)
+
+func _on_hitbox_body_entered(body):
+	_collide(body)
 
 func _collide(body):
 	if not ignore_first_collision:
@@ -81,6 +82,11 @@ func _collide(body):
 		ignore_first_collision = false
 
 func shoot_next_weapon(weapon):
+	pass
+
+# this is used to shoot a weapon that is outside the default list of slotted seed weapons
+# this function will always be called outside of the respective weapons' scripts (ex: from a passive, or item)
+func shoot_different_weapon(weapon):
 	pass
 
 func update_position(delta):

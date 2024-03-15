@@ -4,9 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://cvsb5hlama56" path="res://Sprites/Seeds/Explosive Pepper.png" id="2_c1ca2"]
 [ext_resource type="Script" path="res://Scripts/Seeds/pepper.gd" id="3_15ils"]
 [ext_resource type="PackedScene" uid="uid://cp3hdtxn75uyt" path="res://Scenes/Passives/Effects/Explosion.tscn" id="4_heiu2"]
-[ext_resource type="PackedScene" uid="uid://csi1g5071kvtk" path="res://Scenes/Seeds/Effects/Pepper Child.tscn" id="5_71adu"]
+[ext_resource type="PackedScene" uid="uid://csi1g5071kvtk" path="res://Scenes/Seeds/Effects/Pepper Child.tscn" id="5_c7mbt"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_jmy8u"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_rsbvv"]
 radius = 7.0
 
 [node name="Pepper" instance=ExtResource("1_44bna")]
@@ -14,15 +14,15 @@ position = Vector2(0, -2)
 texture = ExtResource("2_c1ca2")
 script = ExtResource("3_15ils")
 damage_multiplier = 5.0
-blast_radius_multiplier = 1.3
+blast_radius_multiplier = 1.25
 fire_rate_multiplier = 0.1
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 position = Vector2(0, 2)
-shape = SubResource("CircleShape2D_jmy8u")
+shape = SubResource("CircleShape2D_rsbvv")
 
 [node name="ResourcePreloader" type="ResourcePreloader" parent="." index="1"]
-resources = [PackedStringArray("Explosion", "Pepper Child"), [ExtResource("4_heiu2"), ExtResource("5_71adu")]]
+resources = [PackedStringArray("Explosion", "Pepper Child"), [ExtResource("4_heiu2"), ExtResource("5_c7mbt")]]
 
 [node name="Projectile Deceleration" type="Timer" parent="." index="2"]
 one_shot = true

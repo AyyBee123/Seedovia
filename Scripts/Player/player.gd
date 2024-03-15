@@ -44,7 +44,7 @@ func _physics_process(delta):
 			shoot.emit(current_weapon, $"Rotation Point/Marker2D".get_global_position())
 			
 	# pause game or close inventory, or stat sheet
-	if Input.is_action_just_pressed("escape"):
+	if Input.is_action_just_pressed("esc"):
 		if inventory.visible: # only inventory for now. Will add stat sheet when it's made
 			inventory.visible = false
 		else:
@@ -85,6 +85,7 @@ func dash():
 
 func _on_shoot(weapon, location):
 	var weapon_instance = weapon.instantiate()
+	weapon_instance.initial_weapon = true
 	weapon_instance.slot_index = 0
 	weapon_instance.seed_slot_number = PlayerSeeds.seed_indices[0]
 	weapon_instance.seed_slot_number_index = 0

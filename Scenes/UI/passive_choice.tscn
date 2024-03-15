@@ -69,10 +69,9 @@ stretch_mode = 3
 
 [node name="Sprite" type="TextureRect" parent="PassiveBackground/GridContainer/Button/PassiveBorder"]
 layout_mode = 0
-offset_left = -0.25
-offset_top = 0.25
-offset_right = 43.75
-offset_bottom = 44.25
+offset_top = 0.5
+offset_right = 44.0
+offset_bottom = 44.5
 texture = ExtResource("5_yjevb")
 stretch_mode = 3
 
@@ -122,10 +121,9 @@ stretch_mode = 3
 
 [node name="Sprite" type="TextureRect" parent="PassiveBackground/GridContainer/Button2/PassiveBorder"]
 layout_mode = 0
-offset_left = -0.25
-offset_top = 0.25
-offset_right = 43.75
-offset_bottom = 44.25
+offset_top = 0.5
+offset_right = 44.0
+offset_bottom = 44.5
 texture = ExtResource("8_0e54s")
 stretch_mode = 3
 
@@ -175,10 +173,9 @@ stretch_mode = 3
 
 [node name="Sprite" type="TextureRect" parent="PassiveBackground/GridContainer/Button3/PassiveBorder"]
 layout_mode = 0
-offset_left = -0.25
-offset_top = 0.25
-offset_right = 43.75
-offset_bottom = 44.25
+offset_top = 0.5
+offset_right = 44.0
+offset_bottom = 44.5
 texture = ExtResource("9_ga1yx")
 stretch_mode = 3
 

@@ -1,5 +1,7 @@
 extends "res://Scripts/Seeds/seed_template.gd"
 
+var enemy
+
 func _physics_process(delta):
 	initialize_position()
 	travelled_distance()
@@ -9,11 +11,13 @@ func _physics_process(delta):
 func _collide(body):
 	if not ignore_first_collision:
 		has_collided.emit(body)
+		attempted_fire.emit()
 		if body.is_in_group("Enemies"):
+			enemy = body
 			body.get_parent()._enemy_stats.take_damage(_player_stats.get_stat("Weapon_Damage") * damage_multiplier)
-			var weapon = null if PlayerSeeds.seeds.size() <= 1 + slot_index or slot_index >= 2 else PlayerSeeds.seeds[slot_index + 1]
-			if weapon != null:
-				shoot_next_weapon(weapon, body)
+		var weapon = null if PlayerSeeds.seeds.size() <= 1 + slot_index or slot_index >= 2 else PlayerSeeds.seeds[slot_index + 1]
+		if weapon != null:
+			shoot_next_weapon(weapon)
 		call_deferred("free")
 	else:
 		ignore_first_collision = false
@@ -26,10 +30,9 @@ func initialize_position():
 		else:
 			var nearest_enemy = get_nearest_enemy(hit_enemy)
 			direction = desired_direction
-		
 		position_initialized = true
 	
-func shoot_next_weapon(weapon, enemy = null):
+func shoot_next_weapon(weapon):
 	super.shoot_next_weapon(weapon)
 	var weapon_instance = weapon.instantiate()
 	if get_nearest_enemy(enemy) != null:
@@ -43,7 +46,17 @@ func shoot_next_weapon(weapon, enemy = null):
 	weapon_instance.seed_slot_number = PlayerSeeds.seed_indices[seed_slot_number_index + 1]
 	weapon_instance.seed_slot_number_index = seed_slot_number_index + 1
 	call_deferred("initialize_location", weapon_instance)
-	
+
+func shoot_different_weapon(weapon):
+	if get_nearest_enemy(enemy) != null:
+		weapon.desired_direction = global_position.direction_to(get_nearest_enemy(enemy).global_position)
+	else:
+		weapon.desired_direction = global_position.direction_to(player.global_position)
+	weapon.hit_enemy = enemy
+	weapon.initial_weapon = false
+	weapon.ignore_first_collision = true
+	call_deferred("initialize_location", weapon)
+
 func initialize_location(weapon_instance):
 	get_tree().current_scene.add_child(weapon_instance)
 	weapon_instance.global_position = global_position
@@ -52,6 +65,7 @@ func initialize_location(weapon_instance):
 func travelled_distance():
 	distance_travelled = starting_position.distance_to(self.global_position)
 	if distance_travelled >= _player_stats.get_stat("Weapon_Range") * range_multiplier:
+		attempted_fire.emit()
 		for i in range(seed_slots.size()):
 			var weapon = null if PlayerSeeds.seeds.size() <= 1 + slot_index or slot_index >= 2 else PlayerSeeds.seeds[slot_index + 1]
 			if weapon != null:

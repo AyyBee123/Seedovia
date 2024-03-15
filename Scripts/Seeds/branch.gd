@@ -51,6 +51,7 @@ func update_position(delta):
 			global_position = previous_weapon.global_position
 
 func shoot_next_weapon(_weapon):
+	attempted_fire.emit()
 	if weapon == null:
 		return
 	var weapon_instance = weapon.instantiate()
@@ -60,9 +61,19 @@ func shoot_next_weapon(_weapon):
 	weapon_instance.seed_slot_number = PlayerSeeds.seed_indices[seed_slot_number_index + 1]
 	weapon_instance.seed_slot_number_index = seed_slot_number_index + 1
 	weapon_instance.desired_direction = global_position.direction_to(marker.global_position)
+	weapon_instance.previous_weapon = self
 	get_tree().current_scene.add_child(weapon_instance)
 	weapon_fired.emit(weapon_instance)
 	weapon_instance.global_position = marker.global_position
+
+func shoot_different_weapon(weapon):
+	weapon.initial_weapon = false
+	weapon.ignore_first_collision = false
+	weapon.desired_direction = global_position.direction_to(marker.global_position)
+	weapon.previous_weapon = self
+	get_tree().current_scene.add_child(weapon)
+	weapon_fired.emit(weapon)
+	weapon.global_position = marker.global_position
 
 func _on_hitbox_area_entered(area):
 	_collide(area)

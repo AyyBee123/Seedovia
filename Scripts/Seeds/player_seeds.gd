@@ -3,7 +3,7 @@ extends Node
 var seeds := []
 var seed_indices := []
 
-func load_weapons(starting_index: int = 0) -> Array:
+func load_weapons() -> Array:
 	if PlayerInventory.seeds.size() == 0:
 		return []
 	var keys = PlayerInventory.seeds.keys()

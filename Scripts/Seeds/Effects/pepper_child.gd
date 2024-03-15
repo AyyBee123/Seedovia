@@ -2,6 +2,9 @@ extends Sprite2D
 
 signal weapon_fired(weapon)
 signal has_collided(object)
+signal attempted_fire
+
+var parent
 
 var position_initialized = false
 var direction
@@ -9,6 +12,7 @@ var starting_position: Vector2 # gets the starting position from where the bulle
 
 var seed_slots
 var slot_index
+var seed_slot_number
 var seed_slot_number_index
 
 var damage: float
@@ -16,9 +20,14 @@ var explosion_size: float
 
 var speed: float
 
+var parent_scene = PackedScene.new()
+
 @onready var projectile_speed_timer := $"Projectile Deceleration"
 @onready var life_time := $Lifetime
 @onready var resource_preloader := $ResourcePreloader
+
+func _ready():
+	parent_scene.pack(parent)
 
 func _physics_process(delta):
 	initialize_position()
@@ -53,6 +62,7 @@ func explode():
 	explosion.size = explosion_size
 	explosion.get_node("AnimatedSprite2D").self_modulate = Color.ORANGE_RED
 	call_deferred("create_child", explosion)
+	attempted_fire.emit()
 	for i in range(seed_slots.size()):
 		var weapon = null if PlayerSeeds.seeds.size() <= 1 + slot_index or slot_index >= 2 else PlayerSeeds.seeds[slot_index + 1]
 		if weapon != null:
@@ -65,12 +75,32 @@ func shoot_next_weapon(weapon):
 	for direction in directions:
 		var weapon_instance = weapon.instantiate()
 		weapon_instance.initial_weapon = false
-		weapon_instance.ignore_first_collision = true
+		weapon_instance.ignore_first_collision = false
 		weapon_instance.slot_index = slot_index + 1
 		weapon_instance.seed_slot_number = PlayerSeeds.seed_indices[seed_slot_number_index + 1]
 		weapon_instance.seed_slot_number_index = seed_slot_number_index + 1
 		weapon_instance.desired_direction = direction
 		call_deferred("create_child", weapon_instance)
+
+func shoot_different_weapon(weapon):
+	var directions = [Vector2.UP, Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT]
+	for direction in directions:
+		var weapon_instance = weapon.instantiate()
+		weapon_instance.ignore_first_collision = false
+		weapon_instance.desired_direction = direction
+		call_deferred("create_child", weapon_instance)
+
+
+func shoot_parent_recursion_passive(weapon):
+	var directions = [Vector2.UP, Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT]
+	for direction in directions:
+		var weapon_instance = weapon.instantiate()
+		weapon_instance.initial_weapon = false
+		weapon_instance.slot_index = 3
+		weapon_instance.ignore_first_collision = false
+		weapon_instance.desired_direction = direction
+		call_deferred("create_child", weapon_instance)
+
 
 func create_child(child):
 	get_tree().current_scene.add_child(child)

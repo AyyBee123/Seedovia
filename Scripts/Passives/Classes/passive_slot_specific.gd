@@ -1,0 +1,27 @@
+extends Node
+
+@onready var player := $"../.."
+# use either variable depending on the number of slots that will be modified
+var slot_numbers: Array[int] # slot numbers are either 0, 1, or 2; depending on the seed slots that will be modified
+var slot_number: int = -1 # slot number is either 0, 1, or 2; depending on the seed slot that will be modified
+
+func _ready():
+	player.weapon_fired.connect(get_slot_number)
+
+
+func get_slot_number(weapon = null):
+	if weapon == null:
+		return
+	if weapon.is_in_group("Weapon"):
+		if slot_numbers.size() > 0:
+			for i in slot_numbers:
+				if slot_numbers == weapon.seed_slot_number:
+					trigger(weapon)
+		if slot_number >= 0 and slot_number <= 2:
+			if slot_number == weapon.seed_slot_number:
+				trigger(weapon)
+		weapon.weapon_fired.connect(get_slot_number)
+
+
+func trigger(weapon):
+	pass

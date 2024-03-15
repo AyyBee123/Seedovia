@@ -3,6 +3,11 @@ extends "res://Scripts/Seeds/seed_template.gd"
 @onready var projectile_speed_timer := $"Projectile Deceleration"
 @onready var resource_preloader := $ResourcePreloader
 
+func _ready():
+	super._ready()
+	$"Projectile Deceleration".start()
+	$Lifetime.start()
+
 func update_position(delta):
 	var current_velocity: Vector2 = direction * _player_stats.get_stat("Weapon_Speed") * speed_multiplier * projectile_speed_timer.time_left
 	position += current_velocity * delta
@@ -39,7 +44,9 @@ func spawn_child_peppers():
 		pepper_child.direction = direction
 		pepper_child.seed_slots = seed_slots
 		pepper_child.slot_index = slot_index
+		pepper_child.seed_slot_number = seed_slot_number
 		pepper_child.seed_slot_number_index = seed_slot_number_index
+		pepper_child.parent = self
 		call_deferred("create_child", pepper_child)
 
 func create_child(child):
