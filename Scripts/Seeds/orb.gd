@@ -12,12 +12,10 @@ func _ready():
 
 func _physics_process(delta):
 	super._physics_process(delta)
-	for i in range(seed_slots.size()):
-		var weapon = null if PlayerSeeds.seeds.size() <= 1 + slot_index or slot_index >= 2 else PlayerSeeds.seeds[slot_index + 1]
-		if weapon != null:
-			if orb_fire_rate.is_stopped():
-				shoot_next_weapon(weapon)
-			break
+	var weapon = null if PlayerSeeds.seeds.size() <= 1 + slot_index or slot_index >= 2 else PlayerSeeds.seeds[slot_index + 1]
+	if weapon != null:
+		if orb_fire_rate.is_stopped():
+			shoot_next_weapon(weapon)
 	
 func shoot_next_weapon(weapon):
 	var weapon_instance = weapon.instantiate()
