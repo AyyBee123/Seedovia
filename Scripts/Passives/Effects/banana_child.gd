@@ -6,13 +6,11 @@ var starting_position: Vector2 # gets the starting position from where the bulle
 
 var object
 var damage: float
-var damage_multiplier: float
 var explosion_size: float
 
 var spread: float
 
 var speed: float
-var speed_multiplier: float
 
 @onready var projectile_speed_timer := $"Projectile Deceleration"
 @onready var life_time := $Lifetime
@@ -28,7 +26,7 @@ func initialize_position():
 		position_initialized = true
 
 func update_position(delta):
-	var current_velocity: Vector2 = direction * speed * speed_multiplier * projectile_speed_timer.time_left
+	var current_velocity: Vector2 = direction * speed * projectile_speed_timer.time_left
 	position += current_velocity * delta
 	look_at(global_position + current_velocity)
 
@@ -43,7 +41,7 @@ func _on_lifetime_timeout():
 	
 func explode():
 	var explosion = resource_preloader.get_resource("Explosion").instantiate()
-	explosion.damage = damage * damage_multiplier
+	explosion.damage = damage
 	explosion.size = explosion_size
 	explosion.get_node("AnimatedSprite2D").self_modulate = Color.YELLOW
 	call_deferred("create_child", explosion)
