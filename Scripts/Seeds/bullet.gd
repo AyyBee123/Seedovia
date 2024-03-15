@@ -11,11 +11,9 @@ func _collide(body):
 		has_collided.emit(body)
 		if body.is_in_group("Enemies"):
 			body.get_parent()._enemy_stats.take_damage(_player_stats.get_stat("Weapon_Damage") * damage_multiplier)
-		for i in range(seed_slots.size()):
 			var weapon = null if PlayerSeeds.seeds.size() <= 1 + slot_index or slot_index >= 2 else PlayerSeeds.seeds[slot_index + 1]
 			if weapon != null:
 				shoot_next_weapon(weapon, body)
-			break
 		call_deferred("free")
 	else:
 		ignore_first_collision = false
