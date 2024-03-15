@@ -13,6 +13,7 @@ signal weapon_fired(weapon)
 @onready var player_stats_ui := $"../Player Stats"
 @onready var initial_collision_layer := get_collision_layer()
 @onready var player_passives := $Passives
+@onready var hand := $"Rotation Point/Marker2D"
 
 var current_weapon: PackedScene = null
 
@@ -41,7 +42,7 @@ func _physics_process(delta):
 	if Input.is_action_pressed("shoot") and bullets_per_second.is_stopped() and not mouse_in_inventory:
 		current_weapon = null if PlayerInventory.seeds.size() == 0 else PlayerSeeds.load_weapons()[0]
 		if current_weapon != null:
-			shoot.emit(current_weapon, $"Rotation Point/Marker2D".get_global_position())
+			shoot.emit(current_weapon, hand.global_position)
 			
 	# pause game or close inventory, or stat sheet
 	if Input.is_action_just_pressed("esc"):

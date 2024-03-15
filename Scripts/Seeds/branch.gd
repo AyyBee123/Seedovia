@@ -45,7 +45,8 @@ func _collide(body):
 
 func update_position(delta):
 	if slot_index == 0:
-		global_position = player.global_position
+		global_position = player.hand.global_position
+		rotation = global_position.angle_to_point(get_global_mouse_position()) + deg_to_rad(90)
 	else:
 		if previous_weapon != null:
 			global_position = previous_weapon.global_position
@@ -55,16 +56,13 @@ func shoot_next_weapon(_weapon):
 	if weapon == null:
 		return
 	var weapon_instance = weapon.instantiate()
-	weapon_instance.initial_weapon = false
-	weapon_instance.ignore_first_collision = false
-	weapon_instance.slot_index = slot_index + 1
-	weapon_instance.seed_slot_number = PlayerSeeds.seed_indices[seed_slot_number_index + 1]
-	weapon_instance.seed_slot_number_index = seed_slot_number_index + 1
-	weapon_instance.desired_direction = global_position.direction_to(marker.global_position)
-	weapon_instance.previous_weapon = self
-	get_tree().current_scene.add_child(weapon_instance)
-	weapon_fired.emit(weapon_instance)
-	weapon_instance.global_position = marker.global_position
+	get_weapon_properties(weapon_instance, global_position.direction_to(marker.global_position))
+
+# function in seed template script
+func initialize_location(weapon):
+	get_tree().current_scene.add_child(weapon)
+	weapon.global_position = marker.global_position
+	weapon_fired.emit(weapon)
 
 func shoot_different_weapon(weapon):
 	weapon.initial_weapon = false
