@@ -45,6 +45,8 @@ func increase_max_health(amount):
 	max_health_changed.emit(max_health)
 	
 func take_damage(source):
+	if source.damage == 0:
+		return
 	health -= source.damage
 	overcapped_health -= source.damage
 	health = max(0, health)

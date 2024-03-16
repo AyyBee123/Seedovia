@@ -1,6 +1,7 @@
 extends "res://Scripts/Enemies/enemy.gd"
 
 @onready var hitbox := $"Enemy Hitbox"
+@onready var initial_collision_mask: int = $"Enemy Hitbox".get_collision_mask()
 @onready var initial_collision_layer: int = $"Enemy Hitbox".get_collision_layer()
 @onready var fire_time := $"Fire Time"
 
@@ -12,14 +13,17 @@ func _ready():
 	super._ready()
 	
 func _physics_process(delta):
+	super._physics_process(delta)
 	$"Rotation Point".look_at(player.global_position)
 
 func jump():
 	var direction = player.global_position - self.global_position
 	velocity = velocity.lerp(direction.normalized() * _enemy_stats.speed, _enemy_stats.acceleration)
+	hitbox.set_collision_mask(0)
 	hitbox.set_collision_layer(0)
 
 func idle():
+	hitbox.set_collision_mask(initial_collision_mask)
 	hitbox.set_collision_layer(initial_collision_layer)
 	velocity = velocity.lerp(Vector2.ZERO, _enemy_stats.friction)
 

@@ -6,6 +6,7 @@ signal weapon_fired(weapon)
 @export var _player_stats: player_stats
 
 @onready var bullets_per_second := $"Bullets Per Second"
+@onready var invulnerability_time := $"Invulnerability Time"
 @onready var dash_cooldown := $"Dash Cooldown"
 @onready var dash_invulnerability_time := $"Dash Invulnerability Time"
 @onready var inventory := $"Inventory"
@@ -14,6 +15,7 @@ signal weapon_fired(weapon)
 @onready var initial_collision_layer := get_collision_layer()
 @onready var player_passives := $Passives
 @onready var hand := $"Rotation Point/Marker2D"
+@onready var inv_anim := $"Invulnerability Animation"
 
 var current_weapon: PackedScene = null
 
@@ -44,15 +46,20 @@ func _physics_process(delta):
 		if current_weapon != null:
 			shoot.emit(current_weapon, hand.global_position)
 			
-	# pause game or close inventory, or stat sheet
+	# pause game or close inventory, or close stat sheet
 	if Input.is_action_just_pressed("esc"):
 		if inventory.visible: # only inventory for now. Will add stat sheet when it's made
 			inventory.visible = false
 		else:
 			pass # will add pause here, but it's not made yet
-	# dash
-	if dash_invulnerability_time.is_stopped():
+	
+	# invulnerability time when the player takes damage or dashes
+	if invulnerability_time.is_stopped() and dash_invulnerability_time.is_stopped():
 		can_be_damaged = true
+	if not invulnerability_time.is_stopped():
+		inv_anim.play("Invulnerable")
+	else:
+		inv_anim.stop()
 		
 	# die if health is 0 (or less)
 	if _player_stats.health <= 0:
@@ -101,12 +108,15 @@ func update_timers():
 		bullets_per_second.wait_time = 1.0/(_player_stats.get_stat("Fire_Rate") * weapon.fire_rate_multiplier)
 	else:
 		bullets_per_second.wait_time = 1.0/_player_stats.get_stat("Fire_Rate")
+	invulnerability_time.wait_time = _player_stats.get_stat("Invulnerability_Time")
 	dash_cooldown.wait_time = _player_stats.get_stat("Dash_Rate")
 	dash_invulnerability_time.wait_time = _player_stats.get_stat("Dash_Invulnerability")
 	bullets_per_second.start(bullets_per_second.wait_time)
 	dash_cooldown.start(dash_cooldown.wait_time)
 	
 func update_health(new_health):
+	can_be_damaged = false
+	invulnerability_time.start()
 	player_stats_ui.set_health()
 	
 func _should_move() -> bool:

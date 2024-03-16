@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cu63rxmy71bcg"]
+[gd_scene load_steps=10 format=3 uid="uid://cu63rxmy71bcg"]
 
 [ext_resource type="Texture2D" uid="uid://ddxlo3x3ru7hr" path="res://Sprites/Player/Hand.png" id="2_6om3g"]
 [ext_resource type="Script" path="res://Scripts/Player/player.gd" id="2_f7nwd"]
@@ -9,6 +9,27 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iqaxp"]
 size = Vector2(12, 20)
+
+[sub_resource type="Animation" id="Animation_o3tge"]
+resource_name = "Invulnerable"
+length = 0.425
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.1, 0.425)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3ihlv"]
+_data = {
+"Invulnerable": SubResource("Animation_o3tge")
+}
 
 [node name="Player" type="CharacterBody2D" groups=["Players"]]
 collision_layer = 2
@@ -50,6 +71,10 @@ texture = ExtResource("2_6om3g")
 [node name="Bullets Per Second" type="Timer" parent="."]
 one_shot = true
 
+[node name="Invulnerability Time" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
 [node name="Dash Invulnerability Time" type="Timer" parent="."]
 one_shot = true
 
@@ -67,6 +92,12 @@ scale = Vector2(3.745, 3.745)
 size_flags_horizontal = 3
 size_flags_vertical = 3
 metadata/_edit_use_anchors_ = true
+
+[node name="Invulnerability Animation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_3ihlv")
+}
+speed_scale = -1.0
 
 [connection signal="shoot" from="." to="." method="_on_shoot"]
 [connection signal="mouse_entered" from="Inventory" to="." method="_on_inventory_mouse_entered"]
