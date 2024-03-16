@@ -1,16 +1,19 @@
-[gd_scene load_steps=10 format=3 uid="uid://dfafxnw5132qr"]
+[gd_scene load_steps=12 format=3 uid="uid://dfafxnw5132qr"]
 
 [ext_resource type="Script" path="res://Scripts/UI/passive_choice.gd" id="1_7x1m1"]
 [ext_resource type="Texture2D" uid="uid://cmhhfcqibnxtw" path="res://Sprites/Passive UI/Passive Background.png" id="1_ayyp6"]
 [ext_resource type="FontFile" uid="uid://bkn7gmgx1wxgx" path="res://Fonts/Name Font.ttf" id="3_4afso"]
 [ext_resource type="Texture2D" uid="uid://cbgu0fp1f5ewh" path="res://Sprites/Passive UI/Passive Choice.png" id="4_3krng"]
 [ext_resource type="Texture2D" uid="uid://bw488sd3i0ynn" path="res://Sprites/Passive UI/Passive Border.png" id="5_kbpep"]
+[ext_resource type="Texture2D" uid="uid://c71sltkefy26t" path="res://Sprites/Passive UI/Passive Choice Pressed.png" id="5_w603p"]
 [ext_resource type="Texture2D" uid="uid://dc186h5pvg1wi" path="res://Sprites/Passives/Icons/Explosive Trigger.png" id="5_yjevb"]
+[ext_resource type="Texture2D" uid="uid://ck1cqd6wikm0p" path="res://Sprites/Passive UI/Passive Choice Hover.png" id="6_y7fth"]
 [ext_resource type="FontFile" uid="uid://wbj0boqv37y6" path="res://Fonts/Description Font.ttf" id="7_f1dvr"]
 [ext_resource type="Texture2D" uid="uid://bpkva3bwyblw1" path="res://Sprites/Passives/Icons/Banana Bomb.png" id="8_0e54s"]
 [ext_resource type="Texture2D" uid="uid://dissosonsok68" path="res://Sprites/Passives/Icons/Fire Flower.png" id="9_ga1yx"]
 
 [node name="PassiveChoice" type="Control"]
+process_mode = 3
 z_index = 5
 layout_mode = 3
 anchors_preset = 8
@@ -54,6 +57,8 @@ theme_override_constants/v_separation = 11
 [node name="Button" type="TextureButton" parent="PassiveBackground/GridContainer"]
 layout_mode = 2
 texture_normal = ExtResource("4_3krng")
+texture_pressed = ExtResource("5_w603p")
+texture_hover = ExtResource("6_y7fth")
 
 [node name="PassiveBorder" type="TextureRect" parent="PassiveBackground/GridContainer/Button"]
 custom_minimum_size = Vector2(44, 44)
@@ -106,6 +111,8 @@ scroll_active = false
 [node name="Button2" type="TextureButton" parent="PassiveBackground/GridContainer"]
 layout_mode = 2
 texture_normal = ExtResource("4_3krng")
+texture_pressed = ExtResource("5_w603p")
+texture_hover = ExtResource("6_y7fth")
 
 [node name="PassiveBorder" type="TextureRect" parent="PassiveBackground/GridContainer/Button2"]
 custom_minimum_size = Vector2(44, 44)
@@ -158,6 +165,8 @@ scroll_active = false
 [node name="Button3" type="TextureButton" parent="PassiveBackground/GridContainer"]
 layout_mode = 2
 texture_normal = ExtResource("4_3krng")
+texture_pressed = ExtResource("5_w603p")
+texture_hover = ExtResource("6_y7fth")
 
 [node name="PassiveBorder" type="TextureRect" parent="PassiveBackground/GridContainer/Button3"]
 custom_minimum_size = Vector2(44, 44)
