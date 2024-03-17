@@ -1,11 +1,11 @@
 extends Control
 
 const slot_class = preload("res://Scripts/Inventory/inventory_slot.gd")
-@onready var drop_button = $"NinePatchRect/Drop Button"
+@onready var drop_button = $"Inventory Screen/Drop Button"
 @onready var player = $".."
-@onready var inventory_slots = $"NinePatchRect/Inventory Slots".get_children()
-@onready var equip_slots = $"NinePatchRect/Equipment Slots".get_children()
-@onready var seed_slots = $"NinePatchRect/Seed Slots".get_children()
+@onready var inventory_slots = $"Inventory Screen/Inventory Slots".get_children()
+@onready var equip_slots = $"Inventory Screen/Equipment Slots".get_children()
+@onready var seed_slots = $"Inventory Screen/Seed Slots".get_children()
 var holding_item = null # the item that is currently being held by the cursor in the inventory
 #var mouse_in_inventory = self.get_global_rect().has_point(self.get_global_mouse_position()) and is_visible_in_tree()
 

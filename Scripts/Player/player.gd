@@ -10,8 +10,7 @@ signal weapon_fired(weapon)
 @onready var dash_cooldown := $"Dash Cooldown"
 @onready var dash_invulnerability_time := $"Dash Invulnerability Time"
 @onready var inventory := $"Inventory"
-@onready var inventory_screen := $"Inventory/NinePatchRect"
-@onready var player_stats_ui := $"../Player Stats"
+@onready var inventory_screen := $"Inventory/Inventory Screen"
 @onready var initial_collision_layer := get_collision_layer()
 @onready var player_passives := $Passives
 @onready var hand := $"Rotation Point/Marker2D"
@@ -31,7 +30,7 @@ func _ready():
 
 func _physics_process(delta):
 	# check if the mouse is in the inventory and if the inventory is visible to detect if the player can shoot
-	mouse_in_inventory = inventory.get_global_rect().has_point(inventory.get_global_mouse_position()) and inventory.is_visible_in_tree()
+	mouse_in_inventory = inventory_screen.get_global_rect().has_point(inventory.get_global_mouse_position()) and inventory.is_visible_in_tree()
 	
 	# make player's hand look at mouse
 	$"Rotation Point".look_at(get_global_mouse_position())
@@ -116,7 +115,6 @@ func update_timers():
 func update_health(new_health):
 	can_be_damaged = false
 	invulnerability_time.start()
-	player_stats_ui.set_health()
 	
 func _should_move() -> bool:
 	var input_direction = Input.get_vector("left", "right", "up", "down")

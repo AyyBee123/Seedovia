@@ -5,7 +5,6 @@ var item = null
 var slot_index: int
 
 @onready var player = $"../../../.."
-@onready var player_stats_ui = get_tree().current_scene.get_node("Player Stats")
 
 enum slot_types {
 	INVENTORY,
@@ -21,7 +20,6 @@ var slot_type = null
 func pick_from_slot():
 	if not (slot_type == slot_types.INVENTORY or slot_type == slot_types.SEED):
 		PlayerEquipment.remove_stats(item, player, item.item.was_already_equipped)
-		player_stats_ui.initialize_stats()
 	remove_child(item)
 	var inventory_node = find_parent("Inventory")
 	inventory_node.add_child(item) # inventory node adds the child to be held by the mouse curser
@@ -39,7 +37,6 @@ func put_into_slot(new_item):
 	if not (slot_type == slot_types.INVENTORY or slot_type == slot_types.SEED):
 		PlayerEquipment.add_stats(item, player, item.item.was_already_equipped)
 		item.item.was_already_equipped = true
-		player_stats_ui.initialize_stats()
 	if slot_type == slot_types.SEED:
 			PlayerSeeds.load_weapons()
 			player.update_timers()

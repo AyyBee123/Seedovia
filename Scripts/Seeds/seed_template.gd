@@ -6,7 +6,7 @@ signal attempted_fire
 
 @onready var player := $"../Player"
 @onready var _player_stats = player._player_stats
-@onready var seed_slots := $"../Player/Inventory/NinePatchRect/Seed Slots".get_children()
+@onready var seed_slots := $"../Player/Inventory/Inventory Screen/Seed Slots".get_children()
 
 var weapon_direction: Vector2
 var desired_direction: Vector2
