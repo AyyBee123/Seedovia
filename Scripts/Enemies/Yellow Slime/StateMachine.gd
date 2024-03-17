@@ -42,9 +42,17 @@ func _get_transition(delta):
 				return states.idle
 	return null
 
-# this is mainly for animations. I don't have animations, so the function will do nothing for now
 func _enter_state(new_state, old_state):
 	pass
+	#match new_state:
+		#states.idle
+			#parent.animation_player.play("idle")
+		#states.jump
+			#parent.animation_player.play("jump")
+		#states.shoot
+			#parent.animation_player.play("shoot")
+			#parent.shoot()
+
 
 func _exit_state(old_state, new_state):
 	pass
