@@ -28,7 +28,6 @@ func _ready():
 	_player_stats.health_changed.connect(update_health)
 	update_timers()
 	_player_stats.set_health(_player_stats.get_stat("Max_Health"))
-	player_stats_ui.initialize_stats()
 
 func _physics_process(delta):
 	# check if the mouse is in the inventory and if the inventory is visible to detect if the player can shoot

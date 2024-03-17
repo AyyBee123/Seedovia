@@ -82,12 +82,18 @@ one_shot = true
 one_shot = true
 
 [node name="Inventory" parent="." instance=ExtResource("4_px6lr")]
-visible = false
 z_as_relative = false
-offset_left = 318.0
-offset_top = -471.0
-offset_right = 479.0
-offset_bottom = -218.0
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -2160.0
+offset_top = -1334.0
+offset_right = -2160.0
+offset_bottom = -1334.0
+grow_horizontal = 0
+grow_vertical = 2
 scale = Vector2(3.745, 3.745)
 size_flags_horizontal = 3
 size_flags_vertical = 3
