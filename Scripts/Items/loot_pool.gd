@@ -77,11 +77,11 @@ func repopulate_pool(pool: Array):
 			equipment_pool[1] = full_equipment_pool.duplicate()
 			equipment_pool[1].shuffle()
 		"Consumable":
-			consumable_pool[1] = consumable_pool.duplicate()
+			consumable_pool[1] = full_consumable_pool.duplicate()
 			consumable_pool[1].shuffle()
 		"Passive":
-			passive_pool[1] = passive_pool.duplicate()
+			passive_pool[1] = full_passive_pool.duplicate()
 			passive_pool[1].shuffle()
 		"Seed":
-			seed_pool[1] = seed_pool.duplicate()
+			seed_pool[1] = full_seed_pool.duplicate()
 			seed_pool[1].shuffle()
