@@ -24,3 +24,6 @@ func load_inventory():
 func pause():
 	if Input.is_action_just_pressed("esc"):
 		get_tree().paused = !get_tree().paused
+
+func finish_change_scene():
+	pass

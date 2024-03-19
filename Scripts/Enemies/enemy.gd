@@ -4,12 +4,14 @@ extends CharacterBody2D
 @onready var health_bar := $"Health Bar"
 @onready var damage_buffer := $"Damage Buffer" # prevents an accidental extra damage call if sitting in enemy hitbox
 @export var _enemy_stats: enemy_stats
+var stats
 
 var is_in_area := false
 
 var damage_number = preload("res://Scenes/UI/damage_number.tscn")
 
 func _ready():
+	_enemy_stats = _enemy_stats.duplicate()
 	_enemy_stats.initialize_stats(_enemy_stats)
 	_enemy_stats.set_health(_enemy_stats.max_health)
 	health_bar.init_health(_enemy_stats.max_health)

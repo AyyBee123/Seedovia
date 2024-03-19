@@ -13,4 +13,5 @@ func shoot_weapon():
 	if node != null:
 		new_weapon.remove_child(new_weapon.get_node("RecursiveWeapon"))
 	scene.pack(new_weapon)
-	weapon.shoot_next_weapon(scene)
+	if weapon.has_method("shoot_next_weapon"):
+		weapon.shoot_next_weapon(scene)

@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqnd2vw7l1311"]
+
+[ext_resource type="PackedScene" uid="uid://cxoiy0x4nvtaa" path="res://Scenes/Levels/Base Level.tscn" id="1_vyik3"]
+[ext_resource type="PackedScene" uid="uid://dk7s8c4gd7p25" path="res://Scenes/Enemies/Yellow Slime.tscn" id="2_wjhcl"]
+
+[node name="Level" instance=ExtResource("1_vyik3")]
+
+[node name="Yellow Slime" parent="." index="4" instance=ExtResource("2_wjhcl")]
+position = Vector2(-551, -192)
+
+[node name="Yellow Slime2" parent="." index="5" instance=ExtResource("2_wjhcl")]
+position = Vector2(496, -203)
+
+[node name="Yellow Slime3" parent="." index="6" instance=ExtResource("2_wjhcl")]
+position = Vector2(-2, -74)

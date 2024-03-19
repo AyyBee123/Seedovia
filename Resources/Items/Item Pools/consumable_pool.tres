@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="item_pool" load_steps=2 format=3 uid="uid://c4islwxil6gek"]
+
+[ext_resource type="Script" path="res://Scripts/Item Pools/item_pool.gd" id="1_7fbj5"]
+
+[resource]
+script = ExtResource("1_7fbj5")
+path = "res://Resources/Items/Consumables/"

@@ -1,10 +1,22 @@
-[gd_scene load_steps=8 format=3 uid="uid://dk7s8c4gd7p25"]
+[gd_scene load_steps=9 format=3 uid="uid://dk7s8c4gd7p25"]
 
 [ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_f1xw5"]
-[ext_resource type="Resource" uid="uid://b6x5rnatpqtid" path="res://Resources/Enemies/yellow_slime.tres" id="2_ckw3e"]
 [ext_resource type="Script" path="res://Scripts/Enemies/Yellow Slime/yellow_slime.gd" id="2_vgxx0"]
 [ext_resource type="Script" path="res://Scripts/Enemies/Yellow Slime/StateMachine.gd" id="3_b4qd2"]
+[ext_resource type="Script" path="res://Scripts/Stats/enemy_stats.gd" id="3_peumx"]
 [ext_resource type="Texture2D" uid="uid://bulbtp8ysidpu" path="res://Sprites/Enemies/Yellow Slime.png" id="4_e5fpm"]
+
+[sub_resource type="Resource" id="Resource_wgoj7"]
+script = ExtResource("3_peumx")
+max_health = 40.0
+speed = 100.0
+fire_rate = 1.0
+damage = 1.0
+acceleration = 0.25
+friction = 1.0
+weapon_damage = 1.0
+weapon_range = 300.0
+weapon_speed = 150.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ovc8c"]
 height = 26.0
@@ -14,7 +26,7 @@ height = 26.0
 
 [node name="Yellow Slime" instance=ExtResource("1_f1xw5")]
 script = ExtResource("2_vgxx0")
-_enemy_stats = ExtResource("2_ckw3e")
+_enemy_stats = SubResource("Resource_wgoj7")
 
 [node name="StateMachine" type="Node" parent="." index="0"]
 script = ExtResource("3_b4qd2")

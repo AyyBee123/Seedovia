@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Roguelike"
-run/main_scene="res://Scenes/Levels/Test Level.tscn"
+run/main_scene="res://Scenes/Levels/Special/Starting Room.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 
 [autoload]
@@ -21,7 +21,7 @@ PlayerEquipment="*res://Scripts/Items/player_equipment.gd"
 PlayerSeeds="*res://Scripts/Seeds/player_seeds.gd"
 Global="*res://Scripts/Global/global.gd"
 LootPool="*res://Scripts/Items/loot_pool.gd"
-PlayerPassives="*res://Scripts/Player/player_passives.gd"
+LevelList="*res://Scripts/Level/level_list.gd"
 
 [display]
 
@@ -106,6 +106,7 @@ esc={
 2d_physics/layer_4="Player Weapon"
 2d_physics/layer_5="Enemy Weapon"
 2d_physics/layer_6="Item"
+2d_physics/layer_7="Door"
 2d_physics/canvas_textures/default_texture_filter=1
 
 [physics]
