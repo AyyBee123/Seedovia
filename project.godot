@@ -22,6 +22,7 @@ PlayerSeeds="*res://Scripts/Seeds/player_seeds.gd"
 Global="*res://Scripts/Global/global.gd"
 Pool="*res://Scripts/Items/pool.gd"
 LevelList="*res://Scripts/Level/level_list.gd"
+PlayerPassives="*res://Scripts/Passives/Data/player_passives.gd"
 
 [display]
 

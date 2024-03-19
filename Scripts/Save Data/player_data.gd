@@ -4,7 +4,7 @@ class_name player_data extends Resource
 @export var inventory: Dictionary = PlayerInventory.inventory
 @export var equipment: Dictionary = PlayerInventory.equipment
 @export var seeds: Dictionary = PlayerInventory.seeds
-#@export var passives: Dictionary = 
+@export var passives: Array
 
 func get_inventory():
 	inventory = PlayerInventory.inventory
@@ -15,3 +15,10 @@ func set_inventory():
 	PlayerInventory.inventory = inventory
 	PlayerInventory.equipment = equipment
 	PlayerInventory.seeds = seeds
+
+func get_passives():
+	passives = PlayerPassives.get_passives()
+
+func set_passives():
+	PlayerPassives.passives = passives
+	PlayerPassives.set_passives()

@@ -4,26 +4,14 @@ extends Node
 var SAVE_PATH := "user://player_inventory.res"
 var data := player_data.new()
 
-func _ready():
-	load_inventory()
-
-func _physics_process(delta):
-	if Input.is_action_just_pressed("save"):
-		Global.save_inventory()
-
-func save_inventory():
+func save_data():
 	data.get_inventory()
+	data.get_passives()
 	ResourceSaver.save(data, SAVE_PATH)
 
-func load_inventory():
+func load_data():
 	if not ResourceLoader.exists(SAVE_PATH):
 		return
 	data = ResourceLoader.load(SAVE_PATH)
+	data.set_passives()
 	data.set_inventory()
-
-func pause():
-	if Input.is_action_just_pressed("esc"):
-		get_tree().paused = !get_tree().paused
-
-func finish_change_scene():
-	pass

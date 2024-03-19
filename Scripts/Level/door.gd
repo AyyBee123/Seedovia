@@ -16,4 +16,3 @@ func _on_enter_radius_body_exited(body):
 
 func change_scene():
 	LevelList.change_room()
-	Global.finish_change_scene()

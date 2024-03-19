@@ -15,6 +15,6 @@ func chance_to_trigger(weapon = null):
 	
 	if random_value < probability:
 		trigger(weapon)
-		
+
 func trigger(weapon = null): # call this in sub-classes to trigger whatever that sub-class wants to do
 	pass

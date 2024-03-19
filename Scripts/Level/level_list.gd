@@ -8,6 +8,7 @@ func _ready():
 	randomize()
 
 func change_room():
+	Global.save_data()
 	if room_number == 0: # first room is the starting room
 		floor.rooms.append(ResourceLoader.load("res://Scenes/Levels/Special/Starting Room.tscn"))
 	elif room_number == 4: # fifth room is the passive room
@@ -19,6 +20,7 @@ func change_room():
 	room_number += 1
 	
 func change_floor():
+	Global.save_data()
 	floor.rooms.clear()
 	floor_number += 1
 	room_number = 0
