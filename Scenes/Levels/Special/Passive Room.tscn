@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxbbmsrbi1qwm"]
+
+[ext_resource type="PackedScene" uid="uid://cxoiy0x4nvtaa" path="res://Scenes/Levels/Base Level.tscn" id="1_8s78t"]
+[ext_resource type="PackedScene" uid="uid://bkbjq3dleklpw" path="res://Scenes/Items/Passive Item.tscn" id="2_e1d5u"]
+
+[node name="Level" instance=ExtResource("1_8s78t")]
+
+[node name="Passive Item" parent="." index="4" instance=ExtResource("2_e1d5u")]

@@ -1,7 +1,0 @@
-[gd_resource type="Resource" script_class="item_pool" load_steps=2 format=3 uid="uid://besgdwwicfsl8"]
-
-[ext_resource type="Script" path="res://Scripts/Item Pools/item_pool.gd" id="1_21p6l"]
-
-[resource]
-script = ExtResource("1_21p6l")
-path = "res://Scenes/Levels/Floor1/"

@@ -4,7 +4,7 @@ signal button_press(passive)
 
 @onready var player := $"../Player"
 @onready var buttons := $PassiveBackground/GridContainer.get_children()
-var passives = []
+var passives: Array
 
 func _ready():
 	get_tree().paused = true
@@ -17,7 +17,7 @@ func _ready():
 		button.get_node("Sprite").texture = passive.sprite
 
 func get_passive():
-	var item = LootPool.get_item(LootPool.passive_pool)
+	var item = Pool.get_item(Pool.passive_pool)
 	return item
 
 func give_item(item: PackedScene):

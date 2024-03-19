@@ -1,29 +1,39 @@
 extends Node
 
 # item pools
-var consumable_pool = ResourceLoader.load("res://Resources/Items/Item Pools/consumable_pool.tres")
-var equipment_pool = ResourceLoader.load("res://Resources/Items/Item Pools/equipment_pool.tres")
-var passive_pool = ResourceLoader.load("res://Resources/Items/Item Pools/passive_pool.tres")
-var seed_pool = ResourceLoader.load("res://Resources/Items/Item Pools/seed_pool.tres")
+var consumable_pool = ResourceLoader.load("res://Resources/Items/Pools/consumable_pool.tres")
+var equipment_pool = ResourceLoader.load("res://Resources/Items/Pools/equipment_pool.tres")
+var passive_pool = ResourceLoader.load("res://Resources/Items/Pools/passive_pool.tres")
+var seed_pool = ResourceLoader.load("res://Resources/Items/Pools/seed_pool.tres")
 
-#room pools
-var floor1_pool = ResourceLoader.load("res://Resources/Items/Item Pools/floor1.tres")
+#array of floor pools
+var floors: Array
 
 func _ready():
 	randomize()
+	add_floors()
 	populate_pool(equipment_pool)
 	populate_pool(consumable_pool)
 	populate_pool(passive_pool)
 	populate_pool(seed_pool)
-	populate_pool(floor1_pool)
+	for floor in floors:
+		populate_pool(floor)
 	
 
 func populate_pool(pool: Resource):
 	var item_resources = get_all_file_paths(pool.path)
 	for resource_path in item_resources:
 		pool.pool.append(ResourceLoader.load(resource_path))
-	pool.pool.shuffle()
+	shuffle_pool(pool)
 	pool.full_pool = pool.pool.duplicate()
+
+func add_floors():
+	var floor_files = get_all_file_paths("res://Resources/Floors/")
+	for floor in floor_files:
+		floors.append(ResourceLoader.load(floor))
+
+func shuffle_pool(pool: Resource):
+	pool.pool.shuffle()
 
 func get_all_file_paths(path: String) -> Array[String]:
 	var file_paths: Array[String] = []
@@ -48,4 +58,4 @@ func get_item(pool: Resource):
 
 func repopulate_pool(pool: Resource):
 	pool.pool = pool.full_pool.duplicate()
-	pool.pool.shuffle()
+	shuffle_pool(pool)

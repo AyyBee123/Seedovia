@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="room_list" load_steps=2 format=3 uid="uid://kscfnc8w3x1h"]
+
+[ext_resource type="Script" path="res://Scripts/Floors/room_list.gd" id="1_yoria"]
+
+[resource]
+script = ExtResource("1_yoria")

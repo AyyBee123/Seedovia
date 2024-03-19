@@ -1,7 +1,6 @@
 extends Node2D
 
 var transition_scene = false
-static var current_room_index = 0
 
 func _physics_process(delta):
 	if transition_scene:
@@ -16,8 +15,5 @@ func _on_enter_radius_body_exited(body):
 		transition_scene = false
 
 func change_scene():
-	if current_room_index >= LevelList.floor1[1].size():
-		current_room_index = 0
-	get_tree().change_scene_to_packed(LevelList.floor1[1][current_room_index])
-	current_room_index += 1
+	LevelList.change_room()
 	Global.finish_change_scene()
