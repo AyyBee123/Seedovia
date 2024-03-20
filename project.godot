@@ -23,6 +23,7 @@ Global="*res://Scripts/Global/global.gd"
 Pool="*res://Scripts/Items/pool.gd"
 LevelList="*res://Scripts/Level/level_list.gd"
 PlayerPassives="*res://Scripts/Passives/Data/player_passives.gd"
+PlayerStatStorage="*res://Scripts/Player/player_stat_storage.gd"
 
 [display]
 

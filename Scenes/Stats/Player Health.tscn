@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://civnfvhref4lg"]
 
-[ext_resource type="Script" path="res://Scripts/UI/display_player_stats.gd" id="1_fjrdo"]
+[ext_resource type="Script" path="res://Scripts/UI/player_health.gd" id="1_fjrdo"]
 [ext_resource type="FontFile" uid="uid://wbj0boqv37y6" path="res://Fonts/Description Font.ttf" id="2_ql006"]
 
-[node name="Player Stats" type="Control"]
+[node name="Player Health" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -34,6 +34,7 @@ mouse_filter = 2
 columns = 6
 
 [node name="Stats UI" type="GridContainer" parent="Layout"]
+visible = false
 layout_mode = 2
 mouse_filter = 2
 

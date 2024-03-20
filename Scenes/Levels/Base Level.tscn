@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cxoiy0x4nvtaa"]
+[gd_scene load_steps=8 format=3 uid="uid://cxoiy0x4nvtaa"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_5cm3y"]
 [ext_resource type="Texture2D" uid="uid://cw4586xydqwsm" path="res://Sprites/Wall/Tile Placeholder.png" id="2_snary"]
 [ext_resource type="PackedScene" uid="uid://cu63rxmy71bcg" path="res://Scenes/Player/Player.tscn" id="3_8wgo8"]
 [ext_resource type="PackedScene" uid="uid://bapvnxcjqbso" path="res://Scenes/Door/Door.tscn" id="4_5a3ht"]
+[ext_resource type="PackedScene" uid="uid://civnfvhref4lg" path="res://Scenes/Stats/Player Health.tscn" id="5_ohi5w"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ne3hj"]
 texture = ExtResource("2_snary")
@@ -33,3 +34,14 @@ position = Vector2(0, 290)
 
 [node name="Door" parent="." instance=ExtResource("4_5a3ht")]
 position = Vector2(0, -321)
+
+[node name="Player Health" parent="." instance=ExtResource("5_ohi5w")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -942.0
+offset_top = -516.0
+offset_right = -942.0
+offset_bottom = -516.0
+grow_horizontal = 1
+grow_vertical = 1

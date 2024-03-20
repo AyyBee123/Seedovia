@@ -4,10 +4,10 @@ var is_percent = false
 
 func add_stats(item, player, was_equipped): # add stats when slotting an equipment item to an equipment slot in the inventory
 	setup_property(item, player, 1, was_equipped)
-		
+
 func remove_stats(item, player, was_equipped): # remove stats when slotting an item out of an equipment slot in the inventory
 	setup_property(item, player, -1, was_equipped)
-		
+
 func setup_property(item, player, sign, was_equipped):
 	var properties = item.item.properties
 	for i in range(properties.size()):

@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 signal shoot(bullet, direction, location)
 signal weapon_fired(weapon)
+signal health_changed
 
 @export var _player_stats: player_stats
 

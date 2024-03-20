@@ -134,3 +134,6 @@ func update_stat(stat: String, was_equipped: bool, old_stat_value):
 		else:
 			health = current_health
 	change_stat.emit()
+
+func get_player_stats():
+	return stats
