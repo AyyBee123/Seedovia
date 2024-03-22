@@ -9,16 +9,23 @@ var seed_pool = ResourceLoader.load("res://Resources/Items/Pools/seed_pool.tres"
 #array of floor pools
 var floors: Array
 
+#pool arrays
+var pools: Array
+
+# condition to add specific pools to the array
+var add_pool := true
+
 func _ready():
 	randomize()
-	add_floors()
+	add_pool = true
 	populate_pool(equipment_pool)
 	populate_pool(consumable_pool)
-	populate_pool(passive_pool)
 	populate_pool(seed_pool)
+	add_pool = false
+	populate_pool(passive_pool)
+	add_floors()
 	for floor in floors:
 		populate_pool(floor)
-	
 
 func populate_pool(pool: Resource):
 	var item_resources = get_all_file_paths(pool.path)
@@ -26,6 +33,8 @@ func populate_pool(pool: Resource):
 		pool.pool.append(ResourceLoader.load(resource_path))
 	shuffle_pool(pool)
 	pool.full_pool = pool.pool.duplicate()
+	if add_pool:
+		pools.append(pool)
 
 func add_floors():
 	var floor_files = get_all_file_paths("res://Resources/Floors/")

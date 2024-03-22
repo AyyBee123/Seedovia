@@ -4,4 +4,5 @@
 
 [resource]
 script = ExtResource("1_g6160")
+pool_name = "Seed"
 path = "res://Resources/Items/Seeds/"

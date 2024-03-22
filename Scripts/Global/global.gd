@@ -3,6 +3,8 @@ extends Node
 # %APPDATA%\Roaming\Godot\app_userdata\Roguelike
 var SAVE_PATH := "user://player_inventory.res"
 var data := player_data.new()
+var rewards: Array
+static var next_reward: item_pool = null
 
 func save_data():
 	data.get_inventory()
@@ -17,3 +19,6 @@ func load_data():
 	data.set_stats()
 	data.set_passives()
 	data.set_inventory()
+
+func get_reward():
+	pass

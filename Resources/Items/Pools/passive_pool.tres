@@ -4,4 +4,5 @@
 
 [resource]
 script = ExtResource("1_jg4ya")
+pool_name = "Passive"
 path = "res://Resources/Items/Passives/"

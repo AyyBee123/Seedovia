@@ -14,4 +14,3 @@ func set_stats():
 	player = get_tree().get_nodes_in_group("Players")[0]
 	player._player_stats.stats = stats
 	player._player_stats.health = current_health
-	

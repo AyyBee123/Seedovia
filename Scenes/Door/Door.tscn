@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bapvnxcjqbso"]
+[gd_scene load_steps=5 format=3 uid="uid://bapvnxcjqbso"]
 
 [ext_resource type="Texture2D" uid="uid://dmfi6nhgbaqsi" path="res://Sprites/UI/Filled Heart.png" id="1_as7lk"]
 [ext_resource type="Script" path="res://Scripts/Level/door.gd" id="1_xo7uy"]
+[ext_resource type="FontFile" uid="uid://wbj0boqv37y6" path="res://Fonts/Description Font.ttf" id="3_lo11f"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ier7o"]
 radius = 8.0
@@ -20,6 +21,25 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Enter Radius"]
 position = Vector2(0, 1.66667)
 shape = SubResource("CircleShape2D_ier7o")
+
+[node name="Background" type="TextureRect" parent="."]
+offset_left = -20.0
+offset_top = -47.3333
+offset_right = 20.0
+offset_bottom = -7.33334
+
+[node name="Reward Text" type="RichTextLabel" parent="Background"]
+layout_mode = 0
+offset_left = -26.0
+offset_top = -0.333333
+offset_right = 66.0
+offset_bottom = 39.6667
+theme_override_fonts/normal_font = ExtResource("3_lo11f")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "[center]Reward 
+"
+scroll_active = false
 
 [connection signal="body_entered" from="Sprite2D/Enter Radius" to="." method="_on_enter_radius_body_entered"]
 [connection signal="body_exited" from="Sprite2D/Enter Radius" to="." method="_on_enter_radius_body_exited"]
