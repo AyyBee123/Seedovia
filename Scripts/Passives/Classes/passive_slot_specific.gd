@@ -8,7 +8,6 @@ var slot_number: int = -1 # slot number is either 0, 1, or 2; depending on the s
 func _ready():
 	player.weapon_fired.connect(get_slot_number)
 
-
 func get_slot_number(weapon = null):
 	if weapon == null:
 		return
@@ -21,7 +20,6 @@ func get_slot_number(weapon = null):
 			if slot_number == weapon.seed_slot_number:
 				trigger(weapon)
 		weapon.weapon_fired.connect(get_slot_number)
-
 
 func trigger(weapon):
 	pass
