@@ -1,12 +1,14 @@
 extends Node2D
 
 @onready var resource_preloader := $ResourcePreloader
+@onready var player := $Player
 
 var cleared := false
 var was_cleared := false # checks if room initially has enemies on entering
 var number_of_doors := 2
 var doors_spawned := false
 var reward_given := false
+var is_paused := false
 
 func _ready():
 	Global.rewards.clear() # reset the reward item list
@@ -28,7 +30,11 @@ func check_for_enemies():
 
 func pause():
 	if Input.is_action_just_pressed("esc"):
-		pass # spawn pause menu
+		if player.get_node("Inventory").visible: # or stat sheet is visible (when I add the stat sheet)
+			player.get_node("Inventory").visible = false
+		else:
+			var pause_menu = resource_preloader.get_resource("Pause Menu").instantiate()
+			add_child(pause_menu)
 
 func spawn_doors(): # -785 to 785 = 1570 (size of level in x-axis) # -400 is the y-position for the door
 	doors_spawned = true

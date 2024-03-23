@@ -1,9 +1,122 @@
-[gd_scene format=3 uid="uid://d1x7xscaoh6wq"]
+[gd_scene load_steps=7 format=3 uid="uid://d1x7xscaoh6wq"]
+
+[ext_resource type="Script" path="res://Scripts/UI/pause_menu.gd" id="1_kmgxr"]
+[ext_resource type="Texture2D" uid="uid://cspvbpbm2l6hp" path="res://Sprites/Pause UI/Pause Menu Background.png" id="1_q7u0e"]
+[ext_resource type="Texture2D" uid="uid://didv5fjskcrdi" path="res://Sprites/Pause UI/Pause Menu Choice.png" id="2_s1kdf"]
+[ext_resource type="Texture2D" uid="uid://ciyk64aevmyv" path="res://Sprites/Pause UI/Pause Menu Choice Pressed.png" id="3_lv6ny"]
+[ext_resource type="Texture2D" uid="uid://dmb2vfptumg3l" path="res://Sprites/Pause UI/Pause Menu Choice Hover.png" id="4_x5ukf"]
+[ext_resource type="FontFile" uid="uid://wbj0boqv37y6" path="res://Fonts/Description Font.ttf" id="5_f45s5"]
 
 [node name="PauseMenu" type="Control"]
+process_mode = 3
+z_index = 6
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_left = 0.499
+anchor_top = 0.506
+anchor_right = 0.499
+anchor_bottom = 0.506
+offset_left = -128.08
+offset_top = -134.48
+offset_right = 127.92
+offset_bottom = 135.52
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(2.5, 2.5)
+pivot_offset = Vector2(128, 135)
+script = ExtResource("1_kmgxr")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -135.0
+offset_right = 128.0
+offset_bottom = 135.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_q7u0e")
+
+[node name="GridContainer" type="GridContainer" parent="TextureRect"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 27.0
+offset_right = 248.0
+offset_bottom = 256.0
+
+[node name="ResumeButton" type="TextureButton" parent="TextureRect/GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_s1kdf")
+texture_pressed = ExtResource("3_lv6ny")
+texture_hover = ExtResource("4_x5ukf")
+
+[node name="Text" type="RichTextLabel" parent="TextureRect/GridContainer/ResumeButton"]
+layout_mode = 0
+offset_top = 7.0
+offset_right = 240.0
+offset_bottom = 56.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("5_f45s5")
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "[center]Resume"
+scroll_active = false
+
+[node name="SettingsButton" type="TextureButton" parent="TextureRect/GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_s1kdf")
+texture_pressed = ExtResource("3_lv6ny")
+texture_hover = ExtResource("4_x5ukf")
+
+[node name="Text" type="RichTextLabel" parent="TextureRect/GridContainer/SettingsButton"]
+layout_mode = 0
+offset_top = 7.0
+offset_right = 240.0
+offset_bottom = 56.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("5_f45s5")
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "[center]Settings"
+scroll_active = false
+
+[node name="QuickRestartButton" type="TextureButton" parent="TextureRect/GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_s1kdf")
+texture_pressed = ExtResource("3_lv6ny")
+texture_hover = ExtResource("4_x5ukf")
+
+[node name="Text" type="RichTextLabel" parent="TextureRect/GridContainer/QuickRestartButton"]
+layout_mode = 0
+offset_top = 7.0
+offset_right = 240.0
+offset_bottom = 56.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("5_f45s5")
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "[center]Quick Restart"
+scroll_active = false
+
+[node name="QuitToMenuButton" type="TextureButton" parent="TextureRect/GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_s1kdf")
+texture_pressed = ExtResource("3_lv6ny")
+texture_hover = ExtResource("4_x5ukf")
+
+[node name="Text" type="RichTextLabel" parent="TextureRect/GridContainer/QuitToMenuButton"]
+layout_mode = 0
+offset_top = 7.0
+offset_right = 240.0
+offset_bottom = 56.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("5_f45s5")
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "[center]Quit to Menu"
+scroll_active = false
+
+[connection signal="pressed" from="TextureRect/GridContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
