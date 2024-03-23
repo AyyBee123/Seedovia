@@ -34,11 +34,18 @@ func spawn_doors(): # -785 to 785 = 1570 (size of level in x-axis) # -400 is the
 	doors_spawned = true
 	if not was_cleared:
 		await get_tree().create_timer(0.5).timeout
+	if LevelList.room_number == 4:
+		var door = resource_preloader.get_resource("Door").instantiate()
+		add_child(door)
+		door.set_reward("Passive")
+		door.position = Vector2(0, -400)
+		return
 	var door_pos = [-1, 0, 1]
 	for i in door_pos:
 		if i == 0 and true: # true for now, this condition is for an item that adds an extra door choice
 			continue
 		var door = resource_preloader.get_resource("Door").instantiate()
+		door.set_reward()
 		add_child(door)
 		door.position = Vector2(1570.0 * i / 5, -400)
 
