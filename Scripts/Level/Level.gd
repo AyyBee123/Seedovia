@@ -28,7 +28,7 @@ func check_for_enemies():
 
 func pause():
 	if Input.is_action_just_pressed("esc"):
-		get_tree().paused = !get_tree().paused
+		pass # spawn pause menu
 
 func spawn_doors(): # -785 to 785 = 1570 (size of level in x-axis) # -400 is the y-position for the door
 	doors_spawned = true

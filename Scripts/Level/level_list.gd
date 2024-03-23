@@ -1,8 +1,8 @@
 extends Node
 
 var floor = ResourceLoader.load("res://Resources/Current Floor/floor.tres")
-static var floor_number := 0
-static var room_number := 0
+static var floor_number: int
+static var room_number: int
 
 func _ready():
 	randomize()
