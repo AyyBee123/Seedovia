@@ -9,11 +9,10 @@ var doors_spawned := false
 var reward_given := false
 
 func _ready():
-	Global.rewards.clear() # reset the reward pool
+	Global.rewards.clear() # reset the reward item list
 	if get_tree().get_nodes_in_group("Enemy").size() == 0:
 		was_cleared = true
 	Global.load_data()
-	Global.get_reward()
 
 func _physics_process(delta):
 	pause()
@@ -24,7 +23,7 @@ func check_for_enemies():
 		cleared = true
 		if not doors_spawned:
 			spawn_doors()
-		if not reward_given:
+		if not reward_given and not was_cleared:
 			give_reward()
 
 func pause():
@@ -46,7 +45,10 @@ func spawn_doors(): # -785 to 785 = 1570 (size of level in x-axis) # -400 is the
 func give_reward():
 	reward_given = true
 	await get_tree().create_timer(0.5).timeout
-	if Global.next_reward == null:
+	if Global.next_reward == null: # just in case
 		return
-	
+	var item = resource_preloader.get_resource("Item").instantiate()
+	item.set_item(Pool.get_item(Pool.pools[Pool.pools.find(Global.next_reward)]))
+	add_child(item)
+	item.global_position = $Camera2D.global_position
 	Global.next_reward = null

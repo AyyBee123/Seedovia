@@ -19,6 +19,3 @@ func load_data():
 	data.set_stats()
 	data.set_passives()
 	data.set_inventory()
-
-func get_reward():
-	pass
