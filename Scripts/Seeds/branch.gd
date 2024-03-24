@@ -17,7 +17,8 @@ func _ready():
 		anim.play("Swing")
 	else:
 		anim.play("Swing Reverse")
-	weapon = null if PlayerSeeds.seeds.size() <= 1 + slot_index or slot_index >= 2 else PlayerSeeds.seeds[slot_index + 1]
+	weapon = null if PlayerSeeds.seeds.size() <= 1 + slot_index or slot_index >= 2\
+	else PlayerSeeds.seeds[slot_index + 1]
 
 func initialize_position():
 	if not position_initialized:

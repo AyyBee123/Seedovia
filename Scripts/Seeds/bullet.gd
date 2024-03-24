@@ -15,7 +15,8 @@ func _collide(body):
 		if body.is_in_group("Enemies"):
 			enemy = body
 			body.get_parent()._enemy_stats.take_damage(_player_stats.get_stat("Weapon_Damage") * damage_multiplier)
-		var weapon = null if PlayerSeeds.seeds.size() <= 1 + slot_index or slot_index >= 2 else PlayerSeeds.seeds[slot_index + 1]
+		var weapon = null if PlayerSeeds.seeds.size() <= 1 + slot_index or slot_index >= 2\
+		else PlayerSeeds.seeds[slot_index + 1]
 		if weapon != null:
 			shoot_next_weapon(weapon)
 		call_deferred("free")
@@ -50,7 +51,8 @@ func travelled_distance():
 	if distance_travelled >= _player_stats.get_stat("Weapon_Range") * range_multiplier:
 		attempted_fire.emit()
 		for i in range(seed_slots.size()):
-			var weapon = null if PlayerSeeds.seeds.size() <= 1 + slot_index or slot_index >= 2 else PlayerSeeds.seeds[slot_index + 1]
+			var weapon = null if PlayerSeeds.seeds.size() <= 1 + slot_index or slot_index >= 2\
+			else PlayerSeeds.seeds[slot_index + 1]
 			if weapon != null:
 				shoot_next_weapon(weapon)
 			break

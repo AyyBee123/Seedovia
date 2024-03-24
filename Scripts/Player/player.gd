@@ -31,7 +31,8 @@ func _ready():
 
 func _physics_process(delta):
 	# check if the mouse is in the inventory and if the inventory is visible to detect if the player can shoot
-	mouse_in_inventory = inventory_screen.get_global_rect().has_point(inventory.get_global_mouse_position()) and inventory.is_visible_in_tree()
+	mouse_in_inventory = inventory_screen.get_global_rect().has_point(inventory.get_global_mouse_position())\
+	and inventory.is_visible_in_tree()
 	
 	# make player's hand look at mouse
 	$"Rotation Point".look_at(get_global_mouse_position())
@@ -72,7 +73,8 @@ func _physics_process(delta):
 func move():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	if input_direction.length() > 0:
-		velocity = velocity.lerp(input_direction.normalized() * _player_stats.get_stat("Speed"), _player_stats.get_stat("Acceleration"))
+		velocity = velocity.lerp(input_direction.normalized() * _player_stats.get_stat("Speed"),\
+		_player_stats.get_stat("Acceleration"))
 		
 func stop():
 	velocity = velocity.lerp(Vector2.ZERO, _player_stats.get_stat("Friction"))
@@ -86,7 +88,8 @@ func die():
 func dash():
 	can_be_damaged = false
 	var input_direction = Input.get_vector("left", "right", "up", "down")
-	velocity = velocity.lerp((input_direction.normalized() if input_direction else Vector2(0,1)) * _player_stats.get_stat("Dash_Distance"), 1)
+	velocity = velocity.lerp((input_direction.normalized() if input_direction else Vector2(0,1))\
+	* _player_stats.get_stat("Dash_Distance"), 1)
 	dash_cooldown.start()
 	dash_invulnerability_time.start()
 
