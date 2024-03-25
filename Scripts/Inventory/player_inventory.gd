@@ -9,7 +9,10 @@ const NUM_INVENTORY_SLOTS = 12
 const NUM_EQUIPMENT_SLOTS = 4
 const NUM_SEED_SLOTS = 3
 
-var inventory = {}
+var inventory = {5:load("res://Resources/Items/Seeds/orb.tres"),\
+1:load("res://Resources/Items/Seeds/pepper.tres"),\
+2:load("res://Resources/Items/Seeds/bullet.tres"),\
+3:load("res://Resources/Items/Seeds/branch.tres")}
 var equipment = {}
 var seeds = {}
 

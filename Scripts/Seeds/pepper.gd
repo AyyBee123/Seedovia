@@ -4,14 +4,16 @@ extends "res://Scripts/Seeds/seed_template.gd"
 @onready var resource_preloader := $ResourcePreloader
 
 func update_position(delta):
-	var current_velocity: Vector2 = direction * _player_stats.get_stat("Weapon_Speed") * speed_multiplier * projectile_speed_timer.time_left
+	var current_velocity: Vector2 = direction * _player_stats.get_stat("Weapon_Speed")\
+	* speed_multiplier * projectile_speed_timer.time_left
 	position += current_velocity * delta
 
 func _collide(body):
 	if not ignore_first_collision:
 		has_collided.emit(body)
 		if body.is_in_group("Enemies"):
-			body.get_parent()._enemy_stats.take_damage(_player_stats.get_stat("Weapon_Damage") * damage_multiplier / 2)
+			body.get_parent()._enemy_stats.take_damage(_player_stats.get_stat("Weapon_Damage")\
+			* damage_multiplier / 2)
 		explode()
 	else:
 		ignore_first_collision = false
