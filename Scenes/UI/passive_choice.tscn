@@ -34,7 +34,6 @@ size_flags_vertical = 6
 script = ExtResource("1_7x1m1")
 
 [node name="PassiveBackground" type="TextureRect" parent="."]
-layout_mode = 2
 offset_right = 256.0
 offset_bottom = 256.0
 texture = ExtResource("1_ayyp6")
@@ -223,7 +222,3 @@ bbcode_enabled = true
 text = "Fire Flower"
 fit_content = true
 scroll_active = false
-
-[connection signal="pressed" from="PassiveBackground/GridContainer/Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="PassiveBackground/GridContainer/Button2" to="." method="_on_button_2_pressed"]
-[connection signal="pressed" from="PassiveBackground/GridContainer/Button3" to="." method="_on_button_3_pressed"]

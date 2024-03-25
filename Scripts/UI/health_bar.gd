@@ -2,7 +2,7 @@ extends TextureProgressBar
 
 @onready var damage_bar := $"Enemy Health"
 @onready var delay := $"White Bar Delay"
-var rate: float = 0.08
+@export var rate: float = 0.08
 
 var health: float = 0 : set = set_health
 
@@ -19,15 +19,13 @@ func set_health(new_health):
 	else: #healing
 		value = health
 
-
 func init_health(_health):
 	health = _health
-	damage_bar.max_value = health
-	damage_bar.value = health
-	max_value = health
-	value = health
-
+	damage_bar.max_value = _health
+	damage_bar.value = _health
+	max_value = _health
+	value = _health
 
 func _on_white_bar_delay_timeout():
 	var tween = get_tree().create_tween()
-	tween.tween_property(self, "value", health, rate).set_ease(1)
+	tween.tween_property(self, "value", health, rate).set_ease(1) # move the white bar to the current (red) health value

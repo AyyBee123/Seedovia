@@ -1,7 +1,63 @@
-[gd_scene load_steps=2 format=3 uid="uid://bvxrqp86pvpry"]
+[gd_scene load_steps=6 format=3 uid="uid://bvxrqp86pvpry"]
 
-[ext_resource type="PackedScene" uid="uid://de0gxtit8o3cu" path="res://Scenes/UI/health_bar.tscn" id="1_vthcm"]
+[ext_resource type="Texture2D" uid="uid://bf5rdhqce3iki" path="res://Sprites/UI/Boss Health Bar.png" id="1_qter5"]
+[ext_resource type="Texture2D" uid="uid://dieglc86kh7gj" path="res://Sprites/UI/Boss Damaged Health.png" id="2_ce7j2"]
+[ext_resource type="Script" path="res://Scripts/UI/health_bar.gd" id="3_760p2"]
+[ext_resource type="Texture2D" uid="uid://usr3okdlyneq" path="res://Sprites/UI/Boss Filled Health.png" id="4_y1lnh"]
+[ext_resource type="FontFile" uid="uid://bkn7gmgx1wxgx" path="res://Fonts/Name Font.ttf" id="5_qb5n7"]
 
-[node name="CanvasLayer" type="CanvasLayer"]
+[node name="Boss Health" type="CanvasLayer"]
 
-[node name="Health Bar" parent="." instance=ExtResource("1_vthcm")]
+[node name="Health Bar" type="TextureProgressBar" parent="."]
+z_index = -1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -836.0
+offset_top = -52.0
+offset_right = 834.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 0
+value = 90.0
+texture_under = ExtResource("1_qter5")
+texture_progress = ExtResource("2_ce7j2")
+texture_progress_offset = Vector2(4, 4)
+script = ExtResource("3_760p2")
+rate = 0.2
+
+[node name="Enemy Health" type="TextureProgressBar" parent="Health Bar"]
+z_index = 1
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 1666.0
+offset_bottom = 20.0
+value = 60.0
+texture_progress = ExtResource("4_y1lnh")
+
+[node name="White Bar Delay" type="Timer" parent="Health Bar"]
+wait_time = 0.5
+one_shot = true
+
+[node name="Boss Name" type="RichTextLabel" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -832.0
+offset_top = -114.0
+offset_right = 829.0
+offset_bottom = -34.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/normal_font = ExtResource("5_qb5n7")
+theme_override_font_sizes/normal_font_size = 48
+text = "Boss Name"
+fit_content = true
+scroll_active = false
+
+[connection signal="timeout" from="Health Bar/White Bar Delay" to="Health Bar" method="_on_white_bar_delay_timeout"]

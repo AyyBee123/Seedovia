@@ -1,5 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://dnex5bwcajvx2"]
+[gd_scene load_steps=3 format=3 uid="uid://dnex5bwcajvx2"]
 
 [ext_resource type="PackedScene" uid="uid://cxoiy0x4nvtaa" path="res://Scenes/Levels/Base Level.tscn" id="1_l1c5x"]
+[ext_resource type="PackedScene" uid="uid://dcbchvrd8ok5p" path="res://Scenes/Bosses/Haunted Fortress.tscn" id="2_y2vqp"]
 
 [node name="Level" instance=ExtResource("1_l1c5x")]
+
+[node name="Haunted Fortress" parent="." index="6" instance=ExtResource("2_y2vqp")]
+position = Vector2(-4, -310)
+scale = Vector2(3, 3)
