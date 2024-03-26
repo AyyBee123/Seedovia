@@ -24,7 +24,7 @@ func _get_transition(delta):
 				if random_attack == 0:
 					return states.laser
 		states.laser:
-			if not parent.animated_sprite_2d.is_playing() and parent.animated_sprite_2d.animation == "Laser":
+			if not parent.animated_sprite_2d.is_playing():
 				return states.idle
 	return null
 
