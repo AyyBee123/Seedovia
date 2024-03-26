@@ -1,7 +1,5 @@
 extends Control
 
-signal button_press(passive)
-
 @onready var player := $"../Player"
 @onready var buttons := $PassiveBackground/GridContainer.get_children()
 var passives: Array

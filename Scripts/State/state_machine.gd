@@ -23,13 +23,13 @@ func _state_logic(delta):
 func _get_transition(delta):
 	return null
 
-# this is mainly for animations and transitions. I don't have animations, so the function will do nothing for now
-# (ex: play "shoot" animation and shoot function when in the shoot state)
+# this is mainly for animations and transitions. It pretty much does something when entering a state
+# (ex: play "shoot" animation and shoot function when entering the shoot state)
 func _enter_state(new_state, old_state):
 	pass
 
-# similar to _enter_state, but for old_state 
-# (ex: play "tired" animation state after a strong attack)
+# similar to _enter_state, but for exiting instead of entering
+# (ex: play "tired" animation state after a strong attack, or start a timer after exiting a state)
 func _exit_state(old_state, new_state):
 	pass
 
@@ -41,6 +41,6 @@ func set_state(new_state):
 		_exit_state(previous_state, new_state)
 	if state != null:
 		_enter_state(new_state, previous_state)
-		
+
 func add_state(state_name):
 	states[state_name] = states.size()

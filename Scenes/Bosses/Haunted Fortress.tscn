@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dcbchvrd8ok5p"]
+[gd_scene load_steps=28 format=3 uid="uid://dcbchvrd8ok5p"]
 
 [ext_resource type="Texture2D" uid="uid://ckwbd5pe618xx" path="res://Sprites/Bosses/Haunted Fortress/Idle/Haunted Fortress Idle.png" id="1_o3eeo"]
 [ext_resource type="Script" path="res://Scripts/Bosses/Haunted Fortress/haunted_fortress.gd" id="1_spxu2"]
@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://cbv82046jyeao" path="res://Resources/Bosses/haunted_fortress.tres" id="3_f8ewb"]
 [ext_resource type="Texture2D" uid="uid://dmsvbjhklty17" path="res://Sprites/Bosses/Haunted Fortress/Laser/Haunted Fortress Laser.png" id="3_sp64t"]
 [ext_resource type="PackedScene" uid="uid://bvxrqp86pvpry" path="res://Scenes/UI/Boss Health Bar.tscn" id="4_kk65q"]
+[ext_resource type="Script" path="res://Scripts/Bosses/Haunted Fortress/StateMachine.gd" id="4_qxp1d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t58o8"]
 size = Vector2(244, 101)
@@ -285,6 +286,12 @@ animations = [{
 "texture": SubResource("AtlasTexture_nxgym")
 }, {
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_42pqo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nxgym")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_k0lhg")
 }, {
 "duration": 1.0,
@@ -296,7 +303,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8pbik")
 }],
-"loop": true,
+"loop": false,
 "name": &"Laser",
 "speed": 15.0
 }]
@@ -305,21 +312,27 @@ animations = [{
 size = Vector2(244, 101)
 
 [node name="Haunted Fortress" instance=ExtResource("1_tw583")]
+scale = Vector2(3, 3)
 script = ExtResource("1_spxu2")
 _enemy_stats = ExtResource("3_f8ewb")
 
-[node name="CollisionPolygon2D" parent="." index="0"]
+[node name="StateMachine" type="Node" parent="." index="0"]
+script = ExtResource("4_qxp1d")
+
+[node name="CollisionPolygon2D" parent="." index="1"]
 visible = false
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_t58o8")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="1"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="2"]
 position = Vector2(0, -39)
 sprite_frames = SubResource("SpriteFrames_m7wae")
-animation = &"Idle"
+animation = &"Laser"
 autoplay = "Idle"
+frame = 67
+frame_progress = 1.0
 
-[node name="Sprite" parent="." index="2"]
+[node name="Sprite" parent="." index="3"]
 visible = false
 
 [node name="CollisionPolygon2D" parent="Enemy Hitbox" index="0"]
@@ -327,7 +340,9 @@ visible = false
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_4dvlt")
 
-[node name="Health Bar" parent="." index="4"]
+[node name="Health Bar" parent="." index="5"]
 visible = false
 
-[node name="Boss Health" parent="." index="8" instance=ExtResource("4_kk65q")]
+[node name="Boss Health" parent="." index="9" instance=ExtResource("4_kk65q")]
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

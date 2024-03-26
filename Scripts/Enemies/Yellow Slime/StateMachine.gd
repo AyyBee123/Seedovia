@@ -45,18 +45,14 @@ func _get_transition(delta):
 func _enter_state(new_state, old_state):
 	pass
 	#match new_state:
-		#states.idle
+		#states.idle:
 			#parent.animation_player.play("idle")
-		#states.jump
+		#states.jump:
 			#parent.animation_player.play("jump")
-		#states.shoot
+		#states.shoot:
 			#parent.animation_player.play("shoot")
 			#parent.shoot()
 
-
-func _exit_state(old_state, new_state):
-	pass
-	
 func create_timer():
 	add_child(timer)
 	timer.one_shot = true
