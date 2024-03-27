@@ -1,26 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://bbc2vnfngjpdx"]
+[gd_scene load_steps=4 format=3 uid="uid://bbc2vnfngjpdx"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/Weapons/bullet.gd" id="1_v1qs5"]
 [ext_resource type="Texture2D" uid="uid://dpylmph7q5urk" path="res://Sprites/Enemies/Weapons/Basic Bullet.png" id="2_u24ko"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ggn4a"]
-size = Vector2(13.4831, 6.74157)
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_o6fb0"]
 radius = 9.0
 
-[node name="Bullet" type="CharacterBody2D" groups=["Enemy Weapon"]]
-collision_layer = 0
-collision_mask = 0
-script = ExtResource("1_v1qs5")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1.78814e-07, 0)
-scale = Vector2(0.89, 0.89)
-shape = SubResource("RectangleShape2D_ggn4a")
-
-[node name="Bullet Sprite" type="Sprite2D" parent="."]
+[node name="Bullet" type="Sprite2D" groups=["Enemy Weapon"]]
 texture = ExtResource("2_u24ko")
+script = ExtResource("1_v1qs5")
 
 [node name="Bullet Hitbox" type="Area2D" parent="."]
 collision_layer = 16

@@ -42,6 +42,4 @@ func shoot_bullet():
 	bullet_instance.speed = _enemy_stats.weapon_speed
 	get_tree().current_scene.add_child(bullet_instance)
 	bullet_instance.global_position = $"Rotation Point/Marker2D".global_position
-	bullet_instance.velocity = (player.global_position - bullet_instance.global_position).normalized()
-	bullet_instance.rotation = bullet_instance.velocity.angle()
 	
