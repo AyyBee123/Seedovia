@@ -6,4 +6,4 @@
 [node name="Level" instance=ExtResource("1_l1c5x")]
 
 [node name="Haunted Fortress" parent="." index="6" instance=ExtResource("2_y2vqp")]
-position = Vector2(0, -279)
+position = Vector2(0, -280)

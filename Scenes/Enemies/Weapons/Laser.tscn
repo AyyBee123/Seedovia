@@ -1,0 +1,88 @@
+[gd_scene load_steps=10 format=3 uid="uid://crc680oyqt3v4"]
+
+[ext_resource type="Script" path="res://Scripts/Enemies/Weapons/laser.gd" id="1_aejpa"]
+[ext_resource type="Texture2D" uid="uid://bk4pntypc7mcx" path="res://Sprites/Bosses/Haunted Fortress/Laser/Laser.png" id="1_b0tv3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3m7ix"]
+atlas = ExtResource("1_b0tv3")
+region = Rect2(0, 0, 39, 225)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_astlo"]
+atlas = ExtResource("1_b0tv3")
+region = Rect2(39, 0, 39, 225)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3b01p"]
+atlas = ExtResource("1_b0tv3")
+region = Rect2(78, 0, 39, 225)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yg0wc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3m7ix")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_astlo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3b01p")
+}],
+"loop": true,
+"name": &"default",
+"speed": 30.0
+}]
+
+[sub_resource type="Animation" id="Animation_xqe75"]
+resource_name = "Disappear"
+length = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0mw3w"]
+_data = {
+"Disappear": SubResource("Animation_xqe75")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oo132"]
+size = Vector2(170, 934)
+
+[node name="Laser" type="Node2D" groups=["Haunted Fortress Laser"]]
+script = ExtResource("1_aejpa")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(4.5, 4.5)
+sprite_frames = SubResource("SpriteFrames_yg0wc")
+autoplay = "default"
+frame_progress = 0.0446712
+offset = Vector2(0, 95)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0mw3w")
+}
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, 467)
+shape = SubResource("RectangleShape2D_oo132")
+
+[node name="Damage Buffer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_exited" from="Hitbox" to="." method="_on_hitbox_body_exited"]
