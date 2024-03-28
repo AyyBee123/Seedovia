@@ -46,7 +46,7 @@ func _on_hitbox_body_exited(body):
 func _on_animation_player_animation_finished(anim_name):
 	queue_free()
 
-func shoot_left():
+func shoot_left(): # shoot bullets in the left direction from the laser
 	if fire_rate_left.is_stopped():
 		var spread = deg_to_rad(randf_range(-10,10))
 		var bullet = resource_preloader.get_resource("Bullet").instantiate()
@@ -62,7 +62,7 @@ func shoot_left():
 			shoot_right_delay.start()
 			right_was_delayed = true
 
-func shoot_right():
+func shoot_right(): # shoot bullets in the right direction from the laser
 	if fire_rate_right.is_stopped():
 		var spread = deg_to_rad(randf_range(-15,15))
 		var bullet = resource_preloader.get_resource("Bullet").instantiate()

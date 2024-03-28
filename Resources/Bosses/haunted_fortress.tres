@@ -11,5 +11,5 @@ damage = 1.0
 acceleration = 0.0
 friction = 0.0
 weapon_damage = 1.0
-weapon_range = 100000.0
+weapon_range = 1e+10
 weapon_speed = 350.0
