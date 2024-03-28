@@ -36,11 +36,11 @@ func pause():
 			var pause_menu = resource_preloader.get_resource("Pause Menu").instantiate()
 			add_child(pause_menu)
 
-func spawn_doors(): # -785 to 785 = 1570 (size of level in x-axis) # -400 is the y-position for the door
+func spawn_doors(): # -785 to 785 = 1570 (size of level in x-axis) # -400 is the y-position for the door(s)
 	doors_spawned = true
 	if not was_cleared:
 		await get_tree().create_timer(0.5).timeout
-	if LevelList.room_number == 4:
+	if LevelList.room_number == 4: # room before the passive room (so it only spawns one door)
 		var door = resource_preloader.get_resource("Door").instantiate()
 		add_child(door)
 		door.set_reward("Passive")
