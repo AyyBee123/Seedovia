@@ -44,5 +44,4 @@ func update_position(delta):
 func initialize_position():
 	if not position_initialized:
 		starting_position = global_position
-		direction = global_position.direction_to(player.global_position).normalized()
 		position_initialized = true

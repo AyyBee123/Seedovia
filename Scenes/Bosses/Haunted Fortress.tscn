@@ -2,15 +2,15 @@
 
 [ext_resource type="Texture2D" uid="uid://ckwbd5pe618xx" path="res://Sprites/Bosses/Haunted Fortress/Idle/Haunted Fortress Idle.png" id="1_o3eeo"]
 [ext_resource type="Script" path="res://Scripts/Bosses/Haunted Fortress/haunted_fortress.gd" id="1_spxu2"]
-[ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_tw583"]
 [ext_resource type="Resource" uid="uid://cbv82046jyeao" path="res://Resources/Bosses/haunted_fortress.tres" id="3_f8ewb"]
 [ext_resource type="Texture2D" uid="uid://dmsvbjhklty17" path="res://Sprites/Bosses/Haunted Fortress/Laser/Haunted Fortress Laser.png" id="3_sp64t"]
 [ext_resource type="PackedScene" uid="uid://bvxrqp86pvpry" path="res://Scenes/UI/Boss Health Bar.tscn" id="4_kk65q"]
 [ext_resource type="Script" path="res://Scripts/Bosses/Haunted Fortress/StateMachine.gd" id="4_qxp1d"]
+[ext_resource type="PackedScene" uid="uid://bfpmq41k18tdi" path="res://Scenes/Passives/Effects/Burn Stacks.tscn" id="6_lyhmy"]
 [ext_resource type="PackedScene" uid="uid://crc680oyqt3v4" path="res://Scenes/Enemies/Weapons/Laser.tscn" id="8_t4oi6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t58o8"]
-size = Vector2(244, 101)
+size = Vector2(244.667, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bsppn"]
 atlas = ExtResource("1_o3eeo")
@@ -312,20 +312,19 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4dvlt"]
 size = Vector2(244, 101)
 
-[node name="Haunted Fortress" instance=ExtResource("1_tw583")]
+[node name="Haunted Fortress" type="CharacterBody2D" groups=["Enemy"]]
 scale = Vector2(3, 3)
 script = ExtResource("1_spxu2")
 _enemy_stats = ExtResource("3_f8ewb")
 
-[node name="StateMachine" type="Node" parent="." index="0"]
+[node name="StateMachine" type="Node" parent="."]
 script = ExtResource("4_qxp1d")
 
-[node name="CollisionPolygon2D" parent="." index="1"]
-visible = false
-position = Vector2(0, -0.5)
+[node name="CollisionPolygon2D" type="CollisionShape2D" parent="."]
+position = Vector2(3.8147e-06, -1)
 shape = SubResource("RectangleShape2D_t58o8")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="2"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -39)
 sprite_frames = SubResource("SpriteFrames_m7wae")
 animation = &"Laser"
@@ -333,24 +332,46 @@ autoplay = "Idle"
 frame = 67
 frame_progress = 1.0
 
-[node name="Sprite" parent="." index="3"]
-visible = false
+[node name="Enemy Hitbox" type="Area2D" parent="." groups=["Enemies"]]
+collision_layer = 4
+collision_mask = 10
 
-[node name="CollisionPolygon2D" parent="Enemy Hitbox" index="0"]
+[node name="CollisionPolygon2D" type="CollisionShape2D" parent="Enemy Hitbox"]
 visible = false
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_4dvlt")
 
-[node name="Health Bar" parent="." index="5"]
-visible = false
+[node name="Debuffs UI" type="GridContainer" parent="."]
+z_index = 5
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 466.0
+offset_top = 312.0
+offset_right = 597.0
+offset_bottom = 340.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/h_separation = 12
+columns = 1024
 
-[node name="Boss Health" parent="." index="9" instance=ExtResource("4_kk65q")]
+[node name="Burn Stacks" parent="." instance=ExtResource("6_lyhmy")]
 
-[node name="ResourcePreloader" type="ResourcePreloader" parent="." index="10"]
+[node name="Damage Buffer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="Boss Health" parent="." instance=ExtResource("4_kk65q")]
+
+[node name="ResourcePreloader" type="ResourcePreloader" parent="."]
 resources = [PackedStringArray("Laser"), [ExtResource("8_t4oi6")]]
 
-[node name="Marker2D" type="Marker2D" parent="." index="11"]
+[node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(0, 45)
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
+[connection signal="body_entered" from="Enemy Hitbox" to="." method="_on_enemy_hitbox_body_entered"]
+[connection signal="body_exited" from="Enemy Hitbox" to="." method="_on_enemy_hitbox_body_exited"]

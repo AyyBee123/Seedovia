@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://crc680oyqt3v4"]
+[gd_scene load_steps=11 format=3 uid="uid://crc680oyqt3v4"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/Weapons/laser.gd" id="1_aejpa"]
 [ext_resource type="Texture2D" uid="uid://bk4pntypc7mcx" path="res://Sprites/Bosses/Haunted Fortress/Laser/Laser.png" id="1_b0tv3"]
+[ext_resource type="PackedScene" uid="uid://bbc2vnfngjpdx" path="res://Scenes/Enemies/Weapons/Bullet.tscn" id="3_opydg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3m7ix"]
 atlas = ExtResource("1_b0tv3")
@@ -79,8 +80,40 @@ collision_mask = 2
 position = Vector2(0, 467)
 shape = SubResource("RectangleShape2D_oo132")
 
+[node name="ResourcePreloader" type="ResourcePreloader" parent="."]
+resources = [PackedStringArray("Bullet"), [ExtResource("3_opydg")]]
+
+[node name="Top Left" type="Marker2D" parent="."]
+position = Vector2(-85, 20)
+
+[node name="Bottom Left" type="Marker2D" parent="."]
+position = Vector2(-85, 480)
+
+[node name="Top Right" type="Marker2D" parent="."]
+position = Vector2(85, 20)
+
+[node name="Bottom Right" type="Marker2D" parent="."]
+position = Vector2(85, 480)
+
 [node name="Damage Buffer" type="Timer" parent="."]
 wait_time = 0.1
+one_shot = true
+
+[node name="Fire Rate Left" type="Timer" parent="."]
+wait_time = 0.065
+one_shot = true
+
+[node name="Fire Rate Right" type="Timer" parent="."]
+wait_time = 0.065
+one_shot = true
+
+[node name="Fire Delay" type="Timer" parent="."]
+wait_time = 0.15
+one_shot = true
+autostart = true
+
+[node name="Shoot Right Delay" type="Timer" parent="."]
+wait_time = 0.055
 one_shot = true
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

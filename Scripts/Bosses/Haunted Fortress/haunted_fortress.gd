@@ -19,6 +19,8 @@ func _on_animated_sprite_2d_frame_changed():
 		if $AnimatedSprite2D.frame == 30: # start of the laser fire animation
 			var laser = $ResourcePreloader.get_resource("Laser").instantiate()
 			laser.damage = _enemy_stats.weapon_damage
+			laser.range = _enemy_stats.weapon_range
+			laser.speed = _enemy_stats.weapon_speed
 			get_tree().current_scene.add_child(laser)
 			laser.global_position = $Marker2D.global_position
 		if $AnimatedSprite2D.frame == 65: # end of the laser fire animation
