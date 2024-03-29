@@ -1,6 +1,6 @@
 extends Node2D
 
-var transition_scene = false
+var transition_scene := false
 var reward
 
 func _physics_process(delta):
