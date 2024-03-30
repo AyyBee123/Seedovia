@@ -18,8 +18,7 @@ func change_room():
 	else:
 		floor.rooms.append(Pool.get_item(Pool.floors[floor_number]))
 	get_tree().change_scene_to_packed(floor.rooms[room_number])
-	if room_number < 10:
-		room_number += 1
+	room_number = min(room_number + 1, 10)
 	
 func change_floor():
 	Global.save_data()
