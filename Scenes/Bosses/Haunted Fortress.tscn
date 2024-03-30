@@ -312,7 +312,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4dvlt"]
 size = Vector2(244, 101)
 
-[node name="Haunted Fortress" type="CharacterBody2D" groups=["Enemy"]]
+[node name="Haunted Fortress" type="CharacterBody2D" groups=["Boss", "Enemy"]]
 scale = Vector2(3, 3)
 script = ExtResource("1_spxu2")
 _enemy_stats = ExtResource("3_f8ewb")
