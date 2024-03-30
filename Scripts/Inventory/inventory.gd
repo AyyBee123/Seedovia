@@ -1,14 +1,17 @@
 extends Control
 
 const slot_class = preload("res://Scripts/Inventory/inventory_slot.gd")
-@onready var drop_button = $"Inventory Screen/Drop Button"
 @onready var player = $".."
 @onready var inventory_slots = $"Inventory Screen/Inventory Slots".get_children()
 @onready var equip_slots = $"Inventory Screen/Equipment Slots".get_children()
 @onready var seed_slots = $"Inventory Screen/Seed Slots".get_children()
 var holding_item = null # the item that is currently being held by the cursor in the inventory
+var drop_delay = Timer.new()
 
 func _ready():
+	add_child(drop_delay)
+	drop_delay.one_shot = true
+	drop_delay.wait_time = 0.1
 	visible = false # make inventory not visible on starting the game
 	# initialize all the inventory slots and their categories
 	for i in range(inventory_slots.size()):
@@ -47,6 +50,11 @@ func _process(delta):
 	if Input.is_action_just_pressed("inventory"):
 		# toggle inventory UI to open/close
 		visible = !visible
+	if holding_item == null:
+		if drop_delay.is_stopped():
+			player.has_holding_item = false
+	else:
+		player.has_holding_item = true
 	# return item to inventory when exiting the inventory UI while holding an item (or drop when inventory is full)
 	if not visible && holding_item != null:
 		PlayerInventory.add_item(holding_item.item, player, self)
@@ -76,6 +84,14 @@ func _input(event):
 	inititialize_seeds()
 	if holding_item:
 		holding_item.global_position = get_global_mouse_position()
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT && event.pressed:
+			#drop item if mouse is outside inventory and has a holding item after left mouse click
+			if not player.mouse_in_inventory && holding_item != null:
+				PlayerInventory.drop_item(holding_item.item, player)
+				holding_item.queue_free()
+				holding_item = null
+				drop_delay.start() # delay to prevent shooting while dropping the item to the ground
 
 func inititialize_inventory():
 	for i in range(inventory_slots.size()):
@@ -151,12 +167,6 @@ func right_click_use_item(slot: slot_class):
 				#pass
 			#"HEAD":
 				#pass
-
-func _on_drop_button_pressed():
-	if holding_item != null:
-		PlayerInventory.drop_item(holding_item.item, player)
-		holding_item.queue_free()
-		holding_item = null
 
 func get_number_of_slots():
 	return inventory_slots.size()

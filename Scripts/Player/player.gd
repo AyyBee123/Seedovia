@@ -20,15 +20,15 @@ var current_weapon: PackedScene = null
 
 var can_be_damaged := true
 var mouse_in_inventory := false
+var has_holding_item := false # this is set in the inventory script to true if the mouse cursor is holding an item
 
 func _ready():
 	_player_stats.initialize_base_stats()
-	_player_stats.change_stat.connect(update_timers)
 	_player_stats.damaged.connect(took_damage)
-	update_timers()
 	_player_stats.set_health(_player_stats.get_stat("Max_Health"))
 
 func _physics_process(delta):
+	update_timers()
 	# check if the mouse is in the inventory and if the inventory is visible to detect if the player can shoot
 	mouse_in_inventory = inventory_screen.get_global_rect().has_point(inventory.get_global_mouse_position())\
 	and inventory.is_visible_in_tree()
@@ -40,7 +40,8 @@ func _physics_process(delta):
 	$"Player Sprite".flip_h = false if get_global_mouse_position().x > global_position.x else true
 	
 	# shoot bullet
-	if Input.is_action_pressed("shoot") and bullets_per_second.is_stopped() and not mouse_in_inventory:
+	if Input.is_action_pressed("shoot") and bullets_per_second.is_stopped() and not mouse_in_inventory\
+	and not has_holding_item:
 		current_weapon = null if PlayerInventory.seeds.size() == 0 else PlayerSeeds.load_weapons()[0]
 		if current_weapon != null:
 			shoot.emit(current_weapon, hand.global_position)
@@ -112,8 +113,6 @@ func update_timers():
 	invulnerability_time.wait_time = _player_stats.get_stat("Invulnerability_Time")
 	dash_cooldown.wait_time = _player_stats.get_stat("Dash_Rate")
 	dash_invulnerability_time.wait_time = _player_stats.get_stat("Dash_Invulnerability")
-	bullets_per_second.start(bullets_per_second.wait_time)
-	dash_cooldown.start(dash_cooldown.wait_time)
 	
 func took_damage():
 	can_be_damaged = false

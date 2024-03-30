@@ -11,9 +11,6 @@ func idle():
 func laser():
 	pass
 
-func _on_animated_sprite_2d_animation_finished():
-	animation_done.emit() # this is for the state machine to see if animation is done
-
 func _on_animated_sprite_2d_frame_changed():
 	if $AnimatedSprite2D.animation == "Laser":
 		if $AnimatedSprite2D.frame == 30: # start of the laser fire animation

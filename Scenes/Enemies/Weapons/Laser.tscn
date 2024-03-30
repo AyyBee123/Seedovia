@@ -57,7 +57,7 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oo132"]
 size = Vector2(170, 934)
 
-[node name="Laser" type="Node2D" groups=["Haunted Fortress Laser"]]
+[node name="Laser" type="Node2D" groups=["Enemy Weapon", "Haunted Fortress Laser"]]
 script = ExtResource("1_aejpa")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

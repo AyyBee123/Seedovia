@@ -8,7 +8,7 @@ func _ready():
 	add_state("idle")
 	add_state("laser")
 	call_deferred("set_state", states.idle)
-	parent.animation_done.connect(animation_finished)
+	#parent.animation_done.connect(animation_finished)
 	random_attack = randi_range(0, states.size() - 2) # -2 because it ignores the idle state
 
 func _state_logic(delta):
@@ -34,6 +34,12 @@ func _enter_state(new_state, old_state):
 			parent.animated_sprite_2d.play("Idle")
 		states.laser:
 			parent.animated_sprite_2d.play("Laser")
+
+func _exit_state(old_state, new_state):
+	match old_state:
+		states.laser:
+			random_attack = randi_range(0, states.size() - 2)
+			timer.start(randf_range(3,6))
 
 func create_timer():
 	add_child(timer)

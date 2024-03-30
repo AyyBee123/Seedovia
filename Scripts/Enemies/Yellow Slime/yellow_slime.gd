@@ -7,7 +7,6 @@ extends "res://Scripts/Enemies/enemy.gd"
 
 var bullet = preload("res://Scenes/Enemies/Weapons/Bullet.tscn")
 var number_of_shots := 3
-var timer = Timer.new()
 
 func _ready():
 	super._ready()
