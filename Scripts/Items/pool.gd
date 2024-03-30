@@ -8,6 +8,7 @@ var seed_pool = ResourceLoader.load("res://Resources/Items/Pools/seed_pool.tres"
 
 #array of floor pools
 var floors: Array
+var boss_floors: Array
 
 #pool arrays
 var pools: Array
@@ -24,7 +25,10 @@ func _ready():
 	add_pool = false
 	populate_pool(passive_pool)
 	add_floors()
-	for floor in floors:
+	add_boss_floors()
+	for floor in floors: # populate the rooms for each floor
+		populate_pool(floor)
+	for floor in boss_floors: # populate the boss rooms for each floor
 		populate_pool(floor)
 
 func populate_pool(pool: Resource):
@@ -40,6 +44,11 @@ func add_floors():
 	var floor_files = get_all_file_paths("res://Resources/Floors/")
 	for floor in floor_files:
 		floors.append(ResourceLoader.load(floor))
+
+func add_boss_floors():
+	var floor_files = get_all_file_paths("res://Resources/Boss Floors/")
+	for floor in floor_files:
+		boss_floors.append(ResourceLoader.load(floor))
 
 func shuffle_pool(pool: Resource):
 	pool.pool.shuffle()

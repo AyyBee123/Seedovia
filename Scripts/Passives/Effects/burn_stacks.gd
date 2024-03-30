@@ -16,12 +16,12 @@ func _ready():
 func _process(delta):
 	burn.get_node("Amount").text = str(get_child_count())
 	if get_child_count() > 0:
-		get_parent().modulate = Color.DARK_ORANGE
+		get_parent().self_modulate = Color.DARK_ORANGE
 		if not has_debuff:
 			debuffs_ui.add_child(burn)
 			has_debuff = true
 	else:
-		get_parent().modulate = Color.WHITE
+		get_parent().self_modulate = Color.WHITE
 		if has_debuff:
 			debuffs_ui.remove_child(burn)
 			has_debuff = false

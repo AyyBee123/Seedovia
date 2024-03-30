@@ -40,10 +40,16 @@ func spawn_doors(): # -785 to 785 = 1570 (size of level in x-axis) # -400 is the
 	doors_spawned = true
 	if not was_cleared:
 		await get_tree().create_timer(0.5).timeout
-	if LevelList.room_number == 4: # room before the passive room (so it only spawns one door)
+	# room before the passive room, boss room, and the next floor (so it only spawns one door)
+	if LevelList.room_number == 4 or LevelList.room_number == 9 or LevelList.room_number == 10:
 		var door = resource_preloader.get_resource("Door").instantiate()
 		add_child(door)
-		door.set_reward("Passive")
+		if LevelList.room_number == 4:
+			door.set_reward("Passive")
+		elif LevelList.room_number == 9:
+			door.set_reward("Boss")
+		elif LevelList.room_number == 10:
+			door.set_reward("Next Floor")
 		door.position = Vector2(0, -400)
 		return
 	var door_pos = [-1, 0, 1]
