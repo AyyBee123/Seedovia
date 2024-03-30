@@ -177,13 +177,20 @@ func right_click_use_item(slot: slot_class):
 					right_click_slot_item(slot, equip_slots[3])
 			#"SEED":
 				#pass
+	if slot.slot_type == slot_class.slot_types.HEAD or slot.slot_type == slot_class.slot_types.ARMS or\
+	slot.slot_type == slot_class.slot_types.BODY or slot.slot_type == slot_class.slot_types.LEGS:
+		if PlayerInventory.get_empty_slot_index() != null:
+			right_click_slot_item(slot, inventory_slots[PlayerInventory.get_empty_slot_index()])
 
 func right_click_slot_item(selected_slot: slot_class, desired_slot: slot_class):
 	var current_item = selected_slot.item
 	PlayerInventory.remove_item(selected_slot)
 	selected_slot.pick_from_slot()
+	if selected_slot.slot_type != slot_class.slot_types.INVENTORY: # "replace" item sprite with silhouette sprite
+		selected_slot.get_node("Silhouette").visible = true
 	PlayerInventory.add_item_to_empty_slot(current_item, desired_slot)
-	desired_slot.get_node("Silhouette").visible = false
+	if desired_slot.slot_type != slot_class.slot_types.INVENTORY: # "replace" item sprite with silhouette sprite
+		desired_slot.get_node("Silhouette").visible = false
 	desired_slot.put_into_slot(current_item)
 
 func get_number_of_slots():

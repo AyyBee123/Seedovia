@@ -44,3 +44,10 @@ func remove_item(slot: slot_class):
 		seeds.erase(slot.slot_index)
 	else:
 		equipment.erase(slot.slot_index)
+
+func get_empty_slot_index():
+	for i in range(NUM_INVENTORY_SLOTS):
+		if not inventory.has(i): # checks for space in inventory
+			return i
+	# if inventory is full
+	return null
