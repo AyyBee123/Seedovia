@@ -7,7 +7,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_ier7o"]
 radius = 8.0
 
-[node name="Door" type="Node2D"]
+[node name="Door" type="Node2D" groups=["Door"]]
 scale = Vector2(3, 3)
 script = ExtResource("1_xo7uy")
 
