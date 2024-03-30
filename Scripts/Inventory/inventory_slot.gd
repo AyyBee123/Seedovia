@@ -49,6 +49,7 @@ func initialize_item(slot_item):
 		if slot_type == slot_types.SEED:
 			PlayerSeeds.load_weapons()
 		add_child(item)
+		item.scale = Vector2(1,1)
 		item.position = Vector2(size.x / 2, size.y / 2)
 	else:
 		item.set_item(slot_item)

@@ -6,6 +6,9 @@ var player_in_area = false
 var player = null
 const inventory = preload("res://Scripts/Inventory/inventory.gd")
 
+func _ready():
+	scale = Vector2(1.5,1.5)
+
 func _process(delta):
 	if player_in_area:
 		if Input.is_action_just_pressed("pick up"):
