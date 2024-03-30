@@ -65,6 +65,10 @@ func slot_gui_input(event: InputEvent, slot: slot_class):
 					left_click_swap_item(event, slot)
 			elif slot.item: # left clicking an item while not currently holding an item
 				left_click_select_item(slot)
+		if event.button_index == MOUSE_BUTTON_RIGHT && event.pressed:
+			if holding_item == null:
+				if slot.item:
+					right_click_use_item(slot)
 
 func _input(event):
 	inititialize_inventory()
@@ -135,6 +139,18 @@ func left_click_select_item(slot: slot_class): # left clicking an item while not
 	if slot.slot_type != slot_class.slot_types.INVENTORY: # "replace" item sprite with silhouette sprite
 		slot.get_node("Silhouette").visible = true
 	holding_item.global_position = get_global_mouse_position()
+
+func right_click_use_item(slot: slot_class):
+	if slot.slot_type == slot_class.slot_types.INVENTORY:
+		match slot.item.item.category:
+			"CONSUMABLE":
+				slot.item.item.on_use(player)
+				PlayerInventory.remove_item(slot)
+				slot.item.call_deferred("free")
+			#"SEED":
+				#pass
+			#"HEAD":
+				#pass
 
 func _on_drop_button_pressed():
 	if holding_item != null:

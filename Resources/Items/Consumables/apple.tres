@@ -1,11 +1,10 @@
-[gd_resource type="Resource" script_class="consumable_item" load_steps=3 format=3 uid="uid://dfop5her3ojbj"]
+[gd_resource type="Resource" script_class="apple" load_steps=3 format=3 uid="uid://c4uomd0l52hvy"]
 
-[ext_resource type="Script" path="res://Scripts/Items/consumable_item_class.gd" id="1_a58cu"]
+[ext_resource type="Script" path="res://Scripts/Consumables/apple.gd" id="1_vwq7n"]
 [ext_resource type="Texture2D" uid="uid://dkriaccss1dkl" path="res://Sprites/Items/Apple.png" id="2_2meid"]
 
 [resource]
-script = ExtResource("1_a58cu")
-property = "+1 Health"
+script = ExtResource("1_vwq7n")
 item_name = "Apple"
 texture = ExtResource("2_2meid")
-Description = "A juicy apple!"
+description = "Heals 1 Heart"

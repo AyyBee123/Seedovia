@@ -2,7 +2,6 @@ extends CharacterBody2D
 
 signal shoot(bullet, direction, location)
 signal weapon_fired(weapon)
-signal health_changed
 
 @export var _player_stats: player_stats
 
@@ -25,7 +24,7 @@ var mouse_in_inventory := false
 func _ready():
 	_player_stats.initialize_base_stats()
 	_player_stats.change_stat.connect(update_timers)
-	_player_stats.health_changed.connect(update_health)
+	_player_stats.damaged.connect(took_damage)
 	update_timers()
 	_player_stats.set_health(_player_stats.get_stat("Max_Health"))
 
@@ -116,7 +115,7 @@ func update_timers():
 	bullets_per_second.start(bullets_per_second.wait_time)
 	dash_cooldown.start(dash_cooldown.wait_time)
 	
-func update_health(new_health):
+func took_damage():
 	can_be_damaged = false
 	invulnerability_time.start()
 	

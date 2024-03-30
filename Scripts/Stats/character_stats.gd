@@ -3,6 +3,7 @@ class_name character_stats extends Resource
 signal health_changed(new_health) # send signal that current health changed
 signal max_health_changed(new_max_health) # send signal that max health changed
 signal health_depleted # send signal that health reached 0 (death)
+signal damaged
 
 # player values
 @export_group("Player Stats")
@@ -51,6 +52,7 @@ func take_damage(source):
 	overcapped_health -= source.damage
 	health = max(0, health)
 	overcapped_health = max(0, health)
+	damaged.emit()
 	health_changed.emit(health)
 	if health <= 0:
 		health_depleted.emit()
