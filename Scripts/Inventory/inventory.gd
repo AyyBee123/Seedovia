@@ -160,7 +160,7 @@ func right_click_use_item(slot: slot_class):
 	if slot.slot_type == slot_class.slot_types.INVENTORY:
 		match slot.item.item.category:
 			"CONSUMABLE":
-				slot.item.item.on_use(player) # activate the use effect of the consumable item
+				slot.item.item.on_use(Targets.player) # activate the use effect of the consumable item
 				PlayerInventory.remove_item(slot) # then remove the item from the player inventory dictionary
 				slot.item.call_deferred("free") # then delete the item
 			"HEAD":
