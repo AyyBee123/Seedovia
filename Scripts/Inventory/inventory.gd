@@ -163,10 +163,28 @@ func right_click_use_item(slot: slot_class):
 				slot.item.item.on_use(player)
 				PlayerInventory.remove_item(slot)
 				slot.item.call_deferred("free")
+			"HEAD":
+				if !equip_slots[0].item:
+					right_click_slot_item(slot, equip_slots[0])
+			"ARMS":
+				if !equip_slots[1].item:
+					right_click_slot_item(slot, equip_slots[1])
+			"BODY":
+				if !equip_slots[2].item:
+					right_click_slot_item(slot, equip_slots[2])
+			"LEGS":
+				if !equip_slots[3].item:
+					right_click_slot_item(slot, equip_slots[3])
 			#"SEED":
 				#pass
-			#"HEAD":
-				#pass
+
+func right_click_slot_item(selected_slot: slot_class, desired_slot: slot_class):
+	var current_item = selected_slot.item
+	PlayerInventory.remove_item(selected_slot)
+	selected_slot.pick_from_slot()
+	PlayerInventory.add_item_to_empty_slot(current_item, desired_slot)
+	desired_slot.get_node("Silhouette").visible = false
+	desired_slot.put_into_slot(current_item)
 
 func get_number_of_slots():
 	return inventory_slots.size()
