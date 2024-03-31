@@ -341,22 +341,6 @@ visible = false
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_4dvlt")
 
-[node name="Debuffs UI" type="GridContainer" parent="."]
-z_index = 5
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 466.0
-offset_top = 312.0
-offset_right = 597.0
-offset_bottom = 340.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_constants/h_separation = 12
-columns = 1024
-
 [node name="Burn Stacks" parent="." instance=ExtResource("6_lyhmy")]
 
 [node name="Damage Buffer" type="Timer" parent="."]

@@ -2,7 +2,7 @@ extends "res://Scripts/Passives/Classes/passive_chance.gd"
 
 @onready var resource_preloader := $ResourcePreloader
 
-var damage_multiplier := 0.25
+var damage_multiplier := 0.5
 
 func _ready():
 	chance = 0.3

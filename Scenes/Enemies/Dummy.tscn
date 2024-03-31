@@ -20,7 +20,7 @@ _enemy_stats = ExtResource("2_3p7vb")
 [node name="CollisionPolygon2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_4n8gi")
 
-[node name="Sprite" type="Sprite2D" parent="."]
+[node name="AnimatedSprite2D" type="Sprite2D" parent="."]
 position = Vector2(-1, 0)
 scale = Vector2(2, 2)
 texture = ExtResource("3_db4vc")

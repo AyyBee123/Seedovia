@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dk7s8c4gd7p25"]
+[gd_scene load_steps=10 format=3 uid="uid://dk7s8c4gd7p25"]
 
 [ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_f1xw5"]
 [ext_resource type="Script" path="res://Scripts/Enemies/Yellow Slime/yellow_slime.gd" id="2_vgxx0"]
@@ -21,6 +21,17 @@ weapon_speed = 150.0
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ovc8c"]
 height = 26.0
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_hntxk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_e5fpm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kk57w"]
 height = 26.0
 
@@ -35,8 +46,9 @@ script = ExtResource("3_b4qd2")
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_ovc8c")
 
-[node name="Sprite" parent="." index="2"]
-texture = ExtResource("4_e5fpm")
+[node name="AnimatedSprite2D" parent="." index="2"]
+sprite_frames = SubResource("SpriteFrames_hntxk")
+frame_progress = 0.157559
 
 [node name="CollisionPolygon2D" parent="Enemy Hitbox" index="0"]
 rotation = 1.5708
@@ -57,7 +69,3 @@ scale = Vector2(2, 2)
 [node name="Health Bar" parent="." index="6"]
 offset_top = -25.0
 offset_bottom = -17.0
-
-[node name="Debuffs UI" parent="." index="7"]
-offset_top = -40.0
-offset_bottom = -26.0

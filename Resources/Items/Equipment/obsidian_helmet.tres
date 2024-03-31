@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="equipment_item_class" load_steps=3 format=3 uid="uid://p75jgryk644l"]
+
+[ext_resource type="Script" path="res://Scripts/Items/equipment_item_class.gd" id="1_2et4j"]
+[ext_resource type="Texture2D" uid="uid://prlvtv88bsle" path="res://Sprites/Items/Obsidian Helmet.png" id="2_q6t87"]
+
+[resource]
+script = ExtResource("1_2et4j")
+category = "HEAD"
+rarity = 3
+properties = Array[String]([])
+special_properties = Array[PackedScene]([])
+item_name = "Obsidian Helmet"
+texture = ExtResource("2_q6t87")
+description = "Your Burn Effects have a 30% chance to explode on each tick"

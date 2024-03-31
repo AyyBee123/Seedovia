@@ -10,7 +10,7 @@ script = ExtResource("1_fr2sb")
 
 [node name="CollisionPolygon2D" type="CollisionShape2D" parent="."]
 
-[node name="Sprite" type="Sprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 
 [node name="Enemy Hitbox" type="Area2D" parent="." groups=["Enemies"]]
 collision_layer = 4
@@ -19,14 +19,6 @@ collision_mask = 10
 [node name="CollisionPolygon2D" type="CollisionShape2D" parent="Enemy Hitbox"]
 
 [node name="Health Bar" parent="." instance=ExtResource("2_61l3x")]
-
-[node name="Debuffs UI" type="GridContainer" parent="."]
-offset_left = -22.0
-offset_top = -49.0
-offset_right = 22.0
-offset_bottom = -35.0
-theme_override_constants/h_separation = 12
-columns = 1024
 
 [node name="Burn Stacks" parent="." instance=ExtResource("4_fymte")]
 
