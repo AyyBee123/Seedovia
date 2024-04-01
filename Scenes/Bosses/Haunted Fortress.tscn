@@ -313,6 +313,7 @@ animations = [{
 size = Vector2(244, 101)
 
 [node name="Haunted Fortress" type="CharacterBody2D" groups=["Boss", "Enemy"]]
+z_index = 1
 scale = Vector2(3, 3)
 script = ExtResource("1_spxu2")
 _enemy_stats = ExtResource("3_f8ewb")
