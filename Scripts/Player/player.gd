@@ -69,22 +69,22 @@ func _physics_process(delta):
 		set_collision_layer(initial_collision_layer)
 	else:
 		set_collision_layer(0)
-		
+
 func move():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	if input_direction.length() > 0:
 		velocity = velocity.lerp(input_direction.normalized() * _player_stats.get_stat("Speed"),\
 		_player_stats.get_stat("Acceleration"))
-		
+
 func stop():
 	velocity = velocity.lerp(Vector2.ZERO, _player_stats.get_stat("Friction"))
-	
+
 func die():
 	hide() # temporary death effect
 	process_mode = 4 # = Mode: Disabled
 	# TODO: add death animation
 	# TODO: pause game and add a menu with options to restart and go back to menu
-	
+
 func dash():
 	can_be_damaged = false
 	var input_direction = Input.get_vector("left", "right", "up", "down")
@@ -102,7 +102,7 @@ func _on_shoot(weapon, location):
 	weapon_instance.global_position = location
 	bullets_per_second.start()
 	weapon_fired.emit(weapon_instance)
-	
+
 func update_timers():
 	current_weapon = null if PlayerInventory.seeds.size() == 0 else PlayerSeeds.load_weapons()[0]
 	if current_weapon != null:
@@ -113,18 +113,18 @@ func update_timers():
 	invulnerability_time.wait_time = _player_stats.get_stat("Invulnerability_Time")
 	dash_cooldown.wait_time = _player_stats.get_stat("Dash_Rate")
 	dash_invulnerability_time.wait_time = _player_stats.get_stat("Dash_Invulnerability")
-	
+
 func took_damage():
 	can_be_damaged = false
 	invulnerability_time.start()
-	
+
 func _should_move() -> bool:
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	return input_direction.length() > 0
-	
+
 func _should_stop() -> bool:
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	return is_zero_approx(input_direction.length())
-	
+
 func _should_dash() -> bool:
 	return Input.is_action_just_pressed("dash") and dash_cooldown.is_stopped()

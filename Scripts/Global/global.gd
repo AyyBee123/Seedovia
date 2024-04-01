@@ -9,6 +9,7 @@ static var next_reward: item_pool = null
 func save_data():
 	data.get_inventory()
 	data.get_passives()
+	data.get_item_passives()
 	data.get_stats()
 	ResourceSaver.save(data, SAVE_PATH)
 
@@ -18,4 +19,5 @@ func load_data():
 	data = ResourceLoader.load(SAVE_PATH)
 	data.set_stats()
 	data.set_passives()
+	data.set_item_passives()
 	data.set_inventory()

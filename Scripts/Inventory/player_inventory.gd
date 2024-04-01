@@ -21,7 +21,7 @@ func add_item(item, player, inv):
 			return
 	# if inventory is full
 	drop_item(item, player)
-	
+
 func drop_item(item, player):
 	var current_item = load("res://Scenes/Items/item.tscn").instantiate()
 	# set the dropped item's resource values from the holding item or dropped item if inventory is full
@@ -34,15 +34,15 @@ func add_item_to_empty_slot(item: item_instance, slot: slot_class):
 		inventory[slot.slot_index] = item.item
 	elif slot.slot_type == slot_class.slot_types.SEED:
 		seeds[slot.slot_index] = item.item
-	else:
+	else: # equipment
 		equipment[slot.slot_index] = item.item
-	
+
 func remove_item(slot: slot_class):
 	if slot.slot_type == slot_class.slot_types.INVENTORY:
 		inventory.erase(slot.slot_index)
 	elif slot.slot_type == slot_class.slot_types.SEED:
 		seeds.erase(slot.slot_index)
-	else:
+	else: # equipment
 		equipment.erase(slot.slot_index)
 
 func get_empty_slot_index():

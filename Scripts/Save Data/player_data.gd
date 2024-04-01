@@ -5,10 +5,12 @@ class_name player_data extends Resource
 @export var equipment: Dictionary = PlayerInventory.equipment
 @export var seeds: Dictionary = PlayerInventory.seeds
 @export var passives: Array
+@export var item_passives: Array
 @export var stats: Dictionary
 @export var current_health: int
 @export var overcapped_health: int
 
+# these functions are called form the global script
 func get_inventory():
 	inventory = PlayerInventory.inventory
 	equipment = PlayerInventory.equipment
@@ -25,6 +27,13 @@ func get_passives():
 func set_passives():
 	PlayerPassives.passives = passives
 	PlayerPassives.set_passives()
+
+func get_item_passives():
+	item_passives = PlayerPassives.get_item_passives()
+
+func set_item_passives():
+	PlayerPassives.item_passives = item_passives
+	PlayerPassives.set_item_passives()
 
 func get_stats():
 	stats = PlayerStatStorage.get_stats()

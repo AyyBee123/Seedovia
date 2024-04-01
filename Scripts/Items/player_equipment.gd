@@ -54,3 +54,12 @@ func setup_property(item, player, sign, was_equipped):
 			else:
 				player._player_stats.stats[property][operation] /= -amount
 		player._player_stats.update_stat(property, was_equipped, old_stat_value)
+
+func add_passive(player, passive):
+	player.get_node("Item Passives").add_child(passive)
+
+func remove_passive(player, passive_name):
+	for passive in player.get_node("Item Passives").get_children():
+		if passive.name == passive_name:
+			player.get_node("Item Passives").remove_child(passive)
+			passive.queue_free()

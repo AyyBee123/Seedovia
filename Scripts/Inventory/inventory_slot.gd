@@ -20,6 +20,9 @@ var slot_type = null
 func pick_from_slot():
 	if not (slot_type == slot_types.INVENTORY or slot_type == slot_types.SEED):
 		PlayerEquipment.remove_stats(item, player, item.item.was_already_equipped)
+		for passive in item.item.special_properties:
+			var p = passive.instantiate()
+			PlayerEquipment.remove_passive(player, p.name)
 	remove_child(item)
 	var inventory_node = find_parent("Inventory")
 	inventory_node.add_child(item) # inventory node adds the child to be held by the mouse curser
@@ -36,6 +39,9 @@ func put_into_slot(new_item):
 	add_child(item)
 	if not (slot_type == slot_types.INVENTORY or slot_type == slot_types.SEED):
 		PlayerEquipment.add_stats(item, player, item.item.was_already_equipped)
+		for passive in item.item.special_properties:
+			var p = passive.instantiate()
+			PlayerEquipment.add_passive(player, p)
 		item.item.was_already_equipped = true
 	if slot_type == slot_types.SEED:
 			PlayerSeeds.load_weapons()

@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="equipment_item_class" load_steps=3 format=3 uid="uid://p75jgryk644l"]
+[gd_resource type="Resource" script_class="equipment_item_class" load_steps=4 format=3 uid="uid://p75jgryk644l"]
 
 [ext_resource type="Script" path="res://Scripts/Items/equipment_item_class.gd" id="1_2et4j"]
+[ext_resource type="PackedScene" uid="uid://cinjq67qcagjb" path="res://Scenes/Item Passives/Abilities/Dark Flame.tscn" id="2_k35lc"]
 [ext_resource type="Texture2D" uid="uid://prlvtv88bsle" path="res://Sprites/Items/Obsidian Helmet.png" id="2_q6t87"]
 
 [resource]
@@ -8,7 +9,7 @@ script = ExtResource("1_2et4j")
 category = "HEAD"
 rarity = 3
 properties = Array[String]([])
-special_properties = Array[PackedScene]([])
+special_properties = Array[PackedScene]([ExtResource("2_k35lc")])
 item_name = "Obsidian Helmet"
 texture = ExtResource("2_q6t87")
-description = "The weapon in your second seed slot has 2 dark flame orbitals."
+description = "The weapon in your second seed slot gains 2 dark flame orbitals."

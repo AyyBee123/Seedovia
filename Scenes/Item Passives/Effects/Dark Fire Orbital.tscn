@@ -141,7 +141,7 @@ script = ExtResource("1_qyn3u")
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_avwl0")
 autoplay = "default"
-frame_progress = 0.510665
+frame_progress = 0.815738
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(0, -8)
