@@ -11,4 +11,4 @@ properties = Array[String]([])
 special_properties = Array[PackedScene]([])
 item_name = "Obsidian Helmet"
 texture = ExtResource("2_q6t87")
-description = "Your Burn Effects have a 30% chance to explode on each tick"
+description = "The weapon in your second seed slot has 2 dark flame orbitals."

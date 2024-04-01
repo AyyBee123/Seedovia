@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cinjq67qcagjb"]
+
+[ext_resource type="Script" path="res://Scripts/Item Passives/Abilities/dark_flame.gd" id="1_jinqt"]
+[ext_resource type="PackedScene" uid="uid://kwrjyplhk2hf" path="res://Scenes/Item Passives/Effects/Dark Fire Orbital.tscn" id="2_jouvr"]
+
+[node name="DarkFlame" type="Node"]
+script = ExtResource("1_jinqt")
+
+[node name="ResourcePreloader" type="ResourcePreloader" parent="."]
+resources = [PackedStringArray("Dark Fire Orbital"), [ExtResource("2_jouvr")]]

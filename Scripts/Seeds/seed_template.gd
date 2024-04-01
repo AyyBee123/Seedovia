@@ -29,6 +29,7 @@ var slot_index: int # the index to determine the order the weapon is fired
 var seed_slot_number: int # determines which slot the weapon is in, in the inventory
 
 var direction: Vector2
+var current_velocity: Vector2
 
 # initialize multipliers
 @export var speed_multiplier: float = 1 # shot speed multiplier of the weapon
@@ -104,6 +105,6 @@ func initialize_location(weapon):
 	weapon_fired.emit(weapon)
 
 func update_position(delta):
-	var current_velocity: Vector2 = direction * _player_stats.get_stat("Weapon_Speed") * speed_multiplier
+	current_velocity = direction * _player_stats.get_stat("Weapon_Speed") * speed_multiplier
 	position += current_velocity * delta
 	look_at(global_position + current_velocity)

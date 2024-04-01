@@ -4,7 +4,7 @@ extends "res://Scripts/Seeds/seed_template.gd"
 @onready var resource_preloader := $ResourcePreloader
 
 func update_position(delta):
-	var current_velocity: Vector2 = direction * _player_stats.get_stat("Weapon_Speed")\
+	current_velocity = direction * _player_stats.get_stat("Weapon_Speed")\
 	* speed_multiplier * projectile_speed_timer.time_left
 	position += current_velocity * delta
 
