@@ -115,7 +115,7 @@ esc={
 2d_physics/layer_5="Enemy Weapon"
 2d_physics/layer_6="Item"
 2d_physics/layer_7="Door"
-2d_physics/layer_8="Player to Door"
+2d_physics/layer_8="Player Interact"
 2d_physics/canvas_textures/default_texture_filter=1
 
 [physics]
