@@ -76,7 +76,7 @@ func orbit(delta):
 				cos(angle * speed + orbitals.find(orbital) * deg_to_rad(360.0/orbitals.size())) * radius
 			) + pos
 			var op = global_position.direction_to(orbital.global_position)
-			orbital_direction = Vector2(op.y, -op.x)
+			orbital_direction = Vector2(op.y, -op.x) # get vector perpedicular to vector from the orbital to black hole
 			orbital.rotation = orbital_direction.angle()
 			orbital_directions[orbitals.find(orbital)] = orbital_direction
 
