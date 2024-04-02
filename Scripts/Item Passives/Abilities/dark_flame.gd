@@ -11,12 +11,10 @@ func _ready():
 func trigger(weapon):
 	if not weapon.is_in_group("Projectile"):
 		return
-	var positions = [-1, 1] # spawns two orbs around the projectile
-	for i in positions:
+	# spawns three orbs around the projectile
+	for i in range(3):
 		var dark_orbital = resource_preloader.get_resource("Dark Fire Orbital").instantiate()
 		dark_orbital.weapon = weapon
-		dark_orbital.initial_position = i
 		dark_orbital.damage = player._player_stats.get_stat("Weapon_Damage") * damage_multiplier
+		dark_orbital.index = i
 		get_tree().current_scene.add_child(dark_orbital)
-		dark_orbital.global_position = weapon.global_position + \
-		Vector2(0, max(weapon.texture.get_width(), weapon.texture.get_height()) * i)
