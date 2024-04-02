@@ -68,7 +68,7 @@ func _physics_process(delta):
 	if can_be_damaged:
 		set_collision_layer(initial_collision_layer)
 	else:
-		set_collision_layer(0)
+		set_collision_layer(initial_collision_layer - 2)
 
 func move():
 	var input_direction = Input.get_vector("left", "right", "up", "down")

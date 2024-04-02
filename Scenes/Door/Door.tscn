@@ -1,26 +1,28 @@
 [gd_scene load_steps=5 format=3 uid="uid://bapvnxcjqbso"]
 
-[ext_resource type="Texture2D" uid="uid://dmfi6nhgbaqsi" path="res://Sprites/UI/Filled Heart.png" id="1_as7lk"]
 [ext_resource type="Script" path="res://Scripts/Level/door.gd" id="1_xo7uy"]
+[ext_resource type="Texture2D" uid="uid://d1tgax3suj431" path="res://Sprites/Door/Door.png" id="2_0phtd"]
 [ext_resource type="FontFile" uid="uid://wbj0boqv37y6" path="res://Fonts/Description Font.ttf" id="3_lo11f"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ier7o"]
-radius = 8.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pmakt"]
+size = Vector2(16, 16.6667)
 
 [node name="Door" type="Node2D" groups=["Door"]]
 scale = Vector2(3, 3)
 script = ExtResource("1_xo7uy")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_as7lk")
+position = Vector2(0, -13.5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_0phtd")
 
-[node name="Enter Radius" type="Area2D" parent="Sprite2D"]
+[node name="Enter Radius" type="Area2D" parent="."]
 collision_layer = 64
-collision_mask = 2
+collision_mask = 130
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Enter Radius"]
-position = Vector2(0, 1.66667)
-shape = SubResource("CircleShape2D_ier7o")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enter Radius"]
+position = Vector2(0, -6.33333)
+shape = SubResource("RectangleShape2D_pmakt")
 
 [node name="Background" type="TextureRect" parent="."]
 offset_left = -20.0
@@ -41,5 +43,5 @@ text = "[center]Reward
 "
 scroll_active = false
 
-[connection signal="body_entered" from="Sprite2D/Enter Radius" to="." method="_on_enter_radius_body_entered"]
-[connection signal="body_exited" from="Sprite2D/Enter Radius" to="." method="_on_enter_radius_body_exited"]
+[connection signal="body_entered" from="Enter Radius" to="." method="_on_enter_radius_body_entered"]
+[connection signal="body_exited" from="Enter Radius" to="." method="_on_enter_radius_body_exited"]

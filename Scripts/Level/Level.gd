@@ -50,7 +50,7 @@ func spawn_doors(): # -785 to 785 = 1570 (size of level in x-axis) # -400 is the
 			door.set_reward("Boss")
 		elif LevelList.room_number == 10:
 			door.set_reward("Next Floor")
-		door.position = Vector2(0, -400)
+		door.position = Vector2(0, -384)
 		return
 	var door_pos = [-1, 0, 1]
 	for i in door_pos:
@@ -59,7 +59,7 @@ func spawn_doors(): # -785 to 785 = 1570 (size of level in x-axis) # -400 is the
 		var door = resource_preloader.get_resource("Door").instantiate()
 		door.set_reward()
 		add_child(door)
-		door.position = Vector2(1570.0 * i / 5, -400)
+		door.position = Vector2(1570.0 * i / 5, -384)
 
 func give_reward():
 	reward_given = true
