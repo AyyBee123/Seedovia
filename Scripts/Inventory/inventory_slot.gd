@@ -8,17 +8,14 @@ var slot_index: int
 
 enum slot_types {
 	INVENTORY,
-	HEAD,
-	ARMS,
-	BODY,
-	LEGS,
+	TALISMAN,
 	SEED
 }
 
 var slot_type = null
 
 func pick_from_slot():
-	if not (slot_type == slot_types.INVENTORY or slot_type == slot_types.SEED):
+	if slot_type == slot_types.TALISMAN:
 		PlayerEquipment.remove_stats(item, player, item.item.was_already_equipped)
 		for passive in item.item.special_properties:
 			var p = passive.instantiate()
@@ -37,7 +34,7 @@ func put_into_slot(new_item):
 	var inventory_node = find_parent("Inventory")
 	inventory_node.remove_child(item) # inventory node removes the child to be placed by the mouse curser to the slot
 	add_child(item)
-	if not (slot_type == slot_types.INVENTORY or slot_type == slot_types.SEED):
+	if slot_type == slot_types.TALISMAN:
 		PlayerEquipment.add_stats(item, player, item.item.was_already_equipped)
 		for passive in item.item.special_properties:
 			var p = passive.instantiate()

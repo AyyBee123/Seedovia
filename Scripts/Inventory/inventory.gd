@@ -3,7 +3,7 @@ extends Control
 const slot_class = preload("res://Scripts/Inventory/inventory_slot.gd")
 @onready var player = $".."
 @onready var inventory_slots = $"Inventory Screen/Inventory Slots".get_children()
-@onready var equip_slots = $"Inventory Screen/Equipment Slots".get_children()
+@onready var talisman_slots = $"Inventory Screen/Talisman Slots".get_children()
 @onready var seed_slots = $"Inventory Screen/Seed Slots".get_children()
 var holding_item = null # the item that is currently being held by the cursor in the inventory
 var drop_delay = Timer.new()
@@ -18,32 +18,19 @@ func _ready():
 		inventory_slots[i].gui_input.connect(slot_gui_input.bind(inventory_slots[i]))
 		inventory_slots[i].slot_index = i
 		inventory_slots[i].slot_type = slot_class.slot_types.INVENTORY
-		
-	# remove the empty space nodes (TextureRects) from the equipment grid container
-	var temp_equip_slots = []
-	for slot in equip_slots:
-		if slot is Panel:
-			temp_equip_slots.append(slot)
-			continue
-	equip_slots = temp_equip_slots
 	# initialize all the seed slots and their categories
 	for i in range(seed_slots.size()):
 		seed_slots[i].gui_input.connect(slot_gui_input.bind(seed_slots[i]))
 		seed_slots[i].slot_index = i
 		seed_slots[i].slot_type = slot_class.slot_types.SEED
-		
-	# initialize all the equipment slots
-	for i in range(equip_slots.size()):
-		equip_slots[i].gui_input.connect(slot_gui_input.bind(equip_slots[i]))
-		equip_slots[i].slot_index = i
-	# initialize all the equipment slots' categories
-	equip_slots[0].slot_type = slot_class.slot_types.HEAD
-	equip_slots[1].slot_type = slot_class.slot_types.ARMS
-	equip_slots[2].slot_type = slot_class.slot_types.BODY
-	equip_slots[3].slot_type = slot_class.slot_types.LEGS
+	# initialize all the talisman slots
+	for i in range(talisman_slots.size()):
+		talisman_slots[i].gui_input.connect(slot_gui_input.bind(talisman_slots[i]))
+		talisman_slots[i].slot_index = i
+		talisman_slots[i].slot_type = slot_class.slot_types.TALISMAN
 	
 	inititialize_inventory()
-	inititialize_equipment()
+	inititialize_talisman()
 	inititialize_seeds()
 
 func _process(delta):
@@ -65,7 +52,6 @@ func slot_gui_input(event: InputEvent, slot: slot_class):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT && event.pressed:
 			if holding_item != null:
-				#if not mouse_in_inventory:
 					#PlayerInventory.drop_item(holding_item, player)
 				if !slot.item: # place holding item into a slot
 					left_click_place_item(slot)
@@ -80,7 +66,7 @@ func slot_gui_input(event: InputEvent, slot: slot_class):
 
 func _input(event):
 	inititialize_inventory()
-	inititialize_equipment()
+	inititialize_talisman()
 	inititialize_seeds()
 	if holding_item:
 		holding_item.global_position = get_global_mouse_position()
@@ -98,16 +84,14 @@ func inititialize_inventory():
 		if PlayerInventory.inventory.has(i):
 			inventory_slots[i].initialize_item(PlayerInventory.inventory[i])
 
-func inititialize_equipment():
-	for i in range(equip_slots.size()):
-		if PlayerInventory.equipment.has(i):
-			equip_slots[i].get_node("Silhouette").visible = false
-			equip_slots[i].initialize_item(PlayerInventory.equipment[i])
+func inititialize_talisman():
+	for i in range(talisman_slots.size()):
+		if PlayerInventory.talismans.has(i):
+			talisman_slots[i].initialize_item(PlayerInventory.talismans[i])
 
 func inititialize_seeds():
 	for i in range(seed_slots.size()):
 		if PlayerInventory.seeds.has(i):
-			seed_slots[i].get_node("Silhouette").visible = false
 			seed_slots[i].initialize_item(PlayerInventory.seeds[i])
 
 func able_to_put_into_slot(slot: slot_class) -> bool:
@@ -117,14 +101,8 @@ func able_to_put_into_slot(slot: slot_class) -> bool:
 	# consumable items don't have a category property, so their category is always INVENTORY
 	var holding_item_category = "INVENTORY" if not "category" in holding_item.item else holding_item.item.category
 	# check the slot type of the slot
-	if slot.slot_type == slot_class.slot_types.HEAD:
-		return holding_item_category == "HEAD"
-	elif slot.slot_type == slot_class.slot_types.ARMS:
-		return holding_item_category == "ARMS"
-	elif slot.slot_type == slot_class.slot_types.BODY:
-		return holding_item_category == "BODY"
-	elif slot.slot_type == slot_class.slot_types.LEGS:
-		return holding_item_category == "LEGS"
+	if slot.slot_type == slot_class.slot_types.TALISMAN:
+		return holding_item_category == "TALISMAN"
 	elif slot.slot_type == slot_class.slot_types.SEED:
 		return holding_item_category == "SEED"
 	else: # if the category is INVENTORY (since inventory can fit anything, it will return true)
@@ -134,8 +112,6 @@ func left_click_place_item(slot: slot_class): # place holding item into a slot
 	if able_to_put_into_slot(slot):
 		PlayerInventory.add_item_to_empty_slot(holding_item, slot)
 		slot.put_into_slot(holding_item)
-		if slot.slot_type != slot_class.slot_types.INVENTORY: # "replace" silhouette sprite with item sprite
-			slot.get_node("Silhouette").visible = false
 		holding_item = null
 
 func left_click_swap_item(event: InputEvent, slot: slot_class): # swap holding item with item in slot
@@ -152,8 +128,6 @@ func left_click_select_item(slot: slot_class): # left clicking an item while not
 	PlayerInventory.remove_item(slot)
 	holding_item = slot.item
 	slot.pick_from_slot()
-	if slot.slot_type != slot_class.slot_types.INVENTORY: # "replace" item sprite with silhouette sprite
-		slot.get_node("Silhouette").visible = true
 	holding_item.global_position = get_global_mouse_position()
 
 func right_click_use_item(slot: slot_class):
@@ -163,30 +137,17 @@ func right_click_use_item(slot: slot_class):
 				slot.item.item.on_use(Targets.player) # activate the use effect of the consumable item
 				PlayerInventory.remove_item(slot) # then remove the item from the player inventory dictionary
 				slot.item.call_deferred("free") # then delete the item
-			"HEAD":
-				if !equip_slots[0].item: # if there is no item in the corresponding equipment slot
-					right_click_slot_item(slot, equip_slots[0])
-				else:
-					right_click_swap_item(slot, equip_slots[0])
-			"ARMS":
-				if !equip_slots[1].item:
-					right_click_slot_item(slot, equip_slots[1])
-				else:
-					right_click_swap_item(slot, equip_slots[1])
-			"BODY":
-				if !equip_slots[2].item:
-					right_click_slot_item(slot, equip_slots[2])
-				else:
-					right_click_swap_item(slot, equip_slots[2])
-			"LEGS":
-				if !equip_slots[3].item:
-					right_click_slot_item(slot, equip_slots[3])
-				else:
-					right_click_swap_item(slot, equip_slots[3])
-			#"SEED":
-				#pass
-	if slot.slot_type == slot_class.slot_types.HEAD or slot.slot_type == slot_class.slot_types.ARMS or\
-	slot.slot_type == slot_class.slot_types.BODY or slot.slot_type == slot_class.slot_types.LEGS:
+			"TALISMAN":
+				for inv_slot in talisman_slots:
+					if !inv_slot.item:
+						right_click_slot_item(slot, inv_slot)
+						break
+			"SEED":
+				for inv_slot in seed_slots:
+					if !inv_slot.item:
+						right_click_slot_item(slot, inv_slot)
+						break
+	if slot.slot_type == slot_class.slot_types.TALISMAN or slot.slot_type == slot_class.slot_types.SEED:
 		if PlayerInventory.get_empty_slot_index() != null:
 			right_click_slot_item(slot, inventory_slots[PlayerInventory.get_empty_slot_index()])
 
@@ -194,14 +155,10 @@ func right_click_slot_item(selected_slot: slot_class, desired_slot: slot_class):
 	var current_item = selected_slot.item
 	PlayerInventory.remove_item(selected_slot)
 	selected_slot.pick_from_slot()
-	if selected_slot.slot_type != slot_class.slot_types.INVENTORY: # "replace" item sprite with silhouette sprite
-		selected_slot.get_node("Silhouette").visible = true
 	PlayerInventory.add_item_to_empty_slot(current_item, desired_slot)
-	if desired_slot.slot_type != slot_class.slot_types.INVENTORY: # "replace" item sprite with silhouette sprite
-		desired_slot.get_node("Silhouette").visible = false
 	desired_slot.put_into_slot(current_item)
 
-func right_click_swap_item(selected_slot: slot_class, desired_slot: slot_class):
+func right_click_swap_item(selected_slot: slot_class, desired_slot: slot_class): # TODO: might be deleted later
 	var current_item = selected_slot.item
 	var swapping_item = desired_slot.item
 	PlayerInventory.remove_item(selected_slot)

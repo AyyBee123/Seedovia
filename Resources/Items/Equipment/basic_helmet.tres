@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_tq4bq")
-category = "HEAD"
+category = "TALISMAN"
 rarity = 0
 properties = Array[String](["+1 Max_Health"])
 special_properties = Array[PackedScene]([])

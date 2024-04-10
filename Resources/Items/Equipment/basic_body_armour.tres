@@ -5,10 +5,9 @@
 
 [resource]
 script = ExtResource("1_gyc5d")
-category = "BODY"
-rarity = 0
+rarity = null
 properties = Array[String](["+1 Max_Health", "-10% Dash_Distance"])
-special_properties = Array[PackedScene]([])
+special_properties = null
 item_name = "Basic Body Armour"
 texture = ExtResource("2_a2jkb")
 description = "Basic body armour"

@@ -2,7 +2,7 @@ class_name player_data extends Resource
 
 # resource variables must have @export to be saved in a file
 @export var inventory: Dictionary = PlayerInventory.inventory
-@export var equipment: Dictionary = PlayerInventory.equipment
+@export var talismans: Dictionary = PlayerInventory.talismans
 @export var seeds: Dictionary = PlayerInventory.seeds
 @export var passives: Array
 @export var item_passives: Array
@@ -13,12 +13,12 @@ class_name player_data extends Resource
 # these functions are called form the global script
 func get_inventory():
 	inventory = PlayerInventory.inventory
-	equipment = PlayerInventory.equipment
+	talismans = PlayerInventory.talismans
 	seeds = PlayerInventory.seeds
 	
 func set_inventory():
 	PlayerInventory.inventory = inventory
-	PlayerInventory.equipment = equipment
+	PlayerInventory.talismans = talismans
 	PlayerInventory.seeds = seeds
 
 func get_passives():
