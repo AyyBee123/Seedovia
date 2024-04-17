@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://yjbr0frt6d2y"]
+
+[ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_vkpan"]
+[ext_resource type="Script" path="res://Scripts/Enemies/Brain/brain.gd" id="2_lbarg"]
+[ext_resource type="Texture2D" uid="uid://qdai8wddasox" path="res://Sprites/Enemies/Brain.png" id="3_812vl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xvcm1"]
+size = Vector2(28, 19)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jybnn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_812vl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ktd1y"]
+size = Vector2(28, 19)
+
+[node name="Enemy" instance=ExtResource("1_vkpan")]
+collision_mask = 0
+script = ExtResource("2_lbarg")
+
+[node name="CollisionPolygon2D" parent="." index="0"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_xvcm1")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+sprite_frames = SubResource("SpriteFrames_jybnn")
+
+[node name="Enemy Hitbox" parent="." index="2"]
+collision_mask = 11
+
+[node name="CollisionPolygon2D" parent="Enemy Hitbox" index="0"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_ktd1y")
