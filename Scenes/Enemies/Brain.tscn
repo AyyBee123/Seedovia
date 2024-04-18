@@ -30,6 +30,7 @@ size = Vector2(32, 15)
 size = Vector2(20, 16.5)
 
 [node name="Brain" instance=ExtResource("1_vkpan")]
+scale = Vector2(1.5, 1.5)
 script = ExtResource("2_lbarg")
 _enemy_stats = ExtResource("3_frbuf")
 

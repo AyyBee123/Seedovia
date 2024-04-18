@@ -36,6 +36,7 @@ animations = [{
 height = 26.0
 
 [node name="Yellow Slime" instance=ExtResource("1_f1xw5")]
+scale = Vector2(1.5, 1.5)
 script = ExtResource("2_vgxx0")
 _enemy_stats = SubResource("Resource_wgoj7")
 
