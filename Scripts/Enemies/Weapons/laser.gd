@@ -22,6 +22,7 @@ var speed = 0
 
 var is_in_area := false
 var right_was_delayed := false
+var source
 
 func _physics_process(delta):
 	if is_in_area and damage_buffer.is_stopped():
@@ -31,6 +32,8 @@ func _physics_process(delta):
 		shoot_left()
 	if right_was_delayed and shoot_right_delay.is_stopped():
 		shoot_right()
+	if source == null:
+		disappear()
 
 func disappear():
 	animation_player.play("Disappear")

@@ -18,6 +18,7 @@ func _on_animated_sprite_2d_frame_changed():
 			laser.damage = _enemy_stats.weapon_damage
 			laser.range = _enemy_stats.weapon_range
 			laser.speed = _enemy_stats.weapon_speed
+			laser.source = self
 			get_tree().current_scene.add_child(laser)
 			laser.global_position = $Marker2D.global_position
 		if $AnimatedSprite2D.frame == 65: # end of the laser fire animation
