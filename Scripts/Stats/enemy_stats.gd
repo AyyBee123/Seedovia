@@ -44,6 +44,7 @@ func increase_max_health(amount):
 	max_health_changed.emit(max_health)
 
 func take_damage(damage):
+	print(health)
 	spawn_damage_number.emit(damage)
 	health -= damage
 	health = max(0, health)
