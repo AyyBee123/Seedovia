@@ -112,9 +112,10 @@ func left_click_place_item(slot: slot_class): # place holding item into a slot
 	if able_to_put_into_slot(slot):
 		PlayerInventory.add_item_to_empty_slot(holding_item, slot)
 		slot.put_into_slot(holding_item)
+		slot.add_popup(holding_item)
 		holding_item = null
 
-func left_click_swap_item(event: InputEvent, slot: slot_class): # swap holding item with item in slot
+func left_click_swap_item(event: InputEvent, slot: slot_class): # swap holding item with item in selected slot
 	if able_to_put_into_slot(slot):
 		PlayerInventory.remove_item(slot)
 		PlayerInventory.add_item_to_empty_slot(holding_item, slot)
@@ -128,6 +129,7 @@ func left_click_select_item(slot: slot_class): # left clicking an item while not
 	PlayerInventory.remove_item(slot)
 	holding_item = slot.item
 	slot.pick_from_slot()
+	slot.remove_popup()
 	holding_item.global_position = get_global_mouse_position()
 
 func right_click_use_item(slot: slot_class):
@@ -155,6 +157,7 @@ func right_click_slot_item(selected_slot: slot_class, desired_slot: slot_class):
 	var current_item = selected_slot.item
 	PlayerInventory.remove_item(selected_slot)
 	selected_slot.pick_from_slot()
+	selected_slot.remove_popup()
 	PlayerInventory.add_item_to_empty_slot(current_item, desired_slot)
 	desired_slot.put_into_slot(current_item)
 
@@ -164,11 +167,13 @@ func right_click_swap_item(selected_slot: slot_class, desired_slot: slot_class):
 	PlayerInventory.remove_item(selected_slot)
 	PlayerInventory.remove_item(desired_slot)
 	selected_slot.pick_from_slot()
+	selected_slot.remove_popup()
 	desired_slot.pick_from_slot()
 	PlayerInventory.add_item_to_empty_slot(current_item, desired_slot)
 	desired_slot.put_into_slot(current_item)
 	PlayerInventory.add_item_to_empty_slot(swapping_item, selected_slot)
 	selected_slot.put_into_slot(swapping_item)
+	selected_slot.add_popup(swapping_item)
 
 func get_number_of_slots():
 	return inventory_slots.size()

@@ -3,8 +3,11 @@ extends Panel
 var item_instance = null
 var item = null
 var slot_index: int
+var popup = null
 
 @onready var player = $"../../../.."
+@onready var inventory = $"../../.."
+var item_popup = preload("res://Scenes/UI/Item Popup.tscn")
 
 enum slot_types {
 	INVENTORY,
@@ -13,6 +16,10 @@ enum slot_types {
 }
 
 var slot_type = null
+
+func _ready():
+	mouse_entered.connect(_on_mouse_entered)
+	mouse_exited.connect(_on_mouse_exited)
 
 func pick_from_slot():
 	if slot_type == slot_types.TALISMAN:
@@ -56,3 +63,23 @@ func initialize_item(slot_item):
 		item.position = Vector2(size.x / 2, size.y / 2)
 	else:
 		item.set_item(slot_item)
+
+func _on_mouse_entered():
+	if item != null && inventory.holding_item == null:
+		add_popup(item)
+
+func _on_mouse_exited():
+	remove_popup()
+
+func add_popup(item):
+	popup = item_popup.instantiate()
+	popup.item_name = item.item.item_name
+	popup.type = item.item.category
+	popup.description = item.item.description
+	popup.rarity = item.item.rarity
+	add_child(popup)
+
+func remove_popup():
+	if popup != null:
+		remove_child(popup)
+		popup.queue_free()
