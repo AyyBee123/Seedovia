@@ -139,6 +139,7 @@ func right_click_use_item(slot: slot_class):
 				slot.item.item.on_use(Targets.player) # activate the use effect of the consumable item
 				PlayerInventory.remove_item(slot) # then remove the item from the player inventory dictionary
 				slot.item.call_deferred("free") # then delete the item
+				slot.remove_popup()
 			"TALISMAN":
 				for inv_slot in talisman_slots:
 					if !inv_slot.item:

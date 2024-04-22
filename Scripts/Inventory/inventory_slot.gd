@@ -78,6 +78,7 @@ func add_popup(item):
 	popup.description = item.item.description
 	popup.rarity = item.item.rarity
 	add_child(popup)
+	popup.global_position.y = inventory.global_position.y + 472
 
 func remove_popup():
 	if popup != null:
