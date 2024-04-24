@@ -1,9 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://di5qsn3q64j3p"]
+[gd_scene load_steps=8 format=3 uid="uid://di5qsn3q64j3p"]
 
-[ext_resource type="Texture2D" uid="uid://osvetf3hj5du" path="res://Sprites/Inventory/Inventory Background.png" id="1_8j1br"]
 [ext_resource type="Script" path="res://Scripts/UI/item_popup.gd" id="1_yb4gf"]
+[ext_resource type="Texture2D" uid="uid://d05vgv2wk4p8y" path="res://Sprites/Item Popup/Item popup top.png" id="2_5rbm2"]
 [ext_resource type="FontFile" uid="uid://bkn7gmgx1wxgx" path="res://Fonts/Name Font.ttf" id="2_vk73d"]
 [ext_resource type="FontFile" uid="uid://wbj0boqv37y6" path="res://Fonts/Description Font.ttf" id="3_lnxbw"]
+[ext_resource type="Texture2D" uid="uid://bk4qatjkbxvsc" path="res://Sprites/Item Popup/Description portion.png" id="4_aygkx"]
+[ext_resource type="Texture2D" uid="uid://ca6wnsfotkfae" path="res://Sprites/Item Popup/Bottom.png" id="6_6tcmu"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_olhi0"]
+texture = ExtResource("4_aygkx")
+texture_margin_left = 4.0
 
 [node name="Item Popup" type="Control"]
 z_index = 10
@@ -20,21 +26,22 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_yb4gf")
 
-[node name="Background" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.003
-anchor_top = 0.038
-anchor_right = 0.003
-anchor_bottom = 0.038
-offset_left = -156.76
-offset_top = -127.04
-offset_right = -0.76
-offset_bottom = 128.96
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = -151.0
+offset_top = -28.0
+offset_right = 5.0
+offset_bottom = 46.0
 mouse_filter = 2
-texture = ExtResource("1_8j1br")
+theme_override_constants/separation = 0
 
-[node name="Name" type="RichTextLabel" parent="Background"]
+[node name="Top" type="TextureRect" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("2_5rbm2")
+
+[node name="Name" type="RichTextLabel" parent="VBoxContainer/Top"]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 4.0
 offset_top = 1.0
@@ -47,7 +54,8 @@ bbcode_enabled = true
 text = "Name"
 scroll_active = false
 
-[node name="Type" type="RichTextLabel" parent="Background"]
+[node name="Type" type="RichTextLabel" parent="VBoxContainer/Top"]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 4.0
 offset_top = 30.0
@@ -60,15 +68,18 @@ bbcode_enabled = true
 text = "Type"
 scroll_active = false
 
-[node name="Rarity" type="RichTextLabel" parent="Background"]
+[node name="Rarity" type="RichTextLabel" parent="VBoxContainer/Top"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 4.0
-offset_top = 35.0
-offset_right = -3.0
-offset_bottom = -211.0
+offset_left = 3.0
+offset_top = 36.0
+offset_right = -4.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 theme_override_fonts/normal_font = ExtResource("2_vk73d")
 theme_override_font_sizes/normal_font_size = 8
@@ -76,14 +87,24 @@ bbcode_enabled = true
 text = "[right]Rarity"
 scroll_active = false
 
-[node name="Description" type="RichTextLabel" parent="Background"]
-layout_mode = 0
-offset_left = 3.0
-offset_top = 56.0
-offset_right = 153.0
-offset_bottom = 254.0
+[node name="Description Portion" type="PanelContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_olhi0")
+
+[node name="Description" type="RichTextLabel" parent="VBoxContainer/Description Portion"]
+unique_name_in_owner = true
+layout_mode = 2
 mouse_filter = 2
 theme_override_fonts/normal_font = ExtResource("3_lnxbw")
 theme_override_font_sizes/normal_font_size = 16
-text = "Descriptiondadsafdfsgsergsddstgdsgsdcgscgrdsgedrdxbdhdrdrrbdrdbtjyjftgesfsdgryhdcbvrtdrsgbdfdrgdfdbrgrdfbredgfhdfhdfbhtjadsafdfsgsergsddstgdsgsdcgscgrdsgedrdxbdhdrdrrbdrdbtjyjftgesfsdgryhdcbvrtdrsgbdfdrgdfdbrgradsafdfsgsergsddstgdsgsdcgscgrdsgedrdxbdhdrdrrbdrdbtjyjftgesfsdgryhdcbvrtdrsgbdfdrgdfdbrgrfdhdhdhhdhdchfgngdjfdhdhfgjdgjtgfhgjdgjfdggdfdgfgfddfggdgdg"
+text = "Description"
+fit_content = true
 scroll_active = false
+
+[node name="Bottom" type="TextureRect" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("6_6tcmu")
+expand_mode = 1
+stretch_mode = 2

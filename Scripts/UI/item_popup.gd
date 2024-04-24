@@ -6,9 +6,9 @@ var description
 var rarity
 
 func _ready():
-	$Background/Name.text = item_name
-	$Background/Type.text = type
-	$Background/Description.text = description
+	%Name.text = item_name
+	%Type.text = type
+	%Description.text = description
 	match rarity:
 		0: # Common
 			set_values(Color.DARK_GRAY, "Common")
@@ -26,7 +26,9 @@ func _ready():
 			set_values(Color.WHITE, "")
 
 func set_values(color: Color, text: String):
-	$Background/Rarity.self_modulate = color
-	$Background/Rarity.text = "[right]" + text
-	$Background.self_modulate = color
-	$Background/Name.self_modulate = color
+	%Rarity.self_modulate = color
+	%"Description Portion".self_modulate = color
+	%Bottom.self_modulate = color
+	%Rarity.text = "[right]" + text
+	%Top.self_modulate = color
+	%Name.self_modulate = color
