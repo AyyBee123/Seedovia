@@ -39,6 +39,10 @@ window/stretch/mode="viewport"
 window/stretch/aspect="keep_height"
 window/vsync/vsync_mode=0
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg")
+
 [input]
 
 right={
