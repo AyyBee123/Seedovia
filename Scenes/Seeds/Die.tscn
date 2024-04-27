@@ -1,13 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://ctj80cw06h21l"]
+[gd_scene load_steps=5 format=3 uid="uid://ctj80cw06h21l"]
 
 [ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_bmyh6"]
 [ext_resource type="Texture2D" uid="uid://dwiidvnfgbs6f" path="res://Sprites/Seeds/D6 (6).png" id="2_f03bl"]
+[ext_resource type="Script" path="res://Scripts/Seeds/die.gd" id="3_8d4is"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iq1le"]
 size = Vector2(64, 64)
 
 [node name="Die" instance=ExtResource("1_bmyh6")]
 texture = ExtResource("2_f03bl")
+script = ExtResource("3_8d4is")
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 shape = SubResource("RectangleShape2D_iq1le")

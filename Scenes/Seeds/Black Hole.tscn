@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://v51g2vqdlgg1"]
 
 [ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_nmxc7"]
-[ext_resource type="Texture2D" uid="uid://c5ug21awad4o1" path="res://Sprites/Seeds/Black Hole.png" id="2_mgpa6"]
+[ext_resource type="Texture2D" uid="uid://c5ug21awad4o1" path="res://Sprites/Items/Black Hole.png" id="2_mgpa6"]
 [ext_resource type="Script" path="res://Scripts/Seeds/black_hole.gd" id="3_pd5y3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wmur4"]

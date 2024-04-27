@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="seed_class" load_steps=3 format=3 uid="uid://ducq6708p7c2f"]
 
 [ext_resource type="Script" path="res://Scripts/Stats/seed_stats.gd" id="1_l1cfc"]
-[ext_resource type="Texture2D" uid="uid://xmqls0010wrt" path="res://Sprites/Seeds/Die.png" id="2_sd346"]
+[ext_resource type="Texture2D" uid="uid://xmqls0010wrt" path="res://Sprites/Items/Die.png" id="2_sd346"]
 
 [resource]
 script = ExtResource("1_l1cfc")
