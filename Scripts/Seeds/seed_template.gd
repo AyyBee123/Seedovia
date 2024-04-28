@@ -97,7 +97,7 @@ func get_weapon_properties(weapon, _desired_direction, _ignore_first_collision =
 		weapon.seed_slot_number = PlayerSeeds.seed_indices[slot_index + 1]
 	else:
 		weapon.seed_slot_number = 3
-	call_deferred("initialize_location", weapon)
+	initialize_location.call_deferred(weapon)
 
 func initialize_location(weapon):
 	get_tree().current_scene.add_child(weapon)

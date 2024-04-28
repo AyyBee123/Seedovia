@@ -1,15 +1,34 @@
-[gd_scene load_steps=5 format=3 uid="uid://ctj80cw06h21l"]
+[gd_scene load_steps=11 format=3 uid="uid://ctj80cw06h21l"]
 
 [ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_bmyh6"]
 [ext_resource type="Texture2D" uid="uid://dwiidvnfgbs6f" path="res://Sprites/Seeds/D6 (6).png" id="2_f03bl"]
-[ext_resource type="Script" path="res://Scripts/Seeds/die.gd" id="3_8d4is"]
+[ext_resource type="Script" path="res://Scripts/Seeds/d6.gd" id="3_kvhjw"]
+[ext_resource type="Texture2D" uid="uid://boutx5fuxywmp" path="res://Sprites/Seeds/D6 (1).png" id="4_ooc7t"]
+[ext_resource type="Texture2D" uid="uid://clt8sxhnraep4" path="res://Sprites/Seeds/D6 (2).png" id="5_g7fhl"]
+[ext_resource type="Texture2D" uid="uid://g58yxankyug0" path="res://Sprites/Seeds/D6 (3).png" id="6_jsvrk"]
+[ext_resource type="Texture2D" uid="uid://cj52n3agqv4bs" path="res://Sprites/Seeds/D6 (4).png" id="7_4sfs0"]
+[ext_resource type="Texture2D" uid="uid://8n5x15ob5bob" path="res://Sprites/Seeds/D6 (5).png" id="8_eosq7"]
+[ext_resource type="Texture2D" uid="uid://fsropw2uhl7c" path="res://Sprites/Seeds/D6 (I).png" id="9_mj23h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iq1le"]
-size = Vector2(64, 64)
+size = Vector2(21, 21)
 
-[node name="Die" instance=ExtResource("1_bmyh6")]
+[node name="D6" instance=ExtResource("1_bmyh6")]
+scale = Vector2(1.75, 1.75)
 texture = ExtResource("2_f03bl")
-script = ExtResource("3_8d4is")
+script = ExtResource("3_kvhjw")
+speed_multiplier = 0.65
+range_multiplier = 2.0
+damage_multiplier = 2.0
+fire_rate_multiplier = 0.2
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 shape = SubResource("RectangleShape2D_iq1le")
+
+[node name="Randomize Interval" type="Timer" parent="." index="1"]
+wait_time = 0.333
+one_shot = true
+autostart = true
+
+[node name="ResourcePreloader" type="ResourcePreloader" parent="." index="2"]
+resources = [PackedStringArray("D6 (1)", "D6 (2)", "D6 (3)", "D6 (4)", "D6 (5)", "D6 (6)", "D6 (I)"), [ExtResource("4_ooc7t"), ExtResource("5_g7fhl"), ExtResource("6_jsvrk"), ExtResource("7_4sfs0"), ExtResource("8_eosq7"), ExtResource("2_f03bl"), ExtResource("9_mj23h")]]

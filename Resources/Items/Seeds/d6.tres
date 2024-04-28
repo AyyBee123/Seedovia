@@ -10,4 +10,4 @@ scene = ExtResource("1_seaps")
 rarity = 2
 item_name = "D6"
 texture = ExtResource("3_lis2e")
-description = "Shoots a die that rolls a number between 1 and 6 that shoots the next seed when destroyed. The damage and number of seeds it shoots are dependant on the roll."
+description = "Shoots a die that rolls a number between 1 and 6, and shoots the next seed when destroyed. The damage and number of seeds it shoots are dependant on the roll."

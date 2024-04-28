@@ -78,9 +78,9 @@ func add_popup(item):
 	popup.description = item.item.description
 	popup.rarity = item.item.rarity
 	add_child(popup)
-	popup.global_position.y = inventory.global_position.y + 472
+	popup.global_position.y = max(global_position.y, inventory.global_position.y)
 
 func remove_popup():
 	if popup != null:
-		remove_child(popup)
+		remove_child.call_deferred(popup)
 		popup.queue_free()
