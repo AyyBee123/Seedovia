@@ -30,7 +30,7 @@ func randomize_value():
 			dice_value = randi_range(1, 6)
 		match dice_value:
 			1:
-				if randi_range(0, 49) == 0: # 1 in 50 chance to replace the 1 side with a familiar face
+				if randi_range(0, 49) == 0: # 1 in 50 chance to replace the 1-side with a familiar face
 					texture = resource_preloader.get_resource("D6 (I)")
 				else:
 					texture = resource_preloader.get_resource("D6 (1)")

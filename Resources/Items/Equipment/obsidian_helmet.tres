@@ -6,10 +6,9 @@
 
 [resource]
 script = ExtResource("1_2et4j")
-category = "TALISMAN"
 rarity = 3
 properties = Array[String]([])
 special_properties = Array[PackedScene]([ExtResource("2_k35lc")])
 item_name = "Obsidian Helmet"
 texture = ExtResource("2_q6t87")
-description = "The weapon in your second seed slot gains 2 dark flame orbitals."
+description = "The weapon in your second seed slot gains 3 dark flame orbitals."

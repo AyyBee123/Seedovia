@@ -13,7 +13,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iq1le"]
 size = Vector2(21, 21)
 
-[node name="D6" instance=ExtResource("1_bmyh6")]
+[node name="D6" groups=["Projectile"] instance=ExtResource("1_bmyh6")]
 scale = Vector2(1.75, 1.75)
 texture = ExtResource("2_f03bl")
 script = ExtResource("3_kvhjw")
