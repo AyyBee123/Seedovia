@@ -19,14 +19,3 @@ func _get_transition(delta):
 			if not parent.falling:
 				return states.forward
 	return null
-
-func _enter_state(new_state, old_state):
-	pass
-	#match new_state:
-		#states.idle:
-			#parent.animation_player.play("idle")
-		#states.jump:
-			#parent.animation_player.play("jump")
-		#states.shoot:
-			#parent.animation_player.play("shoot")
-			#parent.shoot()
