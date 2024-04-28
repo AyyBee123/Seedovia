@@ -19,9 +19,9 @@ func update_position(delta):
 
 func spin():
 	if clockwise_rotation:
-		rotation_degrees += 1.75
+		rotation_degrees += 2
 	else:
-		rotation_degrees -= 1.75
+		rotation_degrees -= 2
 
 func randomize_value():
 	if randomize_interval.is_stopped():

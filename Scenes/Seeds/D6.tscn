@@ -10,8 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://8n5x15ob5bob" path="res://Sprites/Seeds/D6 (5).png" id="8_eosq7"]
 [ext_resource type="Texture2D" uid="uid://fsropw2uhl7c" path="res://Sprites/Seeds/D6 (I).png" id="9_mj23h"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_iq1le"]
-size = Vector2(21, 21)
+[sub_resource type="CircleShape2D" id="CircleShape2D_akjco"]
 
 [node name="D6" groups=["Projectile"] instance=ExtResource("1_bmyh6")]
 scale = Vector2(1.75, 1.75)
@@ -23,7 +22,7 @@ damage_multiplier = 2.0
 fire_rate_multiplier = 0.2
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
-shape = SubResource("RectangleShape2D_iq1le")
+shape = SubResource("CircleShape2D_akjco")
 
 [node name="Randomize Interval" type="Timer" parent="." index="1"]
 wait_time = 0.333
