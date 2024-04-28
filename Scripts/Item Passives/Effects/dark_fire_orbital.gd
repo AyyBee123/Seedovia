@@ -14,6 +14,7 @@ var index
 var current_velocity
 var is_in_area := false
 var enemy = null
+var number_of_orbitals: int
 
 func _ready():
 	radius = min(max(weapon.texture.get_width(), weapon.texture.get_height()), 20)
@@ -27,8 +28,8 @@ func _physics_process(delta):
 	angle += delta
 	# rotate the orbitals around the weapon
 	global_position = Vector2(
-		sin(angle * speed + index * deg_to_rad(360.0/3)) * radius,
-		cos(angle * speed + index * deg_to_rad(360.0/3)) * radius
+		sin(angle * speed + index * deg_to_rad(360.0/number_of_orbitals)) * radius,
+		cos(angle * speed + index * deg_to_rad(360.0/number_of_orbitals)) * radius
 	) + weapon_position
 	if is_in_area:
 		if tick_rate.is_stopped():
