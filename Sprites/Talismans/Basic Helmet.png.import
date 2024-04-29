@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://prlvtv88bsle"
-path="res://.godot/imported/Obsidian Helmet.png-817dafbb16615dada138d641258edb5b.ctex"
+uid="uid://bx28olmqujgox"
+path="res://.godot/imported/Basic Helmet.png-bbf1995db6d6ce774578e45c6580ba55.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Items/Obsidian Helmet.png"
-dest_files=["res://.godot/imported/Obsidian Helmet.png-817dafbb16615dada138d641258edb5b.ctex"]
+source_file="res://Sprites/Talismans/Basic Helmet.png"
+dest_files=["res://.godot/imported/Basic Helmet.png-bbf1995db6d6ce774578e45c6580ba55.ctex"]
 
 [params]
 

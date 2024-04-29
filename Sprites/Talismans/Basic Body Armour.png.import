@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bx28olmqujgox"
-path="res://.godot/imported/Basic Helmet.png-10da9de2eb1a30a44422946e8385f8d3.ctex"
+uid="uid://bpdwiwmxgg5ln"
+path="res://.godot/imported/Basic Body Armour.png-872fedfa34d4e921f1156196e43a3e61.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Items/Basic Helmet.png"
-dest_files=["res://.godot/imported/Basic Helmet.png-10da9de2eb1a30a44422946e8385f8d3.ctex"]
+source_file="res://Sprites/Talismans/Basic Body Armour.png"
+dest_files=["res://.godot/imported/Basic Body Armour.png-872fedfa34d4e921f1156196e43a3e61.ctex"]
 
 [params]
 

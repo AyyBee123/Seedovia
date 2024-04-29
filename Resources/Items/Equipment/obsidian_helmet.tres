@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Items/equipment_item_class.gd" id="1_2et4j"]
 [ext_resource type="PackedScene" uid="uid://cinjq67qcagjb" path="res://Scenes/Item Passives/Abilities/Dark Flame.tscn" id="2_k35lc"]
-[ext_resource type="Texture2D" uid="uid://prlvtv88bsle" path="res://Sprites/Items/Obsidian Helmet.png" id="2_q6t87"]
+[ext_resource type="Texture2D" uid="uid://prlvtv88bsle" path="res://Sprites/Talismans/Obsidian Helmet.png" id="2_q6t87"]
 
 [resource]
 script = ExtResource("1_2et4j")

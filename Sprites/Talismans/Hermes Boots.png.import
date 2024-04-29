@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bdj6yabamxxf6"
-path="res://.godot/imported/Leather Gloves.png-94a1959b1d950d5a8b74a5b9256b6a19.ctex"
+uid="uid://jxchnjlygpqv"
+path="res://.godot/imported/Hermes Boots.png-067b56a2e374c63e72ebb2a669e38e06.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Items/Leather Gloves.png"
-dest_files=["res://.godot/imported/Leather Gloves.png-94a1959b1d950d5a8b74a5b9256b6a19.ctex"]
+source_file="res://Sprites/Talismans/Hermes Boots.png"
+dest_files=["res://.godot/imported/Hermes Boots.png-067b56a2e374c63e72ebb2a669e38e06.ctex"]
 
 [params]
 
