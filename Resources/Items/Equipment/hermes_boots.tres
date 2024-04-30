@@ -6,9 +6,9 @@
 [resource]
 script = ExtResource("1_f0hrq")
 rarity = 3
-properties = Array[String](["0.1x Dash_Rate", "0.1x Dash_Invulnerability"])
+properties = Array[String](["0.1x Dash_Rate", "0.02x Dash_Invulnerability"])
 special_properties = Array[PackedScene]([])
-item_name = "Hermes Boots"
+item_name = "Wing Boots"
 texture = ExtResource("2_stftk")
 description = "0.1x dash cooldown
-0.1x dash immunity time"
+0.02x dash immunity time"
