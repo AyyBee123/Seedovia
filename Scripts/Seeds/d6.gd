@@ -84,15 +84,15 @@ func get_dice_damage_multiplier() -> float:
 	var dice_damage: float
 	match dice_value:
 		1:
-			dice_damage = 0.15
+			dice_damage = 0.25
 		2:
-			dice_damage = 0.65
+			dice_damage = 0.5
 		3:
-			dice_damage = 0.95
+			dice_damage = 0.75
 		4:
-			dice_damage = 1.15
+			dice_damage = 1
 		5:
-			dice_damage = 1.5
+			dice_damage = 1.35
 		6:
 			dice_damage = 2.0
 	return dice_damage

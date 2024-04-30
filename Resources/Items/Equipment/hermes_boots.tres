@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="equipment_item_class" load_steps=3 format=3 uid="uid://cnxqxsyj5owls"]
+
+[ext_resource type="Script" path="res://Scripts/Items/equipment_item_class.gd" id="1_f0hrq"]
+[ext_resource type="Texture2D" uid="uid://jxchnjlygpqv" path="res://Sprites/Talismans/Hermes Boots.png" id="2_stftk"]
+
+[resource]
+script = ExtResource("1_f0hrq")
+rarity = 3
+properties = Array[String](["0.1x Dash_Rate", "0.1x Dash_Invulnerability"])
+special_properties = Array[PackedScene]([])
+item_name = "Hermes Boots"
+texture = ExtResource("2_stftk")
+description = "0.1x dash cooldown
+0.1x dash immunity time"

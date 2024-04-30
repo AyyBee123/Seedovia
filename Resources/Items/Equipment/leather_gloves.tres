@@ -5,7 +5,6 @@
 
 [resource]
 script = ExtResource("1_bqk5d")
-category = "TALISMAN"
 rarity = 0
 properties = Array[String](["+10% Fire_Rate"])
 special_properties = Array[PackedScene]([])
