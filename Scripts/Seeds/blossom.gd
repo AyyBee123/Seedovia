@@ -8,15 +8,12 @@ extends "res://Scripts/Seeds/seed_template.gd"
 var time_to_live: float = 5
 var blossom_fire_rate_multiplier: float = 0.5
 
-func _ready():
-	lifetime.start(time_to_live + _player_stats.get_stat("Weapon_Range") * range_multiplier / 100)
-
 func _physics_process(delta):
 	super._physics_process(delta)
 	var weapon = null if PlayerSeeds.seeds.size() <= 1 + slot_index or slot_index >= 2\
 		else PlayerSeeds.seeds[slot_index + 1]
 	if weapon != null:
-		if fire_rate.is_stopped() and get_nearest_enemy() != null:
+		if fire_rate.is_stopped() and get_nearest_enemy() != null and deceleration.is_stopped():
 			attempted_fire.emit()
 			shoot_next_weapon(weapon)
 
@@ -58,3 +55,6 @@ func play_animation():
 
 func _on_animated_sprite_2d_animation_finished():
 	animated_sprite_2d.play("Idle")
+
+func _on_deceleration_timeout():
+	lifetime.start(time_to_live)
