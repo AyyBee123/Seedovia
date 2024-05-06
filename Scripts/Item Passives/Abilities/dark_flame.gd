@@ -10,8 +10,6 @@ func _ready():
 	slot_number = 1
 
 func trigger(weapon):
-	if not weapon.is_in_group("Projectile"):
-		return
 	# spawns three orbs around the projectile
 	for i in range(number_of_orbitals):
 		var dark_orbital = resource_preloader.get_resource("Dark Fire Orbital").instantiate()

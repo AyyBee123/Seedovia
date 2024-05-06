@@ -17,7 +17,10 @@ var enemy = null
 var number_of_orbitals: int
 
 func _ready():
-	radius = min(max(weapon.texture.get_width(), weapon.texture.get_height()), 20)
+	if weapon.texture == null:
+		radius = 20
+	else:
+		radius = min(max(weapon.texture.get_width(), weapon.texture.get_height()), 20)
 
 func _physics_process(delta):
 	if weapon != null:
