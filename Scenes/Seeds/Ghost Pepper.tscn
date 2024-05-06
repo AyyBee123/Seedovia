@@ -40,12 +40,15 @@ animations = [{
 [node name="Ghost Pepper" instance=ExtResource("1_dk4f8")]
 scale = Vector2(2, 2)
 script = ExtResource("2_by00h")
+damage_multiplier = 0.35
+fire_rate_multiplier = 0.1
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 shape = SubResource("CapsuleShape2D_8cerj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="1"]
 position = Vector2(0, -1)
+scale = Vector2(-1, 1)
 sprite_frames = SubResource("SpriteFrames_u38eu")
 autoplay = "default"
 frame_progress = 0.769088
@@ -57,3 +60,5 @@ one_shot = true
 wait_time = 8.0
 one_shot = true
 autostart = true
+
+[connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]
