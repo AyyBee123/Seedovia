@@ -38,6 +38,7 @@ theme_override_constants/separation = 0
 [node name="Top" type="TextureRect" parent="VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+mouse_filter = 2
 texture = ExtResource("2_5rbm2")
 
 [node name="Name" type="RichTextLabel" parent="VBoxContainer/Top"]
@@ -90,6 +91,7 @@ scroll_active = false
 [node name="Description Portion" type="PanelContainer" parent="VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_olhi0")
 
 [node name="Description" type="RichTextLabel" parent="VBoxContainer/Description Portion"]
@@ -105,6 +107,7 @@ scroll_active = false
 [node name="Bottom" type="TextureRect" parent="VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+mouse_filter = 2
 texture = ExtResource("6_6tcmu")
 expand_mode = 1
 stretch_mode = 2
