@@ -23,11 +23,11 @@ func _ready():
 func initialize_position():
 	if not position_initialized:
 		starting_position = global_position
-		if slot_index == 0:
+		if slot_index == 0: # if shot by the player
 			swing_direction = !swing_direction
 			rotation = global_position.angle_to_point(get_global_mouse_position()) + deg_to_rad(90)
 			lifetime.start(player.bullets_per_second.wait_time)
-		else:
+		else: # if shot by a seed
 			swing_direction == true
 			rotation = desired_direction.angle() + deg_to_rad(90)
 			lifetime.start(anim.current_animation_length)

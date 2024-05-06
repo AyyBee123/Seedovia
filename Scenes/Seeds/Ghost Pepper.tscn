@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://duy5h3oyofb8y"]
+
+[ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_dk4f8"]
+[ext_resource type="Script" path="res://Scripts/Seeds/ghost_pepper.gd" id="2_by00h"]
+[ext_resource type="Texture2D" uid="uid://30ewnal8c6rm" path="res://Sprites/Seeds/Ghost Pepper.png" id="3_l48bm"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8cerj"]
+radius = 7.0
+height = 22.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dy31l"]
+atlas = ExtResource("3_l48bm")
+region = Rect2(0, 0, 18, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h4mqp"]
+atlas = ExtResource("3_l48bm")
+region = Rect2(18, 0, 18, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4p67d"]
+atlas = ExtResource("3_l48bm")
+region = Rect2(36, 0, 18, 31)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u38eu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dy31l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h4mqp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4p67d")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="Ghost Pepper" instance=ExtResource("1_dk4f8")]
+scale = Vector2(2, 2)
+script = ExtResource("2_by00h")
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource("CapsuleShape2D_8cerj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="1"]
+position = Vector2(0, -1)
+sprite_frames = SubResource("SpriteFrames_u38eu")
+autoplay = "default"
+frame_progress = 0.769088
+
+[node name="Fire Rate" type="Timer" parent="." index="2"]
+one_shot = true
+
+[node name="Lifetime" type="Timer" parent="." index="3"]
+wait_time = 8.0
+one_shot = true
+autostart = true
