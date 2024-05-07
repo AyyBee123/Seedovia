@@ -54,13 +54,13 @@ func orbit(delta):
 	if slot_index == 0: # if shot by the player
 		rotate_around(player.global_position)
 	else: # if shot by a seed
-		if previous_weapon == null:
+		if previous_weapon == null: # if the previous weapon doesn't/no longer exists
 			var nearest_enemy = get_nearest_enemy()
-			if nearest_enemy == null:
+			if nearest_enemy == null: # if there are no enemies
 				rotate_around(starting_position)
-			else:
+			else: # if there is an enemy
 				rotate_around(nearest_enemy.global_position)
-		else:
+		else: # if the previous weapon exists
 			rotate_around(previous_weapon.global_position)
 
 func rotate_around(entity_position):
