@@ -4,11 +4,13 @@ var item_name
 var type
 var description
 var rarity
+var inventory
 
 func _ready():
 	%Name.text = item_name
 	%Type.text = type
 	%Description.text = description
+	set_pos.call_deferred() # defer the call because the modified size of the Box is changed after _ready
 	match rarity:
 		0: # Common
 			set_values(Color.DARK_GRAY, "Common")
@@ -24,6 +26,9 @@ func _ready():
 			set_values(Color.CRIMSON, "Unique")
 		-1: # N/A
 			set_values(Color.WHITE, "")
+
+func set_pos():
+	global_position.y = Targets.camera.global_position.y
 
 func set_values(color: Color, text: String):
 	%Rarity.self_modulate = color

@@ -14,34 +14,26 @@ texture_margin_left = 4.0
 [node name="Item Popup" type="Control"]
 z_index = 10
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -5.0
-offset_top = -41.0
-offset_right = -5.0
-offset_bottom = -41.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
 mouse_filter = 2
 script = ExtResource("1_yb4gf")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="Box" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
 layout_mode = 0
-offset_left = -152.0
-offset_top = -28.0
-offset_right = 4.0
-offset_bottom = 46.0
+offset_left = -158.0
+offset_right = -2.0
+offset_bottom = 74.0
 mouse_filter = 2
 theme_override_constants/separation = 0
 
-[node name="Top" type="TextureRect" parent="VBoxContainer"]
+[node name="Top" type="TextureRect" parent="Box"]
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 2
 texture = ExtResource("2_5rbm2")
 
-[node name="Name" type="RichTextLabel" parent="VBoxContainer/Top"]
+[node name="Name" type="RichTextLabel" parent="Box/Top"]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 4.0
@@ -55,7 +47,7 @@ bbcode_enabled = true
 text = "Name"
 scroll_active = false
 
-[node name="Type" type="RichTextLabel" parent="VBoxContainer/Top"]
+[node name="Type" type="RichTextLabel" parent="Box/Top"]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 4.0
@@ -69,7 +61,7 @@ bbcode_enabled = true
 text = "Type"
 scroll_active = false
 
-[node name="Rarity" type="RichTextLabel" parent="VBoxContainer/Top"]
+[node name="Rarity" type="RichTextLabel" parent="Box/Top"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -88,13 +80,13 @@ bbcode_enabled = true
 text = "[right]Rarity"
 scroll_active = false
 
-[node name="Description Portion" type="PanelContainer" parent="VBoxContainer"]
+[node name="Description Portion" type="PanelContainer" parent="Box"]
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_olhi0")
 
-[node name="Description" type="RichTextLabel" parent="VBoxContainer/Description Portion"]
+[node name="Description" type="RichTextLabel" parent="Box/Description Portion"]
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 2
@@ -104,7 +96,7 @@ text = "Description"
 fit_content = true
 scroll_active = false
 
-[node name="Bottom" type="TextureRect" parent="VBoxContainer"]
+[node name="Bottom" type="TextureRect" parent="Box"]
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 2
