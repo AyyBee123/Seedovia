@@ -28,6 +28,7 @@ func _ready():
 			set_values(Color.WHITE, "")
 
 func set_pos():
+	# TODO: make the popups align vertically, while also not causing them to clip off-screen
 	global_position.y = Targets.camera.global_position.y
 
 func set_values(color: Color, text: String):
