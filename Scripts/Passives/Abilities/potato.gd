@@ -6,4 +6,4 @@ func _ready():
 	super._ready()
 
 func trigger(weapon = null):
-	pass
+	var potato
