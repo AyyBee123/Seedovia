@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bdrf2aqx1dvhm"]
+
+[ext_resource type="Script" path="res://Scripts/Passives/Abilities/potato.gd" id="1_xvqxk"]
+
+[node name="Potato" type="Node"]
+script = ExtResource("1_xvqxk")

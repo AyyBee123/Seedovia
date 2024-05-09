@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 signal shoot(bullet, direction, location)
 signal weapon_fired(weapon)
+signal dashed
 
 @export var _player_stats: player_stats
 
@@ -90,6 +91,7 @@ func dash():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	velocity = velocity.lerp((input_direction.normalized() if input_direction else Vector2(0,1))\
 	* _player_stats.get_stat("Dash_Distance"), 1)
+	dashed.emit()
 	dash_cooldown.start()
 	dash_invulnerability_time.start()
 
