@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://bvhv3axlj74bi"]
+
+[ext_resource type="Script" path="res://Scripts/UI/character_select.gd" id="1_jmjmr"]
+[ext_resource type="Texture2D" uid="uid://bdjm8bu0l6v08" path="res://Sprites/Player/Player.png" id="2_irgog"]
+[ext_resource type="FontFile" uid="uid://bkn7gmgx1wxgx" path="res://Fonts/Name Font.ttf" id="2_wxbw4"]
+[ext_resource type="Script" path="res://Scripts/UI/character.gd" id="3_alya1"]
+
+[node name="Character Select" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jmjmr")
+
+[node name="Characters" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Character 1" type="TextureRect" parent="Characters"]
+layout_mode = 0
+offset_left = 1223.0
+offset_top = 353.0
+offset_right = 1300.0
+offset_bottom = 485.0
+mouse_default_cursor_shape = 2
+texture = ExtResource("2_irgog")
+script = ExtResource("3_alya1")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 191.0
+theme_override_fonts/normal_font = ExtResource("2_wxbw4")
+theme_override_font_sizes/normal_font_size = 128
+bbcode_enabled = true
+text = "[center]Select your character"
+fit_content = true
+scroll_active = false

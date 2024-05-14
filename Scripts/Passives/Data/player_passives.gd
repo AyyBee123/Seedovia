@@ -1,6 +1,6 @@
 extends Node
 
-@onready var player = get_tree().get_nodes_in_group("Players")[0] # keeps returning null, so I added it to the setget
+@onready var player = get_tree().get_first_node_in_group("Players") # keeps returning null, so I added it to the setget
 var passives: Array
 var item_passives: Array
 

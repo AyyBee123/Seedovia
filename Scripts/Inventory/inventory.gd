@@ -52,7 +52,6 @@ func slot_gui_input(event: InputEvent, slot: slot_class):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT && event.pressed:
 			if holding_item != null:
-					#PlayerInventory.drop_item(holding_item, player)
 				if !slot.item: # place holding item into a slot
 					left_click_place_item(slot)
 				else: # swap holding item with item in slot
