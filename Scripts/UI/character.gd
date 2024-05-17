@@ -2,6 +2,7 @@ extends TextureRect
 
 var mouse_hovered = false
 var event: InputEvent
+@export var starting_character: character_class
 
 func _ready():
 	mouse_entered.connect(_on_mouse_entered)
@@ -10,8 +11,6 @@ func _ready():
 func _physics_process(delta):
 	if mouse_hovered == true:
 		modulate = Color.BLACK
-		if event is InputEventMouseButton:
-			select_character()
 	else:
 		modulate = Color.WHITE
 
