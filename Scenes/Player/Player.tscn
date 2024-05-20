@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://cu63rxmy71bcg"]
+[gd_scene load_steps=9 format=3 uid="uid://cu63rxmy71bcg"]
 
 [ext_resource type="Texture2D" uid="uid://ddxlo3x3ru7hr" path="res://Sprites/Player/Hand.png" id="2_6om3g"]
 [ext_resource type="Script" path="res://Scripts/Player/player.gd" id="2_f7nwd"]
-[ext_resource type="Resource" uid="uid://bvjfk72dlusnu" path="res://Resources/Player/player_stats.tres" id="2_i314n"]
 [ext_resource type="Texture2D" uid="uid://bdjm8bu0l6v08" path="res://Sprites/Player/Player.png" id="3_mwqvg"]
 [ext_resource type="Script" path="res://Scripts/Player/StateMachine.gd" id="3_ojktk"]
 [ext_resource type="PackedScene" uid="uid://b51uuhjac0hmd" path="res://Scenes/Inventory/Inventory.tscn" id="4_px6lr"]
@@ -36,7 +35,6 @@ scale = Vector2(1.5, 1.5)
 collision_layer = 130
 collision_mask = 117
 script = ExtResource("2_f7nwd")
-_player_stats = ExtResource("2_i314n")
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("3_ojktk")

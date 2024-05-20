@@ -5,6 +5,7 @@ var SAVE_PATH := "user://player_inventory.res"
 var data := player_data.new()
 var rewards: Array
 static var next_reward: item_pool = null
+var character_starting_stats
 
 func save_data():
 	data.get_sprite()

@@ -3,6 +3,7 @@ extends TextureRect
 var mouse_hovered = false
 var event: InputEvent
 @export var starting_character: character_class
+@export var starting_stats: player_stats
 
 func _ready():
 	mouse_entered.connect(_on_mouse_entered)
@@ -23,4 +24,5 @@ func _on_mouse_exited():
 func select_character():
 	PlayerCharacter.starting_character = starting_character
 	PlayerCharacter.set_inventory()
+	Global.character_starting_stats = starting_stats
 	get_tree().change_scene_to_file("res://Scenes/Levels/Special/Starting Room.tscn")

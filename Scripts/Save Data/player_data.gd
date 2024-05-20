@@ -7,6 +7,7 @@ class_name player_data extends Resource
 @export var passives: Array
 @export var item_passives: Array
 @export var stats: Dictionary
+@export var base_stats: Resource
 @export var current_health: int
 @export var overcapped_health: int
 @export var character_sprite: Texture
@@ -41,11 +42,13 @@ func get_stats():
 	stats = PlayerStatStorage.get_stats()
 	current_health = PlayerStatStorage.current_health
 	overcapped_health = PlayerStatStorage.overcapped_health
+	base_stats = PlayerStatStorage.base_stats
 
 func set_stats():
 	PlayerStatStorage.stats = stats
 	PlayerStatStorage.current_health = current_health
 	PlayerStatStorage.overcapped_health = overcapped_health
+	PlayerStatStorage.base_stats = base_stats
 	PlayerStatStorage.set_stats()
 
 func get_sprite():

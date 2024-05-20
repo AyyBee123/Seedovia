@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://8lh64evv6imw"]
+[gd_scene load_steps=7 format=3 uid="uid://8lh64evv6imw"]
 
 [ext_resource type="Script" path="res://Scripts/UI/character_select.gd" id="1_jmjmr"]
 [ext_resource type="Texture2D" uid="uid://bdjm8bu0l6v08" path="res://Sprites/Player/Player.png" id="2_irgog"]
 [ext_resource type="FontFile" uid="uid://bkn7gmgx1wxgx" path="res://Fonts/Name Font.ttf" id="2_wxbw4"]
 [ext_resource type="Script" path="res://Scripts/UI/character.gd" id="3_alya1"]
 [ext_resource type="Resource" uid="uid://cj0ugaawbg6a" path="res://Resources/Characters/character1.tres" id="4_v56qf"]
+[ext_resource type="Resource" uid="uid://bvjfk72dlusnu" path="res://Resources/Characters/Stats/character1.tres" id="5_i5gy0"]
 
 [node name="Character Select" type="Control"]
 layout_mode = 3
@@ -30,6 +31,7 @@ mouse_default_cursor_shape = 2
 texture = ExtResource("2_irgog")
 script = ExtResource("3_alya1")
 starting_character = ExtResource("4_v56qf")
+starting_stats = ExtResource("5_i5gy0")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 0

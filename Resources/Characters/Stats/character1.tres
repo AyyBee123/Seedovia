@@ -17,6 +17,6 @@ friction = 0.25
 luck = 0.0
 weapon_speed = 500.0
 weapon_range = 300.0
-weapon_size = 10.0
+weapon_size = 1.0
 weapon_damage = 10.0
 weapon_blast_radius = 1.0
