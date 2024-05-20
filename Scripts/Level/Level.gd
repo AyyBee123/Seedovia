@@ -15,6 +15,7 @@ func _ready():
 	if get_tree().get_nodes_in_group("Enemy").size() == 0:
 		was_cleared = true
 	Global.load_data()
+	Global.save_data()
 
 func _physics_process(delta):
 	pause()

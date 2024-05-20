@@ -15,7 +15,9 @@ signal dashed
 @onready var initial_collision_layer := get_collision_layer()
 @onready var player_passives := $Passives
 @onready var hand := $"Rotation Point/Marker2D"
+@onready var hand_sprite = $"Rotation Point/Marker2D/Hand"
 @onready var inv_anim := $"Invulnerability Animation"
+@onready var player_sprite = $"Player Sprite"
 
 var current_weapon: PackedScene = null
 
@@ -27,6 +29,7 @@ func _ready():
 	_player_stats.initialize_base_stats()
 	_player_stats.damaged.connect(took_damage)
 	_player_stats.set_health(_player_stats.get_stat("Max_Health"))
+	set_sprite.call_deferred()
 
 func _physics_process(delta):
 	update_timers()
@@ -71,6 +74,9 @@ func _physics_process(delta):
 	else:
 		set_collision_layer(initial_collision_layer - 2)
 
+func set_sprite():
+	player_sprite.texture = PlayerCharacter.sprite
+	hand_sprite.texture = PlayerCharacter.hand_sprite
 func move():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	if input_direction.length() > 0:

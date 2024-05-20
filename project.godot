@@ -25,6 +25,7 @@ LevelList="*res://Scripts/Level/level_list.gd"
 PlayerPassives="*res://Scripts/Passives/Data/player_passives.gd"
 PlayerStatStorage="*res://Scripts/Player/player_stat_storage.gd"
 Targets="*res://Scripts/Global/targets.gd"
+PlayerCharacter="*res://Scripts/Player/player_character.gd"
 
 [debug]
 

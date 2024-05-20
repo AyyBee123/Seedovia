@@ -9,7 +9,7 @@ var holding_item = null # the item that is currently being held by the cursor in
 var drop_delay = Timer.new()
 
 func _ready():
-	add_child(drop_delay)
+	add_child.call_deferred(drop_delay)
 	drop_delay.one_shot = true
 	drop_delay.wait_time = 0.1
 	visible = false # make inventory not visible on starting the game

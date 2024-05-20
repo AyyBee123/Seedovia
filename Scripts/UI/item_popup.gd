@@ -29,7 +29,7 @@ func _ready():
 
 func set_pos():
 	# TODO: make the popups align vertically, while also not causing them to clip off-screen
-	global_position.y = Targets.camera.global_position.y
+	pass
 
 func set_values(color: Color, text: String):
 	%Rarity.self_modulate = color

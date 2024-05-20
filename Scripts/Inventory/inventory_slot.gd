@@ -78,7 +78,7 @@ func add_popup(item):
 	popup.description = item.item.description
 	popup.rarity = item.item.rarity
 	popup.inventory = inventory
-	add_child(popup)
+	add_child.call_deferred(popup)
 
 func remove_popup():
 	if popup != null:

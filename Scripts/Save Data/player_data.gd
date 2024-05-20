@@ -9,6 +9,8 @@ class_name player_data extends Resource
 @export var stats: Dictionary
 @export var current_health: int
 @export var overcapped_health: int
+@export var character_sprite: Texture
+@export var character_hand_sprite: Texture
 
 # these functions are called form the global script
 func get_inventory():
@@ -45,3 +47,11 @@ func set_stats():
 	PlayerStatStorage.current_health = current_health
 	PlayerStatStorage.overcapped_health = overcapped_health
 	PlayerStatStorage.set_stats()
+
+func get_sprite():
+	character_sprite = PlayerCharacter.sprite
+	character_hand_sprite = PlayerCharacter.hand_sprite
+
+func set_sprite():
+	PlayerCharacter.sprite = ImageTexture.create_from_image(character_sprite.get_image())
+	PlayerCharacter.hand_sprite = ImageTexture.create_from_image(character_hand_sprite.get_image())

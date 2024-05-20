@@ -40,8 +40,6 @@ animations = [{
 [node name="Ghost Pepper" instance=ExtResource("1_dk4f8")]
 scale = Vector2(2, 2)
 script = ExtResource("2_by00h")
-damage_multiplier = 0.35
-fire_rate_multiplier = 0.1
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 shape = SubResource("CapsuleShape2D_8cerj")

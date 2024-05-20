@@ -21,4 +21,6 @@ func _on_mouse_exited():
 	mouse_hovered = false
 
 func select_character():
-	print("hi")
+	PlayerCharacter.starting_character = starting_character
+	PlayerCharacter.set_inventory()
+	get_tree().change_scene_to_file("res://Scenes/Levels/Special/Starting Room.tscn")
