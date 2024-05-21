@@ -1,7 +1,7 @@
 extends Node
 
 # %APPDATA%\Roaming\Godot\app_userdata\Roguelike
-var SAVE_PATH := "user://player_inventory.res"
+var SAVE_PATH := "user://current_run.res"
 var data := player_data.new()
 var rewards: Array
 static var next_reward: item_pool = null
