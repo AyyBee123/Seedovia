@@ -4,7 +4,7 @@ signal shoot(bullet, direction, location)
 signal weapon_fired(weapon)
 signal dashed
 
-var _player_stats: player_stats
+@export var _player_stats: player_stats
 
 @onready var bullets_per_second := $"Bullets Per Second"
 @onready var invulnerability_time := $"Invulnerability Time"
@@ -26,8 +26,6 @@ var mouse_in_inventory := false
 var has_holding_item := false # this is set in the inventory script to true if the mouse cursor is holding an item
 
 func _ready():
-	if Global.character_starting_stats != null:
-		_player_stats = Global.character_starting_stats
 	_player_stats.initialize_base_stats()
 	_player_stats.damaged.connect(took_damage)
 	_player_stats.set_health(_player_stats.get_stat("Max_Health"))

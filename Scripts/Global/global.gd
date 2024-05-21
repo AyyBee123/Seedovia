@@ -5,7 +5,6 @@ var SAVE_PATH := "user://player_inventory.res"
 var data := player_data.new()
 var rewards: Array
 static var next_reward: item_pool = null
-var character_starting_stats
 
 func save_data():
 	data.get_sprite()
@@ -24,3 +23,9 @@ func load_data():
 	data.set_passives()
 	data.set_item_passives()
 	data.set_inventory()
+
+func delete_data():
+	if not ResourceLoader.exists(SAVE_PATH):
+		return
+	DirAccess.remove_absolute(SAVE_PATH)
+	
