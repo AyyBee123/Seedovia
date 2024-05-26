@@ -11,6 +11,7 @@ var reward_given := false
 var is_paused := false
 
 func _ready():
+	Targets.get_entities()
 	Global.rewards.clear() # reset the reward item list
 	if get_tree().get_nodes_in_group("Enemy").size() == 0:
 		was_cleared = true

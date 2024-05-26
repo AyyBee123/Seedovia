@@ -14,6 +14,8 @@ func _ready():
 	drop_delay.wait_time = 0.1
 	visible = false # make inventory not visible on starting the game
 	# initialize all the inventory slots and their categories
+	# connect each inventory slot with the slot_gui_input function, binding the slot as the unique identifier
+	# gui_input is a built-in signal that is emitted when an input is pressed in the gui
 	for i in range(inventory_slots.size()):
 		inventory_slots[i].gui_input.connect(slot_gui_input.bind(inventory_slots[i]))
 		inventory_slots[i].slot_index = i
