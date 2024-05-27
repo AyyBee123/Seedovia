@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://d1x7xscaoh6wq" path="res://Scenes/UI/Pause Menu.tscn" id="8_v8rxb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d5ujs"]
+resource_name = "Floor 1 Wall Corner"
 texture = ExtResource("2_1m20m")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
@@ -28,6 +29,7 @@ texture_region_size = Vector2i(128, 128)
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sa6qi"]
+resource_name = "Floor 1 Wall"
 texture = ExtResource("4_ni8iv")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
