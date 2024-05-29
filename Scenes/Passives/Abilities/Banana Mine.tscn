@@ -1,10 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://dovc3jnyptwgu"]
+[gd_scene load_steps=5 format=3 uid="uid://dovc3jnyptwgu"]
 
 [ext_resource type="Script" path="res://Scripts/Passives/Abilities/banana_mine.gd" id="1_jsfwh"]
 [ext_resource type="PackedScene" uid="uid://c2bmb024gpggu" path="res://Scenes/Passives/Effects/Banana.tscn" id="2_bjywd"]
+[ext_resource type="Script" path="res://Scripts/Passives/Effects/banana_mine_ally.gd" id="3_xj132"]
+
+[sub_resource type="PackedScene" id="PackedScene_celq4"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("BananaMine", "script", "Node", "ResourcePreloader", "resources"),
+"node_count": 2,
+"node_paths": [],
+"nodes": PackedInt32Array(-1, -1, 2, 0, -1, 1, 1, 0, 0, 0, 0, 3, 3, -1, 1, 4, 1, 0),
+"variants": [ExtResource("3_xj132"), [PackedStringArray("Banana"), [ExtResource("2_bjywd")]]],
+"version": 3
+}
 
 [node name="BananaMine" type="Node"]
 script = ExtResource("1_jsfwh")
 
 [node name="ResourcePreloader" type="ResourcePreloader" parent="."]
-resources = [PackedStringArray("Banana"), [ExtResource("2_bjywd")]]
+resources = [PackedStringArray("Banana", "Banana Mine (Ally)"), [ExtResource("2_bjywd"), SubResource("PackedScene_celq4")]]

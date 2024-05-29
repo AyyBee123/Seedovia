@@ -51,10 +51,7 @@ func _physics_process(delta):
 func initialize_position():
 	if not position_initialized:
 		starting_position = global_position
-		if slot_index == 0:
-			direction = global_position.direction_to(get_global_mouse_position())
-		else:
-			direction = desired_direction.normalized()
+		direction = desired_direction.normalized()
 		position_initialized = true
 
 func travelled_distance():

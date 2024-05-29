@@ -2,11 +2,11 @@ extends "res://Scripts/Seeds/seed_template.gd"
 
 @onready var orb_fire_rate := $"Fire Rate"
 
-var shot_direction := Vector2(0,-1)
 @export var orb_fire_rate_multiplier: float = 1
 
 func _ready():
 	super._ready()
+	weapon_direction = Vector2(0,-1)
 	orb_fire_rate.wait_time = 1.0/(player._player_stats.get_stat("Fire_Rate") * orb_fire_rate_multiplier)
 	orb_fire_rate.start(orb_fire_rate.wait_time)
 
@@ -21,27 +21,28 @@ func _physics_process(delta):
 
 func shoot_next_weapon(weapon):
 	var weapon_instance = weapon.instantiate()
-	get_weapon_properties(weapon_instance, shot_direction.normalized())
+	get_weapon_properties(weapon_instance, weapon_direction.normalized())
 	orb_fire_rate.wait_time = 1.0/(player._player_stats.get_stat("Fire_Rate") * orb_fire_rate_multiplier\
 	* weapon_instance.fire_rate_multiplier * 2)
 	change_direction()
 	orb_fire_rate.start()
+	weapon_fired.emit()
 
 func change_direction():
-	match shot_direction:
+	match weapon_direction:
 		Vector2(0,-1):
-			shot_direction = Vector2(1,-1)
+			weapon_direction = Vector2(1,-1)
 		Vector2(1,-1):
-			shot_direction = Vector2(1,0)
+			weapon_direction = Vector2(1,0)
 		Vector2(1,0):
-			shot_direction = Vector2(1,1)
+			weapon_direction = Vector2(1,1)
 		Vector2(1,1):
-			shot_direction = Vector2(0,1)
+			weapon_direction = Vector2(0,1)
 		Vector2(0,1):
-			shot_direction = Vector2(-1,1)
+			weapon_direction = Vector2(-1,1)
 		Vector2(-1,1):
-			shot_direction = Vector2(-1,0)
+			weapon_direction = Vector2(-1,0)
 		Vector2(-1,0):
-			shot_direction = Vector2(-1,-1)
+			weapon_direction = Vector2(-1,-1)
 		Vector2(-1,-1):
-			shot_direction = Vector2(0,-1)
+			weapon_direction = Vector2(0,-1)

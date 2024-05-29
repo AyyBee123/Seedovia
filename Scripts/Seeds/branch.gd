@@ -55,6 +55,7 @@ func update_position(delta):
 func shoot_next_weapon(weapon):
 	weapon_direction = global_position.direction_to(marker.global_position)
 	super.shoot_next_weapon(weapon)
+	weapon_fired.emit()
 
 func shoot_attempt():
 	attempted_fire.emit()

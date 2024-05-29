@@ -35,14 +35,16 @@ func spawn_child_peppers():
 	var directions = [Vector2.UP, Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT]
 	for direction in directions:
 		var pepper_child = resource_preloader.get_resource("Pepper Child").instantiate()
+		weapon_direction = direction
 		pepper_child.desired_direction = direction
 		pepper_child.seed_slots = seed_slots
 		pepper_child.slot_index = slot_index
 		pepper_child.seed_slot_number = seed_slot_number
 		pepper_child.parent = self
+		pepper_child.add_child(get_node("Passives").duplicate())
 		call_deferred("create_child", pepper_child)
+		weapon_fired.emit()
 
 func create_child(child):
 	get_tree().current_scene.add_child(child)
-	weapon_fired.emit(child)
 	child.global_position = self.global_position

@@ -42,4 +42,4 @@ autostart = true
 
 [connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]
 [connection signal="area_entered" from="EnemyDetect" to="." method="_on_enemy_detect_area_entered"]
-[connection signal="area_entered" from="WallDetect" to="." method="_on_wall_detect_area_entered"]
+[connection signal="body_entered" from="WallDetect" to="." method="_on_wall_detect_body_entered"]

@@ -61,8 +61,8 @@ func shoot_next_weapon(weapon):
 	for direction in directions:
 		weapon_direction = direction
 		super.shoot_next_weapon(weapon)
+		weapon_fired.emit()
 
 func create_child(child):
 	get_tree().current_scene.add_child(child)
-	weapon_fired.emit(child)
 	child.global_position = global_position

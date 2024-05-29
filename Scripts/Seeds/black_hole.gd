@@ -54,6 +54,7 @@ func shoot_next_weapon(weapon):
 		orbital_directions.append(Vector2.ZERO)
 		index = i
 		get_weapon_properties(weapon_instance, Vector2.ZERO)
+		weapon_fired.emit()
 
 func initialize_location(weapon):
 	get_tree().current_scene.add_child(weapon)

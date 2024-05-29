@@ -3,13 +3,10 @@ extends Sprite2D
 var position_initialized = false
 var direction
 var starting_position: Vector2 # gets the starting position from where the bullet is fired
-
 var object
 var damage: float
 var explosion_size: float
-
 var spread: float
-
 var speed: float
 
 @onready var projectile_speed_timer := $"Projectile Deceleration"

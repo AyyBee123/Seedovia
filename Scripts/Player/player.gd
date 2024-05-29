@@ -24,6 +24,7 @@ var current_weapon: PackedScene = null
 var can_be_damaged := true
 var mouse_in_inventory := false
 var has_holding_item := false # this is set in the inventory script to true if the mouse cursor is holding an item
+var weapon_direction
 
 func _ready():
 	_player_stats.initialize_base_stats()
@@ -33,6 +34,7 @@ func _ready():
 
 func _physics_process(delta):
 	update_timers()
+	weapon_direction = hand.global_position.direction_to(get_global_mouse_position())
 	# check if the mouse is in the inventory and if the inventory is visible to detect if the player can shoot
 	mouse_in_inventory = inventory_screen.get_global_rect().has_point(inventory.get_global_mouse_position())\
 	and inventory.is_visible_in_tree()
@@ -106,6 +108,7 @@ func _on_shoot(weapon, location):
 	weapon_instance.initial_weapon = true
 	weapon_instance.slot_index = 0
 	weapon_instance.seed_slot_number = PlayerSeeds.seed_indices[0]
+	weapon_instance.desired_direction = location.direction_to(get_global_mouse_position())
 	get_tree().current_scene.add_child(weapon_instance)
 	weapon_instance.global_position = location
 	bullets_per_second.start()
