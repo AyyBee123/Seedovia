@@ -99,7 +99,6 @@ func get_weapon_properties(weapon, _desired_direction, _ignore_first_collision =
 func initialize_location(weapon):
 	get_tree().current_scene.add_child(weapon)
 	weapon.global_position = global_position
-	weapon_fired.emit(weapon)
 
 func update_position(delta):
 	current_velocity = direction * _player_stats.get_stat("Weapon_Speed") * speed_multiplier

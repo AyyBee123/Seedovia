@@ -2,11 +2,13 @@ extends Node
 
 var tally_count := 0
 @onready var player := $"../.."
+var source
 
 func _ready():
-	player.weapon_fired.connect(add_tally)
+	tally_count = 0
+	source = get_parent().get_parent()
+	source.weapon_fired.connect(add_tally)
 
 func add_tally(weapon = null):
-	if self.get_children().size() > 0:
-		tally_count += 1
+	tally_count += 1
 	return
