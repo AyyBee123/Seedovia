@@ -20,4 +20,4 @@ func add_items(category, player_category):
 		index += 1
 
 func add_passives():
-	pass
+	PlayerPassives.starting_passives = starting_character.starting_passives

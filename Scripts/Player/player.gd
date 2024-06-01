@@ -31,6 +31,10 @@ func _ready():
 	_player_stats.damaged.connect(took_damage)
 	_player_stats.set_health(_player_stats.get_stat("Max_Health"))
 	set_sprite.call_deferred()
+	if PlayerPassives.starting_passives != null: # add starting passives to the player
+		PlayerPassives.add_starting_passives()
+		# prevents starting passives from being duplicated when entering a new room
+		PlayerPassives.starting_passives.clear()
 
 func _physics_process(delta):
 	update_timers()

@@ -26,6 +26,7 @@ func select_character():
 	Global.delete_data()
 	PlayerCharacter.starting_character = starting_character
 	PlayerCharacter.set_inventory()
+	PlayerCharacter.add_passives()
 	set_base_stats()
 	get_tree().change_scene_to_file("res://Scenes/Levels/Special/Starting Room.tscn")
 
