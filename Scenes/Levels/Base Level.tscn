@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cxoiy0x4nvtaa"]
+[gd_scene load_steps=17 format=3 uid="uid://cxoiy0x4nvtaa"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_5cm3y"]
 [ext_resource type="Texture2D" uid="uid://cvgvhjvhndf2x" path="res://Sprites/Wall/Floor 1 Corner.png" id="2_1m20m"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cu63rxmy71bcg" path="res://Scenes/Player/Player.tscn" id="3_8wgo8"]
 [ext_resource type="PackedScene" uid="uid://bapvnxcjqbso" path="res://Scenes/Door/Door.tscn" id="4_5a3ht"]
 [ext_resource type="Texture2D" uid="uid://dhi5at4n05w3j" path="res://Sprites/Wall/Floor 1.png" id="4_ni8iv"]
+[ext_resource type="Texture2D" uid="uid://cc0xxb4pkh430" path="res://Sprites/Ground/Floor 1.png" id="4_r6c21"]
 [ext_resource type="PackedScene" uid="uid://bjbps85e3joio" path="res://Scenes/UI/floor_room_number.tscn" id="5_igecr"]
 [ext_resource type="PackedScene" uid="uid://civnfvhref4lg" path="res://Scenes/Stats/Player Health.tscn" id="5_ohi5w"]
 [ext_resource type="PackedScene" uid="uid://b3ibupvqneqor" path="res://Scenes/Items/Item.tscn" id="6_xrc8y"]
@@ -28,6 +29,14 @@ texture_region_size = Vector2i(128, 128)
 0:0/0/physics_layer_0/angular_velocity = 0.0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vu61a"]
+resource_name = "Floor 1 Ground"
+texture = ExtResource("4_r6c21")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sa6qi"]
 resource_name = "Floor 1 Wall"
 texture = ExtResource("4_ni8iv")
@@ -44,6 +53,7 @@ physics_layer_0/collision_mask = 30
 sources/1 = SubResource("TileSetAtlasSource_ne3hj")
 sources/0 = SubResource("TileSetAtlasSource_d5ujs")
 sources/3 = SubResource("TileSetAtlasSource_sa6qi")
+sources/2 = SubResource("TileSetAtlasSource_vu61a")
 
 [node name="Level" type="Node2D"]
 position = Vector2(-576, -320)
