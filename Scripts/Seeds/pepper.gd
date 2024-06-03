@@ -26,7 +26,7 @@ func explode():
 	explosion.damage = _player_stats.get_stat("Weapon_Damage") * damage_multiplier
 	explosion.size = _player_stats.get_stat("Weapon_Blast_Radius") * blast_radius_multiplier
 	explosion.get_node("AnimatedSprite2D").self_modulate = Color.ORANGE_RED
-	call_deferred("create_child", explosion)
+	call_deferred("create_explosion", explosion)
 	spawn_child_peppers()
 	call_deferred("free")
 
@@ -43,7 +43,11 @@ func spawn_child_peppers():
 		pepper_child.parent = self
 		pepper_child.add_child(get_node("Passives").duplicate())
 		call_deferred("create_child", pepper_child)
-		weapon_fired.emit()
+		weapon_fired.emit(pepper_child)
+
+func create_explosion(explosion):
+	get_tree().current_scene.add_child(explosion)
+	explosion.global_position = self.global_position
 
 func create_child(child):
 	get_tree().current_scene.add_child(child)

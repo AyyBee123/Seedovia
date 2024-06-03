@@ -1,11 +1,10 @@
-[gd_resource type="Resource" script_class="character_class" load_steps=7 format=3 uid="uid://cj0ugaawbg6a"]
+[gd_resource type="Resource" script_class="character_class" load_steps=6 format=3 uid="uid://cj0ugaawbg6a"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/character_class.gd" id="1_1twko"]
 [ext_resource type="Texture2D" uid="uid://ddxlo3x3ru7hr" path="res://Sprites/Player/Hand.png" id="1_h5b6i"]
 [ext_resource type="Texture2D" uid="uid://bdjm8bu0l6v08" path="res://Sprites/Player/Player.png" id="2_6s4da"]
 [ext_resource type="Resource" uid="uid://c4uomd0l52hvy" path="res://Resources/Items/Consumables/apple.tres" id="3_dqta1"]
 [ext_resource type="Resource" uid="uid://cuy80aorwngdg" path="res://Resources/Items/Seeds/bullet.tres" id="4_mbwuj"]
-[ext_resource type="PackedScene" uid="uid://blj4gbudleafp" path="res://Scenes/Passives/Abilities/Explosive Trigger.tscn" id="5_6roxf"]
 
 [resource]
 script = ExtResource("1_1twko")
@@ -14,4 +13,4 @@ hand_sprite = ExtResource("1_h5b6i")
 starting_inventory = Array[Resource]([ExtResource("3_dqta1")])
 starting_talismans = Array[Resource]([])
 starting_seeds = Array[Resource]([ExtResource("4_mbwuj")])
-starting_passives = Array[PackedScene]([ExtResource("5_6roxf")])
+starting_passives = Array[PackedScene]([])

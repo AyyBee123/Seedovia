@@ -20,6 +20,8 @@ func add_tally(weapon = null):
 func transfer_passive(weapon = null):
 	if weapon == null or weapon.is_in_group("Weapon Effect"):
 		return
+	if weapon.get_node("Passives").has_node("ExplosiveTrigger"): # prevent duplicates
+		return
 	# make a new banana mine passive and add it as a child of the next weapon
 	weapon.get_node("Passives").add_child(duplicate())
 

@@ -40,7 +40,6 @@ func shoot_next_weapon(weapon):
 		weapon_direction = global_position.direction_to(player.global_position)
 	var weapon_instance = weapon.instantiate()
 	get_weapon_properties(weapon_instance, weapon_direction, true, enemy)
-	weapon_fired.emit()
 
 func initialize_location(weapon_instance):
 	get_tree().current_scene.add_child(weapon_instance)

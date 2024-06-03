@@ -32,7 +32,6 @@ func shoot_next_weapon(weapon):
 	get_weapon_properties(weapon_instance, weapon_direction)
 	fire_rate.start(1.0/_player_stats.get_stat("Fire_Rate") / weapon_instance.fire_rate_multiplier\
 	/ blossom_fire_rate_multiplier)
-	weapon_fired.emit()
 
 func get_nearest_enemy():
 	var enemies = get_tree().get_nodes_in_group("Enemies")

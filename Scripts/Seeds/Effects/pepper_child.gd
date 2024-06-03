@@ -54,15 +54,19 @@ func explode():
 		if weapon != null:
 			shoot_next_weapon(weapon)
 		break
-	call_deferred("free")
+	# call defer twice to allow passives that trigger off of weapon fire to work
+	# Otherwise, the weapon is destroyed before it has a chance to trigger the passives
+	destroy.call_deferred()
 
 func shoot_next_weapon(weapon):
 	var directions = [Vector2.UP, Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT]
 	for direction in directions:
 		weapon_direction = direction
 		super.shoot_next_weapon(weapon)
-		weapon_fired.emit()
 
 func create_child(child):
 	get_tree().current_scene.add_child(child)
 	child.global_position = global_position
+
+func destroy():
+	queue_free.call_deferred()

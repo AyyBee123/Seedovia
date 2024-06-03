@@ -26,7 +26,6 @@ func shoot_next_weapon(weapon):
 	* weapon_instance.fire_rate_multiplier * 2)
 	change_direction()
 	orb_fire_rate.start()
-	weapon_fired.emit()
 
 func change_direction():
 	match weapon_direction:
