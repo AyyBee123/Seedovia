@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://dcbchvrd8ok5p"]
+[gd_scene load_steps=48 format=3 uid="uid://dcbchvrd8ok5p"]
 
 [ext_resource type="Texture2D" uid="uid://ckwbd5pe618xx" path="res://Sprites/Bosses/Haunted Fortress/Idle/Haunted Fortress Idle.png" id="1_o3eeo"]
 [ext_resource type="Script" path="res://Scripts/Bosses/Haunted Fortress/haunted_fortress.gd" id="1_spxu2"]
@@ -8,10 +8,14 @@
 [ext_resource type="PackedScene" uid="uid://bvxrqp86pvpry" path="res://Scenes/UI/Boss Health Bar.tscn" id="4_kk65q"]
 [ext_resource type="Script" path="res://Scripts/Bosses/Haunted Fortress/StateMachine.gd" id="4_qxp1d"]
 [ext_resource type="PackedScene" uid="uid://bfpmq41k18tdi" path="res://Scenes/Passives/Effects/Burn Stacks.tscn" id="6_lyhmy"]
+[ext_resource type="Texture2D" uid="uid://dek1vxyiid78k" path="res://Sprites/Bosses/Haunted Fortress/Suck/Haunted Fortress Suck.png" id="7_0qoby"]
 [ext_resource type="PackedScene" uid="uid://crc680oyqt3v4" path="res://Scenes/Enemies/Weapons/Laser.tscn" id="8_t4oi6"]
+[ext_resource type="PackedScene" uid="uid://j5e2v0usfii5" path="res://Scenes/Misc/Light Beam.tscn" id="11_301wr"]
+[ext_resource type="PackedScene" uid="uid://u7dh3kc42owv" path="res://Scenes/Misc/Light Attack.tscn" id="11_731rk"]
+[ext_resource type="PackedScene" uid="uid://0xem0wqlx8we" path="res://Scenes/Misc/Rock.tscn" id="13_u42pe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t58o8"]
-size = Vector2(244.667, 100)
+size = Vector2(244.667, 107)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fawta"]
 atlas = ExtResource("4_gaobp")
@@ -104,6 +108,38 @@ region = Rect2(3276, 0, 273, 190)
 [sub_resource type="AtlasTexture" id="AtlasTexture_q2ulq"]
 atlas = ExtResource("3_sp64t")
 region = Rect2(3549, 0, 273, 190)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5e1my"]
+atlas = ExtResource("7_0qoby")
+region = Rect2(0, 0, 273, 190)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ax46s"]
+atlas = ExtResource("7_0qoby")
+region = Rect2(273, 0, 273, 190)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pvkff"]
+atlas = ExtResource("7_0qoby")
+region = Rect2(546, 0, 273, 190)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xst7e"]
+atlas = ExtResource("7_0qoby")
+region = Rect2(819, 0, 273, 190)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_py62n"]
+atlas = ExtResource("7_0qoby")
+region = Rect2(1092, 0, 273, 190)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dh3qe"]
+atlas = ExtResource("7_0qoby")
+region = Rect2(1365, 0, 273, 190)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hhudm"]
+atlas = ExtResource("7_0qoby")
+region = Rect2(1638, 0, 273, 190)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ifcd"]
+atlas = ExtResource("7_0qoby")
+region = Rect2(1911, 0, 273, 190)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_m7wae"]
 animations = [{
@@ -312,7 +348,7 @@ animations = [{
 "duration": 0.6,
 "texture": SubResource("AtlasTexture_fawta")
 }],
-"loop": true,
+"loop": false,
 "name": &"Ghosts",
 "speed": 11.0
 }, {
@@ -538,8 +574,154 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_q2ulq")
 }],
-"loop": true,
+"loop": false,
 "name": &"Laser",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 0.7,
+"texture": SubResource("AtlasTexture_5e1my")
+}, {
+"duration": 0.8,
+"texture": SubResource("AtlasTexture_ax46s")
+}, {
+"duration": 0.9,
+"texture": SubResource("AtlasTexture_pvkff")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xst7e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_py62n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dh3qe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hhudm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ifcd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hhudm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dh3qe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_py62n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dh3qe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hhudm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ifcd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hhudm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dh3qe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_py62n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dh3qe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hhudm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ifcd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hhudm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dh3qe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_py62n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dh3qe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hhudm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ifcd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hhudm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dh3qe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_py62n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dh3qe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hhudm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ifcd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hhudm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dh3qe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_py62n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dh3qe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hhudm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ifcd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hhudm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dh3qe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_py62n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dh3qe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hhudm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ifcd")
+}, {
+"duration": 0.9,
+"texture": SubResource("AtlasTexture_pvkff")
+}, {
+"duration": 0.8,
+"texture": SubResource("AtlasTexture_ax46s")
+}, {
+"duration": 0.7,
+"texture": SubResource("AtlasTexture_5e1my")
+}],
+"loop": false,
+"name": &"Suck",
 "speed": 15.0
 }]
 
@@ -556,15 +738,14 @@ _enemy_stats = ExtResource("3_f8ewb")
 script = ExtResource("4_qxp1d")
 
 [node name="CollisionPolygon2D" type="CollisionShape2D" parent="."]
-position = Vector2(3.8147e-06, -1)
+position = Vector2(3.8147e-06, 2.5)
 shape = SubResource("RectangleShape2D_t58o8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -39)
 sprite_frames = SubResource("SpriteFrames_m7wae")
-animation = &"Laser"
+animation = &"Suck"
 autoplay = "Idle"
-frame_progress = 0.609973
 
 [node name="Enemy Hitbox" type="Area2D" parent="." groups=["Enemies"]]
 collision_layer = 4
@@ -584,10 +765,57 @@ one_shot = true
 [node name="Boss Health" parent="." instance=ExtResource("4_kk65q")]
 
 [node name="ResourcePreloader" type="ResourcePreloader" parent="."]
-resources = [PackedStringArray("Laser"), [ExtResource("8_t4oi6")]]
+resources = [PackedStringArray("Laser", "Light Attack", "Light Beam", "Rock"), [ExtResource("8_t4oi6"), ExtResource("11_731rk"), ExtResource("11_301wr"), ExtResource("13_u42pe")]]
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(0, 45)
+
+[node name="Light Beam Points" type="Node2D" parent="."]
+
+[node name="Point1" type="Marker2D" parent="Light Beam Points"]
+position = Vector2(-95.3333, -36.6667)
+
+[node name="Point2" type="Marker2D" parent="Light Beam Points"]
+position = Vector2(-87.3333, -41)
+
+[node name="Point3" type="Marker2D" parent="Light Beam Points"]
+position = Vector2(-76.6667, -43)
+
+[node name="Point4" type="Marker2D" parent="Light Beam Points"]
+position = Vector2(-66, -40.6667)
+
+[node name="Point5" type="Marker2D" parent="Light Beam Points"]
+position = Vector2(-57.3333, -36.6667)
+
+[node name="Point6" type="Marker2D" parent="Light Beam Points"]
+position = Vector2(57, -36.6667)
+
+[node name="Point7" type="Marker2D" parent="Light Beam Points"]
+position = Vector2(65, -41)
+
+[node name="Point8" type="Marker2D" parent="Light Beam Points"]
+position = Vector2(75.6667, -43)
+
+[node name="Point9" type="Marker2D" parent="Light Beam Points"]
+position = Vector2(86.3333, -40.6667)
+
+[node name="Point10" type="Marker2D" parent="Light Beam Points"]
+position = Vector2(95, -36.6667)
+
+[node name="Point11" type="Marker2D" parent="Light Beam Points"]
+position = Vector2(-16.6667, 14.6667)
+
+[node name="Point12" type="Marker2D" parent="Light Beam Points"]
+position = Vector2(-9, 12.3333)
+
+[node name="Point13" type="Marker2D" parent="Light Beam Points"]
+position = Vector2(0, 12.3333)
+
+[node name="Point14" type="Marker2D" parent="Light Beam Points"]
+position = Vector2(9.33333, 12.3333)
+
+[node name="Point15" type="Marker2D" parent="Light Beam Points"]
+position = Vector2(17, 14.6667)
 
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="body_entered" from="Enemy Hitbox" to="." method="_on_enemy_hitbox_body_entered"]

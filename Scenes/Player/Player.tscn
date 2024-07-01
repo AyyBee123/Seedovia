@@ -32,6 +32,7 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D" groups=["Players"]]
+z_index = 1
 scale = Vector2(1.5, 1.5)
 collision_layer = 130
 collision_mask = 117
@@ -63,7 +64,7 @@ position = Vector2(9, 0)
 scale = Vector2(2, 2)
 
 [node name="Hand" type="Sprite2D" parent="Rotation Point/Marker2D"]
-z_index = 1
+z_index = 2
 z_as_relative = false
 position = Vector2(-0.5, 0)
 scale = Vector2(0.5, 0.5)
@@ -85,10 +86,10 @@ one_shot = true
 [node name="Inventory" parent="." instance=ExtResource("4_px6lr")]
 visible = false
 z_as_relative = false
-offset_left = -2160.0
-offset_top = -1334.0
-offset_right = -2160.0
-offset_bottom = -1334.0
+offset_left = -1654.0
+offset_top = -1022.0
+offset_right = -1654.0
+offset_bottom = -1022.0
 scale = Vector2(3.745, 3.745)
 size_flags_horizontal = 3
 size_flags_vertical = 3

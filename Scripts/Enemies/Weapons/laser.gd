@@ -16,7 +16,7 @@ extends Node2D
 @onready var top_right = $"Top Right"
 @onready var bottom_right = $"Bottom Right"
 
-var damage = 0
+var damage = 1
 var range = 0
 var speed = 0
 
