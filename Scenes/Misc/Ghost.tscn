@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://baginkbm5eigy"]
-
-[ext_resource type="Script" path="res://Scripts/Bosses/Haunted Fortress/ghost.gd" id="1_0ndxu"]
-[ext_resource type="Texture2D" uid="uid://wmbomnwjwwy7" path="res://Sprites/Bosses/Haunted Fortress/Ghosts/Ghost Head.png" id="1_b758p"]
-
-[node name="Ghost" type="Sprite2D"]
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("1_b758p")
-script = ExtResource("1_0ndxu")
