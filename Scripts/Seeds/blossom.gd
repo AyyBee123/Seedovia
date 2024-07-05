@@ -25,6 +25,9 @@ func update_position(delta):
 func travelled_distance():
 	pass
 
+func _collide(body):
+	pass
+
 func shoot_next_weapon(weapon):
 	play_animation()
 	var weapon_instance = weapon.instantiate()
