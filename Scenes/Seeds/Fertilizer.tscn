@@ -12,6 +12,8 @@ height = 26.0
 texture = ExtResource("2_a3sjy")
 offset = Vector2(0, -4.55)
 script = ExtResource("3_moec4")
+damage_multiplier = 3.0
+fire_rate_multiplier = 0.25
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 rotation = 1.5708
