@@ -27,6 +27,7 @@ func _physics_process(delta):
 	if is_in_area:
 		if tick_rate.is_stopped():
 			enemy._enemy_stats.take_damage(_player_stats.get_stat("Weapon_Damage") * damage_multiplier)
+			has_collided.emit(enemy.get_node("Enemy Hitbox"))
 			tick_rate.start()
 	if not is_shrinking:
 		orbit(delta)
@@ -38,7 +39,6 @@ func update_position(delta):
 	position += current_velocity * delta
 
 func _collide(body):
-	has_collided.emit(body)
 	if body.is_in_group("Enemies"):
 		enemy = body.get_parent()
 		is_in_area = true

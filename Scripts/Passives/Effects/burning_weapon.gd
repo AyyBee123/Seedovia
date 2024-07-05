@@ -10,12 +10,12 @@ var damage: float # damage of each burn tick
 var burning
 
 func _ready():
-	burning = resource_preloader.get_resource("Burning").instantiate()
-	burning.duration = duration
-	burning.tick = tick
-	burning.damage = damage
 	weapon.has_collided.connect(trigger)
 
 func trigger(object):
 	if object.is_in_group("Enemies"):
+		burning = resource_preloader.get_resource("Burning").instantiate()
+		burning.duration = duration
+		burning.tick = tick
+		burning.damage = damage
 		object.get_parent().get_node("Burn Stacks").add_child(burning)

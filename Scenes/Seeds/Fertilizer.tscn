@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dlyca7by3u31b"]
+[gd_scene load_steps=6 format=3 uid="uid://dlyca7by3u31b"]
 
 [ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_iuenw"]
 [ext_resource type="Texture2D" uid="uid://bakw07i78gk1i" path="res://Sprites/Seeds/Fertilizer.png" id="2_a3sjy"]
@@ -7,6 +7,9 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8l5bq"]
 radius = 11.0
 height = 26.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n3trt"]
+radius = 30.0
 
 [node name="Fertilizer" instance=ExtResource("1_iuenw")]
 texture = ExtResource("2_a3sjy")
@@ -27,5 +30,16 @@ autostart = true
 [node name="Lifetime" type="Timer" parent="." index="3"]
 one_shot = true
 
+[node name="Tick Rate" type="Timer" parent="." index="4"]
+wait_time = 0.1
+one_shot = true
+
+[node name="Hurtbox" type="Area2D" parent="." index="5"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" index="0"]
+shape = SubResource("CircleShape2D_n3trt")
+
 [connection signal="timeout" from="Deceleration" to="." method="_on_deceleration_timeout"]
 [connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="area_exited" from="Hurtbox" to="." method="_on_hurtbox_area_exited"]
