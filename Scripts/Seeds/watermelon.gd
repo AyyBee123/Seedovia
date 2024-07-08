@@ -1,4 +1,4 @@
-extends Sprite2D
+extends CharacterBody2D
 
 signal weapon_fired(weapon)
 signal has_collided(object)
@@ -14,7 +14,7 @@ var hit_enemy = null
 
 var starting_position: Vector2 # gets the starting position from where the bullet is fired
 var distance_travelled: float # gets the current range travelled by the bullet
-var total_distance := 0
+var total_distance = 0
 
 # this value is set because the weapon's position is not updated until after the ready function.
 # That's why it's called in the physics process function instead of the ready function
@@ -40,9 +40,6 @@ var current_velocity: Vector2
 @export var blast_radius_multiplier: float = 1 # blast/splash radius multiplier of the weapon
 @export var fire_rate_multiplier: float = 1 # fire rate multiplier of the weapon
 
-func _ready():
-	pass
-
 func _physics_process(delta):
 	initialize_position()
 	travelled_distance()
@@ -56,6 +53,7 @@ func initialize_position():
 		position_initialized = true
 
 func travelled_distance():
+	# make it so a counter goes up by one for every unit the vector changes by (maybe magnitude to get distance)
 	distance_travelled = starting_position.distance_to(global_position)
 	if distance_travelled >= 1:
 		total_distance += 1
@@ -64,41 +62,9 @@ func travelled_distance():
 		call_deferred("free")
 
 func distance_after_collision():
-	short_distance_travelled = starting_position.distance_to(self.global_position)
+	short_distance_travelled = starting_position.distance_to(global_position)
 	if short_distance_travelled >= 1:
 		ignore_first_collision = false
-
-func _on_hitbox_area_entered(area):
-	_collide(area)
-
-func _on_hitbox_body_entered(body):
-	_collide(body)
-
-func _collide(body):
-	if not ignore_first_collision:
-		has_collided.emit(body)
-		if body.is_in_group("Enemies"):
-			body.get_parent()._enemy_stats.take_damage(_player_stats.get_stat("Weapon_Damage") * damage_multiplier)
-		call_deferred("free")
-	else:
-		ignore_first_collision = false
-
-func shoot_next_weapon(weapon):
-	var weapon_instance = weapon.instantiate()
-	get_weapon_properties(weapon_instance, weapon_direction)
-
-func get_weapon_properties(weapon, _desired_direction, _ignore_first_collision = false, _enemy = null):
-	weapon.initial_weapon = false
-	weapon.ignore_first_collision = _ignore_first_collision
-	weapon.desired_direction = _desired_direction
-	weapon.previous_weapon = self
-	weapon.hit_enemy = _enemy
-	weapon.slot_index = slot_index + 1
-	if seed_slot_number < 2:
-		weapon.seed_slot_number = PlayerSeeds.seed_indices[slot_index + 1]
-	else:
-		weapon.seed_slot_number = 3
-	initialize_location.call_deferred(weapon)
 
 func initialize_location(weapon):
 	get_tree().current_scene.add_child(weapon)
@@ -106,6 +72,6 @@ func initialize_location(weapon):
 	weapon.global_position = global_position
 
 func update_position(delta):
-	current_velocity = direction * _player_stats.get_stat("Weapon_Speed") * speed_multiplier
-	position += current_velocity * delta
+	current_velocity = direction * _player_stats.get_stat("Weapon_Speed") * speed_multiplier * 0.0075
+	move_and_collide(current_velocity)
 	look_at(global_position + current_velocity)

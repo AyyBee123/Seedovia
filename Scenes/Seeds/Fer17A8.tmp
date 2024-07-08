@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=3 uid="uid://dlyca7by3u31b"]
+
+[ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_iuenw"]
+[ext_resource type="Texture2D" uid="uid://bakw07i78gk1i" path="res://Sprites/Seeds/Fertilizer.png" id="2_a3sjy"]
+[ext_resource type="Script" path="res://Scripts/Seeds/fertilizer.gd" id="3_moec4"]
+[ext_resource type="PackedScene" uid="uid://b68u76upt44mu" path="res://Scenes/Misc/Stink.tscn" id="4_coisv"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8l5bq"]
+radius = 11.0
+height = 26.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n3trt"]
+radius = 46.0
+
+[node name="Fertilizer" instance=ExtResource("1_iuenw")]
+texture = ExtResource("2_a3sjy")
+offset = Vector2(0, -4.55)
+script = ExtResource("3_moec4")
+damage_multiplier = 0.3
+fire_rate_multiplier = 0.25
+
+[node name="Hitbox" parent="." index="0"]
+collision_mask = 1
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_8l5bq")
+
+[node name="Deceleration" type="Timer" parent="." index="2"]
+wait_time = 0.5
+one_shot = true
+autostart = true
+
+[node name="Lifetime" type="Timer" parent="." index="3"]
+one_shot = true
+
+[node name="Tick Rate" type="Timer" parent="." index="4"]
+wait_time = 0.1
+one_shot = true
+
+[node name="Stink Rate" type="Timer" parent="." index="5"]
+wait_time = 0.25
+one_shot = true
+
+[node name="Hurtbox" type="Area2D" parent="." index="6"]
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" index="0"]
+shape = SubResource("CircleShape2D_n3trt")
+
+[node name="ResourcePreloader" type="ResourcePreloader" parent="." index="7"]
+resources = [PackedStringArray("Stink"), [ExtResource("4_coisv")]]
+
+[connection signal="timeout" from="Deceleration" to="." method="_on_deceleration_timeout"]
+[connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]
+[connection signal="timeout" from="Stink Rate" to="." method="_on_stink_rate_timeout"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="area_exited" from="Hurtbox" to="." method="_on_hurtbox_area_exited"]

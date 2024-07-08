@@ -7,6 +7,7 @@ extends "res://Scripts/Seeds/seed_template.gd"
 
 var time_to_live: float = 5
 var blossom_fire_rate_multiplier: float = 0.5
+var hit_wall := false
 
 func _physics_process(delta):
 	super._physics_process(delta)
@@ -18,9 +19,10 @@ func _physics_process(delta):
 			shoot_next_weapon(weapon)
 
 func update_position(delta):
-	current_velocity = direction * _player_stats.get_stat("Weapon_Speed")\
-	* speed_multiplier * deceleration.time_left
-	position += current_velocity * delta
+	if not hit_wall:
+		current_velocity = direction * _player_stats.get_stat("Weapon_Speed")\
+		* speed_multiplier * deceleration.time_left
+		position += current_velocity * delta
 
 func travelled_distance():
 	pass

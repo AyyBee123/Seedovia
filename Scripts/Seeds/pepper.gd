@@ -30,6 +30,9 @@ func explode():
 	spawn_child_peppers()
 	call_deferred("free")
 
+func travelled_distance():
+	pass
+
 func spawn_child_peppers():
 	# split the pepper into 4 smaller peppers with the indicated launch directions
 	var directions = [Vector2.UP, Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT]
