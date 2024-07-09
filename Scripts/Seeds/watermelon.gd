@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends Sprite2D
 
 signal weapon_fired(weapon)
 signal has_collided(object)
@@ -40,7 +40,19 @@ var current_velocity: Vector2
 @export var blast_radius_multiplier: float = 1 # blast/splash radius multiplier of the weapon
 @export var fire_rate_multiplier: float = 1 # fire rate multiplier of the weapon
 
+@onready var down = $Down
+@onready var up = $Up
+@onready var left = $Left
+@onready var right = $Right
+@onready var resource_preloader = $ResourcePreloader
+
+var area_normal # gets the normal of the collsion area/wall
+
+func _ready():
+	area_normal = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
+
 func _physics_process(delta):
+	rotation = 0 # locks the rotation of the parent node (to prevent shapecasts from rotating)
 	initialize_position()
 	travelled_distance()
 	distance_after_collision()
@@ -66,12 +78,82 @@ func distance_after_collision():
 	if short_distance_travelled >= 1:
 		ignore_first_collision = false
 
+func update_position(delta):
+	current_velocity = direction * _player_stats.get_stat("Weapon_Speed") * speed_multiplier
+	position += current_velocity * delta
+	$AnimatedSprite2D.look_at(global_position + current_velocity)
+
+func _on_hitbox_area_entered(area):
+	if area.is_in_group("Enemies"):
+		# shapecasts allow the projectile to bounce after detecting an enemy
+		area_normal = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized() # just in case
+		if down.is_colliding():
+			area_normal = Vector2(0, -1)
+		elif up.is_colliding():
+			area_normal = Vector2(0, 1)
+		elif left.is_colliding():
+			area_normal = Vector2(1, 0)
+		elif right.is_colliding():
+			area_normal = Vector2(-1, 0)
+		direction = direction.bounce(area_normal).normalized()
+		area.get_parent()._enemy_stats.take_damage(_player_stats.get_stat("Weapon_Damage") * damage_multiplier)
+		collide(area)
+
+func _on_hitbox_body_entered(body):
+	# shapecasts allow the projectile to bounce after detecting a wall
+	area_normal = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized() # just in case
+	if down.is_colliding():
+		area_normal = Vector2(0, -1)
+	elif up.is_colliding():
+		area_normal = Vector2(0, 1)
+	elif left.is_colliding():
+		area_normal = Vector2(1, 0)
+	elif right.is_colliding():
+		area_normal = Vector2(-1, 0)
+	direction = direction.bounce(area_normal).normalized()
+	collide(body)
+
+func collide(area):
+	if ignore_first_collision:
+		return
+	if area != null:
+		has_collided.emit(area)
+	explode()
+	attempted_fire.emit()
+	var weapon = null if PlayerSeeds.seeds.size() <= 1 + slot_index or slot_index >= 2\
+	else PlayerSeeds.seeds[slot_index + 1]
+	if weapon != null:
+		shoot_next_weapon(weapon)
+
+func shoot_next_weapon(weapon):
+	var weapon_instance = weapon.instantiate()
+	get_weapon_properties(weapon_instance, area_normal, true)
+
+func get_weapon_properties(weapon, _desired_direction, _ignore_first_collision = false, _enemy = null):
+	weapon.initial_weapon = false
+	weapon.ignore_first_collision = _ignore_first_collision
+	weapon.desired_direction = _desired_direction
+	weapon.previous_weapon = self
+	weapon.hit_enemy = _enemy
+	weapon.slot_index = slot_index + 1
+	if seed_slot_number < 2:
+		weapon.seed_slot_number = PlayerSeeds.seed_indices[slot_index + 1]
+	else:
+		weapon.seed_slot_number = 3
+	initialize_location.call_deferred(weapon)
+
 func initialize_location(weapon):
 	get_tree().current_scene.add_child(weapon)
 	weapon_fired.emit(weapon)
 	weapon.global_position = global_position
 
-func update_position(delta):
-	current_velocity = direction * _player_stats.get_stat("Weapon_Speed") * speed_multiplier * 0.0075
-	move_and_collide(current_velocity)
-	look_at(global_position + current_velocity)
+func explode():
+	var explosion = resource_preloader.get_resource("Explosion").instantiate()
+	explosion.damage = _player_stats.get_stat("Weapon_Damage") * damage_multiplier * 0.25
+	explosion.size = _player_stats.get_stat("Weapon_Blast_Radius") * blast_radius_multiplier
+	explosion.get_node("AnimatedSprite2D").self_modulate = Color.INDIAN_RED
+	create_explosion.call_deferred(explosion)
+
+func create_explosion(explosion):
+	get_tree().current_scene.add_child(explosion)
+	explosion.global_position = global_position

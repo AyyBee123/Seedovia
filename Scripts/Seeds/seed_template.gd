@@ -76,7 +76,7 @@ func _on_hitbox_body_entered(body):
 
 func _collide(body):
 	if not ignore_first_collision:
-		has_collided.emit(body)
+		has_collided.emit(body) # for on-hit effects (ex: burning on enemy hit)
 		if body.is_in_group("Enemies"):
 			body.get_parent()._enemy_stats.take_damage(_player_stats.get_stat("Weapon_Damage") * damage_multiplier)
 		call_deferred("free")

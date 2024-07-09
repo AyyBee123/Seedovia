@@ -1,0 +1,85 @@
+[gd_scene load_steps=8 format=3 uid="uid://cvq734opn1l1t"]
+
+[ext_resource type="Script" path="res://Scripts/Seeds/watermelon.gd" id="1_rf7tf"]
+[ext_resource type="Texture2D" uid="uid://cm1txwdom4wan" path="res://Sprites/Seeds/Watermelon.png" id="2_uewwp"]
+[ext_resource type="PackedScene" uid="uid://cp3hdtxn75uyt" path="res://Scenes/Passives/Effects/Explosion.tscn" id="3_uyl80"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x7c61"]
+radius = 16.0312
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_quj8o"]
+atlas = ExtResource("2_uewwp")
+region = Rect2(0, 0, 32, 38)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3biqj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_quj8o")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y1p5x"]
+
+[node name="Watermelon" type="Sprite2D" groups=["Weapon"]]
+script = ExtResource("1_rf7tf")
+range_multiplier = 5.0
+damage_multiplier = 2.0
+blast_radius_multiplier = 0.333
+fire_rate_multiplier = 0.15
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_x7c61")
+
+[node name="Passives" type="Node" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_3biqj")
+
+[node name="Down" type="ShapeCast2D" parent="."]
+scale = Vector2(0.75, 0.75)
+shape = SubResource("RectangleShape2D_y1p5x")
+exclude_parent = false
+target_position = Vector2(0, 30)
+collision_mask = 5
+collide_with_areas = true
+
+[node name="Up" type="ShapeCast2D" parent="."]
+rotation = -3.14159
+scale = Vector2(0.75, 0.75)
+shape = SubResource("RectangleShape2D_y1p5x")
+exclude_parent = false
+target_position = Vector2(0, 30)
+collision_mask = 5
+collide_with_areas = true
+
+[node name="Left" type="ShapeCast2D" parent="."]
+rotation = 1.5708
+scale = Vector2(0.75, 0.75)
+shape = SubResource("RectangleShape2D_y1p5x")
+exclude_parent = false
+target_position = Vector2(0, 30)
+collision_mask = 5
+collide_with_areas = true
+
+[node name="Right" type="ShapeCast2D" parent="."]
+rotation = -1.5708
+scale = Vector2(0.75, 0.75)
+shape = SubResource("RectangleShape2D_y1p5x")
+exclude_parent = false
+target_position = Vector2(0, 30)
+collision_mask = 5
+collide_with_areas = true
+
+[node name="ResourcePreloader" type="ResourcePreloader" parent="."]
+resources = [PackedStringArray("Explosion"), [ExtResource("3_uyl80")]]
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

@@ -11,6 +11,7 @@ var pos
 var is_shrinking := false
 var orbital_direction
 var orbital_directions: Array
+var is_shrunk := false
 
 @onready var tick_rate = $"Tick Rate"
 
@@ -76,9 +77,9 @@ func orbit(delta):
 				cos(angle * speed + orbitals.find(orbital) * deg_to_rad(360.0/orbitals.size())) * radius
 			) + pos
 			var op = global_position.direction_to(orbital.global_position)
-			orbital_direction = Vector2(op.y, -op.x) # get vector perpedicular to vector from the orbital to black hole
-			orbital.rotation = orbital_direction.angle()
-			orbital_directions[orbitals.find(orbital)] = orbital_direction
+			orbital.direction = Vector2(op.y, -op.x) # get vector perpedicular to vector from the orbital to black hole
+			orbital_directions[orbitals.find(orbital)] = orbital.direction # stores the direction of the orbitals
+			orbital.total_distance = 0 # to make the weapons not despawn mid-orbit
 
 func travelled_distance():
 	distance_travelled = starting_position.distance_to(self.global_position)
@@ -88,8 +89,10 @@ func travelled_distance():
 func shrink(delta):
 	for orbital in orbitals:
 		if orbital != null:
-			orbital.desired_direction = orbital_directions[orbitals.find(orbital)]
-			orbital.direction = orbital.desired_direction.normalized()
+			if not is_shrunk:
+				orbital.desired_direction = orbital_directions[orbitals.find(orbital)]
+				orbital.direction = orbital.desired_direction.normalized()
+	is_shrunk = true
 	scale -= Vector2(delta, delta)
 	if scale <= Vector2.ZERO:
 		call_deferred("free")
