@@ -7,6 +7,7 @@ extends "res://Scripts/Seeds/seed_template.gd"
 @onready var resource_preloader = $ResourcePreloader
 
 var area_normal # gets the normal of the collsion area/wall
+var animation_frame = 0
 
 func _ready():
 	area_normal = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
@@ -19,6 +20,16 @@ func update_position(delta):
 	current_velocity = direction * _player_stats.get_stat("Weapon_Speed") * speed_multiplier
 	position += current_velocity * delta
 	$AnimatedSprite2D.look_at(global_position + current_velocity)
+
+func travelled_distance():
+	distance_travelled = starting_position.distance_to(global_position)
+	if distance_travelled >= 1:
+		total_distance += 1
+		starting_position = global_position
+		animation_frame = (animation_frame + 1) % $AnimatedSprite2D.sprite_frames.get_frame_count("default")
+		$AnimatedSprite2D.set_frame(animation_frame)
+	if total_distance >= _player_stats.get_stat("Weapon_Range") * range_multiplier:
+		call_deferred("free")
 
 func _on_hitbox_area_entered(area):
 	if area.is_in_group("Enemies"):

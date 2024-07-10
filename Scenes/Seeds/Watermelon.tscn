@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cvq734opn1l1t"]
+[gd_scene load_steps=9 format=3 uid="uid://cvq734opn1l1t"]
 
 [ext_resource type="Script" path="res://Scripts/Seeds/watermelon.gd" id="1_rf7tf"]
 [ext_resource type="Texture2D" uid="uid://cm1txwdom4wan" path="res://Sprites/Seeds/Watermelon.png" id="2_uewwp"]
@@ -7,19 +7,26 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_x7c61"]
 radius = 16.0312
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_quj8o"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_x7g4k"]
 atlas = ExtResource("2_uewwp")
 region = Rect2(0, 0, 32, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3uglo"]
+atlas = ExtResource("2_uewwp")
+region = Rect2(32, 0, 32, 38)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3biqj"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_quj8o")
+"texture": SubResource("AtlasTexture_x7g4k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3uglo")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 17.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y1p5x"]
@@ -42,6 +49,7 @@ shape = SubResource("CircleShape2D_x7c61")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_3biqj")
+frame_progress = 0.0475162
 
 [node name="Down" type="ShapeCast2D" parent="."]
 scale = Vector2(0.75, 0.75)
