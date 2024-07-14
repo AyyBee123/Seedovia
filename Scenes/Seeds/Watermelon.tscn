@@ -49,7 +49,7 @@ shape = SubResource("CircleShape2D_x7c61")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_3biqj")
-frame_progress = 0.0475162
+frame_progress = 0.332163
 
 [node name="Down" type="ShapeCast2D" parent="."]
 scale = Vector2(0.75, 0.75)

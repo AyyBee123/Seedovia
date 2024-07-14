@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_iuenw"]
 [ext_resource type="Texture2D" uid="uid://bakw07i78gk1i" path="res://Sprites/Seeds/Fertilizer.png" id="2_a3sjy"]
 [ext_resource type="Script" path="res://Scripts/Seeds/fertilizer.gd" id="3_moec4"]
-[ext_resource type="PackedScene" uid="uid://b68u76upt44mu" path="res://Scenes/Misc/Stink.tscn" id="4_coisv"]
+[ext_resource type="PackedScene" uid="uid://b68u76upt44mu" path="res://Scenes/Seeds/Effects/Stink.tscn" id="4_coisv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8l5bq"]
 radius = 11.0
