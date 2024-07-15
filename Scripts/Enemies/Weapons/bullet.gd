@@ -2,7 +2,7 @@ extends Sprite2D
 
 @onready var player := $"../Player"
 
-var damage: int = 0
+var damage: int = 1
 var range: float = 0
 var speed: float = 0
 

@@ -29,7 +29,7 @@ func _physics_process(delta):
 		if tick_rate.is_stopped():
 			enemy._enemy_stats.take_damage(_player_stats.get_stat("Weapon_Damage") * damage_multiplier)
 			has_collided.emit(enemy.get_node("Enemy Hitbox"))
-			tick_rate.start()
+			tick_rate.start(0.1 / _player_stats.get_stat("Fire_Rate") * 10)
 	if not is_shrinking:
 		orbit(delta)
 	else:
@@ -46,7 +46,7 @@ func _collide(body):
 
 func _on_hitbox_area_exited(area):
 	if area.is_in_group("Enemies"):
-			is_in_area = false
+		is_in_area = false
 
 func shoot_next_weapon(weapon):
 	for i in range(2):

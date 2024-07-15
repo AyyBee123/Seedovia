@@ -13,13 +13,13 @@ func _ready():
 func _physics_process(delta):
 	initialize_position()
 	update_position(delta)
-	distance_after_collision()
 
 func initialize_position():
 	if not position_initialized:
 		starting_position = global_position
 		direction = desired_direction
 		position_initialized = true
+		ignore_first_collision = false
 
 func update_position(delta):
 	var current_velocity: Vector2 = direction * _player_stats.get_stat("Weapon_Speed") *\

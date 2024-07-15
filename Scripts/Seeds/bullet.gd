@@ -2,26 +2,20 @@ extends "res://Scripts/Seeds/seed_template.gd"
 
 var enemy
 
-func _physics_process(delta):
-	initialize_position()
-	travelled_distance()
-	distance_after_collision()
-	update_position(delta)
-
 func _collide(body):
-	if not ignore_first_collision:
-		has_collided.emit(body)
-		attempted_fire.emit()
-		if body.is_in_group("Enemies"):
-			enemy = body
-			body.get_parent()._enemy_stats.take_damage(_player_stats.get_stat("Weapon_Damage") * damage_multiplier)
-		var weapon = null if PlayerSeeds.seeds.size() <= 1 + slot_index or slot_index >= 2\
-		else PlayerSeeds.seeds[slot_index + 1]
-		if weapon != null:
-			shoot_next_weapon(weapon)
-		call_deferred("free")
-	else:
+	if ignore_first_collision:
 		ignore_first_collision = false
+		return
+	has_collided.emit(body)
+	attempted_fire.emit()
+	if body.is_in_group("Enemies"):
+		enemy = body
+		body.get_parent()._enemy_stats.take_damage(_player_stats.get_stat("Weapon_Damage") * damage_multiplier)
+	var weapon = null if PlayerSeeds.seeds.size() <= 1 + slot_index or slot_index >= 2\
+	else PlayerSeeds.seeds[slot_index + 1]
+	if weapon != null:
+		shoot_next_weapon(weapon)
+	call_deferred("free")
 		
 func initialize_position():
 	if not position_initialized:
@@ -32,6 +26,7 @@ func initialize_position():
 			var nearest_enemy = get_nearest_enemy(hit_enemy)
 			direction = desired_direction
 		position_initialized = true
+		ignore_first_collision = false
 	
 func shoot_next_weapon(weapon):
 	if get_nearest_enemy(enemy) != null:

@@ -62,6 +62,9 @@ func _on_hitbox_body_entered(body):
 	collide(body)
 
 func collide(area):
+	if ignore_first_collision:
+		ignore_first_collision = false
+		return
 	if area != null:
 		has_collided.emit(area)
 	explode()

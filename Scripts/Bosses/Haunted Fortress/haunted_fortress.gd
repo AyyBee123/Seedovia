@@ -51,12 +51,9 @@ func _on_animated_sprite_2d_frame_changed():
 			# -96 is the position of the top of the floor tile, and 352 is the position of the bottom of the floor tile
 			light_attack.global_position.y = randf_range(-96, 352)
 	if $AnimatedSprite2D.animation == "Suck":
-		if $AnimatedSprite2D.frame > 43:
-			_enemy_stats.damage = 0
-		elif $AnimatedSprite2D.frame >= 20:
+		if $AnimatedSprite2D.frame >= 20:
 			pass
 		elif $AnimatedSprite2D.frame >= 3:
-			_enemy_stats.damage = 1
 			var player_direction = player.global_position.direction_to($Marker2D.global_position)
 			player.global_position += player_direction.normalized() * 12
 			if $AnimatedSprite2D.frame % 1 == 0:
