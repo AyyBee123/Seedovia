@@ -19,3 +19,9 @@ func update_position(delta):
 		rotation_degrees += 2
 	else:
 		rotation_degrees -= 2
+
+func _on_hitbox_area_entered(area):
+	_collide(area)
+
+func _on_hitbox_body_entered(body):
+	_collide(body)

@@ -78,6 +78,7 @@ func orbit(delta):
 			) + pos
 			var op = global_position.direction_to(orbital.global_position)
 			orbital.direction = Vector2(op.y, -op.x) # get vector perpedicular to vector from the orbital to black hole
+			orbital.desired_direction = orbital.direction
 			orbital_directions[orbitals.find(orbital)] = orbital.direction # stores the direction of the orbitals
 			orbital.total_distance = 0 # to make the weapons not despawn mid-orbit
 

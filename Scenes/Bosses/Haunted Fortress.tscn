@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://0xem0wqlx8we" path="res://Scenes/Misc/Rock.tscn" id="13_u42pe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t58o8"]
-size = Vector2(244.667, 102.833)
+size = Vector2(244.667, 99.5)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fawta"]
 atlas = ExtResource("4_gaobp")
@@ -738,7 +738,7 @@ _enemy_stats = ExtResource("3_f8ewb")
 script = ExtResource("4_qxp1d")
 
 [node name="CollisionPolygon2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 0.25)
+position = Vector2(0, -1.41667)
 shape = SubResource("RectangleShape2D_t58o8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -752,7 +752,6 @@ collision_layer = 4
 collision_mask = 10
 
 [node name="CollisionPolygon2D" type="CollisionShape2D" parent="Enemy Hitbox"]
-visible = false
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_4dvlt")
 

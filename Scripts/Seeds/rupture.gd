@@ -71,7 +71,6 @@ func _ready():
 func _physics_process(delta):
 	initialize_position()
 	travelled_distance()
-	distance_after_collision()
 	update_position(delta)
 	if is_in_area:
 		if tick_rate.is_stopped():
@@ -99,9 +98,6 @@ func initialize_position():
 		visible = true
 
 func travelled_distance():
-	pass
-
-func distance_after_collision():
 	pass
 
 func _on_hitbox_area_entered(area):
