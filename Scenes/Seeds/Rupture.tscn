@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b56c0nehfg5ad"]
+[gd_scene load_steps=10 format=3 uid="uid://b56c0nehfg5ad"]
 
 [ext_resource type="Script" path="res://Scripts/Seeds/rupture.gd" id="1_inx33"]
 [ext_resource type="Texture2D" uid="uid://kyw3l7wk0ela" path="res://Sprites/Seeds/Rupture Bottom.png" id="2_prvs3"]
@@ -10,6 +10,28 @@ size = Vector2(32, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kuld6"]
 size = Vector2(32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_urtv4"]
+atlas = ExtResource("4_wl20k")
+region = Rect2(0, 0, 47, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gm3v3"]
+atlas = ExtResource("4_wl20k")
+region = Rect2(47, 0, 47, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m7fvj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_urtv4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gm3v3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
 
 [node name="Rupture" type="Sprite2D" groups=["Weapon"]]
 script = ExtResource("1_inx33")
@@ -56,9 +78,11 @@ position = Vector2(0, -12)
 texture = ExtResource("3_jcm6m")
 offset = Vector2(0, -0.5)
 
-[node name="Top" type="Sprite2D" parent="."]
+[node name="Top" type="AnimatedSprite2D" parent="."]
 position = Vector2(-0.5, -13)
-texture = ExtResource("4_wl20k")
+sprite_frames = SubResource("SpriteFrames_m7fvj")
+autoplay = "default"
+frame_progress = 0.45377
 offset = Vector2(0, -12)
 
 [node name="Tick Rate" type="Timer" parent="."]
