@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://b56c0nehfg5ad"]
+[gd_scene load_steps=7 format=3 uid="uid://b56c0nehfg5ad"]
 
 [ext_resource type="Script" path="res://Scripts/Seeds/rupture.gd" id="1_inx33"]
 [ext_resource type="Texture2D" uid="uid://kyw3l7wk0ela" path="res://Sprites/Seeds/Rupture Bottom.png" id="2_prvs3"]
@@ -8,10 +8,25 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jx3ic"]
 size = Vector2(32, 32)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kuld6"]
+size = Vector2(32, 32)
+
 [node name="Rupture" type="Sprite2D" groups=["Weapon"]]
 script = ExtResource("1_inx33")
 damage_multiplier = 0.5
 fire_rate_multiplier = 0.5
+
+[node name="Bottom Left" type="Marker2D" parent="."]
+position = Vector2(-16, 0)
+
+[node name="Bottom Right" type="Marker2D" parent="."]
+position = Vector2(16, 0)
+
+[node name="Top Left" type="Marker2D" parent="."]
+position = Vector2(-16, -32)
+
+[node name="Top Right" type="Marker2D" parent="."]
+position = Vector2(16, -32)
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 8
@@ -20,6 +35,15 @@ collision_mask = 5
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(0, -16)
 shape = SubResource("RectangleShape2D_jx3ic")
+
+[node name="Detect Ruptures" type="Area2D" parent="."]
+collision_layer = 256
+collision_mask = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detect Ruptures"]
+position = Vector2(0, -16)
+shape = SubResource("RectangleShape2D_kuld6")
+one_way_collision_margin = 0.0
 
 [node name="Passives" type="Node" parent="."]
 
@@ -42,9 +66,16 @@ wait_time = 0.1
 one_shot = true
 
 [node name="Lifetime" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.25
 one_shot = true
+
+[node name="Fire Rate" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+autostart = true
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="area_exited" from="Hitbox" to="." method="_on_hitbox_area_exited"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]
+[connection signal="timeout" from="Fire Rate" to="." method="_on_fire_rate_timeout"]

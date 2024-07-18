@@ -46,27 +46,30 @@ var current_velocity: Vector2
 @onready var tick_rate = $"Tick Rate"
 @onready var collision_shape_2d = $Hitbox/CollisionShape2D
 @onready var lifetime = $Lifetime
+@onready var fire_rate = $"Fire Rate"
+@onready var detect_ruptures = $"Detect Ruptures"
+@onready var bottom_left = $"Bottom Left"
+@onready var bottom_right = $"Bottom Right"
+@onready var top_left = $"Top Left"
+@onready var top_right = $"Top Right"
 
 var is_in_area := false
 var enemy = null
 var mouse_left_down := true
-
-static var rupture_spawns: Array
+var x_pos: float
+var lifetime_started := false
+var is_shrinking := false
 
 func _ready():
 	visible = false
-	rupture_spawns.append(self)
-	if slot_index == 0: # if fired from the player
-		if rupture_spawns.size() > 1:
-			rupture_spawns[1].queue_free()
-			rupture_spawns.remove_at(1) # remove any extra ruptures that spawn
-			return
-	else:
-		lifetime.start()
 	middle.scale.y = max(0, _player_stats.get_stat("Weapon_Range")) # extends the beam length based on player range
 	top.position.y -= middle.scale.y - 1 # places the top portion of the beam above the middle portion
-	collision_shape_2d.shape.extents.y = 32 + middle.scale.y * 0.5 - 1
+	collision_shape_2d.shape.extents.y = 20 + middle.scale.y * 0.5
 	collision_shape_2d.position.y = -16 - middle.scale.y * 0.5
+	collision_shape_2d.disabled = true
+	top_left.position.y = -32 - middle.scale.y
+	top_right.position.y = top_left.position.y
+	x_pos = 1
 
 func _physics_process(delta):
 	initialize_position()
@@ -79,12 +82,12 @@ func _physics_process(delta):
 			tick_rate.start(0.1 / _player_stats.get_stat("Fire_Rate") * 10)
 	if slot_index == 0: # if fired from the player
 		if not mouse_left_down:
-			rupture_spawns.remove_at(0)
-			queue_free()
-	else:
-		if lifetime.is_stopped():
-			rupture_spawns.remove_at(0)
-			queue_free()
+			is_shrinking = true
+	if is_shrinking:
+		shrink(65)
+
+func rupture(): # this is just to find other ruptures that exist using the has_method function (a.k.a duck typing)
+	pass
 
 func initialize_position():
 	if not position_initialized:
@@ -95,7 +98,14 @@ func initialize_position():
 			rotation = global_position.angle_to_point(get_global_mouse_position()) + deg_to_rad(90)
 		else:
 			rotation = desired_direction.angle() + deg_to_rad(90)
+		var areas = detect_ruptures.get_overlapping_areas()
+		for area in areas:
+			if abs(area.get_parent().rotation - rotation) <= 0.1\
+			and area.get_parent().global_position.distance_to(global_position) <= 15:
+				queue_free()
+				return
 		visible = true
+		collision_shape_2d.disabled = false
 
 func travelled_distance():
 	pass
@@ -116,7 +126,9 @@ func _on_hitbox_area_exited(area):
 		is_in_area = false
 
 func shoot_next_weapon(weapon):
+	x_pos = -x_pos # alternate direction of the next weapon
 	var weapon_instance = weapon.instantiate()
+	weapon_direction = Vector2.RIGHT.rotated(rotation + randf_range(deg_to_rad(-5), deg_to_rad(5))) * sign(x_pos)
 	get_weapon_properties(weapon_instance, weapon_direction)
 
 func get_weapon_properties(weapon, _desired_direction, _ignore_first_collision = false, _enemy = null):
@@ -134,8 +146,13 @@ func get_weapon_properties(weapon, _desired_direction, _ignore_first_collision =
 
 func initialize_location(weapon):
 	get_tree().current_scene.add_child(weapon)
+	if x_pos < 0:
+		weapon.global_position = Vector2(randf_range(bottom_left.global_position.x,top_left.global_position.x),\
+		randf_range(bottom_left.global_position.y,top_left.global_position.y))
+	else:
+		weapon.global_position = Vector2(randf_range(bottom_right.global_position.x,top_right.global_position.x),\
+		randf_range(bottom_right.global_position.y,top_right.global_position.y))
 	weapon_fired.emit(weapon)
-	weapon.global_position = global_position
 
 func update_position(delta):
 	if slot_index == 0:
@@ -144,6 +161,11 @@ func update_position(delta):
 	else:
 		if previous_weapon != null:
 			global_position = previous_weapon.global_position
+			rotation = desired_direction.angle() + deg_to_rad(90)
+		else:
+			if not lifetime_started:
+				lifetime.start()
+				lifetime_started = true
 
 func _input(event):
 	if event is InputEventMouseButton:
@@ -151,3 +173,20 @@ func _input(event):
 				mouse_left_down = true
 		elif event.button_index == MOUSE_BUTTON_LEFT and not event.is_pressed():
 				mouse_left_down = false
+
+func shrink(shrink_speed_mult):
+	bottom.scale.x -= get_process_delta_time() * shrink_speed_mult
+	middle.scale.x -= get_process_delta_time() * shrink_speed_mult
+	top.scale.x -= get_process_delta_time() * shrink_speed_mult
+	if middle.scale.x <= 0:
+		queue_free()
+
+func _on_lifetime_timeout():
+	is_shrinking = true
+
+func _on_fire_rate_timeout():
+	var weapon = null if PlayerSeeds.seeds.size() <= 1 + slot_index or slot_index >= 2\
+	else PlayerSeeds.seeds[slot_index + 1]
+	if weapon != null:
+		shoot_next_weapon(weapon)
+	fire_rate.start()
