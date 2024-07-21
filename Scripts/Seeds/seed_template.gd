@@ -78,9 +78,12 @@ func _collide(body):
 		body.get_parent()._enemy_stats.take_damage(_player_stats.get_stat("Weapon_Damage") * damage_multiplier)
 	call_deferred("free")
 
-func shoot_next_weapon(weapon):
-	var weapon_instance = weapon.instantiate()
-	get_weapon_properties(weapon_instance, weapon_direction)
+func shoot_next_weapon():
+	# for passives that require the weapon to not fire a seed (e.g the last seed slot fires itself again)
+	attempted_fire.emit()
+	if get_next_weapon() == null:
+		return
+	get_weapon_properties(get_next_weapon().instantiate(), weapon_direction)
 
 func get_weapon_properties(weapon, _desired_direction, _ignore_first_collision = false, _enemy = null):
 	weapon.initial_weapon = false
@@ -104,3 +107,6 @@ func update_position(delta):
 	current_velocity = direction * _player_stats.get_stat("Weapon_Speed") * speed_multiplier
 	position += current_velocity * delta
 	look_at(global_position + current_velocity)
+
+func get_next_weapon():
+	return null if PlayerSeeds.seeds.size() <= 1 + slot_index or slot_index >= 2 else PlayerSeeds.seeds[slot_index + 1]

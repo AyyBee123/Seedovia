@@ -52,14 +52,12 @@ func update_position(delta):
 		if previous_weapon != null:
 			global_position = previous_weapon.global_position
 
-func shoot_next_weapon(weapon):
+func shoot_next_weapon():
 	weapon_direction = global_position.direction_to(marker.global_position)
-	super.shoot_next_weapon(weapon)
+	super.shoot_next_weapon()
 
 func shoot_attempt():
-	attempted_fire.emit()
-	if weapon != null:
-		shoot_next_weapon(weapon)
+	shoot_next_weapon()
 
 # function in seed template script
 func initialize_location(weapon):

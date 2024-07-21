@@ -19,9 +19,7 @@ func _ready():
 	super._ready()
 	var weapon = null if PlayerSeeds.seeds.size() <= 1 + slot_index or\
 	slot_index >= 2 else PlayerSeeds.seeds[slot_index + 1]
-	attempted_fire.emit()
-	if weapon != null:
-		shoot_next_weapon(weapon)
+	shoot_next_weapon()
 
 func _physics_process(delta):
 	super._physics_process(delta)
@@ -48,9 +46,12 @@ func _on_hitbox_area_exited(area):
 	if area.is_in_group("Enemies"):
 		is_in_area = false
 
-func shoot_next_weapon(weapon):
+func shoot_next_weapon():
+	attempted_fire.emit()
+	if get_next_weapon() == null:
+		return
 	for i in range(2):
-		var weapon_instance = weapon.instantiate()
+		var weapon_instance = get_next_weapon().instantiate()
 		orbitals.append(weapon_instance)
 		orbital_directions.append(Vector2.ZERO)
 		index = i

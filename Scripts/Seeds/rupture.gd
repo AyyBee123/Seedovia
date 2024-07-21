@@ -125,11 +125,12 @@ func _on_hitbox_area_exited(area):
 	if area.is_in_group("Enemies"):
 		is_in_area = false
 
-func shoot_next_weapon(weapon):
+func shoot_next_weapon():
+	if get_next_weapon() == null:
+		return
 	x_pos = -x_pos # alternate direction of the next weapon
-	var weapon_instance = weapon.instantiate()
 	weapon_direction = Vector2.RIGHT.rotated(rotation + randf_range(deg_to_rad(-5), deg_to_rad(5))) * sign(x_pos)
-	get_weapon_properties(weapon_instance, weapon_direction)
+	get_weapon_properties(get_next_weapon().instantiate(), weapon_direction)
 
 func get_weapon_properties(weapon, _desired_direction, _ignore_first_collision = false, _enemy = null):
 	weapon.initial_weapon = false
@@ -185,8 +186,8 @@ func _on_lifetime_timeout():
 	is_shrinking = true
 
 func _on_fire_rate_timeout():
-	var weapon = null if PlayerSeeds.seeds.size() <= 1 + slot_index or slot_index >= 2\
-	else PlayerSeeds.seeds[slot_index + 1]
-	if weapon != null:
-		shoot_next_weapon(weapon)
+	shoot_next_weapon()
 	fire_rate.start()
+
+func get_next_weapon():
+	return null if PlayerSeeds.seeds.size() <= 1 + slot_index or slot_index >= 2 else PlayerSeeds.seeds[slot_index + 1]

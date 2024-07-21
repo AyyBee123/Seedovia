@@ -1,0 +1,47 @@
+extends "res://Scripts/Seeds/seed_template.gd"
+
+@onready var deceleration = $Deceleration
+@onready var lifetime = $Lifetime
+
+var spread: float
+var size: float
+var acceleration: float
+var decel_threshold = 0.05
+
+func _ready():
+	super._ready()
+	spread = deg_to_rad(randf_range(-30,30)) # random 30 degree spread
+	size = randf_range(0.8, 1) # random sizes to immitate how bubbles work irl
+	scale = Vector2.ONE * size
+	acceleration = randf_range(0.75, 1) * _player_stats.get_stat("Weapon_Range") / 100
+	deceleration.start(acceleration)
+
+func update_position(delta):
+	if deceleration.time_left > decel_threshold:
+		current_velocity = direction.rotated(spread) * _player_stats.get_stat("Weapon_Speed")\
+		* speed_multiplier * deceleration.time_left
+	else:
+		current_velocity = direction.rotated(spread) * _player_stats.get_stat("Weapon_Speed")\
+		* speed_multiplier * decel_threshold
+	position += current_velocity * delta
+
+func _on_deceleration_timeout():
+	lifetime.start()
+
+func _on_lifetime_timeout():
+	_collide(null)
+
+func travelled_distance():
+	pass
+
+func _collide(body):
+	if body != null:
+		has_collided.emit(body)
+	weapon_direction = direction.rotated(spread)
+	shoot_next_weapon()
+	queue_free.call_deferred()
+
+func shoot_next_weapon():
+	if not randf() < 0.5:
+		return
+	super.shoot_next_weapon()

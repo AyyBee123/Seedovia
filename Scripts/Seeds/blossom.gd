@@ -11,12 +11,8 @@ var hit_wall := false
 
 func _physics_process(delta):
 	super._physics_process(delta)
-	var weapon = null if PlayerSeeds.seeds.size() <= 1 + slot_index or slot_index >= 2\
-		else PlayerSeeds.seeds[slot_index + 1]
-	if weapon != null:
-		if fire_rate.is_stopped() and get_nearest_enemy() != null and deceleration.is_stopped():
-			attempted_fire.emit()
-			shoot_next_weapon(weapon)
+	if fire_rate.is_stopped() and get_nearest_enemy() != null and deceleration.is_stopped():
+		shoot_next_weapon()
 
 func update_position(delta):
 	if not hit_wall:
@@ -30,9 +26,12 @@ func travelled_distance():
 func _collide(body):
 	pass
 
-func shoot_next_weapon(weapon):
+func shoot_next_weapon():
+	attempted_fire.emit()
+	if get_next_weapon() == null:
+		return
 	play_animation()
-	var weapon_instance = weapon.instantiate()
+	var weapon_instance = get_next_weapon().instantiate()
 	weapon_direction = global_position.direction_to(get_nearest_enemy().global_position)
 	get_weapon_properties(weapon_instance, weapon_direction)
 	fire_rate.start(1.0/_player_stats.get_stat("Fire_Rate") / weapon_instance.fire_rate_multiplier\

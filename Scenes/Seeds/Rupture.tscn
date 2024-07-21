@@ -82,7 +82,7 @@ offset = Vector2(0, -0.5)
 position = Vector2(-0.5, -13)
 sprite_frames = SubResource("SpriteFrames_m7fvj")
 autoplay = "default"
-frame_progress = 0.45377
+frame_progress = 0.507388
 offset = Vector2(0, -12)
 
 [node name="Tick Rate" type="Timer" parent="."]

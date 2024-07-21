@@ -49,23 +49,20 @@ func randomize_value():
 func _collide(body):
 	if not ignore_first_collision:
 		has_collided.emit(body)
-		attempted_fire.emit()
 		if body.is_in_group("Enemies"):
 			body.get_parent()._enemy_stats.take_damage(_player_stats.get_stat("Weapon_Damage") * damage_multiplier \
 			* get_dice_damage_multiplier())
 		var weapon = null if PlayerSeeds.seeds.size() <= 1 + slot_index or slot_index >= 2\
 		else PlayerSeeds.seeds[slot_index + 1]
-		if weapon != null:
-			shoot_next_weapon(weapon)
+		shoot_next_weapon()
 		call_deferred("free")
 	else:
 		ignore_first_collision = false
 
-func shoot_next_weapon(weapon):
+func shoot_next_weapon():
 	for i in dice_value:
-		var weapon_instance = weapon.instantiate()
 		weapon_direction = Vector2.RIGHT.rotated(randf_range(0, 2 * PI))
-		get_weapon_properties(weapon_instance, weapon_direction)
+		super.shoot_next_weapon()
 
 func travelled_distance():
 	distance_travelled = starting_position.distance_to(self.global_position)
@@ -74,8 +71,7 @@ func travelled_distance():
 		for i in range(seed_slots.size()):
 			var weapon = null if PlayerSeeds.seeds.size() <= 1 + slot_index or slot_index >= 2\
 			else PlayerSeeds.seeds[slot_index + 1]
-			if weapon != null:
-				shoot_next_weapon(weapon)
+			shoot_next_weapon()
 			break
 		call_deferred("free")
 

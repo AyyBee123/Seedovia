@@ -47,22 +47,20 @@ func explode():
 	explosion.size = _player_stats.get_stat("Weapon_Blast_Radius") * blast_radius_multiplier
 	explosion.get_node("AnimatedSprite2D").self_modulate = Color.ORANGE_RED
 	call_deferred("create_child", explosion)
-	attempted_fire.emit()
 	for i in range(seed_slots.size()):
 		var weapon = null if PlayerSeeds.seeds.size() <= 1 + slot_index or\
 		slot_index >= 2 else PlayerSeeds.seeds[slot_index + 1]
-		if weapon != null:
-			shoot_next_weapon(weapon)
+		shoot_next_weapon()
 		break
 	# call defer twice to allow passives that trigger off of weapon fire to work
 	# Otherwise, the weapon is destroyed before it has a chance to trigger the passives
 	destroy.call_deferred()
 
-func shoot_next_weapon(weapon):
+func shoot_next_weapon():
 	var directions = [Vector2.UP, Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT]
 	for direction in directions:
 		weapon_direction = direction
-		super.shoot_next_weapon(weapon)
+		super.shoot_next_weapon()
 
 func create_child(child):
 	get_tree().current_scene.add_child(child)

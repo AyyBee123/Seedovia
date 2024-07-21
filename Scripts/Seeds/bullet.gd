@@ -7,14 +7,10 @@ func _collide(body):
 		ignore_first_collision = false
 		return
 	has_collided.emit(body)
-	attempted_fire.emit()
 	if body.is_in_group("Enemies"):
 		enemy = body
 		body.get_parent()._enemy_stats.take_damage(_player_stats.get_stat("Weapon_Damage") * damage_multiplier)
-	var weapon = null if PlayerSeeds.seeds.size() <= 1 + slot_index or slot_index >= 2\
-	else PlayerSeeds.seeds[slot_index + 1]
-	if weapon != null:
-		shoot_next_weapon(weapon)
+	shoot_next_weapon()
 	call_deferred("free")
 		
 func initialize_position():
@@ -28,13 +24,15 @@ func initialize_position():
 		position_initialized = true
 		ignore_first_collision = false
 	
-func shoot_next_weapon(weapon):
+func shoot_next_weapon():
+	attempted_fire.emit()
+	if get_next_weapon() == null:
+		return
 	if get_nearest_enemy(enemy) != null:
 		weapon_direction = global_position.direction_to(get_nearest_enemy(enemy).global_position)
 	else:
 		weapon_direction = global_position.direction_to(player.global_position)
-	var weapon_instance = weapon.instantiate()
-	get_weapon_properties(weapon_instance, weapon_direction, true, enemy)
+	get_weapon_properties(get_next_weapon().instantiate(), weapon_direction, true, enemy)
 
 func initialize_location(weapon_instance):
 	get_tree().current_scene.add_child(weapon_instance)
@@ -47,12 +45,8 @@ func travelled_distance():
 		total_distance += 1
 		starting_position = global_position
 	if total_distance >= _player_stats.get_stat("Weapon_Range") * range_multiplier:
-		attempted_fire.emit()
 		for i in range(seed_slots.size()):
-			var weapon = null if PlayerSeeds.seeds.size() <= 1 + slot_index or slot_index >= 2\
-			else PlayerSeeds.seeds[slot_index + 1]
-			if weapon != null:
-				shoot_next_weapon(weapon)
+			shoot_next_weapon()
 			break
 		call_deferred("free")
 		

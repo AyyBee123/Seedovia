@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://cenfrfe58cqnl"]
+
+[ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_w02k5"]
+[ext_resource type="Texture2D" uid="uid://dv8vlajtxoaei" path="res://Sprites/Seeds/Bubble.png" id="2_t1fwy"]
+[ext_resource type="Script" path="res://Scripts/Seeds/bubble.gd" id="3_7x2iv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0hc64"]
+radius = 11.0
+
+[node name="Bubble" instance=ExtResource("1_w02k5")]
+texture = ExtResource("2_t1fwy")
+script = ExtResource("3_7x2iv")
+damage_multiplier = 0.4
+fire_rate_multiplier = 2.0
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource("CircleShape2D_0hc64")
+
+[node name="Deceleration" type="Timer" parent="." index="2"]
+wait_time = 0.667
+one_shot = true
+
+[node name="Lifetime" type="Timer" parent="." index="3"]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="timeout" from="Deceleration" to="." method="_on_deceleration_timeout"]
+[connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]

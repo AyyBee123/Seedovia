@@ -15,15 +15,12 @@ func _physics_process(delta):
 	var weapon = null if PlayerSeeds.seeds.size() <= 1 + slot_index or\
 	slot_index >= 2 else PlayerSeeds.seeds[slot_index + 1]
 	if orb_fire_rate.is_stopped():
-		attempted_fire.emit()
-		if weapon != null:
-			shoot_next_weapon(weapon)
+		shoot_next_weapon()
 
-func shoot_next_weapon(weapon):
-	var weapon_instance = weapon.instantiate()
-	get_weapon_properties(weapon_instance, weapon_direction.normalized())
+func shoot_next_weapon():
+	super.shoot_next_weapon()
 	orb_fire_rate.wait_time = 1.0/(player._player_stats.get_stat("Fire_Rate") * orb_fire_rate_multiplier\
-	* weapon_instance.fire_rate_multiplier * 2)
+	* get_next_weapon().instantiate().fire_rate_multiplier * 2)
 	change_direction()
 	orb_fire_rate.start()
 

@@ -51,15 +51,12 @@ func _on_deceleration_timeout():
 func _on_lifetime_timeout():
 	var weapon = null if PlayerSeeds.seeds.size() <= 1 + slot_index or slot_index >= 2\
 		else PlayerSeeds.seeds[slot_index + 1]
-	attempted_fire.emit()
-	if weapon != null:
-		shoot_next_weapon(weapon)
+	shoot_next_weapon()
 	queue_free.call_deferred()
 
-func shoot_next_weapon(weapon):
-	var weapon_instance = weapon.instantiate()
+func shoot_next_weapon():
 	weapon_direction = Vector2.RIGHT.rotated(randf_range(0, 2 * PI))
-	get_weapon_properties(weapon_instance, weapon_direction)
+	super.shoot_next_weapon()
 
 func _on_hurtbox_area_entered(area):
 	if area.is_in_group("Enemies"):
