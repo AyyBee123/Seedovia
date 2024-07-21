@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://dpqxo5lv4fcqr"]
+
+[ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_rosip"]
+[ext_resource type="Texture2D" uid="uid://07mogisnw6m" path="res://Sprites/Passives/Effects/Banana.png" id="2_nol6y"]
+[ext_resource type="Script" path="res://Scripts/Seeds/bananarang.gd" id="3_s1k5y"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1bbr8"]
+radius = 9.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c3iv6"]
+radius = 17.0294
+
+[node name="Bananarang" instance=ExtResource("1_rosip")]
+texture = ExtResource("2_nol6y")
+offset = Vector2(-4, -4.5)
+script = ExtResource("3_s1k5y")
+range_multiplier = 0.7
+damage_multiplier = 1.1
+fire_rate_multiplier = 0.85
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource("CircleShape2D_1bbr8")
+
+[node name="Detect Previous Seed" type="Area2D" parent="." index="2"]
+collision_layer = 8
+collision_mask = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detect Previous Seed" index="0"]
+shape = SubResource("CircleShape2D_c3iv6")
+
+[node name="Deceleration" type="Timer" parent="." index="3"]
+wait_time = 0.889
+one_shot = true
+
+[node name="Acceleration" type="Timer" parent="." index="4"]
+wait_time = 0.889
+one_shot = true
+
+[connection signal="area_entered" from="Detect Previous Seed" to="." method="_on_detect_previous_seed_area_entered"]
+[connection signal="body_entered" from="Detect Previous Seed" to="." method="_on_detect_previous_seed_body_entered"]
+[connection signal="timeout" from="Deceleration" to="." method="_on_deceleration_timeout"]

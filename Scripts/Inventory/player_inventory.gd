@@ -9,7 +9,7 @@ const NUM_INVENTORY_SLOTS = 12
 const NUM_TALISMAN_SLOTS = 4
 const NUM_SEED_SLOTS = 3
 
-var inventory = {}
+var inventory = {11:preload("res://Resources/Items/Seeds/bananarang.tres")}
 var talismans = {}
 var seeds = {}
 
