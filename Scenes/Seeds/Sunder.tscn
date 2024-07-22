@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://tanpx8hh4fms"]
+
+[ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_e8fhm"]
+[ext_resource type="Script" path="res://Scripts/Seeds/sunder.gd" id="2_i74ag"]
+[ext_resource type="PackedScene" uid="uid://cp3hdtxn75uyt" path="res://Scenes/Passives/Effects/Explosion.tscn" id="3_47hap"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o1sj4"]
+radius = 2.0
+
+[node name="Sunder" instance=ExtResource("1_e8fhm")]
+script = ExtResource("2_i74ag")
+speed_multiplier = 0.85
+damage_multiplier = 2.0
+blast_radius_multiplier = 0.5
+fire_rate_multiplier = 0.25
+
+[node name="Hitbox" parent="." index="0"]
+collision_mask = 1
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource("CircleShape2D_o1sj4")
+
+[node name="ResourcePreloader" type="ResourcePreloader" parent="." index="2"]
+resources = [PackedStringArray("Explosion"), [ExtResource("3_47hap")]]
