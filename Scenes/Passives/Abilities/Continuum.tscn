@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://mbyg75i3ei27"]
+
+[ext_resource type="Script" path="res://Scripts/Passives/Abilities/continuum.gd" id="1_p0tkr"]
+
+[node name="Continuum" type="Node"]
+script = ExtResource("1_p0tkr")

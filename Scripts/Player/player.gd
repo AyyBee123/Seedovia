@@ -78,7 +78,7 @@ func _physics_process(delta):
 	if can_be_damaged:
 		set_collision_layer(initial_collision_layer)
 	else:
-		set_collision_layer(initial_collision_layer - 2)
+		set_collision_layer(initial_collision_layer - 2) # 2 is the player's collision layer
 
 func set_sprite():
 	player_sprite.texture = PlayerCharacter.sprite
