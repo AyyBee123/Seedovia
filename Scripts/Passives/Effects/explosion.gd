@@ -9,6 +9,8 @@ var object
 var damage: float
 var size: float
 
+var damage_multiplier
+
 func _ready():
 	scale = Vector2(size, size)
 	if object == null:

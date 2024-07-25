@@ -1,8 +1,6 @@
 extends "res://Scripts/Passives/Classes/passive_tally.gd"
 
 @onready var resource_preloader := $ResourcePreloader
-
-@export var damage_multiplier: float = 3
 @export var explosion_size_multiplier: float = 1.5
 var source_passives: Array
 
@@ -34,7 +32,8 @@ func explode():
 			continue
 		explosion.get_node("Passives").add_child(passive.duplicate())
 	explosion.object = source
-	explosion.damage = player._player_stats.get_stat("Weapon_Damage") * damage_multiplier
+	explosion.damage = player._player_stats.get_stat("Weapon_Damage") * source.damage_multiplier
+	explosion.damage_multiplier = source.damage_multiplier
 	explosion.size = player._player_stats.get_stat("Weapon_Blast_Radius") * explosion_size_multiplier
 	spawn_explosion.call_deferred(explosion)
 

@@ -11,8 +11,8 @@ func travelled_distance():
 		call_deferred("free")
 	if total_distance % 10 == 0:
 		explode()
-		weapon_direction = Vector2.RIGHT.rotated(randf_range(0, 2 * PI))
 		if total_distance % 20 == 0 and total_distance != 0:
+			weapon_direction = Vector2.RIGHT.rotated(randf_range(0, 2 * PI))
 			shoot_next_weapon()
 
 func _collide(body):

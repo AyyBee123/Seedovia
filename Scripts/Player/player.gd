@@ -26,6 +26,7 @@ var can_be_damaged := true
 var mouse_in_inventory := false
 var has_holding_item := false # this is set in the inventory script to true if the mouse cursor is holding an item
 var weapon_direction
+var damage_multiplier
 
 func _ready():
 	_player_stats.initialize_base_stats()
@@ -125,6 +126,7 @@ func update_timers():
 	if current_weapon != null:
 		var weapon = current_weapon.instantiate()
 		bullets_per_second.wait_time = 1.0/(_player_stats.get_stat("Fire_Rate") * weapon.fire_rate_multiplier)
+		damage_multiplier = weapon.damage_multiplier
 	else:
 		bullets_per_second.wait_time = 1.0/_player_stats.get_stat("Fire_Rate")
 	invulnerability_time.wait_time = _player_stats.get_stat("Invulnerability_Time")
