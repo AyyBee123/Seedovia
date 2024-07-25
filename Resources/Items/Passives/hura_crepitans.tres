@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="passive_class" load_steps=2 format=3 uid="uid://ca7862ifockcg"]
+
+[ext_resource type="Script" path="res://Scripts/Passives/Classes/passive_class.gd" id="1_cebd8"]
+
+[resource]
+script = ExtResource("1_cebd8")
+passive_name = ""
+description = ""
