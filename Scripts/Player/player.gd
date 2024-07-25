@@ -3,6 +3,7 @@ extends CharacterBody2D
 signal shoot(bullet, direction, location)
 signal weapon_fired(weapon)
 signal dashed
+signal has_collided(object)
 
 @export var _player_stats: player_stats
 
@@ -83,6 +84,7 @@ func _physics_process(delta):
 func set_sprite():
 	player_sprite.texture = PlayerCharacter.sprite
 	hand_sprite.texture = PlayerCharacter.hand_sprite
+
 func move():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	if input_direction.length() > 0:

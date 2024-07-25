@@ -5,8 +5,9 @@ var source
 func _ready():
 	source = get_parent().get_parent()
 	source.weapon_fired.connect(transfer_passive)
-	if not source.is_in_group("Players"):
-		source.get_node("Hitbox").set_collision_mask_value(1, false) # 1 is the wall collision layer (it's being removed)
+	if source.is_in_group("Weapon"):
+		if source.get_node("Hitbox") != null:
+			source.get_node("Hitbox").set_collision_mask_value(1, false) # 1 is the wall collision layer (being removed)
 
 func _physics_process(delta):
 	# top wall

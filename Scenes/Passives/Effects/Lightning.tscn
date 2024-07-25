@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhlwsg8au0mai"]
+
+[ext_resource type="Texture2D" uid="uid://dn2w5gwe5aqj5" path="res://Sprites/Passives/Effects/Lightning.png" id="1_xv4sy"]
+[ext_resource type="Script" path="res://Scripts/Passives/Effects/lightning.gd" id="2_u3fhj"]
+
+[node name="Lightning" type="Sprite2D"]
+texture_repeat = 2
+texture = ExtResource("1_xv4sy")
+centered = false
+offset = Vector2(0, -8.5)
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 17)
+script = ExtResource("2_u3fhj")
+
+[node name="Passives" type="Node" parent="."]
+
+[node name="Flip Timer" type="Timer" parent="."]
+wait_time = 0.05
+one_shot = true
+autostart = true
+
+[node name="Lifetime" type="Timer" parent="."]
+wait_time = 0.15
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Flip Timer" to="." method="_on_flip_timer_timeout"]
+[connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]

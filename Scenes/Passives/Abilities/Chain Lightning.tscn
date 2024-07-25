@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqhcxj0bjmwkg"]
+
+[ext_resource type="Script" path="res://Scripts/Passives/Abilities/chain_lightning.gd" id="1_eo31o"]
+[ext_resource type="PackedScene" uid="uid://bhlwsg8au0mai" path="res://Scenes/Passives/Effects/Lightning.tscn" id="2_cwww4"]
+
+[node name="Chain Lightning" type="Node"]
+script = ExtResource("1_eo31o")
+
+[node name="ResourcePreloader" type="ResourcePreloader" parent="."]
+resources = [PackedStringArray("Lightning"), [ExtResource("2_cwww4")]]

@@ -1,6 +1,8 @@
 extends Node2D
 
+signal weapon_fired(weapon)
 signal has_collided(object)
+signal attempted_fire
 
 # these values are declared in the passive script that triggers the explosion
 var object

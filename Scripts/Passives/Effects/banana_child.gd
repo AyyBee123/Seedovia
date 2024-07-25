@@ -8,7 +8,14 @@ var damage: float
 var explosion_size: float
 var spread: float
 var speed: float
+var weapon_direction: Vector2
 
+signal weapon_fired(weapon)
+signal has_collided(object)
+signal attempted_fire
+
+@onready var player := $"../Player"
+@onready var _player_stats = player._player_stats
 @onready var projectile_speed_timer := $"Projectile Deceleration"
 @onready var life_time := $Lifetime
 @onready var resource_preloader := $ResourcePreloader
@@ -28,9 +35,11 @@ func update_position(delta):
 	look_at(global_position + current_velocity)
 
 func _on_enemy_detect_area_entered(area):
+	has_collided.emit(area)
 	explode()
 	
 func _on_wall_detect_body_entered(body):
+	has_collided.emit(body)
 	explode()
 
 func _on_lifetime_timeout():
@@ -47,3 +56,6 @@ func explode():
 func create_child(child):
 	get_tree().current_scene.add_child(child)
 	child.global_position = self.global_position
+	weapon_direction = direction
+	attempted_fire.emit(child)
+	weapon_fired.emit(child)

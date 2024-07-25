@@ -10,6 +10,12 @@ var speed: float
 var weapon_direction: Vector2
 var source_pos
 
+signal weapon_fired(weapon) # signal for firing the next seed
+signal has_collided(object) # signal for colliding with an enemy or wall
+signal attempted_fire # signal for attempting to fire the next seed (even if the next seed is null)
+
+@onready var player := $"../Player"
+@onready var _player_stats = player._player_stats
 @onready var projectile_speed_timer := $"Projectile Deceleration"
 @onready var life_time := $Lifetime
 @onready var resource_preloader := $ResourcePreloader
@@ -34,9 +40,11 @@ func update_position(delta):
 	look_at(global_position + current_velocity)
 
 func _on_enemy_detect_area_entered(area):
+	has_collided.emit(area)
 	explode()
 
 func _on_wall_detect_body_entered(body):
+	has_collided.emit(body)
 	explode()
 
 func _on_lifetime_timeout():
@@ -54,9 +62,11 @@ func explode():
 func spawn_child_bananas():
 	# split the banana mine into 3 smaller bananas with the indicated launch directions
 	var directions = [Vector2.UP, Vector2(-sqrt(3)/2,0.5), Vector2(sqrt(3)/2,0.5)]
-	var spread = deg_to_rad(randf_range(-45, 45))
+	spread = deg_to_rad(randf_range(-45, 45))
 	for direction in directions:
 		var banana_child = resource_preloader.get_resource("Banana Child").instantiate()
+		for passive in $Passives.get_children():
+			banana_child.get_node("Passives").add_child(passive.duplicate())
 		banana_child.damage = damage * 0.35
 		banana_child.speed = speed
 		banana_child.explosion_size = 0.65
@@ -66,3 +76,6 @@ func spawn_child_bananas():
 func create_child(child):
 	get_tree().current_scene.add_child(child)
 	child.global_position = self.global_position
+	weapon_direction = direction.rotated(spread)
+	attempted_fire.emit(child)
+	weapon_fired.emit(child)

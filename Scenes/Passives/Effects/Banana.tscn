@@ -11,7 +11,7 @@ radius = 51.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_r7qac"]
 radius = 12.0
 
-[node name="Banana" type="Sprite2D"]
+[node name="Banana" type="Sprite2D" groups=["Weapon"]]
 texture = ExtResource("1_nvd3o")
 script = ExtResource("2_82g1y")
 
@@ -30,16 +30,18 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetect"]
 shape = SubResource("CircleShape2D_qa7cx")
 
-[node name="WallDetect" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WallDetect"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CircleShape2D_r7qac")
 
 [node name="Projectile Deceleration" type="Timer" parent="."]
 one_shot = true
 autostart = true
 
+[node name="Passives" type="Node" parent="."]
+
 [connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]
 [connection signal="area_entered" from="EnemyDetect" to="." method="_on_enemy_detect_area_entered"]
-[connection signal="body_entered" from="WallDetect" to="." method="_on_wall_detect_body_entered"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_wall_detect_body_entered"]

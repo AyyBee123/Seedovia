@@ -4,6 +4,7 @@ extends "res://Scripts/Passives/Classes/passive_tally.gd"
 
 @export var damage_multiplier: float = 3
 @export var explosion_size_multiplier: float = 1.5
+var source_passives: Array
 
 func _ready():
 	super._ready()
@@ -22,11 +23,16 @@ func transfer_passive(weapon = null):
 		return
 	if weapon.get_node("Passives").has_node("ExplosiveTrigger"): # prevent duplicates
 		return
-	# make a new banana mine passive and add it as a child of the next weapon
+	# make a new explosive trigger passive and add it as a child of the next weapon
 	weapon.get_node("Passives").add_child(duplicate())
+	source_passives = source.get_node("Passives").get_children()
 
 func explode():
 	var explosion = resource_preloader.get_resource("Explosion").instantiate()
+	for passive in source_passives:
+		if passive.name == "ExplosiveTrigger":
+			continue
+		explosion.get_node("Passives").add_child(passive.duplicate())
 	explosion.object = source
 	explosion.damage = player._player_stats.get_stat("Weapon_Damage") * damage_multiplier
 	explosion.size = player._player_stats.get_stat("Weapon_Blast_Radius") * explosion_size_multiplier

@@ -1,9 +1,10 @@
 extends Node
 
-@onready var player := $"../.."
+var player
 var chance: float
 
 func _ready():
+	player = Targets.get_player()
 	randomize()
 
 func get_chance(base_chance: float) -> float:
