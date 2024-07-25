@@ -8,7 +8,6 @@ signal attempted_fire
 var object
 var damage: float
 var size: float
-
 var damage_multiplier
 
 func _ready():

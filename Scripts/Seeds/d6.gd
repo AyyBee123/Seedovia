@@ -65,8 +65,11 @@ func shoot_next_weapon():
 		super.shoot_next_weapon()
 
 func travelled_distance():
-	distance_travelled = starting_position.distance_to(self.global_position)
-	if distance_travelled >= _player_stats.get_stat("Weapon_Range") * range_multiplier:
+	distance_travelled = starting_position.distance_to(global_position)
+	if distance_travelled >= 1:
+		total_distance += 1
+		starting_position = global_position
+	if total_distance >= _player_stats.get_stat("Weapon_Range") * range_multiplier:
 		attempted_fire.emit()
 		for i in range(seed_slots.size()):
 			var weapon = null if PlayerSeeds.seeds.size() <= 1 + slot_index or slot_index >= 2\
