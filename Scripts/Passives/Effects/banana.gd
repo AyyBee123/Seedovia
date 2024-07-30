@@ -9,6 +9,7 @@ var spread: float
 var speed: float
 var weapon_direction: Vector2
 var source_pos
+var previous_weapon
 
 signal weapon_fired(weapon) # signal for firing the next seed
 signal has_collided(object) # signal for colliding with an enemy or wall
@@ -21,8 +22,12 @@ signal attempted_fire # signal for attempting to fire the next seed (even if the
 @onready var resource_preloader := $ResourcePreloader
 
 func _ready():
+	previous_weapon.weapon_fired.emit(self)
 	global_position = source_pos
 	spread = deg_to_rad(randf_range(-20,20))
+
+func banana():
+	pass
 
 func _physics_process(delta):
 	initialize_position()
@@ -40,7 +45,6 @@ func update_position(delta):
 	look_at(global_position + current_velocity)
 
 func _on_enemy_detect_area_entered(area):
-	has_collided.emit(area)
 	explode()
 
 func _on_wall_detect_body_entered(body):
@@ -54,7 +58,14 @@ func explode():
 	var explosion = resource_preloader.get_resource("Explosion").instantiate()
 	explosion.damage = damage
 	explosion.size = explosion_size
-	explosion.get_node("AnimatedSprite2D").self_modulate = Color.YELLOW
+	explosion.source = self
+	explosion.modulate = Color.YELLOW
+	for passive in $Passives.get_children():
+		if passive.name == "ExplosiveTrigger":
+			continue
+		if passive.name == "HuraCrepitans":
+			continue
+		explosion.get_node("Passives").add_child(passive.duplicate())
 	call_deferred("create_child", explosion)
 	spawn_child_bananas()
 	queue_free.call_deferred()

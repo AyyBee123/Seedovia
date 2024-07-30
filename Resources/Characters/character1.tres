@@ -5,9 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://bdjm8bu0l6v08" path="res://Sprites/Player/Player.png" id="2_6s4da"]
 [ext_resource type="Resource" uid="uid://c4uomd0l52hvy" path="res://Resources/Items/Consumables/apple.tres" id="3_dqta1"]
 [ext_resource type="Resource" uid="uid://cuy80aorwngdg" path="res://Resources/Items/Seeds/bullet.tres" id="4_mbwuj"]
-[ext_resource type="PackedScene" uid="uid://dqhcxj0bjmwkg" path="res://Scenes/Passives/Abilities/Chain Lightning.tscn" id="5_klp8r"]
-[ext_resource type="PackedScene" uid="uid://blj4gbudleafp" path="res://Scenes/Passives/Abilities/Explosive Trigger.tscn" id="6_4w16s"]
-[ext_resource type="PackedScene" uid="uid://bnoiir88s2wns" path="res://Scenes/Passives/Abilities/Hura Crepitans.tscn" id="7_5mi3m"]
+[ext_resource type="PackedScene" uid="uid://b1ityh857h0fx" path="res://Scenes/Passives/Abilities/Fire Flower.tscn" id="5_0nr0i"]
+[ext_resource type="PackedScene" uid="uid://dqhcxj0bjmwkg" path="res://Scenes/Passives/Abilities/Chain Lightning.tscn" id="6_hnsvc"]
+[ext_resource type="PackedScene" uid="uid://bnoiir88s2wns" path="res://Scenes/Passives/Abilities/Hura Crepitans.tscn" id="7_q5pgi"]
 
 [resource]
 script = ExtResource("1_1twko")
@@ -16,4 +16,4 @@ hand_sprite = ExtResource("1_h5b6i")
 starting_inventory = Array[Resource]([ExtResource("3_dqta1")])
 starting_talismans = Array[Resource]([])
 starting_seeds = Array[Resource]([ExtResource("4_mbwuj")])
-starting_passives = Array[PackedScene]([ExtResource("5_klp8r"), ExtResource("6_4w16s"), ExtResource("7_5mi3m")])
+starting_passives = Array[PackedScene]([ExtResource("5_0nr0i"), ExtResource("6_hnsvc"), ExtResource("7_q5pgi")])

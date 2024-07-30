@@ -24,15 +24,12 @@ func transfer_passive(weapon = null):
 	if weapon == null or weapon.is_in_group("Weapon Effect"):
 		return
 	# make a new banana mine passive and add it as a child of the next weapon
-	weapon.get_node("Passives").add_child(self.duplicate())
-	source_passives = source.get_node("Passives").get_children()
+	if not weapon.has_method("banana"):
+		weapon.get_node("Passives").add_child(self.duplicate())
 
 func trigger(weapon = null):
 	var banana = resource_preloader.get_resource("Banana").instantiate()
-	for passive in source_passives:
-		if passive.name == "BananaMine":
-			continue
-		banana.get_node("Passives").add_child(passive.duplicate())
+	banana.previous_weapon = weapon
 	banana.source_pos = source.global_position
 	banana.weapon_direction = source.weapon_direction
 	banana.damage = player._player_stats.get_stat("Weapon_Damage") * damage_multiplier

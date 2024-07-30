@@ -3,19 +3,41 @@ extends "res://Scripts/Passives/Classes/passive_chance.gd"
 @onready var resource_preloader := $ResourcePreloader
 
 var damage_multiplier := 0.5
+var source
+var collided_object
+var burning
+
+var duration: float = 4 # duration of the burn, in seconds
+var tick: float = 1 # tick rate, in seconds
+var damage: float # damage of each burn tick
 
 func _ready():
+	source = get_parent().get_parent()
 	chance = 0.3
-	player.weapon_fired.connect(chance_to_trigger)
+	if source.is_in_group("Players"):
+		source.weapon_fired.connect(chance_to_trigger)
 	super._ready()
+
+func collide(object):
+	if object.is_in_group("Enemies"):
+		burning = resource_preloader.get_resource("Burning").instantiate()
+		burning.duration = duration
+		burning.tick = tick
+		burning.damage = player._player_stats.get_stat("Weapon_Damage") * damage_multiplier
+		object.get_parent().get_node("Burn Stacks").add_child(burning)
 
 func trigger(weapon = null):
 	var fire_effect = resource_preloader.get_resource("Burning Weapon").instantiate()
-	if weapon.is_in_group("Weapon"):
-		if weapon.modulate == Color.WHITE:
-			weapon.modulate *= Color.DARK_ORANGE
-		else:
-			weapon.modulate += Color.DARK_ORANGE
-		weapon.weapon_fired.connect(trigger)
+	if weapon.modulate == Color.WHITE:
+		weapon.modulate *= Color.DARK_ORANGE
+	else:
+		weapon.modulate += Color.DARK_ORANGE
+	weapon.weapon_fired.connect(trigger)
+	weapon.has_collided.connect(collide)
 	fire_effect.damage = player._player_stats.get_stat("Weapon_Damage") * damage_multiplier
-	weapon.add_child(fire_effect)
+	transfer_passive(weapon)
+
+func transfer_passive(weapon = null):
+	if weapon == null or weapon.is_in_group("Weapon Effect"):
+		return
+	weapon.get_node("Passives").add_child(self.duplicate())
