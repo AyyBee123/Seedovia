@@ -10,6 +10,7 @@ var damage: float
 var size: float
 var damage_multiplier
 var source
+var is_vanity := false
 
 func _ready():
 	scale = Vector2(size, size)
@@ -24,6 +25,8 @@ func _on_animated_sprite_2d_animation_finished():
 	queue_free()
 
 func _on_area_2d_area_entered(area):
+	if is_vanity:
+		return
 	has_collided.emit(area)
 	if area.is_in_group("Enemies"):
 		area.get_parent()._enemy_stats.take_damage(damage)
