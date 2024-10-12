@@ -26,14 +26,14 @@ func _ready():
 	previous_weapon.weapon_fired.emit(self)
 	global_position = source_pos
 	source_pos = previous_weapon.global_position
+	look_at(global_position + weapon_direction)
 
 func _physics_process(delta):
 	initialize_position()
 	if get_nearest_enemy(null) != null:
-		direction = global_position.direction_to(get_nearest_enemy(null).global_position)
-		last_known_direction = direction
-	else:
-		direction = last_known_direction
+		var rotation_angle = global_position.direction_to(get_nearest_enemy(null).global_position).angle()
+		var new_rot = lerp_angle(rotation, rotation_angle, 7.5 * delta)
+		rotation = new_rot
 	update_position(delta)
 
 func initialize_position():
@@ -42,9 +42,9 @@ func initialize_position():
 		position_initialized = true
 
 func update_position(delta):
-	var current_velocity: Vector2 = direction * speed
+	var current_velocity: Vector2 = transform.x * speed # move in direction it's rotated
 	position += current_velocity * delta
-	look_at(global_position + current_velocity)
+	#look_at(global_position + current_velocity)
 
 func _on_hitbox_area_entered(area):
 	if area.is_in_group("Enemies"):
