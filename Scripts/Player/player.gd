@@ -42,7 +42,6 @@ func _ready():
 		PlayerPassives.starting_passives.clear()
 
 func _physics_process(delta):
-	print(_isMandK)
 	update_timers()
 	weapon_direction = hand.global_position.direction_to(get_global_mouse_position())
 	# check if the mouse is in the inventory and if the inventory is visible to detect if the player can shoot
