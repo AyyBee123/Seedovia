@@ -28,6 +28,9 @@ var has_holding_item := false # this is set in the inventory script to true if t
 var weapon_direction
 var damage_multiplier
 
+# check if the input is from a keyboard or joystick
+var _isMandK := true
+
 func _ready():
 	_player_stats.initialize_base_stats()
 	_player_stats.damaged.connect(took_damage)
@@ -39,6 +42,7 @@ func _ready():
 		PlayerPassives.starting_passives.clear()
 
 func _physics_process(delta):
+	print(_isMandK)
 	update_timers()
 	weapon_direction = hand.global_position.direction_to(get_global_mouse_position())
 	# check if the mouse is in the inventory and if the inventory is visible to detect if the player can shoot
@@ -87,9 +91,10 @@ func set_sprite():
 	hand_sprite.texture = PlayerCharacter.hand_sprite
 
 func move():
-	var input_direction = Input.get_vector("left", "right", "up", "down")
+	# TODO: add a deadzone value taken from the one in options menu (currently 0.15)
+	var input_direction = Input.get_vector("left", "right", "up", "down", 0.15)
 	if input_direction.length() > 0:
-		velocity = velocity.lerp(input_direction.normalized() * _player_stats.get_stat("Speed"),\
+		velocity = velocity.lerp(input_direction * _player_stats.get_stat("Speed"),\
 		_player_stats.get_stat("Acceleration"))
 
 func stop():
@@ -147,3 +152,9 @@ func _should_stop() -> bool:
 
 func _should_dash() -> bool:
 	return Input.is_action_just_pressed("dash") and dash_cooldown.is_stopped()
+
+func _input(event) -> void:
+	if event is InputEventJoypadButton:
+		_isMandK = false
+	elif event is InputEventKey:
+		_isMandK = true
