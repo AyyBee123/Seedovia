@@ -5,6 +5,11 @@ var SAVE_PATH := "user://current_run.res"
 var data := player_data.new()
 var rewards: Array
 static var next_reward: item_pool = null
+var cursor = load("res://Sprites/UI/Cursor.png")
+
+func _ready():
+	# sets the mouse cursor as the cursor sprite
+	Input.set_custom_mouse_cursor(cursor)
 
 func save_data():
 	data.get_sprite()

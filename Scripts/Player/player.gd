@@ -32,6 +32,7 @@ var damage_multiplier
 var _isMandK := true
 
 func _ready():
+	
 	_player_stats.initialize_base_stats()
 	_player_stats.damaged.connect(took_damage)
 	_player_stats.set_health(_player_stats.get_stat("Max_Health"))
