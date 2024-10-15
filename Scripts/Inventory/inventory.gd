@@ -5,8 +5,13 @@ const slot_class = preload("res://Scripts/Inventory/inventory_slot.gd")
 @onready var inventory_slots = $"Inventory Screen/Inventory Slots".get_children()
 @onready var talisman_slots = $"Inventory Screen/Talisman Slots".get_children()
 @onready var seed_slots = $"Inventory Screen/Seed Slots".get_children()
+@onready var selected_slot = $"Selected Slot"
+
 var holding_item = null # the item that is currently being held by the cursor in the inventory
 var drop_delay = Timer.new()
+var _isMandK := true
+# set the default selected slot (for controller inventory navigation)
+var selected_slot_index: int
 
 func _ready():
 	add_child.call_deferred(drop_delay)
@@ -31,6 +36,10 @@ func _ready():
 		talisman_slots[i].slot_index = i
 		talisman_slots[i].slot_type = slot_class.slot_types.TALISMAN
 	
+	# set the initial position and value of the (yellow) selected slot for controller
+	selected_slot.global_position = inventory_slots[0].global_position
+	selected_slot_index = 0
+	
 	inititialize_inventory()
 	inititialize_talisman()
 	inititialize_seeds()
@@ -45,14 +54,19 @@ func _process(delta):
 	else:
 		player.has_holding_item = true
 	# return item to inventory when exiting the inventory UI while holding an item (or drop when inventory is full)
-	if not visible && holding_item != null:
+	if not visible and holding_item != null:
 		PlayerInventory.add_item(holding_item.item, player, self)
 		holding_item.queue_free()
 		holding_item = null
+	if visible:
+		if not _isMandK:
+			selected_slot.visible = true
+		if _isMandK:
+			selected_slot.visible = false
 
 func slot_gui_input(event: InputEvent, slot: slot_class):
 	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT && event.pressed:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			if holding_item != null:
 				if !slot.item: # place holding item into a slot
 					left_click_place_item(slot)
@@ -60,7 +74,7 @@ func slot_gui_input(event: InputEvent, slot: slot_class):
 					left_click_swap_item(event, slot)
 			elif slot.item: # left clicking an item while not currently holding an item
 				left_click_select_item(slot)
-		if event.button_index == MOUSE_BUTTON_RIGHT && event.pressed:
+		if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
 			if holding_item == null:
 				if slot.item:
 					right_click_use_item(slot)
@@ -72,13 +86,22 @@ func _input(event):
 	if holding_item:
 		holding_item.global_position = get_global_mouse_position()
 	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT && event.pressed:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			#drop item if mouse is outside inventory and has a holding item after left mouse click
-			if not player.mouse_in_inventory && holding_item != null:
+			if not player.mouse_in_inventory and holding_item != null:
 				PlayerInventory.drop_item(holding_item.item, player)
 				holding_item.queue_free()
 				holding_item = null
 				drop_delay.start() # delay to prevent shooting while dropping the item to the ground
+	if event is InputEventMouseMotion or event is InputEventMouseButton or event is InputEventKey:
+		_isMandK = true
+	elif event is InputEventJoypadMotion:
+		# only detect left joystick
+		if Input.get_vector("left", "right", "up", "down").length() > 0.15 and\
+		(event.get_axis() == 0 or event.get_axis() == 1):
+			_isMandK = false
+	elif event is InputEventJoypadButton:
+		_isMandK = false
 
 func inititialize_inventory():
 	for i in range(inventory_slots.size()):
