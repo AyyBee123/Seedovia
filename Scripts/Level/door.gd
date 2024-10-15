@@ -5,7 +5,7 @@ var reward
 
 func _physics_process(delta):
 	if transition_scene:
-		change_scene()
+		change_scene.call_deferred()
 
 func _on_enter_radius_body_entered(body):
 	if body.is_in_group("Players"):
