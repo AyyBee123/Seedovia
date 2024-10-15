@@ -12,30 +12,33 @@ var drop_delay = Timer.new()
 var _isMandK := true
 # set the default selected slot (for controller inventory navigation)
 var selected_slot_index: int
+var all_slots: Array
 
 func _ready():
 	add_child.call_deferred(drop_delay)
 	drop_delay.one_shot = true
 	drop_delay.wait_time = 0.1
 	visible = false # make inventory not visible on starting the game
-	# initialize all the inventory slots and their categories
 	# connect each inventory slot with the slot_gui_input function, binding the slot as the unique identifier
 	# gui_input is a built-in signal that is emitted when an input is pressed in the gui
-	for i in range(inventory_slots.size()):
-		inventory_slots[i].gui_input.connect(slot_gui_input.bind(inventory_slots[i]))
-		inventory_slots[i].slot_index = i
-		inventory_slots[i].slot_type = slot_class.slot_types.INVENTORY
 	# initialize all the seed slots and their categories
 	for i in range(seed_slots.size()):
 		seed_slots[i].gui_input.connect(slot_gui_input.bind(seed_slots[i]))
 		seed_slots[i].slot_index = i
 		seed_slots[i].slot_type = slot_class.slot_types.SEED
+		all_slots.append(seed_slots[i])
 	# initialize all the talisman slots
 	for i in range(talisman_slots.size()):
 		talisman_slots[i].gui_input.connect(slot_gui_input.bind(talisman_slots[i]))
 		talisman_slots[i].slot_index = i
 		talisman_slots[i].slot_type = slot_class.slot_types.TALISMAN
-	
+		all_slots.append(talisman_slots[i])
+	# initialize all the inventory slots and their categories
+	for i in range(inventory_slots.size()):
+		inventory_slots[i].gui_input.connect(slot_gui_input.bind(inventory_slots[i]))
+		inventory_slots[i].slot_index = i
+		inventory_slots[i].slot_type = slot_class.slot_types.INVENTORY
+		all_slots.append(inventory_slots[i])
 	# set the initial position and value of the (yellow) selected slot for controller
 	selected_slot.global_position = inventory_slots[0].global_position
 	selected_slot_index = 0
@@ -97,11 +100,26 @@ func _input(event):
 		_isMandK = true
 	elif event is InputEventJoypadMotion:
 		# only detect left joystick
+		# TODO: change deadzone to match options menu value
 		if Input.get_vector("left", "right", "up", "down").length() > 0.15 and\
 		(event.get_axis() == 0 or event.get_axis() == 1):
 			_isMandK = false
 	elif event is InputEventJoypadButton:
 		_isMandK = false
+	if Input.is_action_pressed("inventory left"):
+		selected_slot_index = max(0, selected_slot_index - 1)
+		selected_slot.global_position = all_slots[selected_slot_index].global_position
+	if Input.is_action_pressed("inventory right"):
+		selected_slot_index = min(all_slots.size() - 1, selected_slot_index + 1)
+		selected_slot.global_position = all_slots[selected_slot_index].global_position
+	if Input.is_action_pressed("inventory up"):
+		if selected_slot_index - 4 >= 0:
+			selected_slot_index = max(0, selected_slot_index - 4)
+			selected_slot.global_position = all_slots[selected_slot_index].global_position
+	if Input.is_action_pressed("inventory down"):
+		if selected_slot_index + 4 < all_slots.size():
+			selected_slot_index = min(all_slots.size() - 1, selected_slot_index + 4)
+			selected_slot.global_position = all_slots[selected_slot_index].global_position
 
 func inititialize_inventory():
 	for i in range(inventory_slots.size()):

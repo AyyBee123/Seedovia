@@ -92,7 +92,6 @@ one_shot = true
 one_shot = true
 
 [node name="Inventory" parent="." instance=ExtResource("4_px6lr")]
-visible = false
 z_as_relative = false
 offset_left = -1654.0
 offset_top = -1022.0
