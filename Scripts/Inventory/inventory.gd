@@ -40,8 +40,8 @@ func _ready():
 		inventory_slots[i].slot_type = slot_class.slot_types.INVENTORY
 		all_slots.append(inventory_slots[i])
 	# set the initial position and value of the (yellow) selected slot for controller
-	selected_slot.global_position = inventory_slots[0].global_position
-	selected_slot_index = 0
+	selected_slot.global_position = inventory_slots[7].global_position
+	selected_slot_index = 7
 	
 	inititialize_inventory()
 	inititialize_talisman()
