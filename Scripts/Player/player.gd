@@ -19,20 +19,21 @@ signal has_collided(object)
 @onready var hand_sprite = $"Rotation Point/Marker2D/Hand"
 @onready var inv_anim := $"Invulnerability Animation"
 @onready var player_sprite = $"Player Sprite"
+@onready var weapon_direction_marker = $"Rotation Point/Weapon Direction"
 
 var current_weapon: PackedScene = null
 
 var can_be_damaged := true
 var mouse_in_inventory := false
 var has_holding_item := false # this is set in the inventory script to true if the mouse cursor is holding an item
-var weapon_direction
 var damage_multiplier
+var weapon_direction
 
 # check if the input is from a keyboard or joystick
-var _isMandK := true
+var _isMouse := true
+var _isKeyboard := true
 
 func _ready():
-	
 	_player_stats.initialize_base_stats()
 	_player_stats.damaged.connect(took_damage)
 	_player_stats.set_health(_player_stats.get_stat("Max_Health"))
@@ -44,13 +45,19 @@ func _ready():
 
 func _physics_process(delta):
 	update_timers()
-	weapon_direction = hand.global_position.direction_to(get_global_mouse_position())
+	weapon_direction = hand.global_position.direction_to(weapon_direction_marker.global_position)
 	# check if the mouse is in the inventory and if the inventory is visible to detect if the player can shoot
 	mouse_in_inventory = inventory_screen.get_global_rect().has_point(inventory.get_global_mouse_position())\
 	and inventory.is_visible_in_tree()
 	
-	# make player's hand look at mouse
-	$"Rotation Point".look_at(get_global_mouse_position())
+	var aim_direction = Input.get_vector("aim left", "aim right", "aim up", "aim down", 0.15)
+	
+	if Input.get_last_mouse_velocity() != Vector2.ZERO:
+		# make player's hand look at mouse
+		$"Rotation Point".look_at(get_global_mouse_position())
+	elif not _isMouse:
+		# make the player's hand rotate with the right joystick (by default)
+		$"Rotation Point".rotation = aim_direction.angle()
 	
 	# flip player sprite based of mouse position
 	$"Player Sprite".flip_h = false if get_global_mouse_position().x > global_position.x else true
@@ -120,7 +127,7 @@ func _on_shoot(weapon, location):
 	weapon_instance.initial_weapon = true
 	weapon_instance.slot_index = 0
 	weapon_instance.seed_slot_number = PlayerSeeds.seed_indices[0]
-	weapon_instance.desired_direction = location.direction_to(get_global_mouse_position())
+	weapon_instance.desired_direction = location.direction_to($"Rotation Point/Weapon Direction".global_position)
 	get_tree().current_scene.add_child(weapon_instance)
 	weapon_instance.global_position = location
 	bullets_per_second.start()
@@ -154,7 +161,18 @@ func _should_dash() -> bool:
 	return Input.is_action_just_pressed("dash") and dash_cooldown.is_stopped()
 
 func _input(event) -> void:
+	# detect keyboard and controller buttons to determine if the input is from a keyboard or controller
 	if event is InputEventJoypadButton:
-		_isMandK = false
+		_isKeyboard = false
 	elif event is InputEventKey:
-		_isMandK = true
+		_isKeyboard = true
+	# detect mouse and (right) joystick movement to determine if the input is from a mouse or controller
+	if event is InputEventJoypadMotion:
+		# TODO: add deadzone value from options menu
+		if Input.get_vector("aim left", "aim right", "aim up", "aim down").length() > .15:
+			# detect only the right joystick (2 = x_axis, 3 = y_axis)
+			if event.get_axis() == 2 or event.get_axis() == 3:
+				print(event.get_axis())
+				_isMouse = false
+	elif event is InputEventMouseMotion:
+		_isMouse = true

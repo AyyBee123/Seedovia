@@ -95,7 +95,7 @@ func initialize_position():
 		direction = desired_direction.normalized()
 		position_initialized = true
 		if slot_index == 0:
-			rotation = global_position.angle_to_point(get_global_mouse_position()) + deg_to_rad(90)
+			rotation = global_position.angle_to_point(player.weapon_direction_marker.global_position) + deg_to_rad(90)
 		else:
 			rotation = desired_direction.angle() + deg_to_rad(90)
 		var areas = detect_ruptures.get_overlapping_areas()
@@ -158,7 +158,7 @@ func initialize_location(weapon):
 func update_position(delta):
 	if slot_index == 0:
 		global_position = player.hand.global_position
-		rotation = global_position.angle_to_point(get_global_mouse_position()) + deg_to_rad(90)
+		rotation = global_position.angle_to_point(player.weapon_direction_marker.global_position) + deg_to_rad(90)
 	else:
 		if previous_weapon != null:
 			global_position = previous_weapon.global_position
@@ -169,11 +169,10 @@ func update_position(delta):
 				lifetime_started = true
 
 func _input(event):
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
-				mouse_left_down = true
-		elif event.button_index == MOUSE_BUTTON_LEFT and not event.is_pressed():
-				mouse_left_down = false
+	if Input.is_action_just_pressed("shoot") and event.is_pressed():
+			mouse_left_down = true
+	elif Input.is_action_just_released("shoot") and not event.is_pressed():
+			mouse_left_down = false
 
 func shrink(shrink_speed_mult):
 	bottom.scale.x -= get_process_delta_time() * shrink_speed_mult

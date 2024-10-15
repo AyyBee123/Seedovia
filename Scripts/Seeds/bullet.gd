@@ -16,11 +16,9 @@ func _collide(body):
 func initialize_position():
 	if not position_initialized:
 		starting_position = global_position
-		if slot_index == 0:
-			direction = global_position.direction_to(get_global_mouse_position())
-		else:
+		direction = desired_direction
+		if slot_index != 0:
 			var nearest_enemy = get_nearest_enemy(hit_enemy)
-			direction = desired_direction
 		position_initialized = true
 		ignore_first_collision = false
 	

@@ -25,7 +25,7 @@ func initialize_position():
 		starting_position = global_position
 		if slot_index == 0: # if shot by the player
 			swing_direction = !swing_direction
-			rotation = global_position.angle_to_point(get_global_mouse_position()) + deg_to_rad(90)
+			rotation = global_position.angle_to_point(player.weapon_direction_marker.global_position) + deg_to_rad(90)
 			lifetime.start(player.bullets_per_second.wait_time)
 		else: # if shot by a seed
 			swing_direction == true
@@ -47,7 +47,7 @@ func _collide(body):
 func update_position(delta):
 	if slot_index == 0:
 		global_position = player.hand.global_position
-		rotation = global_position.angle_to_point(get_global_mouse_position()) + deg_to_rad(90)
+		rotation = global_position.angle_to_point(player.weapon_direction_marker.global_position) + deg_to_rad(90)
 	else:
 		if previous_weapon != null:
 			global_position = previous_weapon.global_position
