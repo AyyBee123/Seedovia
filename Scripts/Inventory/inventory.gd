@@ -40,7 +40,7 @@ func _ready():
 		inventory_slots[i].slot_type = slot_class.slot_types.INVENTORY
 		all_slots.append(inventory_slots[i])
 	# set the initial position and value of the (yellow) selected slot for controller
-	selected_slot.global_position = inventory_slots[7].global_position
+	selected_slot.global_position = all_slots[7].global_position
 	selected_slot_index = 7
 	
 	inititialize_inventory()
@@ -106,17 +106,17 @@ func _input(event):
 			_isMandK = false
 	elif event is InputEventJoypadButton:
 		_isMandK = false
-	if Input.is_action_pressed("inventory left"):
+	if Input.is_action_just_pressed("inventory left"):
 		selected_slot_index = max(0, selected_slot_index - 1)
 		selected_slot.global_position = all_slots[selected_slot_index].global_position
-	if Input.is_action_pressed("inventory right"):
+	if Input.is_action_just_pressed("inventory right"):
 		selected_slot_index = min(all_slots.size() - 1, selected_slot_index + 1)
 		selected_slot.global_position = all_slots[selected_slot_index].global_position
-	if Input.is_action_pressed("inventory up"):
-		if selected_slot_index - 4 >= 0:
+	if Input.is_action_just_pressed("inventory up"):
+		if selected_slot_index - 4 >= 0 or selected_slot_index == 3:
 			selected_slot_index = max(0, selected_slot_index - 4)
 			selected_slot.global_position = all_slots[selected_slot_index].global_position
-	if Input.is_action_pressed("inventory down"):
+	if Input.is_action_just_pressed("inventory down"):
 		if selected_slot_index + 4 < all_slots.size():
 			selected_slot_index = min(all_slots.size() - 1, selected_slot_index + 4)
 			selected_slot.global_position = all_slots[selected_slot_index].global_position
