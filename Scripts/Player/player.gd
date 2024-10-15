@@ -20,6 +20,7 @@ signal has_collided(object)
 @onready var inv_anim := $"Invulnerability Animation"
 @onready var player_sprite = $"Player Sprite"
 @onready var weapon_direction_marker = $"Rotation Point/Weapon Direction"
+@onready var controller_cursor = $"Rotation Point/Weapon Direction/Cursor"
 
 var current_weapon: PackedScene = null
 
@@ -34,6 +35,7 @@ var _isMouse := true
 var _isKeyboard := true
 
 func _ready():
+	controller_cursor.visible = false
 	_player_stats.initialize_base_stats()
 	_player_stats.damaged.connect(took_damage)
 	_player_stats.set_health(_player_stats.get_stat("Max_Health"))
@@ -50,17 +52,29 @@ func _physics_process(delta):
 	mouse_in_inventory = inventory_screen.get_global_rect().has_point(inventory.get_global_mouse_position())\
 	and inventory.is_visible_in_tree()
 	
+	# aiming direction (right joystick by default)
+	# TODO: change 0.15 to deadzone value from options menu
 	var aim_direction = Input.get_vector("aim left", "aim right", "aim up", "aim down", 0.15)
 	
 	if Input.get_last_mouse_velocity() != Vector2.ZERO:
 		# make player's hand look at mouse
 		$"Rotation Point".look_at(get_global_mouse_position())
+		# make mouse cursor visible
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		# hide the controller cusror
+		controller_cursor.visible = false
 	elif not _isMouse:
 		# make the player's hand rotate with the right joystick (by default)
 		$"Rotation Point".rotation = aim_direction.angle()
+		# hide mouse cursor
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+		# make the controller cursor visible
+		controller_cursor.visible = true
+		# offset the rotation of the curser against the hand rotation
+		controller_cursor.rotation = -aim_direction.angle()
 	
-	# flip player sprite based of mouse position
-	$"Player Sprite".flip_h = false if get_global_mouse_position().x > global_position.x else true
+	# flip player sprite based on the hand's angle
+	$"Player Sprite".flip_h = true if cos($"Rotation Point".rotation) < 0 else false
 	
 	# shoot bullet
 	if Input.is_action_pressed("shoot") and bullets_per_second.is_stopped() and not mouse_in_inventory\
@@ -172,7 +186,6 @@ func _input(event) -> void:
 		if Input.get_vector("aim left", "aim right", "aim up", "aim down").length() > .15:
 			# detect only the right joystick (2 = x_axis, 3 = y_axis)
 			if event.get_axis() == 2 or event.get_axis() == 3:
-				print(event.get_axis())
 				_isMouse = false
 	elif event is InputEventMouseMotion:
 		_isMouse = true
