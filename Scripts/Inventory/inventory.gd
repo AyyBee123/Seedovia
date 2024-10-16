@@ -13,6 +13,8 @@ var _isMandK := true
 # set the default selected slot (for controller inventory navigation)
 var selected_slot_index: int
 var all_slots: Array
+# get the current index the controller navigation box is in to add a popup there (if there is an item in that slot)
+var current_index_popup: int
 
 func _ready():
 	add_child.call_deferred(drop_delay)
@@ -42,6 +44,7 @@ func _ready():
 	# set the initial position and value of the (yellow) selected slot for controller
 	selected_slot.global_position = all_slots[7].global_position
 	selected_slot_index = 7
+	current_index_popup = selected_slot_index
 	
 	inititialize_inventory()
 	inititialize_talisman()
@@ -66,6 +69,8 @@ func _process(delta):
 			selected_slot.visible = true
 		if _isMandK:
 			selected_slot.visible = false
+	if all_slots[selected_slot_index].item and all_slots[selected_slot_index].popup == null:
+		all_slots[selected_slot_index].add_popup(all_slots[selected_slot_index].item)
 
 func slot_gui_input(event: InputEvent, slot: slot_class):
 	if event is InputEventMouseButton:
@@ -81,13 +86,39 @@ func slot_gui_input(event: InputEvent, slot: slot_class):
 			if holding_item == null:
 				if slot.item:
 					right_click_use_item(slot)
+	if event is InputEventJoypadButton:
+		# TODO: match buttons to configured ones in options
+		if event.button_index == JOY_BUTTON_A and event.pressed:
+			if holding_item != null:
+				if !slot.item: # place holding item into a slot
+					left_click_place_item(slot)
+				else: # swap holding item with item in slot
+					left_click_swap_item(event, slot)
+			elif slot.item: # left clicking an item while not currently holding an item
+				left_click_select_item(slot)
+		if event.button_index == JOY_BUTTON_X and event.pressed:
+			if holding_item == null:
+				if slot.item:
+					right_click_use_item(slot)
+		if event.button_index == JOY_BUTTON_B and event.pressed:
+			if slot.item == null:
+				return
+			PlayerInventory.drop_item(slot.item.item, player)
+			slot.item.queue_free()
+			slot.item = null
+			PlayerInventory.remove_item(slot)
+			slot.remove_popup()
 
 func _input(event):
 	inititialize_inventory()
 	inititialize_talisman()
 	inititialize_seeds()
 	if holding_item:
-		holding_item.global_position = get_global_mouse_position()
+		if _isMandK:
+			holding_item.global_position = get_global_mouse_position()
+		else:
+			holding_item.global_position = selected_slot.global_position +\
+			Vector2(selected_slot.size.x * 2, selected_slot.size.y * 1.5)
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			#drop item if mouse is outside inventory and has a holding item after left mouse click
@@ -106,20 +137,42 @@ func _input(event):
 			_isMandK = false
 	elif event is InputEventJoypadButton:
 		_isMandK = false
+	# setup the controller navigation for the inventory
 	if Input.is_action_just_pressed("inventory left"):
 		selected_slot_index = max(0, selected_slot_index - 1)
 		selected_slot.global_position = all_slots[selected_slot_index].global_position
+		joystick_item_popup(selected_slot_index)
 	if Input.is_action_just_pressed("inventory right"):
 		selected_slot_index = min(all_slots.size() - 1, selected_slot_index + 1)
 		selected_slot.global_position = all_slots[selected_slot_index].global_position
+		joystick_item_popup(selected_slot_index)
 	if Input.is_action_just_pressed("inventory up"):
 		if selected_slot_index - 4 >= 0 or selected_slot_index == 3:
 			selected_slot_index = max(0, selected_slot_index - 4)
 			selected_slot.global_position = all_slots[selected_slot_index].global_position
+			joystick_item_popup(selected_slot_index)
 	if Input.is_action_just_pressed("inventory down"):
 		if selected_slot_index + 4 < all_slots.size():
 			selected_slot_index = min(all_slots.size() - 1, selected_slot_index + 4)
 			selected_slot.global_position = all_slots[selected_slot_index].global_position
+			joystick_item_popup(selected_slot_index)
+	# adding an inventory select button to grab a slot item or slot a holding item
+	if Input.is_action_just_pressed("inventory select"):
+		var ev = InputEventJoypadButton.new()
+		ev.button_index = JOY_BUTTON_A
+		ev.pressed = true
+		slot_gui_input(ev, all_slots[selected_slot_index])
+	# adding a use/equip button
+	if Input.is_action_just_pressed("inventory use"):
+		var ev = InputEventJoypadButton.new()
+		ev.button_index = JOY_BUTTON_X
+		ev.pressed = true
+		slot_gui_input(ev, all_slots[selected_slot_index])
+	if Input.is_action_just_pressed("inventory drop"):
+		var ev = InputEventJoypadButton.new()
+		ev.button_index = JOY_BUTTON_B
+		ev.pressed = true
+		slot_gui_input(ev, all_slots[selected_slot_index])
 
 func inititialize_inventory():
 	for i in range(inventory_slots.size()):
@@ -163,7 +216,10 @@ func left_click_swap_item(event: InputEvent, slot: slot_class): # swap holding i
 		PlayerInventory.add_item_to_empty_slot(holding_item, slot)
 		var temp_item = slot.item
 		slot.pick_from_slot()
-		temp_item.global_position = event.global_position
+		if _isMandK:
+			temp_item.global_position = event.global_position
+		else:
+			temp_item.global_position = selected_slot.global_position
 		slot.put_into_slot(holding_item)
 		holding_item = temp_item
 
@@ -172,9 +228,16 @@ func left_click_select_item(slot: slot_class): # left clicking an item while not
 	holding_item = slot.item
 	slot.pick_from_slot()
 	slot.remove_popup()
-	holding_item.global_position = get_global_mouse_position()
+	if holding_item:
+		if _isMandK:
+			holding_item.global_position = get_global_mouse_position()
+		else:
+			holding_item.global_position = selected_slot.global_position +\
+			Vector2(selected_slot.size.x * 2, selected_slot.size.y * 1.5)
 
 func right_click_use_item(slot: slot_class):
+	if slot.item == null:
+			return
 	if slot.slot_type == slot_class.slot_types.INVENTORY:
 		match slot.item.item.category:
 			"CONSUMABLE":
@@ -220,3 +283,13 @@ func right_click_swap_item(selected_slot: slot_class, desired_slot: slot_class):
 
 func get_number_of_slots():
 	return inventory_slots.size()
+
+func joystick_item_popup(slot_index: int):
+	if current_index_popup != slot_index:
+		# removes current popup when the navigation box moves to a different slot
+		if all_slots[current_index_popup].popup:
+			all_slots[current_index_popup].remove_popup()
+		# adds a new popup in the current slot the navigation box is in (if there is and item and no holding item)
+		if all_slots[slot_index].item and holding_item == null:
+			all_slots[slot_index].add_popup(all_slots[slot_index].item)
+	current_index_popup = slot_index

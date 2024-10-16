@@ -72,6 +72,8 @@ func _on_mouse_exited():
 	remove_popup()
 
 func add_popup(item):
+	if popup != null:
+		return
 	popup = item_popup.instantiate()
 	popup.item_name = item.item.item_name
 	popup.type = item.item.category

@@ -9,6 +9,11 @@ func _physics_process(delta):
 
 func _on_enter_radius_body_entered(body):
 	if body.is_in_group("Players"):
+		# prevents held item from being deleted when moving to a new room
+		if body.get_node("Inventory").holding_item:
+			PlayerInventory.add_item(body.get_node("Inventory").holding_item.item, body, self)
+			body.get_node("Inventory").holding_item.queue_free()
+			body.get_node("Inventory").holding_item = null
 		transition_scene = true
 
 func _on_enter_radius_body_exited(body):
@@ -17,7 +22,7 @@ func _on_enter_radius_body_exited(body):
 
 func change_scene():
 	Global.next_reward = reward
-	LevelList.change_room()
+	LevelList.change_room.call_deferred()
 
 func set_reward(reward_text: String = ""):
 	if reward_text != "":

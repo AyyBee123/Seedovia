@@ -66,8 +66,9 @@ func _physics_process(delta):
 	elif not _isMouse:
 		# make the player's hand rotate with the right joystick (by default)
 		$"Rotation Point".rotation = aim_direction.angle()
-		# hide mouse cursor
+		# hide mouse cursor and place it in the middle of the screen
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+		Input.warp_mouse(Vector2(get_viewport_rect().size.x / 2, get_viewport_rect().size.y / 2))
 		# make the controller cursor visible
 		controller_cursor.visible = true
 		# offset the rotation of the curser against the hand rotation
