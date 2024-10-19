@@ -7,7 +7,7 @@ func _ready():
 	add_state("jump")
 	add_state("idle_from_jump")
 	add_state("shoot")
-	call_deferred("set_state", states.jump)
+	set_state.call_deferred(states.jump)
 	create_timer()
 
 func _state_logic(delta):

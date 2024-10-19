@@ -69,8 +69,12 @@ func _process(delta):
 			selected_slot.visible = true
 		if _isMandK:
 			selected_slot.visible = false
-	if all_slots[selected_slot_index].item and all_slots[selected_slot_index].popup == null:
-		all_slots[selected_slot_index].add_popup(all_slots[selected_slot_index].item)
+	if all_slots[selected_slot_index].item and all_slots[selected_slot_index].popup == null and not _isMandK:
+		all_slots[selected_slot_index].add_popup(all_slots[selected_slot_index].item, "Joystick")
+	elif all_slots[selected_slot_index].item and all_slots[selected_slot_index].popup != null and _isMandK and\
+	all_slots[selected_slot_index].popup.source != "Mouse":
+		all_slots[selected_slot_index].remove_popup()
+		
 
 func slot_gui_input(event: InputEvent, slot: slot_class):
 	if event is InputEventMouseButton:
@@ -91,7 +95,7 @@ func slot_gui_input(event: InputEvent, slot: slot_class):
 		if event.button_index == JOY_BUTTON_A and event.pressed:
 			if holding_item != null:
 				if !slot.item: # place holding item into a slot
-					left_click_place_item(slot)
+					left_click_place_item(slot, "Joystick")
 				else: # swap holding item with item in slot
 					left_click_swap_item(event, slot)
 			elif slot.item: # left clicking an item while not currently holding an item
@@ -203,11 +207,11 @@ func able_to_put_into_slot(slot: slot_class) -> bool:
 	else: # if the category is INVENTORY (since inventory can fit anything, it will return true)
 		return true
 
-func left_click_place_item(slot: slot_class): # place holding item into a slot
+func left_click_place_item(slot: slot_class, source = "Mouse"): # place holding item into a slot
 	if able_to_put_into_slot(slot):
 		PlayerInventory.add_item_to_empty_slot(holding_item, slot)
 		slot.put_into_slot(holding_item)
-		slot.add_popup(holding_item)
+		slot.add_popup(holding_item, source)
 		holding_item = null
 
 func left_click_swap_item(event: InputEvent, slot: slot_class): # swap holding item with item in selected slot
@@ -291,5 +295,5 @@ func joystick_item_popup(slot_index: int):
 			all_slots[current_index_popup].remove_popup()
 		# adds a new popup in the current slot the navigation box is in (if there is and item and no holding item)
 		if all_slots[slot_index].item and holding_item == null:
-			all_slots[slot_index].add_popup(all_slots[slot_index].item)
+			all_slots[slot_index].add_popup(all_slots[slot_index].item, "Joystick")
 	current_index_popup = slot_index

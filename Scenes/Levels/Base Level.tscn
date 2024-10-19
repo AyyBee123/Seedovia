@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cxoiy0x4nvtaa"]
+[gd_scene load_steps=18 format=3 uid="uid://cxoiy0x4nvtaa"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_5cm3y"]
 [ext_resource type="Texture2D" uid="uid://cvgvhjvhndf2x" path="res://Sprites/Wall/Floor 1 Corner.png" id="2_1m20m"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://civnfvhref4lg" path="res://Scenes/Stats/Player Health.tscn" id="5_ohi5w"]
 [ext_resource type="PackedScene" uid="uid://b3ibupvqneqor" path="res://Scenes/Items/Item.tscn" id="6_xrc8y"]
 [ext_resource type="PackedScene" uid="uid://d1x7xscaoh6wq" path="res://Scenes/UI/Pause Menu.tscn" id="8_v8rxb"]
+[ext_resource type="Texture2D" uid="uid://by5wdeyn2ww8v" path="res://Sprites/Ground/Shading.png" id="12_5umvb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d5ujs"]
 resource_name = "Floor 1 Wall Corner"
@@ -88,3 +89,6 @@ offset_bottom = -489.0
 
 [node name="ResourcePreloader" type="ResourcePreloader" parent="."]
 resources = [PackedStringArray("Door", "Item", "Pause Menu"), [ExtResource("4_5a3ht"), ExtResource("6_xrc8y"), ExtResource("8_v8rxb")]]
+
+[node name="Shading" type="Sprite2D" parent="."]
+texture = ExtResource("12_5umvb")

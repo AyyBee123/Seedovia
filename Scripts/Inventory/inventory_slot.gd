@@ -71,7 +71,7 @@ func _on_mouse_entered():
 func _on_mouse_exited():
 	remove_popup()
 
-func add_popup(item):
+func add_popup(item, source = "Mouse"):
 	if popup != null:
 		return
 	popup = item_popup.instantiate()
@@ -80,6 +80,7 @@ func add_popup(item):
 	popup.description = item.item.description
 	popup.rarity = item.item.rarity
 	popup.inventory = inventory
+	popup.source = source
 	add_child.call_deferred(popup)
 
 func remove_popup():

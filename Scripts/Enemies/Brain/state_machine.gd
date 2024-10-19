@@ -3,7 +3,7 @@ extends "res://Scripts/State/state_machine.gd"
 func _ready():
 	add_state("down")
 	add_state("forward")
-	call_deferred("set_state", states.down)
+	set_state.call_deferred(states.down)
 
 func _state_logic(delta):
 	parent.move_and_slide()

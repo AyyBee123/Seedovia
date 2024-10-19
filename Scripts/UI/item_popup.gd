@@ -5,6 +5,7 @@ var type
 var description
 var rarity
 var inventory
+var source
 
 func _ready():
 	%Name.text = item_name

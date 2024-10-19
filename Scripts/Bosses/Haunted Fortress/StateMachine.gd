@@ -9,8 +9,7 @@ func _ready():
 	add_state("laser")
 	add_state("ghosts")
 	add_state("suck")
-	call_deferred("set_state", states.idle)
-	#parent.animation_done.connect(animation_finished)
+	set_state.call_deferred(states.idle)
 	random_attack = randi_range(0, states.size() - 2) # -2 because it ignores the idle state
 
 func _state_logic(delta):

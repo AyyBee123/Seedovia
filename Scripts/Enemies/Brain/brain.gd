@@ -25,7 +25,7 @@ func move_down():
 
 func move_forward():
 	forward_direction = global_position.direction_to(forward_direction_point.global_position).normalized()
-	velocity = velocity.lerp(forward_direction.normalized() * _enemy_stats.speed * direction, _enemy_stats.acceleration)
+	velocity = velocity.lerp(forward_direction * _enemy_stats.speed * direction, _enemy_stats.acceleration)
 	shoot()
 
 func _on_floor_detect_body_entered(body):
