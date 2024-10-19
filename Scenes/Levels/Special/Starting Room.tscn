@@ -1,11 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://bo2oq75pfugsl"]
+[gd_scene load_steps=3 format=3 uid="uid://bo2oq75pfugsl"]
 
 [ext_resource type="PackedScene" uid="uid://cxoiy0x4nvtaa" path="res://Scenes/Levels/Base Level.tscn" id="1_ao5jt"]
 [ext_resource type="PackedScene" uid="uid://bagmkum7q0yxi" path="res://Scenes/Enemies/Dummy.tscn" id="2_o43ij"]
-[ext_resource type="PackedScene" uid="uid://dro5juqd1bdju" path="res://Scenes/Enemies/Log Vertical.tscn" id="3_hsxlq"]
-[ext_resource type="PackedScene" uid="uid://b16cgf7hnwo6q" path="res://Scenes/Enemies/Log Flipped.tscn" id="4_m1wkk"]
-[ext_resource type="PackedScene" uid="uid://26iqs3vqaiqq" path="res://Scenes/Enemies/Log Vertical Flipped.tscn" id="5_80yde"]
-[ext_resource type="Resource" uid="uid://b4cou6pw7ljam" path="res://Resources/Enemies/log.tres" id="6_v3k73"]
 
 [node name="Level" instance=ExtResource("1_ao5jt")]
 
@@ -14,13 +10,3 @@ layer_0/tile_data = PackedInt32Array(-196615, 0, 0, -196616, 1, 0, -131080, 1, 0
 
 [node name="Dummy" parent="." index="4" instance=ExtResource("2_o43ij")]
 position = Vector2(-558, -189)
-
-[node name="Log" parent="." index="8" instance=ExtResource("3_hsxlq")]
-position = Vector2(491, 341)
-
-[node name="Log2" parent="." index="9" instance=ExtResource("4_m1wkk")]
-position = Vector2(-725, 183)
-
-[node name="Log3" parent="." index="10" instance=ExtResource("5_80yde")]
-position = Vector2(-360, -338)
-_enemy_stats = ExtResource("6_v3k73")
