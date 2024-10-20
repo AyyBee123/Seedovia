@@ -30,4 +30,5 @@ func _get_transition(delta):
 
 func create_timer():
 	add_child(timer)
+	timer.start(1)
 	timer.one_shot = true

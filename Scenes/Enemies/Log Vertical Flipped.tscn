@@ -46,7 +46,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gs4ms"]
-size = Vector2(22, 42)
+size = Vector2(24, 41.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o6iww"]
 size = Vector2(41.5, 13)
@@ -72,6 +72,8 @@ sprite_frames = SubResource("SpriteFrames_kbkut")
 frame_progress = 0.988177
 
 [node name="CollisionPolygon2D" parent="Enemy Hitbox" index="0"]
+position = Vector2(-0.75, 0)
+rotation = 1.5708
 shape = SubResource("RectangleShape2D_gs4ms")
 
 [node name="Left Detect" type="Area2D" parent="." index="6"]

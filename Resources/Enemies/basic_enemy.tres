@@ -5,12 +5,12 @@
 [resource]
 resource_local_to_scene = true
 script = ExtResource("1_btrs1")
-max_health = 50.0
-speed = 30.0
+max_health = 75.0
+speed = 100.0
 fire_rate = 1.0
 damage = 1.0
-acceleration = 0.25
-friction = 0.1
+acceleration = 1.0
+friction = 1.0
 weapon_damage = 0.0
 weapon_range = 0.0
 weapon_speed = 0.0
