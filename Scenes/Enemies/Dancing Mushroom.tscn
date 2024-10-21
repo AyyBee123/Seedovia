@@ -1,0 +1,78 @@
+[gd_scene load_steps=12 format=3 uid="uid://dooq0rslv0rx2"]
+
+[ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_coamf"]
+[ext_resource type="Script" path="res://Scripts/Enemies/Dancing Mushroom/dancing_mushroom.gd" id="2_b3uvu"]
+[ext_resource type="Texture2D" uid="uid://bshbm57byg5b7" path="res://Sprites/Enemies/Dancing Mushroom.png" id="3_7mp23"]
+[ext_resource type="Resource" uid="uid://bo8iuhgw3pdsv" path="res://Resources/Enemies/dancing_mushroom.tres" id="3_16o0v"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4j50s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l3js0"]
+atlas = ExtResource("3_7mp23")
+region = Rect2(0, 0, 26, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l17o5"]
+atlas = ExtResource("3_7mp23")
+region = Rect2(26, 0, 26, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vgk63"]
+atlas = ExtResource("3_7mp23")
+region = Rect2(52, 0, 26, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_un3ix"]
+atlas = ExtResource("3_7mp23")
+region = Rect2(78, 0, 26, 26)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iq6fl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l3js0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l17o5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vgk63")
+}, {
+"duration": 0.3,
+"texture": SubResource("AtlasTexture_l17o5")
+}, {
+"duration": 0.2,
+"texture": SubResource("AtlasTexture_l3js0")
+}, {
+"duration": 1.2,
+"texture": SubResource("AtlasTexture_un3ix")
+}],
+"loop": true,
+"name": &"default",
+"speed": 9.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l2eii"]
+
+[node name="Dancing Mushroom" instance=ExtResource("1_coamf")]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("2_b3uvu")
+_enemy_stats = ExtResource("3_16o0v")
+
+[node name="CollisionPolygon2D" parent="." index="0"]
+shape = SubResource("CircleShape2D_4j50s")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+position = Vector2(0, -10)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_iq6fl")
+autoplay = "default"
+frame_progress = 0.424446
+
+[node name="CollisionPolygon2D" parent="Enemy Hitbox" index="0"]
+shape = SubResource("CircleShape2D_l2eii")
+
+[node name="Health Bar" parent="." index="3"]
+offset_top = -41.0
+offset_bottom = -33.0
+
+[node name="ResourcePreloader" type="ResourcePreloader" parent="." index="6"]
+
+[connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_looped"]
