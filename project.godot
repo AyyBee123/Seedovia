@@ -184,6 +184,7 @@ esc={
 2d_physics/layer_7="Door"
 2d_physics/layer_8="Player Interact"
 2d_physics/layer_9="Rupture"
+2d_physics/layer_10="Obstacle"
 2d_physics/canvas_textures/default_texture_filter=1
 
 [physics]

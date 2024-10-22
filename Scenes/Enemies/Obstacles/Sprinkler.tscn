@@ -1,0 +1,81 @@
+[gd_scene load_steps=12 format=3 uid="uid://b53gwu0jwjurc"]
+
+[ext_resource type="PackedScene" uid="uid://b4qv2oi4vbgws" path="res://Scenes/Enemies/Obstacles/Obstacle.tscn" id="1_hf0cm"]
+[ext_resource type="Script" path="res://Scripts/Enemies/Obstacles/sprinkler.gd" id="2_2c8ty"]
+[ext_resource type="Texture2D" uid="uid://db3dy8ki2107b" path="res://Sprites/Enemies/Sprinkler.png" id="2_isdkg"]
+[ext_resource type="Resource" uid="uid://bjs3fi8dutaga" path="res://Resources/Enemies/Obstacles/sprinkler.tres" id="3_iw5qt"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1a1e6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ep53j"]
+atlas = ExtResource("2_isdkg")
+region = Rect2(0, 0, 28, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s11hv"]
+atlas = ExtResource("2_isdkg")
+region = Rect2(28, 0, 28, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pfgs1"]
+atlas = ExtResource("2_isdkg")
+region = Rect2(56, 0, 28, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_osltd"]
+atlas = ExtResource("2_isdkg")
+region = Rect2(84, 0, 28, 28)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r1ei5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ep53j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s11hv")
+}, {
+"duration": 0.9,
+"texture": SubResource("AtlasTexture_pfgs1")
+}, {
+"duration": 0.8,
+"texture": SubResource("AtlasTexture_osltd")
+}, {
+"duration": 0.2,
+"texture": SubResource("AtlasTexture_pfgs1")
+}, {
+"duration": 0.4,
+"texture": SubResource("AtlasTexture_s11hv")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_spcjj"]
+
+[node name="Sprinkler" instance=ExtResource("1_hf0cm")]
+script = ExtResource("2_2c8ty")
+_enemy_stats = ExtResource("3_iw5qt")
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource("CapsuleShape2D_1a1e6")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+position = Vector2(0, -14)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_r1ei5")
+frame = 5
+frame_progress = 1.0
+
+[node name="Hitbox" parent="." index="2" groups=["Obstacle"]]
+collision_mask = 2
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource("CapsuleShape2D_spcjj")
+
+[node name="Fire Rate" type="Timer" parent="." index="4"]
+one_shot = true
+
+[node name="Bullet Spawn Point" type="Marker2D" parent="." index="5"]
+position = Vector2(0, -16)
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]

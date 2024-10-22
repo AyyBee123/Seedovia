@@ -21,7 +21,7 @@ func _ready():
 	_enemy_stats.spawn_damage_number.connect(spawn_damage_number)
 
 func _physics_process(delta):
-	if is_in_area and damage_buffer.is_stopped():
+	if is_in_area and damage_buffer.is_stopped() and _enemy_stats.damage > 0:
 		player._player_stats.take_damage(_enemy_stats)
 		damage_buffer.start()
 

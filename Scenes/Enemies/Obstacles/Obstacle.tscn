@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4qv2oi4vbgws"]
+
+[ext_resource type="Script" path="res://Scripts/Enemies/Obstacles/obstacle.gd" id="1_hnu15"]
+
+[node name="Obstacle" type="CharacterBody2D" groups=["Obstacles"]]
+collision_layer = 512
+collision_mask = 9
+script = ExtResource("1_hnu15")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+
+[node name="Damage Buffer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_exited" from="Hitbox" to="." method="_on_hitbox_body_exited"]
