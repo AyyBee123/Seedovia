@@ -64,7 +64,6 @@ position = Vector2(0, -10)
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_iq6fl")
 autoplay = "default"
-frame_progress = 0.424446
 
 [node name="CollisionPolygon2D" parent="Enemy Hitbox" index="0"]
 shape = SubResource("CircleShape2D_l2eii")
