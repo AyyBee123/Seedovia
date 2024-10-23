@@ -54,7 +54,9 @@ func _on_animated_sprite_2d_frame_changed():
 		if $AnimatedSprite2D.frame > 43:
 			_enemy_stats.damage = 0
 		elif $AnimatedSprite2D.frame >= 20:
-			pass
+			_enemy_stats.damage = 1
+			var player_direction = player.global_position.direction_to($Marker2D.global_position)
+			player.global_position += player_direction.normalized() * 12
 		elif $AnimatedSprite2D.frame >= 3:
 			_enemy_stats.damage = 1
 			var player_direction = player.global_position.direction_to($Marker2D.global_position)
