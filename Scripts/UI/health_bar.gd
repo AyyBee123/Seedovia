@@ -28,4 +28,5 @@ func init_health(_health):
 
 func _on_white_bar_delay_timeout():
 	var tween = get_tree().create_tween()
-	tween.tween_property(self, "value", health, rate).set_ease(1) # move the white bar to the current (red) health value
+	# move the white bar to the current (red) health value
+	tween.tween_property(self, "value", health, rate).set_ease(1)
