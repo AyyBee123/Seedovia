@@ -2,7 +2,7 @@ extends "res://Scripts/Enemies/enemy.gd"
 
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var resource_preloader = $ResourcePreloader
-var bullet = preload("res://Scenes/Enemies/Weapons/Mushroom Bullet.tscn")
+var bullet = preload("res://Scenes/Enemies/Weapons/Spore.tscn")
 
 func _on_animated_sprite_2d_animation_looped():
 	shoot_bullet()
