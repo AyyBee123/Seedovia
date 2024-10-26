@@ -10,6 +10,7 @@ func _ready():
 	add_state("ghosts")
 	add_state("suck")
 	set_state.call_deferred(states.idle)
+	# the random attacks are set up in the get_transition function
 	random_attack = randi_range(0, states.size() - 2) # -2 because it ignores the idle state
 
 func _state_logic(delta):
