@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://bfapejv6ymqws"]
+
+[ext_resource type="Script" path="res://Scripts/Bosses/boss.gd" id="1_ebo0a"]
+[ext_resource type="Script" path="res://Scripts/State/state_machine.gd" id="2_pfkmx"]
+[ext_resource type="PackedScene" uid="uid://bfpmq41k18tdi" path="res://Scenes/Passives/Effects/Burn Stacks.tscn" id="8_em7tw"]
+[ext_resource type="PackedScene" uid="uid://bvxrqp86pvpry" path="res://Scenes/UI/Boss Health Bar.tscn" id="9_u1pa0"]
+
+[node name="Boss" type="CharacterBody2D" groups=["Boss", "Enemy"]]
+z_index = 1
+scale = Vector2(3, 3)
+collision_layer = 0
+script = ExtResource("1_ebo0a")
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("2_pfkmx")
+
+[node name="CollisionPolygon2D" type="CollisionShape2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+
+[node name="Enemy Hitbox" type="Area2D" parent="." groups=["Enemies"]]
+collision_layer = 4
+collision_mask = 10
+
+[node name="CollisionPolygon2D" type="CollisionShape2D" parent="Enemy Hitbox"]
+
+[node name="Burn Stacks" parent="." instance=ExtResource("8_em7tw")]
+
+[node name="Damage Buffer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="Boss Health" parent="." instance=ExtResource("9_u1pa0")]
+
+[node name="ResourcePreloader" type="ResourcePreloader" parent="."]
+
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
+[connection signal="body_entered" from="Enemy Hitbox" to="." method="_on_enemy_hitbox_body_entered"]
+[connection signal="body_exited" from="Enemy Hitbox" to="." method="_on_enemy_hitbox_body_exited"]
