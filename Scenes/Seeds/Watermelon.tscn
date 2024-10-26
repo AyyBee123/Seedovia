@@ -52,7 +52,7 @@ sprite_frames = SubResource("SpriteFrames_3biqj")
 frame_progress = 0.332163
 
 [node name="Down" type="ShapeCast2D" parent="."]
-scale = Vector2(0.75, 0.75)
+scale = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_y1p5x")
 exclude_parent = false
 target_position = Vector2(0, 30)
@@ -61,7 +61,7 @@ collide_with_areas = true
 
 [node name="Up" type="ShapeCast2D" parent="."]
 rotation = -3.14159
-scale = Vector2(0.75, 0.75)
+scale = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_y1p5x")
 exclude_parent = false
 target_position = Vector2(0, 30)
@@ -70,7 +70,7 @@ collide_with_areas = true
 
 [node name="Left" type="ShapeCast2D" parent="."]
 rotation = 1.5708
-scale = Vector2(0.75, 0.75)
+scale = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_y1p5x")
 exclude_parent = false
 target_position = Vector2(0, 30)
@@ -79,7 +79,7 @@ collide_with_areas = true
 
 [node name="Right" type="ShapeCast2D" parent="."]
 rotation = -1.5708
-scale = Vector2(0.75, 0.75)
+scale = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_y1p5x")
 exclude_parent = false
 target_position = Vector2(0, 30)
