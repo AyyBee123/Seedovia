@@ -18,6 +18,7 @@ func _physics_process(delta):
 		damage_buffer.start()
 	# once all the enemies in the current room are defeated, destroy the obstacle
 	if get_tree().get_nodes_in_group("Enemy").size() == 0:
+		await get_tree().create_timer(0.5).timeout
 		die()
 
 func _on_hitbox_body_exited(body):
