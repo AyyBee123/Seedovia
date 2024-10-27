@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8is0y3xbjm3r"]
+
+[ext_resource type="PackedScene" uid="uid://bnawmyjsajle3" path="res://Scenes/Levels/Floor 1 Base.tscn" id="1_5d21m"]
+[ext_resource type="PackedScene" uid="uid://b0bjggnev87e7" path="res://Scenes/Bosses/The Baron.tscn" id="2_2dlec"]
+[ext_resource type="PackedScene" uid="uid://dooq0rslv0rx2" path="res://Scenes/Enemies/Dancing Mushroom.tscn" id="3_iqj1e"]
+
+[node name="Level" instance=ExtResource("1_5d21m")]
+
+[node name="The Baron" parent="." index="7" instance=ExtResource("2_2dlec")]
+
+[node name="Dancing Mushroom" parent="." index="8" instance=ExtResource("3_iqj1e")]
+position = Vector2(-384, 0)
+
+[node name="Dancing Mushroom2" parent="." index="9" instance=ExtResource("3_iqj1e")]
+position = Vector2(384, 0)

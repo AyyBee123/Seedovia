@@ -5,10 +5,14 @@ extends "res://Scripts/Enemies/Weapons/bullet.gd"
 
 var max_range_reached := false
 var decelerating := false
+var lifetime_amount = 0
 
 func _ready():
 	super._ready()
 	rotation = randf_range(0, 2 * PI)
+	if lifetime_amount <= 0:
+		lifetime_amount = lifetime.wait_time
+	lifetime.start(lifetime_amount)
 
 func update_position(delta):
 	var current_velocity: Vector2
