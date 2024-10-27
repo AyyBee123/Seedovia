@@ -4,6 +4,7 @@ extends "res://Scripts/Enemies/enemy.gd"
 @onready var boss_name = $"Boss Health/Boss Name"
 
 func _ready():
+	# no super._ready() call because the enemy script calls a health bar, which the boss scene doesn't have
 	_enemy_stats = _enemy_stats.duplicate()
 	_enemy_stats.initialize_stats(_enemy_stats)
 	_enemy_stats.set_health(_enemy_stats.max_health)
@@ -14,7 +15,7 @@ func _ready():
 	boss_health_bar.init_health(_enemy_stats.max_health)
 
 func _physics_process(delta):
-	pass
+	super._physics_process(delta)
 
 func update_health(new_health):
 	boss_health_bar.health = new_health
