@@ -30,11 +30,13 @@ one_shot = true
 stream = ExtResource("4_js02r")
 volume_db = -20.0
 pitch_scale = 0.75
+bus = &"SFX"
 
 [node name="BubblePop" type="AudioStreamPlayer" parent="." index="5"]
 stream = ExtResource("4_n4ux4")
 volume_db = -20.0
 pitch_scale = 0.9
+bus = &"SFX"
 
 [connection signal="timeout" from="Deceleration" to="." method="_on_deceleration_timeout"]
 [connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]
