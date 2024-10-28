@@ -64,10 +64,10 @@ func travelled_distance():
 		call_deferred("free")
 
 func _on_hitbox_area_entered(area):
-	_collide(area)
+	_collide.call_deferred(area)
 
 func _on_hitbox_body_entered(body):
-	_collide(body)
+	_collide.call_deferred(body)
 
 func _collide(body):
 	if ignore_first_collision:
@@ -76,7 +76,7 @@ func _collide(body):
 	has_collided.emit(body) # for on-hit effects (ex: burning an enemy on hit)
 	if body.is_in_group("Enemies"):
 		body.get_parent()._enemy_stats.take_damage(_player_stats.get_stat("Weapon_Damage") * damage_multiplier)
-	call_deferred("free")
+	queue_free.call_deferred()
 
 func shoot_next_weapon():
 	# for passives that require the weapon to not fire a seed (e.g the last seed slot fires itself again)

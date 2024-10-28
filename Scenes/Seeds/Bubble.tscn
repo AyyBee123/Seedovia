@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cenfrfe58cqnl"]
+[gd_scene load_steps=7 format=3 uid="uid://cenfrfe58cqnl"]
 
 [ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_w02k5"]
 [ext_resource type="Texture2D" uid="uid://dv8vlajtxoaei" path="res://Sprites/Seeds/Bubble.png" id="2_t1fwy"]
 [ext_resource type="Script" path="res://Scripts/Seeds/bubble.gd" id="3_7x2iv"]
+[ext_resource type="AudioStream" uid="uid://dyeuwrt5rj2ac" path="res://Audio/SFX/Bubble Fire.mp3" id="4_js02r"]
+[ext_resource type="AudioStream" uid="uid://chjabrkxsndjf" path="res://Audio/SFX/Bubble Pop.mp3" id="4_n4ux4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0hc64"]
 radius = 11.0
@@ -23,6 +25,16 @@ one_shot = true
 [node name="Lifetime" type="Timer" parent="." index="3"]
 wait_time = 0.5
 one_shot = true
+
+[node name="BubbleFire" type="AudioStreamPlayer" parent="." index="4"]
+stream = ExtResource("4_js02r")
+volume_db = -20.0
+pitch_scale = 0.75
+
+[node name="BubblePop" type="AudioStreamPlayer" parent="." index="5"]
+stream = ExtResource("4_n4ux4")
+volume_db = -20.0
+pitch_scale = 0.9
 
 [connection signal="timeout" from="Deceleration" to="." method="_on_deceleration_timeout"]
 [connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]

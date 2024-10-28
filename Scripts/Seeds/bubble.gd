@@ -2,6 +2,8 @@ extends "res://Scripts/Seeds/seed_template.gd"
 
 @onready var deceleration = $Deceleration
 @onready var lifetime = $Lifetime
+@onready var bubble_fire = $BubbleFire
+@onready var bubble_pop = $BubblePop
 
 var spread: float
 var size: float
@@ -9,6 +11,7 @@ var acceleration: float
 var decel_threshold = 0.05
 
 func _ready():
+	bubble_fire.play()
 	super._ready()
 	spread = deg_to_rad(randf_range(-30,30)) # random 30 degree spread
 	size = randf_range(0.8, 1) # random sizes to immitate how bubbles work irl
@@ -29,16 +32,24 @@ func _on_deceleration_timeout():
 	lifetime.start()
 
 func _on_lifetime_timeout():
-	_collide(null)
+	_collide.call_deferred(null)
 
 func travelled_distance():
 	pass
 
 func _collide(body):
+	if ignore_first_collision:
+		ignore_first_collision = false
+		return
+	bubble_pop.play()
 	if body != null:
 		has_collided.emit(body)
+		if body.is_in_group("Enemies"):
+			body.get_parent()._enemy_stats.take_damage(_player_stats.get_stat("Weapon_Damage") * damage_multiplier)
 	weapon_direction = direction.rotated(spread)
 	shoot_next_weapon()
+	# wait for the pop sound to play so it doesn't get cut off by the queue_free function
+	await bubble_pop.finished
 	queue_free.call_deferred()
 
 func shoot_next_weapon():

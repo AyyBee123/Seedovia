@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dyeuwrt5rj2ac"
+path="res://.godot/imported/Bubble Fire.mp3-6ad1bb573bf0d338d9fb89384fb83033.mp3str"
+
+[deps]
+
+source_file="res://Audio/SFX/Bubble Fire.mp3"
+dest_files=["res://.godot/imported/Bubble Fire.mp3-6ad1bb573bf0d338d9fb89384fb83033.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
