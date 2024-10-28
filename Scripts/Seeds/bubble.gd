@@ -2,7 +2,6 @@ extends "res://Scripts/Seeds/seed_template.gd"
 
 @onready var deceleration = $Deceleration
 @onready var lifetime = $Lifetime
-@onready var bubble_fire = $BubbleFire
 @onready var bubble_pop = $BubblePop
 
 var spread: float
@@ -11,7 +10,6 @@ var acceleration: float
 var decel_threshold = 0.05
 
 func _ready():
-	bubble_fire.play()
 	super._ready()
 	spread = deg_to_rad(randf_range(-30,30)) # random 30 degree spread
 	size = randf_range(0.8, 1) # random sizes to immitate how bubbles work irl
