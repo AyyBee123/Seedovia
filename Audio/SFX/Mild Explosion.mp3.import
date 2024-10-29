@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dviaq07q34iwy"
+path="res://.godot/imported/Mild Explosion.mp3-f0bcd367d16cbb34fd41f076f8f54390.mp3str"
+
+[deps]
+
+source_file="res://Audio/SFX/Mild Explosion.mp3"
+dest_files=["res://.godot/imported/Mild Explosion.mp3-f0bcd367d16cbb34fd41f076f8f54390.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

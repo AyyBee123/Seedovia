@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://dyfgeiipwqnnv"]
+[gd_scene load_steps=8 format=3 uid="uid://dyfgeiipwqnnv"]
 
 [ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_44bna"]
 [ext_resource type="Texture2D" uid="uid://cvsb5hlama56" path="res://Sprites/Seeds/Explosive Pepper.png" id="2_c1ca2"]
 [ext_resource type="Script" path="res://Scripts/Seeds/pepper.gd" id="3_15ils"]
 [ext_resource type="PackedScene" uid="uid://cp3hdtxn75uyt" path="res://Scenes/Passives/Effects/Explosion.tscn" id="4_heiu2"]
 [ext_resource type="PackedScene" uid="uid://csi1g5071kvtk" path="res://Scenes/Seeds/Effects/Pepper Child.tscn" id="5_c7mbt"]
+[ext_resource type="AudioStream" uid="uid://dviaq07q34iwy" path="res://Audio/SFX/Mild Explosion.mp3" id="6_b56dy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rsbvv"]
 radius = 7.0
@@ -31,5 +32,11 @@ autostart = true
 [node name="Lifetime" type="Timer" parent="." index="3"]
 one_shot = true
 autostart = true
+
+[node name="MildExplosion" type="AudioStreamPlayer" parent="." index="5"]
+stream = ExtResource("6_b56dy")
+volume_db = -15.0
+pitch_scale = 0.85
+bus = &"SFX"
 
 [connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]

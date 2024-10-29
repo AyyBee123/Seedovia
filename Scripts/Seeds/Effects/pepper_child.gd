@@ -5,6 +5,7 @@ var parent
 @onready var projectile_speed_timer := $"Projectile Deceleration"
 @onready var life_time := $Lifetime
 @onready var resource_preloader := $ResourcePreloader
+@onready var mild_explosion_SFX = $MildExplosion
 
 func _ready():
 	projectile_speed_timer.start()
@@ -46,6 +47,7 @@ func explode():
 	explosion.damage = _player_stats.get_stat("Weapon_Damage") * damage_multiplier
 	explosion.size = _player_stats.get_stat("Weapon_Blast_Radius") * blast_radius_multiplier
 	explosion.get_node("AnimatedSprite2D").self_modulate = Color.ORANGE_RED
+	mild_explosion_SFX.play()
 	call_deferred("create_child", explosion)
 	for i in range(seed_slots.size()):
 		var weapon = null if PlayerSeeds.seeds.size() <= 1 + slot_index or\
@@ -54,6 +56,9 @@ func explode():
 		break
 	# call defer twice to allow passives that trigger off of weapon fire to work
 	# Otherwise, the weapon is destroyed before it has a chance to trigger the passives
+	await mild_explosion_SFX.finished
+	visible = false
+	$Hitbox/CollisionShape2D.disabled = true
 	destroy.call_deferred()
 
 func shoot_next_weapon():

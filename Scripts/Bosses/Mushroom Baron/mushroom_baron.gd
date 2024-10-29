@@ -9,6 +9,8 @@ extends "res://Scripts/Bosses/boss.gd"
 @onready var enemy_hitbox = $"Enemy Hitbox/CollisionPolygon2D"
 @onready var enemy_damage_box = $"Enemy Damage Box/CollisionShape2D"
 @onready var shadow = $Shadow
+@onready var jump_SFX = $Jump
+@onready var splat_SFX = $Splat
 
 var spit_finished := false
 var spin_finished := false
@@ -106,12 +108,14 @@ func _on_animated_sprite_2d_frame_changed():
 	match animated_sprite_2d.animation:
 		"Jump":
 			if animated_sprite_2d.frame == 4:
+				jump_SFX.play()
 				enemy_hitbox.disabled = true
 				enemy_damage_box.disabled = true
 		"Fall":
 			if animated_sprite_2d.frame == 2:
 				enemy_hitbox.disabled = false
 				enemy_damage_box.disabled = false
+				splat_SFX.play()
 
 func _on_animated_sprite_2d_animation_changed():
 	if animated_sprite_2d.animation == "Fall":
