@@ -7,7 +7,6 @@ extends "res://Scripts/Seeds/seed_template.gd"
 @onready var resource_preloader = $ResourcePreloader
 @onready var metal_1_SFX = $Metal1
 @onready var metal_2_SFX = $Metal2
-@onready var metal_3_SFX = $Metal3
 
 var area_normal # gets the normal of the collsion area/wall
 var animation_frame = 0
@@ -65,7 +64,7 @@ func _on_hitbox_body_entered(body):
 	collide(body)
 
 func collide(area):
-	var sounds = [metal_1_SFX, metal_2_SFX, metal_3_SFX]
+	var sounds = [metal_1_SFX, metal_2_SFX]
 	sounds.pick_random().play()
 	if ignore_first_collision:
 		ignore_first_collision = false

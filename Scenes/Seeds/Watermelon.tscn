@@ -1,11 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://cvq734opn1l1t"]
+[gd_scene load_steps=11 format=3 uid="uid://cvq734opn1l1t"]
 
 [ext_resource type="Script" path="res://Scripts/Seeds/watermelon.gd" id="1_rf7tf"]
 [ext_resource type="Texture2D" uid="uid://cm1txwdom4wan" path="res://Sprites/Seeds/Watermelon.png" id="2_uewwp"]
 [ext_resource type="PackedScene" uid="uid://cp3hdtxn75uyt" path="res://Scenes/Passives/Effects/Explosion.tscn" id="3_uyl80"]
 [ext_resource type="AudioStream" uid="uid://dvpk5kbugelwb" path="res://Audio/SFX/Metal 1.mp3" id="4_amymn"]
 [ext_resource type="AudioStream" uid="uid://yupd71vkt5kl" path="res://Audio/SFX/Metal 2.mp3" id="5_1c0ml"]
-[ext_resource type="AudioStream" uid="uid://r06kkn2h7iqy" path="res://Audio/SFX/Metal 3.mp3" id="6_pjff8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x7c61"]
 radius = 16.0312
@@ -100,12 +99,6 @@ bus = &"SFX"
 [node name="Metal2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_1c0ml")
 volume_db = -15.0
-bus = &"SFX"
-
-[node name="Metal3" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_pjff8")
-volume_db = -20.0
-pitch_scale = 0.42
 bus = &"SFX"
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
