@@ -23,8 +23,10 @@ func _collide(body):
 	call_deferred("free")
 
 func explode():
-	var explosion = resource_preloader.get_resource("Explosion").instantiate()
+	var explosion = resource_preloader.get_resource("Non-Weapon Effect Explosion").instantiate()
+	explosion.previous_weapon = self
 	explosion.damage = _player_stats.get_stat("Weapon_Damage") * damage_multiplier
+	explosion.damage_multiplier = damage_multiplier
 	explosion.size = _player_stats.get_stat("Weapon_Blast_Radius") * blast_radius_multiplier
 	explosion.get_node("AnimatedSprite2D").self_modulate = Color.SADDLE_BROWN
 	call_deferred("create_child", explosion)

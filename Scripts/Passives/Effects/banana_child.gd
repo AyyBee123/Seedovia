@@ -10,6 +10,7 @@ var spread: float
 var speed: float
 var weapon_direction: Vector2
 var parent_banana
+var damage_multiplier: float = 1
 
 signal weapon_fired(weapon)
 signal has_collided(object)
@@ -20,6 +21,7 @@ signal attempted_fire
 @onready var projectile_speed_timer := $"Projectile Deceleration"
 @onready var life_time := $Lifetime
 @onready var resource_preloader := $ResourcePreloader
+@onready var mild_explosion_SFX = $MildExplosion
 
 func _physics_process(delta):
 	initialize_position()
@@ -61,7 +63,11 @@ func explode():
 			continue
 		explosion.get_node("Passives").add_child(passive.duplicate())
 	call_deferred("create_child", explosion)
-	queue_free()
+	SfxDeconflicter.play(mild_explosion_SFX)
+	if mild_explosion_SFX.playing:
+		visible = false
+		await mild_explosion_SFX.finished
+	queue_free.call_deferred()
 	
 func create_child(child):
 	get_tree().current_scene.add_child(child)

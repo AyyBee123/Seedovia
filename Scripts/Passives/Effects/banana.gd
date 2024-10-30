@@ -10,6 +10,7 @@ var speed: float
 var weapon_direction: Vector2
 var source_pos
 var previous_weapon
+var damage_multiplier
 
 signal weapon_fired(weapon) # signal for firing the next seed
 signal has_collided(object) # signal for colliding with an enemy or wall
@@ -20,6 +21,7 @@ signal attempted_fire # signal for attempting to fire the next seed (even if the
 @onready var projectile_speed_timer := $"Projectile Deceleration"
 @onready var life_time := $Lifetime
 @onready var resource_preloader := $ResourcePreloader
+@onready var mild_explosion_SFX = $MildExplosion
 
 func _ready():
 	previous_weapon.weapon_fired.emit(self)
@@ -67,7 +69,11 @@ func explode():
 			continue
 		explosion.get_node("Passives").add_child(passive.duplicate())
 	call_deferred("create_child", explosion)
+	SfxDeconflicter.play(mild_explosion_SFX)
 	spawn_child_bananas()
+	if mild_explosion_SFX.playing:
+		visible = false
+		await mild_explosion_SFX.finished
 	queue_free.call_deferred()
 
 func spawn_child_bananas():
@@ -78,7 +84,8 @@ func spawn_child_bananas():
 		var banana_child = resource_preloader.get_resource("Banana Child").instantiate()
 		for passive in $Passives.get_children():
 			banana_child.get_node("Passives").add_child(passive.duplicate())
-		banana_child.damage = damage * 0.35
+		banana_child.damage = damage
+		banana_child.damage_multiplier = 0.35 * damage_multiplier
 		banana_child.speed = speed
 		banana_child.explosion_size = 0.65
 		banana_child.direction = direction.rotated(spread)

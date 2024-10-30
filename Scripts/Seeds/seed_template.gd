@@ -109,4 +109,5 @@ func update_position(delta):
 	look_at(global_position + current_velocity)
 
 func get_next_weapon():
-	return null if PlayerSeeds.seeds.size() <= 1 + slot_index or slot_index >= 2 else PlayerSeeds.seeds[slot_index + 1]
+	return null if PlayerSeeds.seeds.size() <= 1 + slot_index or slot_index >= 2 \
+			else PlayerSeeds.seeds[slot_index + 1]

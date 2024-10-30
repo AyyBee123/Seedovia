@@ -25,9 +25,10 @@ func _physics_process(delta):
 	super._physics_process(delta)
 	if is_in_area:
 		if tick_rate.is_stopped():
-			enemy._enemy_stats.take_damage(_player_stats.get_stat("Weapon_Damage") * damage_multiplier)
-			has_collided.emit(enemy.get_node("Enemy Hitbox"))
-			tick_rate.start(0.1 / _player_stats.get_stat("Fire_Rate") * 10)
+			if is_instance_valid(enemy):
+				enemy._enemy_stats.take_damage(_player_stats.get_stat("Weapon_Damage") * damage_multiplier)
+				has_collided.emit(enemy.get_node("Enemy Hitbox"))
+				tick_rate.start(0.1 / _player_stats.get_stat("Fire_Rate") * 10)
 	if not is_shrinking:
 		orbit(delta)
 	else:

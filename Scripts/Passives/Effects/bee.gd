@@ -4,6 +4,7 @@ var position_initialized = false
 var direction
 var starting_position: Vector2 # gets the starting position from where the bullet is fired
 var damage: float
+var damage_multiplier: float
 var explosion_size: float = 0.1
 var spread: float
 var speed: float
@@ -49,7 +50,7 @@ func update_position(delta):
 func _on_hitbox_area_entered(area):
 	if area.is_in_group("Enemies"):
 		has_collided.emit(area)
-		area.get_parent()._enemy_stats.take_damage(damage)
+		area.get_parent()._enemy_stats.take_damage(damage * damage_multiplier)
 	explode()
 	queue_free.call_deferred()
 
@@ -60,12 +61,6 @@ func explode():
 	explosion.source = self
 	explosion.modulate = Color.YELLOW
 	explosion.is_vanity = true
-	for passive in $Passives.get_children():
-		if passive.name == "ExplosiveTrigger":
-			continue
-		if passive.name == "HuraCrepitans":
-			continue
-		explosion.get_node("Passives").add_child(passive.duplicate())
 	call_deferred("create_child", explosion)
 	queue_free.call_deferred()
 

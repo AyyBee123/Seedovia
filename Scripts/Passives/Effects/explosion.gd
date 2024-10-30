@@ -8,12 +8,13 @@ signal attempted_fire
 var object
 var damage: float
 var size: float
-var damage_multiplier
+var damage_multiplier = 1
 var source
 var is_vanity := false
+var weapon_direction = Vector2.ZERO
 
 func _ready():
-	scale = Vector2(size, size)
+	scale = Vector2.ONE * size
 	if object == null:
 		set_physics_process(false)
 

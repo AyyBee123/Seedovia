@@ -17,7 +17,9 @@ func add_tally(weapon = null):
 # transfers this passive over from the initial source (the player) to the next weapon
 # and from the next weapon to the following weapon, and so on...
 func transfer_passive(weapon = null):
-	if weapon == null or weapon.is_in_group("Weapon Effect"):
+	if weapon == null:
+		return
+	if weapon.is_in_group("Weapon Effect"):
 		return
 	if weapon.get_node("Passives").has_node("ExplosiveTrigger"): # prevent duplicates
 		return
@@ -28,9 +30,9 @@ func transfer_passive(weapon = null):
 func explode():
 	var explosion = resource_preloader.get_resource("Explosion").instantiate()
 	for passive in source_passives:
-		if passive.name == "ExplosiveTrigger":
+		if passive.has_method("explosive_trigger"):
 			continue
-		if passive.name == "HuraCrepitans":
+		if passive.has_method("hura_crepitans"):
 			continue
 		explosion.get_node("Passives").add_child(passive.duplicate())
 	explosion.object = source
@@ -43,3 +45,6 @@ func spawn_explosion(explosion):
 	get_tree().current_scene.add_child(explosion)
 	explosion.global_position = source.global_position
 	explosion.get_node("AnimatedSprite2D").self_modulate = Color.GOLD
+
+func explosive_trigger():
+	pass

@@ -26,7 +26,9 @@ func _physics_process(delta):
 # transfers this passive over from the initial source (the player) to the next weapon
 # and from the next weapon to the following weapon, and so on...
 func transfer_passive(weapon = null):
-	if weapon == null or weapon.is_in_group("Weapon Effect"):
+	if weapon == null:
+		return
+	if weapon.is_in_group("Weapon Effect"):
 		return
 	# make a new banana mine passive and add it as a child of the next weapon
 	weapon.get_node("Passives").add_child(duplicate())

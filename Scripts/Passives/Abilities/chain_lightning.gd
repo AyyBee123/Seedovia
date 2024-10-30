@@ -24,7 +24,9 @@ func collide(object):
 # transfers this passive over from the initial source (the player) to the next weapon
 # and from the next weapon to the following weapon, and so on...
 func transfer_passive(weapon = null):
-	if weapon == null or weapon.is_in_group("Weapon Effect"):
+	if weapon == null:
+		return
+	if weapon.is_in_group("Weapon Effect"):
 		return
 	# make a new banana mine passive and add it as a child of the next weapon
 	weapon.get_node("Passives").add_child(self.duplicate())
@@ -43,16 +45,18 @@ func trigger(weapon = null):
 			lightning.nearest_enemy = nearest_enemy
 		else:
 			lightning.nearest_enemy = get_random_enemy(collided_object)
-		lightning.damage = player._player_stats.get_stat("Weapon_Damage") * source.damage_multiplier / 2
-		lightning.damage_multiplier = source.damage_multiplier
+		if source.damage_multiplier:
+			lightning.damage = player._player_stats.get_stat("Weapon_Damage") * source.damage_multiplier / 2
+			lightning.damage_multiplier = source.damage_multiplier
 		get_tree().current_scene.add_child.call_deferred(lightning)
 		lightning.global_position = pos
 		lightning.pos = nearest_enemy.global_position
 		lightning.look_at(nearest_enemy.global_position)
 	elif nearest_enemy == null and not weapon.has_method("chain_lightning"):
 		lightning.region_rect = Rect2(0, 0, randf_range(50, 150), 17)
-		lightning.damage = player._player_stats.get_stat("Weapon_Damage") * source.damage_multiplier / 2
-		lightning.damage_multiplier = source.damage_multiplier
+		if source.damage_multiplier:
+			lightning.damage = player._player_stats.get_stat("Weapon_Damage") * source.damage_multiplier / 2
+			lightning.damage_multiplier = source.damage_multiplier
 		get_tree().current_scene.add_child.call_deferred(lightning)
 		lightning.global_position = pos
 		lightning.rotation = randf_range(0, 2 * PI)
@@ -85,3 +89,6 @@ func get_random_enemy(object):
 	while enemy == collided_object:
 		enemy = Targets.get_enemy_hitboxes().pick_random()
 	return enemy
+
+func chain_lightning():
+	pass

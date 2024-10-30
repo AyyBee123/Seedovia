@@ -38,6 +38,8 @@ func trigger(weapon = null):
 	transfer_passive(weapon)
 
 func transfer_passive(weapon = null):
-	if weapon == null or weapon.is_in_group("Weapon Effect"):
+	if weapon == null:
+		return
+	if weapon.is_in_group("Weapon Effect"):
 		return
 	weapon.get_node("Passives").add_child(self.duplicate())

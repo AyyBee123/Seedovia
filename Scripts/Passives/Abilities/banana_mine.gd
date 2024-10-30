@@ -21,18 +21,22 @@ func banana_mine():
 # transfers this passive over from the initial source (the player) to the next weapon
 # and from the next weapon to the following weapon, and so on...
 func transfer_passive(weapon = null):
-	if weapon == null or weapon.is_in_group("Weapon Effect"):
+	if weapon == null:
+		return
+	if weapon.is_in_group("Weapon Effect"):
 		return
 	# make a new banana mine passive and add it as a child of the next weapon
-	if not weapon.has_method("banana"):
-		weapon.get_node("Passives").add_child(self.duplicate())
+	if weapon.has_method("banana"):
+		return
+	weapon.get_node("Passives").add_child(self.duplicate())
 
 func trigger(weapon = null):
 	var banana = resource_preloader.get_resource("Banana").instantiate()
 	banana.previous_weapon = weapon
 	banana.source_pos = source.global_position
 	banana.weapon_direction = source.weapon_direction
-	banana.damage = player._player_stats.get_stat("Weapon_Damage") * damage_multiplier
+	banana.damage = player._player_stats.get_stat("Weapon_Damage")
+	banana.damage_multiplier = damage_multiplier
 	banana.speed = player._player_stats.get_stat("Weapon_Speed") * speed_multiplier
 	banana.explosion_size = player._player_stats.get_stat("Weapon_Blast_Radius")
 	get_tree().current_scene.add_child.call_deferred(banana)

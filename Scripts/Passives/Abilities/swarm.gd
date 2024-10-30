@@ -30,6 +30,7 @@ func trigger(weapon = null):
 	bee.previous_weapon = source
 	bee.source_pos = source.global_position
 	bee.weapon_direction = source.weapon_direction
-	bee.damage = player._player_stats.get_stat("Weapon_Damage") * damage_multiplier
+	bee.damage = player._player_stats.get_stat("Weapon_Damage")
+	bee.damage_multiplier = 3
 	bee.speed = speed
 	get_tree().current_scene.add_child(bee)
