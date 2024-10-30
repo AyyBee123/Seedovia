@@ -1,6 +1,7 @@
 extends "res://Scripts/Seeds/seed_template.gd"
 
 @onready var resource_preloader = $ResourcePreloader
+@onready var mild_explosion_SFX = $MildExplosion
 
 func travelled_distance():
 	distance_travelled = starting_position.distance_to(global_position)
@@ -30,6 +31,7 @@ func explode():
 	explosion.damage_multiplier = damage_multiplier
 	explosion.size = _player_stats.get_stat("Weapon_Blast_Radius") * blast_radius_multiplier
 	explosion.get_node("AnimatedSprite2D").self_modulate = Color.SADDLE_BROWN
+	SfxDeconflicter.play(mild_explosion_SFX)
 	call_deferred("create_child", explosion)
 
 func create_child(child):
