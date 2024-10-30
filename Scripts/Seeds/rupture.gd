@@ -60,7 +60,6 @@ var mouse_left_down := true
 var x_pos: float
 var lifetime_started := false
 var is_shrinking := false
-var SFX_is_playing := false
 
 func _ready():
 	visible = false
