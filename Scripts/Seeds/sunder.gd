@@ -24,7 +24,8 @@ func _collide(body):
 
 func explode():
 	var explosion = resource_preloader.get_resource("Non-Weapon Effect Explosion").instantiate()
-	explosion.previous_weapon = self
+	for passive in $Passives.get_children():
+		explosion.get_node("Passives").add_child(passive.duplicate())
 	explosion.damage = _player_stats.get_stat("Weapon_Damage") * damage_multiplier
 	explosion.damage_multiplier = damage_multiplier
 	explosion.size = _player_stats.get_stat("Weapon_Blast_Radius") * blast_radius_multiplier

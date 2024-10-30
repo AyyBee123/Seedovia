@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://ba1ll7vkpaxef"]
 
-[ext_resource type="Script" path="res://Scripts/Seeds/Effects/non_weapon_effect_explosion.gd" id="1_cf352"]
+[ext_resource type="Script" path="res://Scripts/Passives/Effects/explosion.gd" id="1_3ey8o"]
 [ext_resource type="Texture2D" uid="uid://cgykm81v6v4hq" path="res://Sprites/Passives/Effects/Explosion.png" id="2_ibgff"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w3ufp"]
@@ -85,7 +85,7 @@ animations = [{
 radius = 20.0111
 
 [node name="Explosion" type="Node2D" groups=["Weapon"]]
-script = ExtResource("1_cf352")
+script = ExtResource("1_3ey8o")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(5, 5)
