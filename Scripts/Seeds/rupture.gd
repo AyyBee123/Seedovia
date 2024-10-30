@@ -7,6 +7,7 @@ signal attempted_fire
 @onready var player := $"../Player"
 @onready var _player_stats = player._player_stats
 @onready var seed_slots := $"../Player/Inventory/Inventory Screen/Seed Slots".get_children()
+@onready var noise_SFX = $Noise
 
 var weapon_direction: Vector2 # the direction the weapon goes, based on the previous weapon/player
 var desired_direction: Vector2 # the direction the weapon wants the next weapon to go
@@ -59,6 +60,7 @@ var mouse_left_down := true
 var x_pos: float
 var lifetime_started := false
 var is_shrinking := false
+var SFX_is_playing := false
 
 func _ready():
 	visible = false
@@ -75,6 +77,8 @@ func _physics_process(delta):
 	initialize_position()
 	travelled_distance()
 	update_position(delta)
+	if slot_index > 0:
+		noise_SFX.volume_db = max(noise_SFX.volume_db - delta * 10, linear_to_db(0))
 	if is_in_area:
 		if tick_rate.is_stopped():
 			enemy._enemy_stats.take_damage(_player_stats.get_stat("Weapon_Damage") * damage_multiplier)
@@ -98,14 +102,23 @@ func initialize_position():
 			rotation = global_position.angle_to_point(player.weapon_direction_marker.global_position) + deg_to_rad(90)
 		else:
 			rotation = desired_direction.angle() + deg_to_rad(90)
-		var areas = detect_ruptures.get_overlapping_areas()
-		for area in areas:
-			if abs(area.get_parent().rotation - rotation) <= 0.1\
-			and area.get_parent().global_position.distance_to(global_position) <= 15:
+		# if the seed is the first seed (shot directly by the player character)
+		if slot_index == 0:
+			# only the first instance of a node has its original name
+			# other instances will just be Node<Object Type>
+			# this removes all rupture nodes after the first, until the original is destroyed, then the cycle repeats
+			if not name == "Rupture":
 				queue_free()
-				return
+		else:
+			var areas = detect_ruptures.get_overlapping_areas()
+			for area in areas:
+				if abs(area.get_parent().rotation - rotation) <= deg_to_rad(1) \
+						and area.get_parent().global_position.distance_to(global_position) <= 15:
+					queue_free()
+					return
 		visible = true
 		collision_shape_2d.disabled = false
+		SfxDeconflicter.play(noise_SFX)
 
 func travelled_distance():
 	pass
@@ -178,8 +191,9 @@ func shrink(shrink_speed_mult):
 	bottom.scale.x -= get_process_delta_time() * shrink_speed_mult
 	middle.scale.x -= get_process_delta_time() * shrink_speed_mult
 	top.scale.x -= get_process_delta_time() * shrink_speed_mult
+	noise_SFX.volume_db -= get_process_delta_time() * shrink_speed_mult * 10
 	if middle.scale.x <= 0:
-		queue_free()
+		queue_free.call_deferred()
 
 func _on_lifetime_timeout():
 	is_shrinking = true
@@ -189,4 +203,5 @@ func _on_fire_rate_timeout():
 	fire_rate.start()
 
 func get_next_weapon():
-	return null if PlayerSeeds.seeds.size() <= 1 + slot_index or slot_index >= 2 else PlayerSeeds.seeds[slot_index + 1]
+	return null if PlayerSeeds.seeds.size() <= 1 + slot_index or slot_index >= 2 else\
+	PlayerSeeds.seeds[slot_index + 1]

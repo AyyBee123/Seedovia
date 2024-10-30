@@ -2,6 +2,7 @@ extends "res://Scripts/Seeds/seed_template.gd"
 
 @onready var deceleration = $Deceleration
 @onready var acceleration = $Acceleration
+@onready var lifetime = $Lifetime
 
 var has_stopped := false
 var is_stopping := false
@@ -88,3 +89,6 @@ func _on_detect_previous_seed_area_entered(area): # detects the previous weapon
 		return
 	if area.get_parent() == previous_weapon:
 		queue_free()
+
+func _on_lifetime_timeout():
+	queue_free.call_deferred()

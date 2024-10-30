@@ -2,7 +2,7 @@ extends "res://Scripts/Seeds/seed_template.gd"
 
 @onready var deceleration = $Deceleration
 @onready var lifetime = $Lifetime
-@onready var bubble_popSFX = $BubblePop
+@onready var bubble_pop_SFX = $BubblePop
 
 var spread: float
 var size: float
@@ -39,7 +39,7 @@ func _collide(body):
 	if ignore_first_collision:
 		ignore_first_collision = false
 		return
-	bubble_popSFX.play()
+	SfxDeconflicter.play(bubble_pop_SFX)
 	if body != null:
 		has_collided.emit(body)
 		if body.is_in_group("Enemies"):
@@ -47,7 +47,8 @@ func _collide(body):
 	weapon_direction = direction.rotated(spread)
 	shoot_next_weapon()
 	# wait for the pop sound to play so it doesn't get cut off by the queue_free function
-	await bubble_popSFX.finished
+	if bubble_pop_SFX.playing:
+		await bubble_pop_SFX.finished
 	queue_free.call_deferred()
 
 func shoot_next_weapon():

@@ -27,12 +27,13 @@ func explode():
 	explosion.damage = _player_stats.get_stat("Weapon_Damage") * damage_multiplier
 	explosion.size = _player_stats.get_stat("Weapon_Blast_Radius") * blast_radius_multiplier
 	explosion.get_node("AnimatedSprite2D").self_modulate = Color.ORANGE_RED
-	mild_explosion_SFX.play()
+	SfxDeconflicter.play(mild_explosion_SFX)
 	visible = false
 	$Hitbox/CollisionShape2D.disabled = true
 	call_deferred("create_explosion", explosion)
 	spawn_child_peppers()
-	await mild_explosion_SFX.finished
+	if mild_explosion_SFX.playing:
+		await mild_explosion_SFX.finished
 	call_deferred("free")
 
 func travelled_distance():

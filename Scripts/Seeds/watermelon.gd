@@ -65,7 +65,7 @@ func _on_hitbox_body_entered(body):
 
 func collide(area):
 	var sounds = [metal_1_SFX, metal_2_SFX]
-	sounds.pick_random().play()
+	SfxDeconflicter.play(sounds.pick_random())
 	if ignore_first_collision:
 		ignore_first_collision = false
 		return
