@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bffy58rjriwmv"]
+[gd_scene load_steps=6 format=3 uid="uid://bffy58rjriwmv"]
 
 [ext_resource type="Script" path="res://Scripts/Seeds/bullet.gd" id="1_0klqm"]
 [ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_nvpu4"]
 [ext_resource type="Texture2D" uid="uid://c6vshawxebrpr" path="res://Sprites/Seeds/Player Bullet.png" id="2_1n5dh"]
+[ext_resource type="AudioStream" uid="uid://bpk6gao5jcjkq" path="res://Audio/SFX/Hit.mp3" id="4_rrp5e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qm751"]
 size = Vector2(14, 8)
@@ -13,3 +14,8 @@ script = ExtResource("1_0klqm")
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 shape = SubResource("RectangleShape2D_qm751")
+
+[node name="Hit" type="AudioStreamPlayer" parent="." index="2"]
+stream = ExtResource("4_rrp5e")
+volume_db = -5.0
+bus = &"SFX"

@@ -1,6 +1,7 @@
 extends "res://Scripts/Seeds/seed_template.gd"
 
 var enemy
+@onready var hit_SFX = $Hit
 
 func _collide(body):
 	if ignore_first_collision:
@@ -11,6 +12,9 @@ func _collide(body):
 		enemy = body
 		body.get_parent()._enemy_stats.take_damage(_player_stats.get_stat("Weapon_Damage") * damage_multiplier)
 	shoot_next_weapon()
+	SfxDeconflicter.play(hit_SFX)
+	if hit_SFX.playing:
+		await hit_SFX.finished
 	call_deferred("free")
 		
 func initialize_position():

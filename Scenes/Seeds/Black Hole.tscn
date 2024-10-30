@@ -26,5 +26,6 @@ one_shot = true
 stream = ExtResource("4_70dgj")
 volume_db = -20.0
 pitch_scale = 0.6
+bus = &"SFX"
 
 [connection signal="area_exited" from="Hitbox" to="." method="_on_hitbox_area_exited"]

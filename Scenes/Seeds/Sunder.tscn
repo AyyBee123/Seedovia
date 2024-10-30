@@ -28,3 +28,4 @@ resources = [PackedStringArray("Non-Weapon Effect Explosion"), [ExtResource("3_m
 stream = ExtResource("4_iejn8")
 volume_db = -32.0
 pitch_scale = 0.9
+bus = &"SFX"
