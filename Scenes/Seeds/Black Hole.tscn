@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://v51g2vqdlgg1"]
+[gd_scene load_steps=6 format=3 uid="uid://v51g2vqdlgg1"]
 
 [ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_nmxc7"]
 [ext_resource type="Texture2D" uid="uid://c5ug21awad4o1" path="res://Sprites/Seeds/Black Hole.png" id="2_mgpa6"]
 [ext_resource type="Script" path="res://Scripts/Seeds/black_hole.gd" id="3_pd5y3"]
+[ext_resource type="AudioStream" uid="uid://ni7nl6f1niks" path="res://Audio/SFX/Noise.mp3" id="4_70dgj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wmur4"]
 radius = 25.0
@@ -20,5 +21,10 @@ shape = SubResource("CircleShape2D_wmur4")
 [node name="Tick Rate" type="Timer" parent="." index="1"]
 wait_time = 0.1
 one_shot = true
+
+[node name="Noise" type="AudioStreamPlayer" parent="." index="3"]
+stream = ExtResource("4_70dgj")
+volume_db = -20.0
+pitch_scale = 0.6
 
 [connection signal="area_exited" from="Hitbox" to="." method="_on_hitbox_area_exited"]

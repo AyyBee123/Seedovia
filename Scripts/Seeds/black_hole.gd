@@ -14,8 +14,10 @@ var orbital_directions: Array
 var is_shrunk := false
 
 @onready var tick_rate = $"Tick Rate"
+@onready var noise_SFX = $Noise
 
 func _ready():
+	SfxDeconflicter.play(noise_SFX)
 	super._ready()
 	var weapon = null if PlayerSeeds.seeds.size() <= 1 + slot_index or\
 	slot_index >= 2 else PlayerSeeds.seeds[slot_index + 1]
@@ -23,6 +25,7 @@ func _ready():
 
 func _physics_process(delta):
 	super._physics_process(delta)
+	noise_SFX.volume_db = max(noise_SFX.volume_db - delta * 5, linear_to_db(0))
 	if is_in_area:
 		if tick_rate.is_stopped():
 			if is_instance_valid(enemy):
