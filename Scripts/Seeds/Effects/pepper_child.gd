@@ -48,6 +48,8 @@ func explode():
 	explosion.size = _player_stats.get_stat("Weapon_Blast_Radius") * blast_radius_multiplier
 	explosion.get_node("AnimatedSprite2D").self_modulate = Color.ORANGE_RED
 	SfxDeconflicter.play(mild_explosion_SFX)
+	visible = false
+	$Hitbox/CollisionShape2D.disabled = true
 	call_deferred("create_child", explosion)
 	for i in range(seed_slots.size()):
 		var weapon = null if PlayerSeeds.seeds.size() <= 1 + slot_index or\
@@ -58,8 +60,6 @@ func explode():
 	# Otherwise, the weapon is destroyed before it has a chance to trigger the passives
 	if mild_explosion_SFX.playing:
 		await mild_explosion_SFX.finished
-	visible = false
-	$Hitbox/CollisionShape2D.disabled = true
 	destroy.call_deferred()
 
 func shoot_next_weapon():
