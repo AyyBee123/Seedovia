@@ -77,7 +77,7 @@ func _physics_process(delta):
 	travelled_distance()
 	update_position(delta)
 	if slot_index > 0:
-		noise_SFX.volume_db = max(noise_SFX.volume_db - delta * 10, linear_to_db(0))
+		noise_SFX.volume_db = max(noise_SFX.volume_db - delta * 7.5, -30)
 	if is_in_area:
 		if tick_rate.is_stopped():
 			enemy._enemy_stats.take_damage(_player_stats.get_stat("Weapon_Damage") * damage_multiplier)

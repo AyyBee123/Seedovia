@@ -3,6 +3,7 @@ extends "res://Scripts/Seeds/seed_template.gd"
 @onready var deceleration = $Deceleration
 @onready var acceleration = $Acceleration
 @onready var lifetime = $Lifetime
+@onready var hit_SFX = $Hit
 
 var has_stopped := false
 var is_stopping := false
@@ -50,6 +51,7 @@ func _collide(body):
 	else:
 		has_stopped = true
 	weapon_direction = -direction
+	SfxDeconflicter.play(hit_SFX)
 	shoot_next_weapon()
 
 func travelled_distance():
