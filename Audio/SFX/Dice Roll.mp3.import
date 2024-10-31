@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dnl3t4q05xv0x"
+path="res://.godot/imported/Dice Roll.mp3-d35ffbb247f0e7e4016b305f7d1573e3.mp3str"
+
+[deps]
+
+source_file="res://Audio/SFX/Dice Roll.mp3"
+dest_files=["res://.godot/imported/Dice Roll.mp3-d35ffbb247f0e7e4016b305f7d1573e3.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

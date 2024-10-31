@@ -4,8 +4,10 @@ var clockwise_rotation: bool
 var dice_value: int
 @onready var randomize_interval = $"Randomize Interval"
 @onready var resource_preloader = $ResourcePreloader
+@onready var dice_roll_SFX = $DiceRoll
 
 func _ready():
+	SfxDeconflicter.play(dice_roll_SFX)
 	clockwise_rotation = randf() < 0.5
 
 func _physics_process(delta):
@@ -44,6 +46,7 @@ func randomize_value():
 				texture = resource_preloader.get_resource("D6 (5)")
 			6:
 				texture = resource_preloader.get_resource("D6 (6)")
+		SfxDeconflicter.play(dice_roll_SFX)
 		randomize_interval.start()
 
 func _collide(body):
