@@ -6,23 +6,51 @@ signal animation_done
 @onready var resource_preloader := $ResourcePreloader
 @onready var light_beam_points = $"Light Beam Points".get_children()
 @onready var marker_2d = $Marker2D
+@onready var mouth_slam_SFX = $HauntedFortressMouthSlam
+@onready var bfg_SFX = $Bfg
+@onready var rumble_SFX = $Rumble
+@onready var humming_SFX = $Humming
+@onready var vacuum_SFX = $Vacuum
+
+var vacuum_db
+var humming_db
+var humming_volume
+
 var current_random_value := -1
 
+func _ready():
+	super._ready()
+	vacuum_db = vacuum_SFX.volume_db
+	humming_db = humming_SFX.volume_db
+
 func idle():
-	pass
+	vacuum_SFX.volume_db -= get_physics_process_delta_time() * 200
+	humming_SFX.volume_db -= get_physics_process_delta_time() * 200
+	if vacuum_SFX.volume_db <= -40:
+		vacuum_SFX.stop()
+	if humming_SFX.volume_db <= -40:
+		humming_SFX.stop()
 
 func laser():
 	pass
 
 func ghosts():
-	pass
+	if humming_SFX.volume_db < humming_db: # to not mess with the volume increase overtime
+		humming_SFX.volume_db = humming_db
 
 func suck():
-	pass
+	vacuum_SFX.volume_db = vacuum_db
 
 func _on_animated_sprite_2d_frame_changed():
 	if $AnimatedSprite2D.animation == "Laser":
+		if $AnimatedSprite2D.frame == 2: # gate closing sound
+			mouth_slam_SFX.play()
+		if $AnimatedSprite2D.frame == 4: # rumble (buildup) sound
+			rumble_SFX.play()
 		if $AnimatedSprite2D.frame == 30: # start of the laser fire animation
+			if rumble_SFX.playing:
+				rumble_SFX.stop()
+			bfg_SFX.play()
 			var laser = $ResourcePreloader.get_resource("Laser").instantiate()
 			laser.damage = _enemy_stats.weapon_damage
 			laser.range = _enemy_stats.weapon_range
@@ -34,7 +62,14 @@ func _on_animated_sprite_2d_frame_changed():
 			var laser_instance = get_tree().get_first_node_in_group("Haunted Fortress Laser")
 			laser_instance.disappear()
 	if $AnimatedSprite2D.animation == "Ghosts":
+		if $AnimatedSprite2D.frame == 0:
+			if humming_SFX.playing:
+				humming_SFX.stop()
 		if $AnimatedSprite2D.frame > 2 and $AnimatedSprite2D.frame <= 63:
+			if not humming_SFX.playing:
+				humming_SFX.play()
+			# start at really low humming volume and quickly increase it
+			humming_SFX.volume_db = min(humming_SFX.volume_db + get_physics_process_delta_time() * 200, -10)
 			# make the light beam on the boss' face
 			var light_beam = $ResourcePreloader.get_resource("Light Beam").instantiate()
 			get_tree().current_scene.add_child(light_beam)
@@ -51,16 +86,22 @@ func _on_animated_sprite_2d_frame_changed():
 			# -96 is the position of the top of the floor tile, and 352 is the position of the bottom of the floor tile
 			light_attack.global_position.y = randf_range(-96, 352)
 	if $AnimatedSprite2D.animation == "Suck":
+		if $AnimatedSprite2D.frame == 0:
+			if vacuum_SFX.playing:
+				vacuum_SFX.stop()
+		if $AnimatedSprite2D.frame == 1:
+			if not vacuum_SFX.playing:
+				vacuum_SFX.play()
 		if $AnimatedSprite2D.frame > 43:
 			_enemy_stats.damage = 0
 		elif $AnimatedSprite2D.frame >= 20:
 			_enemy_stats.damage = 1
 			var player_direction = player.global_position.direction_to($Marker2D.global_position)
-			player.global_position += player_direction.normalized() * 12
-		elif $AnimatedSprite2D.frame >= 3:
+			player.velocity = player_direction.normalized() * 100
+		elif $AnimatedSprite2D.frame >= 3 and $AnimatedSprite2D.frame <= 43:
 			_enemy_stats.damage = 1
 			var player_direction = player.global_position.direction_to($Marker2D.global_position)
-			player.global_position += player_direction.normalized() * 12
+			player.velocity = player_direction.normalized() * 100
 			if $AnimatedSprite2D.frame % 1 == 0:
 				# make the rock projectile
 				var rock = $ResourcePreloader.get_resource("Rock").instantiate()

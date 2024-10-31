@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b38vcp28lusvd"
+path="res://.godot/imported/Haunted Fortress Mouth Slam.mp3-7b48c191bfd4d3bc6e073f1e92e8eaef.mp3str"
+
+[deps]
+
+source_file="res://Audio/SFX/Haunted Fortress Mouth Slam.mp3"
+dest_files=["res://.godot/imported/Haunted Fortress Mouth Slam.mp3-7b48c191bfd4d3bc6e073f1e92e8eaef.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -7,6 +7,7 @@ extends Node2D
 @onready var attack_delay = $"Attack Delay"
 @onready var fade_timer = $"Fade Timer"
 @onready var player := $"../Player"
+@onready var light_beam_SFX = $LightBeam
 
 var is_in_area := false
 var fade_timer_mult
@@ -24,6 +25,7 @@ func _physics_process(delta):
 		damage_buffer.start()
 	if attack_delay.is_stopped() and not played:
 		played = true
+		SfxDeconflicter.play(light_beam_SFX)
 		$Beam.visible = true
 		$Beam.play("default")
 		$Hitbox.set_collision_layer(16)

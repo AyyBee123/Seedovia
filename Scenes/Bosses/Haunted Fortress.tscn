@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://dcbchvrd8ok5p"]
+[gd_scene load_steps=53 format=3 uid="uid://dcbchvrd8ok5p"]
 
 [ext_resource type="Texture2D" uid="uid://ckwbd5pe618xx" path="res://Sprites/Bosses/Haunted Fortress/Idle/Haunted Fortress Idle.png" id="1_o3eeo"]
 [ext_resource type="Script" path="res://Scripts/Bosses/Haunted Fortress/haunted_fortress.gd" id="1_spxu2"]
@@ -13,6 +13,11 @@
 [ext_resource type="PackedScene" uid="uid://j5e2v0usfii5" path="res://Scenes/Misc/Light Beam.tscn" id="11_301wr"]
 [ext_resource type="PackedScene" uid="uid://u7dh3kc42owv" path="res://Scenes/Misc/Light Attack.tscn" id="11_731rk"]
 [ext_resource type="PackedScene" uid="uid://0xem0wqlx8we" path="res://Scenes/Misc/Rock.tscn" id="13_u42pe"]
+[ext_resource type="AudioStream" uid="uid://b38vcp28lusvd" path="res://Audio/SFX/Haunted Fortress Mouth Slam.mp3" id="14_apror"]
+[ext_resource type="AudioStream" uid="uid://bkn5pvmvreeis" path="res://Audio/SFX/BFG.mp3" id="15_lrbjh"]
+[ext_resource type="AudioStream" uid="uid://p5qind8r4vfh" path="res://Audio/SFX/Rumble.mp3" id="16_6ogai"]
+[ext_resource type="AudioStream" uid="uid://cxkhbwehh88pq" path="res://Audio/SFX/Humming.mp3" id="17_p7356"]
+[ext_resource type="AudioStream" uid="uid://btibpopk3es2g" path="res://Audio/SFX/Vacuum.mp3" id="18_oxhgb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t58o8"]
 size = Vector2(244.667, 99.5)
@@ -768,6 +773,31 @@ resources = [PackedStringArray("Laser", "Light Attack", "Light Beam", "Rock"), [
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(0, 45)
+
+[node name="HauntedFortressMouthSlam" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_apror")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="Bfg" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_lrbjh")
+volume_db = -5.0
+bus = &"SFX"
+
+[node name="Rumble" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_6ogai")
+volume_db = -5.0
+bus = &"SFX"
+
+[node name="Humming" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_p7356")
+volume_db = -30.0
+bus = &"SFX"
+
+[node name="Vacuum" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_oxhgb")
+volume_db = -5.0
+bus = &"SFX"
 
 [node name="Light Beam Points" type="Node2D" parent="."]
 

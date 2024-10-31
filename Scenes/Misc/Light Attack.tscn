@@ -1,49 +1,47 @@
-[gd_scene load_steps=11 format=3 uid="uid://u7dh3kc42owv"]
+[gd_scene load_steps=12 format=3 uid="uid://u7dh3kc42owv"]
 
 [ext_resource type="Script" path="res://Scripts/Bosses/Haunted Fortress/light_attack.gd" id="1_b7j3l"]
 [ext_resource type="Texture2D" uid="uid://c7fyeoglnkxkb" path="res://Sprites/Misc/Light Warning Circle.png" id="2_t4tun"]
 [ext_resource type="Texture2D" uid="uid://c1atokb4nomn2" path="res://Sprites/Misc/Light Attack.png" id="3_k0n7h"]
+[ext_resource type="AudioStream" uid="uid://bbbyt5s82anlc" path="res://Audio/SFX/Light Beam.mp3" id="4_68bd7"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_y52nu"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_gtd0x"]
 atlas = ExtResource("3_k0n7h")
-region = Rect2(0, 0, 32, 256)
+region = Rect2(0, 0, 64, 900)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jnsho"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_axpfu"]
 atlas = ExtResource("3_k0n7h")
-region = Rect2(32, 0, 32, 256)
+region = Rect2(64, 0, 64, 900)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vu0c0"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_erg48"]
 atlas = ExtResource("3_k0n7h")
-region = Rect2(64, 0, 32, 256)
+region = Rect2(128, 0, 64, 900)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_12lnl"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_s5eip"]
 atlas = ExtResource("3_k0n7h")
-region = Rect2(96, 0, 32, 256)
+region = Rect2(192, 0, 64, 900)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wm0tj"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_nc2r7"]
 atlas = ExtResource("3_k0n7h")
-region = Rect2(128, 0, 32, 256)
+region = Rect2(256, 0, 64, 900)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ilqkh"]
 animations = [{
 "frames": [{
-"duration": 0.1,
-"texture": null
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gtd0x")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_y52nu")
+"texture": SubResource("AtlasTexture_axpfu")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jnsho")
+"texture": SubResource("AtlasTexture_erg48")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vu0c0")
+"texture": SubResource("AtlasTexture_s5eip")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_12lnl")
-}, {
-"duration": 3.0,
-"texture": SubResource("AtlasTexture_wm0tj")
+"texture": SubResource("AtlasTexture_nc2r7")
 }],
 "loop": false,
 "name": &"default",
@@ -65,9 +63,9 @@ texture = ExtResource("2_t4tun")
 [node name="Beam" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_ilqkh")
-frame = 5
+frame = 4
 frame_progress = 1.0
-offset = Vector2(0, -120)
+offset = Vector2(0, -418)
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 0
@@ -88,6 +86,12 @@ autostart = true
 [node name="Fade Timer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
+
+[node name="LightBeam" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_68bd7")
+volume_db = -17.0
+pitch_scale = 1.25
+bus = &"SFX"
 
 [connection signal="animation_finished" from="Beam" to="." method="_on_beam_animation_finished"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
