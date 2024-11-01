@@ -139,7 +139,6 @@ one_shot = true
 stream = ExtResource("5_gm0ja")
 volume_db = -5.0
 autoplay = true
-stream_paused = true
 bus = &"SFX"
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
