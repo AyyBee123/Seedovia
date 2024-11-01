@@ -4,6 +4,7 @@ extends "res://Scripts/Bosses/boss.gd"
 @onready var air_time = $"Air Time"
 @onready var spit_buildup_time = $"Spit Buildup Time"
 @onready var spit_fire_rate = $"Spit Fire Rate"
+@onready var spin_sfx_loop_time = $"Spin SFX Loop Time"
 @onready var resource_preloader = $ResourcePreloader
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var enemy_hitbox = $"Enemy Hitbox/CollisionPolygon2D"
@@ -11,6 +12,9 @@ extends "res://Scripts/Bosses/boss.gd"
 @onready var shadow = $Shadow
 @onready var jump_SFX = $Jump
 @onready var splat_SFX = $Splat
+@onready var spore_SFX = $Spore
+@onready var spin_SFX = $Spin
+@onready var vacuum_SFX = $Vacuum
 
 var spit_finished := false
 var spin_finished := false
@@ -36,17 +40,25 @@ func idle():
 func spin():
 	if animated_sprite_2d.animation == "Spin Beginning":
 		spin_direction = global_position.direction_to(player.global_position)
+		vacuum_SFX.play()
 	if animated_sprite_2d.animation == "Spin Middle":
+		if spin_sfx_loop_time.is_stopped():
+			spin_SFX.play()
+			spin_sfx_loop_time.start()
 		velocity = velocity.lerp(_enemy_stats.speed * spin_direction.normalized(), _enemy_stats.acceleration)
 		if collision:
 			velocity = velocity.bounce(collision.get_normal())
 			spin_direction = velocity
 	if animated_sprite_2d.animation == "Spin End":
+		spin_sfx_loop_time.stop()
+		vacuum_SFX.stop()
 		velocity = velocity.lerp(Vector2.ZERO, _enemy_stats.friction)
 
 func spit():
 	if animated_sprite_2d.animation == "Spit Middle":
 		if spit_fire_rate.is_stopped():
+			spore_SFX.pitch_scale = randf_range(0.6, 0.8)
+			SfxDeconflicter.play(spore_SFX)
 			var bullet_instance = resource_preloader.get_resource("Spore").instantiate()
 			bullet_instance.damage = _enemy_stats.weapon_damage
 			bullet_instance.range = _enemy_stats.weapon_range * randf_range(0.25, 1)

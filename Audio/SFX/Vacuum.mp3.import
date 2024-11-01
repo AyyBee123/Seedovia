@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/Vacuum.mp3-c903cf771f90f435e782c217e070a88f.m
 [params]
 
 loop=false
-loop_offset=0
-bpm=0
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4
