@@ -71,5 +71,6 @@ func give_reward():
 	var item = resource_preloader.get_resource("Item").instantiate()
 	item.set_item(Pool.get_item(Pool.pools[Pool.pools.find(Global.next_reward)]))
 	add_child(item)
+	# spawn item in the middle of the screen
 	item.global_position = $Camera2D.global_position
 	Global.next_reward = null

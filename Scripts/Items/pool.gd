@@ -17,6 +17,7 @@ var pools: Array
 var add_pool := true
 
 func _ready():
+	# TODO: add RNG.randomize
 	randomize()
 	add_pool = true
 	populate_pool(equipment_pool)

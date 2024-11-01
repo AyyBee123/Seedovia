@@ -4,7 +4,9 @@ var floor = ResourceLoader.load("res://Resources/Current Floor/floor.tres")
 static var floor_number: int
 static var room_number: int
 
+# TODO: change the level list to randomize when starting a new run, rather than randomizing when booting up the game
 func _ready():
+	# TODO: add RNG.randomize
 	randomize()
 
 func change_room():
