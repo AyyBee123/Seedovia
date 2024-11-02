@@ -95,6 +95,7 @@ func get_item(pool: Resource):
 		var item = pool.pool.pop_front()
 		return item
 	else:
+		# TODO: add RNG.randf_range(...)
 		var roll: float = randf_range(0.0, pool.total_weight)
 		for item in pool.pool:
 			if item.acc_weight > roll:
