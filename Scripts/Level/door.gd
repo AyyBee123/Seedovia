@@ -25,7 +25,7 @@ func change_scene():
 	LevelList.change_room.call_deferred()
 
 func set_reward(reward_text: String = ""):
-	if reward_text != "":
+	if reward_text != "": # if the reward is set (i.e. passive room, boss room, etc.)
 		$"Background/Reward Text".text = "[center]Reward\n" + reward_text
 		return
 	Pool.pools.shuffle()

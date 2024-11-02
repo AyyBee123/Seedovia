@@ -31,7 +31,7 @@ var add_pool := true
 func _ready():
 	# TODO: add RNG.randomize
 	randomize()
-	add_pool = true # add the pool array to a "pools" array
+	add_pool = true # add the pool array to the room reward pool
 	populate_pool(equipment_pool)
 	populate_pool(consumable_pool)
 	populate_pool(seed_pool)
