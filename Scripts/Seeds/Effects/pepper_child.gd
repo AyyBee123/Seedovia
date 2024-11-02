@@ -23,16 +23,16 @@ func initialize_position():
 		ignore_first_collision = false
 
 func update_position(delta):
-	var current_velocity: Vector2 = direction * _player_stats.get_stat("Weapon_Speed") *\
-	speed_multiplier * projectile_speed_timer.time_left
+	var current_velocity: Vector2 = direction * _player_stats.get_stat("Weapon_Speed") * \
+			speed_multiplier * projectile_speed_timer.time_left
 	position += current_velocity * delta
 	look_at(global_position + current_velocity)
 
 func _on_hitbox_area_entered(area):
 	has_collided.emit(area)
 	if area.is_in_group("Enemies"):
-			area.get_parent()._enemy_stats.take_damage(_player_stats.get_stat("Weapon_Damage") *\
-			damage_multiplier / 2)
+			area.get_parent()._enemy_stats.take_damage(_player_stats.get_stat("Weapon_Damage") * \
+					damage_multiplier / 2)
 	explode()
 
 func _on_hitbox_body_entered(body):
@@ -52,8 +52,8 @@ func explode():
 	$Hitbox/CollisionShape2D.disabled = true
 	call_deferred("create_child", explosion)
 	for i in range(seed_slots.size()):
-		var weapon = null if PlayerSeeds.seeds.size() <= 1 + slot_index or\
-		slot_index >= 2 else PlayerSeeds.seeds[slot_index + 1]
+		var weapon = null if PlayerSeeds.seeds.size() <= 1 + slot_index or \
+				slot_index >= 2 else PlayerSeeds.seeds[slot_index + 1]
 		shoot_next_weapon()
 		break
 	# call defer twice to allow passives that trigger off of weapon fire to work

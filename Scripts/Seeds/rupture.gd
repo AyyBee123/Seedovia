@@ -160,11 +160,11 @@ func get_weapon_properties(weapon, _desired_direction, _ignore_first_collision =
 func initialize_location(weapon):
 	get_tree().current_scene.add_child(weapon)
 	if x_pos < 0:
-		weapon.global_position = Vector2(randf_range(bottom_left.global_position.x,top_left.global_position.x),\
-		randf_range(bottom_left.global_position.y,top_left.global_position.y))
+		weapon.global_position = Vector2(randf_range(bottom_left.global_position.x,top_left.global_position.x), \
+				randf_range(bottom_left.global_position.y,top_left.global_position.y))
 	else:
-		weapon.global_position = Vector2(randf_range(bottom_right.global_position.x,top_right.global_position.x),\
-		randf_range(bottom_right.global_position.y,top_right.global_position.y))
+		weapon.global_position = Vector2(randf_range(bottom_right.global_position.x,top_right.global_position.x), \
+				randf_range(bottom_right.global_position.y,top_right.global_position.y))
 	weapon_fired.emit(weapon)
 
 func update_position(delta):
@@ -202,5 +202,5 @@ func _on_fire_rate_timeout():
 	fire_rate.start()
 
 func get_next_weapon():
-	return null if PlayerSeeds.seeds.size() <= 1 + slot_index or slot_index >= 2 else\
-	PlayerSeeds.seeds[slot_index + 1]
+	return null if PlayerSeeds.seeds.size() <= 1 + slot_index or slot_index >= 2 else \
+			PlayerSeeds.seeds[slot_index + 1]

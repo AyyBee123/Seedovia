@@ -1,5 +1,7 @@
 extends TextureProgressBar
 
+## The boss' name is determined by the name of the boss parent node (the CharacterBody2D node)
+
 @onready var damage_bar := $"Enemy Health"
 @onready var delay := $"White Bar Delay"
 @export var rate: float = 0.08

@@ -71,8 +71,8 @@ func _process(delta):
 			selected_slot.visible = false
 	if all_slots[selected_slot_index].item and all_slots[selected_slot_index].popup == null and not _isMandK:
 		all_slots[selected_slot_index].add_popup(all_slots[selected_slot_index].item, "Joystick")
-	elif all_slots[selected_slot_index].item and all_slots[selected_slot_index].popup != null and _isMandK and\
-	all_slots[selected_slot_index].popup.source != "Mouse":
+	elif all_slots[selected_slot_index].item and all_slots[selected_slot_index].popup != null and _isMandK and \
+			all_slots[selected_slot_index].popup.source != "Mouse":
 		all_slots[selected_slot_index].remove_popup()
 		
 
@@ -121,8 +121,8 @@ func _input(event):
 		if _isMandK:
 			holding_item.global_position = get_global_mouse_position()
 		else:
-			holding_item.global_position = selected_slot.global_position +\
-			Vector2(selected_slot.size.x * 2, selected_slot.size.y * 1.5)
+			holding_item.global_position = selected_slot.global_position \
+					+ Vector2(selected_slot.size.x * 2, selected_slot.size.y * 1.5)
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			#drop item if mouse is outside inventory and has a holding item after left mouse click
@@ -136,8 +136,8 @@ func _input(event):
 	elif event is InputEventJoypadMotion:
 		# only detect left joystick
 		# TODO: change deadzone to match options menu value
-		if Input.get_vector("left", "right", "up", "down").length() > 0.15 and\
-		(event.get_axis() == 0 or event.get_axis() == 1):
+		if Input.get_vector("left", "right", "up", "down").length() > 0.15 and \
+				(event.get_axis() == 0 or event.get_axis() == 1):
 			_isMandK = false
 	elif event is InputEventJoypadButton:
 		_isMandK = false

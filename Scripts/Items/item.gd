@@ -18,6 +18,7 @@ func set_item(new_item: Resource):
 	item = new_item
 	$Sprite.texture = new_item.get_texture()
 
+# TODO: add this in player script
 func _on_pickable_area_body_entered(body):
 	if body.is_in_group("Players"):
 		player_in_area = true

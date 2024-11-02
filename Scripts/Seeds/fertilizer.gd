@@ -40,8 +40,8 @@ func _collide(body):
 
 func update_position(delta):
 	if not hit_wall:
-		current_velocity = direction * _player_stats.get_stat("Weapon_Speed")\
-		* speed_multiplier * deceleration.time_left
+		current_velocity = direction * _player_stats.get_stat("Weapon_Speed") \
+				* speed_multiplier * deceleration.time_left
 		position += current_velocity * delta
 
 func _on_deceleration_timeout():
@@ -49,8 +49,8 @@ func _on_deceleration_timeout():
 	stink_rate.start()
 
 func _on_lifetime_timeout():
-	var weapon = null if PlayerSeeds.seeds.size() <= 1 + slot_index or slot_index >= 2\
-		else PlayerSeeds.seeds[slot_index + 1]
+	var weapon = null if PlayerSeeds.seeds.size() <= 1 + slot_index or slot_index >= 2 \
+			else PlayerSeeds.seeds[slot_index + 1]
 	shoot_next_weapon()
 	queue_free.call_deferred()
 

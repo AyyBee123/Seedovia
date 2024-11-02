@@ -19,8 +19,8 @@ var is_shrunk := false
 func _ready():
 	SfxDeconflicter.play(noise_SFX)
 	super._ready()
-	var weapon = null if PlayerSeeds.seeds.size() <= 1 + slot_index or\
-	slot_index >= 2 else PlayerSeeds.seeds[slot_index + 1]
+	var weapon = null if PlayerSeeds.seeds.size() <= 1 + slot_index or \
+			slot_index >= 2 else PlayerSeeds.seeds[slot_index + 1]
 	shoot_next_weapon()
 
 func _physics_process(delta):

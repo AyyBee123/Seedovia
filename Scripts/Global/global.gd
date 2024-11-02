@@ -6,6 +6,7 @@ var data := player_data.new()
 var rewards: Array
 static var next_reward: item_pool = null
 var cursor = load("res://Sprites/UI/Cursor.png")
+var RNG
 
 func save_data():
 	data.get_sprite()

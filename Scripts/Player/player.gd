@@ -49,8 +49,8 @@ func _physics_process(delta):
 	update_timers()
 	weapon_direction = hand.global_position.direction_to(weapon_direction_marker.global_position)
 	# check if the mouse is in the inventory and if the inventory is visible to detect if the player can shoot
-	mouse_in_inventory = inventory_screen.get_global_rect().has_point(inventory.get_global_mouse_position())\
-	and inventory.is_visible_in_tree()
+	mouse_in_inventory = inventory_screen.get_global_rect().has_point(inventory.get_global_mouse_position()) \
+			and inventory.is_visible_in_tree()
 	
 	# aiming direction (right joystick by default)
 	# TODO: change 0.15 to deadzone value from options menu
@@ -78,8 +78,8 @@ func _physics_process(delta):
 	$"Player Sprite".flip_h = true if cos($"Rotation Point".rotation) < 0 else false
 	
 	# shoot bullet
-	if Input.is_action_pressed("shoot") and bullets_per_second.is_stopped() and not mouse_in_inventory\
-	and not has_holding_item:
+	if Input.is_action_pressed("shoot") and bullets_per_second.is_stopped() and not mouse_in_inventory \
+			and not has_holding_item:
 		current_weapon = null if PlayerInventory.seeds.size() == 0 else PlayerSeeds.load_weapons()[0]
 		if current_weapon != null:
 			shoot.emit(current_weapon, hand.global_position)
@@ -116,8 +116,8 @@ func move():
 	# TODO: add a deadzone value taken from the one in options menu (currently 0.15)
 	var input_direction = Input.get_vector("left", "right", "up", "down", 0.15)
 	if input_direction.length() > 0:
-		velocity = velocity.lerp(input_direction * _player_stats.get_stat("Speed"),\
-		_player_stats.get_stat("Acceleration"))
+		velocity = velocity.lerp(input_direction * _player_stats.get_stat("Speed"), \
+				_player_stats.get_stat("Acceleration"))
 
 func stop():
 	velocity = velocity.lerp(Vector2.ZERO, _player_stats.get_stat("Friction"))
@@ -131,8 +131,8 @@ func die():
 func dash():
 	can_be_damaged = false
 	var input_direction = Input.get_vector("left", "right", "up", "down")
-	velocity = velocity.lerp((input_direction.normalized() if input_direction else Vector2(0,1))\
-	* _player_stats.get_stat("Dash_Distance"), 1)
+	velocity = velocity.lerp((input_direction.normalized() if input_direction else Vector2(0,1)) \
+			* _player_stats.get_stat("Dash_Distance"), 1)
 	dashed.emit()
 	dash_cooldown.start()
 	dash_invulnerability_time.start()

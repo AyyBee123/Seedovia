@@ -19,11 +19,11 @@ func _ready():
 
 func update_position(delta):
 	if deceleration.time_left > decel_threshold:
-		current_velocity = direction.rotated(spread) * _player_stats.get_stat("Weapon_Speed")\
-		* speed_multiplier * deceleration.time_left
+		current_velocity = direction.rotated(spread) * _player_stats.get_stat("Weapon_Speed") \
+				* speed_multiplier * deceleration.time_left
 	else:
-		current_velocity = direction.rotated(spread) * _player_stats.get_stat("Weapon_Speed")\
-		* speed_multiplier * decel_threshold
+		current_velocity = direction.rotated(spread) * _player_stats.get_stat("Weapon_Speed") \
+				* speed_multiplier * decel_threshold
 	position += current_velocity * delta
 
 func _on_deceleration_timeout():

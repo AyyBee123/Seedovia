@@ -20,8 +20,8 @@ func update_position(delta):
 		if not is_stopping:
 			current_velocity = direction * _player_stats.get_stat("Weapon_Speed") * speed_multiplier
 		else:
-			current_velocity = direction * _player_stats.get_stat("Weapon_Speed") * speed_multiplier\
-			* deceleration.time_left
+			current_velocity = direction * _player_stats.get_stat("Weapon_Speed") * speed_multiplier \
+					* deceleration.time_left
 	else:
 		if initial_weapon:
 			direction = global_position.direction_to(player.global_position) # goes towards the player's position
@@ -34,8 +34,8 @@ func update_position(delta):
 					direction = -direction
 				if previous_weapon == null:
 					direction_changed = true
-		current_velocity = direction * _player_stats.get_stat("Weapon_Speed") * speed_multiplier\
-		* (deceleration.wait_time - acceleration.time_left) / deceleration.wait_time
+		current_velocity = direction * _player_stats.get_stat("Weapon_Speed") * speed_multiplier \
+				* (deceleration.wait_time - acceleration.time_left) / deceleration.wait_time
 	position += current_velocity * delta
 	rotation += deg_to_rad(-10)
 

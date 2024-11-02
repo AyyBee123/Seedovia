@@ -5,6 +5,18 @@ var consumable_pool = ResourceLoader.load("res://Resources/Items/Pools/consumabl
 var equipment_pool = ResourceLoader.load("res://Resources/Items/Pools/equipment_pool.tres")
 var passive_pool = ResourceLoader.load("res://Resources/Items/Pools/passive_pool.tres")
 var seed_pool = ResourceLoader.load("res://Resources/Items/Pools/seed_pool.tres")
+var accumulated_weight: float # used to determine what item is chosen
+
+var item_weights = {
+	0: 0.45, # common
+	1: 0.30, # uncommon
+	2: 0.15, # rare
+	3: 0.075, # epic
+	4: 0.025, # legendary
+	5: 0.0001, # mystic
+	6: 1, # unique
+	7: 1, # N/A
+}
 
 #array of floor pools
 var floors: Array
@@ -19,7 +31,7 @@ var add_pool := true
 func _ready():
 	# TODO: add RNG.randomize
 	randomize()
-	add_pool = true
+	add_pool = true # add the pool array to a "pools" array
 	populate_pool(equipment_pool)
 	populate_pool(consumable_pool)
 	populate_pool(seed_pool)
@@ -33,10 +45,18 @@ func _ready():
 		populate_pool(floor)
 
 func populate_pool(pool: Resource):
+	accumulated_weight = 0
 	var item_resources = get_all_file_paths(pool.path)
 	for resource_path in item_resources:
+		var item = ResourceLoader.load(resource_path)
+		if "rarity" in item:
+			# take the current item weight and accumulate it
+			accumulated_weight += item_weights[item.rarity]
+			# take the current accumulated weight and assign it to the item
+			item.acc_weight = accumulated_weight
+			# take the current total item weight and assign it to the item pool
+			pool.total_weight = accumulated_weight
 		pool.pool.append(ResourceLoader.load(resource_path))
-	shuffle_pool(pool)
 	pool.full_pool = pool.pool.duplicate()
 	if add_pool:
 		pools.append(pool)
@@ -69,11 +89,16 @@ func get_all_file_paths(path: String) -> Array[String]:
 	return file_paths
 
 func get_item(pool: Resource):
-	if pool.pool.is_empty():
+	if pool.pool.is_empty(): # for the passives pool
 		repopulate_pool(pool)
-	var item
-	item = pool.pool.pop_front()
-	return item
+	if pool != consumable_pool and pool != equipment_pool and pool != seed_pool:
+		var item = pool.pool.pop_front()
+		return item
+	else:
+		var roll: float = randf_range(0.0, pool.total_weight)
+		for item in pool.pool:
+			if item.acc_weight > roll:
+				return item
 
 func repopulate_pool(pool: Resource):
 	pool.pool = pool.full_pool.duplicate()
