@@ -23,8 +23,6 @@ class_name player_data extends Resource
 @export var picked_up_passive: bool
 @export var next_reward: item_pool
 @export var passive_pool: Array
-@export var floor_pools: Array
-@export var boss_floor_pools: Array
 @export var current_seed: int
 
 # these functions are called form the global script
@@ -96,3 +94,9 @@ func set_current_room():
 	LevelList.passive_items_on_ground = passive_items_on_ground
 	LevelList.picked_up_passive = picked_up_passive
 	Global.next_reward = next_reward
+
+func get_pools():
+	passive_pool = Pool.passive_pool.pool
+
+func set_pools():
+	Pool.passive_pool.pool = passive_pool

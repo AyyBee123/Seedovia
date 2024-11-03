@@ -15,6 +15,7 @@ func save_data():
 	data.get_passives()
 	data.get_item_passives()
 	data.get_stats()
+	data.get_pools()
 	ResourceSaver.save(data, SAVE_PATH)
 	ResourceSaver.save(data, "user://current_run.tres")
 
@@ -27,6 +28,7 @@ func load_data():
 	data.set_passives()
 	data.set_item_passives()
 	data.set_inventory()
+	data.set_pools()
 
 func save_room():
 	data.get_current_room()

@@ -37,17 +37,11 @@ func _ready():
 	add_pool = false
 	if not ResourceLoader.exists(Global.SAVE_PATH):
 		return
-	populate_pool(passive_pool)
-	shuffle_pool(passive_pool)
+	if passive_pool.pool.size() == 0:
+		populate_pool(passive_pool)
+		shuffle_pool(passive_pool)
 	add_floors()
 	add_boss_floors()
-	# TODO: remove floor pools and pick the rooms at random instead
-	for floor in floors: # populate the rooms for each floor
-		populate_pool(floor)
-		shuffle_pool(floor)
-	for floor in boss_floors: # populate the boss rooms for each floor
-		populate_pool(floor)
-		shuffle_pool(floor)
 
 func populate_pool(pool: Resource):
 	accumulated_weight = 0
@@ -70,11 +64,17 @@ func add_floors():
 	var floor_files = get_all_file_paths("res://Resources/Floors/")
 	for floor in floor_files:
 		floors.append(ResourceLoader.load(floor))
+	for floor in floors: # populate the rooms for each floor
+		populate_pool(floor)
 
 func add_boss_floors():
+	if boss_floors.size() > 0:
+		return
 	var floor_files = get_all_file_paths("res://Resources/Boss Floors/")
 	for floor in floor_files:
 		boss_floors.append(ResourceLoader.load(floor))
+	for floor in boss_floors: # populate the boss rooms for each floor
+		populate_pool(floor)
 
 func shuffle_pool(pool: Resource):
 	pool.pool.shuffle()
@@ -96,10 +96,13 @@ func get_all_file_paths(path: String) -> Array[String]:
 func get_item(pool: Resource):
 	if pool.pool.is_empty(): # for the passives pool
 		repopulate_pool(pool)
-	if pool != consumable_pool and pool != equipment_pool and pool != seed_pool:
+	if pool == passive_pool: # passive pool
 		var item = pool.pool.pop_front()
 		return item
-	else:
+	elif pool != consumable_pool and pool != equipment_pool and pool != seed_pool: # floor pools
+		var item = pool.pool.pick_random()
+		return item
+	else: # talisman, seed, and consumable pools
 		var roll: float = Global.RNG.randf_range(0.0, pool.total_weight)
 		for item in pool.pool:
 			if item.acc_weight > roll:
