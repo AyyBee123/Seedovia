@@ -29,6 +29,8 @@ var mouse_in_inventory := false
 var has_holding_item := false # this is set in the inventory script to true if the mouse cursor is holding an item
 var damage_multiplier
 var weapon_direction
+var pickup_item = null
+var item_in_area = false
 
 # check if the input is from a keyboard or joystick
 var _isMouse := true
@@ -91,6 +93,9 @@ func _physics_process(delta):
 		else:
 			pass # will add pause here, but it's not made yet
 	
+	if Input.is_action_just_pressed("pick up"):
+		if item_in_area:
+			pick_up(pickup_item)
 	# invulnerability time when the player takes damage or dashes
 	if invulnerability_time.is_stopped() and dash_invulnerability_time.is_stopped():
 		can_be_damaged = true
@@ -107,6 +112,12 @@ func _physics_process(delta):
 		set_collision_layer(initial_collision_layer)
 	else:
 		set_collision_layer(initial_collision_layer - 2) # 2 is the player's collision layer
+
+func pick_up(item):
+	PlayerInventory.add_item(item.item, self, inventory)
+	item.queue_free.call_deferred()
+	await get_tree().create_timer(0.1).timeout
+	Global.save_room()
 
 func set_sprite():
 	player_sprite.texture = PlayerCharacter.sprite
@@ -161,6 +172,7 @@ func update_timers():
 	dash_invulnerability_time.wait_time = _player_stats.get_stat("Dash_Invulnerability")
 
 func took_damage():
+	Global.save_data()
 	can_be_damaged = false
 	invulnerability_time.start()
 
@@ -190,3 +202,12 @@ func _input(event) -> void:
 				_isMouse = false
 	elif event is InputEventMouseMotion:
 		_isMouse = true
+
+func _on_pickup_radius_area_entered(area):
+	if area.get_parent().is_in_group("Item"):
+		pickup_item = area.get_parent()
+		item_in_area = true
+
+func _on_pickup_radius_area_exited(area):
+	if area.get_parent().is_in_group("Item"):
+		item_in_area = false

@@ -8,6 +8,8 @@ const slot_class = preload("res://Scripts/Inventory/inventory_slot.gd")
 @onready var selected_slot = $"Selected Slot"
 
 var holding_item = null # the item that is currently being held by the cursor in the inventory
+var previous_holding_item
+var holding_item_player_pos
 var drop_delay = Timer.new()
 var _isMandK := true
 # set the default selected slot (for controller inventory navigation)
@@ -46,9 +48,9 @@ func _ready():
 	selected_slot_index = 7
 	current_index_popup = selected_slot_index
 	
-	inititialize_inventory()
-	inititialize_talisman()
-	inititialize_seeds()
+	initialize_inventory()
+	initialize_talisman()
+	initialize_seeds()
 
 func _process(delta):
 	if Input.is_action_just_pressed("inventory"):
@@ -114,9 +116,19 @@ func slot_gui_input(event: InputEvent, slot: slot_class):
 			slot.remove_popup()
 
 func _input(event):
-	inititialize_inventory()
-	inititialize_talisman()
-	inititialize_seeds()
+	#if holding_item != null:
+		#LevelList.items_on_ground[holding_item.item] == player.global_position
+		#previous_holding_item = holding_item
+		#holding_item_player_pos = player.global_position
+	#elif holding_item == null:
+		#for item in LevelList.items_on_ground:
+			#if LevelList.items_on_ground[item] == holding_item_player_pos:
+				#LevelList.items_on_ground.erase(previous_holding_item.item)
+				#previous_holding_item = null
+				#holding_item_player_pos = null
+	initialize_inventory()
+	initialize_talisman()
+	initialize_seeds()
 	if holding_item:
 		if _isMandK:
 			holding_item.global_position = get_global_mouse_position()
@@ -177,18 +189,19 @@ func _input(event):
 		ev.button_index = JOY_BUTTON_B
 		ev.pressed = true
 		slot_gui_input(ev, all_slots[selected_slot_index])
+	Global.save_data()
 
-func inititialize_inventory():
+func initialize_inventory():
 	for i in range(inventory_slots.size()):
 		if PlayerInventory.inventory.has(i):
 			inventory_slots[i].initialize_item(PlayerInventory.inventory[i])
 
-func inititialize_talisman():
+func initialize_talisman():
 	for i in range(talisman_slots.size()):
 		if PlayerInventory.talismans.has(i):
 			talisman_slots[i].initialize_item(PlayerInventory.talismans[i])
 
-func inititialize_seeds():
+func initialize_seeds():
 	for i in range(seed_slots.size()):
 		if PlayerInventory.seeds.has(i):
 			seed_slots[i].initialize_item(PlayerInventory.seeds[i])

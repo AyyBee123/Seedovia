@@ -1,6 +1,7 @@
 class_name player_data extends Resource
 
 # resource variables must have @export to be saved in a file
+# data is loaded from the load_data function in the global script
 @export var inventory: Dictionary = PlayerInventory.inventory
 @export var talismans: Dictionary = PlayerInventory.talismans
 @export var seeds: Dictionary = PlayerInventory.seeds
@@ -11,13 +12,27 @@ class_name player_data extends Resource
 @export var overcapped_health: int
 @export var character_sprite: Texture
 @export var character_hand_sprite: Texture
+@export var floor_number: int
+@export var room_number: int
+@export var current_room: String
+@export var is_cleared: bool
+@export var reward_given: bool
+@export var doors: Dictionary
+@export var items_on_ground: Dictionary
+@export var passive_items_on_ground: Dictionary
+@export var picked_up_passive: bool
+@export var next_reward: item_pool
+@export var passive_pool: Array
+@export var floor_pools: Array
+@export var boss_floor_pools: Array
+@export var current_seed: int
 
 # these functions are called form the global script
 func get_inventory():
 	inventory = PlayerInventory.inventory
 	talismans = PlayerInventory.talismans
 	seeds = PlayerInventory.seeds
-	
+
 func set_inventory():
 	PlayerInventory.inventory = inventory
 	PlayerInventory.talismans = talismans
@@ -55,3 +70,29 @@ func get_sprite():
 func set_sprite():
 	PlayerCharacter.sprite = ImageTexture.create_from_image(character_sprite.get_image())
 	PlayerCharacter.hand_sprite = ImageTexture.create_from_image(character_hand_sprite.get_image())
+
+func get_current_room():
+	floor_number = LevelList.floor_number
+	room_number = LevelList.room_number
+	current_room = LevelList.current_room
+	is_cleared = LevelList.loaded_room_is_cleared
+	reward_given = LevelList.current_reward_given
+	doors = LevelList.doors
+	items_on_ground = LevelList.items_on_ground
+	passive_items_on_ground = LevelList.passive_items_on_ground
+	picked_up_passive = LevelList.picked_up_passive
+	current_seed = Global.RNG.seed
+	next_reward = Global.next_reward
+
+func set_current_room():
+	Global.RNG.seed = current_seed
+	LevelList.floor_number = floor_number
+	LevelList.room_number = room_number
+	LevelList.loaded_current_room = current_room
+	LevelList.loaded_room_is_cleared = is_cleared
+	LevelList.current_reward_given = reward_given
+	LevelList.doors = doors
+	LevelList.items_on_ground = items_on_ground
+	LevelList.passive_items_on_ground = passive_items_on_ground
+	LevelList.picked_up_passive = picked_up_passive
+	Global.next_reward = next_reward

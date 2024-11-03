@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cu63rxmy71bcg"]
+[gd_scene load_steps=12 format=3 uid="uid://cu63rxmy71bcg"]
 
 [ext_resource type="Texture2D" uid="uid://ddxlo3x3ru7hr" path="res://Sprites/Player/Hand.png" id="2_6om3g"]
 [ext_resource type="Script" path="res://Scripts/Player/player.gd" id="2_f7nwd"]
@@ -31,6 +31,9 @@ tracks/0/keys = {
 _data = {
 "Invulnerable": SubResource("Animation_o3tge")
 }
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5m6np"]
+radius = 50.0
 
 [node name="Player" type="CharacterBody2D" groups=["Players"]]
 z_index = 1
@@ -109,6 +112,15 @@ libraries = {
 }
 speed_scale = -1.0
 
+[node name="Pickup Radius" type="Area2D" parent="."]
+collision_layer = 128
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pickup Radius"]
+shape = SubResource("CircleShape2D_5m6np")
+
 [connection signal="shoot" from="." to="." method="_on_shoot"]
 [connection signal="mouse_entered" from="Inventory" to="." method="_on_inventory_mouse_entered"]
 [connection signal="mouse_exited" from="Inventory" to="." method="_on_inventory_mouse_exited"]
+[connection signal="area_entered" from="Pickup Radius" to="." method="_on_pickup_radius_area_entered"]
+[connection signal="area_exited" from="Pickup Radius" to="." method="_on_pickup_radius_area_exited"]

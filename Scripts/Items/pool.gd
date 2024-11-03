@@ -29,20 +29,25 @@ var pools: Array
 var add_pool := true
 
 func _ready():
-	# TODO: add RNG.randomize
-	randomize()
+	Global.RNG.randomize()
 	add_pool = true # add the pool array to the room reward pool
 	populate_pool(equipment_pool)
 	populate_pool(consumable_pool)
 	populate_pool(seed_pool)
 	add_pool = false
+	if not ResourceLoader.exists(Global.SAVE_PATH):
+		return
 	populate_pool(passive_pool)
+	shuffle_pool(passive_pool)
 	add_floors()
 	add_boss_floors()
+	# TODO: remove floor pools and pick the rooms at random instead
 	for floor in floors: # populate the rooms for each floor
 		populate_pool(floor)
+		shuffle_pool(floor)
 	for floor in boss_floors: # populate the boss rooms for each floor
 		populate_pool(floor)
+		shuffle_pool(floor)
 
 func populate_pool(pool: Resource):
 	accumulated_weight = 0
@@ -95,8 +100,7 @@ func get_item(pool: Resource):
 		var item = pool.pool.pop_front()
 		return item
 	else:
-		# TODO: add RNG.randf_range(...)
-		var roll: float = randf_range(0.0, pool.total_weight)
+		var roll: float = Global.RNG.randf_range(0.0, pool.total_weight)
 		for item in pool.pool:
 			if item.acc_weight > roll:
 				return item

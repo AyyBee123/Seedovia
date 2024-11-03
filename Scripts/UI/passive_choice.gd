@@ -20,6 +20,9 @@ func get_passive():
 
 func give_item(item: PackedScene):
 	player.get_node("Passives").add_child(item.instantiate())
+	LevelList.picked_up_passive = true
+	Global.save_data()
+	Global.save_room()
 
 func on_press(passive_item):
 	give_item(passive_item.passive_ability)

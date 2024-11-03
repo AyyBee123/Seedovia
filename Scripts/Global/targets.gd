@@ -3,6 +3,7 @@ extends Node
 var player
 var enemies
 var items
+var passives
 var doors
 var camera
 var scene
@@ -11,6 +12,7 @@ func get_entities():
 	player = get_tree().get_first_node_in_group("Players")
 	enemies = get_tree().get_nodes_in_group("Enemy")
 	items = get_tree().get_nodes_in_group("Item")
+	passives = get_tree().get_nodes_in_group("Passive Item")
 	doors = get_tree().get_nodes_in_group("Door")
 	camera = get_tree().get_first_node_in_group("Main Camera")
 	scene = get_tree().current_scene
@@ -25,7 +27,9 @@ func get_enemy_hitboxes():
 	return get_tree().get_nodes_in_group("Enemies")
 
 func get_items():
-	return get_tree().get_nodes_in_group("Item")
+	var new_array = get_tree().get_nodes_in_group("Item")
+	new_array.append_array(get_tree().get_nodes_in_group("Passive Item"))
+	return new_array
 
 func get_scene():
 	return get_tree().current_scene

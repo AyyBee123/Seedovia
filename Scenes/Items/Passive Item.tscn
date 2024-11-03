@@ -10,7 +10,7 @@ radius = 22.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_lt2k7"]
 radius = 88.0
 
-[node name="Passive Item" type="Node2D" groups=["Item"]]
+[node name="Passive Item" type="Node2D" groups=["Passive Item"]]
 script = ExtResource("2_fosl5")
 
 [node name="Sprite" type="Sprite2D" parent="."]

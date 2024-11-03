@@ -15,12 +15,14 @@ var seeds = {}
 
 func add_item(item, player, inv):
 	for i in range(NUM_INVENTORY_SLOTS):
-		if not inventory.has(i): # checks for space in inventory
+		if not inventory.has(i): # checks for space in inventory (if the slot is empty)
 			picked_up_item = item
 			inventory[i] = item
 			return
 	# if inventory is full
 	drop_item(item, player)
+	Global.save_data()
+	Global.save_room()
 
 func drop_item(item, player):
 	var current_item = load("res://Scenes/Items/item.tscn").instantiate()
@@ -28,6 +30,8 @@ func drop_item(item, player):
 	current_item.set_item(item)
 	get_tree().current_scene.add_child(current_item)
 	current_item.global_position = player.global_position
+	Global.save_data()
+	Global.save_room()
 
 func add_item_to_empty_slot(item: item_instance, slot: slot_class):
 	if slot.slot_type == slot_class.slot_types.INVENTORY:
