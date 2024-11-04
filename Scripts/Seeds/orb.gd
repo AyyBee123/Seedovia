@@ -29,18 +29,18 @@ func shoot_next_weapon():
 func change_direction():
 	match weapon_direction:
 		Vector2(0,-1):
-			weapon_direction = Vector2(1,-1)
-		Vector2(1,-1):
+			weapon_direction = Vector2(1/sqrt(2),-1/sqrt(2))
+		Vector2(1/sqrt(2),-1/sqrt(2)):
 			weapon_direction = Vector2(1,0)
 		Vector2(1,0):
-			weapon_direction = Vector2(1,1)
-		Vector2(1,1):
+			weapon_direction = Vector2(1/sqrt(2),1/sqrt(2))
+		Vector2(1/sqrt(2),1/sqrt(2)):
 			weapon_direction = Vector2(0,1)
 		Vector2(0,1):
-			weapon_direction = Vector2(-1,1)
-		Vector2(-1,1):
+			weapon_direction = Vector2(-1/sqrt(2),1/sqrt(2))
+		Vector2(-1/sqrt(2),1/sqrt(2)):
 			weapon_direction = Vector2(-1,0)
 		Vector2(-1,0):
-			weapon_direction = Vector2(-1,-1)
-		Vector2(-1,-1):
+			weapon_direction = Vector2(-1/sqrt(2),-1/sqrt(2))
+		Vector2(-1/sqrt(2),-1/sqrt(2)):
 			weapon_direction = Vector2(0,-1)

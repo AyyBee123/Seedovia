@@ -43,4 +43,3 @@ func delete_data():
 	if not ResourceLoader.exists(SAVE_PATH):
 		return
 	DirAccess.remove_absolute(SAVE_PATH)
-	

@@ -37,7 +37,7 @@ func _ready():
 	add_pool = false
 	if not ResourceLoader.exists(Global.SAVE_PATH):
 		return
-	if passive_pool.pool.size() == 0:
+	if passive_pool.pool.size() == 0: # if one doesn't already exist from a current run save file
 		populate_pool(passive_pool)
 		shuffle_pool(passive_pool)
 	add_floors()

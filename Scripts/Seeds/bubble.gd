@@ -3,6 +3,7 @@ extends "res://Scripts/Seeds/seed_template.gd"
 @onready var deceleration = $Deceleration
 @onready var lifetime = $Lifetime
 @onready var bubble_pop_SFX = $BubblePop
+@onready var bubble_fire_SFX = $BubbleFire
 
 var spread: float
 var size: float
@@ -15,6 +16,7 @@ func _ready():
 	size = randf_range(0.8, 1) # random sizes to immitate how bubbles work irl
 	scale = Vector2.ONE * size
 	acceleration = randf_range(0.75, 1) * _player_stats.get_stat("Weapon_Range") / 100
+	SfxDeconflicter.play(bubble_fire_SFX)
 	deceleration.start(acceleration)
 
 func update_position(delta):
