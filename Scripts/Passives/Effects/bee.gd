@@ -45,7 +45,6 @@ func initialize_position():
 func update_position(delta):
 	var current_velocity: Vector2 = transform.x * speed # move in direction it's rotated
 	position += current_velocity * delta
-	#look_at(global_position + current_velocity)
 
 func _on_hitbox_area_entered(area):
 	if area.is_in_group("Enemies"):

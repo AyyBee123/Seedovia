@@ -50,7 +50,7 @@ func explode():
 	SfxDeconflicter.play(mild_explosion_SFX)
 	visible = false
 	call_deferred("create_child", explosion)
-	$Hitbox/CollisionShape2D.disabled = true
+	$Hitbox/CollisionShape2D.set_deferred("disabled", true)
 	for i in range(seed_slots.size()):
 		var weapon = null if PlayerSeeds.seeds.size() <= 1 + slot_index or \
 				slot_index >= 2 else PlayerSeeds.seeds[slot_index + 1]
