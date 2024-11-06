@@ -54,12 +54,14 @@ var current_velocity: Vector2
 @onready var top_left = $"Top Left"
 @onready var top_right = $"Top Right"
 
-var is_in_area := false
 var enemy = null
 var mouse_left_down := true
 var x_pos: float
 var lifetime_started := false
 var is_shrinking := false
+
+var enemies_in_area: Array
+var tick_timers: Array
 
 func _ready():
 	visible = false
@@ -78,11 +80,14 @@ func _physics_process(delta):
 	update_position(delta)
 	if slot_index > 0:
 		noise_SFX.volume_db = max(noise_SFX.volume_db - delta * 7.5, -30)
-	if is_in_area:
-		if tick_rate.is_stopped():
-			enemy._enemy_stats.take_damage(_player_stats.get_stat("Weapon_Damage") * damage_multiplier)
-			has_collided.emit(enemy.get_node("Enemy Hitbox"))
-			tick_rate.start(0.1 / _player_stats.get_stat("Fire_Rate") * 10)
+	# damage multiple enemies at a time
+	for i in enemies_in_area.size():
+		if tick_timers[i].is_stopped():
+			if is_instance_valid(enemies_in_area[i]):
+				enemies_in_area[i]._enemy_stats.take_damage(_player_stats.get_stat("Weapon_Damage") \
+						* damage_multiplier)
+				has_collided.emit(enemies_in_area[i].get_node("Enemy Hitbox"))
+				tick_timers[i].start(0.1 / _player_stats.get_stat("Fire_Rate") * 10)
 	if slot_index == 0: # if fired from the player
 		if not mouse_left_down:
 			is_shrinking = true
@@ -130,12 +135,20 @@ func _on_hitbox_body_entered(body):
 
 func _collide(body):
 	if body.is_in_group("Enemies"):
-		enemy = body.get_parent()
-		is_in_area = true
+		if is_instance_valid(body):
+			enemies_in_area.append(body.get_parent())
+			var timer = Timer.new()
+			add_child(timer)
+			timer.wait_time = 0.1 / _player_stats.get_stat("Fire_Rate") * 20
+			timer.one_shot = true
+			tick_timers.append(timer)
 
 func _on_hitbox_area_exited(area):
 	if area.is_in_group("Enemies"):
-		is_in_area = false
+		if is_instance_valid(area):
+			var index = enemies_in_area.find(area.get_parent())
+			enemies_in_area.remove_at(index)
+			tick_timers.remove_at(index)
 
 func shoot_next_weapon():
 	if get_next_weapon() == null:

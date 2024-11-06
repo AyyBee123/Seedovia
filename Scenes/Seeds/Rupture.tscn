@@ -36,6 +36,7 @@ animations = [{
 
 [node name="Rupture" type="Sprite2D" groups=["Weapon"]]
 script = ExtResource("1_rgj01")
+damage_multiplier = 0.75
 
 [node name="Bottom Left" type="Marker2D" parent="."]
 position = Vector2(-16, 0)

@@ -7,6 +7,7 @@ extends "res://Scripts/Seeds/seed_template.gd"
 @onready var aura_tick_rate = $"Aura Tick Rate"
 
 var enemies_in_area: Array
+var tick_timers: Array
 
 var gloom_fire_rate_multiplier: float = 1
 
@@ -17,18 +18,20 @@ func _ready():
 func _physics_process(delta):
 	super._physics_process(delta)
 	depression_area_sprite.rotation_degrees += 0.25
+	# damage multiple enemies at a time
+	for i in enemies_in_area.size():
+		if tick_timers[i].is_stopped():
+			if is_instance_valid(enemies_in_area[i]):
+				enemies_in_area[i]._enemy_stats.take_damage(_player_stats.get_stat("Weapon_Damage") \
+						* damage_multiplier)
+				has_collided.emit(enemies_in_area[i].get_node("Enemy Hitbox"))
+				tick_timers[i].start(0.1 / _player_stats.get_stat("Fire_Rate") * 10)
+	if fire_rate.is_stopped():
+		shoot_next_weapon()
 
 func update_position(delta):
 	current_velocity = direction * _player_stats.get_stat("Weapon_Speed") * speed_multiplier * deceleration.time_left
 	position += current_velocity * delta
-	if fire_rate.is_stopped():
-		shoot_next_weapon()
-	for enemy in enemies_in_area:
-		if aura_tick_rate.is_stopped():
-			if is_instance_valid(enemy):
-				enemy._enemy_stats.take_damage(_player_stats.get_stat("Weapon_Damage") * damage_multiplier)
-				has_collided.emit(enemy.get_node("Enemy Hitbox"))
-				aura_tick_rate.start(0.1 / _player_stats.get_stat("Fire_Rate") * 10)
 
 func travelled_distance():
 	pass
@@ -52,13 +55,19 @@ func _on_lifetime_timeout():
 func _on_depression_area_area_exited(area):
 	if area.is_in_group("Enemies"):
 		if is_instance_valid(area):
-			enemies_in_area.remove_at(enemies_in_area.find(area.get_parent()))
+			var index = enemies_in_area.find(area.get_parent())
+			enemies_in_area.remove_at(index)
+			tick_timers.remove_at(index)
 
 func _on_depression_area_area_entered(area):
 	if area.is_in_group("Enemies"):
 		if is_instance_valid(area):
 			enemies_in_area.append(area.get_parent())
-		
+			var timer = Timer.new()
+			add_child(timer)
+			timer.wait_time = 0.1 / _player_stats.get_stat("Fire_Rate") * 20
+			timer.one_shot = true
+			tick_timers.append(timer)
 
 func _on_deceleration_timeout():
 	lifetime.start()

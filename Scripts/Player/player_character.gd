@@ -16,7 +16,8 @@ func set_inventory():
 func add_items(category, player_category):
 	var index = 0
 	for item in category:
-		player_category[index] = item
+		if item != null:
+			player_category[index] = item
 		index += 1
 
 func add_passives():

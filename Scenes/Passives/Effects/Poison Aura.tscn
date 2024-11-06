@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://du1d385g2bswh"]
+
+[ext_resource type="Script" path="res://Scripts/Passives/Effects/poison_aura.gd" id="1_fa50c"]
+[ext_resource type="Texture2D" uid="uid://cqulw8twwp754" path="res://Sprites/Passives/Effects/Poison Aura.png" id="1_jyq42"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_08mvw"]
+radius = 32.0
+
+[node name="Poison Aura" type="Sprite2D"]
+z_index = -1
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_jyq42")
+script = ExtResource("1_fa50c")
+
+[node name="Aura Tick Rate" type="Timer" parent="."]
+wait_time = 0.125
+one_shot = true
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_08mvw")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

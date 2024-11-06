@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://56ls8uk2uxkb"]
+
+[ext_resource type="Script" path="res://Scripts/Passives/Abilities/poison_hemlock.gd" id="1_d5wdv"]
+[ext_resource type="PackedScene" uid="uid://du1d385g2bswh" path="res://Scenes/Passives/Effects/Poison Aura.tscn" id="2_qciyc"]
+
+[node name="PoisonHemlock" type="Node"]
+script = ExtResource("1_d5wdv")
+
+[node name="ResourcePreloader" type="ResourcePreloader" parent="."]
+resources = [PackedStringArray("Poison Aura"), [ExtResource("2_qciyc")]]
