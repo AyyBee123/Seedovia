@@ -12,6 +12,7 @@ var is_shrinking := false
 var orbital_direction
 var orbital_directions: Array
 var is_shrunk := false
+var enemies_in_area: Array
 
 @onready var tick_rate = $"Tick Rate"
 @onready var noise_SFX = $Noise
@@ -26,12 +27,12 @@ func _ready():
 func _physics_process(delta):
 	super._physics_process(delta)
 	noise_SFX.volume_db = max(noise_SFX.volume_db - delta * 5, linear_to_db(0))
-	if is_in_area:
+	for enemy in enemies_in_area:
 		if tick_rate.is_stopped():
 			if is_instance_valid(enemy):
 				enemy._enemy_stats.take_damage(_player_stats.get_stat("Weapon_Damage") * damage_multiplier)
 				has_collided.emit(enemy.get_node("Enemy Hitbox"))
-				tick_rate.start(0.1 / _player_stats.get_stat("Fire_Rate") * 10)
+				tick_rate.start(0.1 / _player_stats.get_stat("Fire_Rate") * 20)
 	if not is_shrinking:
 		orbit(delta)
 	else:
@@ -43,12 +44,13 @@ func update_position(delta):
 
 func _collide(body):
 	if body.is_in_group("Enemies"):
-		enemy = body.get_parent()
-		is_in_area = true
+		if is_instance_valid(body):
+			enemies_in_area.append(body.get_parent())
 
 func _on_hitbox_area_exited(area):
 	if area.is_in_group("Enemies"):
-		is_in_area = false
+		if is_instance_valid(area):
+			enemies_in_area.remove_at(enemies_in_area.find(area.get_parent()))
 
 func shoot_next_weapon():
 	attempted_fire.emit()

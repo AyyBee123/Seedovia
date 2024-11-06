@@ -1,0 +1,97 @@
+[gd_scene load_steps=11 format=3 uid="uid://blhp2514g8711"]
+
+[ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_3ypve"]
+[ext_resource type="Texture2D" uid="uid://bv57vjrffbftc" path="res://Sprites/Seeds/Gloomshroom.png" id="2_4e538"]
+[ext_resource type="Script" path="res://Scripts/Seeds/gloomshroom.gd" id="2_lpnje"]
+[ext_resource type="Texture2D" uid="uid://bucggq0vm2lhf" path="res://Sprites/Seeds/Gloomshroom Depression Area.png" id="4_57nhf"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ovcfo"]
+radius = 9.5
+height = 19.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_113ci"]
+atlas = ExtResource("2_4e538")
+region = Rect2(0, 0, 24, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dytoc"]
+atlas = ExtResource("2_4e538")
+region = Rect2(24, 0, 24, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c3uwf"]
+atlas = ExtResource("2_4e538")
+region = Rect2(48, 0, 24, 28)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wvlr0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_113ci")
+}, {
+"duration": 0.8,
+"texture": SubResource("AtlasTexture_dytoc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c3uwf")
+}, {
+"duration": 0.4,
+"texture": SubResource("AtlasTexture_dytoc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u1o1o"]
+radius = 75.0
+
+[node name="Gloomshroom" instance=ExtResource("1_3ypve")]
+scale = Vector2(2, 2)
+script = ExtResource("2_lpnje")
+damage_multiplier = 0.1
+fire_rate_multiplier = 0.15
+
+[node name="Hitbox" parent="." index="0"]
+collision_mask = 513
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource("CapsuleShape2D_ovcfo")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="2"]
+position = Vector2(-1, -4.5)
+sprite_frames = SubResource("SpriteFrames_wvlr0")
+autoplay = "default"
+frame_progress = 0.442397
+
+[node name="Deceleration" type="Timer" parent="." index="3"]
+wait_time = 0.15
+one_shot = true
+autostart = true
+
+[node name="Depression Area" type="Area2D" parent="." index="4"]
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Depression Area" index="0"]
+position = Vector2(-0.5, 0)
+shape = SubResource("CircleShape2D_u1o1o")
+
+[node name="Depression Area Sprite" type="Sprite2D" parent="." index="5"]
+position = Vector2(-0.5, 0)
+scale = Vector2(2.33, 2.33)
+texture = ExtResource("4_57nhf")
+
+[node name="Lifetime" type="Timer" parent="." index="6"]
+wait_time = 5.0
+one_shot = true
+
+[node name="Fire Rate" type="Timer" parent="." index="7"]
+wait_time = 0.2
+one_shot = true
+
+[node name="Aura Tick Rate" type="Timer" parent="." index="8"]
+one_shot = true
+
+[connection signal="timeout" from="Deceleration" to="." method="_on_deceleration_timeout"]
+[connection signal="area_entered" from="Depression Area" to="." method="_on_depression_area_area_entered"]
+[connection signal="area_exited" from="Depression Area" to="." method="_on_depression_area_area_exited"]
+[connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]

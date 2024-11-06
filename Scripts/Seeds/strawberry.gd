@@ -11,6 +11,7 @@ var exploded := false
 func _ready():
 	super._ready()
 	look_at(global_position + desired_direction)
+	fire_rate.start(1.0/(player._player_stats.get_stat("Fire_Rate") * strawberry_fire_rate_multiplier))
 
 func _physics_process(delta):
 	super._physics_process(delta)

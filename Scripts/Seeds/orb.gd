@@ -7,13 +7,10 @@ extends "res://Scripts/Seeds/seed_template.gd"
 func _ready():
 	super._ready()
 	weapon_direction = Vector2(0,-1)
-	orb_fire_rate.wait_time = 1.0/(player._player_stats.get_stat("Fire_Rate") * orb_fire_rate_multiplier)
-	orb_fire_rate.start(orb_fire_rate.wait_time)
+	orb_fire_rate.start(1.0/(player._player_stats.get_stat("Fire_Rate") * orb_fire_rate_multiplier))
 
 func _physics_process(delta):
 	super._physics_process(delta)
-	var weapon = null if PlayerSeeds.seeds.size() <= 1 + slot_index or \
-			slot_index >= 2 else PlayerSeeds.seeds[slot_index + 1]
 	if orb_fire_rate.is_stopped():
 		shoot_next_weapon()
 
