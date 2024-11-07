@@ -1,11 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://8lh64evv6imw"]
+[gd_scene load_steps=10 format=3 uid="uid://8lh64evv6imw"]
 
 [ext_resource type="Script" path="res://Scripts/UI/character_select.gd" id="1_jmjmr"]
-[ext_resource type="Texture2D" uid="uid://bdjm8bu0l6v08" path="res://Sprites/Player/Player.png" id="2_irgog"]
+[ext_resource type="Texture2D" uid="uid://2whsjb1rg2lm" path="res://Sprites/Character/Sapling/Sapling1.png" id="2_s2884"]
 [ext_resource type="FontFile" uid="uid://bkn7gmgx1wxgx" path="res://Fonts/Name Font.ttf" id="2_wxbw4"]
 [ext_resource type="Script" path="res://Scripts/UI/character.gd" id="3_alya1"]
-[ext_resource type="Resource" uid="uid://cj0ugaawbg6a" path="res://Resources/Characters/character1.tres" id="4_v56qf"]
-[ext_resource type="Resource" uid="uid://bqt3svbfi7lhb" path="res://Resources/Characters/Stats/character1.tres" id="5_vyjse"]
+[ext_resource type="Resource" uid="uid://cj0ugaawbg6a" path="res://Resources/Characters/sapling.tres" id="4_v56qf"]
+[ext_resource type="Resource" uid="uid://bqt3svbfi7lhb" path="res://Resources/Characters/Stats/sapling.tres" id="5_vyjse"]
+[ext_resource type="Texture2D" uid="uid://b7ynn50wtvp24" path="res://Sprites/Character/Berry/Berry1.png" id="6_ubcw7"]
+[ext_resource type="Resource" uid="uid://dxk70g7cem73p" path="res://Resources/Characters/berry.tres" id="7_yw2tk"]
+[ext_resource type="Resource" uid="uid://bn8q0ppmt06w1" path="res://Resources/Characters/Stats/berry.tres" id="8_kytvv"]
 
 [node name="Character Select" type="Control"]
 layout_mode = 3
@@ -23,15 +26,27 @@ offset_bottom = 40.0
 
 [node name="Character 1" type="TextureRect" parent="Characters"]
 layout_mode = 0
-offset_left = 1223.0
-offset_top = 353.0
-offset_right = 1300.0
-offset_bottom = 485.0
+offset_left = 125.0
+offset_top = 300.0
+offset_right = 202.0
+offset_bottom = 432.0
 mouse_default_cursor_shape = 2
-texture = ExtResource("2_irgog")
+texture = ExtResource("2_s2884")
+expand_mode = 1
 script = ExtResource("3_alya1")
 starting_character = ExtResource("4_v56qf")
 starting_stats = ExtResource("5_vyjse")
+
+[node name="Character 2" type="TextureRect" parent="Characters"]
+offset_left = 275.0
+offset_top = 313.0
+offset_right = 352.0
+offset_bottom = 432.0
+mouse_default_cursor_shape = 2
+texture = ExtResource("6_ubcw7")
+script = ExtResource("3_alya1")
+starting_character = ExtResource("7_yw2tk")
+starting_stats = ExtResource("8_kytvv")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 0

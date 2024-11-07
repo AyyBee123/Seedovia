@@ -12,4 +12,3 @@ func select_gui_input(event: InputEvent, char_select: character):
 		if event.button_index == MOUSE_BUTTON_LEFT && event.pressed:
 			await get_tree().create_timer(0.05).timeout # prevents immediately firing weapon when loading in
 			char_select.select_character()
-			#Global.RNG = RandomNumberGenerator.new()

@@ -12,6 +12,7 @@ func _ready():
 
 func _physics_process(delta):
 	if mouse_hovered == true:
+	#TODO: [ph]
 		modulate = Color.BLACK
 	else:
 		modulate = Color.WHITE

@@ -21,8 +21,10 @@ signal has_collided(object)
 @onready var player_sprite = $"Player Sprite"
 @onready var weapon_direction_marker = $"Rotation Point/Weapon Direction"
 @onready var controller_cursor = $"Rotation Point/Weapon Direction/Cursor"
+@onready var frame_time = $"Frame Time"
 
 var current_weapon: PackedScene = null
+var move_anim_textures: Array
 
 var can_be_damaged := true
 var mouse_in_inventory := false
@@ -31,6 +33,7 @@ var damage_multiplier
 var weapon_direction
 var pickup_item = null
 var item_in_area = false
+var frame_index: int
 
 # check if the input is from a keyboard or joystick
 var _isMouse := true
@@ -122,16 +125,27 @@ func pick_up(item):
 func set_sprite():
 	player_sprite.texture = PlayerCharacter.sprite
 	hand_sprite.texture = PlayerCharacter.hand_sprite
+	for texture in PlayerCharacter.move_animation:
+		move_anim_textures.append(ImageTexture.create_from_image(texture.get_image()))
 
 func move():
+	animate_movement()
 	# TODO: add a deadzone value taken from the one in options menu (currently 0.15)
 	var input_direction = Input.get_vector("left", "right", "up", "down", 0.15)
 	if input_direction.length() > 0:
 		velocity = velocity.lerp(input_direction * _player_stats.get_stat("Speed"), \
 				_player_stats.get_stat("Acceleration"))
 
+func animate_movement():
+	if frame_time.is_stopped():
+		frame_time.start()
+	if move_anim_textures.size() > 0:
+		player_sprite.texture = move_anim_textures[frame_index]
+
 func stop():
+	player_sprite.texture = PlayerCharacter.sprite
 	velocity = velocity.lerp(Vector2.ZERO, _player_stats.get_stat("Friction"))
+	frame_index = 0
 
 func die():
 	hide() # temporary death effect
@@ -140,6 +154,7 @@ func die():
 	# TODO: pause game and add a menu with options to restart and go back to menu
 
 func dash():
+	player_sprite.texture = PlayerCharacter.sprite
 	can_be_damaged = false
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	velocity = velocity.lerp((input_direction.normalized() if input_direction else Vector2(0,1)) \
@@ -211,3 +226,8 @@ func _on_pickup_radius_area_entered(area):
 func _on_pickup_radius_area_exited(area):
 	if area.get_parent().is_in_group("Item"):
 		item_in_area = false
+
+func _on_frame_time_timeout():
+	frame_index = min(frame_index + 1, move_anim_textures.size())
+	if frame_index >= move_anim_textures.size():
+		frame_index = 0

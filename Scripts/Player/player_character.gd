@@ -5,10 +5,12 @@ var starting_character: character_class
 # causing a nil/null error
 var sprite
 var hand_sprite
+var move_animation: Array[Texture]
 
 func set_inventory():
 	sprite = starting_character.sprite
 	hand_sprite = starting_character.hand_sprite
+	move_animation = starting_character.move_animation
 	add_items(starting_character.starting_inventory, PlayerInventory.inventory)
 	add_items(starting_character.starting_talismans, PlayerInventory.talismans)
 	add_items(starting_character.starting_seeds, PlayerInventory.seeds)

@@ -12,6 +12,7 @@ class_name player_data extends Resource
 @export var overcapped_health: int
 @export var character_sprite: Texture
 @export var character_hand_sprite: Texture
+@export var character_move_animation: Array[Texture]
 @export var floor_number: int
 @export var room_number: int
 @export var current_room: String
@@ -64,10 +65,12 @@ func set_stats():
 func get_sprite():
 	character_sprite = PlayerCharacter.sprite
 	character_hand_sprite = PlayerCharacter.hand_sprite
+	character_move_animation = PlayerCharacter.move_animation
 
 func set_sprite():
 	PlayerCharacter.sprite = ImageTexture.create_from_image(character_sprite.get_image())
 	PlayerCharacter.hand_sprite = ImageTexture.create_from_image(character_hand_sprite.get_image())
+	PlayerCharacter.move_animation = character_move_animation
 
 func get_current_room():
 	floor_number = LevelList.floor_number

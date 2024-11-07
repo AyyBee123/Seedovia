@@ -1,11 +1,11 @@
 [gd_scene load_steps=12 format=3 uid="uid://cu63rxmy71bcg"]
 
-[ext_resource type="Texture2D" uid="uid://ddxlo3x3ru7hr" path="res://Sprites/Player/Hand.png" id="2_6om3g"]
 [ext_resource type="Script" path="res://Scripts/Player/player.gd" id="2_f7nwd"]
 [ext_resource type="Resource" uid="uid://bvjfk72dlusnu" path="res://Resources/Characters/Stats/base_stats.tres" id="2_r1w46"]
-[ext_resource type="Texture2D" uid="uid://bdjm8bu0l6v08" path="res://Sprites/Player/Player.png" id="3_mwqvg"]
 [ext_resource type="Script" path="res://Scripts/Player/StateMachine.gd" id="3_ojktk"]
+[ext_resource type="Texture2D" uid="uid://crl8ol1tmwuh8" path="res://Sprites/Character/Sapling/Hand.png" id="4_gdden"]
 [ext_resource type="PackedScene" uid="uid://b51uuhjac0hmd" path="res://Scenes/Inventory/Inventory.tscn" id="4_px6lr"]
+[ext_resource type="Texture2D" uid="uid://2whsjb1rg2lm" path="res://Sprites/Character/Sapling/Sapling1.png" id="4_y3alh"]
 [ext_resource type="Texture2D" uid="uid://2o0nxg1xv6xm" path="res://Sprites/UI/Cursor.png" id="6_ddx17"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iqaxp"]
@@ -51,9 +51,12 @@ script = ExtResource("3_ojktk")
 [node name="Item Passives" type="Node" parent="."]
 
 [node name="Player Sprite" type="Sprite2D" parent="."]
-z_index = 1
-position = Vector2(0, -9)
-texture = ExtResource("3_mwqvg")
+position = Vector2(0, -9.5)
+texture = ExtResource("4_y3alh")
+
+[node name="Frame Time" type="Timer" parent="."]
+wait_time = 0.12
+one_shot = true
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 z_index = 2
@@ -72,7 +75,7 @@ z_index = 2
 z_as_relative = false
 position = Vector2(-0.5, 0)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_6om3g")
+texture = ExtResource("4_gdden")
 
 [node name="Weapon Direction" type="Marker2D" parent="Rotation Point"]
 position = Vector2(150, 0)
@@ -120,6 +123,7 @@ collision_mask = 32
 shape = SubResource("CircleShape2D_5m6np")
 
 [connection signal="shoot" from="." to="." method="_on_shoot"]
+[connection signal="timeout" from="Frame Time" to="." method="_on_frame_time_timeout"]
 [connection signal="mouse_entered" from="Inventory" to="." method="_on_inventory_mouse_entered"]
 [connection signal="mouse_exited" from="Inventory" to="." method="_on_inventory_mouse_exited"]
 [connection signal="area_entered" from="Pickup Radius" to="." method="_on_pickup_radius_area_entered"]
