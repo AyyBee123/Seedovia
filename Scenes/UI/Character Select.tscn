@@ -38,6 +38,7 @@ starting_character = ExtResource("4_v56qf")
 starting_stats = ExtResource("5_vyjse")
 
 [node name="Character 2" type="TextureRect" parent="Characters"]
+layout_mode = 0
 offset_left = 275.0
 offset_top = 313.0
 offset_right = 352.0
