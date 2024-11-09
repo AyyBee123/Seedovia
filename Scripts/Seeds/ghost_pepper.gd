@@ -4,6 +4,8 @@ var radius: float = 60
 var speed: float = 0.5
 var angle: float = 0
 static var number_of_ghosts
+var current_radius: float = 5
+var _is_dying := false
 
 @onready var fire_rate = $"Fire Rate"
 @onready var lifetime = $Lifetime
@@ -17,6 +19,8 @@ func _physics_process(delta):
 			shoot_next_weapon()
 
 func shoot_next_weapon():
+	if _is_dying:
+		return
 	attempted_fire.emit()
 	if get_next_weapon() == null:
 		return
@@ -35,18 +39,26 @@ func look():
 	else:
 		$AnimatedSprite2D.flip_h = false if get_nearest_enemy().global_position.x > global_position.x else true
 
-func get_nearest_enemy():
-	var enemies = get_tree().get_nodes_in_group("Enemies")
+func get_nearest_enemy(object = null):
+	var enemies = Targets.get_enemy_hitboxes()
+	if object != null and object.is_in_group("Enemies"):
+		# removes the hit enemy from the array so that the projectile does not target it when "bouncing"
+		for i in range(enemies.size()):
+			if enemies[i] == object:
+				enemies.remove_at(i)
+				break # break out of the loop because only one enemy is hit anyway, so it's reduntent to continue
 	var nearest_enemy = null
 	var nearest_distance = null
 	for i in enemies.size():
 		if nearest_enemy == null:
-			nearest_enemy = enemies[i]
-			nearest_distance = enemies[i].global_position.distance_squared_to(global_position)
-		else:
-			if nearest_distance > enemies[i].global_position.distance_squared_to(global_position):
-				nearest_distance = enemies[i].global_position.distance_squared_to(global_position)
+			if is_instance_valid(enemies[i]): # prevents game from crashing if enemy dies to quickly
 				nearest_enemy = enemies[i]
+				nearest_distance = enemies[i].global_position.distance_squared_to(global_position)
+		else:
+			if is_instance_valid(enemies[i]):
+				if nearest_distance > enemies[i].global_position.distance_squared_to(global_position):
+					nearest_distance = enemies[i].global_position.distance_squared_to(global_position)
+					nearest_enemy = enemies[i]
 	return nearest_enemy
 
 func orbit(delta):
@@ -55,18 +67,15 @@ func orbit(delta):
 		rotate_around(player.global_position)
 	else: # if shot by a seed
 		if previous_weapon == null: # if the previous weapon doesn't/no longer exists
-			var nearest_enemy = get_nearest_enemy()
-			if nearest_enemy == null: # if there are no enemies
-				rotate_around(starting_position)
-			else: # if there is an enemy
-				rotate_around(nearest_enemy.global_position)
+			die()
 		else: # if the previous weapon exists
 			rotate_around(previous_weapon.global_position)
 
 func rotate_around(entity_position):
+	current_radius = min(current_radius + 1, radius)
 	global_position = Vector2(
-		sin(angle * speed * deg_to_rad(360.0/1)) * radius,
-		cos(angle * speed * deg_to_rad(360.0/1)) * radius
+		sin(angle * speed * deg_to_rad(360.0/1)) * current_radius,
+		cos(angle * speed * deg_to_rad(360.0/1)) * current_radius
 	) + entity_position
 
 func travelled_distance():
@@ -75,5 +84,11 @@ func travelled_distance():
 func _collide(body):
 	pass
 
+func die():
+	_is_dying = true
+	scale -= Vector2.ONE * 0.05
+	if scale <= Vector2.ZERO:
+		queue_free.call_deferred()
+
 func _on_lifetime_timeout():
-	queue_free.call_deferred()
+	die()
