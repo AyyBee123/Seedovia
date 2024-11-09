@@ -25,7 +25,11 @@ func initialize_position():
 			var nearest_enemy = get_nearest_enemy(hit_enemy)
 		position_initialized = true
 		ignore_first_collision = false
-	
+
+func update_position(delta):
+	current_velocity = direction * _player_stats.get_stat("Weapon_Speed") * speed_multiplier
+	position += current_velocity * delta
+
 func shoot_next_weapon():
 	attempted_fire.emit()
 	if get_next_weapon() == null:
