@@ -34,8 +34,7 @@ func pick_from_slot():
 	if slot_type == slot_types.SEED:
 		PlayerSeeds.load_weapons()
 		player.update_timers()
-	Global.save_data()
-	
+
 func put_into_slot(new_item):
 	item = new_item
 	item.position = Vector2(size.x / 2, size.y / 2)
@@ -51,7 +50,6 @@ func put_into_slot(new_item):
 	if slot_type == slot_types.SEED:
 			PlayerSeeds.load_weapons()
 			player.update_timers()
-	Global.save_data()
 
 func initialize_item(slot_item):
 	item_instance = load("res://Scenes/Items/item.tscn")
