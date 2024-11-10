@@ -1,4 +1,4 @@
-extends "res://Scripts/Passives/Classes/passive_chance.gd"
+extends "res://Scripts/Passives/Classes/passive_trigger.gd"
 
 var damage: float # damage of each burn tick
 var source
@@ -7,14 +7,11 @@ var source
 
 func _ready():
 	source = get_parent().get_parent()
-	chance = 1
-	if source.is_in_group("Players"):
-		source.weapon_fired.connect(chance_to_trigger)
+	source.weapon_fired.connect(trigger)
 	super._ready()
 
 func trigger(weapon = null):
 	var poison_aura = resource_preloader.get_resource("Poison Aura").instantiate()
-	weapon.weapon_fired.connect(trigger)
 	poison_aura.damage = player._player_stats.get_stat("Weapon_Damage") * weapon.damage_multiplier
 	poison_aura.damage_multiplier = 0.2
 	poison_aura.radius_multiplier = player._player_stats.get_stat("Weapon_Size")

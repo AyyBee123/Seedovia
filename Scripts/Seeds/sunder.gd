@@ -1,7 +1,7 @@
 extends "res://Scripts/Seeds/seed_template.gd"
 
 @onready var resource_preloader = $ResourcePreloader
-@onready var mild_explosion_SFX = $MildExplosion
+@onready var mild_explosion_SFX = $SunderExplosion
 
 func travelled_distance():
 	distance_travelled = starting_position.distance_to(global_position)

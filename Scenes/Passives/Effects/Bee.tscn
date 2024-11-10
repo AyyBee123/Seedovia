@@ -29,7 +29,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_c5eyq"]
 radius = 6.08276
 
-[node name="Bee" type="AnimatedSprite2D"]
+[node name="Bee" type="AnimatedSprite2D" groups=["Weapon"]]
 scale = Vector2(1.25, 1.25)
 sprite_frames = SubResource("SpriteFrames_i426h")
 autoplay = "default"

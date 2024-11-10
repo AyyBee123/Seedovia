@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="passive_class" load_steps=4 format=3 uid="uid://p7jadentpf4"]
+
+[ext_resource type="PackedScene" uid="uid://dlv2r6v7no7ex" path="res://Scenes/Passives/Abilities/Swarm.tscn" id="1_fjci7"]
+[ext_resource type="Script" path="res://Scripts/Passives/Classes/passive_class.gd" id="1_yfoa5"]
+[ext_resource type="Texture2D" uid="uid://cgqfry7avi6ig" path="res://Sprites/Passives/Icons/Swarm.png" id="3_se4ee"]
+
+[resource]
+script = ExtResource("1_yfoa5")
+passive_name = "Swarm"
+sprite = ExtResource("3_se4ee")
+description = "Your seeds have a 10% chance to fire a bee that flies towards the nearest enemy."
+passive_ability = ExtResource("1_fjci7")

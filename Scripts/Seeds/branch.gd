@@ -8,7 +8,8 @@ extends "res://Scripts/Seeds/seed_template.gd"
 
 var weapon = null
 var source = player
-static var swing_direction := true
+static var swing_direction := true # true = clock-wise direction, false = counterclock-wise direction
+var _was_previous_weapon := false # check if the branch was fired by a non-player (seed, passive effect, etc.)
 
 func _ready():
 	super._ready()
@@ -23,14 +24,15 @@ func _ready():
 func initialize_position():
 	if not position_initialized:
 		starting_position = global_position
-		if slot_index == 0: # if shot by the player
+		if previous_weapon != null: # if not shot by the player
+			swing_direction = true
+			rotation = desired_direction.angle() + deg_to_rad(90)
+			lifetime.start(anim.current_animation_length)
+			_was_previous_weapon = true
+		elif slot_index == 0: # if shot by the player
 			swing_direction = !swing_direction
 			rotation = global_position.angle_to_point(player.weapon_direction_marker.global_position) + deg_to_rad(90)
 			lifetime.start(player.bullets_per_second.wait_time)
-		else: # if shot by a seed
-			swing_direction == true
-			rotation = desired_direction.angle() + deg_to_rad(90)
-			lifetime.start(anim.current_animation_length)
 		position_initialized = true
 
 func travelled_distance():
@@ -45,7 +47,7 @@ func _collide(body):
 		body.get_parent()._enemy_stats.take_damage(_player_stats.get_stat("Weapon_Damage") * damage_multiplier)
 
 func update_position(delta):
-	if slot_index == 0:
+	if not _was_previous_weapon:
 		global_position = player.hand.global_position
 		rotation = global_position.angle_to_point(player.weapon_direction_marker.global_position) + deg_to_rad(90)
 	else:

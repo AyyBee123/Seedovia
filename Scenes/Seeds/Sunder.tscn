@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_e8fhm"]
 [ext_resource type="Script" path="res://Scripts/Seeds/sunder.gd" id="2_i74ag"]
 [ext_resource type="PackedScene" uid="uid://ba1ll7vkpaxef" path="res://Scenes/Passives/Effects/Non-Weapon Effect Explosion.tscn" id="3_moi4x"]
-[ext_resource type="AudioStream" uid="uid://dviaq07q34iwy" path="res://Audio/SFX/Mild Explosion.mp3" id="4_iejn8"]
+[ext_resource type="AudioStream" uid="uid://c58aj3yosgiit" path="res://Audio/SFX/Sunder Explosion.mp3" id="4_f6vbl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o1sj4"]
 radius = 2.0
@@ -24,8 +24,8 @@ shape = SubResource("CircleShape2D_o1sj4")
 [node name="ResourcePreloader" type="ResourcePreloader" parent="." index="2"]
 resources = [PackedStringArray("Non-Weapon Effect Explosion"), [ExtResource("3_moi4x")]]
 
-[node name="MildExplosion" type="AudioStreamPlayer" parent="." index="3"]
-stream = ExtResource("4_iejn8")
+[node name="SunderExplosion" type="AudioStreamPlayer" parent="." index="3"]
+stream = ExtResource("4_f6vbl")
 volume_db = -32.0
 pitch_scale = 0.9
 bus = &"SFX"

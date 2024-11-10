@@ -6,7 +6,7 @@ extends Node
 ## player from hearing one very loud sound effect when several things happen at once.
 
 ## Number of milliseconds before the same sound can play a second time.
-const DEFAULT_SUPPRESS_SFX_MSEC := 30
+const DEFAULT_SUPPRESS_SFX_MSEC := 20
 
 ## key: (String) audio stream resource path
 ## value: (int) the amount of time passed in milliseconds between when the engine started and when the sound effect was

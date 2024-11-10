@@ -90,7 +90,7 @@ _data = {
 "Swing Reverse": SubResource("Animation_4cg53")
 }
 
-[node name="Branch" type="Sprite2D" groups=["Sword", "Weapon"]]
+[node name="Branch" type="Sprite2D" groups=["Seed", "Sword", "Weapon"]]
 self_modulate = Color(1, 1, 1, 0)
 scale = Vector2(3, 3)
 texture = ExtResource("2_jiyem")
@@ -101,7 +101,7 @@ fire_rate_multiplier = 0.2
 
 [node name="Branch" type="Sprite2D" parent="."]
 position = Vector2(4.44089e-16, 0)
-rotation = 1.0472
+rotation = -1.0472
 texture = ExtResource("2_jiyem")
 offset = Vector2(0, -12)
 

@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://bdrf2aqx1dvhm"]
+[gd_scene load_steps=3 format=3 uid="uid://bdrf2aqx1dvhm"]
 
 [ext_resource type="Script" path="res://Scripts/Passives/Abilities/potato.gd" id="1_xvqxk"]
+[ext_resource type="PackedScene" uid="uid://bqtv7cxby1pdn" path="res://Scenes/Passives/Effects/Potato Mine.tscn" id="2_htm0n"]
 
 [node name="Potato" type="Node"]
 script = ExtResource("1_xvqxk")
+
+[node name="ResourcePreloader" type="ResourcePreloader" parent="."]
+resources = [PackedStringArray("Potato Mine"), [ExtResource("2_htm0n")]]

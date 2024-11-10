@@ -33,7 +33,7 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y1p5x"]
 
-[node name="Watermelon" type="Sprite2D" groups=["Weapon"]]
+[node name="Watermelon" type="Sprite2D" groups=["Seed", "Weapon"]]
 script = ExtResource("1_rf7tf")
 range_multiplier = 5.0
 damage_multiplier = 2.0

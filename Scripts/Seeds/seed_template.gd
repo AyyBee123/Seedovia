@@ -40,8 +40,22 @@ var current_velocity: Vector2 # the current speed/velocity the weapon is moving 
 @export var blast_radius_multiplier: float = 1 # blast/splash radius multiplier of the weapon
 @export var fire_rate_multiplier: float = 1 # fire rate multiplier of the weapon
 
+# multipliers transferred from an external source, like passive effects that shoot a seed
+var transferred_speed_multiplier: float = 1 # shot speed multiplier of the weapon
+var transferred_range_multiplier: float = 1 # range multiplier of the weapon before it gets destroyed
+var transferred_size_multiplier: float = 1 # size multiplier of the weapon
+var transferred_damage_multiplier: float = 1 # damage multiplier of the weapon
+var transferred_blast_radius_multiplier: float = 1 # blast/splash radius multiplier of the weapon
+var transferred_fire_rate_multiplier: float = 1 # fire rate multiplier of the weapon
+
 func _ready():
-	pass
+	speed_multiplier *= transferred_speed_multiplier
+	range_multiplier *= transferred_range_multiplier
+	size_multiplier *= transferred_size_multiplier
+	damage_multiplier *= transferred_damage_multiplier
+	blast_radius_multiplier *= transferred_blast_radius_multiplier
+	fire_rate_multiplier *= transferred_fire_rate_multiplier
+	scale = scale * player._player_stats.get_stat("Weapon_Size") * size_multiplier
 
 func _physics_process(delta):
 	initialize_position()
@@ -92,6 +106,12 @@ func get_weapon_properties(weapon, _desired_direction, _ignore_first_collision =
 	weapon.previous_weapon = self
 	weapon.hit_enemy = _enemy
 	weapon.slot_index = slot_index + 1
+	weapon.transferred_speed_multiplier = transferred_speed_multiplier
+	weapon.transferred_range_multiplier = transferred_range_multiplier
+	weapon.transferred_size_multiplier = transferred_size_multiplier
+	weapon.transferred_damage_multiplier = transferred_damage_multiplier
+	weapon.transferred_blast_radius_multiplier = transferred_blast_radius_multiplier
+	weapon.transferred_fire_rate_multiplier = transferred_fire_rate_multiplier
 	if seed_slot_number < 2:
 		weapon.seed_slot_number = PlayerSeeds.seed_indices[slot_index + 1]
 	else:

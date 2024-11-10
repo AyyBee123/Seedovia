@@ -7,8 +7,8 @@
 [ext_resource type="Resource" uid="uid://c4uomd0l52hvy" path="res://Resources/Items/Consumables/apple.tres" id="3_dqta1"]
 [ext_resource type="Texture2D" uid="uid://dgb26neumbjnf" path="res://Sprites/Character/Sapling/Sapling3.png" id="3_gg4jr"]
 [ext_resource type="Texture2D" uid="uid://crrk6ocj77t05" path="res://Sprites/Character/Sapling/Sapling4.png" id="4_36gku"]
-[ext_resource type="Resource" uid="uid://cuy80aorwngdg" path="res://Resources/Items/Seeds/pea.tres" id="4_mbwuj"]
 [ext_resource type="Texture2D" uid="uid://dckqh658a07r7" path="res://Sprites/Character/Sapling/Sapling5.png" id="5_ykpr1"]
+[ext_resource type="Resource" uid="uid://cuy80aorwngdg" path="res://Resources/Items/Seeds/pea.tres" id="10_guhko"]
 
 [resource]
 script = ExtResource("1_1twko")
@@ -17,5 +17,5 @@ hand_sprite = ExtResource("1_wg26q")
 move_animation = Array[Texture]([ExtResource("2_gdvgx"), ExtResource("3_gg4jr"), ExtResource("4_36gku"), ExtResource("5_ykpr1")])
 starting_inventory = Array[Resource]([ExtResource("3_dqta1")])
 starting_talismans = Array[Resource]([])
-starting_seeds = Array[Resource]([ExtResource("4_mbwuj")])
+starting_seeds = Array[Resource]([ExtResource("10_guhko")])
 starting_passives = Array[PackedScene]([])

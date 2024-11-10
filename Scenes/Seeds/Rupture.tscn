@@ -34,7 +34,7 @@ animations = [{
 "speed": 15.0
 }]
 
-[node name="Rupture" type="Sprite2D" groups=["Weapon"]]
+[node name="Rupture" type="Sprite2D" groups=["Seed", "Weapon"]]
 script = ExtResource("1_rgj01")
 damage_multiplier = 0.75
 

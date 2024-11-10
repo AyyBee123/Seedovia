@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Seeds/metronome.gd" id="2_lxk1q"]
 
-[node name="Metronome" type="Sprite2D" groups=["Weapon"]]
+[node name="Metronome" type="Sprite2D" groups=["Seed", "Weapon"]]
 script = ExtResource("2_lxk1q")
 fire_rate_multiplier = 0.2
 

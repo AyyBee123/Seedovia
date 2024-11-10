@@ -14,8 +14,7 @@ var damage: float # damage of each burn tick
 func _ready():
 	source = get_parent().get_parent()
 	chance = 0.3
-	if source.is_in_group("Players"):
-		source.weapon_fired.connect(chance_to_trigger)
+	source.weapon_fired.connect(chance_to_trigger)
 	super._ready()
 
 func collide(object):
@@ -32,7 +31,6 @@ func trigger(weapon = null):
 		weapon.modulate *= Color.DARK_ORANGE
 	else:
 		weapon.modulate += Color.DARK_ORANGE
-	weapon.weapon_fired.connect(trigger)
 	weapon.has_collided.connect(collide)
 	fire_effect.damage = player._player_stats.get_stat("Weapon_Damage") * damage_multiplier
 	transfer_passive(weapon)

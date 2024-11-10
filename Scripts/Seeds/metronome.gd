@@ -25,6 +25,12 @@ func get_weapon_properties(weapon, _desired_direction, _ignore_first_collision =
 	weapon.previous_weapon = self
 	weapon.hit_enemy = _enemy
 	weapon.slot_index = slot_index
+	weapon.transferred_speed_multiplier = transferred_speed_multiplier
+	weapon.transferred_range_multiplier = transferred_range_multiplier
+	weapon.transferred_size_multiplier = transferred_size_multiplier
+	weapon.transferred_damage_multiplier = transferred_damage_multiplier
+	weapon.transferred_blast_radius_multiplier = transferred_blast_radius_multiplier
+	weapon.transferred_fire_rate_multiplier = transferred_fire_rate_multiplier
 	if seed_slot_number < 2:
 		weapon.seed_slot_number = PlayerSeeds.seed_indices[slot_index]
 	else:

@@ -32,6 +32,7 @@ var seed_slot_number: int # determines which slot the weapon is in, in the inven
 
 var direction: Vector2
 var current_velocity: Vector2
+var _was_previous_weapon := false # check if the branch was fired by a non-player (seed, passive effect, etc.)
 
 # initialize multipliers
 @export var speed_multiplier: float = 1 # shot speed multiplier of the weapon
@@ -40,6 +41,14 @@ var current_velocity: Vector2
 @export var damage_multiplier: float = 1 # damage multiplier of the weapon
 @export var blast_radius_multiplier: float = 1 # blast/splash radius multiplier of the weapon
 @export var fire_rate_multiplier: float = 1 # fire rate multiplier of the weapon
+
+# multipliers transferred from an external source, like passive effects that shoot a seed
+var transferred_speed_multiplier: float = 1 # shot speed multiplier of the weapon
+var transferred_range_multiplier: float = 1 # range multiplier of the weapon before it gets destroyed
+var transferred_size_multiplier: float = 1 # size multiplier of the weapon
+var transferred_damage_multiplier: float = 1 # damage multiplier of the weapon
+var transferred_blast_radius_multiplier: float = 1 # blast/splash radius multiplier of the weapon
+var transferred_fire_rate_multiplier: float = 1 # fire rate multiplier of the weapon
 
 @onready var bottom = $Bottom
 @onready var middle = $Middle
@@ -64,8 +73,18 @@ var enemies_in_area: Array
 var tick_timers: Array
 
 func _ready():
+	if previous_weapon: # if fired by a non-player
+		_was_previous_weapon = true
+	speed_multiplier *= transferred_speed_multiplier
+	range_multiplier *= transferred_range_multiplier
+	size_multiplier *= transferred_size_multiplier
+	damage_multiplier *= transferred_damage_multiplier
+	blast_radius_multiplier *= transferred_blast_radius_multiplier
+	fire_rate_multiplier *= transferred_fire_rate_multiplier
+	scale = scale * player._player_stats.get_stat("Weapon_Size") * size_multiplier
 	visible = false
-	middle.scale.y = max(0, _player_stats.get_stat("Weapon_Range")) # extends the beam length based on player range
+	middle.scale.y = max(0, _player_stats.get_stat("Weapon_Range") \
+			* range_multiplier) # extends the beam length based on player range
 	top.position.y -= middle.scale.y - 1 # places the top portion of the beam above the middle portion
 	collision_shape_2d.shape.extents.y = 20 + middle.scale.y * 0.5
 	collision_shape_2d.position.y = -16 - middle.scale.y * 0.5
@@ -87,8 +106,8 @@ func _physics_process(delta):
 				enemies_in_area[i]._enemy_stats.take_damage(_player_stats.get_stat("Weapon_Damage") \
 						* damage_multiplier)
 				has_collided.emit(enemies_in_area[i].get_node("Enemy Hitbox"))
-				tick_timers[i].start(0.1 / _player_stats.get_stat("Fire_Rate") * 10)
-	if slot_index == 0: # if fired from the player
+				tick_timers[i].start(0.1 / _player_stats.get_stat("Fire_Rate") * 10 / fire_rate_multiplier)
+	if not _was_previous_weapon: # if fired from the player
 		if not mouse_left_down:
 			is_shrinking = true
 	if is_shrinking:
@@ -102,12 +121,12 @@ func initialize_position():
 		starting_position = global_position
 		direction = desired_direction.normalized()
 		position_initialized = true
-		if slot_index == 0:
+		if not _was_previous_weapon:
 			rotation = global_position.angle_to_point(player.weapon_direction_marker.global_position) + deg_to_rad(90)
 		else:
 			rotation = desired_direction.angle() + deg_to_rad(90)
 		# if the seed is the first seed (shot directly by the player character)
-		if slot_index == 0:
+		if not _was_previous_weapon:
 			# only the first instance of a node has its original name
 			# other instances will just be Node<Object Type>
 			# this removes all rupture nodes after the first, until the original is destroyed, then the cycle repeats
@@ -116,8 +135,8 @@ func initialize_position():
 		else:
 			var areas = detect_ruptures.get_overlapping_areas()
 			for area in areas:
-				if abs(area.get_parent().rotation - rotation) <= deg_to_rad(1) \
-						and area.get_parent().global_position.distance_to(global_position) <= 15:
+				if abs(area.get_parent().rotation - rotation) <= deg_to_rad(5) \
+							and area.get_parent().global_position.distance_to(global_position) <= 1:
 					queue_free()
 					return
 		visible = true
@@ -139,7 +158,7 @@ func _collide(body):
 			enemies_in_area.append(body.get_parent())
 			var timer = Timer.new()
 			add_child(timer)
-			timer.wait_time = 0.1 / _player_stats.get_stat("Fire_Rate") * 20
+			timer.wait_time = 0.1 / _player_stats.get_stat("Fire_Rate") * 20 / fire_rate_multiplier
 			timer.one_shot = true
 			tick_timers.append(timer)
 
@@ -151,6 +170,7 @@ func _on_hitbox_area_exited(area):
 			tick_timers.remove_at(index)
 
 func shoot_next_weapon():
+	attempted_fire.emit()
 	if get_next_weapon() == null:
 		return
 	x_pos = -x_pos # alternate direction of the next weapon
@@ -164,6 +184,12 @@ func get_weapon_properties(weapon, _desired_direction, _ignore_first_collision =
 	weapon.previous_weapon = self
 	weapon.hit_enemy = _enemy
 	weapon.slot_index = slot_index + 1
+	weapon.transferred_speed_multiplier = transferred_speed_multiplier
+	weapon.transferred_range_multiplier = transferred_range_multiplier
+	weapon.transferred_size_multiplier = transferred_size_multiplier
+	weapon.transferred_damage_multiplier = transferred_damage_multiplier
+	weapon.transferred_blast_radius_multiplier = transferred_blast_radius_multiplier
+	weapon.transferred_fire_rate_multiplier = transferred_fire_rate_multiplier
 	if seed_slot_number < 2:
 		weapon.seed_slot_number = PlayerSeeds.seed_indices[slot_index + 1]
 	else:
@@ -181,7 +207,7 @@ func initialize_location(weapon):
 	weapon_fired.emit(weapon)
 
 func update_position(delta):
-	if slot_index == 0:
+	if not _was_previous_weapon:
 		global_position = player.hand.global_position
 		rotation = global_position.angle_to_point(player.weapon_direction_marker.global_position) + deg_to_rad(90)
 	else:

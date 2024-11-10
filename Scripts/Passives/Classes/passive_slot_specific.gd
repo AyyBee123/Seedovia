@@ -1,11 +1,12 @@
 extends Node
 
-@onready var player := $"../.."
+var player
 # use either variable depending on the number of slots that will be modified
 var slot_numbers: Array[int] # slot numbers are either 0, 1, or 2; depending on the seed slots that will be modified
 var slot_number: int = -1 # slot number is either 0, 1, or 2; depending on the seed slot that will be modified
 
 func _ready():
+	player = Targets.get_player()
 	player.weapon_fired.connect(get_slot_number)
 
 func get_slot_number(weapon = null):

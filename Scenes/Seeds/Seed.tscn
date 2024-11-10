@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Seeds/seed_template.gd" id="1_jrnia"]
 
-[node name="Seed" type="Sprite2D" groups=["Weapon"]]
+[node name="Seed" type="Sprite2D" groups=["Seed", "Weapon"]]
 script = ExtResource("1_jrnia")
 
 [node name="Hitbox" type="Area2D" parent="."]

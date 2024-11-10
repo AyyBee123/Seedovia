@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dn2w5gwe5aqj5" path="res://Sprites/Passives/Effects/Lightning.png" id="1_xv4sy"]
 [ext_resource type="Script" path="res://Scripts/Passives/Effects/lightning.gd" id="2_u3fhj"]
 
-[node name="Lightning" type="Sprite2D"]
+[node name="Lightning" type="Sprite2D" groups=["Weapon"]]
 texture_repeat = 2
 texture = ExtResource("1_xv4sy")
 centered = false

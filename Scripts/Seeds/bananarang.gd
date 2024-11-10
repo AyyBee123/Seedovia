@@ -11,6 +11,12 @@ var is_decelerating := false
 var previous_weapon_position: Vector2
 var position_checked := false
 var direction_changed := false
+var _was_previous_weapon := false
+
+func _ready():
+	super._ready()
+	if previous_weapon:
+		_was_previous_weapon = true
 
 func update_position(delta):
 	if previous_weapon != null:
@@ -23,7 +29,7 @@ func update_position(delta):
 			current_velocity = direction * _player_stats.get_stat("Weapon_Speed") * speed_multiplier \
 					* deceleration.time_left
 	else:
-		if initial_weapon:
+		if not _was_previous_weapon:
 			direction = global_position.direction_to(player.global_position) # goes towards the player's position
 		else:
 			if not direction_changed:
