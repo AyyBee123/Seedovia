@@ -13,7 +13,7 @@ config_version=5
 config/name="Roguelike"
 run/main_scene="res://Scenes/UI/Main Menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
-run/max_fps=240
+run/max_fps=500
 
 [autoload]
 
