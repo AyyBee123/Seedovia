@@ -28,6 +28,9 @@ var seed_weights = {
 	6: 1, # unique
 	7: 1, # N/A
 }
+var consumable_weights = {
+		7: 1
+	}
 
 #array of floor pools
 var floors: Array
@@ -63,7 +66,7 @@ func start():
 	}
 	add_pool = true # add the pool array to the room reward pool
 	populate_pool(equipment_pool, talisman_weights)
-	populate_pool(consumable_pool)
+	populate_pool(consumable_pool, consumable_weights)
 	populate_pool(seed_pool, seed_weights)
 	add_pool = false
 	if passive_pool.pool.size() == 0: # if one doesn't already exist from a current run save file
@@ -95,7 +98,7 @@ func continue_run():
 	}
 	add_pool = true # add the pool array to the room reward pool
 	populate_pool(equipment_pool, talisman_weights)
-	populate_pool(consumable_pool)
+	populate_pool(consumable_pool, consumable_weights)
 	populate_pool(seed_pool, seed_weights)
 	add_pool = false
 	add_floors()

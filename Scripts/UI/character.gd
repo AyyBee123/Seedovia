@@ -30,7 +30,6 @@ func select_character():
 	PlayerCharacter.add_passives()
 	set_base_stats()
 	get_tree().change_scene_to_file("res://Scenes/Levels/Special/Starting Room.tscn")
-	Pool.start()
 
 func set_base_stats():
 	_player_stats.max_health = starting_stats.max_health
