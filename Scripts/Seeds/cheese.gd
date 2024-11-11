@@ -1,11 +1,13 @@
 extends "res://Scripts/Seeds/seed_template.gd"
 
+@onready var beginning = $"Cheese Beginning"
+@onready var middle = $"Cheese Middle"
+@onready var end = $"Cheese End"
+@onready var animation_player = $AnimationPlayer
+@onready var marker_2d = $"Cheese End/Marker2D"
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	pass
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass

@@ -17,12 +17,15 @@ script = ExtResource("2_dvplf")
 position = Vector2(19, -0.5)
 shape = SubResource("RectangleShape2D_xsgt3")
 
-[node name="Cheese Beginning" type="Sprite2D" parent="." index="2"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
+root_node = NodePath("../Cheese Beginning")
+
+[node name="Cheese Beginning" type="Sprite2D" parent="." index="3"]
 position = Vector2(-3, -0.5)
 texture = ExtResource("2_qbd4b")
 offset = Vector2(3, 0)
 
-[node name="Cheese Middle" type="Sprite2D" parent="." index="3"]
+[node name="Cheese Middle" type="Sprite2D" parent="." index="4"]
 texture_repeat = 2
 position = Vector2(3, -0.5)
 texture = ExtResource("3_cdqqv")
@@ -31,7 +34,7 @@ offset = Vector2(0, -16.5)
 region_enabled = true
 region_rect = Rect2(0, 0, 32, 33)
 
-[node name="Cheese End" type="Sprite2D" parent="." index="4"]
+[node name="Cheese End" type="Sprite2D" parent="." index="5"]
 position = Vector2(35, -0.5)
 texture = ExtResource("4_tabyy")
 offset = Vector2(3, 0)
