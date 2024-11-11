@@ -10,11 +10,12 @@ var weapon_position
 var damage
 var x_pos
 var y_pos
-var index
+var index: int
 var current_velocity
 var is_in_area := false
-var enemy = null
 var number_of_orbitals: int
+var enemies_in_area: Array
+var tick_timers: Array
 
 func _ready():
 	if weapon.texture == null:
@@ -26,6 +27,8 @@ func _physics_process(delta):
 	if weapon != null:
 		weapon_position = weapon.global_position
 		current_velocity = weapon.current_velocity * delta
+		look_at(global_position + Vector2(sin(angle * speed + index * deg_to_rad(360.0/number_of_orbitals)), \
+		cos(angle * speed + index * deg_to_rad(360.0/number_of_orbitals))).rotated(PI/2))
 	else:
 		shrink(delta)
 	angle += delta
@@ -34,22 +37,33 @@ func _physics_process(delta):
 		sin(angle * speed + index * deg_to_rad(360.0/number_of_orbitals)) * radius,
 		cos(angle * speed + index * deg_to_rad(360.0/number_of_orbitals)) * radius
 	) + weapon_position
-	if is_in_area:
-		if tick_rate.is_stopped():
-			enemy._enemy_stats.take_damage(damage)
+	for i in enemies_in_area.size():
+		if tick_timers[i].is_stopped():
+			if is_instance_valid(enemies_in_area[i]):
+				enemies_in_area[i]._enemy_stats.take_damage(damage)
 			tick_rate.start()
 
 func shrink(delta):
-	weapon_position += current_velocity * $AnimatedSprite2D.scale.x
-	$AnimatedSprite2D.scale -= Vector2(delta, delta)
-	if $AnimatedSprite2D.scale <= Vector2.ZERO:
+	weapon_position += current_velocity * $Sprite2D.scale.x
+	look_at(global_position + Vector2(sin(angle * speed + index * deg_to_rad(360.0/number_of_orbitals)), \
+		cos(angle * speed + index * deg_to_rad(360.0/number_of_orbitals))).rotated(PI/2))
+	$Sprite2D.scale -= Vector2.ONE * delta * 2
+	if $Sprite2D.scale <= Vector2.ZERO:
 		queue_free()
 
 func _on_area_2d_area_entered(area):
 	if area.is_in_group("Enemies"):
-		enemy = area.get_parent()
-		is_in_area = true
+		if is_instance_valid(area):
+			enemies_in_area.append(area.get_parent())
+			var timer = Timer.new()
+			add_child(timer)
+			timer.wait_time = tick_rate.wait_time
+			timer.one_shot = true
+			tick_timers.append(timer)
 
 func _on_area_2d_area_exited(area):
 	if area.is_in_group("Enemies"):
-		is_in_area = false
+		if is_instance_valid(area):
+			var index = enemies_in_area.find(area.get_parent())
+			enemies_in_area.remove_at(index)
+			tick_timers.remove_at(index)

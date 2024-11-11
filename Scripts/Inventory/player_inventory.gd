@@ -9,7 +9,7 @@ const NUM_INVENTORY_SLOTS = 12
 const NUM_TALISMAN_SLOTS = 4
 const NUM_SEED_SLOTS = 3
 
-var inventory = {}
+var inventory = {3:load("res://Resources/Items/Equipment/obsidian_helmet.tres")}
 var talismans = {}
 var seeds = {}
 

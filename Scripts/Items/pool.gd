@@ -7,9 +7,20 @@ var passive_pool = ResourceLoader.load("res://Resources/Items/Pools/passive_pool
 var seed_pool = ResourceLoader.load("res://Resources/Items/Pools/seed_pool.tres")
 var accumulated_weight: float # used to determine what item is chosen
 
-var item_weights = {
-	0: 0.45, # common
-	1: 0.30, # uncommon
+var talisman_weights = {
+	0: 0.40, # common
+	1: 0.35, # uncommon
+	2: 0.15, # rare
+	3: 0.075, # epic
+	4: 0.025, # legendary
+	5: 0.0001, # mystic
+	6: 1, # unique
+	7: 1, # N/A
+}
+
+var seed_weights = {
+	0: 0.40, # common
+	1: 0.35, # uncommon
 	2: 0.15, # rare
 	3: 0.075, # epic
 	4: 0.025, # legendary
@@ -28,29 +39,102 @@ var pools: Array
 # condition to add specific pools to the array
 var add_pool := true
 
-func _ready():
+func start():
 	Global.RNG.randomize()
+	talisman_weights = {
+	0: 0.40, # common
+	1: 0.35, # uncommon
+	2: 0.15, # rare
+	3: 0.075, # epic
+	4: 0.025, # legendary
+	5: 0.0001, # mystic
+	6: 1, # unique
+	7: 1, # N/A
+	}
+	seed_weights = {
+	0: 0.40, # common
+	1: 0.35, # uncommon
+	2: 0.15, # rare
+	3: 0.075, # epic
+	4: 0.025, # legendary
+	5: 0.0001, # mystic
+	6: 1, # unique
+	7: 1, # N/A
+	}
 	add_pool = true # add the pool array to the room reward pool
-	populate_pool(equipment_pool)
+	populate_pool(equipment_pool, talisman_weights)
 	populate_pool(consumable_pool)
-	populate_pool(seed_pool)
+	populate_pool(seed_pool, seed_weights)
 	add_pool = false
-	if not ResourceLoader.exists(Global.SAVE_PATH):
-		return
 	if passive_pool.pool.size() == 0: # if one doesn't already exist from a current run save file
 		populate_pool(passive_pool)
 		shuffle_pool(passive_pool)
 	add_floors()
 	add_boss_floors()
 
-func populate_pool(pool: Resource):
+func continue_run():
+	talisman_weights = {
+	0: 0.40 - min(LevelList.floor_number * 0.2, 0.4), # common
+	1: 0.35 - min(LevelList.floor_number * 0.5, 0.35), # uncommon
+	2: 0.15 + LevelList.floor_number * 0.01, # rare
+	3: 0.075 + LevelList.floor_number * 0.015, # epic
+	4: 0.025 + LevelList.floor_number * 0.015, # legendary
+	5: 0.0001, # mystic
+	6: 1, # unique
+	7: 1, # N/A
+	}
+	seed_weights = {
+	0: 0.40 - LevelList.floor_number * 0.05, # common
+	1: 0.35 - LevelList.floor_number * 0.025, # uncommon
+	2: 0.15 + LevelList.floor_number * 0.025, # rare
+	3: 0.075 + LevelList.floor_number * 0.015, # epic
+	4: 0.025 + LevelList.floor_number * 0.01, # legendary
+	5: 0.0001, # mystic
+	6: 1, # unique
+	7: 1, # N/A
+	}
+	add_pool = true # add the pool array to the room reward pool
+	populate_pool(equipment_pool, talisman_weights)
+	populate_pool(consumable_pool)
+	populate_pool(seed_pool, seed_weights)
+	add_pool = false
+	add_floors()
+	add_boss_floors()
+
+func repopulate_weighted_pools():
+	talisman_weights = {
+	0: 0.40 - min(LevelList.floor_number * 0.2, 0.4), # common
+	1: 0.35 - min(LevelList.floor_number * 0.5, 0.35), # uncommon
+	2: 0.15 + LevelList.floor_number * 0.01, # rare
+	3: 0.075 + LevelList.floor_number * 0.015, # epic
+	4: 0.025 + LevelList.floor_number * 0.015, # legendary
+	5: 0.0001, # mystic
+	6: 1, # unique
+	7: 1, # N/A
+	}
+	seed_weights = {
+	0: 0.40 - LevelList.floor_number * 0.05, # common
+	1: 0.35 - LevelList.floor_number * 0.025, # uncommon
+	2: 0.15 + LevelList.floor_number * 0.025, # rare
+	3: 0.075 + LevelList.floor_number * 0.015, # epic
+	4: 0.025 + LevelList.floor_number * 0.01, # legendary
+	5: 0.0001, # mystic
+	6: 1, # unique
+	7: 1, # N/A
+	}
+	equipment_pool.pool.clear()
+	seed_pool.pool.clear()
+	populate_pool(equipment_pool, talisman_weights)
+	populate_pool(seed_pool, seed_weights)
+
+func populate_pool(pool: Resource, weight: Dictionary = {}):
 	accumulated_weight = 0
 	var item_resources = get_all_file_paths(pool.path)
 	for resource_path in item_resources:
 		var item = ResourceLoader.load(resource_path)
-		if "rarity" in item:
+		if "rarity" in item and weight.size() > 0:
 			# take the current item weight and accumulate it
-			accumulated_weight += item_weights[item.rarity]
+			accumulated_weight += weight[item.rarity]
 			# take the current accumulated weight and assign it to the item
 			item.acc_weight = accumulated_weight
 			# take the current total item weight and assign it to the item pool

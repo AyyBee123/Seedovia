@@ -42,4 +42,5 @@ func change_floor():
 	floor.rooms.clear()
 	floor_number += 1
 	room_number = 0
+	Pool.repopulate_weighted_pools()
 	next_room = ResourceLoader.load("res://Scenes/Levels/Special/Starting Room.tscn")

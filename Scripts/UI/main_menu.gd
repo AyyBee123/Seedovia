@@ -13,5 +13,5 @@ func _on_play_button_pressed():
 
 func _on_continue_button_pressed():
 	Global.load_room()
+	Pool.continue_run()
 	get_tree().change_scene_to_file(LevelList.loaded_current_room)
-	
