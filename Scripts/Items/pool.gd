@@ -110,7 +110,7 @@ func repopulate_weighted_pools():
 	1: 0.35 - min(LevelList.floor_number * 0.5, 0.35), # uncommon
 	2: 0.15 + LevelList.floor_number * 0.01, # rare
 	3: 0.075 + LevelList.floor_number * 0.015, # epic
-	4: 0.025 + LevelList.floor_number * 0.015, # legendary
+	4: 0.025 + LevelList.floor_number * 0.01, # legendary
 	5: 0.0001, # mystic
 	6: 1, # unique
 	7: 1, # N/A
