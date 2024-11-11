@@ -136,7 +136,26 @@ func give_reward():
 		return
 	var item = resource_preloader.get_resource("Item").instantiate()
 	item.set_item(Pool.get_item(Pool.pools[Pool.pools.find(Global.next_reward)]))
+	check_for_possesions(item)
 	add_child(item)
 	# spawn item in the middle of the screen
 	item.global_position = $Camera2D.global_position
 	Global.next_reward = null
+
+func check_for_possesions(reward_item):
+	# don't care if there are duplicate consumables
+	if reward_item.item.category == "CONSUMABLE":
+		return
+	var possesions = []
+	# get all items the player has in their inventory and put them in an array
+	for item in PlayerInventory.inventory.values():
+		possesions.append(item)
+	for item in PlayerInventory.seeds.values():
+		possesions.append(item)
+	for item in PlayerInventory.talismans.values():
+		possesions.append(item)
+	
+	for possesion in possesions:
+		if reward_item.item.item_name == possesion.item_name:
+			reward_item.set_item(Pool.get_item(Pool.pools[Pool.pools.find(Global.next_reward)]))
+			check_for_possesions(reward_item)
