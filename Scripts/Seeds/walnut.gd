@@ -10,9 +10,15 @@ func _ready():
 	orb_fire_rate.start(1.0/(player._player_stats.get_stat("Fire_Rate") * orb_fire_rate_multiplier))
 
 func _physics_process(delta):
+	rotation_degrees += 45.0 * (player._player_stats.get_stat("Fire_Rate") * orb_fire_rate_multiplier \
+			* get_next_weapon().instantiate().fire_rate_multiplier * 2) * delta
 	super._physics_process(delta)
 	if orb_fire_rate.is_stopped():
 		shoot_next_weapon()
+
+func update_position(delta):
+	current_velocity = direction * _player_stats.get_stat("Weapon_Speed") * speed_multiplier
+	position += current_velocity * delta
 
 func shoot_next_weapon():
 	super.shoot_next_weapon()

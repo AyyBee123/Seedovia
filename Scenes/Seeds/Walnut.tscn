@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://dh0rggkyjbnqk"]
+
+[ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_3d5e3"]
+[ext_resource type="Texture2D" uid="uid://dbgltdk3p41hc" path="res://Sprites/Seeds/Walnut.png" id="2_fg2bd"]
+[ext_resource type="Script" path="res://Scripts/Seeds/walnut.gd" id="3_armv1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b7ukx"]
+radius = 16.0312
+
+[node name="Walnut" groups=["Projectile"] instance=ExtResource("1_3d5e3")]
+z_index = 1
+rotation = 1.5708
+texture = ExtResource("2_fg2bd")
+script = ExtResource("3_armv1")
+orb_fire_rate_multiplier = 1.0
+speed_multiplier = 0.35
+range_multiplier = 5.0
+damage_multiplier = 3.0
+fire_rate_multiplier = 0.15
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource("CircleShape2D_b7ukx")
+
+[node name="Fire Rate" type="Timer" parent="." index="1"]
+one_shot = true
+autostart = true
