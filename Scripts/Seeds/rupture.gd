@@ -19,7 +19,7 @@ var _was_previous_weapon := false # check if the branch was fired by a non-playe
 @onready var top_right = $"Top Right"
 
 var enemy = null
-var x_pos: float
+var x_pos: bool
 var lifetime_after_started := false
 var is_shrinking := false
 
@@ -39,7 +39,6 @@ func _ready():
 	collision_shape_2d.disabled = true
 	top_left.position.y = -32 - middle.scale.y
 	top_right.position.y = top_left.position.y
-	x_pos = 1
 	lifetime.start(max(1.0/_player_stats.get_stat("Fire_Rate")/fire_rate_multiplier-lifetime_after.wait_time-0.1, 0.1))
 
 func _physics_process(delta):
@@ -95,16 +94,19 @@ func shoot_next_weapon():
 	attempted_fire.emit()
 	if get_next_weapon() == null:
 		return
-	x_pos = -x_pos # alternate direction of the next weapon
-	weapon_direction = Vector2.RIGHT.rotated(rotation + randf_range(deg_to_rad(-5), deg_to_rad(5))) * sign(x_pos)
+	x_pos = randi_range(0, 1) == 0 # chooses a random direction (either left or right)
+	if x_pos == true: # left
+		weapon_direction = Vector2.RIGHT.rotated(rotation + randf_range(deg_to_rad(-5), deg_to_rad(5))) * -1
+	else:
+		weapon_direction = Vector2.RIGHT.rotated(rotation + randf_range(deg_to_rad(-5), deg_to_rad(5)))
 	get_weapon_properties(get_next_weapon().instantiate(), weapon_direction)
 
 func initialize_location(weapon):
 	get_tree().current_scene.add_child(weapon)
-	if x_pos < 0:
+	if x_pos == true: # left
 		weapon.global_position = Vector2(randf_range(bottom_left.global_position.x,top_left.global_position.x), \
 				randf_range(bottom_left.global_position.y,top_left.global_position.y))
-	else:
+	else: # right
 		weapon.global_position = Vector2(randf_range(bottom_right.global_position.x,top_right.global_position.x), \
 				randf_range(bottom_right.global_position.y,top_right.global_position.y))
 	weapon_fired.emit(weapon)
