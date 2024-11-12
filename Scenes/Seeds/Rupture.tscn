@@ -38,6 +38,7 @@ animations = [{
 [node name="Rupture" type="Sprite2D" groups=["Seed", "Weapon"]]
 script = ExtResource("1_rgj01")
 damage_multiplier = 0.75
+fire_rate_multiplier = 0.2
 
 [node name="Bottom Left" type="Marker2D" parent="."]
 position = Vector2(-16, 0)
@@ -86,11 +87,15 @@ autoplay = "default"
 frame_progress = 0.507388
 offset = Vector2(0, -12)
 
+[node name="Lifetime" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
 [node name="Tick Rate" type="Timer" parent="."]
 wait_time = 0.1
 one_shot = true
 
-[node name="Lifetime" type="Timer" parent="."]
+[node name="Lifetime After" type="Timer" parent="."]
 wait_time = 0.25
 one_shot = true
 
@@ -109,4 +114,5 @@ bus = &"SFX"
 [connection signal="area_exited" from="Hitbox" to="." method="_on_hitbox_area_exited"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]
+[connection signal="timeout" from="Lifetime After" to="." method="_on_lifetime_after_timeout"]
 [connection signal="timeout" from="Fire Rate" to="." method="_on_fire_rate_timeout"]

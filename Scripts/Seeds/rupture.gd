@@ -10,6 +10,7 @@ var _was_previous_weapon := false # check if the branch was fired by a non-playe
 @onready var tick_rate = $"Tick Rate"
 @onready var collision_shape_2d = $Hitbox/CollisionShape2D
 @onready var lifetime = $Lifetime
+@onready var lifetime_after = $"Lifetime After"
 @onready var fire_rate = $"Fire Rate"
 @onready var detect_ruptures = $"Detect Ruptures"
 @onready var bottom_left = $"Bottom Left"
@@ -18,9 +19,8 @@ var _was_previous_weapon := false # check if the branch was fired by a non-playe
 @onready var top_right = $"Top Right"
 
 var enemy = null
-var mouse_left_down := true
 var x_pos: float
-var lifetime_started := false
+var lifetime_after_started := false
 var is_shrinking := false
 
 var enemies_in_area: Array
@@ -40,11 +40,10 @@ func _ready():
 	top_left.position.y = -32 - middle.scale.y
 	top_right.position.y = top_left.position.y
 	x_pos = 1
+	lifetime.start(max(1.0/_player_stats.get_stat("Fire_Rate")/fire_rate_multiplier-lifetime_after.wait_time-0.1, 0.1))
 
 func _physics_process(delta):
 	super._physics_process(delta)
-	if slot_index > 0:
-		noise_SFX.volume_db = max(noise_SFX.volume_db - delta * 7.5, -30)
 	# damage multiple enemies at a time
 	for i in enemies_in_area.size():
 		if tick_timers[i].is_stopped():
@@ -52,10 +51,7 @@ func _physics_process(delta):
 				enemies_in_area[i]._enemy_stats.take_damage(_player_stats.get_stat("Weapon_Damage") \
 						* damage_multiplier)
 				has_collided.emit(enemies_in_area[i].get_node("Enemy Hitbox"))
-				tick_timers[i].start(0.1 / _player_stats.get_stat("Fire_Rate") * 10 / fire_rate_multiplier)
-	if not _was_previous_weapon: # if fired from the player
-		if not mouse_left_down:
-			is_shrinking = true
+				tick_timers[i].start(0.2 / _player_stats.get_stat("Fire_Rate") / fire_rate_multiplier)
 	if is_shrinking:
 		shrink(65)
 
@@ -71,20 +67,6 @@ func initialize_position():
 			rotation = global_position.angle_to_point(player.weapon_direction_marker.global_position) + deg_to_rad(90)
 		else:
 			rotation = desired_direction.angle() + deg_to_rad(90)
-		# if the seed is the first seed (shot directly by the player character)
-		if not _was_previous_weapon:
-			# only the first instance of a node has its original name
-			# other instances will just be Node<Object Type>
-			# this removes all rupture nodes after the first, until the original is destroyed, then the cycle repeats
-			if not name == "Rupture":
-				queue_free()
-		else:
-			var areas = detect_ruptures.get_overlapping_areas()
-			for area in areas:
-				if abs(area.get_parent().rotation - rotation) <= deg_to_rad(5) \
-							and area.get_parent().global_position.distance_to(global_position) <= 1:
-					queue_free()
-					return
 		visible = true
 		collision_shape_2d.disabled = false
 		SfxDeconflicter.play(noise_SFX)
@@ -98,7 +80,7 @@ func _collide(body):
 			enemies_in_area.append(body.get_parent())
 			var timer = Timer.new()
 			add_child(timer)
-			timer.wait_time = 0.1 / _player_stats.get_stat("Fire_Rate") * 20 / fire_rate_multiplier
+			timer.wait_time = 0.2 / _player_stats.get_stat("Fire_Rate") / fire_rate_multiplier
 			timer.one_shot = true
 			tick_timers.append(timer)
 
@@ -133,18 +115,12 @@ func update_position(delta):
 		rotation = global_position.angle_to_point(player.weapon_direction_marker.global_position) + deg_to_rad(90)
 	else:
 		if previous_weapon != null:
-			global_position = previous_weapon.global_position
+			global_position = starting_position
 			rotation = desired_direction.angle() + deg_to_rad(90)
 		else:
-			if not lifetime_started:
-				lifetime.start()
-				lifetime_started = true
-
-func _input(event):
-	if Input.is_action_just_pressed("shoot") and event.is_pressed():
-			mouse_left_down = true
-	elif Input.is_action_just_released("shoot") and not event.is_pressed():
-			mouse_left_down = false
+			if not lifetime_after_started:
+				lifetime_after.start()
+				lifetime_after_started = true
 
 func shrink(shrink_speed_mult):
 	bottom.scale.x -= get_process_delta_time() * shrink_speed_mult
@@ -155,8 +131,12 @@ func shrink(shrink_speed_mult):
 		queue_free.call_deferred()
 
 func _on_lifetime_timeout():
-	is_shrinking = true
+	if lifetime_after.is_stopped():
+		lifetime_after.start()
 
 func _on_fire_rate_timeout():
 	shoot_next_weapon()
 	fire_rate.start()
+
+func _on_lifetime_after_timeout():
+	is_shrinking = true
