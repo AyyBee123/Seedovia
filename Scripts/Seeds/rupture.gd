@@ -12,7 +12,6 @@ var _was_previous_weapon := false # check if the branch was fired by a non-playe
 @onready var lifetime = $Lifetime
 @onready var lifetime_after = $"Lifetime After"
 @onready var fire_rate = $"Fire Rate"
-@onready var detect_ruptures = $"Detect Ruptures"
 @onready var bottom_left = $"Bottom Left"
 @onready var bottom_right = $"Bottom Right"
 @onready var top_left = $"Top Left"

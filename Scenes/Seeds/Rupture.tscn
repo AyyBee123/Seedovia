@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b56c0nehfg5ad"]
+[gd_scene load_steps=10 format=3 uid="uid://b56c0nehfg5ad"]
 
 [ext_resource type="Script" path="res://Scripts/Seeds/rupture.gd" id="1_rgj01"]
 [ext_resource type="Texture2D" uid="uid://kyw3l7wk0ela" path="res://Sprites/Seeds/Rupture Bottom.png" id="2_prvs3"]
@@ -8,9 +8,6 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bbrmn"]
 resource_local_to_scene = true
-size = Vector2(32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vp5si"]
 size = Vector2(32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_urtv4"]
@@ -54,20 +51,11 @@ position = Vector2(16, -32)
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 8
-collision_mask = 5
+collision_mask = 517
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(0, -16)
 shape = SubResource("RectangleShape2D_bbrmn")
-
-[node name="Detect Ruptures" type="Area2D" parent="."]
-collision_layer = 256
-collision_mask = 256
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Detect Ruptures"]
-position = Vector2(0, -16)
-shape = SubResource("RectangleShape2D_vp5si")
-one_way_collision_margin = 0.0
 
 [node name="Passives" type="Node" parent="."]
 
