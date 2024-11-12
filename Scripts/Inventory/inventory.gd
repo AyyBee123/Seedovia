@@ -116,16 +116,6 @@ func slot_gui_input(event: InputEvent, slot: slot_class):
 			slot.remove_popup()
 
 func _input(event):
-	#if holding_item != null:
-		#LevelList.items_on_ground[holding_item.item] == player.global_position
-		#previous_holding_item = holding_item
-		#holding_item_player_pos = player.global_position
-	#elif holding_item == null:
-		#for item in LevelList.items_on_ground:
-			#if LevelList.items_on_ground[item] == holding_item_player_pos:
-				#LevelList.items_on_ground.erase(previous_holding_item.item)
-				#previous_holding_item = null
-				#holding_item_player_pos = null
 	initialize_inventory()
 	initialize_talisman()
 	initialize_seeds()

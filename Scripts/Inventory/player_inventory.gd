@@ -18,6 +18,7 @@ func add_item(item, player, inv):
 		if not inventory.has(i): # checks for space in inventory (if the slot is empty)
 			picked_up_item = item
 			inventory[i] = item
+			
 			return
 	# if inventory is full
 	drop_item(item, player)

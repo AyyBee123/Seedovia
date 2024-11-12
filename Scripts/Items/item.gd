@@ -5,9 +5,11 @@ extends Node2D
 var player_in_area = false
 var player = null
 const inventory = preload("res://Scripts/Inventory/inventory.gd")
+@onready var radius = $"Pickable Area/Radius"
 
 func _ready():
 	scale = Vector2(1.5,1.5)
+	radius.disabled = false
 
 func set_item(new_item: Resource):
 	item = new_item
