@@ -1,54 +1,8 @@
-extends Sprite2D
+extends "res://Scripts/Seeds/seed_template.gd"
 
-signal weapon_fired(weapon)
-signal has_collided(object)
-signal attempted_fire
-
-@onready var player := $"../Player"
-@onready var _player_stats = player._player_stats
-@onready var seed_slots := $"../Player/Inventory/Inventory Screen/Seed Slots".get_children()
 @onready var noise_SFX = $Noise
 
-var weapon_direction: Vector2 # the direction the weapon goes, based on the previous weapon/player
-var desired_direction: Vector2 # the direction the weapon wants the next weapon to go
-var hit_enemy = null # sometimes, the weapon wants information on the enemy it collided with
-
-var starting_position: Vector2 # gets the starting position from where the bullet is fired
-var distance_travelled: float # gets the current range travelled by the bullet
-var total_distance := 0
-
-# this value is set because the weapon's position is not updated until after the ready function.
-# That's why it's called in the physics process function instead of the ready function
-var position_initialized := false
-
-var initial_weapon := false
-var ignore_first_collision := false # this lets the projectiles spawn without instantly colliding with an object
-var short_distance_travelled: float # this lets the projectile move a little before enabling collisions again
-var previous_weapon = null # this is used for weapons that persist and move as they're spawning the next weapon
-
-# these are declared in the player script (for the first weapon) and then passed over from weapon to weapon
-var slot_index: int # the index to determine the order the weapon is fired
-var seed_slot_number: int # determines which slot the weapon is in, in the inventory
-
-var direction: Vector2
-var current_velocity: Vector2
 var _was_previous_weapon := false # check if the branch was fired by a non-player (seed, passive effect, etc.)
-
-# initialize multipliers
-@export var speed_multiplier: float = 1 # shot speed multiplier of the weapon
-@export var range_multiplier: float = 1 # range multiplier of the weapon before it gets destroyed
-@export var size_multiplier: float = 1 # size multiplier of the weapon
-@export var damage_multiplier: float = 1 # damage multiplier of the weapon
-@export var blast_radius_multiplier: float = 1 # blast/splash radius multiplier of the weapon
-@export var fire_rate_multiplier: float = 1 # fire rate multiplier of the weapon
-
-# multipliers transferred from an external source, like passive effects that shoot a seed
-var transferred_speed_multiplier: float = 1 # shot speed multiplier of the weapon
-var transferred_range_multiplier: float = 1 # range multiplier of the weapon before it gets destroyed
-var transferred_size_multiplier: float = 1 # size multiplier of the weapon
-var transferred_damage_multiplier: float = 1 # damage multiplier of the weapon
-var transferred_blast_radius_multiplier: float = 1 # blast/splash radius multiplier of the weapon
-var transferred_fire_rate_multiplier: float = 1 # fire rate multiplier of the weapon
 
 @onready var bottom = $Bottom
 @onready var middle = $Middle
@@ -75,13 +29,7 @@ var tick_timers: Array
 func _ready():
 	if previous_weapon: # if fired by a non-player
 		_was_previous_weapon = true
-	speed_multiplier *= transferred_speed_multiplier
-	range_multiplier *= transferred_range_multiplier
-	size_multiplier *= transferred_size_multiplier
-	damage_multiplier *= transferred_damage_multiplier
-	blast_radius_multiplier *= transferred_blast_radius_multiplier
-	fire_rate_multiplier *= transferred_fire_rate_multiplier
-	scale = scale * player._player_stats.get_stat("Weapon_Size") * size_multiplier
+	super._ready()
 	visible = false
 	middle.scale.y = max(0, _player_stats.get_stat("Weapon_Range") \
 			* range_multiplier) # extends the beam length based on player range
@@ -94,9 +42,7 @@ func _ready():
 	x_pos = 1
 
 func _physics_process(delta):
-	initialize_position()
-	travelled_distance()
-	update_position(delta)
+	super._physics_process(delta)
 	if slot_index > 0:
 		noise_SFX.volume_db = max(noise_SFX.volume_db - delta * 7.5, -30)
 	# damage multiple enemies at a time
@@ -146,12 +92,6 @@ func initialize_position():
 func travelled_distance():
 	pass
 
-func _on_hitbox_area_entered(area):
-	_collide(area)
-
-func _on_hitbox_body_entered(body):
-	_collide(body)
-
 func _collide(body):
 	if body.is_in_group("Enemies"):
 		if is_instance_valid(body):
@@ -176,25 +116,6 @@ func shoot_next_weapon():
 	x_pos = -x_pos # alternate direction of the next weapon
 	weapon_direction = Vector2.RIGHT.rotated(rotation + randf_range(deg_to_rad(-5), deg_to_rad(5))) * sign(x_pos)
 	get_weapon_properties(get_next_weapon().instantiate(), weapon_direction)
-
-func get_weapon_properties(weapon, _desired_direction, _ignore_first_collision = false, _enemy = null):
-	weapon.initial_weapon = false
-	weapon.ignore_first_collision = _ignore_first_collision
-	weapon.desired_direction = _desired_direction
-	weapon.previous_weapon = self
-	weapon.hit_enemy = _enemy
-	weapon.slot_index = slot_index + 1
-	weapon.transferred_speed_multiplier = transferred_speed_multiplier
-	weapon.transferred_range_multiplier = transferred_range_multiplier
-	weapon.transferred_size_multiplier = transferred_size_multiplier
-	weapon.transferred_damage_multiplier = transferred_damage_multiplier
-	weapon.transferred_blast_radius_multiplier = transferred_blast_radius_multiplier
-	weapon.transferred_fire_rate_multiplier = transferred_fire_rate_multiplier
-	if seed_slot_number < 2:
-		weapon.seed_slot_number = PlayerSeeds.seed_indices[slot_index + 1]
-	else:
-		weapon.seed_slot_number = 3
-	initialize_location.call_deferred(weapon)
 
 func initialize_location(weapon):
 	get_tree().current_scene.add_child(weapon)
@@ -239,7 +160,3 @@ func _on_lifetime_timeout():
 func _on_fire_rate_timeout():
 	shoot_next_weapon()
 	fire_rate.start()
-
-func get_next_weapon():
-	return null if PlayerSeeds.seeds.size() <= 1 + slot_index or slot_index >= 2 else \
-			PlayerSeeds.seeds[slot_index + 1]
