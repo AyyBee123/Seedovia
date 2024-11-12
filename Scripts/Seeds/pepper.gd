@@ -29,7 +29,7 @@ func explode():
 	explosion.get_node("AnimatedSprite2D").self_modulate = Color.ORANGE_RED
 	SfxDeconflicter.play(mild_explosion_SFX)
 	visible = false
-	$Hitbox/CollisionShape2D.disabled = true
+	$Hitbox/CollisionShape2D.set_deferred("disabled", true)
 	call_deferred("create_explosion", explosion)
 	spawn_child_peppers()
 	if mild_explosion_SFX.playing:
