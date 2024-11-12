@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" path="res://Scripts/Stats/seed_stats.gd" id="1_5twn3"]
 [ext_resource type="PackedScene" uid="uid://cj0v58sssauo1" path="res://Scenes/Seeds/Cheese.tscn" id="1_vj8jt"]
-[ext_resource type="Texture2D" uid="uid://b7cj83djefsmj" path="res://Sprites/Seeds/Cheese Middle.png" id="3_d0y4n"]
+[ext_resource type="Texture2D" uid="uid://pgp3xxb5d8q1" path="res://Sprites/Items/Cheese.png" id="3_5wq6v"]
 
 [resource]
 script = ExtResource("1_5twn3")
 scene = ExtResource("1_vj8jt")
 rarity = 3
 item_name = "Block of Cheese"
-texture = ExtResource("3_d0y4n")
-description = "Fooooooooooap"
+texture = ExtResource("3_5wq6v")
+description = "A long block of cheese that can be swung around. The damage dealt is based on the speed of the swing. Shoots the next weapon from the tip as it is swung around."
