@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://ni7nl6f1niks" path="res://Audio/SFX/Noise.mp3" id="5_qabio"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bbrmn"]
+resource_local_to_scene = true
 size = Vector2(32, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vp5si"]
