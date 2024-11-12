@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="seed_class" load_steps=4 format=3 uid="uid://hd2lygavsmq5"]
+
+[ext_resource type="Script" path="res://Scripts/Stats/seed_stats.gd" id="1_5twn3"]
+[ext_resource type="PackedScene" uid="uid://cj0v58sssauo1" path="res://Scenes/Seeds/Cheese.tscn" id="1_vj8jt"]
+[ext_resource type="Texture2D" uid="uid://b7cj83djefsmj" path="res://Sprites/Seeds/Cheese Middle.png" id="3_d0y4n"]
+
+[resource]
+script = ExtResource("1_5twn3")
+scene = ExtResource("1_vj8jt")
+rarity = 3
+item_name = "Block of Cheese"
+texture = ExtResource("3_d0y4n")
+description = "Fooooooooooap"
