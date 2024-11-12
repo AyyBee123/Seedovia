@@ -7,7 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://yupd71vkt5kl" path="res://Audio/SFX/Metal 2.mp3" id="5_1c0ml"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x7c61"]
-radius = 16.0312
+radius = 16.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x7g4k"]
 atlas = ExtResource("2_uewwp")
