@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dnjdwsa1miyp1"]
+
+[ext_resource type="Script" path="res://Scripts/Seeds/Effects/knockback.gd" id="1_fovjq"]
+
+[node name="Knockback" type="Node"]
+script = ExtResource("1_fovjq")

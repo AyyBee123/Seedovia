@@ -9,7 +9,7 @@
 resource_local_to_scene = true
 size = Vector2(40, 33)
 
-[node name="Cheese" type="Sprite2D" groups=["Seed", "Weapon"]]
+[node name="Cheese" type="Sprite2D" groups=["Melee", "Seed", "Weapon"]]
 scale = Vector2(1.5, 1.5)
 script = ExtResource("2_dvplf")
 range_multiplier = 1.5
@@ -56,6 +56,8 @@ position = Vector2(4, 0.5)
 [node name="Animation end lifetime" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
+
+[node name="ResourcePreloader" type="ResourcePreloader" parent="."]
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

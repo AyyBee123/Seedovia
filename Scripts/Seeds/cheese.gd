@@ -6,6 +6,7 @@ extends "res://Scripts/Seeds/seed_template.gd"
 @onready var marker_2d = $"Cheese End/Marker2D"
 @onready var collision_shape_2d = $Hitbox/CollisionShape2D
 @onready var animation_end_lifetime = $"Animation end lifetime"
+@onready var resource_preloader = $ResourcePreloader
 
 var _was_previous_weapon
 var t = 0.0
@@ -46,16 +47,16 @@ func _physics_process(delta):
 	rotation_travelled()
 
 func rotation_travelled():
-		angle_travelled = abs(rotation_degrees - starting_angle)
-		total_angle += angle_travelled
-		starting_angle = rotation_degrees
-		if total_angle >= angle_threshold:
-			total_angle = 0.0
-			if not _initial_shot:
-				weapon_direction = Vector2.RIGHT.rotated(rotation)
-				shoot_next_weapon()
-			else:
-				_initial_shot = false
+	angle_travelled = rotation_degrees - starting_angle
+	total_angle += abs(angle_travelled)
+	starting_angle = rotation_degrees
+	if total_angle >= angle_threshold:
+		total_angle = 0.0
+		if not _initial_shot:
+			weapon_direction = Vector2.RIGHT.rotated(rotation)
+			shoot_next_weapon()
+		else:
+			_initial_shot = false
 
 func initialize_location(weapon):
 	get_tree().current_scene.add_child(weapon)
@@ -72,10 +73,13 @@ func set_variable_sizes():
 func _collide(body):
 	has_collided.emit(body) # for on-hit effects (ex: burning an enemy on hit)
 	if body.is_in_group("Enemies"):
-		var damage = _player_stats.get_stat("Weapon_Damage") * damage_multiplier * angle_travelled / 10
+		var knockback_angle = rotation + PI/2 * sign(angle_travelled)
+		var knockback_direction = Vector2.RIGHT.rotated(knockback_angle).normalized()
+		var damage = _player_stats.get_stat("Weapon_Damage") * damage_multiplier * abs(angle_travelled) / 10
 		if _was_previous_weapon:
 			damage = _player_stats.get_stat("Weapon_Damage") * damage_multiplier * 3
 		body.get_parent()._enemy_stats.take_damage(damage)
+		# add node to enemy that gives velocity/position change and makes them take damage if they hit the wall
 
 func initialize_position():
 	if not position_initialized:
