@@ -45,7 +45,6 @@ func _ready():
 func _physics_process(delta):
 	pause()
 	check_for_enemies()
-	check_for_items()
 
 func check_for_enemies():
 	if get_tree().get_nodes_in_group("Enemy").size() == 0:
@@ -57,6 +56,8 @@ func check_for_enemies():
 			give_reward()
 			LevelList.current_reward_given = true
 			LevelList.loaded_room_is_cleared = cleared
+			await get_tree().create_timer(0.5).timeout # buffer to allow the item to register in the level
+			check_for_items()
 			Global.save_data()
 			Global.save_room()
 
@@ -65,6 +66,7 @@ func check_for_items():
 	var i = 0
 	# check all direct children of the scene (i.e. all nodes on the ground)
 	for item in get_children():
+		print(item.name)
 		# get the item and its current position, stored as a dictionary
 		if item.is_in_group("Item"):
 			LevelList.items_on_ground[i] = {
