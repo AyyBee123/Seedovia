@@ -1,6 +1,7 @@
 extends Node
 
 var starting_character: character_class
+var character_name: String
 # the sprite is stored here instead of in the character class resource because the sprite is loading later, 
 # causing a nil/null error
 var sprite
@@ -11,6 +12,7 @@ func set_inventory():
 	sprite = starting_character.sprite
 	hand_sprite = starting_character.hand_sprite
 	move_animation = starting_character.move_animation
+	character_name = starting_character.character_name
 	add_items(starting_character.starting_inventory, PlayerInventory.inventory)
 	add_items(starting_character.starting_talismans, PlayerInventory.talismans)
 	add_items(starting_character.starting_seeds, PlayerInventory.seeds)

@@ -7,6 +7,7 @@ class_name player_data extends Resource
 @export var seeds: Dictionary = PlayerInventory.seeds
 @export var passives: Array
 @export var item_passives: Array
+@export var character_name: String
 @export var character_stat_sheet: player_stats
 @export var stats: Dictionary
 @export var current_health: int
@@ -55,12 +56,14 @@ func get_stats():
 	current_health = PlayerStatStorage.current_health
 	overcapped_health = PlayerStatStorage.overcapped_health
 	character_stat_sheet = PlayerStatStorage.player_stat_sheet
+	character_name = PlayerCharacter.character_name
 
 func set_stats():
 	PlayerStatStorage.stats = stats
 	PlayerStatStorage.current_health = current_health
 	PlayerStatStorage.overcapped_health = overcapped_health
 	PlayerStatStorage.player_stat_sheet = character_stat_sheet
+	PlayerCharacter.character_name = character_name
 
 func get_sprite():
 	character_sprite = PlayerCharacter.sprite

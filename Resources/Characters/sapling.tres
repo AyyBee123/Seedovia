@@ -12,6 +12,7 @@
 
 [resource]
 script = ExtResource("1_1twko")
+character_name = "Sapling"
 sprite = ExtResource("3_5xjxx")
 hand_sprite = ExtResource("1_wg26q")
 move_animation = Array[Texture]([ExtResource("2_gdvgx"), ExtResource("3_gg4jr"), ExtResource("4_36gku"), ExtResource("5_ykpr1")])

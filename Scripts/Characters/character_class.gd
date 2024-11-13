@@ -1,5 +1,6 @@
 class_name character_class extends Resource
 
+@export var character_name: String # Character's name
 @export var sprite: Texture # Sprite of the character
 @export var hand_sprite: Texture # Sprite of the character's hand
 @export var move_animation: Array[Texture] # List of textures to make movement the animation

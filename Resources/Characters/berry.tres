@@ -11,6 +11,7 @@
 
 [resource]
 script = ExtResource("1_620up")
+character_name = "Berry"
 sprite = ExtResource("7_y1bk0")
 hand_sprite = ExtResource("1_nrxsj")
 move_animation = Array[Texture]([ExtResource("2_8xq8v"), ExtResource("3_npgdq"), ExtResource("4_ft73a"), ExtResource("5_idc0s")])
