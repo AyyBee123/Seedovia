@@ -12,7 +12,7 @@ func _ready():
 func get_slot_number(weapon = null):
 	if weapon == null:
 		return
-	if weapon.is_in_group("Weapon"):
+	if weapon.is_in_group("Seed"):
 		if slot_numbers.size() > 0:
 			for i in slot_numbers:
 				if slot_numbers == weapon.seed_slot_number:
