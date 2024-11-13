@@ -49,7 +49,7 @@ func trigger(weapon = null):
 
 func spawn_explosion(explosion):
 	get_tree().current_scene.add_child(explosion)
-	explosion.global_position = source.global_position
+	explosion.global_position = collided_object.global_position
 	explosion.get_node("AnimatedSprite2D").self_modulate = Color.BURLYWOOD
 
 func hura_crepitans(): # duck typing
