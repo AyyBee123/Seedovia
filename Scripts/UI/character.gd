@@ -28,6 +28,7 @@ func select_character():
 	PlayerCharacter.starting_character = starting_character
 	PlayerCharacter.set_inventory()
 	PlayerCharacter.add_passives()
+	PlayerStatStorage.player_stat_sheet = starting_stats
 	set_base_stats()
 	Pool.start()
 	get_tree().change_scene_to_file("res://Scenes/Levels/Special/Starting Room.tscn")

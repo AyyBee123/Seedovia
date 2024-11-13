@@ -66,7 +66,6 @@ func check_for_items():
 	var i = 0
 	# check all direct children of the scene (i.e. all nodes on the ground)
 	for item in get_children():
-		print(item.name)
 		# get the item and its current position, stored as a dictionary
 		if item.is_in_group("Item"):
 			LevelList.items_on_ground[i] = {

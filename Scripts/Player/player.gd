@@ -34,12 +34,17 @@ var weapon_direction
 var pickup_item = null
 var item_in_area = false
 var frame_index: int
+var _stats_changed := false
 
 # check if the input is from a keyboard or joystick
 var _isMouse := true
 var _isKeyboard := true
 
 func _ready():
+	PlayerStatStorage.set_stats()
+	PlayerPassives.set_passives()
+	PlayerPassives.set_item_passives()
+	_player_stats = PlayerStatStorage.player_stat_sheet
 	controller_cursor.visible = false
 	_player_stats.initialize_base_stats()
 	_player_stats.damaged.connect(took_damage)

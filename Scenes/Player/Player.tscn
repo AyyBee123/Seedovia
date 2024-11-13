@@ -1,7 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://cu63rxmy71bcg"]
+[gd_scene load_steps=11 format=3 uid="uid://cu63rxmy71bcg"]
 
 [ext_resource type="Script" path="res://Scripts/Player/player.gd" id="2_f7nwd"]
-[ext_resource type="Resource" uid="uid://bvjfk72dlusnu" path="res://Resources/Characters/Stats/base_stats.tres" id="2_r1w46"]
 [ext_resource type="Script" path="res://Scripts/Player/StateMachine.gd" id="3_ojktk"]
 [ext_resource type="Texture2D" uid="uid://crl8ol1tmwuh8" path="res://Sprites/Character/Sapling/Hand.png" id="4_gdden"]
 [ext_resource type="PackedScene" uid="uid://b51uuhjac0hmd" path="res://Scenes/Inventory/Inventory.tscn" id="4_px6lr"]
@@ -41,7 +40,6 @@ scale = Vector2(1.5, 1.5)
 collision_layer = 130
 collision_mask = 629
 script = ExtResource("2_f7nwd")
-_player_stats = ExtResource("2_r1w46")
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("3_ojktk")
