@@ -1,9 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://cj0v58sssauo1"]
+[gd_scene load_steps=9 format=3 uid="uid://cj0v58sssauo1"]
 
 [ext_resource type="Script" path="res://Scripts/Seeds/cheese.gd" id="2_dvplf"]
 [ext_resource type="Texture2D" uid="uid://dntbbis4dj0n7" path="res://Sprites/Seeds/Cheese Beginning.png" id="2_qbd4b"]
 [ext_resource type="Texture2D" uid="uid://b7cj83djefsmj" path="res://Sprites/Seeds/Cheese Middle.png" id="3_cdqqv"]
 [ext_resource type="Texture2D" uid="uid://dkwidxp4dd4rf" path="res://Sprites/Seeds/Cheese End.png" id="4_tabyy"]
+[ext_resource type="PackedScene" uid="uid://dnjdwsa1miyp1" path="res://Scenes/Seeds/Effects/Knockback.tscn" id="5_swcrf"]
+[ext_resource type="AudioStream" uid="uid://liu0qcjj47pl" path="res://Audio/SFX/Bonk.mp3" id="6_w3sqg"]
+[ext_resource type="AudioStream" uid="uid://mcab4fvfn756" path="res://Audio/SFX/Smack.mp3" id="7_e6s8f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_petpg"]
 resource_local_to_scene = true
@@ -17,7 +20,6 @@ size_multiplier = 1.15
 fire_rate_multiplier = 0.25
 
 [node name="Hitbox" type="Area2D" parent="."]
-scale = Vector2(1, 1)
 collision_layer = 8
 collision_mask = 517
 
@@ -30,14 +32,12 @@ one_way_collision_margin = 0.0
 
 [node name="Cheese Beginning" type="Sprite2D" parent="."]
 position = Vector2(1.49012e-08, -0.5)
-scale = Vector2(1, 1)
 texture = ExtResource("2_qbd4b")
 offset = Vector2(3, 0)
 
 [node name="Cheese Middle" type="Sprite2D" parent="."]
 texture_repeat = 2
 position = Vector2(6, -0.5)
-scale = Vector2(1, 1)
 texture = ExtResource("3_cdqqv")
 centered = false
 offset = Vector2(0, -16.5)
@@ -46,7 +46,6 @@ region_rect = Rect2(0, 0, 32, 33)
 
 [node name="Cheese End" type="Sprite2D" parent="."]
 position = Vector2(36, -0.499999)
-scale = Vector2(1, 1)
 texture = ExtResource("4_tabyy")
 offset = Vector2(3, 0)
 
@@ -58,6 +57,17 @@ wait_time = 0.5
 one_shot = true
 
 [node name="ResourcePreloader" type="ResourcePreloader" parent="."]
+resources = [PackedStringArray("Knockback"), [ExtResource("5_swcrf")]]
+
+[node name="Bonk" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_w3sqg")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="Smack" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_e6s8f")
+volume_db = -10.0
+pitch_scale = 1.2
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

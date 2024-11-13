@@ -7,6 +7,8 @@ extends "res://Scripts/Seeds/seed_template.gd"
 @onready var collision_shape_2d = $Hitbox/CollisionShape2D
 @onready var animation_end_lifetime = $"Animation end lifetime"
 @onready var resource_preloader = $ResourcePreloader
+@onready var bonk_SFX = $Bonk
+@onready var smack_SFX = $Smack
 
 var _was_previous_weapon
 var t = 0.0
@@ -79,6 +81,16 @@ func _collide(body):
 		if _was_previous_weapon:
 			damage = _player_stats.get_stat("Weapon_Damage") * damage_multiplier * 3
 		body.get_parent()._enemy_stats.take_damage(damage)
+		if randi_range(1, 100) == 100: # 1 in 100 chance to play a bonk SFX
+			SfxDeconflicter.play(bonk_SFX)
+		else:
+			SfxDeconflicter.play(smack_SFX)
+		# add a node to the enemy that knocks them back when hit by the block of cheese
+		var knockback_scene = resource_preloader.get_resource("Knockback").instantiate()
+		knockback_scene.knockback_direction = knockback_direction
+		knockback_scene.knockback_speed = abs(angle_travelled) * 50
+		knockback_scene.damage = _player_stats.get_stat("Weapon_Damage") * damage_multiplier
+		body.get_parent().add_child(knockback_scene)
 		# add node to enemy that gives velocity/position change and makes them take damage if they hit the wall
 
 func initialize_position():
