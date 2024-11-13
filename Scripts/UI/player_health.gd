@@ -16,14 +16,6 @@ func _physics_process(delta):
 			or player._player_stats.health != current_health.get_child_count():
 		set_health()
 
-#func initialize_stats():
-	#set_health()
-	#stats[0].text = stats[0].name + ": " + str(player._player_stats.get_stat("Speed"))
-	#stats[1].text = stats[1].name + ": " + str(player._player_stats.get_stat("Dash_Rate"))
-	#stats[2].text = stats[2].name + ": " + str(player._player_stats.get_stat("Dash_Distance"))
-	#stats[3].text = stats[3].name + ": " + str(player._player_stats.get_stat("Dash_Invulnerability"))
-	#stats[4].text = stats[4].name + ": " + str(player._player_stats.get_stat("Fire_Rate"))
-	
 func set_health():
 	# remove all hearts in the health ui
 	for i in max_health.get_children(): # remove empty heart containers

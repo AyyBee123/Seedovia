@@ -5,84 +5,84 @@ signal change_stat
 var stats := {
 	"Max_Health": {
 		"base": max_health,
-		"+": 0,
-		"x": 1
+		"+": 0.0,
+		"x": 1.0
 	},
 	"Speed": {
 		"base": speed,
-		"+": 0,
-		"x": 1
+		"+": 0.0,
+		"x": 1.0
 	},
 	"Dash_Rate": {
 		"base": dash_rate,
-		"+": 0,
-		"x": 1
+		"+": 0.0,
+		"x": 1.0
 	},
 	"Dash_Distance": {
 		"base": dash_distance,
-		"+": 0,
-		"x": 1
+		"+": 0.0,
+		"x": 1.0
 	},
 	"Dash_Invulnerability": {
 		"base": dash_invulnerability,
-		"+": 0,
-		"x": 1
+		"+": 0.0,
+		"x": 1.0
 	},
 	"Fire_Rate": {
 		"base": fire_rate,
-		"+": 0,
-		"x": 1
+		"+": 0.0,
+		"x": 1.0
 	},
 	"Contact_Damage": {
 		"base": contact_damage,
-		"+": 0,
-		"x": 1
+		"+": 0.0,
+		"x": 1.0
 	},
 	"Invulnerability_Time": {
 		"base": invulnerability_time,
-		"+": 0,
-		"x": 1
+		"+": 0.0,
+		"x": 1.0
 	},
 	"Acceleration": {
 		"base": acceleration,
-		"+": 0,
-		"x": 1
+		"+": 0.0,
+		"x": 1.0
 	},
 	"Friction": {
 		"base": friction,
-		"+": 0,
-		"x": 1
+		"+": 0.0,
+		"x": 1.0
 	},
 	"Weapon_Speed": {
 		"base": weapon_speed,
-		"+": 0,
-		"x": 1
+		"+": 0.0,
+		"x": 1.0
 	},
 	"Weapon_Range": {
 		"base": weapon_range,
-		"+": 0,
-		"x": 1
+		"+": 0.0,
+		"x": 1.0
 	},
 	"Weapon_Size": {
 		"base": weapon_size,
-		"+": 0,
-		"x": 1
+		"+": 0.0,
+		"x": 1.0
 	},
 	"Weapon_Damage": {
 		"base": weapon_damage,
-		"+": 0,
-		"x": 1
+		"+": 0.0,
+		"x": 1.0
 	},
 	"Weapon_Blast_Radius": {
 		"base": weapon_blast_radius,
-		"+": 0,
-		"x": 1
+		"+": 0.0,
+		"x": 1.0
 	},
 	"Luck": {
 		# base luck is the base chance from an item or passive (maybe drop chances; we'll see), not from the player
 		# (that's why it's not here)
-		"+": 0,
-		"x": 1
+		"+": 0.0,
+		"x": 1.0
 	},
 }
 
@@ -113,8 +113,8 @@ func get_health(was_equipped: bool):
 		overcapped_health += max_health - previous_max_health
 	var current_health = health
 	current_health = min(overcapped_health, max_health)
-	if current_health == 0:
-		health = 1
+	if current_health == 0.0:
+		health = 1.0
 	else:
 		health = current_health
 

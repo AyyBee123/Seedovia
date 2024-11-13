@@ -9,6 +9,7 @@ class_name player_data extends Resource
 @export var item_passives: Array
 @export var character_name: String
 @export var character_stat_sheet: player_stats
+@export var starting_character: character_class
 @export var stats: Dictionary
 @export var current_health: int
 @export var overcapped_health: int
@@ -69,11 +70,13 @@ func get_sprite():
 	character_sprite = PlayerCharacter.sprite
 	character_hand_sprite = PlayerCharacter.hand_sprite
 	character_move_animation = PlayerCharacter.move_animation
+	starting_character = PlayerCharacter.starting_character
 
 func set_sprite():
 	PlayerCharacter.sprite = ImageTexture.create_from_image(character_sprite.get_image())
 	PlayerCharacter.hand_sprite = ImageTexture.create_from_image(character_hand_sprite.get_image())
 	PlayerCharacter.move_animation = character_move_animation
+	PlayerCharacter.starting_character = starting_character
 
 func get_current_room():
 	floor_number = LevelList.floor_number
@@ -89,6 +92,7 @@ func get_current_room():
 	next_reward = Global.next_reward
 
 func set_current_room():
+	Global.RNG = RandomNumberGenerator.new()
 	Global.RNG.seed = current_seed
 	LevelList.floor_number = floor_number
 	LevelList.room_number = room_number

@@ -14,10 +14,6 @@ var passive_items_on_ground: Dictionary
 var picked_up_passive: bool
 var doors: Dictionary
 
-# TODO: change the level list to randomize when starting a new run, rather than randomizing when booting up the game
-func _ready():
-	Global.RNG.randomize()
-
 func change_room(door):
 	Global.save_data()
 	if door.text == "Passive": # fifth room is the passive room

@@ -6,7 +6,7 @@ var data := player_data.new()
 var rewards: Array
 static var next_reward: item_pool = null
 var cursor = load("res://Sprites/UI/Cursor.png")
-var RNG = RandomNumberGenerator.new()
+var RNG
 var loaded_room_file: String
 
 func save_data():

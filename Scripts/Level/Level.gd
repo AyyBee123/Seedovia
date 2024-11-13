@@ -52,7 +52,7 @@ func check_for_enemies():
 		if not doors_spawned:
 			spawn_doors()
 			LevelList.doors_spawned = true
-		if not reward_given:
+		if not reward_given and not was_cleared:
 			give_reward()
 			LevelList.current_reward_given = true
 			LevelList.loaded_room_is_cleared = cleared
