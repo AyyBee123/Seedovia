@@ -197,9 +197,9 @@ func update_timers():
 	dash_invulnerability_time.wait_time = _player_stats.get_stat("Dash_Invulnerability")
 
 func took_damage():
-	Global.save_data()
 	can_be_damaged = false
 	invulnerability_time.start()
+	Global.save_data()
 
 func _should_move() -> bool:
 	var input_direction = Input.get_vector("left", "right", "up", "down")
