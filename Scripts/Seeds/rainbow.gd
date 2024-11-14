@@ -23,14 +23,13 @@ func _physics_process(delta):
 	else:
 		hue = 0.0
 	rainbow_effect.modulate = color
-	if is_instance_valid(trail):
-		trail.modulate = color
-		trail.modulate.s = 0.75
-		trail.modulate.v = 0.75
-		trail.scale = scale
-		trail.rotation = rotation
-		get_tree().current_scene.add_child(trail)
-		trail.global_position = global_position
+	trail.modulate = color
+	trail.modulate.s = 0.75
+	trail.modulate.v = 0.75
+	trail.scale = scale
+	trail.rotation = rotation
+	get_tree().current_scene.add_child(trail)
+	trail.global_position = global_position
 
 func _collide(body):
 	if ignore_first_collision:
