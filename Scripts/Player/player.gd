@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+var death_screen = preload("res://Scenes/UI/Death Screen.tscn")
+
 signal shoot(bullet, direction, location)
 signal weapon_fired(weapon)
 signal dashed
@@ -99,7 +101,7 @@ func _physics_process(delta):
 		if inventory.visible: # only inventory for now. Will add stat sheet when it's made
 			inventory.visible = false
 		else:
-			pass # will add pause here, but it's not made yet
+			pass
 	
 	if Input.is_action_just_pressed("pick up"):
 		if item_in_area:
@@ -157,6 +159,9 @@ func die():
 	process_mode = 4 # = Mode: Disabled
 	# TODO: add death animation
 	# TODO: pause game and add a menu with options to restart and go back to menu
+	Global.delete_data()
+	await get_tree().create_timer(1).timeout
+	get_tree().current_scene.add_child(death_screen.instantiate())
 
 func dash():
 	player_sprite.texture = PlayerCharacter.sprite
