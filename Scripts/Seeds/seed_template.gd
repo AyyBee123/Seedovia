@@ -48,7 +48,14 @@ var transferred_damage_multiplier: float = 1 # damage multiplier of the weapon
 var transferred_blast_radius_multiplier: float = 1 # blast/splash radius multiplier of the weapon
 var transferred_fire_rate_multiplier: float = 1 # fire rate multiplier of the weapon
 
+var ignore_first_collision_timer
+
 func _ready():
+	ignore_first_collision_timer = Timer.new()
+	ignore_first_collision_timer.one_shot = true
+	ignore_first_collision_timer.connect("timeout", set_ignore_first_collision)
+	ignore_first_collision_timer.wait_time = 0.05
+	ignore_first_collision_timer.autostart = true
 	speed_multiplier *= transferred_speed_multiplier
 	range_multiplier *= transferred_range_multiplier
 	size_multiplier *= transferred_size_multiplier
@@ -67,7 +74,7 @@ func initialize_position():
 		starting_position = global_position
 		direction = desired_direction.normalized()
 		position_initialized = true
-		ignore_first_collision = false
+		#ignore_first_collision = false
 
 func travelled_distance():
 	distance_travelled = starting_position.distance_to(global_position)
@@ -85,7 +92,6 @@ func _on_hitbox_body_entered(body):
 
 func _collide(body):
 	if ignore_first_collision:
-		ignore_first_collision = false
 		return
 	has_collided.emit(body) # for on-hit effects (ex: burning an enemy on hit)
 	if body.is_in_group("Enemies"):
@@ -131,3 +137,6 @@ func update_position(delta):
 func get_next_weapon():
 	return null if PlayerSeeds.seeds.size() <= 1 + slot_index or slot_index >= 2 \
 			else PlayerSeeds.seeds[slot_index + 1]
+
+func set_ignore_first_collision():
+	ignore_first_collision = false

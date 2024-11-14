@@ -20,8 +20,9 @@ size_multiplier = 1.15
 fire_rate_multiplier = 0.25
 
 [node name="Hitbox" type="Area2D" parent="."]
-collision_layer = 8
+collision_layer = 0
 collision_mask = 517
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(20, -0.5)

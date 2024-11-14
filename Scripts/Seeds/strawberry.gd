@@ -30,7 +30,6 @@ func initialize_position():
 		starting_position = global_position
 		direction = desired_direction.normalized()
 		position_initialized = true
-		ignore_first_collision = false
 
 func explode():
 	var explosion = resource_preloader.get_resource("Explosion").instantiate()
