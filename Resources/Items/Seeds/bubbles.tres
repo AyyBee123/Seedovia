@@ -10,4 +10,4 @@ scene = ExtResource("1_nlchi")
 rarity = 1
 item_name = "Bubbles"
 texture = ExtResource("3_kq550")
-description = "Rapidly shoots out bubbles that have a 50% chance to shoot out the next seed when destroyed."
+description = "Rapidly shoots out bubbles that have a 50% chance to shoot out the next seed forward when destroyed."

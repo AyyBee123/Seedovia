@@ -10,4 +10,4 @@ scene = ExtResource("1_nhxh1")
 rarity = 3
 item_name = "Watermelon"
 texture = ExtResource("3_xyw8f")
-description = "Bounce"
+description = "A bouncing projectile that shoots the next seed perpendicular to the enemy or obstacle it hit."

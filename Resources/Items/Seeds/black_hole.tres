@@ -10,4 +10,4 @@ scene = ExtResource("1_q5je5")
 rarity = 4
 item_name = "Black Hole"
 texture = ExtResource("3_uyvb5")
-description = "Slow moving with infinite piercing."
+description = "Slow moving projectile with infinite piercing. Creates two instances of the next seed that orbit around it."

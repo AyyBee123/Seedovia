@@ -10,4 +10,4 @@ scene = ExtResource("1_sm1n7")
 rarity = 2
 item_name = "Rupture"
 texture = ExtResource("3_5w0n6")
-description = "Water"
+description = "A beam of water that shoots the next seed to its left or right, chosen randomly."

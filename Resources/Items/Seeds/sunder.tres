@@ -10,4 +10,4 @@ scene = ExtResource("1_y57ed")
 rarity = 2
 item_name = "Sunder"
 texture = ExtResource("3_tja5a")
-description = ""
+description = "A series of explosions that shoots the next seed on every other blast."
