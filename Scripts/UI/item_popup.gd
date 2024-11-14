@@ -6,6 +6,8 @@ var description
 var rarity
 var inventory
 var source
+var hue = 0.0
+var mystic_color
 
 func _ready():
 	%Name.text = item_name
@@ -23,10 +25,19 @@ func _ready():
 			set_values(Color.BLUE_VIOLET, "Epic")
 		4: # Legendary
 			set_values(Color.DARK_ORANGE, "Legendary")
-		5: # Unique
+		6: # Unique
 			set_values(Color.CRIMSON, "Unique")
 		-1: # N/A
 			set_values(Color.WHITE, "")
+
+func _process(delta):
+	if rarity == 5: # mystic
+		mystic_color = Color.from_hsv(hue, 1.0, 1.0, 1.0)
+		if hue < 1.0:
+			hue += 0.0005
+		else:
+			hue = 0.0
+		set_values(mystic_color, "Mystic")
 
 func set_pos():
 	# TODO: make the popups align vertically, while also not causing them to clip off-screen

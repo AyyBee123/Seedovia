@@ -1,0 +1,45 @@
+[gd_scene load_steps=9 format=3 uid="uid://cf2pviq2ghnma"]
+
+[ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_nxddw"]
+[ext_resource type="Texture2D" uid="uid://hbu58ewp083q" path="res://Sprites/Seeds/Rainbow.png" id="3_devqh"]
+[ext_resource type="Script" path="res://Scripts/Seeds/rainbow.gd" id="3_n53a6"]
+[ext_resource type="PackedScene" uid="uid://dpni6o8tjkjna" path="res://Scenes/Misc/Trail.tscn" id="4_181l6"]
+[ext_resource type="Texture2D" uid="uid://bx3ocn0prpyld" path="res://Sprites/Seeds/Rainbow Front.png" id="4_s8qhh"]
+[ext_resource type="AudioStream" uid="uid://cxkhbwehh88pq" path="res://Audio/SFX/Humming.mp3" id="6_etj73"]
+[ext_resource type="AudioStream" uid="uid://bpk6gao5jcjkq" path="res://Audio/SFX/Hit.mp3" id="7_fdum4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gh6a2"]
+radius = 4.52769
+
+[node name="Rainbow" instance=ExtResource("1_nxddw")]
+z_index = 1
+scale = Vector2(2, 2)
+texture = ExtResource("3_devqh")
+script = ExtResource("3_n53a6")
+speed_multiplier = 0.9
+range_multiplier = 3.0
+damage_multiplier = 2.0
+fire_rate_multiplier = 0.25
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource("CircleShape2D_gh6a2")
+
+[node name="Rainbow Effect" type="Sprite2D" parent="." index="2"]
+modulate = Color(0, 0, 0, 1)
+z_index = -1
+texture_repeat = 2
+texture = ExtResource("4_s8qhh")
+region_rect = Rect2(0, 0, 6, 8)
+
+[node name="ResourcePreloader" type="ResourcePreloader" parent="." index="3"]
+resources = [PackedStringArray("Trail"), [ExtResource("4_181l6")]]
+
+[node name="Humming" type="AudioStreamPlayer" parent="." index="4"]
+stream = ExtResource("6_etj73")
+volume_db = -20.0
+pitch_scale = 1.5
+bus = &"SFX"
+
+[node name="Hit" type="AudioStreamPlayer" parent="." index="5"]
+stream = ExtResource("7_fdum4")
+pitch_scale = 1.5
