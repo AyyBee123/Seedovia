@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://dln4jkjnbh3vj"]
+
+[ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_nv0tn"]
+[ext_resource type="Texture2D" uid="uid://c00hj6fdbj5rw" path="res://Sprites/Seeds/Pomegranate.png" id="2_jboq2"]
+[ext_resource type="Script" path="res://Scripts/Seeds/pomegranate.gd" id="2_udlhv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bsh3h"]
+radius = 11.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h4o8f"]
+radius = 50.0
+
+[node name="Pomegranate" instance=ExtResource("1_nv0tn")]
+position = Vector2(0, -1)
+texture = ExtResource("2_jboq2")
+script = ExtResource("2_udlhv")
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_bsh3h")
+
+[node name="Detect Pomegranate" type="Area2D" parent="." index="2"]
+collision_layer = 256
+collision_mask = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detect Pomegranate" index="0"]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_h4o8f")
