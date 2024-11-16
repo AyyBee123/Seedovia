@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dln4jkjnbh3vj"]
+[gd_scene load_steps=7 format=3 uid="uid://dln4jkjnbh3vj"]
 
 [ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_nv0tn"]
 [ext_resource type="Texture2D" uid="uid://c00hj6fdbj5rw" path="res://Sprites/Seeds/Pomegranate.png" id="2_jboq2"]
@@ -7,22 +7,56 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_bsh3h"]
 radius = 11.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ogb2u"]
+radius = 11.0
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_h4o8f"]
-radius = 50.0
+resource_local_to_scene = true
+radius = 20.0
 
 [node name="Pomegranate" instance=ExtResource("1_nv0tn")]
 position = Vector2(0, -1)
+scale = Vector2(2, 2)
 texture = ExtResource("2_jboq2")
 script = ExtResource("2_udlhv")
+speed_multiplier = 0.8
+size_multiplier = 0.6
+blast_radius_multiplier = 0.4
+fire_rate_multiplier = 0.8
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_bsh3h")
 
-[node name="Detect Pomegranate" type="Area2D" parent="." index="2"]
+[node name="Acceleration" type="Timer" parent="." index="2"]
+wait_time = 0.75
+one_shot = true
+
+[node name="Lifetime" type="Timer" parent="." index="3"]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="Deceleration" type="Timer" parent="." index="4"]
+wait_time = 1.5
+one_shot = true
+autostart = true
+
+[node name="Pomegranate Hit Area" type="Area2D" parent="." index="5"]
+position = Vector2(0, 1)
+collision_layer = 1024
+collision_mask = 1024
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pomegranate Hit Area" index="0"]
+shape = SubResource("CircleShape2D_ogb2u")
+
+[node name="Detect Pomegranate" type="Area2D" parent="." index="6"]
 collision_layer = 256
 collision_mask = 256
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Detect Pomegranate" index="0"]
 position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_h4o8f")
+
+[connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]
+[connection signal="area_entered" from="Pomegranate Hit Area" to="." method="_on_pomegranate_hit_area_area_entered"]
