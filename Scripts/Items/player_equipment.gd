@@ -1,5 +1,5 @@
 extends Node
-# set increases in value as +n, +n%, or nx amount for stats
+## set increases in value as +n, +n%, or nx amount for stats
 
 var is_percent = false
 

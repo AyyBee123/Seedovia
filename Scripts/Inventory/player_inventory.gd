@@ -9,7 +9,7 @@ const NUM_INVENTORY_SLOTS = 12
 const NUM_TALISMAN_SLOTS = 4
 const NUM_SEED_SLOTS = 3
 
-var inventory = {2:load("res://Resources/Items/Seeds/pomegranate.tres"), 3:load("res://Resources/Items/Seeds/pomegranate.tres")}
+var inventory = {}
 var talismans = {}
 var seeds = {}
 
