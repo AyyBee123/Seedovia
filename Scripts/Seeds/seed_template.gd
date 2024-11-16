@@ -74,7 +74,6 @@ func initialize_position():
 		starting_position = global_position
 		direction = desired_direction.normalized()
 		position_initialized = true
-		#ignore_first_collision = false
 
 func travelled_distance():
 	distance_travelled = starting_position.distance_to(global_position)
@@ -92,6 +91,7 @@ func _on_hitbox_body_entered(body):
 
 func _collide(body):
 	if ignore_first_collision:
+		ignore_first_collision = false
 		return
 	has_collided.emit(body) # for on-hit effects (ex: burning an enemy on hit)
 	if body.is_in_group("Enemies"):

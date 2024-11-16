@@ -61,6 +61,7 @@ func travelled_distance():
 
 func _collide(body):
 	if ignore_first_collision:
+		ignore_first_collision = false
 		return
 	has_collided.emit(body) # for on-hit effects (ex: burning an enemy on hit)
 	if body.is_in_group("Enemies"):
@@ -130,9 +131,6 @@ func get_weapon_properties(weapon, _desired_direction, _ignore_first_collision =
 	else:
 		weapon.seed_slot_number = 3
 	initialize_location.call_deferred(weapon)
-
-func pomegranate():
-	pass
 
 func _on_lifetime_timeout():
 	explode()
