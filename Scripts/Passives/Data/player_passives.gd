@@ -5,8 +5,6 @@ var passives: Array
 var item_passives: Array
 var starting_passives: Array
 
-var add_talisman_stats = preload("res://Scenes/Characters/Passives/Add Talismans.tscn")
-
 func get_passives(): # get the passives and save them into the current run save file
 	player = get_tree().get_nodes_in_group("Players")[0]
 	passives.clear()
@@ -39,6 +37,3 @@ func add_starting_passives(): # add the starting character's passive(s) into the
 	player = get_tree().get_nodes_in_group("Players")[0]
 	for passive in starting_passives:
 		player.get_node("Passives").add_child(passive.instantiate())
-	
-	# add a passive that makes immediately equipped talismans give their stats
-	player.get_node("Passives").add_child(add_talisman_stats.instantiate())

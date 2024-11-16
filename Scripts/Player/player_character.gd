@@ -1,5 +1,7 @@
 extends Node
 
+var add_talismans_passive = preload("res://Scenes/Characters/Passives/Add Talismans.tscn")
+
 var starting_character: character_class
 var character_name: String
 # the sprite is stored here instead of in the character class resource because the sprite is loading later, 
@@ -14,7 +16,10 @@ func set_inventory():
 	move_animation = starting_character.move_animation
 	character_name = starting_character.character_name
 	add_items(starting_character.starting_inventory, PlayerInventory.inventory)
-	#add_items(starting_character.starting_talismans, PlayerInventory.talismans)
+	add_items(starting_character.starting_talismans, PlayerInventory.talismans)
+	for talisman in starting_character.starting_talismans:
+		for passive in talisman.special_properties:
+			PlayerPassives.item_passives.append(passive)
 	add_items(starting_character.starting_seeds, PlayerInventory.seeds)
 
 func add_items(category, player_category):
