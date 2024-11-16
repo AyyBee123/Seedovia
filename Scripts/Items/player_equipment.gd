@@ -10,7 +10,11 @@ func remove_stats(item, player, was_equipped): # remove stats when slotting an i
 	setup_property(item, player, -1, was_equipped)
 
 func setup_property(item, player, sign, was_equipped):
-	var properties = item.item.properties
+	var properties
+	if item is equipment_item_class:
+		properties = item.properties
+	else:
+		properties = item.item.properties
 	for i in range(properties.size()):
 		# split the key words. ex: split "+10% Fire_Rate" to ["+10%, "Fire_Rate"]
 		var key_words = properties[i].split(" ")

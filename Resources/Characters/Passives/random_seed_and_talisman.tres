@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="passive_class" load_steps=2 format=3 uid="uid://dyr1gll11tbin"]
+
+[ext_resource type="Script" path="res://Scripts/Passives/Classes/passive_class.gd" id="1_tdhsa"]
+
+[resource]
+script = ExtResource("1_tdhsa")
+passive_name = "Random Seed & Talisman"
+description = "Gives the player one random seed and one random talisman."

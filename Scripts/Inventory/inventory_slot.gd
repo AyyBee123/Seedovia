@@ -58,6 +58,15 @@ func initialize_item(slot_item):
 		item.set_item(slot_item)
 		if slot_type == slot_types.SEED:
 			PlayerSeeds.load_weapons()
+		if slot_type == slot_types.TALISMAN:
+			if item.item.add_stats:
+				PlayerEquipment.add_stats(item, player, item.item.was_already_equipped)
+				for passive in item.item.special_properties:
+					var p = passive.instantiate()
+					PlayerEquipment.add_passive(player, p)
+				item.item.was_already_equipped = true
+				item.item.add_stats = false
+				Global.save_data()
 		add_child(item)
 		item.scale = Vector2(1,1)
 		item.position = Vector2(size.x / 2, size.y / 2)

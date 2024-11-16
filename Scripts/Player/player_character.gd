@@ -14,6 +14,8 @@ func set_inventory():
 	move_animation = starting_character.move_animation
 	character_name = starting_character.character_name
 	add_items(starting_character.starting_inventory, PlayerInventory.inventory)
+	for talisman in starting_character.starting_talismans:
+		talisman.add_stats = true
 	add_items(starting_character.starting_talismans, PlayerInventory.talismans)
 	add_items(starting_character.starting_seeds, PlayerInventory.seeds)
 

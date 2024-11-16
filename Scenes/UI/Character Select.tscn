@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://8lh64evv6imw"]
+[gd_scene load_steps=13 format=3 uid="uid://8lh64evv6imw"]
 
 [ext_resource type="Script" path="res://Scripts/UI/character_select.gd" id="1_jmjmr"]
 [ext_resource type="Texture2D" uid="uid://2whsjb1rg2lm" path="res://Sprites/Character/Sapling/Sapling1.png" id="2_s2884"]
@@ -9,6 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://b7ynn50wtvp24" path="res://Sprites/Character/Berry/Berry1.png" id="6_ubcw7"]
 [ext_resource type="Resource" uid="uid://dxk70g7cem73p" path="res://Resources/Characters/berry.tres" id="7_yw2tk"]
 [ext_resource type="Resource" uid="uid://bn8q0ppmt06w1" path="res://Resources/Characters/Stats/berry.tres" id="8_kytvv"]
+[ext_resource type="Texture2D" uid="uid://b53os8trmovki" path="res://Sprites/Character/White Shrub/White Shrub1.png" id="9_ifkyc"]
+[ext_resource type="Resource" uid="uid://bvqprp6nul3d2" path="res://Resources/Characters/white_shrub.tres" id="10_q0efv"]
+[ext_resource type="Resource" uid="uid://bgnhohltve07x" path="res://Resources/Characters/Stats/white_shrub.tres" id="11_nofwc"]
 
 [node name="Character Select" type="Control"]
 layout_mode = 3
@@ -48,6 +51,18 @@ texture = ExtResource("6_ubcw7")
 script = ExtResource("3_alya1")
 starting_character = ExtResource("7_yw2tk")
 starting_stats = ExtResource("8_kytvv")
+
+[node name="Character 3" type="TextureRect" parent="Characters"]
+layout_mode = 0
+offset_left = 416.0
+offset_top = 297.0
+offset_right = 493.0
+offset_bottom = 433.0
+mouse_default_cursor_shape = 2
+texture = ExtResource("9_ifkyc")
+script = ExtResource("3_alya1")
+starting_character = ExtResource("10_q0efv")
+starting_stats = ExtResource("11_nofwc")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 0
