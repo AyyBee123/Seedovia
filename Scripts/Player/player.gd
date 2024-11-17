@@ -42,7 +42,6 @@ var _isKeyboard := true
 
 func _ready():
 	if PlayerCharacter._is_starting: # when starting a new run
-		print(PlayerCharacter.stat_resource.stats)
 		PlayerCharacter._is_starting = false
 		_player_stats.initialize_base_stats()
 		_player_stats.set_health(_player_stats.get_stat("Max_Health"))
@@ -62,7 +61,6 @@ func _ready():
 		PlayerStatStorage.set_stats()
 	controller_cursor.visible = false
 	_player_stats.damaged.connect(took_damage)
-	_player_stats.health_increased.connect(heal)
 	set_sprite.call_deferred()
 	Global.save_data()
 
@@ -202,9 +200,6 @@ func update_timers():
 	invulnerability_time.wait_time = _player_stats.get_stat("Invulnerability_Time")
 	dash_cooldown.wait_time = _player_stats.get_stat("Dash_Rate")
 	dash_invulnerability_time.wait_time = _player_stats.get_stat("Dash_Invulnerability")
-
-func heal():
-	Global.save_data()
 
 func took_damage():
 	Global.save_data()
