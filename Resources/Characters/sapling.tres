@@ -1,14 +1,12 @@
-[gd_resource type="Resource" script_class="character_class" load_steps=6 format=3 uid="uid://cj0ugaawbg6a"]
+[gd_resource type="Resource" script_class="character_class" load_steps=4 format=3 uid="uid://cj0ugaawbg6a"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/character_class.gd" id="1_1twko"]
 [ext_resource type="Resource" uid="uid://c4uomd0l52hvy" path="res://Resources/Items/Consumables/apple.tres" id="3_dqta1"]
-[ext_resource type="Resource" uid="uid://dxjjisb8taqhh" path="res://Resources/Items/Seeds/jet_stream.tres" id="3_vudum"]
-[ext_resource type="Resource" uid="uid://iml44s81lkg1" path="res://Resources/Items/Seeds/watermelon.tres" id="4_450av"]
 [ext_resource type="Resource" uid="uid://cuy80aorwngdg" path="res://Resources/Items/Seeds/pea.tres" id="10_guhko"]
 
 [resource]
 script = ExtResource("1_1twko")
-starting_inventory = Array[Resource]([ExtResource("3_dqta1"), null, ExtResource("3_vudum"), ExtResource("4_450av")])
+starting_inventory = Array[Resource]([ExtResource("3_dqta1")])
 starting_talismans = Array[Resource]([])
 starting_seeds = Array[Resource]([ExtResource("10_guhko")])
 starting_passives = Array[PackedScene]([])
