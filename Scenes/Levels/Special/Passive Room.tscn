@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scripts/Level/passive_room.gd" id="2_bchgi"]
 [ext_resource type="PackedScene" uid="uid://bkbjq3dleklpw" path="res://Scenes/Items/Passive Item.tscn" id="2_e1d5u"]
 [ext_resource type="PackedScene" uid="uid://bapvnxcjqbso" path="res://Scenes/Door/Door.tscn" id="3_mamrx"]
-[ext_resource type="PackedScene" uid="uid://b3ibupvqneqor" path="res://Scenes/Items/item.tscn" id="4_2o7bb"]
+[ext_resource type="PackedScene" uid="uid://b3ibupvqneqor" path="res://Scenes/Items/Item.tscn" id="4_2o7bb"]
 [ext_resource type="PackedScene" uid="uid://d1x7xscaoh6wq" path="res://Scenes/UI/Pause Menu.tscn" id="6_7lofc"]
 
 [node name="Level" instance=ExtResource("1_8s78t")]

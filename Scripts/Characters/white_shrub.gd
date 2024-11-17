@@ -21,4 +21,5 @@ func _ready():
 	_player_stats.set_health(PlayerStatStorage.current_health)
 	controller_cursor.visible = false
 	_player_stats.damaged.connect(took_damage)
+	_player_stats.health_increased.connect(heal)
 	Global.save_data()
