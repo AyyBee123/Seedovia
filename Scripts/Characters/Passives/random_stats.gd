@@ -11,7 +11,12 @@ func _ready():
 	player._player_stats.speed = Global.RNG.randf_range(250, 400)
 	player._player_stats.dash_rate = Global.RNG.randf_range(0.8, 1.2)
 	player._player_stats.dash_distance = Global.RNG.randf_range(1850, 2250)
+	player._player_stats.dash_invulnerability = 0.25
 	player._player_stats.fire_rate = Global.RNG.randf_range(6, 15)
+	player._player_stats.contact_damage = 0.0
+	player._player_stats.invulnerability_time = 1.0
+	player._player_stats.acceleration = 0.1
+	player._player_stats.friction = 0.25
 	player._player_stats.luck = Global.RNG.randf_range(-1, 1)
 	player._player_stats.weapon_speed = Global.RNG.randf_range(400, 600)
 	player._player_stats.weapon_range = Global.RNG.randf_range(50, 110)

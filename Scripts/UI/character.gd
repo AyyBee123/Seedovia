@@ -48,7 +48,6 @@ func select_character():
 	PlayerCharacter.stat_resource = starting_stats
 	Pool.start()
 	_player_stats = starting_stats
-	set_base_stats()
 	Global.save_room()
 	get_tree().change_scene_to_file("res://Scenes/Levels/Special/Starting Room.tscn")
 

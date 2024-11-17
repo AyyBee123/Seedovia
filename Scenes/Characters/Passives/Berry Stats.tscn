@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dg7y5b86ajmig"]
+
+[ext_resource type="Script" path="res://Scripts/Characters/Passives/berry_stats.gd" id="1_0yn6q"]
+
+[node name="BerryStats" type="Node"]
+script = ExtResource("1_0yn6q")
