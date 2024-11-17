@@ -41,7 +41,8 @@ var _isMouse := true
 var _isKeyboard := true
 
 func _ready():
-	if PlayerCharacter._is_starting:
+	if PlayerCharacter._is_starting: # when starting a new run
+		print(PlayerCharacter.stat_resource.stats)
 		PlayerCharacter._is_starting = false
 		_player_stats.initialize_base_stats()
 		_player_stats.set_health(_player_stats.get_stat("Max_Health"))

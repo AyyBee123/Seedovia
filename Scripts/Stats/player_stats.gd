@@ -134,3 +134,10 @@ func update_stat(stat: String, was_equipped: bool, old_stat_value):
 		else:
 			health = current_health
 	change_stat.emit()
+
+func heal(amount):
+	health += amount
+	health = min(health, get_stat("Max_Health"))
+	overcapped_health = min(health, get_stat("Max_Health"))
+	health_increased.emit()
+	health_changed.emit(health)

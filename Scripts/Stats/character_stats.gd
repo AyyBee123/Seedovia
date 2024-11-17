@@ -56,10 +56,3 @@ func take_damage(source):
 	health_changed.emit(health)
 	if health <= 0:
 		health_depleted.emit()
-		
-func heal(amount):
-	health += amount
-	health = min(health, max_health)
-	overcapped_health = min(health, max_health)
-	health_increased.emit()
-	health_changed.emit(health)
