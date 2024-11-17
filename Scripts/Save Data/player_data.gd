@@ -8,15 +8,10 @@ class_name player_data extends Resource
 @export var starting_passives: Array
 @export var passives: Array
 @export var item_passives: Array
-@export var character_name: String
-@export var character_stat_sheet: player_stats
-@export var starting_character: character_class
+@export var character_scene_file_path: String
 @export var stats: Dictionary
 @export var current_health: int
 @export var overcapped_health: int
-@export var character_sprite: Texture
-@export var character_hand_sprite: Texture
-@export var character_move_animation: Array[Texture]
 @export var floor_number: int
 @export var room_number: int
 @export var current_room: String
@@ -59,28 +54,17 @@ func get_stats():
 	stats = PlayerStatStorage.get_stats()
 	current_health = PlayerStatStorage.current_health
 	overcapped_health = PlayerStatStorage.overcapped_health
-	character_name = PlayerCharacter.character_name
 
 func set_stats():
 	PlayerStatStorage.current_health = current_health
 	PlayerStatStorage.overcapped_health = overcapped_health
 	PlayerStatStorage.stats = stats
-	PlayerCharacter.character_name = character_name
-	
 
-func get_sprite():
-	character_sprite = PlayerCharacter.sprite
-	character_hand_sprite = PlayerCharacter.hand_sprite
-	character_move_animation = PlayerCharacter.move_animation
-	starting_character = PlayerCharacter.starting_character
-	character_stat_sheet = PlayerCharacter.stat_resource
+func get_character():
+	character_scene_file_path = LevelList.character_scene_file_path
 
-func set_sprite():
-	PlayerCharacter.sprite = ImageTexture.create_from_image(character_sprite.get_image())
-	PlayerCharacter.hand_sprite = ImageTexture.create_from_image(character_hand_sprite.get_image())
-	PlayerCharacter.move_animation = character_move_animation
-	PlayerCharacter.starting_character = starting_character
-	PlayerCharacter.stat_resource = character_stat_sheet
+func set_character():
+	LevelList.character_scene_file_path = character_scene_file_path
 
 func get_current_room():
 	floor_number = LevelList.floor_number

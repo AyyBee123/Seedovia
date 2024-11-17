@@ -4,6 +4,7 @@ var mouse_hovered = false
 var event: InputEvent
 @export var starting_character: character_class
 @export var starting_stats: player_stats
+@export var character_scene: String
 var _player_stats: player_stats = preload("res://Resources/Characters/Stats/base_stats.tres")
 
 func _ready():
@@ -26,6 +27,8 @@ func _on_mouse_exited():
 func select_character():
 	Global.delete_data()
 	PlayerCharacter._is_starting = true
+	LevelList.character_scene_file_path = character_scene
+	LevelList.load_char()
 	Global.RNG = RandomNumberGenerator.new()
 	Global.rewards.clear()
 	Global.next_reward = null
@@ -45,7 +48,6 @@ func select_character():
 	PlayerPassives.item_passives.clear()
 	PlayerCharacter.set_inventory()
 	PlayerCharacter.add_passives()
-	PlayerCharacter.stat_resource = starting_stats
 	Pool.start()
 	_player_stats = starting_stats
 	Global.save_room()

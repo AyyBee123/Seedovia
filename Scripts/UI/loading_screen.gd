@@ -19,6 +19,7 @@ func load_scene(path):
 func load_save():
 	Global.load_room()
 	Global.load_data()
+	LevelList.load_char()
 	Pool.continue_run()
 
 func _process(delta):

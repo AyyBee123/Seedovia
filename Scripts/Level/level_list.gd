@@ -15,6 +15,11 @@ var items_on_ground: Dictionary
 var passive_items_on_ground: Dictionary
 var picked_up_passive: bool
 var doors: Dictionary
+var character_scene_file_path: String
+# TODO: add character variable that gets the character scene add preloads it when choosing a character
+
+func load_char():
+	player = load(character_scene_file_path)
 
 func change_room(door):
 	Global.save_data()

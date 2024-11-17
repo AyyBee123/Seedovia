@@ -39,6 +39,7 @@ expand_mode = 1
 script = ExtResource("3_alya1")
 starting_character = ExtResource("4_v56qf")
 starting_stats = ExtResource("5_vyjse")
+character_scene = "res://Scenes/Characters/Sapling.tscn"
 
 [node name="Character 2" type="TextureRect" parent="Characters"]
 layout_mode = 0
@@ -51,6 +52,7 @@ texture = ExtResource("6_ubcw7")
 script = ExtResource("3_alya1")
 starting_character = ExtResource("7_yw2tk")
 starting_stats = ExtResource("8_kytvv")
+character_scene = "res://Scenes/Characters/Berry.tscn"
 
 [node name="Character 3" type="TextureRect" parent="Characters"]
 layout_mode = 0
@@ -63,6 +65,7 @@ texture = ExtResource("9_ifkyc")
 script = ExtResource("3_alya1")
 starting_character = ExtResource("10_q0efv")
 starting_stats = ExtResource("11_nofwc")
+character_scene = "res://Scenes/Characters/White Shrub.tscn"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 0

@@ -18,14 +18,11 @@ signal has_collided(object)
 @onready var hand := $"Rotation Point/Marker2D"
 @onready var hand_sprite = $"Rotation Point/Marker2D/Hand"
 @onready var inv_anim := $"Invulnerability Animation"
-@onready var player_sprite = $"Player Sprite"
 @onready var weapon_direction_marker = $"Rotation Point/Weapon Direction"
 @onready var controller_cursor = $"Rotation Point/Weapon Direction/Cursor"
-@onready var frame_time = $"Frame Time"
 @onready var collision_buffer_time = $"Collision Buffer Time"
 
 var current_weapon: PackedScene = null
-var move_anim_textures: Array
 
 var can_be_damaged := true
 var mouse_in_inventory := false
@@ -34,7 +31,6 @@ var damage_multiplier
 var weapon_direction
 var pickup_item = null
 var item_in_area = false
-var frame_index: int
 
 # check if the input is from a keyboard or joystick
 var _isMouse := true
@@ -43,7 +39,6 @@ var _isKeyboard := true
 func _ready():
 	if PlayerCharacter._is_starting: # when starting a new run
 		PlayerCharacter._is_starting = false
-		_player_stats.initialize_base_stats()
 		_player_stats.set_health(_player_stats.get_stat("Max_Health"))
 		if PlayerPassives.starting_passives != null: # add starting passives to the player
 			PlayerPassives.add_starting_passives()
@@ -58,10 +53,9 @@ func _ready():
 		PlayerPassives.set_passives()
 		PlayerPassives.set_item_passives()
 		Global.load_data()
-		PlayerStatStorage.set_stats()
+	_player_stats.set_health(PlayerStatStorage.current_health)
 	controller_cursor.visible = false
 	_player_stats.damaged.connect(took_damage)
-	set_sprite.call_deferred()
 	Global.save_data()
 
 func _physics_process(delta):
@@ -137,30 +131,17 @@ func pick_up(item):
 	await get_tree().create_timer(0.1).timeout
 	Global.save_room()
 
-func set_sprite():
-	player_sprite.texture = PlayerCharacter.sprite
-	hand_sprite.texture = PlayerCharacter.hand_sprite
-	for texture in PlayerCharacter.move_animation:
-		move_anim_textures.append(ImageTexture.create_from_image(texture.get_image()))
-
 func move():
-	animate_movement()
+	$"Player Sprite".play("Move")
 	# TODO: add a deadzone value taken from the one in options menu (currently 0.15)
 	var input_direction = Input.get_vector("left", "right", "up", "down", 0.15)
 	if input_direction.length() > 0:
 		velocity = velocity.lerp(input_direction * _player_stats.get_stat("Speed"), \
 				_player_stats.get_stat("Acceleration"))
 
-func animate_movement():
-	if frame_time.is_stopped():
-		frame_time.start()
-	if move_anim_textures.size() > 0:
-		player_sprite.texture = move_anim_textures[frame_index]
-
 func stop():
-	player_sprite.texture = PlayerCharacter.sprite
+	$"Player Sprite".play("Idle")
 	velocity = velocity.lerp(Vector2.ZERO, _player_stats.get_stat("Friction"))
-	frame_index = 0
 
 func die():
 	hide() # temporary death effect
@@ -169,7 +150,7 @@ func die():
 	# TODO: pause game and add a menu with options to restart and go back to menu
 
 func dash():
-	player_sprite.texture = PlayerCharacter.sprite
+	$"Player Sprite".play("Dash")
 	can_be_damaged = false
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	velocity = velocity.lerp((input_direction.normalized() if input_direction else Vector2(0,1)) \
@@ -241,11 +222,6 @@ func _on_pickup_radius_area_entered(area):
 func _on_pickup_radius_area_exited(area):
 	if area.get_parent().is_in_group("Item"):
 		item_in_area = false
-
-func _on_frame_time_timeout():
-	frame_index = min(frame_index + 1, move_anim_textures.size())
-	if frame_index >= move_anim_textures.size():
-		frame_index = 0
 
 ## a little buffer to prevent immediate collision with other objects
 func _on_collision_buffer_time_timeout():

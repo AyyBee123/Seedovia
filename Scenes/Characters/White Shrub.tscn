@@ -1,0 +1,63 @@
+[gd_scene load_steps=10 format=3 uid="uid://jmqrc0iy1uob"]
+
+[ext_resource type="PackedScene" uid="uid://cu63rxmy71bcg" path="res://Scenes/Player/Player.tscn" id="1_uo5hu"]
+[ext_resource type="Resource" uid="uid://bgnhohltve07x" path="res://Resources/Characters/Stats/white_shrub.tres" id="2_20k5p"]
+[ext_resource type="Texture2D" uid="uid://b53os8trmovki" path="res://Sprites/Character/White Shrub/White Shrub1.png" id="3_344h6"]
+[ext_resource type="Texture2D" uid="uid://6vom2g6kgnh7" path="res://Sprites/Character/White Shrub/White Shrub2.png" id="4_fbg48"]
+[ext_resource type="Texture2D" uid="uid://b3ap2ddmxb1a8" path="res://Sprites/Character/White Shrub/White Shrub3.png" id="5_48ndp"]
+[ext_resource type="Texture2D" uid="uid://cfh0c3t4hpweh" path="res://Sprites/Character/White Shrub/White Shrub4.png" id="6_4kq0c"]
+[ext_resource type="Texture2D" uid="uid://cf8tcikiyx6ww" path="res://Sprites/Character/White Shrub/White Shrub5.png" id="7_bxo53"]
+[ext_resource type="Texture2D" uid="uid://bbqw4qoftm2ve" path="res://Sprites/Character/White Shrub/Hand.png" id="8_qnhjt"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6lyiw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_344h6")
+}],
+"loop": true,
+"name": &"Dash",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_344h6")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_fbg48")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_48ndp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_4kq0c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_bxo53")
+}],
+"loop": true,
+"name": &"Move",
+"speed": 8.0
+}]
+
+[node name="White Shrub" instance=ExtResource("1_uo5hu")]
+_player_stats = ExtResource("2_20k5p")
+
+[node name="Player Sprite" parent="." index="3"]
+sprite_frames = SubResource("SpriteFrames_6lyiw")
+animation = &"Idle"
+autoplay = "Idle"
+
+[node name="Hitbox" parent="." index="4"]
+position = Vector2(0, 0.5)
+
+[node name="Hand" parent="Rotation Point/Marker2D" index="0"]
+texture = ExtResource("8_qnhjt")
+
+[node name="CollisionShape2D" parent="Pickup Radius" index="0"]
+visible = false

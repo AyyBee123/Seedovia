@@ -3,11 +3,9 @@ extends Node
 var player
 
 func _ready():
-	player = get_parent().get_parent()
+	player = get_parent()
 	
 	player._player_stats.max_health = 4
-	player._player_stats.health = player._player_stats.max_health
-	player._player_stats.overcapped_health = player._player_stats.max_health
 	player._player_stats.speed = 250.0
 	player._player_stats.dash_rate = 1.05
 	player._player_stats.dash_distance = 1850.0
@@ -25,6 +23,3 @@ func _ready():
 	player._player_stats.weapon_blast_radius = 1.15
 	
 	player._player_stats.initialize_base_stats()
-	
-	get_parent().remove_child(self)
-	queue_free.call_deferred()

@@ -1,0 +1,63 @@
+[gd_scene load_steps=11 format=3 uid="uid://m1j34tlvalwr"]
+
+[ext_resource type="PackedScene" uid="uid://cu63rxmy71bcg" path="res://Scenes/Player/Player.tscn" id="1_dhg8r"]
+[ext_resource type="Resource" uid="uid://bn8q0ppmt06w1" path="res://Resources/Characters/Stats/berry.tres" id="2_50cca"]
+[ext_resource type="PackedScene" uid="uid://dg7y5b86ajmig" path="res://Scenes/Characters/Passives/Berry Stats.tscn" id="2_vgwbe"]
+[ext_resource type="Texture2D" uid="uid://b7ynn50wtvp24" path="res://Sprites/Character/Berry/Berry1.png" id="3_afc0e"]
+[ext_resource type="Texture2D" uid="uid://b56ybys41hcn8" path="res://Sprites/Character/Berry/Berry2.png" id="4_lahev"]
+[ext_resource type="Texture2D" uid="uid://6wk832crfh30" path="res://Sprites/Character/Berry/Hand.png" id="4_n1ask"]
+[ext_resource type="Texture2D" uid="uid://d3fqvlyjp687e" path="res://Sprites/Character/Berry/Berry3.png" id="5_j3w2e"]
+[ext_resource type="Texture2D" uid="uid://da5ri8qowbkp1" path="res://Sprites/Character/Berry/Berry4.png" id="6_1d7x2"]
+[ext_resource type="Texture2D" uid="uid://durq6vd1lypqr" path="res://Sprites/Character/Berry/Berry5.png" id="7_oqtb8"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6lyiw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_afc0e")
+}],
+"loop": true,
+"name": &"Dash",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_afc0e")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_lahev")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_j3w2e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_1d7x2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_oqtb8")
+}],
+"loop": true,
+"name": &"Move",
+"speed": 8.0
+}]
+
+[node name="Berry" instance=ExtResource("1_dhg8r")]
+_player_stats = ExtResource("2_50cca")
+
+[node name="Player Sprite" parent="." index="3"]
+sprite_frames = SubResource("SpriteFrames_6lyiw")
+animation = &"Idle"
+autoplay = "Idle"
+
+[node name="Hitbox" parent="." index="4"]
+position = Vector2(0, -2)
+
+[node name="Hand" parent="Rotation Point/Marker2D" index="0"]
+texture = ExtResource("4_n1ask")
+
+[node name="BerryStats" parent="." index="15" instance=ExtResource("2_vgwbe")]

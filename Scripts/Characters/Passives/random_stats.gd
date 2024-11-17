@@ -26,5 +26,5 @@ func _ready():
 	
 	player._player_stats.initialize_base_stats()
 	
-	get_parent().remove_child(self)
+	get_parent().remove_child.call_deferred(self)
 	queue_free.call_deferred()

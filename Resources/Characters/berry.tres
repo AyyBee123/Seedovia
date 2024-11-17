@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="character_class" load_steps=11 format=3 uid="uid://dxk70g7cem73p"]
+[gd_resource type="Resource" script_class="character_class" load_steps=10 format=3 uid="uid://dxk70g7cem73p"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/character_class.gd" id="1_620up"]
 [ext_resource type="Texture2D" uid="uid://6wk832crfh30" path="res://Sprites/Character/Berry/Hand.png" id="1_nrxsj"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://da5ri8qowbkp1" path="res://Sprites/Character/Berry/Berry4.png" id="4_ft73a"]
 [ext_resource type="Texture2D" uid="uid://durq6vd1lypqr" path="res://Sprites/Character/Berry/Berry5.png" id="5_idc0s"]
 [ext_resource type="Texture2D" uid="uid://b7ynn50wtvp24" path="res://Sprites/Character/Berry/Berry1.png" id="7_y1bk0"]
-[ext_resource type="PackedScene" uid="uid://dg7y5b86ajmig" path="res://Scenes/Characters/Passives/Berry Stats.tscn" id="8_eop43"]
 [ext_resource type="Resource" uid="uid://cpavb28jlc2wj" path="res://Resources/Items/Seeds/strawberry.tres" id="8_x4txl"]
 [ext_resource type="Resource" uid="uid://bn8q0ppmt06w1" path="res://Resources/Characters/Stats/berry.tres" id="9_4s71x"]
 
@@ -21,4 +20,4 @@ stat_resource = ExtResource("9_4s71x")
 starting_inventory = Array[Resource]([])
 starting_talismans = Array[Resource]([])
 starting_seeds = Array[Resource]([ExtResource("8_x4txl")])
-starting_passives = Array[PackedScene]([ExtResource("8_eop43")])
+starting_passives = Array[PackedScene]([])
