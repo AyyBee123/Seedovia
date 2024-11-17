@@ -4,10 +4,18 @@ var enemy
 @onready var hit_SFX = $Hit
 
 func _ready():
-	super._ready()
-
-func _physics_process(delta):
-	super._physics_process(delta)
+	ignore_first_collision_timer = Timer.new()
+	ignore_first_collision_timer.one_shot = true
+	ignore_first_collision_timer.connect("timeout", set_ignore_first_collision)
+	ignore_first_collision_timer.wait_time = 0.05
+	ignore_first_collision_timer.autostart = true
+	speed_multiplier *= transferred_speed_multiplier
+	range_multiplier *= transferred_range_multiplier
+	size_multiplier *= transferred_size_multiplier
+	damage_multiplier *= transferred_damage_multiplier
+	blast_radius_multiplier *= transferred_blast_radius_multiplier
+	fire_rate_multiplier *= transferred_fire_rate_multiplier
+	scale = scale * player._player_stats.get_stat("Weapon_Size") * size_multiplier
 
 func _collide(body):
 	if ignore_first_collision:

@@ -61,6 +61,7 @@ func _on_hitbox_body_entered(body):
 	elif right.is_colliding():
 		area_normal = Vector2(-1, 0)
 	direction = direction.bounce(area_normal).normalized()
+	weapon_direction = area_normal
 	collide(body)
 
 func collide(area):
@@ -74,11 +75,10 @@ func collide(area):
 	explode()
 	shoot_next_weapon()
 
-func shoot_next_weapon():
-	attempted_fire.emit()
-	if get_next_weapon() == null:
-		return
-	get_weapon_properties(get_next_weapon().instantiate(), area_normal, true)
+func initialize_location(weapon):
+	get_tree().current_scene.add_child(weapon)
+	weapon_fired.emit(weapon)
+	weapon.global_position = global_position + weapon_direction * 20
 
 func explode():
 	var explosion = resource_preloader.get_resource("Explosion").instantiate()
