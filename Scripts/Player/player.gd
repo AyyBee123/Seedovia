@@ -251,5 +251,6 @@ func _on_frame_time_timeout():
 	if frame_index >= move_anim_textures.size():
 		frame_index = 0
 
+## a little buffer to prevent immediate collision with other objects
 func _on_collision_buffer_time_timeout():
 	$Hitbox.disabled = false
