@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@onready var player := $"../Player"
+var player
 @export var _enemy_stats: enemy_stats
 
 func _ready():
@@ -17,6 +17,7 @@ func _physics_process(delta):
 
 func _on_hitbox_body_entered(body):
 	if body.is_in_group("Players"):
+		player = body
 		player._player_stats.take_damage(self._enemy_stats)
 		
 func die():
@@ -27,4 +28,3 @@ func die():
 func update_health(new_health):
 	_enemy_stats.health = new_health
 	
-

@@ -16,6 +16,6 @@ func _state_logic(delta):
 func _get_transition(delta):
 	match state:
 		states.down:
-			if not parent.falling:
+			if not parent.falling and get_parent().player != null:
 				return states.forward
 	return null

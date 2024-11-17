@@ -1,7 +1,8 @@
 extends Node2D
 
 @onready var resource_preloader := $ResourcePreloader
-@onready var player := $Player
+var player
+var player_pos = Vector2(0, 330)
 
 var cleared := false
 var was_cleared := false # checks if room initially has enemies on entering
@@ -18,8 +19,12 @@ func _ready():
 			enemy.visible = false
 			enemy.queue_free()
 			was_cleared = true
-	Global.load_room()
+	# spawn the player character
+	player = LevelList.player.instantiate()
+	add_child(player)
+	player.global_position = player_pos
 	Global.load_data()
+	Global.load_room()
 	reward_given = LevelList.current_reward_given
 	Targets.get_entities()
 	LevelList.current_room = get_tree().current_scene.scene_file_path
@@ -40,9 +45,9 @@ func _ready():
 		add_child(item_instance)
 		item_instance.global_position = LevelList.passive_items_on_ground[i]["position"]
 	Global.save_room()
-	Global.save_data()
 
 func _physics_process(delta):
+	player = Targets.get_player()
 	pause()
 	check_for_enemies()
 

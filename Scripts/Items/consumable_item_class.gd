@@ -4,5 +4,5 @@ var category := "CONSUMABLE"
 var rarity := 7 # N/A
 var weight: float
 var acc_weight: float
-func on_use(target) -> void:
+func on_use() -> void:
 	pass

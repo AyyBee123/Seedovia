@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://br58ut4jghdm3"]
+[gd_scene load_steps=9 format=3 uid="uid://qrg5sbj4sstd"]
 
 [ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_7qeku"]
 [ext_resource type="Texture2D" uid="uid://cerjnkxf8yqaf" path="res://Sprites/Seeds/Jet Stream.png" id="2_at4xh"]

@@ -13,56 +13,59 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_fjrdo")
 
-[node name="Layout" type="GridContainer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+offset = Vector2(10, 10)
+transform = Transform2D(1, 0, 0, 1, 10, 10)
 
-[node name="PanelContainer" type="PanelContainer" parent="Layout"]
+[node name="Layout" type="GridContainer" parent="CanvasLayer"]
+offset_right = 64.0
+offset_bottom = 64.0
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Layout"]
 self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 
-[node name="Current Health UI" type="GridContainer" parent="Layout/PanelContainer"]
+[node name="Current Health UI" type="GridContainer" parent="CanvasLayer/Layout/PanelContainer"]
 layout_mode = 2
 mouse_filter = 2
 columns = 6
 
-[node name="Max Health UI" type="GridContainer" parent="Layout/PanelContainer"]
+[node name="Max Health UI" type="GridContainer" parent="CanvasLayer/Layout/PanelContainer"]
 layout_mode = 2
 mouse_filter = 2
 columns = 6
 
-[node name="Stats UI" type="GridContainer" parent="Layout"]
+[node name="Stats UI" type="GridContainer" parent="CanvasLayer/Layout"]
 visible = false
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Speed" type="Label" parent="Layout/Stats UI"]
+[node name="Speed" type="Label" parent="CanvasLayer/Layout/Stats UI"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_ql006")
 theme_override_font_sizes/font_size = 48
 text = "dwdwdwdw"
 
-[node name="Dash Rate" type="Label" parent="Layout/Stats UI"]
+[node name="Dash Rate" type="Label" parent="CanvasLayer/Layout/Stats UI"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_ql006")
 theme_override_font_sizes/font_size = 48
 text = "dwdwdwdw"
 
-[node name="Dash Distance" type="Label" parent="Layout/Stats UI"]
+[node name="Dash Distance" type="Label" parent="CanvasLayer/Layout/Stats UI"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_ql006")
 theme_override_font_sizes/font_size = 48
 text = "dwdwdwdw"
 
-[node name="Dash Invulnerability" type="Label" parent="Layout/Stats UI"]
+[node name="Dash Invulnerability" type="Label" parent="CanvasLayer/Layout/Stats UI"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_ql006")
 theme_override_font_sizes/font_size = 48
 text = "dwdwdwdw"
 
-[node name="Fire Rate" type="Label" parent="Layout/Stats UI"]
+[node name="Fire Rate" type="Label" parent="CanvasLayer/Layout/Stats UI"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_ql006")
 theme_override_font_sizes/font_size = 48

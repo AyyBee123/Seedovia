@@ -25,16 +25,43 @@ func _on_mouse_exited():
 
 func select_character():
 	Global.delete_data()
+	PlayerCharacter._is_starting = true
+	Global.RNG = RandomNumberGenerator.new()
+	Global.rewards.clear()
+	Global.next_reward = null
+	LevelList.floor.rooms.clear()
+	LevelList.floor_number = 0
+	LevelList.room_number = 0 # value doesn't reset unless the save_room function is called right after (no idea why)
+	LevelList.current_reward_given = true
+	LevelList.doors.clear()
+	LevelList.doors_spawned = false
+	LevelList.passive_items_on_ground.clear()
+	LevelList.items_on_ground.clear()
 	PlayerCharacter.starting_character = starting_character
+	PlayerInventory.inventory.clear()
+	PlayerInventory.talismans.clear()
+	PlayerInventory.seeds.clear()
+	PlayerPassives.passives.clear()
+	PlayerPassives.item_passives.clear()
 	PlayerCharacter.set_inventory()
 	PlayerCharacter.add_passives()
-	PlayerStatStorage.player_stat_sheet = starting_stats
+	PlayerCharacter.stat_resource = starting_stats
 	set_base_stats()
 	Pool.start()
+	for stat in starting_stats.stats.keys():
+		if stat == "Max_Health":
+			starting_stats.stats[stat]["x"] = 1
+			starting_stats.stats[stat]["+"] = 0
+			continue
+		starting_stats.stats[stat]["x"] = 1.0
+		starting_stats.stats[stat]["+"] = 0.0
+	Global.save_room()
 	get_tree().change_scene_to_file("res://Scenes/Levels/Special/Starting Room.tscn")
 
 func set_base_stats():
 	_player_stats.max_health = starting_stats.max_health
+	_player_stats.health = starting_stats.max_health
+	_player_stats.overcapped_health = starting_stats.max_health
 	_player_stats.speed = starting_stats.speed
 	_player_stats.dash_rate = starting_stats.dash_rate
 	_player_stats.dash_distance = starting_stats.dash_distance

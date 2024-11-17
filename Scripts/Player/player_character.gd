@@ -9,17 +9,20 @@ var character_name: String
 var sprite
 var hand_sprite
 var move_animation: Array[Texture]
+var stat_resource
+var _is_starting := false
 
 func set_inventory():
 	sprite = starting_character.sprite
 	hand_sprite = starting_character.hand_sprite
 	move_animation = starting_character.move_animation
 	character_name = starting_character.character_name
+	stat_resource = starting_character.stat_resource
 	add_items(starting_character.starting_inventory, PlayerInventory.inventory)
-	add_items(starting_character.starting_talismans, PlayerInventory.talismans)
-	for talisman in starting_character.starting_talismans:
-		for passive in talisman.special_properties:
-			PlayerPassives.item_passives.append(passive)
+	#add_items(starting_character.starting_talismans, PlayerInventory.talismans)
+	#for talisman in starting_character.starting_talismans:
+		#for passive in talisman.special_properties:
+			#PlayerPassives.item_passives.append(passive)
 	add_items(starting_character.starting_seeds, PlayerInventory.seeds)
 
 func add_items(category, player_category):
@@ -31,3 +34,4 @@ func add_items(category, player_category):
 
 func add_passives():
 	PlayerPassives.starting_passives = starting_character.starting_passives
+	PlayerPassives.starting_passives.append(add_talismans_passive)

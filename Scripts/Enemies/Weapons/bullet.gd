@@ -1,7 +1,5 @@
 extends Sprite2D
 
-@onready var player := $"../Player"
-
 var damage: int = 1
 var range: float = 0
 var speed: float = 0
@@ -11,6 +9,7 @@ var direction: Vector2
 var starting_position: Vector2 # gets the starting position from where the bullet is fired
 var distance_travelled: float # gets the current range travelled by the bullet
 var position_initialized := false
+var player
 
 func _ready():
 	starting_position = global_position
@@ -22,6 +21,7 @@ func _physics_process(delta):
 
 func _collide(body):
 	if body.is_in_group("Players"):
+		player = body
 		player._player_stats.take_damage(self)
 	# bullet gets destroyed, for whatever reason, even when the bullet's mask is not set to include the obstacle
 	# so, I added this conditional statement

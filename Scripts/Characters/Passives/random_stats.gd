@@ -6,6 +6,8 @@ func _ready():
 	player = get_parent().get_parent()
 	
 	player._player_stats.max_health = Global.RNG.randi_range(1, 4)
+	player._player_stats.health = player._player_stats.max_health
+	player._player_stats.overcapped_health = player._player_stats.max_health
 	player._player_stats.speed = Global.RNG.randf_range(250, 400)
 	player._player_stats.dash_rate = Global.RNG.randf_range(0.8, 1.2)
 	player._player_stats.dash_distance = Global.RNG.randf_range(1850, 2250)

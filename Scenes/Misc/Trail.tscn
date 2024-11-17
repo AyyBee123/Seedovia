@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dpni6o8tjkjna"]
+[gd_scene load_steps=4 format=3 uid="uid://dag45874efl0l"]
 
 [ext_resource type="Texture2D" uid="uid://mw020yxhy4h8" path="res://Sprites/Seeds/Rainbow Trail.png" id="2_bd81n"]
 [ext_resource type="Script" path="res://Scripts/Misc/trail.gd" id="3_i6841"]

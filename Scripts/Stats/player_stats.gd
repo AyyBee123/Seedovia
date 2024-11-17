@@ -5,8 +5,8 @@ signal change_stat
 var stats := {
 	"Max_Health": {
 		"base": max_health,
-		"+": 0.0,
-		"x": 1.0
+		"+": 0,
+		"x": 1
 	},
 	"Speed": {
 		"base": speed,
@@ -103,7 +103,7 @@ func initialize_base_stats():
 	stats["Weapon_Size"]["base"] = weapon_size
 	stats["Weapon_Damage"]["base"] = weapon_damage
 	stats["Weapon_Blast_Radius"]["base"] = weapon_blast_radius
-	stats["Weapon_Blast_Radius"]["+"] = luck
+	stats["Luck"]["+"] = luck
 	
 func get_health(was_equipped: bool):
 	var previous_max_health = max_health
@@ -113,8 +113,8 @@ func get_health(was_equipped: bool):
 		overcapped_health += max_health - previous_max_health
 	var current_health = health
 	current_health = min(overcapped_health, max_health)
-	if current_health == 0.0:
-		health = 1.0
+	if current_health == 0:
+		health = 1
 	else:
 		health = current_health
 

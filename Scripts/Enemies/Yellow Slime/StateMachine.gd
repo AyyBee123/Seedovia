@@ -25,7 +25,7 @@ func _state_logic(delta):
 func _get_transition(delta):
 	match state:
 		states.idle:
-			if timer.is_stopped():
+			if timer.is_stopped() and get_parent().player != null:
 				timer.start(1)
 				return states.jump
 		states.jump:

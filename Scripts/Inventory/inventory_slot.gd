@@ -52,14 +52,14 @@ func put_into_slot(new_item):
 			player.update_timers()
 
 func initialize_item(slot_item):
-	item_instance = load("res://Scenes/Items/item.tscn")
+	item_instance = load("res://Scenes/Items/Item.tscn")
 	if item == null:
 		item = item_instance.instantiate()
 		item.set_item(slot_item)
 		if slot_type == slot_types.SEED:
 			PlayerSeeds.load_weapons()
 		if slot_type == slot_types.TALISMAN:
-			if item.item.add_stats:
+			if item.item.add_stats: # mainly for the ??? character
 				PlayerEquipment.add_stats(item, player, item.item.was_already_equipped)
 				for passive in item.item.special_properties:
 					var p = passive.instantiate()

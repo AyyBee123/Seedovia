@@ -1,7 +1,5 @@
 extends CharacterBody2D
 
-var death_screen = preload("res://Scenes/UI/Death Screen.tscn")
-
 signal shoot(bullet, direction, location)
 signal weapon_fired(weapon)
 signal dashed
@@ -36,29 +34,33 @@ var weapon_direction
 var pickup_item = null
 var item_in_area = false
 var frame_index: int
-var _stats_changed := false
 
 # check if the input is from a keyboard or joystick
 var _isMouse := true
 var _isKeyboard := true
 
 func _ready():
-	PlayerStatStorage.set_stats()
-	PlayerPassives.set_passives()
-	PlayerPassives.set_item_passives()
-	_player_stats = PlayerStatStorage.player_stat_sheet
+	if PlayerCharacter._is_starting:
+		_player_stats.initialize_base_stats()
+		PlayerCharacter._is_starting = false
+	else:
+		PlayerPassives.set_passives()
+		PlayerPassives.set_item_passives()
+		Global.load_data()
+		PlayerStatStorage.set_stats()
 	controller_cursor.visible = false
-	_player_stats.initialize_base_stats()
 	_player_stats.damaged.connect(took_damage)
-	_player_stats.set_health(_player_stats.get_stat("Max_Health"))
+	_player_stats.health_increased.connect(heal)
 	set_sprite.call_deferred()
 	if PlayerPassives.starting_passives != null: # add starting passives to the player
 		PlayerPassives.add_starting_passives()
 		# prevents starting passives from being duplicated when entering a new room
 		PlayerPassives.starting_passives.clear()
+	Global.save_data()
 
 func _physics_process(delta):
 	update_timers()
+	PlayerStatStorage.set_stats()
 	weapon_direction = hand.global_position.direction_to(weapon_direction_marker.global_position)
 	# check if the mouse is in the inventory and if the inventory is visible to detect if the player can shoot
 	mouse_in_inventory = inventory_screen.get_global_rect().has_point(inventory.get_global_mouse_position()) \
@@ -101,7 +103,7 @@ func _physics_process(delta):
 		if inventory.visible: # only inventory for now. Will add stat sheet when it's made
 			inventory.visible = false
 		else:
-			pass
+			pass # will add pause here, but it's not made yet
 	
 	if Input.is_action_just_pressed("pick up"):
 		if item_in_area:
@@ -159,9 +161,6 @@ func die():
 	process_mode = 4 # = Mode: Disabled
 	# TODO: add death animation
 	# TODO: pause game and add a menu with options to restart and go back to menu
-	Global.delete_data()
-	await get_tree().create_timer(1).timeout
-	get_tree().current_scene.add_child(death_screen.instantiate())
 
 func dash():
 	player_sprite.texture = PlayerCharacter.sprite
@@ -196,10 +195,14 @@ func update_timers():
 	dash_cooldown.wait_time = _player_stats.get_stat("Dash_Rate")
 	dash_invulnerability_time.wait_time = _player_stats.get_stat("Dash_Invulnerability")
 
+func heal():
+	PlayerStatStorage.get_stats()
+	Global.save_data()
+
 func took_damage():
+	Global.save_data()
 	can_be_damaged = false
 	invulnerability_time.start()
-	Global.save_data()
 
 func _should_move() -> bool:
 	var input_direction = Input.get_vector("left", "right", "up", "down")

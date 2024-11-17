@@ -4,7 +4,6 @@ extends Node
 var stats: Dictionary
 var current_health: int
 var overcapped_health: int
-var player_stat_sheet: player_stats
 
 func get_stats():
 	player = get_tree().get_nodes_in_group("Players")[0]

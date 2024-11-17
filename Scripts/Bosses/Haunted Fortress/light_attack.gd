@@ -6,7 +6,6 @@ extends Node2D
 @onready var damage_buffer = $"Damage Buffer"
 @onready var attack_delay = $"Attack Delay"
 @onready var fade_timer = $"Fade Timer"
-@onready var player := $"../Player"
 @onready var light_beam_SFX = $LightBeam
 
 var is_in_area := false
@@ -14,6 +13,7 @@ var fade_timer_mult
 var fade := false
 var played := false
 var damage = 1
+var player
 
 func _ready():
 	fade_timer_mult = 1/fade_timer.wait_time
@@ -38,6 +38,7 @@ func _physics_process(delta):
 
 func _on_hitbox_body_entered(body):
 	if body.is_in_group("Players"):
+		player = body
 		is_in_area = true
 
 func _on_hitbox_body_exited(body):

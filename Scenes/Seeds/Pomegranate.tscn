@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dln4jkjnbh3vj"]
+[gd_scene load_steps=7 format=3 uid="uid://c603q1i0fksuh"]
 
 [ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_nv0tn"]
 [ext_resource type="Texture2D" uid="uid://c00hj6fdbj5rw" path="res://Sprites/Seeds/Pomegranate.png" id="2_jboq2"]

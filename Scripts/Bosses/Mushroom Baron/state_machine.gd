@@ -30,7 +30,7 @@ func _state_logic(delta):
 func _get_transition(delta):
 	match state:
 		states.idle:
-			if timer.is_stopped() and not (has_jumped or has_spit):
+			if timer.is_stopped() and not (has_jumped or has_spit) and get_parent().player != null:
 				if random_attack == 0:
 					return states.spin
 				if random_attack == 1:

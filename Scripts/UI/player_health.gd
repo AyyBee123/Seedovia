@@ -1,9 +1,9 @@
 extends Control
 
-@onready var player = $"../Player"
-@onready var stats = $"Layout/Stats UI".get_children()
-@onready var max_health = $"Layout/PanelContainer/Max Health UI"
-@onready var current_health = $"Layout/PanelContainer/Current Health UI"
+@onready var player = get_parent()
+@onready var stats = $"CanvasLayer/Layout/Stats UI".get_children()
+@onready var max_health = $"CanvasLayer/Layout/PanelContainer/Max Health UI"
+@onready var current_health = $"CanvasLayer/Layout/PanelContainer/Current Health UI"
 
 var empty_heart = preload("res://Scenes/UI/empty_heart.tscn")
 var filled_heart = preload("res://Scenes/UI/filled_heart.tscn")

@@ -56,27 +56,28 @@ func get_stats():
 	stats = PlayerStatStorage.get_stats()
 	current_health = PlayerStatStorage.current_health
 	overcapped_health = PlayerStatStorage.overcapped_health
-	character_stat_sheet = PlayerStatStorage.player_stat_sheet
 	character_name = PlayerCharacter.character_name
 
 func set_stats():
-	PlayerStatStorage.stats = stats
 	PlayerStatStorage.current_health = current_health
 	PlayerStatStorage.overcapped_health = overcapped_health
-	PlayerStatStorage.player_stat_sheet = character_stat_sheet
+	PlayerStatStorage.stats = stats
 	PlayerCharacter.character_name = character_name
+	
 
 func get_sprite():
 	character_sprite = PlayerCharacter.sprite
 	character_hand_sprite = PlayerCharacter.hand_sprite
 	character_move_animation = PlayerCharacter.move_animation
 	starting_character = PlayerCharacter.starting_character
+	character_stat_sheet = PlayerCharacter.stat_resource
 
 func set_sprite():
 	PlayerCharacter.sprite = ImageTexture.create_from_image(character_sprite.get_image())
 	PlayerCharacter.hand_sprite = ImageTexture.create_from_image(character_hand_sprite.get_image())
 	PlayerCharacter.move_animation = character_move_animation
 	PlayerCharacter.starting_character = starting_character
+	PlayerCharacter.stat_resource = character_stat_sheet
 
 func get_current_room():
 	floor_number = LevelList.floor_number

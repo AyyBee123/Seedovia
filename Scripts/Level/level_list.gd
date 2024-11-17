@@ -1,8 +1,10 @@
 extends Node
 
+@onready var player = preload("res://Scenes/Player/Player.tscn")
+
 var floor = ResourceLoader.load("res://Resources/Current Floor/floor.tres")
-static var floor_number: int
-static var room_number: int
+var floor_number: int
+var room_number: int
 var current_room: String
 var loaded_current_room: String
 var loaded_room_is_cleared: bool

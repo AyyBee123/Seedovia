@@ -1,11 +1,12 @@
 extends CharacterBody2D
 
-@onready var player := $"../Player"
-@onready var damage_buffer := $"Damage Buffer" # prevents an accidental extra damage call if sitting in enemy hitbox
-var health_bar
-@export var _enemy_stats: enemy_stats
-var stats
 
+@onready var damage_buffer := $"Damage Buffer" # prevents an accidental extra damage call if sitting in enemy hitbox
+@export var _enemy_stats: enemy_stats
+
+var stats
+var player
+var health_bar
 var is_in_area := false
 
 var damage_number = preload("res://Scenes/UI/damage_number.tscn")
@@ -21,6 +22,8 @@ func _ready():
 	_enemy_stats.spawn_damage_number.connect(spawn_damage_number)
 
 func _physics_process(delta):
+	if player == null: # keep looking for the player until they are found
+		player = Targets.get_player()
 	if is_in_area and damage_buffer.is_stopped() and _enemy_stats.damage > 0:
 		player._player_stats.take_damage(_enemy_stats)
 		damage_buffer.start()
@@ -31,6 +34,7 @@ func _on_enemy_hitbox_body_exited(body):
 
 func _on_enemy_hitbox_body_entered(body):
 	if body.is_in_group("Players"):
+		player = body # just in case
 		is_in_area = true
 
 func die():

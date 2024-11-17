@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://d0ed2m7rvxvcf"]
+[gd_scene load_steps=9 format=3 uid="uid://bhququa50vwpw"]
 
 [ext_resource type="Script" path="res://Scripts/UI/death_screen.gd" id="1_otr7n"]
 [ext_resource type="Texture2D" uid="uid://cspvbpbm2l6hp" path="res://Sprites/Pause UI/Pause Menu Background.png" id="2_wo88b"]

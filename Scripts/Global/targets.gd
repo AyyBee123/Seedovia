@@ -26,10 +26,22 @@ func get_enemies():
 func get_enemy_hitboxes():
 	return get_tree().get_nodes_in_group("Enemies")
 
-func get_items():
+func get_all_items():
 	var new_array = get_tree().get_nodes_in_group("Item")
 	new_array.append_array(get_tree().get_nodes_in_group("Passive Item"))
 	return new_array
 
+func get_items():
+	return get_tree().get_nodes_in_group("Item")
+
+func get_passive_items():
+	return get_tree().get_nodes_in_group("Passive Item")
+
 func get_scene():
 	return get_tree().current_scene
+
+func get_camera():
+	return get_tree().get_first_node_in_group("Main Camera")
+
+func get_doors():
+	return get_tree().get_nodes_in_group("Door")

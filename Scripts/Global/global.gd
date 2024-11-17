@@ -45,3 +45,6 @@ func delete_data():
 	if not ResourceLoader.exists(SAVE_PATH):
 		return
 	DirAccess.remove_absolute(SAVE_PATH)
+
+func load_data_exists() -> bool:
+	return ResourceLoader.exists(SAVE_PATH)

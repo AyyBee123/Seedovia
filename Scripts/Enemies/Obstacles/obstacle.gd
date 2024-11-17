@@ -1,10 +1,10 @@
 extends CharacterBody2D
 
-@onready var player := $"../Player"
 @onready var damage_buffer := $"Damage Buffer" # prevents an accidental extra damage call if sitting in enemy hitbox
 @export var _enemy_stats: enemy_stats
-var stats
 
+var stats
+var player
 var is_in_area := false
 
 func _ready():
@@ -27,6 +27,7 @@ func _on_hitbox_body_exited(body):
 
 func _on_hitbox_body_entered(body):
 	if body.is_in_group("Players"):
+		player = body
 		is_in_area = true
 
 func die():

@@ -43,7 +43,7 @@ func _ready():
 		inventory_slots[i].slot_index = i
 		inventory_slots[i].slot_type = slot_class.slot_types.INVENTORY
 		all_slots.append(inventory_slots[i])
-	# set the initial position and value of the (yellow) selected slot for controller
+	# set the initial position and value of the (yellow) selected slot for controller as the first inventory slot
 	selected_slot.global_position = all_slots[7].global_position
 	selected_slot_index = 7
 	current_index_popup = selected_slot_index
@@ -248,7 +248,7 @@ func right_click_use_item(slot: slot_class):
 	if slot.slot_type == slot_class.slot_types.INVENTORY:
 		match slot.item.item.category:
 			"CONSUMABLE":
-				slot.item.item.on_use(Targets.player) # activate the use effect of the consumable item
+				slot.item.item.on_use() # activate the use effect of the consumable item
 				PlayerInventory.remove_item(slot) # then remove the item from the player inventory dictionary
 				slot.item.call_deferred("free") # then delete the item
 				slot.remove_popup() # then remove the item description popup

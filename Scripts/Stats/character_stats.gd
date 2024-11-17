@@ -2,6 +2,7 @@ class_name character_stats extends Resource
 
 signal health_changed(new_health) # send signal that current health changed
 signal max_health_changed(new_max_health) # send signal that max health changed
+signal health_increased # send signal that current health increased
 signal health_depleted # send signal that health reached 0 (death)
 signal damaged
 
@@ -27,14 +28,13 @@ signal damaged
 @export var weapon_damage: float # damage of the weapon
 @export var weapon_blast_radius: float # blast/splash radius of the weapon
 
-# the player's current health
-var health: int
+var health: int # the player's current health
 
-# overcapped health is used to determine the amount of "health" in the background after taking equipment into account
-# this is to prevent abusing the healing getting increased max health gives when wearing equipment that do so
-# ex: wearing an armour-piece that gives +1 max health will also heal the player's current health for 1 health
-# the purpose of overcapped health is to prevent constantly healing when unequipping and re-equipping the armour
-# this stat is only for the player, but it's added in this class to make initializing it easier
+## overcapped health is used to determine the amount of "health" in the background after taking equipment into account
+## this is to prevent abusing the healing getting increased max health gives when wearing equipment that do so
+## ex: wearing an armour-piece that gives +1 max health will also heal the player's current health for 1 health
+## the purpose of overcapped health is to prevent constantly healing when unequipping and re-equipping the armour
+## this stat is only for the player, but it's added in this class to make initializing it easier
 var overcapped_health: int
 	
 func set_health(value):
@@ -60,4 +60,6 @@ func take_damage(source):
 func heal(amount):
 	health += amount
 	health = min(health, max_health)
+	overcapped_health = min(health, max_health)
+	health_increased.emit()
 	health_changed.emit(health)
