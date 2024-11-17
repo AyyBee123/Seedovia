@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dhi5at4n05w3j" path="res://Sprites/Wall/Floor 1.png" id="4_ni8iv"]
 [ext_resource type="Texture2D" uid="uid://cc0xxb4pkh430" path="res://Sprites/Ground/Floor 1.png" id="4_r6c21"]
 [ext_resource type="PackedScene" uid="uid://bjbps85e3joio" path="res://Scenes/UI/floor_room_number.tscn" id="5_igecr"]
-[ext_resource type="PackedScene" uid="uid://b3ibupvqneqor" path="res://Scenes/Items/Item.tscn" id="6_xrc8y"]
+[ext_resource type="PackedScene" uid="uid://b3ibupvqneqor" path="res://Scenes/Items/item.tscn" id="6_xrc8y"]
 [ext_resource type="PackedScene" uid="uid://d1x7xscaoh6wq" path="res://Scenes/UI/Pause Menu.tscn" id="8_v8rxb"]
 [ext_resource type="Texture2D" uid="uid://by5wdeyn2ww8v" path="res://Sprites/Ground/Shading.png" id="12_5umvb"]
 

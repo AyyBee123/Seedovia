@@ -1,22 +1,10 @@
-[gd_resource type="Resource" script_class="character_class" load_steps=10 format=3 uid="uid://dxk70g7cem73p"]
+[gd_resource type="Resource" script_class="character_class" load_steps=3 format=3 uid="uid://dxk70g7cem73p"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/character_class.gd" id="1_620up"]
-[ext_resource type="Texture2D" uid="uid://6wk832crfh30" path="res://Sprites/Character/Berry/Hand.png" id="1_nrxsj"]
-[ext_resource type="Texture2D" uid="uid://b56ybys41hcn8" path="res://Sprites/Character/Berry/Berry2.png" id="2_8xq8v"]
-[ext_resource type="Texture2D" uid="uid://d3fqvlyjp687e" path="res://Sprites/Character/Berry/Berry3.png" id="3_npgdq"]
-[ext_resource type="Texture2D" uid="uid://da5ri8qowbkp1" path="res://Sprites/Character/Berry/Berry4.png" id="4_ft73a"]
-[ext_resource type="Texture2D" uid="uid://durq6vd1lypqr" path="res://Sprites/Character/Berry/Berry5.png" id="5_idc0s"]
-[ext_resource type="Texture2D" uid="uid://b7ynn50wtvp24" path="res://Sprites/Character/Berry/Berry1.png" id="7_y1bk0"]
 [ext_resource type="Resource" uid="uid://cpavb28jlc2wj" path="res://Resources/Items/Seeds/strawberry.tres" id="8_x4txl"]
-[ext_resource type="Resource" uid="uid://bn8q0ppmt06w1" path="res://Resources/Characters/Stats/berry.tres" id="9_4s71x"]
 
 [resource]
 script = ExtResource("1_620up")
-character_name = "Berry"
-sprite = ExtResource("7_y1bk0")
-hand_sprite = ExtResource("1_nrxsj")
-move_animation = Array[Texture]([ExtResource("2_8xq8v"), ExtResource("3_npgdq"), ExtResource("4_ft73a"), ExtResource("5_idc0s")])
-stat_resource = ExtResource("9_4s71x")
 starting_inventory = Array[Resource]([])
 starting_talismans = Array[Resource]([])
 starting_seeds = Array[Resource]([ExtResource("8_x4txl")])
