@@ -16,7 +16,7 @@ signal weapon_fired(weapon)
 signal has_collided(object)
 signal attempted_fire
 
-@onready var player := $"../Player"
+@onready var player = Targets.get_player()
 @onready var _player_stats = player._player_stats
 @onready var projectile_speed_timer := $"Projectile Deceleration"
 @onready var life_time := $Lifetime

@@ -1,6 +1,6 @@
 extends Control
 
-@onready var player := $"../Player"
+@onready var player = Targets.get_player()
 @onready var buttons := $PassiveBackground/GridContainer.get_children()
 var passives: Array
 
