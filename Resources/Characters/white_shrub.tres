@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://Scripts/Characters/character_class.gd" id="6_ygtxb"]
 [ext_resource type="Texture2D" uid="uid://b53os8trmovki" path="res://Sprites/Character/White Shrub/White Shrub1.png" id="7_6ey5s"]
 [ext_resource type="PackedScene" uid="uid://tddo6760bb8l" path="res://Scenes/Characters/Passives/Random Seed & Talisman.tscn" id="8_430as"]
-[ext_resource type="PackedScene" uid="uid://22awcp7gta0f" path="res://Scenes/Characters/Passives/Random Stats.tscn" id="9_gs82u"]
+[ext_resource type="PackedScene" uid="uid://22awcp7gta0f" path="res://Scenes/Characters/Passives/White Shrub Stats.tscn" id="9_0fyqn"]
 [ext_resource type="Resource" uid="uid://bgnhohltve07x" path="res://Resources/Characters/Stats/white_shrub.tres" id="10_nbv4x"]
 
 [resource]
@@ -21,4 +21,4 @@ stat_resource = ExtResource("10_nbv4x")
 starting_inventory = Array[Resource]([])
 starting_talismans = Array[Resource]([])
 starting_seeds = Array[Resource]([])
-starting_passives = Array[PackedScene]([ExtResource("8_430as"), ExtResource("9_gs82u")])
+starting_passives = Array[PackedScene]([ExtResource("8_430as"), ExtResource("9_0fyqn")])
