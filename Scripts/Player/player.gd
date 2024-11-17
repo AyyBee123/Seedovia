@@ -56,6 +56,7 @@ func _ready():
 	_player_stats.set_health(PlayerStatStorage.current_health)
 	controller_cursor.visible = false
 	_player_stats.damaged.connect(took_damage)
+	_player_stats.health_increased.connect(heal)
 	Global.save_data()
 
 func _physics_process(delta):
@@ -186,6 +187,9 @@ func took_damage():
 	Global.save_data()
 	can_be_damaged = false
 	invulnerability_time.start()
+
+func heal():
+	Global.save_data()
 
 func _should_move() -> bool:
 	var input_direction = Input.get_vector("left", "right", "up", "down")
