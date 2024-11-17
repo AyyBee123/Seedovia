@@ -22,6 +22,7 @@ signal has_collided(object)
 @onready var weapon_direction_marker = $"Rotation Point/Weapon Direction"
 @onready var controller_cursor = $"Rotation Point/Weapon Direction/Cursor"
 @onready var frame_time = $"Frame Time"
+@onready var collision_buffer_time = $"Collision Buffer Time"
 
 var current_weapon: PackedScene = null
 var move_anim_textures: Array
@@ -249,3 +250,6 @@ func _on_frame_time_timeout():
 	frame_index = min(frame_index + 1, move_anim_textures.size())
 	if frame_index >= move_anim_textures.size():
 		frame_index = 0
+
+func _on_collision_buffer_time_timeout():
+	$Hitbox.disabled = false

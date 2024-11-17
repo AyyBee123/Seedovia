@@ -63,6 +63,7 @@ one_shot = true
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 z_index = 2
 shape = SubResource("RectangleShape2D_iqaxp")
+disabled = true
 
 [node name="Rotation Point" type="Marker2D" parent="."]
 z_index = 2
@@ -126,9 +127,15 @@ collision_mask = 32
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pickup Radius"]
 shape = SubResource("CircleShape2D_5m6np")
 
+[node name="Collision Buffer Time" type="Timer" parent="."]
+wait_time = 0.05
+one_shot = true
+autostart = true
+
 [connection signal="shoot" from="." to="." method="_on_shoot"]
 [connection signal="timeout" from="Frame Time" to="." method="_on_frame_time_timeout"]
 [connection signal="mouse_entered" from="Inventory" to="." method="_on_inventory_mouse_entered"]
 [connection signal="mouse_exited" from="Inventory" to="." method="_on_inventory_mouse_exited"]
 [connection signal="area_entered" from="Pickup Radius" to="." method="_on_pickup_radius_area_entered"]
 [connection signal="area_exited" from="Pickup Radius" to="." method="_on_pickup_radius_area_exited"]
+[connection signal="timeout" from="Collision Buffer Time" to="." method="_on_collision_buffer_time_timeout"]
