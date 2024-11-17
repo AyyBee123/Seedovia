@@ -31,7 +31,7 @@ func select_character():
 	Global.next_reward = null
 	LevelList.floor.rooms.clear()
 	LevelList.floor_number = 0
-	LevelList.room_number = 0 # value doesn't reset unless the save_room function is called right after (no idea why)
+	LevelList.room_number = 0
 	LevelList.current_reward_given = true
 	LevelList.doors.clear()
 	LevelList.doors_spawned = false
@@ -48,6 +48,7 @@ func select_character():
 	PlayerCharacter.stat_resource = starting_stats
 	Pool.start()
 	_player_stats = starting_stats
+	set_base_stats()
 	Global.save_room()
 	get_tree().change_scene_to_file("res://Scenes/Levels/Special/Starting Room.tscn")
 

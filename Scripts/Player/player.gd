@@ -42,8 +42,9 @@ var _isKeyboard := true
 
 func _ready():
 	if PlayerCharacter._is_starting:
-		_player_stats.initialize_base_stats()
 		PlayerCharacter._is_starting = false
+		_player_stats.initialize_base_stats()
+		_player_stats.set_health(_player_stats.get_stat("Max_Health"))
 		if PlayerPassives.starting_passives != null: # add starting passives to the player
 			PlayerPassives.add_starting_passives()
 		for stat in _player_stats.stats.keys():
@@ -202,7 +203,6 @@ func update_timers():
 	dash_invulnerability_time.wait_time = _player_stats.get_stat("Dash_Invulnerability")
 
 func heal():
-	PlayerStatStorage.get_stats()
 	Global.save_data()
 
 func took_damage():
