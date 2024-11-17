@@ -8,6 +8,7 @@ func _ready():
 
 func _on_quick_restart_button_pressed():
 	Global.RNG = RandomNumberGenerator.new()
+	PlayerCharacter._is_starting = true
 	Global.rewards.clear()
 	Global.next_reward = null
 	LevelList.floor_number = 0
@@ -29,13 +30,6 @@ func _on_quick_restart_button_pressed():
 	PlayerCharacter.set_inventory()
 	PlayerCharacter.add_passives()
 	starting_stats = PlayerCharacter.stat_resource
-	for stat in starting_stats.stats.keys():
-		if stat == "Max_Health":
-			starting_stats.stats[stat]["x"] = 1
-			starting_stats.stats[stat]["+"] = 0
-			continue
-		starting_stats.stats[stat]["x"] = 1.0
-		starting_stats.stats[stat]["+"] = 0.0
 	Pool.start()
 	Global.save_room()
 	get_tree().change_scene_to_file("res://Scenes/Levels/Special/Starting Room.tscn")

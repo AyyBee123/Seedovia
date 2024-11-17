@@ -43,6 +43,15 @@ func _ready():
 	if PlayerCharacter._is_starting:
 		_player_stats.initialize_base_stats()
 		PlayerCharacter._is_starting = false
+		if PlayerPassives.starting_passives != null: # add starting passives to the player
+			PlayerPassives.add_starting_passives()
+		for stat in _player_stats.stats.keys():
+			if stat == "Max_Health":
+				_player_stats.stats[stat]["x"] = 1
+				_player_stats.stats[stat]["+"] = 0
+				continue
+			_player_stats.stats[stat]["x"] = 1.0
+			_player_stats.stats[stat]["+"] = 0.0
 	else:
 		PlayerPassives.set_passives()
 		PlayerPassives.set_item_passives()
@@ -52,10 +61,6 @@ func _ready():
 	_player_stats.damaged.connect(took_damage)
 	_player_stats.health_increased.connect(heal)
 	set_sprite.call_deferred()
-	if PlayerPassives.starting_passives != null: # add starting passives to the player
-		PlayerPassives.add_starting_passives()
-		# prevents starting passives from being duplicated when entering a new room
-		PlayerPassives.starting_passives.clear()
 	Global.save_data()
 
 func _physics_process(delta):

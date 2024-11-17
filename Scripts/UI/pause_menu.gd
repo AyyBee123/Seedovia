@@ -17,11 +17,12 @@ func _on_resume_button_pressed():
 
 func _on_quick_restart_button_pressed():
 	Global.delete_data()
+	PlayerCharacter._is_starting = true
 	Global.RNG = RandomNumberGenerator.new()
 	Global.rewards.clear()
 	Global.next_reward = null
 	LevelList.floor_number = 0
-	LevelList.room_number = 0 # value doesn't reset unless the save_room function is called right after (no idea why)
+	LevelList.room_number = 0
 	LevelList.floor.rooms.clear()
 	LevelList.current_reward_given = true
 	LevelList.loaded_room_is_cleared = true
@@ -39,13 +40,6 @@ func _on_quick_restart_button_pressed():
 	PlayerCharacter.set_inventory()
 	PlayerCharacter.add_passives()
 	starting_stats = PlayerCharacter.stat_resource
-	for stat in starting_stats.stats.keys():
-		if stat == "Max_Health":
-			starting_stats.stats[stat]["x"] = 1
-			starting_stats.stats[stat]["+"] = 0
-			continue
-		starting_stats.stats[stat]["x"] = 1.0
-		starting_stats.stats[stat]["+"] = 0.0
 	Pool.start()
 	Global.save_room()
 	get_tree().change_scene_to_file("res://Scenes/Levels/Special/Starting Room.tscn")

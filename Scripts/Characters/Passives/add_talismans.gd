@@ -6,4 +6,5 @@ func _ready():
 		PlayerInventory.talismans[i] = PlayerCharacter.starting_character.starting_talismans[i]
 		PlayerCharacter.starting_character.starting_talismans[i].add_stats = true
 	get_parent().remove_child(self)
+	Global.save_data()
 	queue_free.call_deferred()

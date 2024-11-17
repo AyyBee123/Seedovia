@@ -46,15 +46,8 @@ func select_character():
 	PlayerCharacter.set_inventory()
 	PlayerCharacter.add_passives()
 	PlayerCharacter.stat_resource = starting_stats
-	set_base_stats()
 	Pool.start()
-	for stat in starting_stats.stats.keys():
-		if stat == "Max_Health":
-			starting_stats.stats[stat]["x"] = 1
-			starting_stats.stats[stat]["+"] = 0
-			continue
-		starting_stats.stats[stat]["x"] = 1.0
-		starting_stats.stats[stat]["+"] = 0.0
+	_player_stats = starting_stats
 	Global.save_room()
 	get_tree().change_scene_to_file("res://Scenes/Levels/Special/Starting Room.tscn")
 
