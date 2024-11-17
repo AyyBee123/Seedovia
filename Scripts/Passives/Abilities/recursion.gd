@@ -1,19 +1,30 @@
 extends "res://Scripts/Passives/Classes/passive_slot_specific.gd"
 
-@onready var resource_preloader := $ResourcePreloader
-
 var first_weapon = null
+var source_passives
+var source
 
 func _ready():
 	super._ready()
+	source = get_parent().get_parent()
+	source_passives = source.get_node("Passives").get_children()
 	slot_number = 2
+	source.weapon_fired.connect(transfer_passive)
 
 func get_slot_number(weapon = null):
 	super.get_slot_number(weapon)
-	if weapon.is_in_group("Weapon"):
-		if weapon.seed_slot_number == 0:
-			first_weapon = PackedScene.new()
-			first_weapon.pack(weapon)
 
 func trigger(weapon = null):
-	weapon.add_child(resource_preloader.get_resource("Recursive Weapon").instantiate())
+	pass
+
+func transfer_passive(weapon = null):
+	if weapon == null:
+		return
+	if weapon.is_in_group("Weapon Effect"):
+		return
+	# make a new banana mine passive and add it as a child of the next weapon
+	if weapon.seed_slot_number == 2:
+		weapon.slot_index -= 1
+	else:
+		weapon.get_node("Passives").add_child(self.duplicate())
+	source_passives = source.get_node("Passives").get_children()

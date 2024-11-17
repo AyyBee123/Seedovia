@@ -1,10 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://ba7fwokq2k368"]
+[gd_scene load_steps=2 format=3 uid="uid://ba7fwokq2k368"]
 
 [ext_resource type="Script" path="res://Scripts/Passives/Abilities/recursion.gd" id="1_q2wcs"]
-[ext_resource type="PackedScene" uid="uid://bdd4x3rlrnpdo" path="res://Scenes/Passives/Effects/Recursive Weapon.tscn" id="2_6l58q"]
 
 [node name="Recursion" type="Node"]
 script = ExtResource("1_q2wcs")
-
-[node name="ResourcePreloader" type="ResourcePreloader" parent="."]
-resources = [PackedStringArray("Recursive Weapon"), [ExtResource("2_6l58q")]]
