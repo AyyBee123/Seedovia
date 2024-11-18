@@ -17,7 +17,7 @@ func save_data():
 	data.get_stats()
 	data.get_pools()
 	ResourceSaver.save(data, SAVE_PATH)
-	ResourceSaver.save(data, "user://current_run.tres")
+	ResourceSaver.save(data, "user://current_run.tres") # for testing purposes, will remove later
 
 func load_data():
 	if not ResourceLoader.exists(SAVE_PATH):
@@ -33,7 +33,7 @@ func load_data():
 func save_room():
 	data.get_current_room()
 	ResourceSaver.save(data, SAVE_PATH)
-	ResourceSaver.save(data, "user://current_run.tres")
+	ResourceSaver.save(data, "user://current_run.tres") # for testing purposes, will remove later
 
 func load_room():
 	if not ResourceLoader.exists(SAVE_PATH):
