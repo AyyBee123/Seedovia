@@ -61,8 +61,14 @@ func _on_hitbox_body_entered(body):
 	elif right.is_colliding():
 		area_normal = Vector2(-1, 0)
 	direction = direction.bounce(area_normal).normalized()
-	weapon_direction = area_normal
 	collide(body)
+
+func shoot_next_weapon():
+	# for passives that require the weapon to not fire a seed (e.g the last seed slot fires itself again)
+	attempted_fire.emit()
+	if get_next_weapon() == null:
+		return
+	get_weapon_properties(get_next_weapon().instantiate(), area_normal, true)
 
 func collide(area):
 	var sounds = [metal_1_SFX, metal_2_SFX]
@@ -78,7 +84,7 @@ func collide(area):
 func initialize_location(weapon):
 	get_tree().current_scene.add_child(weapon)
 	weapon_fired.emit(weapon)
-	weapon.global_position = global_position + weapon_direction * 20
+	weapon.global_position = global_position
 
 func explode():
 	var explosion = resource_preloader.get_resource("Explosion").instantiate()
