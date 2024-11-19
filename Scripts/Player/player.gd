@@ -52,6 +52,7 @@ func _ready():
 	else:
 		PlayerPassives.set_passives()
 		PlayerPassives.set_item_passives()
+		PlayerStatStorage.set_stats()
 		Global.load_data()
 	_player_stats.set_health(PlayerStatStorage.current_health)
 	controller_cursor.visible = false

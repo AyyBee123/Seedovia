@@ -6,8 +6,6 @@ func _ready():
 	player = get_parent()
 	
 	player._player_stats.max_health = 3
-	player._player_stats.health = player._player_stats.max_health
-	player._player_stats.overcapped_health = player._player_stats.max_health
 	player._player_stats.speed = 300.0
 	player._player_stats.dash_rate = 1.0
 	player._player_stats.dash_distance = 2000.0
