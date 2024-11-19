@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://ebe0bndngwrx"]
+[gd_scene load_steps=11 format=3 uid="uid://ebe0bndngwrx"]
 
 [ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_hnovd"]
 [ext_resource type="Texture2D" uid="uid://ckpccoca8fbkv" path="res://Sprites/Seeds/Corn.png" id="2_bhnjd"]
+[ext_resource type="Texture2D" uid="uid://3segmo1mb2il" path="res://Sprites/Seeds/Corn Shadow.png" id="3_5leri"]
 [ext_resource type="Script" path="res://Scripts/Seeds/corn.gd" id="3_rx2rq"]
 [ext_resource type="PackedScene" uid="uid://cp3hdtxn75uyt" path="res://Scenes/Passives/Effects/Explosion.tscn" id="4_konhs"]
 [ext_resource type="AudioStream" uid="uid://dviaq07q34iwy" path="res://Audio/SFX/Mild Explosion.mp3" id="5_g56ra"]
@@ -36,6 +37,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [0.0, 0.0, 2.0944, 2.0944]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Shadow:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.45),
+"transitions": PackedFloat32Array(0.5, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.5, 0.5), Vector2(0.5, 0.5), Vector2(1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_4qf3b"]
 length = 0.001
@@ -63,6 +76,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Shadow:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_of4mj"]
 _data = {
@@ -78,24 +103,27 @@ damage_multiplier = 3.0
 blast_radius_multiplier = 1.25
 fire_rate_multiplier = 0.1
 
-[node name="Sprite2D" type="Sprite2D" parent="." index="0"]
+[node name="Shadow" type="Sprite2D" parent="." index="0"]
+texture = ExtResource("3_5leri")
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="1"]
 texture = ExtResource("2_bhnjd")
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 shape = SubResource("CircleShape2D_hbguc")
 disabled = true
 
-[node name="ResourcePreloader" type="ResourcePreloader" parent="." index="3"]
+[node name="ResourcePreloader" type="ResourcePreloader" parent="." index="4"]
 resources = [PackedStringArray("Explosion"), [ExtResource("4_konhs")]]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="5"]
 root_node = NodePath("../ResourcePreloader")
 libraries = {
 "": SubResource("AnimationLibrary_of4mj")
 }
 autoplay = "new_animation"
 
-[node name="MildExplosion" type="AudioStreamPlayer" parent="." index="5"]
+[node name="MildExplosion" type="AudioStreamPlayer" parent="." index="6"]
 stream = ExtResource("5_g56ra")
 volume_db = -12.0
 pitch_scale = 0.75
