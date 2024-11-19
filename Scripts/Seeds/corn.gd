@@ -1,0 +1,52 @@
+extends "res://Scripts/Seeds/seed_template.gd"
+
+@onready var resource_preloader = $ResourcePreloader
+@onready var mild_explosion_SFX = $MildExplosion
+
+const NUMBER_OF_SEEDS = 6
+var _set_as_visible: bool
+
+#TODO: add functionality to launch the corn to an enemy in front of the player when aim assist is on (or on controller)
+func _ready():
+	visible = false # make the first frame invisible to remove the jitter visual effect
+
+func update_position(delta):
+	current_velocity = direction * _player_stats.get_stat("Weapon_Speed") * speed_multiplier
+	position += current_velocity * delta
+	if current_velocity.x < 0:
+		scale.x = -abs(scale.x) # keep the x-scale negative
+	else:
+		scale.x = abs(scale.x) # keep the x-scale positive
+	if not _set_as_visible:
+		visible = true
+		_set_as_visible = true
+
+func explode():
+	var explosion = resource_preloader.get_resource("Explosion").instantiate()
+	explosion.damage = _player_stats.get_stat("Weapon_Damage") * damage_multiplier
+	explosion.size = _player_stats.get_stat("Weapon_Blast_Radius") * blast_radius_multiplier
+	explosion.get_node("AnimatedSprite2D").self_modulate = Color("c69b30") # match the corn's shaded color
+	SfxDeconflicter.play(mild_explosion_SFX)
+	visible = false
+	$Hitbox/CollisionShape2D.set_deferred("disabled", true)
+	create_explosion.call_deferred(explosion)
+	if get_next_weapon():
+		for i in NUMBER_OF_SEEDS:
+			weapon_direction = Vector2.RIGHT.rotated(i * 2 * PI/NUMBER_OF_SEEDS)
+			shoot_next_weapon()
+	if mild_explosion_SFX.playing:
+		await mild_explosion_SFX.finished
+	queue_free.call_deferred()
+
+func create_explosion(explosion):
+	get_tree().current_scene.add_child(explosion)
+	explosion.global_position = self.global_position
+
+func _on_animation_player_animation_finished(anim_name):
+	explode()
+
+func _collide(body):
+	pass
+
+func travelled_distance():
+	pass

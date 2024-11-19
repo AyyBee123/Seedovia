@@ -1,13 +1,20 @@
-[gd_scene load_steps=8 format=3 uid="uid://bagmkum7q0yxi"]
+[gd_scene load_steps=10 format=3 uid="uid://bagmkum7q0yxi"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/enemy.gd" id="1_i8axt"]
 [ext_resource type="Resource" uid="uid://bc1p8m0xc01dk" path="res://Resources/Enemies/dummy.tres" id="2_3p7vb"]
 [ext_resource type="Texture2D" uid="uid://c3h0lpk7sn7ex" path="res://Sprites/Enemies/Dummy.png" id="3_db4vc"]
+[ext_resource type="Shader" path="res://Shaders/color_tint_shader.gdshader" id="3_uguyq"]
 [ext_resource type="PackedScene" uid="uid://de0gxtit8o3cu" path="res://Scenes/UI/health_bar.tscn" id="4_0p02j"]
 [ext_resource type="PackedScene" uid="uid://bfpmq41k18tdi" path="res://Scenes/Passives/Effects/Burn Stacks.tscn" id="5_la8sp"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4n8gi"]
 height = 44.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_esige"]
+shader = ExtResource("3_uguyq")
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/tint_factor = 0.0
+shader_parameter/fade = 1.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hklkb"]
 height = 44.0
@@ -21,6 +28,7 @@ _enemy_stats = ExtResource("2_3p7vb")
 shape = SubResource("CapsuleShape2D_4n8gi")
 
 [node name="AnimatedSprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_esige")
 position = Vector2(-1, 0)
 scale = Vector2(2, 2)
 texture = ExtResource("3_db4vc")

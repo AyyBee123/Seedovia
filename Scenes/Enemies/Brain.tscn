@@ -1,13 +1,21 @@
-[gd_scene load_steps=11 format=3 uid="uid://yjbr0frt6d2y"]
+[gd_scene load_steps=13 format=3 uid="uid://yjbr0frt6d2y"]
 
 [ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_vkpan"]
 [ext_resource type="Script" path="res://Scripts/Enemies/Brain/brain.gd" id="2_lbarg"]
 [ext_resource type="Script" path="res://Scripts/Enemies/Brain/state_machine.gd" id="3_03vwl"]
 [ext_resource type="Texture2D" uid="uid://qdai8wddasox" path="res://Sprites/Enemies/Brain.png" id="3_812vl"]
 [ext_resource type="Resource" uid="uid://dmkooj7hsw36k" path="res://Resources/Enemies/brain.tres" id="3_frbuf"]
+[ext_resource type="Shader" path="res://Shaders/color_tint_shader.gdshader" id="5_ihct3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xvcm1"]
 size = Vector2(28, 19.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_luwh5"]
+resource_local_to_scene = true
+shader = ExtResource("5_ihct3")
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/tint_factor = 0.0
+shader_parameter/fade = 1.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jybnn"]
 animations = [{
@@ -42,6 +50,7 @@ position = Vector2(0, -0.25)
 shape = SubResource("RectangleShape2D_xvcm1")
 
 [node name="AnimatedSprite2D" parent="." index="2"]
+material = SubResource("ShaderMaterial_luwh5")
 position = Vector2(0, -0.5)
 sprite_frames = SubResource("SpriteFrames_jybnn")
 
