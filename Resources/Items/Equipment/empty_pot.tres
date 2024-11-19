@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="equipment_item_class" load_steps=4 format=3 uid="uid://bh28s1q4exit5"]
+
+[ext_resource type="Script" path="res://Scripts/Items/equipment_item_class.gd" id="1_eqtbk"]
+[ext_resource type="PackedScene" uid="uid://c1jh4pbgs5a35" path="res://Scenes/Item Passives/Abilities/Empty Pot Effect.tscn" id="2_mr5ig"]
+[ext_resource type="Texture2D" uid="uid://jd064hbfx373" path="res://Sprites/Talismans/Empty Pot.png" id="2_phbcg"]
+
+[resource]
+script = ExtResource("1_eqtbk")
+rarity = 0
+properties = Array[String]([])
+special_properties = Array[PackedScene]([ExtResource("2_mr5ig")])
+item_name = "Empty Pot"
+texture = ExtResource("2_phbcg")
+description = "The seed in the first slot deals 20% more damage."
