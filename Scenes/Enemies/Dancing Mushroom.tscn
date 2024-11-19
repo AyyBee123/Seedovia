@@ -1,11 +1,19 @@
-[gd_scene load_steps=12 format=3 uid="uid://dooq0rslv0rx2"]
+[gd_scene load_steps=14 format=3 uid="uid://dooq0rslv0rx2"]
 
 [ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_coamf"]
 [ext_resource type="Script" path="res://Scripts/Enemies/Dancing Mushroom/dancing_mushroom.gd" id="2_b3uvu"]
 [ext_resource type="Texture2D" uid="uid://bshbm57byg5b7" path="res://Sprites/Enemies/Dancing Mushroom.png" id="3_7mp23"]
 [ext_resource type="Resource" uid="uid://bo8iuhgw3pdsv" path="res://Resources/Enemies/dancing_mushroom.tres" id="3_16o0v"]
+[ext_resource type="Shader" path="res://Shaders/color_tint_shader.gdshader" id="4_4isri"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4j50s"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fkrj4"]
+resource_local_to_scene = true
+shader = ExtResource("4_4isri")
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/tint_factor = 0.0
+shader_parameter/fade = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l3js0"]
 atlas = ExtResource("3_7mp23")
@@ -60,6 +68,7 @@ _enemy_stats = ExtResource("3_16o0v")
 shape = SubResource("CircleShape2D_4j50s")
 
 [node name="AnimatedSprite2D" parent="." index="1"]
+material = SubResource("ShaderMaterial_fkrj4")
 position = Vector2(0, -10)
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_iq6fl")

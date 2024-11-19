@@ -1,9 +1,10 @@
-[gd_scene load_steps=53 format=3 uid="uid://dcbchvrd8ok5p"]
+[gd_scene load_steps=55 format=3 uid="uid://dcbchvrd8ok5p"]
 
 [ext_resource type="Texture2D" uid="uid://ckwbd5pe618xx" path="res://Sprites/Bosses/Haunted Fortress/Idle/Haunted Fortress Idle.png" id="1_o3eeo"]
 [ext_resource type="Script" path="res://Scripts/Bosses/Haunted Fortress/haunted_fortress.gd" id="1_spxu2"]
 [ext_resource type="Resource" uid="uid://cbv82046jyeao" path="res://Resources/Bosses/haunted_fortress.tres" id="3_f8ewb"]
 [ext_resource type="Texture2D" uid="uid://dmsvbjhklty17" path="res://Sprites/Bosses/Haunted Fortress/Laser/Haunted Fortress Laser.png" id="3_sp64t"]
+[ext_resource type="Shader" path="res://Shaders/color_tint_shader.gdshader" id="4_5fwyp"]
 [ext_resource type="Texture2D" uid="uid://cynyfayhsees2" path="res://Sprites/Bosses/Haunted Fortress/Ghosts/Haunted Fortress Ghosts.png" id="4_gaobp"]
 [ext_resource type="PackedScene" uid="uid://bvxrqp86pvpry" path="res://Scenes/UI/Boss Health Bar.tscn" id="4_kk65q"]
 [ext_resource type="Script" path="res://Scripts/Bosses/Haunted Fortress/StateMachine.gd" id="4_qxp1d"]
@@ -21,6 +22,13 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t58o8"]
 size = Vector2(244.667, 99.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nnwsi"]
+resource_local_to_scene = true
+shader = ExtResource("4_5fwyp")
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/tint_factor = 0.0
+shader_parameter/fade = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fawta"]
 atlas = ExtResource("4_gaobp")
@@ -747,10 +755,13 @@ position = Vector2(0, -1.41667)
 shape = SubResource("RectangleShape2D_t58o8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_nnwsi")
 position = Vector2(0, -39)
 sprite_frames = SubResource("SpriteFrames_m7wae")
 animation = &"Suck"
 autoplay = "Idle"
+frame = 46
+frame_progress = 1.0
 
 [node name="Enemy Hitbox" type="Area2D" parent="." groups=["Enemies"]]
 collision_layer = 4

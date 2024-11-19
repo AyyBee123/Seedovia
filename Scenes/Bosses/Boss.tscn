@@ -1,9 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://bfapejv6ymqws"]
+[gd_scene load_steps=7 format=3 uid="uid://bfapejv6ymqws"]
 
 [ext_resource type="Script" path="res://Scripts/Bosses/boss.gd" id="1_ebo0a"]
 [ext_resource type="Script" path="res://Scripts/State/state_machine.gd" id="2_pfkmx"]
+[ext_resource type="Shader" path="res://Shaders/color_tint_shader.gdshader" id="3_3kvtj"]
 [ext_resource type="PackedScene" uid="uid://bfpmq41k18tdi" path="res://Scenes/Passives/Effects/Burn Stacks.tscn" id="8_em7tw"]
 [ext_resource type="PackedScene" uid="uid://bvxrqp86pvpry" path="res://Scenes/UI/Boss Health Bar.tscn" id="9_u1pa0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q2018"]
+resource_local_to_scene = true
+shader = ExtResource("3_3kvtj")
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/tint_factor = 0.0
+shader_parameter/fade = 1.0
 
 [node name="Boss" type="CharacterBody2D" groups=["Boss", "Enemy"]]
 z_index = 1
@@ -17,6 +25,7 @@ script = ExtResource("2_pfkmx")
 [node name="CollisionPolygon2D" type="CollisionShape2D" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_q2018")
 
 [node name="Enemy Hitbox" type="Area2D" parent="." groups=["Enemies"]]
 collision_layer = 4

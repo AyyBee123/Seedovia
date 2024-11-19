@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://dk7s8c4gd7p25"]
+[gd_scene load_steps=12 format=3 uid="uid://dk7s8c4gd7p25"]
 
 [ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_f1xw5"]
 [ext_resource type="Script" path="res://Scripts/Enemies/Yellow Slime/yellow_slime.gd" id="2_vgxx0"]
 [ext_resource type="Script" path="res://Scripts/Enemies/Yellow Slime/StateMachine.gd" id="3_b4qd2"]
 [ext_resource type="Script" path="res://Scripts/Stats/enemy_stats.gd" id="3_peumx"]
 [ext_resource type="Texture2D" uid="uid://bulbtp8ysidpu" path="res://Sprites/Enemies/Yellow Slime.png" id="4_e5fpm"]
+[ext_resource type="Shader" path="res://Shaders/color_tint_shader.gdshader" id="5_h80e4"]
 
 [sub_resource type="Resource" id="Resource_wgoj7"]
 script = ExtResource("3_peumx")
@@ -20,6 +21,13 @@ weapon_speed = 150.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ovc8c"]
 height = 26.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7jt1a"]
+resource_local_to_scene = true
+shader = ExtResource("5_h80e4")
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/tint_factor = 0.0
+shader_parameter/fade = 1.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hntxk"]
 animations = [{
@@ -48,6 +56,7 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_ovc8c")
 
 [node name="AnimatedSprite2D" parent="." index="2"]
+material = SubResource("ShaderMaterial_7jt1a")
 sprite_frames = SubResource("SpriteFrames_hntxk")
 frame_progress = 0.157559
 

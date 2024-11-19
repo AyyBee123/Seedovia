@@ -53,6 +53,9 @@ func _collide(body):
 	if body.is_in_group("Enemies"):
 		body.get_parent()._enemy_stats.take_damage(_player_stats.get_stat("Weapon_Damage") * damage_multiplier)
 	if has_stopped:
+		SfxDeconflicter.play(hit_SFX)
+		if hit_SFX.playing:
+			await hit_SFX.finished
 		call_deferred("free")
 	else:
 		has_stopped = true

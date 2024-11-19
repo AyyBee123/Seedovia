@@ -4,6 +4,7 @@ signal health_changed(new_health) # send signal that current health changed
 signal max_health_changed(new_max_health) # send signal that max health changed
 signal health_depleted # send signal that health reached 0 (death)
 signal spawn_damage_number(damage_amount)
+signal change_color
 
 @export_group("Enemy Stats")
 @export var max_health: float # enemy's max health
@@ -45,6 +46,7 @@ func increase_max_health(amount):
 
 func take_damage(damage):
 	spawn_damage_number.emit(damage)
+	change_color.emit()
 	health -= damage
 	health = max(0, health)
 	health_changed.emit(health)
