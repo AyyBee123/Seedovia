@@ -12,7 +12,6 @@ var hue = 0.0
 var mystic_color
 
 func _ready():
-	visible = false
 	%Name.text = item_name
 	%Type.text = type
 	%Description.text = description
@@ -43,8 +42,14 @@ func _process(delta):
 	set_pos()
 
 func set_pos():
-	# TODO: make the popups align vertically, while also not causing them to clip off-screen
-	visible = true
+	var inventory_y_pos = inventory.global_position.y
+	var inventory_height = inventory.find_child("Inventory Screen").size.y * inventory.scale.y
+	# if the popup's position is higher than the inventory screen's
+	if global_position.y - %Box.size.y * inventory.scale.y / 2 < inventory_y_pos - OFFSET:
+		global_position.y = inventory_y_pos + %Box.size.y * inventory.scale.y / 2 - OFFSET
+	# if the popup's position is lower than the inventory screen's
+	if global_position.y + %Box.size.y * inventory.scale.y / 2 > inventory_y_pos + inventory_height + OFFSET:
+		global_position.y = inventory_y_pos + inventory_height - %Box.size.y * inventory.scale.y / 2 + OFFSET
 
 func set_values(color: Color, text: String):
 	%Rarity.self_modulate = color
