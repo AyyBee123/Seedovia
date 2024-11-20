@@ -6,8 +6,7 @@ signal attempted_fire # signal for attempting to fire the next seed (even if the
 
 @onready var player = Targets.get_player()
 @onready var _player_stats = player._player_stats
-@onready var seed_slots = player.get_node("Inventory").get_node("Inventory Screen") \
-		.get_node("Seed Slots").get_children()
+@onready var seed_slots = player.find_child("Seed Slots").get_children()
 
 var weapon_direction: Vector2 # the direction the weapon goes, based on the previous weapon/player
 var desired_direction: Vector2 # the direction the weapon wants the next weapon to go
