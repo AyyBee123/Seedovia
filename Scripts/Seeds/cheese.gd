@@ -80,6 +80,8 @@ func _collide(body):
 		var damage = _player_stats.get_stat("Weapon_Damage") * damage_multiplier * abs(angle_travelled) / 10
 		if _was_previous_weapon:
 			damage = _player_stats.get_stat("Weapon_Damage") * damage_multiplier * 3
+		if damage < 1: # do nothing if the damage is a very small amount
+			return
 		body.get_parent()._enemy_stats.take_damage(damage)
 		if randi_range(1, 100) == 100: # 1 in 100 chance to play a bonk SFX
 			SfxDeconflicter.play(bonk_SFX)
@@ -90,7 +92,8 @@ func _collide(body):
 		knockback_scene.knockback_direction = knockback_direction
 		knockback_scene.knockback_speed = abs(angle_travelled) * 50
 		knockback_scene.damage = _player_stats.get_stat("Weapon_Damage") * damage_multiplier
-		body.get_parent().add_child(knockback_scene)
+		if not body.get_parent().find_child(knockback_scene.name):
+			body.get_parent().add_child(knockback_scene)
 		# add node to enemy that gives velocity/position change and makes them take damage if they hit the wall
 
 func initialize_position():
