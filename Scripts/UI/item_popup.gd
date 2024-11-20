@@ -1,5 +1,7 @@
 extends Control
 
+const OFFSET = 20
+
 var item_name
 var type
 var description
@@ -18,7 +20,7 @@ func _ready():
 		0: # Common
 			set_values(Color.DARK_GRAY, "Common")
 		1: # Uncommon
-			set_values(Color.DODGER_BLUE, "Uncommon")
+			set_values(Color.LIGHT_SKY_BLUE, "Uncommon")
 		2: # Rare
 			set_values(Color.PALE_GOLDENROD, "Rare")
 		3: # Epic
@@ -47,6 +49,7 @@ func set_pos():
 func set_values(color: Color, text: String):
 	%Rarity.self_modulate = color
 	%"Name Portion".self_modulate = color
+	%"Type & Rarity".self_modulate = color
 	%"Description Portion".self_modulate = color
 	%Bottom.self_modulate = color
 	%Rarity.text = "[right]" + text

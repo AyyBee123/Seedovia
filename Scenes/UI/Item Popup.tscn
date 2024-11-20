@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://di5qsn3q64j3p"]
+[gd_scene load_steps=9 format=3 uid="uid://di5qsn3q64j3p"]
 
 [ext_resource type="Script" path="res://Scripts/UI/item_popup.gd" id="1_yb4gf"]
 [ext_resource type="Texture2D" uid="uid://ck27ld4c7lduc" path="res://Sprites/Item Popup/Top.png" id="2_mlbto"]
@@ -8,10 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://b2dkeiugujig2" path="res://Sprites/Item Popup/Rarity & Type portion.png" id="5_ynuig"]
 [ext_resource type="Texture2D" uid="uid://ca6wnsfotkfae" path="res://Sprites/Item Popup/Bottom.png" id="6_6tcmu"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wj60n"]
-texture = ExtResource("4_aygkx")
-texture_margin_left = 4.0
-
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_olhi0"]
 texture = ExtResource("4_aygkx")
 texture_margin_left = 4.0
@@ -19,16 +15,30 @@ texture_margin_left = 4.0
 [node name="Item Popup" type="Control"]
 z_index = 10
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_yb4gf")
 
 [node name="Box" type="VBoxContainer" parent="."]
 unique_name_in_owner = true
-layout_mode = 0
-offset_left = -158.0
-offset_right = -2.0
-offset_bottom = 54.0
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -175.0
+offset_top = -27.0
+offset_right = -19.0
+offset_bottom = 27.0
+grow_horizontal = 0
+grow_vertical = 2
 mouse_filter = 2
 theme_override_constants/separation = 0
 
@@ -41,7 +51,8 @@ texture = ExtResource("2_mlbto")
 [node name="Name Portion" type="PanelContainer" parent="Box"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_wj60n")
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_olhi0")
 
 [node name="Name" type="RichTextLabel" parent="Box/Name Portion"]
 unique_name_in_owner = true
