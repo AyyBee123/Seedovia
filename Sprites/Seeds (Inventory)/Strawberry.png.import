@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dm8ljokkm2itd"
-path="res://.godot/imported/Watermelon.png-ae5d85da687980dde113e3f4ee2fae7c.ctex"
+uid="uid://cucsxcwfpncch"
+path="res://.godot/imported/Strawberry.png-f53e933d0e022f17d1b0b61312d33aa5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Items/Watermelon.png"
-dest_files=["res://.godot/imported/Watermelon.png-ae5d85da687980dde113e3f4ee2fae7c.ctex"]
+source_file="res://Sprites/Seeds (Inventory)/Strawberry.png"
+dest_files=["res://.godot/imported/Strawberry.png-f53e933d0e022f17d1b0b61312d33aa5.ctex"]
 
 [params]
 

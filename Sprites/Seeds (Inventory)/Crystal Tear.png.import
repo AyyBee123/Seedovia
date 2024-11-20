@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8p2u0kv0nx4c"
-path="res://.godot/imported/Corn.png-48b51ca8c5a018ac6b2eae2a7c5fd0cb.ctex"
+uid="uid://b0dlqtfnmoy55"
+path="res://.godot/imported/Crystal Tear.png-2d867e27be1380bacd3d6c949d3f678a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Items/Corn.png"
-dest_files=["res://.godot/imported/Corn.png-48b51ca8c5a018ac6b2eae2a7c5fd0cb.ctex"]
+source_file="res://Sprites/Seeds (Inventory)/Crystal Tear.png"
+dest_files=["res://.godot/imported/Crystal Tear.png-2d867e27be1380bacd3d6c949d3f678a.ctex"]
 
 [params]
 

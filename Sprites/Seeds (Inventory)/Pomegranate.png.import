@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0dlqtfnmoy55"
-path="res://.godot/imported/Crystal Tear.png-d165e1098741db31a3af7f0c8d50ba27.ctex"
+uid="uid://cid1a0lc1wl4v"
+path="res://.godot/imported/Pomegranate.png-a89c68117815a8469527d5c83c4c23a4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Items/Crystal Tear.png"
-dest_files=["res://.godot/imported/Crystal Tear.png-d165e1098741db31a3af7f0c8d50ba27.ctex"]
+source_file="res://Sprites/Seeds (Inventory)/Pomegranate.png"
+dest_files=["res://.godot/imported/Pomegranate.png-a89c68117815a8469527d5c83c4c23a4.ctex"]
 
 [params]
 

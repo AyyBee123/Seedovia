@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dbk6nlo238st"
-path="res://.godot/imported/Rupture.png-fe68f26c4aa9802343dadb4deb537b11.ctex"
+uid="uid://cdr5icuesgybd"
+path="res://.godot/imported/Pea.png-ceda3103dda3dffe86bcc30bcfcf225e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Items/Rupture.png"
-dest_files=["res://.godot/imported/Rupture.png-fe68f26c4aa9802343dadb4deb537b11.ctex"]
+source_file="res://Sprites/Seeds (Inventory)/Pea.png"
+dest_files=["res://.godot/imported/Pea.png-ceda3103dda3dffe86bcc30bcfcf225e.ctex"]
 
 [params]
 

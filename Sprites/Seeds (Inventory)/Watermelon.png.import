@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2wmfgq3lvwmg"
-path="res://.godot/imported/Sunder.png-a20e04343ed330471ea3b3ace30d929e.ctex"
+uid="uid://dm8ljokkm2itd"
+path="res://.godot/imported/Watermelon.png-5888d813c9f680da2ba503c84694eddc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Items/Sunder.png"
-dest_files=["res://.godot/imported/Sunder.png-a20e04343ed330471ea3b3ace30d929e.ctex"]
+source_file="res://Sprites/Seeds (Inventory)/Watermelon.png"
+dest_files=["res://.godot/imported/Watermelon.png-5888d813c9f680da2ba503c84694eddc.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bt331vmhmcr2x"
-path="res://.godot/imported/Bullet Seed.png-c31993583c36a43f3ac78103d8556f48.ctex"
+uid="uid://crmc5uw22dylk"
+path="res://.godot/imported/Walnut.png-f8aff9077e4e6ca04fa0d11245d1e402.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Items/Bullet Seed.png"
-dest_files=["res://.godot/imported/Bullet Seed.png-c31993583c36a43f3ac78103d8556f48.ctex"]
+source_file="res://Sprites/Seeds (Inventory)/Walnut.png"
+dest_files=["res://.godot/imported/Walnut.png-f8aff9077e4e6ca04fa0d11245d1e402.ctex"]
 
 [params]
 

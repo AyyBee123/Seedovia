@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7imxoao3el0i"
-path="res://.godot/imported/Rainbow.png-ffff7fcdff68e72e6766af0fc7862408.ctex"
+uid="uid://cj8jc7ldglu1y"
+path="res://.godot/imported/Black Hole.png-dfd5bff9129852f56718524e3f983fac.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Items/Rainbow.png"
-dest_files=["res://.godot/imported/Rainbow.png-ffff7fcdff68e72e6766af0fc7862408.ctex"]
+source_file="res://Sprites/Seeds (Inventory)/Black Hole.png"
+dest_files=["res://.godot/imported/Black Hole.png-dfd5bff9129852f56718524e3f983fac.ctex"]
 
 [params]
 

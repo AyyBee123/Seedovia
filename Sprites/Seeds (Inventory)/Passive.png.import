@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cj8jc7ldglu1y"
-path="res://.godot/imported/Black Hole.png-27c014a7a7cfafbd8f724a46215e8c2f.ctex"
+uid="uid://dri1bsnkc85jv"
+path="res://.godot/imported/Passive.png-0e9272e79ed0c8669af7c0997f2ba16f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Items/Black Hole.png"
-dest_files=["res://.godot/imported/Black Hole.png-27c014a7a7cfafbd8f724a46215e8c2f.ctex"]
+source_file="res://Sprites/Seeds (Inventory)/Passive.png"
+dest_files=["res://.godot/imported/Passive.png-0e9272e79ed0c8669af7c0997f2ba16f.ctex"]
 
 [params]
 

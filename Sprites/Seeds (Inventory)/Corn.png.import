@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cid1a0lc1wl4v"
-path="res://.godot/imported/Pomegranate.png-567b868e9e3061892586e0108c1f279f.ctex"
+uid="uid://8p2u0kv0nx4c"
+path="res://.godot/imported/Corn.png-2638d8af429cd3b664845ed187028c6f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Items/Pomegranate.png"
-dest_files=["res://.godot/imported/Pomegranate.png-567b868e9e3061892586e0108c1f279f.ctex"]
+source_file="res://Sprites/Seeds (Inventory)/Corn.png"
+dest_files=["res://.godot/imported/Corn.png-2638d8af429cd3b664845ed187028c6f.ctex"]
 
 [params]
 

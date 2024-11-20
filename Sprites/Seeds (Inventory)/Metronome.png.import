@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://crmc5uw22dylk"
-path="res://.godot/imported/Walnut.png-bd6bb125680fa4bd6f81d2b1a11acaad.ctex"
+uid="uid://cafj4c0vuw81m"
+path="res://.godot/imported/Metronome.png-b914cd45b9cd702dcf861131417fd46a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Items/Walnut.png"
-dest_files=["res://.godot/imported/Walnut.png-bd6bb125680fa4bd6f81d2b1a11acaad.ctex"]
+source_file="res://Sprites/Seeds (Inventory)/Metronome.png"
+dest_files=["res://.godot/imported/Metronome.png-b914cd45b9cd702dcf861131417fd46a.ctex"]
 
 [params]
 

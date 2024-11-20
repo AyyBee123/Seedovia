@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cafj4c0vuw81m"
-path="res://.godot/imported/Metronome.png-6c5693846ec2f9a4000a089defd65a79.ctex"
+uid="uid://c8tn516q0tlrn"
+path="res://.godot/imported/Apple.png-15316db305b21051d66dc0a69809c823.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Items/Metronome.png"
-dest_files=["res://.godot/imported/Metronome.png-6c5693846ec2f9a4000a089defd65a79.ctex"]
+source_file="res://Sprites/Consumables/Apple.png"
+dest_files=["res://.godot/imported/Apple.png-15316db305b21051d66dc0a69809c823.ctex"]
 
 [params]
 

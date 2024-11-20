@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2oftc6gr2i5a"
-path="res://.godot/imported/Ghost Pepper.png-59c5074d8c31ff09b3b4ce2a1636835f.ctex"
+uid="uid://dbk6nlo238st"
+path="res://.godot/imported/Rupture.png-08d0c1dc2924a989a6e1a8a655935578.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Items/Ghost Pepper.png"
-dest_files=["res://.godot/imported/Ghost Pepper.png-59c5074d8c31ff09b3b4ce2a1636835f.ctex"]
+source_file="res://Sprites/Seeds (Inventory)/Rupture.png"
+dest_files=["res://.godot/imported/Rupture.png-08d0c1dc2924a989a6e1a8a655935578.ctex"]
 
 [params]
 

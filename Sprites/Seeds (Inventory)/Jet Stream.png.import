@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://n7m5p32tg30o"
-path="res://.godot/imported/Jet Stream.png-58c6e6bf8b3a6bf75aebf6ebde041056.ctex"
+path="res://.godot/imported/Jet Stream.png-53dc4dab106f5d21680c2c71a80c1443.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Items/Jet Stream.png"
-dest_files=["res://.godot/imported/Jet Stream.png-58c6e6bf8b3a6bf75aebf6ebde041056.ctex"]
+source_file="res://Sprites/Seeds (Inventory)/Jet Stream.png"
+dest_files=["res://.godot/imported/Jet Stream.png-53dc4dab106f5d21680c2c71a80c1443.ctex"]
 
 [params]
 

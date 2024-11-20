@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://pgp3xxb5d8q1"
-path="res://.godot/imported/Cheese.png-2de55fea9e12a6bf57b284996b3ffd23.ctex"
+uid="uid://bt331vmhmcr2x"
+path="res://.godot/imported/Bullet Seed.png-454d470144c75a211f5af6ef73eee8b8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Items/Cheese.png"
-dest_files=["res://.godot/imported/Cheese.png-2de55fea9e12a6bf57b284996b3ffd23.ctex"]
+source_file="res://Sprites/Seeds (Inventory)/Bullet Seed.png"
+dest_files=["res://.godot/imported/Bullet Seed.png-454d470144c75a211f5af6ef73eee8b8.ctex"]
 
 [params]
 

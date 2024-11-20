@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcuw80t4443cm"
-path="res://.godot/imported/Gloomshroom.png-19717e0c8709858a0eead51a99baaedd.ctex"
+uid="uid://yjcuq47atj4s"
+path="res://.godot/imported/Blossom.png-c80aa9fa2d654203a596c6151e84c385.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Items/Gloomshroom.png"
-dest_files=["res://.godot/imported/Gloomshroom.png-19717e0c8709858a0eead51a99baaedd.ctex"]
+source_file="res://Sprites/Seeds (Inventory)/Blossom.png"
+dest_files=["res://.godot/imported/Blossom.png-c80aa9fa2d654203a596c6151e84c385.ctex"]
 
 [params]
 

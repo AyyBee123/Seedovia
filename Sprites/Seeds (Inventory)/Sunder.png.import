@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dri1bsnkc85jv"
-path="res://.godot/imported/Passive.png-78b39eaf200e5305fdc83b9bf7fc245c.ctex"
+uid="uid://b2wmfgq3lvwmg"
+path="res://.godot/imported/Sunder.png-85293e3e13adb1b4f6242f49c24ff099.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Items/Passive.png"
-dest_files=["res://.godot/imported/Passive.png-78b39eaf200e5305fdc83b9bf7fc245c.ctex"]
+source_file="res://Sprites/Seeds (Inventory)/Sunder.png"
+dest_files=["res://.godot/imported/Sunder.png-85293e3e13adb1b4f6242f49c24ff099.ctex"]
 
 [params]
 
