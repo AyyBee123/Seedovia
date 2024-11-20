@@ -93,8 +93,8 @@ func _collide(body):
 		knockback_scene.knockback_speed = abs(angle_travelled) * 50
 		knockback_scene.damage = _player_stats.get_stat("Weapon_Damage") * damage_multiplier
 		if not body.get_parent().find_child(knockback_scene.name):
+			# add node to the enemy that gives velocity/position change and makes them take damage if they hit a wall
 			body.get_parent().add_child(knockback_scene)
-		# add node to enemy that gives velocity/position change and makes them take damage if they hit the wall
 
 func initialize_position():
 	if not position_initialized:
