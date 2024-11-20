@@ -1,11 +1,16 @@
-[gd_scene load_steps=8 format=3 uid="uid://di5qsn3q64j3p"]
+[gd_scene load_steps=10 format=3 uid="uid://di5qsn3q64j3p"]
 
 [ext_resource type="Script" path="res://Scripts/UI/item_popup.gd" id="1_yb4gf"]
-[ext_resource type="Texture2D" uid="uid://d05vgv2wk4p8y" path="res://Sprites/Item Popup/Item popup top.png" id="2_5rbm2"]
+[ext_resource type="Texture2D" uid="uid://ck27ld4c7lduc" path="res://Sprites/Item Popup/Top.png" id="2_mlbto"]
 [ext_resource type="FontFile" uid="uid://bkn7gmgx1wxgx" path="res://Fonts/Name Font.ttf" id="2_vk73d"]
 [ext_resource type="FontFile" uid="uid://wbj0boqv37y6" path="res://Fonts/Description Font.ttf" id="3_lnxbw"]
 [ext_resource type="Texture2D" uid="uid://bk4qatjkbxvsc" path="res://Sprites/Item Popup/Description portion.png" id="4_aygkx"]
+[ext_resource type="Texture2D" uid="uid://b2dkeiugujig2" path="res://Sprites/Item Popup/Rarity & Type portion.png" id="5_ynuig"]
 [ext_resource type="Texture2D" uid="uid://ca6wnsfotkfae" path="res://Sprites/Item Popup/Bottom.png" id="6_6tcmu"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wj60n"]
+texture = ExtResource("4_aygkx")
+texture_margin_left = 4.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_olhi0"]
 texture = ExtResource("4_aygkx")
@@ -23,7 +28,7 @@ unique_name_in_owner = true
 layout_mode = 0
 offset_left = -158.0
 offset_right = -2.0
-offset_bottom = 74.0
+offset_bottom = 54.0
 mouse_filter = 2
 theme_override_constants/separation = 0
 
@@ -31,29 +36,36 @@ theme_override_constants/separation = 0
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 2
-texture = ExtResource("2_5rbm2")
+texture = ExtResource("2_mlbto")
 
-[node name="Name" type="RichTextLabel" parent="Box/Top"]
+[node name="Name Portion" type="PanelContainer" parent="Box"]
 unique_name_in_owner = true
-layout_mode = 0
-offset_left = 4.0
-offset_top = 1.0
-offset_right = 153.0
-offset_bottom = 34.0
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_wj60n")
+
+[node name="Name" type="RichTextLabel" parent="Box/Name Portion"]
+unique_name_in_owner = true
+layout_mode = 2
 mouse_filter = 2
 theme_override_fonts/normal_font = ExtResource("2_vk73d")
 theme_override_font_sizes/normal_font_size = 16
 bbcode_enabled = true
 text = "Name"
+fit_content = true
 scroll_active = false
 
-[node name="Type" type="RichTextLabel" parent="Box/Top"]
+[node name="Type & Rarity" type="TextureRect" parent="Box"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("5_ynuig")
+
+[node name="Type" type="RichTextLabel" parent="Box/Type & Rarity"]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 4.0
-offset_top = 30.0
 offset_right = 153.0
-offset_bottom = 41.0
+offset_bottom = 11.0
 mouse_filter = 2
 theme_override_fonts/normal_font = ExtResource("2_vk73d")
 theme_override_font_sizes/normal_font_size = 8
@@ -61,16 +73,15 @@ bbcode_enabled = true
 text = "Type"
 scroll_active = false
 
-[node name="Rarity" type="RichTextLabel" parent="Box/Top"]
+[node name="Rarity" type="RichTextLabel" parent="Box/Type & Rarity"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 3.0
-offset_top = 30.0
-offset_right = -4.0
-offset_bottom = -13.0
+offset_left = 4.0
+offset_right = -3.0
+offset_bottom = -7.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2

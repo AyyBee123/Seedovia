@@ -10,10 +10,10 @@ var hue = 0.0
 var mystic_color
 
 func _ready():
+	visible = false
 	%Name.text = item_name
 	%Type.text = type
 	%Description.text = description
-	set_pos.call_deferred() # defer the call because the modified size of the Box is changed after _ready
 	match rarity:
 		0: # Common
 			set_values(Color.DARK_GRAY, "Common")
@@ -27,24 +27,26 @@ func _ready():
 			set_values(Color.DARK_ORANGE, "Legendary")
 		6: # Unique
 			set_values(Color.CRIMSON, "Unique")
-		-1: # N/A
+		7: # N/A
 			set_values(Color.WHITE, "")
 
 func _process(delta):
-	if rarity == 5: # mystic
+	if rarity == 5: # Mystic
 		mystic_color = Color.from_hsv(hue, 1.0, 1.0, 1.0)
 		if hue < 1.0:
 			hue += 0.0005
 		else:
 			hue = 0.0
 		set_values(mystic_color, "Mystic")
+	set_pos()
 
 func set_pos():
 	# TODO: make the popups align vertically, while also not causing them to clip off-screen
-	pass
+	visible = true
 
 func set_values(color: Color, text: String):
 	%Rarity.self_modulate = color
+	%"Name Portion".self_modulate = color
 	%"Description Portion".self_modulate = color
 	%Bottom.self_modulate = color
 	%Rarity.text = "[right]" + text
