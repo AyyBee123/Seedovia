@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="equipment_item_class" load_steps=3 format=3 uid="uid://bbfermhp68kch"]
+
+[ext_resource type="Script" path="res://Scripts/Items/equipment_item_class.gd" id="1_1x3gy"]
+[ext_resource type="Texture2D" uid="uid://dnlsikhw7kft1" path="res://Sprites/Talismans/Heart-Shaped Rose.png" id="2_dbwj5"]
+
+[resource]
+script = ExtResource("1_1x3gy")
+rarity = 4
+properties = Array[String](["+1 Max_Health", "2x Max_Health"])
+special_properties = Array[PackedScene]([])
+item_name = "Heart-Shaped Rose"
+texture = ExtResource("2_dbwj5")
+description = "2x Max Health
++1 Max Health"
