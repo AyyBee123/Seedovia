@@ -91,7 +91,7 @@ func shoot_next_weapon():
 func _on_detect_previous_seed_body_entered(body): # detects the player
 	if not has_stopped:
 		return
-	if initial_weapon:
+	if previous_weapon == null:
 		if body.is_in_group("Players"):
 			queue_free()
 

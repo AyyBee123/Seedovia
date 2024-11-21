@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://daxj2q5mdaklw"]
+
+[ext_resource type="Texture2D" uid="uid://c31i55kge15nn" path="res://Sprites/Item Passives/Sunflower Light.png" id="1_wrnjy"]
+[ext_resource type="Script" path="res://Scripts/Item Passives/Effects/sunflower_light.gd" id="2_4dnm7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5hkfv"]
+radius = 32.0156
+
+[node name="Sunflower Light" type="Sprite2D" groups=["Weapon"]]
+texture = ExtResource("1_wrnjy")
+script = ExtResource("2_4dnm7")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 516
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_5hkfv")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
