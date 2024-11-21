@@ -7,10 +7,10 @@
 [resource]
 script = ExtResource("1_j82ya")
 rarity = 2
-properties = Array[String](["+15% Fire_Rate"])
+properties = Array[String](["+10% Dash_Rate"])
 special_properties = Array[PackedScene]([ExtResource("2_am0hb")])
 item_name = "Clockwork"
 texture = ExtResource("3_ktemb")
-description = "+15% Fire Rate
+description = "+10% Dash Rate
 
-Hitting an enemy has a 15% chance to fire the seed in the third slot from the hit enemy's location."
+Trigger on-dash effect every 5th shot from directly fired seeds."

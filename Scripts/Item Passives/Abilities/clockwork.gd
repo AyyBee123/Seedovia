@@ -1,34 +1,12 @@
-extends "res://Scripts/Passives/Classes/passive_chance.gd"
-
-var source
-var source_passives
-var third_seed
+extends "res://Scripts/Passives/Classes/passive_tally.gd"
 
 func _ready():
-	source = get_parent().get_parent()
-	chance = 0.15
-	source.has_collided.connect(chance_to_trigger)
-	source.weapon_fired.connect(transfer_passive)
-	super._ready()
+	tally_count = 0
+	player = get_parent().get_parent()
+	player.weapon_fired.connect(add_tally)
 
-# transfers this passive over from the initial source (the player) to the next weapon
-# and from the next weapon to the following weapon, and so on...
-func transfer_passive(weapon = null):
-	if weapon == null or weapon.is_in_group("Weapon Effect"):
-		return
-	# make a new clockwork passive and add it as a child of the next weapon
-	weapon.get_node("Passives").add_child(self.duplicate())
-	source_passives = source.get_node("Passives").get_children()
-
-func trigger(enemy = null):
-	third_seed = null if PlayerInventory.seeds.get(2) == null else PlayerInventory.seeds.get(2).scene
-	if third_seed == null or not enemy.is_in_group("Enemies"):
-		return
-	var seed_instance = third_seed.instantiate()
-	seed_instance.previous_weapon = source
-	seed_instance.ignore_first_collision = true
-	seed_instance.hit_enemy = enemy
-	# chooses a random angle in 30 degree increments to immitate the clock's exact time rotations (1:00, 2:00, etc.)
-	seed_instance.desired_direction = Vector2.RIGHT.rotated(PI/6 * randi_range(0, 11))
-	get_tree().current_scene.add_child(seed_instance)
-	seed_instance.global_position = enemy.get_parent().global_position
+func add_tally(weapon = null):
+	tally_count += 1
+	if tally_count >= 5:
+		tally_count = 0
+		player.dashed.emit()

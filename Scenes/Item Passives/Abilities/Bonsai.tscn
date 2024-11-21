@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://drklq1jytnhq7"]
+
+[ext_resource type="Script" path="res://Scripts/Item Passives/Abilities/bonsai.gd" id="1_0plfr"]
+
+[node name="Bonsai" type="Node"]
+script = ExtResource("1_0plfr")
