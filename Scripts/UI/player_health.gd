@@ -1,7 +1,7 @@
 extends Control
 
 @onready var player = get_parent()
-@onready var stats = $"CanvasLayer/Layout/Stats UI".get_children()
+#@onready var stats = $"CanvasLayer/Layout/Stats UI".get_children()
 @onready var max_health = $"CanvasLayer/Layout/PanelContainer/Max Health UI"
 @onready var current_health = $"CanvasLayer/Layout/PanelContainer/Current Health UI"
 

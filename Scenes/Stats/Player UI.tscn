@@ -38,6 +38,7 @@ mouse_filter = 2
 columns = 6
 
 [node name="Money UI" type="GridContainer" parent="CanvasLayer/Layout"]
+visible = false
 layout_mode = 2
 mouse_filter = 2
 
