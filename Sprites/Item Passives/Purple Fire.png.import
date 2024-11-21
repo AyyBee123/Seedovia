@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://byreyg2qsj43e"
-path="res://.godot/imported/Purple Fire.png-99669a8dbfda8d2ec7b06fb71c535c26.ctex"
+path="res://.godot/imported/Purple Fire.png-af6665089a879e3636d4d87d90a92039.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Purple Fire/Purple Fire.png"
-dest_files=["res://.godot/imported/Purple Fire.png-99669a8dbfda8d2ec7b06fb71c535c26.ctex"]
+source_file="res://Sprites/Item Passives/Purple Fire.png"
+dest_files=["res://.godot/imported/Purple Fire.png-af6665089a879e3636d4d87d90a92039.ctex"]
 
 [params]
 
