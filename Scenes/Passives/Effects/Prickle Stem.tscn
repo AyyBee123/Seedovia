@@ -5,7 +5,7 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a6e5b"]
 resource_local_to_scene = true
-size = Vector2(65, 6)
+size = Vector2(0, 6)
 
 [node name="Prickle Stem" type="Sprite2D"]
 z_index = -1
