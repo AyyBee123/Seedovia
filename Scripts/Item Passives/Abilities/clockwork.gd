@@ -22,7 +22,7 @@ func transfer_passive(weapon = null):
 
 func trigger(enemy = null):
 	third_seed = null if PlayerInventory.seeds.get(2) == null else PlayerInventory.seeds.get(2).scene
-	if third_seed == null:
+	if third_seed == null or not enemy.is_in_group("Enemies"):
 		return
 	var seed_instance = third_seed.instantiate()
 	seed_instance.previous_weapon = source
