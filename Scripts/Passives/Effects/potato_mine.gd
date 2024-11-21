@@ -28,9 +28,6 @@ func _ready():
 		passives.add_child(passive.duplicate())
 	player.dashed.connect(explode)
 
-func _physics_process(delta):
-	pass
-
 func _on_area_2d_area_entered(area):
 	if area.is_in_group("Enemies"):
 		explode()

@@ -4,7 +4,6 @@ var source_passives
 var source
 var damage_multiplier = 3
 var speed = 450
-var pos
 
 @onready var resource_preloader = $ResourcePreloader
 
@@ -25,7 +24,6 @@ func transfer_passive(weapon = null):
 	source_passives = source.get_node("Passives").get_children()
 
 func trigger(weapon = null):
-	pos = source.global_position
 	var bee = resource_preloader.get_resource("Bee").instantiate()
 	bee.previous_weapon = source
 	bee.source_pos = source.global_position

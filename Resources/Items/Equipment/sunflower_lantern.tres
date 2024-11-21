@@ -7,10 +7,10 @@
 [resource]
 script = ExtResource("1_r4dlx")
 rarity = 3
-properties = Array[String](["+50 Speed"])
+properties = Array[String](["+20% Speed"])
 special_properties = Array[PackedScene]([ExtResource("2_fn21s")])
 item_name = "Sunflower Lantern"
 texture = ExtResource("3_egob5")
-description = "+50 Movement Speed
+description = "+20% Movement Speed
 
 Creates an aura of light around the player that deals damage to nearby enemies. Dealing damage with the aura has a 10% chance to shoot the seed in the second slot towards that enemy."
