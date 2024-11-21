@@ -1,6 +1,6 @@
 extends Node
 
-var AppID = "480"
+var AppID = "480" # temparary until the game has its own steam page
 var id
 var steam_name
 
