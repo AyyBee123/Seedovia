@@ -37,36 +37,35 @@ layout_mode = 2
 mouse_filter = 2
 columns = 6
 
-[node name="Stats UI" type="GridContainer" parent="CanvasLayer/Layout"]
-visible = false
+[node name="Money UI" type="GridContainer" parent="CanvasLayer/Layout"]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Speed" type="Label" parent="CanvasLayer/Layout/Stats UI"]
+[node name="Speed" type="Label" parent="CanvasLayer/Layout/Money UI"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_yenxn")
 theme_override_font_sizes/font_size = 48
 text = "dwdwdwdw"
 
-[node name="Dash Rate" type="Label" parent="CanvasLayer/Layout/Stats UI"]
+[node name="Dash Rate" type="Label" parent="CanvasLayer/Layout/Money UI"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_yenxn")
 theme_override_font_sizes/font_size = 48
 text = "dwdwdwdw"
 
-[node name="Dash Distance" type="Label" parent="CanvasLayer/Layout/Stats UI"]
+[node name="Dash Distance" type="Label" parent="CanvasLayer/Layout/Money UI"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_yenxn")
 theme_override_font_sizes/font_size = 48
 text = "dwdwdwdw"
 
-[node name="Dash Invulnerability" type="Label" parent="CanvasLayer/Layout/Stats UI"]
+[node name="Dash Invulnerability" type="Label" parent="CanvasLayer/Layout/Money UI"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_yenxn")
 theme_override_font_sizes/font_size = 48
 text = "dwdwdwdw"
 
-[node name="Fire Rate" type="Label" parent="CanvasLayer/Layout/Stats UI"]
+[node name="Fire Rate" type="Label" parent="CanvasLayer/Layout/Money UI"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_yenxn")
 theme_override_font_sizes/font_size = 48
