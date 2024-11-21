@@ -6,7 +6,7 @@
 
 [resource]
 script = ExtResource("1_6t57n")
-passive_name = "Prickly Growth"
+passive_name = "Prickly Overgrowth"
 sprite = ExtResource("3_fsdmh")
 description = "Seeds are chained together by damaging prickly stems."
 passive_ability = ExtResource("1_3pgdr")
