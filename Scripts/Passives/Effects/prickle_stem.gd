@@ -11,7 +11,7 @@ var enemies_in_area: Array
 var tick_timers: Array
 
 func _ready():
-	visible = false
+	visible = false # avoids first frame "flickering"
 
 func _physics_process(delta):
 	# check if the source weapon still exists and update the start point position to be at the source's position
