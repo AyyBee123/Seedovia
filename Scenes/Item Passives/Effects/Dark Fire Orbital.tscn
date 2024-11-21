@@ -1,13 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://kwrjyplhk2hf"]
 
 [ext_resource type="Script" path="res://Scripts/Item Passives/Effects/dark_fire_orbital.gd" id="1_qyn3u"]
-[ext_resource type="Texture2D" uid="uid://byreyg2qsj43e" path="res://Sprites/Purple Fire/Purple Fire.png" id="2_5wab6"]
+[ext_resource type="Texture2D" uid="uid://byreyg2qsj43e" path="res://Sprites/Item Passives/Purple Fire.png" id="2_5wab6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_luaok"]
 radius = 4.5
 height = 14.0
 
-[node name="Dark Fire Orbital" type="Node2D"]
+[node name="Dark Fire Orbital" type="Node2D" groups=["Weapon"]]
 z_index = 2
 script = ExtResource("1_qyn3u")
 
