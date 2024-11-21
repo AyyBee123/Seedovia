@@ -14,8 +14,8 @@ var orbital_directions: Array
 var is_shrunk := false
 var enemies_in_area: Array
 var tick_timers: Array
+var tick_rate := 0.1
 
-@onready var tick_rate = $"Tick Rate"
 @onready var noise_SFX = $Noise
 
 func _ready():
@@ -35,7 +35,7 @@ func _physics_process(delta):
 				enemies_in_area[i]._enemy_stats.take_damage(_player_stats.get_stat("Weapon_Damage") \
 						* damage_multiplier)
 				has_collided.emit(enemies_in_area[i].get_node("Enemy Hitbox"))
-				tick_timers[i].start(0.1 / _player_stats.get_stat("Fire_Rate") * 20)
+				tick_timers[i].start(tick_rate / _player_stats.get_stat("Fire_Rate") * 20)
 	if not is_shrinking:
 		orbit(delta)
 	else:
@@ -51,7 +51,7 @@ func _collide(body):
 			enemies_in_area.append(body.get_parent())
 			var timer = Timer.new()
 			add_child(timer)
-			timer.wait_time = 0.1 / _player_stats.get_stat("Fire_Rate") * 20
+			timer.wait_time = tick_rate / _player_stats.get_stat("Fire_Rate") * 20
 			timer.one_shot = true
 			tick_timers.append(timer)
 

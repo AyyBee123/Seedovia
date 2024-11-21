@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var tick_rate = $"Tick Rate"
+@onready var tick_rate_timer = $"Tick Rate"
 
 var angle: float = 0
 var weapon = null
@@ -16,6 +16,7 @@ var is_in_area := false
 var number_of_orbitals: int
 var enemies_in_area: Array
 var tick_timers: Array
+var tick_rate := 0.25
 
 func _ready():
 	if weapon.texture == null:
@@ -41,7 +42,7 @@ func _physics_process(delta):
 		if tick_timers[i].is_stopped():
 			if is_instance_valid(enemies_in_area[i]):
 				enemies_in_area[i]._enemy_stats.take_damage(damage)
-			tick_rate.start()
+			tick_rate_timer.start(tick_rate)
 
 func shrink(delta):
 	weapon_position += current_velocity * $Sprite2D.scale.x
@@ -57,7 +58,7 @@ func _on_area_2d_area_entered(area):
 			enemies_in_area.append(area.get_parent())
 			var timer = Timer.new()
 			add_child(timer)
-			timer.wait_time = tick_rate.wait_time
+			timer.wait_time = tick_rate
 			timer.one_shot = true
 			tick_timers.append(timer)
 
