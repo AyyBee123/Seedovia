@@ -121,7 +121,7 @@ func _physics_process(delta):
 	# die if health is 0 (or less)
 	if _player_stats.health <= 0:
 		die()
-		
+	
 	if can_be_damaged:
 		set_collision_layer(initial_collision_layer)
 	else:

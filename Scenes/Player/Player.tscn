@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://crl8ol1tmwuh8" path="res://Sprites/Character/Sapling/Hand.png" id="4_gdden"]
 [ext_resource type="PackedScene" uid="uid://b51uuhjac0hmd" path="res://Scenes/Inventory/Inventory.tscn" id="4_px6lr"]
 [ext_resource type="Texture2D" uid="uid://2o0nxg1xv6xm" path="res://Sprites/UI/Cursor.png" id="6_ddx17"]
-[ext_resource type="PackedScene" uid="uid://civnfvhref4lg" path="res://Scenes/Stats/Player Health.tscn" id="8_sj1lu"]
+[ext_resource type="PackedScene" uid="uid://civnfvhref4lg" path="res://Scenes/Stats/Player UI.tscn" id="8_sj1lu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iqaxp"]
 size = Vector2(12, 20)

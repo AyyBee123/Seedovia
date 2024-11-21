@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://civnfvhref4lg"]
 
-[ext_resource type="Script" path="res://Scripts/UI/player_health.gd" id="1_fjrdo"]
-[ext_resource type="FontFile" uid="uid://wbj0boqv37y6" path="res://Fonts/Description Font.ttf" id="2_ql006"]
+[ext_resource type="Script" path="res://Scripts/UI/player_health.gd" id="1_ujtgi"]
+[ext_resource type="FontFile" uid="uid://wbj0boqv37y6" path="res://Fonts/Description Font.ttf" id="2_yenxn"]
 
-[node name="Player Health" type="Control"]
+[node name="Player UI" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,7 +11,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-script = ExtResource("1_fjrdo")
+script = ExtResource("1_ujtgi")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 offset = Vector2(10, 10)
@@ -44,30 +44,30 @@ mouse_filter = 2
 
 [node name="Speed" type="Label" parent="CanvasLayer/Layout/Stats UI"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_ql006")
+theme_override_fonts/font = ExtResource("2_yenxn")
 theme_override_font_sizes/font_size = 48
 text = "dwdwdwdw"
 
 [node name="Dash Rate" type="Label" parent="CanvasLayer/Layout/Stats UI"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_ql006")
+theme_override_fonts/font = ExtResource("2_yenxn")
 theme_override_font_sizes/font_size = 48
 text = "dwdwdwdw"
 
 [node name="Dash Distance" type="Label" parent="CanvasLayer/Layout/Stats UI"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_ql006")
+theme_override_fonts/font = ExtResource("2_yenxn")
 theme_override_font_sizes/font_size = 48
 text = "dwdwdwdw"
 
 [node name="Dash Invulnerability" type="Label" parent="CanvasLayer/Layout/Stats UI"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_ql006")
+theme_override_fonts/font = ExtResource("2_yenxn")
 theme_override_font_sizes/font_size = 48
 text = "dwdwdwdw"
 
 [node name="Fire Rate" type="Label" parent="CanvasLayer/Layout/Stats UI"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_ql006")
+theme_override_fonts/font = ExtResource("2_yenxn")
 theme_override_font_sizes/font_size = 48
 text = "dwdwdwdw"
