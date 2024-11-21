@@ -5,6 +5,7 @@ class_name player_data extends Resource
 @export var inventory: Dictionary = PlayerInventory.inventory
 @export var talismans: Dictionary = PlayerInventory.talismans
 @export var seeds: Dictionary = PlayerInventory.seeds
+@export var starting_character: character_class
 @export var starting_passives: Array
 @export var passives: Array
 @export var item_passives: Array
@@ -62,9 +63,11 @@ func set_stats():
 
 func get_character():
 	character_scene_file_path = LevelList.character_scene_file_path
+	starting_character = PlayerCharacter.starting_character
 
 func set_character():
 	LevelList.character_scene_file_path = character_scene_file_path
+	PlayerCharacter.starting_character = starting_character
 
 func get_current_room():
 	floor_number = LevelList.floor_number
