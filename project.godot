@@ -28,6 +28,7 @@ PlayerStatStorage="*res://Scripts/Player/player_stat_storage.gd"
 Targets="*res://Scripts/Global/targets.gd"
 PlayerCharacter="*res://Scripts/Player/player_character.gd"
 SfxDeconflicter="*res://Scripts/Utils/sfx_deconflicter.gd"
+SteamIntegration="*res://Scripts/Utils/steam_integration.gd"
 
 [debug]
 
@@ -197,3 +198,5 @@ common/physics_ticks_per_second=120
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
