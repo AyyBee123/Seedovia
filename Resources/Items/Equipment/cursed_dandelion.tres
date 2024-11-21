@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" path="res://Scripts/Items/equipment_item_class.gd" id="1_2et4j"]
 [ext_resource type="PackedScene" uid="uid://cinjq67qcagjb" path="res://Scenes/Item Passives/Abilities/Dark Flame.tscn" id="2_k35lc"]
-[ext_resource type="Texture2D" uid="uid://prlvtv88bsle" path="res://Sprites/Talismans/Obsidian Helmet.png" id="2_q6t87"]
+[ext_resource type="Texture2D" uid="uid://c8en1irw6p0p4" path="res://Sprites/Talismans/Cursed Dandelion.png" id="3_n13j7"]
 
 [resource]
 script = ExtResource("1_2et4j")
-rarity = 3
+rarity = 4
 properties = Array[String]([])
 special_properties = Array[PackedScene]([ExtResource("2_k35lc")])
-item_name = "Obsidian Helmet"
-texture = ExtResource("2_q6t87")
+item_name = "Cursed Dandelion"
+texture = ExtResource("3_n13j7")
 description = "The weapon in your second seed slot gains 3 dark flame orbitals."

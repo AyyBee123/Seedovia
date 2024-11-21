@@ -1,6 +1,8 @@
 extends Node2D
 
-@onready var tick_rate_timer = $"Tick Rate"
+signal weapon_fired(weapon) # signal for firing the next seed
+signal has_collided(object) # signal for colliding with an enemy or wall
+signal attempted_fire # signal for attempting to fire the next seed (even if the next seed is null)
 
 var angle: float = 0
 var weapon = null
@@ -16,7 +18,7 @@ var is_in_area := false
 var number_of_orbitals: int
 var enemies_in_area: Array
 var tick_timers: Array
-var tick_rate := 0.25
+var tick_rate := 0.05
 
 func _ready():
 	if weapon.texture == null:
@@ -42,7 +44,8 @@ func _physics_process(delta):
 		if tick_timers[i].is_stopped():
 			if is_instance_valid(enemies_in_area[i]):
 				enemies_in_area[i]._enemy_stats.take_damage(damage)
-			tick_rate_timer.start(tick_rate)
+				has_collided.emit(enemies_in_area[i].get_node("Enemy Hitbox"))
+			tick_timers[i].start(tick_rate)
 
 func shrink(delta):
 	weapon_position += current_velocity * $Sprite2D.scale.x

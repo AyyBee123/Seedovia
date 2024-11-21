@@ -1,7 +1,7 @@
 extends "res://Scripts/Passives/Classes/passive_slot_specific.gd"
 
 var damage_multiplier: float = 0.3
-var number_of_orbitals = 3
+var number_of_orbitals = 2
 
 @onready var resource_preloader = $ResourcePreloader
 

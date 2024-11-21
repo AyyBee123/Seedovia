@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://prlvtv88bsle"
-path="res://.godot/imported/Obsidian Helmet.png-37371f9c6777a31ac4c7f95891e51610.ctex"
+uid="uid://c8en1irw6p0p4"
+path="res://.godot/imported/Cursed Dandelion.png-946972d7a91417573d57fb8be9822898.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Talismans/Obsidian Helmet.png"
-dest_files=["res://.godot/imported/Obsidian Helmet.png-37371f9c6777a31ac4c7f95891e51610.ctex"]
+source_file="res://Sprites/Talismans/Cursed Dandelion.png"
+dest_files=["res://.godot/imported/Cursed Dandelion.png-946972d7a91417573d57fb8be9822898.ctex"]
 
 [params]
 
