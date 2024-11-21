@@ -6,7 +6,7 @@
 
 [resource]
 script = ExtResource("1_2et4j")
-rarity = 4
+rarity = 3
 properties = Array[String]([])
 special_properties = Array[PackedScene]([ExtResource("2_k35lc")])
 item_name = "Cursed Dandelion"
