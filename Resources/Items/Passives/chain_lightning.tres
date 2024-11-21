@@ -8,5 +8,5 @@
 script = ExtResource("1_jwyld")
 passive_name = "Chain Lightning"
 sprite = ExtResource("3_7a26w")
-description = "Your seeds chain lightning to nearby enemies."
+description = "Your seeds chain lightning to nearby enemies. Has a 50% chance to hit another enemy after the first chain."
 passive_ability = ExtResource("1_8evn8")

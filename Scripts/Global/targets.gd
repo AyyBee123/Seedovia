@@ -1,6 +1,7 @@
 extends Node
 
 var player
+var weapons
 var enemies
 var items
 var passives
@@ -10,6 +11,7 @@ var scene
 
 func get_entities():
 	player = get_tree().get_first_node_in_group("Players")
+	weapons = get_tree().get_nodes_in_group("Weapon")
 	enemies = get_tree().get_nodes_in_group("Enemy")
 	items = get_tree().get_nodes_in_group("Item")
 	passives = get_tree().get_nodes_in_group("Passive Item")
@@ -19,6 +21,9 @@ func get_entities():
 
 func get_player():
 	return get_tree().get_first_node_in_group("Players")
+
+func get_weapons():
+	return get_tree().get_nodes_in_group("Weapon")
 
 func get_enemies():
 	return get_tree().get_nodes_in_group("Enemy")

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://emqdnmuc32wd"]
+
+[ext_resource type="Script" path="res://Scripts/Passives/Effects/prickle.gd" id="1_587us"]
+[ext_resource type="PackedScene" uid="uid://1c7vkc6rpska" path="res://Scenes/Passives/Effects/Prickle Stem.tscn" id="2_1ftq4"]
+
+[node name="Prickle" type="Node"]
+script = ExtResource("1_587us")
+
+[node name="ResourcePreloader" type="ResourcePreloader" parent="."]
+resources = [PackedStringArray("Prickle Stem"), [ExtResource("2_1ftq4")]]

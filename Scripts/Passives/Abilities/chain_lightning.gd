@@ -11,7 +11,7 @@ var pos
 func _ready():
 	source = get_parent().get_parent()
 	source_passives = source.get_node("Passives").get_children()
-	chance = 0.5 if source.has_method("chain_lightning") else 1
+	chance = 0.5 if source.has_method("chain_lightning") else 1 # 100% chain chance from weapons, 50% from lightning
 	source.has_collided.connect(collide)
 	source.weapon_fired.connect(transfer_passive)
 	super._ready()
