@@ -157,10 +157,10 @@ func give_reward():
 			var acc_chance = 0.0 # accumulated chance
 			var amount_of_coins: int
 			var weighted_drops = { # <amount>: <weighted drop chance>
-			1: 0.01,
-			5: 0.80,
-			10: 0.15,
-			15: 0.04
+				1: 0.01,
+				5: 0.80,
+				10: 0.15,
+				15: 0.04
 			}
 			for i in weighted_drops.keys():
 				acc_chance += weighted_drops[i]
@@ -174,9 +174,8 @@ func give_reward():
 					index += 1
 				var coin = resource_preloader.get_resource("Coin").instantiate()
 				add_child(coin)
-				# this stupid block of code is to get the ordering of the coins right
+				# this stupid block of code is to get the ordering of the coins correct
 				if amount_of_coins == 15 or amount_of_coins == 10:
-					
 					coin.global_position = Vector2(horizontal_positions[amount_of_coins / 5 - index - 1] \
 							, (4 - (i % 5) + i/5) * 4)
 				else:
