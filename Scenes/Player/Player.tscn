@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://cu63rxmy71bcg"]
+[gd_scene load_steps=12 format=3 uid="uid://cu63rxmy71bcg"]
 
 [ext_resource type="Resource" uid="uid://bvjfk72dlusnu" path="res://Resources/Characters/Stats/base_stats.tres" id="2_50xvi"]
 [ext_resource type="Script" path="res://Scripts/Player/player.gd" id="2_f7nwd"]
 [ext_resource type="Script" path="res://Scripts/Player/StateMachine.gd" id="3_ojktk"]
 [ext_resource type="PackedScene" uid="uid://b51uuhjac0hmd" path="res://Scenes/Inventory/Inventory.tscn" id="4_px6lr"]
 [ext_resource type="Texture2D" uid="uid://2o0nxg1xv6xm" path="res://Sprites/UI/Cursor.png" id="6_ddx17"]
+[ext_resource type="Texture2D" uid="uid://xxyym547o3vn" path="res://Sprites/Misc/Shadow.png" id="7_u5ajd"]
 [ext_resource type="PackedScene" uid="uid://civnfvhref4lg" path="res://Scenes/Stats/Player UI.tscn" id="8_sj1lu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iqaxp"]
@@ -112,9 +113,15 @@ libraries = {
 }
 speed_scale = -1.0
 
+[node name="Shadow" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(0, 10)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("7_u5ajd")
+
 [node name="Pickup Radius" type="Area2D" parent="."]
 collision_layer = 128
-collision_mask = 32
+collision_mask = 2080
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pickup Radius"]
 shape = SubResource("CircleShape2D_5m6np")
