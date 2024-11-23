@@ -23,8 +23,10 @@ func load_char():
 
 func change_room(door):
 	Global.save_data()
-	if door.text == "Passive": # fifth room is the passive room
+	if door.text == "Passive": # 5th room is the passive room
 		next_room = ResourceLoader.load("res://Scenes/Levels/Special/Passive Room.tscn")
+	elif door.text == "Shop": # one of the 8th rooms is always a shop
+		next_room = ResourceLoader.load("res://Scenes/Levels/Special/Shop.tscn")
 	elif door.text == "Boss": # room before the boss room (10th room)
 		next_room = Pool.get_item(Pool.boss_floors[floor_number])
 	elif room_number >= 10: # next floor after the boss room

@@ -129,7 +129,10 @@ func spawn_doors(): # -785 to 785 = 1570 (size of level in x-axis) # -400 is the
 		if i == 0 and true: # true for now, this condition is for an item that adds an extra door choice
 			continue
 		var door = resource_preloader.get_resource("Door").instantiate()
-		door.set_reward()
+		if i == 1 and LevelList.room_number == 7:
+			door.set_reward("Shop")
+		else:
+			door.set_reward()
 		add_child(door)
 		door.position = Vector2(1570.0 * i / 5, -384)
 		LevelList.doors[door.text] = door.global_position

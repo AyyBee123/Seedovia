@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cxoiy0x4nvtaa"]
+[gd_scene load_steps=26 format=3 uid="uid://cxoiy0x4nvtaa"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_5cm3y"]
 [ext_resource type="Texture2D" uid="uid://cvgvhjvhndf2x" path="res://Sprites/Wall/Floor 1 Corner.png" id="2_1m20m"]
@@ -7,7 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://dhi5at4n05w3j" path="res://Sprites/Wall/Floor 1.png" id="4_ni8iv"]
 [ext_resource type="Texture2D" uid="uid://cc0xxb4pkh430" path="res://Sprites/Ground/Floor 1.png" id="4_r6c21"]
 [ext_resource type="PackedScene" uid="uid://bjbps85e3joio" path="res://Scenes/UI/floor_room_number.tscn" id="5_igecr"]
+[ext_resource type="Texture2D" uid="uid://c73y4egv64mas" path="res://Sprites/Ground/Shop.png" id="6_irwv4"]
 [ext_resource type="PackedScene" uid="uid://b3ibupvqneqor" path="res://Scenes/Items/Item.tscn" id="6_xrc8y"]
+[ext_resource type="Texture2D" uid="uid://bs6raq2gpx84a" path="res://Sprites/Wall/Shop.png" id="7_cqf8w"]
+[ext_resource type="Texture2D" uid="uid://b78p0tmywgm1e" path="res://Sprites/Wall/Shop Corner.png" id="8_ejksg"]
 [ext_resource type="PackedScene" uid="uid://d1x7xscaoh6wq" path="res://Scenes/UI/Pause Menu.tscn" id="8_v8rxb"]
 [ext_resource type="Texture2D" uid="uid://by5wdeyn2ww8v" path="res://Sprites/Ground/Shading.png" id="12_5umvb"]
 
@@ -37,6 +40,21 @@ texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qai7t"]
+texture = ExtResource("6_irwv4")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5xajf"]
+texture = ExtResource("7_cqf8w")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6n0tv"]
+texture = ExtResource("8_ejksg")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_dsidl"]
 tile_size = Vector2i(128, 128)
 physics_layer_0/collision_layer = 1
@@ -45,6 +63,9 @@ sources/1 = SubResource("TileSetAtlasSource_ne3hj")
 sources/0 = SubResource("TileSetAtlasSource_d5ujs")
 sources/3 = SubResource("TileSetAtlasSource_sa6qi")
 sources/2 = SubResource("TileSetAtlasSource_vu61a")
+sources/5 = SubResource("TileSetAtlasSource_qai7t")
+sources/6 = SubResource("TileSetAtlasSource_5xajf")
+sources/7 = SubResource("TileSetAtlasSource_6n0tv")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3kcit"]
 size = Vector2(1920, 156)
