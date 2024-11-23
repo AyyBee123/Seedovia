@@ -5,6 +5,8 @@
 
 [resource]
 script = ExtResource("1_vwq7n")
+weight = 1.0
+shop_price = 5
 item_name = "Apple"
 texture = ExtResource("2_hi3yk")
 description = "Heals 1 heart on use."

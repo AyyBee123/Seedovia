@@ -22,6 +22,8 @@ class_name player_data extends Resource
 @export var doors: Dictionary
 @export var items_on_ground: Dictionary
 @export var passive_items_on_ground: Dictionary
+@export var shop_items_on_ground: Dictionary
+@export var shop_items_spawned: bool
 @export var picked_up_passive: bool
 @export var next_reward: item_pool
 @export var passive_pool: Array
@@ -85,6 +87,8 @@ func get_current_room():
 	doors = LevelList.doors
 	items_on_ground = LevelList.items_on_ground
 	passive_items_on_ground = LevelList.passive_items_on_ground
+	shop_items_on_ground = LevelList.shop_items_on_ground
+	shop_items_spawned = LevelList.shop_items_spawned
 	picked_up_passive = LevelList.picked_up_passive
 	current_seed = Global.RNG.seed
 	next_reward = Global.next_reward
@@ -100,6 +104,8 @@ func set_current_room():
 	LevelList.doors = doors
 	LevelList.items_on_ground = items_on_ground
 	LevelList.passive_items_on_ground = passive_items_on_ground
+	LevelList.shop_items_on_ground = shop_items_on_ground
+	LevelList.shop_items_spawned = shop_items_spawned
 	LevelList.picked_up_passive = picked_up_passive
 	Global.next_reward = next_reward
 

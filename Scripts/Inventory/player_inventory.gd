@@ -26,6 +26,19 @@ func check_for_items():
 			}
 			i += 1
 
+func check_for_shop_items():
+	LevelList.shop_items_on_ground.clear()
+	var i = 0
+	# check all direct children of the scene (i.e. all nodes on the ground)
+	for item in get_tree().current_scene.get_children():
+		# get the item and its current position, stored as a dictionary
+		if item.is_in_group("Shop Item"):
+			LevelList.shop_items_on_ground[i] = {
+				"item": item.item,
+				"position": item.global_position
+			}
+			i += 1
+
 func add_item(item, player, inv):
 	for i in range(NUM_INVENTORY_SLOTS):
 		if not inventory.has(i): # checks for space in inventory (if the slot is empty)
@@ -33,6 +46,7 @@ func add_item(item, player, inv):
 			inventory[i] = item
 			await get_tree().create_timer(0.5).timeout
 			check_for_items()
+			check_for_shop_items()
 			Global.save_data()
 			Global.save_room()
 			return

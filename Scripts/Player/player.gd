@@ -128,10 +128,15 @@ func _physics_process(delta):
 		set_collision_layer(initial_collision_layer - 2) # 2 is the player's collision layer
 
 func pick_up(item):
+	if item.is_in_group("Shop Item"):
+		if PlayerCharacter.coins < item.price:
+			return
+		else:
+			item.add_to_group("Item")
+			item.remove_from_group("Shop Item")
+			_player_stats.set_coins(-item.price)
 	PlayerInventory.add_item(item.item, self, inventory)
 	item.queue_free.call_deferred()
-	await get_tree().create_timer(0.1).timeout
-	Global.save_room()
 
 func move():
 	$"Player Sprite".play("Move")
@@ -220,12 +225,12 @@ func _input(event) -> void:
 		_isMouse = true
 
 func _on_pickup_radius_area_entered(area):
-	if area.get_parent().is_in_group("Item"):
+	if area.get_parent().is_in_group("Item") or area.get_parent().is_in_group("Shop Item"):
 		pickup_item = area.get_parent()
 		item_in_area = true
 
 func _on_pickup_radius_area_exited(area):
-	if area.get_parent().is_in_group("Item"):
+	if area.get_parent().is_in_group("Item") or area.get_parent().is_in_group("Shop Item"):
 		item_in_area = false
 
 ## a little buffer to prevent immediate collision with other objects

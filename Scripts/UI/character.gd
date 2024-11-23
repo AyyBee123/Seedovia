@@ -41,6 +41,8 @@ func select_character():
 	LevelList.doors_spawned = false
 	LevelList.passive_items_on_ground.clear()
 	LevelList.items_on_ground.clear()
+	LevelList.shop_items_on_ground.clear()
+	LevelList.shop_items_spawned = false
 	PlayerCharacter.starting_character = starting_character
 	PlayerInventory.inventory.clear()
 	PlayerInventory.talismans.clear()

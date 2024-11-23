@@ -30,6 +30,8 @@ func _on_quick_restart_button_pressed():
 	LevelList.doors_spawned = false
 	LevelList.passive_items_on_ground.clear()
 	LevelList.items_on_ground.clear()
+	LevelList.shop_items_on_ground.clear()
+	LevelList.shop_items_spawned = false
 	get_tree().paused = false
 	starting_character = PlayerCharacter.starting_character
 	PlayerCharacter.coins = starting_character.starting_coins

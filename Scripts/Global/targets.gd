@@ -9,6 +9,7 @@ var doors
 var camera
 var scene
 var coins
+var shop_items
 
 func get_entities():
 	player = get_tree().get_first_node_in_group("Players")
@@ -20,6 +21,7 @@ func get_entities():
 	camera = get_tree().get_first_node_in_group("Main Camera")
 	scene = get_tree().current_scene
 	coins = get_tree().get_nodes_in_group("Coin")
+	shop_items = get_tree().get_nodes_in_group("Shop Item")
 
 func get_player():
 	return get_tree().get_first_node_in_group("Players")
@@ -55,3 +57,6 @@ func get_doors():
 
 func get_coins():
 	return get_tree().get_nodes_in_group("Coin")
+
+func get_shop_items():
+	return get_tree().get_nodes_in_group("Shop Item")

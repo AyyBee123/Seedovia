@@ -7,9 +7,9 @@ var text
 var reward_weight = {
 	# index 0, 1, and 2 are talisman, consumable, seed pools, and money respectively
 	0: 0.15,
-	1: 0.3,
-	2: 0.05,
-	3: 0.5
+	1: 0.30,
+	2: 0.10,
+	3: 0.45
 }
 
 func _ready():
@@ -36,7 +36,10 @@ func change_scene():
 	Global.next_reward = reward
 	LevelList.loaded_room_is_cleared = false
 	LevelList.current_reward_given = false
+	LevelList.shop_items_spawned = false
 	LevelList.items_on_ground.clear()
+	LevelList.shop_items_on_ground.clear()
+	LevelList.passive_items_on_ground.clear()
 	LevelList.doors.clear()
 	Global.save_room()
 	LevelList.change_room.call_deferred(self)

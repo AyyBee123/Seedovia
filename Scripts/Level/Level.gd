@@ -44,6 +44,11 @@ func _ready():
 		item_instance.set_item(LevelList.passive_items_on_ground[i]["item"])
 		add_child(item_instance)
 		item_instance.global_position = LevelList.passive_items_on_ground[i]["position"]
+	for i in LevelList.shop_items_on_ground:
+		var item_instance = resource_preloader.get_resource("Shop Item").instantiate()
+		item_instance.set_item(LevelList.shop_items_on_ground[i]["item"])
+		add_child(item_instance)
+		item_instance.global_position = LevelList.shop_items_on_ground[i]["position"]
 	Global.save_room()
 
 func _physics_process(delta):
@@ -74,7 +79,7 @@ func check_for_items():
 		# get the item and its current position, stored as a dictionary
 		if item.is_in_group("Item"):
 			LevelList.items_on_ground[i] = {
-				"item": item.item, 
+				"item": item.item,
 				"position": item.global_position
 			}
 			i += 1
@@ -87,7 +92,20 @@ func check_for_passive_items():
 		# get the item and its current position, stored as a dictionary
 		if item.is_in_group("Passive Item"):
 			LevelList.passive_items_on_ground[i] = {
-				"item": item.item, 
+				"item": item.item,
+				"position": item.global_position
+			}
+			i += 1
+
+func check_for_shop_items():
+	LevelList.shop_items_on_ground.clear()
+	var i = 0
+	# check all direct children of the scene (i.e. all nodes on the ground)
+	for item in get_children():
+		# get the item and its current position, stored as a dictionary
+		if item.is_in_group("Shop Item"):
+			LevelList.shop_items_on_ground[i] = {
+				"item": item.item,
 				"position": item.global_position
 			}
 			i += 1
@@ -176,8 +194,8 @@ func give_reward():
 				add_child(coin)
 				# this stupid block of code is to get the ordering of the coins correct
 				if amount_of_coins == 15 or amount_of_coins == 10:
-					coin.global_position = Vector2(horizontal_positions[amount_of_coins / 5 - index - 1] \
-							, (4 - (i % 5) + i/5) * 4)
+					coin.global_position = Vector2(horizontal_positions[amount_of_coins / 5 - index - 1], \
+							(4 - (i % 5) + i/5) * 4)
 				else:
 					coin.global_position = Vector2(horizontal_positions[index], (4 - (i % 5)) * 4)
 	Global.next_reward = null

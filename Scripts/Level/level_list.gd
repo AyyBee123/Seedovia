@@ -13,9 +13,11 @@ var doors_spawned: bool
 var next_room
 var items_on_ground: Dictionary
 var passive_items_on_ground: Dictionary
+var shop_items_on_ground: Dictionary
 var picked_up_passive: bool
 var doors: Dictionary
 var character_scene_file_path: String
+var shop_items_spawned: bool
 # TODO: add character variable that gets the character scene add preloads it when choosing a character
 
 func load_char():
