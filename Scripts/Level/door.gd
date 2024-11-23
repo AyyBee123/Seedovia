@@ -5,10 +5,11 @@ var reward
 var text
 
 var reward_weight = {
-	# index 0, 1, and 2 are equipment, consumable, and seed pools respectively
-	0: 0.3,
-	1: 0.5,
-	2: 0.2,
+	# index 0, 1, and 2 are talisman, consumable, seed pools, and money respectively
+	0: 0.15,
+	1: 0.3,
+	2: 0.05,
+	3: 0.5
 }
 
 func _ready():
@@ -57,6 +58,11 @@ func set_reward(reward_text: String = ""):
 			text = reward.pool_name
 			$"Background/Reward Text".text = "[center]Reward\n" + reward.pool_name
 			return
+		"Coins":
+			reward = Pool.pools[3]
+			text = reward.pool_name
+			$"Background/Reward Text".text = "[center]Reward\n" + reward.pool_name
+			return
 	if reward_text != "": # if the reward is set (i.e. passive room, boss room, etc.)
 		$"Background/Reward Text".text = "[center]Reward\n" + reward_text
 		text = reward_text
@@ -65,7 +71,7 @@ func set_reward(reward_text: String = ""):
 	var reward_pool
 	var index
 	var acc_chance = 0.0 # accumulated chance
-	# index 0, 1, and 2 are equipment, consumable, and seed pools respectively
+	# index 0, 1, and 2 are talisman, consumable, seed pools, and money respectively
 	for i in reward_weight.size():
 		acc_chance += reward_weight[i]
 		if roll <= acc_chance:

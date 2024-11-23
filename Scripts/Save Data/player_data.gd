@@ -65,11 +65,15 @@ func set_stats():
 func get_character():
 	character_scene_file_path = LevelList.character_scene_file_path
 	starting_character = PlayerCharacter.starting_character
-	coins = PlayerCharacter.coins
 
 func set_character():
 	LevelList.character_scene_file_path = character_scene_file_path
 	PlayerCharacter.starting_character = starting_character
+
+func get_coins():
+	coins = PlayerCharacter.coins
+
+func set_coins():
 	PlayerCharacter.coins = coins
 
 func get_current_room():

@@ -11,6 +11,7 @@ var loaded_room_file: String
 
 func save_data():
 	data.get_character()
+	data.get_coins()
 	data.get_inventory()
 	data.get_passives()
 	data.get_item_passives()
@@ -24,6 +25,7 @@ func load_data():
 		return
 	data = ResourceLoader.load(SAVE_PATH)
 	data.set_character()
+	data.set_coins()
 	data.set_stats()
 	data.set_passives()
 	data.set_item_passives()
@@ -48,3 +50,6 @@ func delete_data():
 
 func load_data_exists() -> bool:
 	return ResourceLoader.exists(SAVE_PATH)
+
+func save_coins():
+	data.get_coins()

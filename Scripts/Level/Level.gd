@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var resource_preloader := $ResourcePreloader
+
 var player
 var player_pos = Vector2(0, 330)
 
@@ -10,7 +11,6 @@ var number_of_doors := 2
 var doors_spawned := false
 var reward_given := false
 var is_paused := false
-var packed_scene = PackedScene.new()
 
 func _ready():
 	Global.RNG.randomize()
@@ -143,12 +143,44 @@ func give_reward():
 	await get_tree().create_timer(0.5).timeout
 	if Global.next_reward == null: # just in case
 		return
-	var item = resource_preloader.get_resource("Item").instantiate()
-	item.set_item(Pool.get_item(Pool.pools[Pool.pools.find(Global.next_reward)]))
-	check_for_possesions(item)
-	add_child(item)
-	# spawn item in the middle of the screen
-	item.global_position = $Camera2D.global_position
+	if Global.next_reward.pool_name == "Talisman" or Global.next_reward.pool_name == "Consumable" \
+			or Global.next_reward.pool_name == "Seed":
+		var item = resource_preloader.get_resource("Item").instantiate()
+		item.set_item(Pool.get_item(Pool.pools[Pool.pools.find(Global.next_reward)]))
+		check_for_possesions(item)
+		add_child(item)
+		# spawn item in the middle of the screen
+		item.global_position = $Camera2D.global_position
+	else:
+		if Global.next_reward.pool_name == "Coins":
+			var roll: float = Global.RNG.randf_range(0.0, 1.0) # probability roll
+			var acc_chance = 0.0 # accumulated chance
+			var amount_of_coins: int
+			var weighted_drops = { # <amount>: <weighted drop chance>
+			1: 0.01,
+			5: 0.80,
+			10: 0.15,
+			15: 0.04
+			}
+			for i in weighted_drops.keys():
+				acc_chance += weighted_drops[i]
+				if roll <= acc_chance:
+					amount_of_coins = i
+					break
+			var horizontal_positions = [0, 16, -16]
+			var index = 0
+			for i in amount_of_coins:
+				if i % 5 == 0 and i != 0:
+					index += 1
+				var coin = resource_preloader.get_resource("Coin").instantiate()
+				add_child(coin)
+				# this stupid block of code is to get the ordering of the coins right
+				if amount_of_coins == 15 or amount_of_coins == 10:
+					
+					coin.global_position = Vector2(horizontal_positions[amount_of_coins / 5 - index - 1] \
+							, (4 - (i % 5) + i/5) * 4)
+				else:
+					coin.global_position = Vector2(horizontal_positions[index], (4 - (i % 5)) * 4)
 	Global.next_reward = null
 
 func check_for_possesions(reward_item):

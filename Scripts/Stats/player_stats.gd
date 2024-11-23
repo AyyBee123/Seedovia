@@ -144,7 +144,7 @@ func heal(amount):
 
 func set_coins(amount):
 	PlayerCharacter.coins += amount
-	Global.save_data()
+	Global.save_coins()
 
 func get_coins():
 	return PlayerCharacter.coins

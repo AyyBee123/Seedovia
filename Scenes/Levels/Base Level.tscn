@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cxoiy0x4nvtaa"]
+[gd_scene load_steps=27 format=3 uid="uid://cxoiy0x4nvtaa"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_5cm3y"]
 [ext_resource type="Texture2D" uid="uid://cvgvhjvhndf2x" path="res://Sprites/Wall/Floor 1 Corner.png" id="2_1m20m"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bs6raq2gpx84a" path="res://Sprites/Wall/Shop.png" id="7_cqf8w"]
 [ext_resource type="Texture2D" uid="uid://b78p0tmywgm1e" path="res://Sprites/Wall/Shop Corner.png" id="8_ejksg"]
 [ext_resource type="PackedScene" uid="uid://d1x7xscaoh6wq" path="res://Scenes/UI/Pause Menu.tscn" id="8_v8rxb"]
+[ext_resource type="PackedScene" uid="uid://bgbbtw316u7ww" path="res://Scenes/Coin/Coin.tscn" id="10_f3i5w"]
 [ext_resource type="Texture2D" uid="uid://by5wdeyn2ww8v" path="res://Sprites/Ground/Shading.png" id="12_5umvb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d5ujs"]
@@ -19,12 +20,14 @@ resource_name = "Floor 1 Wall Corner"
 texture = ExtResource("2_1m20m")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
+0:0/0/z_index = 2
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ne3hj"]
 texture = ExtResource("2_snary")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
+0:0/0/z_index = 2
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vu61a"]
@@ -38,6 +41,7 @@ resource_name = "Floor 1 Wall"
 texture = ExtResource("4_ni8iv")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
+0:0/0/z_index = 2
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qai7t"]
@@ -49,11 +53,13 @@ texture_region_size = Vector2i(128, 128)
 texture = ExtResource("7_cqf8w")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
+0:0/0/z_index = 2
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6n0tv"]
 texture = ExtResource("8_ejksg")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
+0:0/0/z_index = 2
 
 [sub_resource type="TileSet" id="TileSet_dsidl"]
 tile_size = Vector2i(128, 128)
@@ -97,7 +103,7 @@ offset_right = 832.0
 offset_bottom = -489.0
 
 [node name="ResourcePreloader" type="ResourcePreloader" parent="."]
-resources = [PackedStringArray("Door", "Item", "Pause Menu"), [ExtResource("4_5a3ht"), ExtResource("6_xrc8y"), ExtResource("8_v8rxb")]]
+resources = [PackedStringArray("Coin", "Door", "Item", "Pause Menu"), [ExtResource("10_f3i5w"), ExtResource("4_5a3ht"), ExtResource("6_xrc8y"), ExtResource("8_v8rxb")]]
 
 [node name="Shading" type="Sprite2D" parent="."]
 texture = ExtResource("12_5umvb")

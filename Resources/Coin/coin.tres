@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="coin_class" load_steps=3 format=3 uid="uid://dux50ncgax23a"]
+
+[ext_resource type="Script" path="res://Scripts/Coin/coin_class.gd" id="1_qw588"]
+[ext_resource type="Texture2D" uid="uid://begwjy2urge70" path="res://Sprites/Misc/Coin.png" id="2_tkqtn"]
+
+[resource]
+script = ExtResource("1_qw588")
+texture = ExtResource("2_tkqtn")

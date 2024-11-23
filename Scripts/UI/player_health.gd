@@ -37,4 +37,4 @@ func set_health():
 		current_health.add_child(heart_instance)
 
 func set_coins():
-	%Amount.text = str(PlayerCharacter.coins)
+	%Amount.text = str(PlayerCharacter.coins) # display number of coins player has
