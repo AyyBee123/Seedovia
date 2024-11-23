@@ -1,20 +1,23 @@
 extends Control
 
 @onready var player = get_parent()
-#@onready var stats = $"CanvasLayer/Layout/Stats UI".get_children()
-@onready var max_health = $"CanvasLayer/Layout/PanelContainer/Max Health UI"
-@onready var current_health = $"CanvasLayer/Layout/PanelContainer/Current Health UI"
+@onready var coins = %Amount.text
+@onready var max_health = %"Max Health UI"
+@onready var current_health = %"Current Health UI"
 
 var empty_heart = preload("res://Scenes/UI/empty_heart.tscn")
 var filled_heart = preload("res://Scenes/UI/filled_heart.tscn")
 
 func _ready():
 	set_health()
+	set_coins()
 
 func _physics_process(delta):
 	if player._player_stats.get_stat("Max_Health") != max_health.get_child_count() \
 			or player._player_stats.health != current_health.get_child_count():
 		set_health()
+	if PlayerCharacter.coins != int(coins):
+		set_coins()
 
 func set_health():
 	# remove all hearts in the health ui
@@ -32,3 +35,6 @@ func set_health():
 	for i in range(player._player_stats.health): # add filled heart containers
 		var heart_instance = filled_heart.instantiate()
 		current_health.add_child(heart_instance)
+
+func set_coins():
+	%Amount.text = str(PlayerCharacter.coins)

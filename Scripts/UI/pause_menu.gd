@@ -32,6 +32,7 @@ func _on_quick_restart_button_pressed():
 	LevelList.items_on_ground.clear()
 	get_tree().paused = false
 	starting_character = PlayerCharacter.starting_character
+	PlayerCharacter.coins = starting_character.starting_coins
 	PlayerInventory.inventory.clear()
 	PlayerInventory.talismans.clear()
 	PlayerInventory.seeds.clear()

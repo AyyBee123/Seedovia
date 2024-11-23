@@ -141,3 +141,10 @@ func heal(amount):
 	overcapped_health = min(health, get_stat("Max_Health"))
 	health_increased.emit()
 	health_changed.emit(health)
+
+func set_coins(amount):
+	PlayerCharacter.coins += amount
+	Global.save_data()
+
+func get_coins():
+	return PlayerCharacter.coins

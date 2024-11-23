@@ -10,6 +10,7 @@ class_name player_data extends Resource
 @export var passives: Array
 @export var item_passives: Array
 @export var character_scene_file_path: String
+@export var coins: int
 @export var stats: Dictionary
 @export var current_health: int
 @export var overcapped_health: int
@@ -64,10 +65,12 @@ func set_stats():
 func get_character():
 	character_scene_file_path = LevelList.character_scene_file_path
 	starting_character = PlayerCharacter.starting_character
+	coins = PlayerCharacter.coins
 
 func set_character():
 	LevelList.character_scene_file_path = character_scene_file_path
 	PlayerCharacter.starting_character = starting_character
+	PlayerCharacter.coins = coins
 
 func get_current_room():
 	floor_number = LevelList.floor_number
