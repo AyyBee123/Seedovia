@@ -44,7 +44,7 @@ func add_item(item, player, inv):
 		if not inventory.has(i): # checks for space in inventory (if the slot is empty)
 			picked_up_item = item
 			inventory[i] = item
-			await get_tree().create_timer(0.5).timeout
+			await get_tree().process_frame
 			check_for_items()
 			check_for_shop_items()
 			Global.save_data()
@@ -61,7 +61,7 @@ func drop_item(item, player):
 	current_item.set_item(item)
 	get_tree().current_scene.add_child(current_item)
 	current_item.global_position = player.global_position
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().process_frame
 	check_for_items()
 	Global.save_data()
 	Global.save_room()

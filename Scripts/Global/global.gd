@@ -53,3 +53,5 @@ func load_data_exists() -> bool:
 
 func save_coins():
 	data.get_coins()
+	ResourceSaver.save(data, SAVE_PATH)
+	ResourceSaver.save(data, "user://current_run.tres") # for testing purposes, will remove later

@@ -49,6 +49,10 @@ func _ready():
 		item_instance.set_item(LevelList.shop_items_on_ground[i]["item"])
 		add_child(item_instance)
 		item_instance.global_position = LevelList.shop_items_on_ground[i]["position"]
+	for i in LevelList.coins_on_ground:
+		var item_instance = resource_preloader.get_resource("Coin").instantiate()
+		add_child(item_instance)
+		item_instance.global_position = LevelList.coins_on_ground[i]["position"]
 	Global.save_room()
 
 func _physics_process(delta):
@@ -68,6 +72,7 @@ func check_for_enemies():
 			LevelList.loaded_room_is_cleared = cleared
 			await get_tree().create_timer(0.5).timeout # buffer to allow the item to register in the level
 			check_for_items()
+			check_for_coins()
 			Global.save_data()
 			Global.save_room()
 
@@ -106,6 +111,19 @@ func check_for_shop_items():
 		if item.is_in_group("Shop Item"):
 			LevelList.shop_items_on_ground[i] = {
 				"item": item.item,
+				"position": item.global_position
+			}
+			i += 1
+
+func check_for_coins():
+	LevelList.coins_on_ground.clear()
+	var i = 0
+	# check all direct children of the scene (i.e. all nodes on the ground)
+	for item in get_children():
+		# get the item and its current position, stored as a dictionary
+		if item.is_in_group("Coin"):
+			LevelList.coins_on_ground[i] = {
+				"item": item,
 				"position": item.global_position
 			}
 			i += 1

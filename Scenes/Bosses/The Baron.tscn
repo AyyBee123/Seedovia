@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://b0bjggnev87e7"]
+[gd_scene load_steps=53 format=3 uid="uid://b0bjggnev87e7"]
 
 [ext_resource type="PackedScene" uid="uid://bfapejv6ymqws" path="res://Scenes/Bosses/Boss.tscn" id="1_vp6al"]
 [ext_resource type="Script" path="res://Scripts/Bosses/Mushroom Baron/mushroom_baron.gd" id="2_ph2fp"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://crdu5i7y4ry6v" path="res://Sprites/Bosses/Mushroom Baron/Mushroom Baron.png" id="3_yuwsd"]
 [ext_resource type="PackedScene" uid="uid://cqmadvcpoaki2" path="res://Scenes/Enemies/Weapons/Spore.tscn" id="4_ts42u"]
 [ext_resource type="Texture2D" uid="uid://be1pe414c5had" path="res://Sprites/Bosses/Mushroom Baron/Shadow.png" id="5_wppk4"]
+[ext_resource type="Shader" path="res://Shaders/color_tint_shader.gdshader" id="6_0wyse"]
 [ext_resource type="AudioStream" uid="uid://12krr2r6guun" path="res://Audio/SFX/Jump.mp3" id="8_s2b5c"]
 [ext_resource type="AudioStream" uid="uid://bi83fm0wyxnd8" path="res://Audio/SFX/Splat.mp3" id="9_avwpv"]
 [ext_resource type="AudioStream" uid="uid://cdrpi76g0byh5" path="res://Audio/SFX/Spore.mp3" id="10_lvt5e"]
@@ -16,6 +17,13 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7hpjl"]
 radius = 13.8733
 height = 54.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hcmhw"]
+resource_local_to_scene = true
+shader = ExtResource("6_0wyse")
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/tint_factor = 0.0
+shader_parameter/fade = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xabn4"]
 atlas = ExtResource("3_yuwsd")
@@ -331,6 +339,7 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_7hpjl")
 
 [node name="AnimatedSprite2D" parent="." index="3"]
+material = SubResource("ShaderMaterial_hcmhw")
 position = Vector2(0, -100)
 sprite_frames = SubResource("SpriteFrames_6uafj")
 animation = &"Idle"

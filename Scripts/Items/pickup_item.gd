@@ -21,7 +21,7 @@ func _on_attract_area_body_entered(body):
 
 func pick_up():
 	item.on_pickup()
-	await get_tree().create_timer(0.1).timeout
+	await get_tree().process_frame
 	check_for_pickup_items()
 	Global.save_data()
 	Global.save_room()

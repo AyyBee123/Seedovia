@@ -42,6 +42,7 @@ func select_character():
 	LevelList.pickup_items_on_ground.clear()
 	LevelList.items_on_ground.clear()
 	LevelList.shop_items_on_ground.clear()
+	LevelList.coins_on_ground.clear()
 	LevelList.shop_items_spawned = false
 	PlayerCharacter.starting_character = starting_character
 	PlayerInventory.inventory.clear()

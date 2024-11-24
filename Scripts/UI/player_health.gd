@@ -16,6 +16,8 @@ func _physics_process(delta):
 	if player._player_stats.get_stat("Max_Health") != max_health.get_child_count() \
 			or player._player_stats.health != current_health.get_child_count():
 		set_health()
+	if PlayerCharacter.coins != int(%Amount.text):
+		set_coins()
 
 func set_health():
 	# remove all hearts in the health ui

@@ -14,6 +14,7 @@ var next_room
 var items_on_ground: Dictionary
 var pickup_items_on_ground: Dictionary
 var shop_items_on_ground: Dictionary
+var coins_on_ground: Dictionary
 var entered_room: bool
 var doors: Dictionary
 var character_scene_file_path: String

@@ -21,6 +21,7 @@ func _on_quick_restart_button_pressed():
 	LevelList.pickup_items_on_ground.clear()
 	LevelList.items_on_ground.clear()
 	LevelList.shop_items_on_ground.clear()
+	LevelList.coins_on_ground.clear()
 	LevelList.shop_items_spawned = false
 	get_tree().paused = false
 	starting_character = PlayerCharacter.starting_character
