@@ -13,6 +13,7 @@ func set_item(new_item: pickup_item_class):
 
 func _on_pickable_area_body_entered(body):
 	if body.is_in_group("Players"):
+		player = body
 		pick_up()
 
 func _on_attract_area_body_entered(body):
