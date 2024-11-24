@@ -41,8 +41,9 @@ blast_radius_multiplier = 0.333
 fire_rate_multiplier = 0.15
 
 [node name="Hitbox" type="Area2D" parent="."]
-collision_layer = 8
+collision_layer = 0
 collision_mask = 5
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CircleShape2D_x7c61")
@@ -60,6 +61,7 @@ exclude_parent = false
 target_position = Vector2(0, 30)
 collision_mask = 5
 collide_with_areas = true
+collide_with_bodies = false
 
 [node name="Up" type="ShapeCast2D" parent="."]
 rotation = -3.14159
@@ -69,6 +71,7 @@ exclude_parent = false
 target_position = Vector2(0, 30)
 collision_mask = 5
 collide_with_areas = true
+collide_with_bodies = false
 
 [node name="Left" type="ShapeCast2D" parent="."]
 rotation = 1.5708
@@ -78,6 +81,7 @@ exclude_parent = false
 target_position = Vector2(0, 30)
 collision_mask = 5
 collide_with_areas = true
+collide_with_bodies = false
 
 [node name="Right" type="ShapeCast2D" parent="."]
 rotation = -1.5708
@@ -87,6 +91,7 @@ exclude_parent = false
 target_position = Vector2(0, 30)
 collision_mask = 5
 collide_with_areas = true
+collide_with_bodies = false
 
 [node name="ResourcePreloader" type="ResourcePreloader" parent="."]
 resources = [PackedStringArray("Explosion"), [ExtResource("3_uyl80")]]

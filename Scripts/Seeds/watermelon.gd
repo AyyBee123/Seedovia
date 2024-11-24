@@ -31,26 +31,15 @@ func travelled_distance():
 		animation_frame = (animation_frame + 1) % $AnimatedSprite2D.sprite_frames.get_frame_count("default")
 		$AnimatedSprite2D.set_frame(animation_frame)
 	if total_distance >= _player_stats.get_stat("Weapon_Range") * range_multiplier:
-		call_deferred("free")
+		queue_free.call_deferred()
 
 func _on_hitbox_area_entered(area):
+	if ignore_first_collision:
+		ignore_first_collision = false
+		return
 	if area.is_in_group("Enemies"):
-		# shapecasts allow the projectile to bounce after detecting an enemy
-		area_normal = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized() # just in case
-		if down.is_colliding():
-			area_normal = Vector2(0, -1)
-		elif up.is_colliding():
-			area_normal = Vector2(0, 1)
-		elif left.is_colliding():
-			area_normal = Vector2(1, 0)
-		elif right.is_colliding():
-			area_normal = Vector2(-1, 0)
-		direction = direction.bounce(area_normal).normalized()
 		area.get_parent()._enemy_stats.take_damage(_player_stats.get_stat("Weapon_Damage") * damage_multiplier)
-		collide(area)
-
-func _on_hitbox_body_entered(body):
-	# shapecasts allow the projectile to bounce after detecting a wall
+	# shapecasts allow the projectile to bounce after detecting an enemy
 	area_normal = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized() # just in case
 	if down.is_colliding():
 		area_normal = Vector2(0, -1)
@@ -61,7 +50,7 @@ func _on_hitbox_body_entered(body):
 	elif right.is_colliding():
 		area_normal = Vector2(-1, 0)
 	direction = direction.bounce(area_normal).normalized()
-	collide(body)
+	collide(area)
 
 func shoot_next_weapon():
 	# for passives that require the weapon to not fire a seed (e.g the last seed slot fires itself again)
