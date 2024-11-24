@@ -4,13 +4,14 @@
 [ext_resource type="Script" path="res://Scripts/Coin/coin_pickup.gd" id="2_5j5s6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ud8t3"]
-radius = 50.0
+radius = 100.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nk3o0"]
 radius = 9.33333
 height = 30.6667
 
 [node name="Coin" type="Node2D" groups=["Coin"]]
+scale = Vector2(0.75, 0.75)
 script = ExtResource("2_5j5s6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

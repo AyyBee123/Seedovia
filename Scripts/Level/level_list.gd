@@ -12,9 +12,9 @@ var current_reward_given: bool
 var doors_spawned: bool
 var next_room
 var items_on_ground: Dictionary
-var passive_items_on_ground: Dictionary
+var pickup_items_on_ground: Dictionary
 var shop_items_on_ground: Dictionary
-var picked_up_passive: bool
+var entered_room: bool
 var doors: Dictionary
 var character_scene_file_path: String
 var shop_items_spawned: bool
@@ -38,7 +38,10 @@ func change_room(door):
 	get_tree().change_scene_to_packed(next_room)
 	doors_spawned = false
 	current_reward_given = false
-	picked_up_passive = false
+	entered_room = false
+	shop_items_spawned = false
+	shop_items_on_ground.clear()
+	pickup_items_on_ground.clear()
 	items_on_ground.clear()
 	doors.clear()
 	room_number = min(room_number + 1, 10)
@@ -49,5 +52,12 @@ func change_floor():
 	floor.rooms.clear()
 	floor_number += 1
 	room_number = 0
+	doors_spawned = false
+	current_reward_given = false
+	entered_room = false
+	shop_items_spawned = false
+	shop_items_on_ground.clear()
+	pickup_items_on_ground.clear()
+	items_on_ground.clear()
 	Pool.repopulate_weighted_pools()
 	next_room = ResourceLoader.load("res://Scenes/Levels/Special/Starting Room.tscn")

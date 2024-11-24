@@ -39,7 +39,7 @@ func change_scene():
 	LevelList.shop_items_spawned = false
 	LevelList.items_on_ground.clear()
 	LevelList.shop_items_on_ground.clear()
-	LevelList.passive_items_on_ground.clear()
+	LevelList.pickup_items_on_ground.clear()
 	LevelList.doors.clear()
 	Global.save_room()
 	LevelList.change_room.call_deferred(self)

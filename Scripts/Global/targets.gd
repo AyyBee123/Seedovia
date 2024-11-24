@@ -4,7 +4,7 @@ var player
 var weapons
 var enemies
 var items
-var passives
+var pickups
 var doors
 var camera
 var scene
@@ -16,7 +16,7 @@ func get_entities():
 	weapons = get_tree().get_nodes_in_group("Weapon")
 	enemies = get_tree().get_nodes_in_group("Enemy")
 	items = get_tree().get_nodes_in_group("Item")
-	passives = get_tree().get_nodes_in_group("Passive Item")
+	pickups = get_tree().get_nodes_in_group("Pickup Item")
 	doors = get_tree().get_nodes_in_group("Door")
 	camera = get_tree().get_first_node_in_group("Main Camera")
 	scene = get_tree().current_scene
@@ -37,14 +37,14 @@ func get_enemy_hitboxes():
 
 func get_all_items():
 	var new_array = get_tree().get_nodes_in_group("Item")
-	new_array.append_array(get_tree().get_nodes_in_group("Passive Item"))
+	new_array.append_array(get_tree().get_nodes_in_group("Pickup Item"))
 	return new_array
 
 func get_items():
 	return get_tree().get_nodes_in_group("Item")
 
-func get_passive_items():
-	return get_tree().get_nodes_in_group("Passive Item")
+func get_pickup_items():
+	return get_tree().get_nodes_in_group("Pickup Item")
 
 func get_scene():
 	return get_tree().current_scene

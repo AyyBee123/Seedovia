@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="item_pool" load_steps=2 format=3 uid="uid://cui624ltfwy0s"]
+
+[ext_resource type="Script" path="res://Scripts/Pools/item_pool.gd" id="1_mim8o"]
+
+[resource]
+script = ExtResource("1_mim8o")
+pool_name = "Pickup"
+path = "res://Resources/Items/Pickups/"

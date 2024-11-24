@@ -12,3 +12,4 @@ starting_inventory = Array[Resource]([])
 starting_talismans = Array[ExtResource("6_bgflj")]([])
 starting_seeds = Array[ExtResource("5_5h24b")]([])
 starting_passives = Array[PackedScene]([ExtResource("8_430as"), ExtResource("9_0fyqn")])
+starting_coins = 0

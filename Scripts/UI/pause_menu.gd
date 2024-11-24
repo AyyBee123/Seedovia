@@ -28,7 +28,7 @@ func _on_quick_restart_button_pressed():
 	LevelList.loaded_room_is_cleared = true
 	LevelList.doors.clear()
 	LevelList.doors_spawned = false
-	LevelList.passive_items_on_ground.clear()
+	LevelList.pickup_items_on_ground.clear()
 	LevelList.items_on_ground.clear()
 	LevelList.shop_items_on_ground.clear()
 	LevelList.shop_items_spawned = false

@@ -1,6 +1,7 @@
 class_name player_stats extends "res://Scripts/Stats/character_stats.gd"
 
 signal change_stat
+signal change_coins
 
 var stats := {
 	"Max_Health": {
@@ -144,6 +145,7 @@ func heal(amount):
 
 func set_coins(amount):
 	PlayerCharacter.coins += amount
+	change_coins.emit()
 	Global.save_coins()
 
 func get_coins():

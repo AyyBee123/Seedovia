@@ -5,6 +5,7 @@ var consumable_pool = ResourceLoader.load("res://Resources/Items/Pools/consumabl
 var equipment_pool = ResourceLoader.load("res://Resources/Items/Pools/equipment_pool.tres")
 var passive_pool = ResourceLoader.load("res://Resources/Items/Pools/passive_pool.tres")
 var seed_pool = ResourceLoader.load("res://Resources/Items/Pools/seed_pool.tres")
+var pickup_pool = ResourceLoader.load("res://Resources/Items/Pools/pickup_pool.tres")
 var coin_pool = ResourceLoader.load("res://Resources/Items/Pools/coin_pool.tres")
 var accumulated_weight: float # used to determine what item is chosen
 
@@ -71,6 +72,7 @@ func start():
 	populate_pool(seed_pool, seed_weights)
 	populate_pool(coin_pool)
 	add_pool = false
+	populate_pool(pickup_pool)
 	if passive_pool.pool.size() == 0: # if one doesn't already exist from a current run save file
 		populate_pool(passive_pool)
 		shuffle_pool(passive_pool)
@@ -104,6 +106,7 @@ func continue_run():
 	populate_pool(seed_pool, seed_weights)
 	populate_pool(coin_pool)
 	add_pool = false
+	populate_pool(pickup_pool)
 	add_floors()
 	add_boss_floors()
 
@@ -138,12 +141,16 @@ func populate_pool(pool: Resource, weight: Dictionary = {}):
 	var item_resources = get_all_file_paths(pool.path)
 	for resource_path in item_resources:
 		var item = ResourceLoader.load(resource_path)
-		if "rarity" in item and weight.size() > 0:
+		if weight.size() > 0:
 			# take the current item weight and accumulate it
 			if "rarity" in item:
 				accumulated_weight += weight[item.rarity]
-			else:
-				accumulated_weight += item.weight
+				# take the current accumulated weight and assign it to the item
+				item.acc_weight = accumulated_weight
+				# take the current total item weight and assign it to the item pool
+				pool.total_weight = accumulated_weight
+		elif "weight" in item:
+			accumulated_weight += item.weight
 			# take the current accumulated weight and assign it to the item
 			item.acc_weight = accumulated_weight
 			# take the current total item weight and assign it to the item pool

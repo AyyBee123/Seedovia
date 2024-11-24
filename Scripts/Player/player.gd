@@ -58,6 +58,7 @@ func _ready():
 	controller_cursor.visible = false
 	_player_stats.damaged.connect(took_damage)
 	_player_stats.health_increased.connect(heal)
+	_player_stats.change_coins.connect(update_coins)
 	Global.save_data()
 
 func _physics_process(delta):
@@ -131,10 +132,16 @@ func pick_up(item):
 	if item.is_in_group("Shop Item"):
 		if PlayerCharacter.coins < item.price:
 			return
-		else:
-			item.add_to_group("Item")
-			item.remove_from_group("Shop Item")
-			_player_stats.set_coins(-item.price)
+		_player_stats.set_coins(-item.price)
+		if item.item.category == "PICKUP":
+			item.item.on_pickup()
+			item.queue_free.call_deferred()
+			await get_tree().create_timer(0.1).timeout
+			Global.save_data()
+			Global.save_room()
+			return
+		item.add_to_group("Item")
+		item.remove_from_group("Shop Item")
 	PlayerInventory.add_item(item.item, self, inventory)
 	item.queue_free.call_deferred()
 
@@ -236,3 +243,6 @@ func _on_pickup_radius_area_exited(area):
 ## a little buffer to prevent immediate collision with other objects
 func _on_collision_buffer_time_timeout():
 	$Hitbox.disabled = false
+
+func update_coins():
+	$"Player Health".set_coins()

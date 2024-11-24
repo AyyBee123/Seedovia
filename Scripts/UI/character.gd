@@ -39,7 +39,7 @@ func select_character():
 	LevelList.current_reward_given = true
 	LevelList.doors.clear()
 	LevelList.doors_spawned = false
-	LevelList.passive_items_on_ground.clear()
+	LevelList.pickup_items_on_ground.clear()
 	LevelList.items_on_ground.clear()
 	LevelList.shop_items_on_ground.clear()
 	LevelList.shop_items_spawned = false

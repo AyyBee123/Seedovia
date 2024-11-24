@@ -13,7 +13,7 @@ func _ready():
 func set_shop_items():
 	shop_size = randi_range(6, 8)
 	var shop_item_categories = []
-	shop_item_categories.append("Consumable") # will be replaced with "pickup" when that's added
+	shop_item_categories.append("Pickup")
 	shop_item_categories.append("Consumable") # will be replaced with "pickup" when that's added
 	shop_item_categories.append("Consumable")
 	shop_item_categories.append("Consumable")

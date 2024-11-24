@@ -21,10 +21,10 @@ class_name player_data extends Resource
 @export var reward_given: bool
 @export var doors: Dictionary
 @export var items_on_ground: Dictionary
-@export var passive_items_on_ground: Dictionary
+@export var pickup_items_on_ground: Dictionary
 @export var shop_items_on_ground: Dictionary
 @export var shop_items_spawned: bool
-@export var picked_up_passive: bool
+@export var entered_room: bool
 @export var next_reward: item_pool
 @export var passive_pool: Array
 @export var current_seed: int
@@ -86,10 +86,10 @@ func get_current_room():
 	reward_given = LevelList.current_reward_given
 	doors = LevelList.doors
 	items_on_ground = LevelList.items_on_ground
-	passive_items_on_ground = LevelList.passive_items_on_ground
+	pickup_items_on_ground = LevelList.pickup_items_on_ground
 	shop_items_on_ground = LevelList.shop_items_on_ground
 	shop_items_spawned = LevelList.shop_items_spawned
-	picked_up_passive = LevelList.picked_up_passive
+	entered_room = LevelList.entered_room
 	current_seed = Global.RNG.seed
 	next_reward = Global.next_reward
 
@@ -103,10 +103,10 @@ func set_current_room():
 	LevelList.current_reward_given = reward_given
 	LevelList.doors = doors
 	LevelList.items_on_ground = items_on_ground
-	LevelList.passive_items_on_ground = passive_items_on_ground
+	LevelList.pickup_items_on_ground = pickup_items_on_ground
 	LevelList.shop_items_on_ground = shop_items_on_ground
 	LevelList.shop_items_spawned = shop_items_spawned
-	LevelList.picked_up_passive = picked_up_passive
+	LevelList.entered_room = entered_room
 	Global.next_reward = next_reward
 
 func get_pools():
