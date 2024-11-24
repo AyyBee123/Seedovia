@@ -10,7 +10,7 @@ func trigger(weapon = null):
 		return
 	# seed repeats after 1/(<current fire rate> x2)
 	await get_tree().create_timer(1.0/(player._player_stats.get_stat("Fire_Rate") \
-			* weapon.fire_rate_multiplier * 2)).timeout
+			* weapon.fire_rate_multiplier * 2), false).timeout
 	var weapon_instance = PlayerSeeds.get_weapon(0).instantiate()
 	var location = player.hand.global_position
 	weapon_instance.initial_weapon = true

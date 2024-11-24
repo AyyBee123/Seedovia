@@ -64,5 +64,5 @@ func spawn_damage_number(damage: float):
 ## set the enemy color to red for a brief time whne taking damage
 func change_color():
 	$AnimatedSprite2D.material.set("shader_parameter/tint_factor", 0.8)
-	await get_tree().create_timer(0.05).timeout
+	await get_tree().create_timer(0.05, false).timeout
 	$AnimatedSprite2D.material.set("shader_parameter/tint_factor", 0.0)

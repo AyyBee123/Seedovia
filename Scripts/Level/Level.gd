@@ -140,7 +140,7 @@ func spawn_doors(): # -785 to 785 = 1570 (size of level in x-axis) # -400 is the
 	Global.load_room()
 	doors_spawned = true
 	if not was_cleared:
-		await get_tree().create_timer(0.5).timeout
+		await get_tree().create_timer(0.5, false).timeout
 	# room before the passive room, boss room, and the next floor (so it only spawns one door)
 	if LevelList.doors.size() > 0:
 		for loaded_reward in LevelList.doors:
@@ -176,7 +176,7 @@ func spawn_doors(): # -785 to 785 = 1570 (size of level in x-axis) # -400 is the
 
 func give_reward():
 	reward_given = true
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(0.5, false).timeout
 	if Global.next_reward == null: # just in case
 		return
 	if Global.next_reward.pool_name == "Talisman" or Global.next_reward.pool_name == "Consumable" \
