@@ -14,10 +14,10 @@ func _on_attract_area_body_entered(body):
 
 func _on_pickup_area_body_entered(body):
 	if body.is_in_group("Players"):
+		player = body
 		pick_up()
 
 func pick_up():
-	await get_tree().process_frame
 	player._player_stats.set_coins(1)
 	player.get_node("Player Health").set_coins()
 	queue_free()
