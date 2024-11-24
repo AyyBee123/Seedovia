@@ -1,6 +1,6 @@
 extends Node2D
 
-var player = null
+var player
 @export var item: pickup_item_class: set = set_item
 
 func _physics_process(delta):
