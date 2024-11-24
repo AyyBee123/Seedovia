@@ -53,7 +53,7 @@ func travelled_distance():
 		for i in range(seed_slots.size()):
 			shoot_next_weapon()
 			break
-		call_deferred("free")
+		queue_free.call_deferred()
 		
 func get_nearest_enemy(enemy):
 	var enemies = get_tree().get_nodes_in_group("Enemies")

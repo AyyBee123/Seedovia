@@ -3,6 +3,7 @@ extends Control
 var scene_to_load_path
 var loading = false
 var progress = []
+var thread: Thread
 
 func _ready():
 	ResourceLoader.load_threaded_request(LevelList.loaded_current_room)
@@ -17,7 +18,8 @@ func load_scene(path):
 	scene_to_load_path = path
 
 func load_save():
-	Global.load_room()
+	thread = Thread.new()
+	thread.start(Global.load_room)
 	Global.load_data()
 	LevelList.load_char()
 	Pool.continue_run()
@@ -37,3 +39,6 @@ func _process(delta):
 		loading = false
 	else:
 		print("Error loading...")
+
+func _exit_tree():
+	thread.wait_to_finish()
