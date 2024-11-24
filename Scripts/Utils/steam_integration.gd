@@ -1,4 +1,4 @@
-#extends Node
+extends Node
 #
 #var AppID = "480" # temparary until the game has its own steam page
 #var id
