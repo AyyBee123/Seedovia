@@ -193,11 +193,11 @@ func give_reward():
 				var coin = resource_preloader.get_resource("Coin").instantiate()
 				add_child(coin)
 				# this stupid block of code is to get the ordering of the coins correct
-				if amount_of_coins == 15 or amount_of_coins == 10:
+				if amount_of_coins == 15 or amount_of_coins == 10 or amount_of_coins == 5:
 					coin.global_position = Vector2(horizontal_positions[amount_of_coins / 5 - index - 1], \
 							(4 - (i % 5) + i/5) * 3)
 				else:
-					coin.global_position = Vector2(horizontal_positions[index], (4 - (i % 5)) * 3)
+					coin.global_position = Vector2(horizontal_positions[index], 0)
 	Global.next_reward = null
 
 func check_for_possesions(reward_item):
