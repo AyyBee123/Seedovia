@@ -28,4 +28,4 @@ func on_press(passive_item):
 	give_item(passive_item.passive_ability)
 	# maybe play some animation here
 	get_tree().paused = false
-	call_deferred("free")
+	queue_free.call_deferred()

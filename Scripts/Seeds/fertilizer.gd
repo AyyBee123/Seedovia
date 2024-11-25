@@ -14,6 +14,11 @@ var hit_wall := false
 func _ready():
 	super._ready()
 	visible = false # to remove jittering when the seed spawns
+	# spawn the poop behind the player or previous seed
+	global_position += Vector2(-desired_direction.x, desired_direction.y).normalized() * 10
+	visible = true
+	starting_position = global_position
+	direction = -desired_direction.normalized()
 
 func _physics_process(delta):
 	super._physics_process(delta)
@@ -22,15 +27,6 @@ func _physics_process(delta):
 			enemy._enemy_stats.take_damage(_player_stats.get_stat("Weapon_Damage") * damage_multiplier)
 			has_collided.emit(enemy.get_node("Enemy Hitbox"))
 			tick_rate.start()
-
-func initialize_position():
-	if not position_initialized:
-		# spawn the poop behind the player or previous seed
-		global_position += Vector2(-desired_direction.x, desired_direction.y).normalized() * 10
-		visible = true
-		starting_position = global_position
-		direction = -desired_direction.normalized()
-		position_initialized = true
 
 func travelled_distance():
 	pass

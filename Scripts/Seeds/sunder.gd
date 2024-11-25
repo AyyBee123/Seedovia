@@ -9,7 +9,7 @@ func travelled_distance():
 		total_distance += 1
 		starting_position = global_position
 	if total_distance >= _player_stats.get_stat("Weapon_Range") * range_multiplier:
-		call_deferred("free")
+		queue_free.call_deferred()
 	if total_distance % 10 == 0:
 		explode()
 		if total_distance % 20 == 0 and total_distance != 0:
@@ -21,7 +21,7 @@ func _collide(body):
 		ignore_first_collision = false
 		return
 	has_collided.emit(body) # for on-hit effects (ex: burning an enemy on hit)
-	call_deferred("free")
+	queue_free.call_deferred()
 
 func explode():
 	var explosion = resource_preloader.get_resource("Non-Weapon Effect Explosion").instantiate()

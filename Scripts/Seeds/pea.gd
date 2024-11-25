@@ -3,6 +3,11 @@ extends "res://Scripts/Seeds/seed_template.gd"
 var enemy
 @onready var hit_SFX = $Hit
 
+func _ready():
+	super._ready()
+	if slot_index != 0:
+		var nearest_enemy = get_nearest_enemy(hit_enemy)
+
 func _collide(body):
 	if ignore_first_collision:
 		ignore_first_collision = false
@@ -15,15 +20,7 @@ func _collide(body):
 	SfxDeconflicter.play(hit_SFX)
 	if hit_SFX.playing:
 		await hit_SFX.finished
-	call_deferred("free")
-		
-func initialize_position():
-	if not position_initialized:
-		starting_position = global_position
-		direction = desired_direction
-		if slot_index != 0:
-			var nearest_enemy = get_nearest_enemy(hit_enemy)
-		position_initialized = true
+	queue_free.call_deferred()
 
 func update_position(delta):
 	current_velocity = direction * _player_stats.get_stat("Weapon_Speed") * speed_multiplier

@@ -56,7 +56,7 @@ func _collide(body):
 		SfxDeconflicter.play(hit_SFX)
 		if hit_SFX.playing:
 			await hit_SFX.finished
-		call_deferred("free")
+		queue_free.call_deferred()
 	else:
 		has_stopped = true
 	weapon_direction = -direction

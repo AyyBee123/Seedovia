@@ -114,4 +114,4 @@ func shrink(delta):
 	is_shrunk = true
 	scale -= Vector2(delta, delta)
 	if scale <= Vector2.ZERO:
-		call_deferred("free")
+		queue_free.call_deferred()

@@ -2,7 +2,6 @@ extends AnimatedSprite2D
 
 var position_initialized = false
 var direction
-var starting_position: Vector2 # gets the starting position from where the bullet is fired
 var damage: float
 var damage_multiplier: float
 var explosion_size: float = 0.1
@@ -30,17 +29,11 @@ func _ready():
 	look_at(global_position + weapon_direction)
 
 func _physics_process(delta):
-	initialize_position()
 	if get_nearest_enemy(null) != null:
 		var rotation_angle = global_position.direction_to(get_nearest_enemy(null).global_position).angle()
 		var new_rot = lerp_angle(rotation, rotation_angle, 7.5 * delta)
 		rotation = new_rot
 	update_position(delta)
-
-func initialize_position():
-	if not position_initialized:
-		starting_position = global_position
-		position_initialized = true
 
 func update_position(delta):
 	var current_velocity: Vector2 = transform.x * speed # move in direction it's rotated

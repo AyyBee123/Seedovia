@@ -8,7 +8,7 @@ extends "res://Scripts/Seeds/seed_template.gd"
 var hue = 0.0
 var color
 var shooting_direction = 1
-var MAX_DISTANCE_BEFORE_SHOOTING: int = 4
+var MAX_DISTANCE_BEFORE_SHOOTING: int = 10
 
 func _ready():
 	super._ready()
@@ -51,7 +51,7 @@ func travelled_distance():
 	if total_distance > 0 and total_distance % MAX_DISTANCE_BEFORE_SHOOTING == 0:
 		shoot_next_weapon()
 	if total_distance >= _player_stats.get_stat("Weapon_Range") * range_multiplier:
-		call_deferred("free")
+		queue_free.call_deferred()
 
 func shoot_next_weapon():
 	# for passives that require the weapon to not fire a seed (e.g the last seed slot fires itself again)

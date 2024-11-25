@@ -34,7 +34,7 @@ func explode():
 	spawn_child_peppers()
 	if mild_explosion_SFX.playing:
 		await mild_explosion_SFX.finished
-	call_deferred("free")
+	queue_free.call_deferred()
 
 func travelled_distance():
 	pass

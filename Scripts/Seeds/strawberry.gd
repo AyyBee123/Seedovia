@@ -24,13 +24,6 @@ func _physics_process(delta):
 	if fire_rate.is_stopped():
 		shoot_next_weapon()
 
-func initialize_position():
-	if not position_initialized:
-		global_position += desired_direction * 10
-		starting_position = global_position
-		direction = desired_direction.normalized()
-		position_initialized = true
-
 func explode():
 	var explosion = resource_preloader.get_resource("Explosion").instantiate()
 	explosion.damage = player._player_stats.get_stat("Weapon_Damage") * explosion_damage_multiplier

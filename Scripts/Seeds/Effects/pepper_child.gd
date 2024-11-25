@@ -12,14 +12,7 @@ func _ready():
 	life_time.start()
 
 func _physics_process(delta):
-	initialize_position()
 	update_position(delta)
-
-func initialize_position():
-	if not position_initialized:
-		starting_position = global_position
-		direction = desired_direction
-		position_initialized = true
 
 func update_position(delta):
 	var current_velocity: Vector2 = direction * _player_stats.get_stat("Weapon_Speed") * \

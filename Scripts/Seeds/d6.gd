@@ -50,17 +50,17 @@ func randomize_value():
 		randomize_interval.start()
 
 func _collide(body):
-	if not ignore_first_collision:
-		has_collided.emit(body)
-		if body.is_in_group("Enemies"):
-			body.get_parent()._enemy_stats.take_damage(_player_stats.get_stat("Weapon_Damage") * damage_multiplier \
-					* get_dice_damage_multiplier())
-		var weapon = null if PlayerSeeds.seeds.size() <= 1 + slot_index or slot_index >= 2 \
-				else PlayerSeeds.seeds[slot_index + 1]
-		shoot_next_weapon()
-		call_deferred("free")
-	else:
+	if ignore_first_collision:
 		ignore_first_collision = false
+		return
+	has_collided.emit(body)
+	if body.is_in_group("Enemies"):
+		body.get_parent()._enemy_stats.take_damage(_player_stats.get_stat("Weapon_Damage") * damage_multiplier \
+				* get_dice_damage_multiplier())
+	var weapon = null if PlayerSeeds.seeds.size() <= 1 + slot_index or slot_index >= 2 \
+			else PlayerSeeds.seeds[slot_index + 1]
+	shoot_next_weapon()
+	queue_free.call_deferred()
 
 func shoot_next_weapon():
 	for i in dice_value:
@@ -79,7 +79,7 @@ func travelled_distance():
 					else PlayerSeeds.seeds[slot_index + 1]
 			shoot_next_weapon()
 			break
-		call_deferred("free")
+		queue_free.call_deferred()
 
 func get_dice_damage_multiplier() -> float:
 	var dice_damage: float

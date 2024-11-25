@@ -33,6 +33,15 @@ func _ready():
 		angle_threshold = angle_threshold / (_player_stats.get_stat("Fire_Rate") * fire_rate_multiplier)
 	super._ready()
 	set_variable_sizes()
+	starting_position = global_position
+	starting_angle = rotation_degrees
+	angle_travelled = 0.0
+	direction = desired_direction.normalized()
+	position_initialized = true
+	if not _was_previous_weapon: # if fired by the player
+		rotation = global_position.angle_to_point(player.weapon_direction_marker.global_position)
+	else:
+		rotation_degrees = rad_to_deg(desired_direction.angle()) - starting_rotation
 
 func _physics_process(delta):
 	super._physics_process(delta)

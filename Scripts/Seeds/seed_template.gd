@@ -50,6 +50,12 @@ var transferred_fire_rate_multiplier: float = 1 # fire rate multiplier of the we
 
 var ignore_first_collision_distance
 
+var final_damage
+var final_speed
+var final_range
+var final_fire_rate
+var final_blast_radius
+
 func _ready():
 	speed_multiplier *= transferred_speed_multiplier
 	range_multiplier *= transferred_range_multiplier
@@ -57,27 +63,27 @@ func _ready():
 	damage_multiplier *= transferred_damage_multiplier
 	blast_radius_multiplier *= transferred_blast_radius_multiplier
 	fire_rate_multiplier *= transferred_fire_rate_multiplier
+	final_damage = player._player_stats.get_stat("Weapon_Damage") * damage_multiplier
+	final_speed = player._player_stats.get_stat("Weapon_Speed") * speed_multiplier
+	final_range = player._player_stats.get_stat("Weapon_Range") * range_multiplier
+	final_fire_rate = player._player_stats.get_stat("Fire_Rate") * fire_rate_multiplier
+	final_blast_radius = player._player_stats.get_stat("Weapon_Blast_Radius") * blast_radius_multiplier
 	scale = scale * player._player_stats.get_stat("Weapon_Size") * size_multiplier
+	starting_position = global_position
+	direction = desired_direction.normalized()
 
 func _physics_process(delta):
-	initialize_position()
 	travelled_distance()
 	update_position(delta)
 	set_ignore_first_collision()
-
-func initialize_position():
-	if not position_initialized:
-		starting_position = global_position
-		direction = desired_direction.normalized()
-		position_initialized = true
 
 func travelled_distance():
 	distance_travelled = starting_position.distance_to(global_position)
 	if distance_travelled >= 1:
 		total_distance += 1
 		starting_position = global_position
-	if total_distance >= _player_stats.get_stat("Weapon_Range") * range_multiplier:
-		call_deferred("free")
+	if total_distance >= final_range:
+		queue_free.call_deferred()
 
 func _on_hitbox_area_entered(area):
 	_collide.call_deferred(area)
@@ -88,7 +94,7 @@ func _collide(body):
 		return
 	has_collided.emit(body) # for on-hit effects (ex: burning an enemy on hit)
 	if body.is_in_group("Enemies"):
-		body.get_parent()._enemy_stats.take_damage(_player_stats.get_stat("Weapon_Damage") * damage_multiplier)
+		body.get_parent()._enemy_stats.take_damage(final_damage)
 	queue_free.call_deferred()
 
 func shoot_next_weapon():
@@ -123,7 +129,7 @@ func initialize_location(weapon):
 	weapon.global_position = global_position
 
 func update_position(delta):
-	current_velocity = direction * _player_stats.get_stat("Weapon_Speed") * speed_multiplier
+	current_velocity = direction * final_speed
 	position += current_velocity * delta
 	look_at(global_position + current_velocity)
 

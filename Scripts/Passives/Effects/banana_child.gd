@@ -2,7 +2,6 @@ extends Sprite2D
 
 var position_initialized = false
 var direction
-var starting_position: Vector2 # gets the starting position from where the bullet is fired
 var object
 var damage: float
 var explosion_size: float
@@ -24,13 +23,7 @@ signal attempted_fire
 @onready var mild_explosion_SFX = $MildExplosion
 
 func _physics_process(delta):
-	initialize_position()
 	update_position(delta)
-
-func initialize_position():
-	if not position_initialized:
-		starting_position = global_position
-		position_initialized = true
 
 func banana():
 	pass

@@ -33,4 +33,4 @@ func _on_hitbox_body_entered(body):
 func die():
 	process_mode = 4 # = Mode: Disabled
 	# TODO: add death animation
-	call_deferred("free")
+	queue_free.call_deferred()
