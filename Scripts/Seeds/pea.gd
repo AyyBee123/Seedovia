@@ -42,7 +42,7 @@ func initialize_location(weapon_instance):
 	weapon_fired.emit(weapon_instance)
 	
 func travelled_distance():
-	distance_travelled = starting_position.distance_to(global_position)
+	distance_travelled = starting_position.distance_squared_to(global_position)
 	if distance_travelled >= 1:
 		total_distance += 1
 		starting_position = global_position

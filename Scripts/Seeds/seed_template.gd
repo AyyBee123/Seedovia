@@ -78,7 +78,7 @@ func _physics_process(delta):
 	set_ignore_first_collision()
 
 func travelled_distance():
-	distance_travelled = starting_position.distance_to(global_position)
+	distance_travelled = starting_position.distance_squared_to(global_position)
 	if distance_travelled >= 1:
 		total_distance += 1
 		starting_position = global_position
@@ -138,6 +138,6 @@ func get_next_weapon():
 			else PlayerSeeds.seeds[slot_index + 1]
 
 func set_ignore_first_collision():
-	ignore_first_collision_distance = starting_position.distance_to(global_position)
+	ignore_first_collision_distance = starting_position.distance_squared_to(global_position)
 	if ignore_first_collision_distance >= 1 and $Hitbox.get_overlapping_areas().size() == 0:
 		ignore_first_collision = false
