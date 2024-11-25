@@ -24,7 +24,7 @@ func _physics_process(delta):
 	super._physics_process(delta)
 	if is_in_area:
 		if tick_rate.is_stopped():
-			enemy._enemy_stats.take_damage(_player_stats.get_stat("Weapon_Damage") * damage_multiplier)
+			enemy._enemy_stats.take_damage(final_damage)
 			has_collided.emit(enemy.get_node("Enemy Hitbox"))
 			tick_rate.start()
 
@@ -36,8 +36,7 @@ func _collide(body):
 
 func update_position(delta):
 	if not hit_wall:
-		current_velocity = direction * _player_stats.get_stat("Weapon_Speed") \
-				* speed_multiplier * deceleration.time_left
+		current_velocity = direction * final_speed * deceleration.time_left
 		position += current_velocity * delta
 
 func _on_deceleration_timeout():

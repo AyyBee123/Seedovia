@@ -5,16 +5,14 @@ extends "res://Scripts/Seeds/seed_template.gd"
 @onready var mild_explosion_SFX = $MildExplosion
 
 func update_position(delta):
-	current_velocity = direction * _player_stats.get_stat("Weapon_Speed") \
-			* speed_multiplier * projectile_speed_timer.time_left
+	current_velocity = direction * final_speed * projectile_speed_timer.time_left
 	position += current_velocity * delta
 
 func _collide(body):
 	if not ignore_first_collision:
 		has_collided.emit(body)
 		if body.is_in_group("Enemies"):
-			body.get_parent()._enemy_stats.take_damage(_player_stats.get_stat("Weapon_Damage") \
-					* damage_multiplier / 2)
+			body.get_parent()._enemy_stats.take_damage(final_damage / 2)
 		explode()
 	else:
 		ignore_first_collision = false
@@ -24,8 +22,8 @@ func _on_lifetime_timeout():
 
 func explode():
 	var explosion = resource_preloader.get_resource("Explosion").instantiate()
-	explosion.damage = _player_stats.get_stat("Weapon_Damage") * damage_multiplier
-	explosion.size = _player_stats.get_stat("Weapon_Blast_Radius") * blast_radius_multiplier
+	explosion.damage = final_damage
+	explosion.size = final_blast_radius
 	explosion.get_node("AnimatedSprite2D").self_modulate = Color.ORANGE_RED
 	SfxDeconflicter.play(mild_explosion_SFX)
 	visible = false

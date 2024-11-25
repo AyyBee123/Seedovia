@@ -3,10 +3,28 @@ extends "res://Scripts/Seeds/seed_template.gd"
 var enemy
 @onready var hit_SFX = $Hit
 
+const SHAPE = preload("res://Resources/Shapes/circle_shape_2d.tres")
+
 func _ready():
 	super._ready()
 	if slot_index != 0:
 		var nearest_enemy = get_nearest_enemy(hit_enemy)
+
+func _physics_process(delta):
+	super._physics_process(delta)
+	is_colliding()
+
+func is_colliding() -> bool:
+	var query := PhysicsShapeQueryParameters2D.new()
+	var direct_space_state := get_world_2d().direct_space_state
+	query.set_shape(SHAPE)
+	query.collide_with_areas = true
+	query.collision_mask = 5
+	query.transform = global_transform
+	var result := direct_space_state.intersect_shape(query, 1)
+	if result.size() > 0:
+		print(result[0]["collider"].is_in_group("Enemies"))
+	return not result.is_empty()
 
 func _collide(body):
 	if ignore_first_collision:
@@ -15,7 +33,7 @@ func _collide(body):
 	has_collided.emit(body)
 	if body.is_in_group("Enemies"):
 		enemy = body
-		body.get_parent()._enemy_stats.take_damage(_player_stats.get_stat("Weapon_Damage") * damage_multiplier)
+		body.get_parent()._enemy_stats.take_damage(final_damage)
 	shoot_next_weapon()
 	SfxDeconflicter.play(hit_SFX)
 	if hit_SFX.playing:
@@ -23,7 +41,7 @@ func _collide(body):
 	queue_free.call_deferred()
 
 func update_position(delta):
-	current_velocity = direction * _player_stats.get_stat("Weapon_Speed") * speed_multiplier
+	current_velocity = direction * final_speed
 	position += current_velocity * delta
 
 func shoot_next_weapon():
@@ -46,7 +64,7 @@ func travelled_distance():
 	if distance_travelled >= 1:
 		total_distance += 1
 		starting_position = global_position
-	if total_distance >= _player_stats.get_stat("Weapon_Range") * range_multiplier:
+	if total_distance >= final_range:
 		for i in range(seed_slots.size()):
 			shoot_next_weapon()
 			break

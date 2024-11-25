@@ -11,7 +11,7 @@ func _ready():
 	visible = false # make the first frame invisible to remove the jitter visual effect
 
 func update_position(delta):
-	current_velocity = direction * _player_stats.get_stat("Weapon_Speed") * speed_multiplier
+	current_velocity = direction * final_speed
 	position += current_velocity * delta
 	if current_velocity.x < 0:
 		scale.x = -abs(scale.x) # keep the x-scale negative
@@ -23,8 +23,8 @@ func update_position(delta):
 
 func explode():
 	var explosion = resource_preloader.get_resource("Explosion").instantiate()
-	explosion.damage = _player_stats.get_stat("Weapon_Damage") * damage_multiplier
-	explosion.size = _player_stats.get_stat("Weapon_Blast_Radius") * blast_radius_multiplier
+	explosion.damage = final_damage
+	explosion.size = final_blast_radius
 	explosion.get_node("AnimatedSprite2D").self_modulate = Color("c69b30") # match the corn's shaded color
 	SfxDeconflicter.play(mild_explosion_SFX)
 	visible = false

@@ -15,16 +15,14 @@ func _physics_process(delta):
 	update_position(delta)
 
 func update_position(delta):
-	var current_velocity: Vector2 = direction * _player_stats.get_stat("Weapon_Speed") * \
-			speed_multiplier * projectile_speed_timer.time_left
+	var current_velocity: Vector2 = direction * final_speed * projectile_speed_timer.time_left
 	position += current_velocity * delta
 	look_at(global_position + current_velocity)
 
 func _on_hitbox_area_entered(area):
 	has_collided.emit(area)
 	if area.is_in_group("Enemies"):
-			area.get_parent()._enemy_stats.take_damage(_player_stats.get_stat("Weapon_Damage") * \
-					damage_multiplier / 2)
+			area.get_parent()._enemy_stats.take_damage(final_damage / 2)
 	explode()
 
 func _on_hitbox_body_entered(body):
@@ -36,8 +34,8 @@ func _on_lifetime_timeout():
 
 func explode():
 	var explosion = resource_preloader.get_resource("Explosion").instantiate()
-	explosion.damage = _player_stats.get_stat("Weapon_Damage") * damage_multiplier
-	explosion.size = _player_stats.get_stat("Weapon_Blast_Radius") * blast_radius_multiplier
+	explosion.damage = final_damage
+	explosion.size = final_blast_radius
 	explosion.get_node("AnimatedSprite2D").self_modulate = Color.ORANGE_RED
 	SfxDeconflicter.play(mild_explosion_SFX)
 	visible = false

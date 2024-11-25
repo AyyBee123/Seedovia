@@ -13,7 +13,7 @@ var gloom_fire_rate_multiplier: float = 1
 
 func _ready():
 	super._ready()
-	fire_rate.start(1.0/(player._player_stats.get_stat("Fire_Rate") * gloom_fire_rate_multiplier))
+	fire_rate.start(1.0 / final_fire_rate)
 
 func _physics_process(delta):
 	super._physics_process(delta)
@@ -22,15 +22,14 @@ func _physics_process(delta):
 	for i in enemies_in_area.size():
 		if tick_timers[i].is_stopped():
 			if is_instance_valid(enemies_in_area[i]):
-				enemies_in_area[i]._enemy_stats.take_damage(_player_stats.get_stat("Weapon_Damage") \
-						* damage_multiplier)
+				enemies_in_area[i]._enemy_stats.take_damage(final_damage)
 				has_collided.emit(enemies_in_area[i].get_node("Enemy Hitbox"))
-				tick_timers[i].start(0.1 / _player_stats.get_stat("Fire_Rate") * 10)
+				tick_timers[i].start(0.1 / final_fire_rate * 10)
 	if fire_rate.is_stopped():
 		shoot_next_weapon()
 
 func update_position(delta):
-	current_velocity = direction * _player_stats.get_stat("Weapon_Speed") * speed_multiplier * deceleration.time_left
+	current_velocity = direction * final_speed * deceleration.time_left
 	position += current_velocity * delta
 
 func travelled_distance():

@@ -26,11 +26,11 @@ func _ready():
 		_was_previous_weapon = true
 		_initial_shot = false
 		rotation_degrees = rad_to_deg(desired_direction.angle()) - starting_rotation
-		angle_threshold = angle_threshold / (_player_stats.get_stat("Fire_Rate") * fire_rate_multiplier) / 1.7
+		angle_threshold = angle_threshold / final_fire_rate / 1.7
 	else:
 		if name != "Cheese":
 			queue_free()
-		angle_threshold = angle_threshold / (_player_stats.get_stat("Fire_Rate") * fire_rate_multiplier)
+		angle_threshold = angle_threshold / final_fire_rate
 	super._ready()
 	set_variable_sizes()
 	starting_position = global_position
@@ -48,12 +48,11 @@ func _physics_process(delta):
 	t += delta * 2.5
 	set_variable_sizes()
 	if not _was_previous_weapon: # if fired from the player
-		rect_width = min(_player_stats.get_stat("Weapon_Range") * range_multiplier * t, \
-			_player_stats.get_stat("Weapon_Range") * range_multiplier)
+		rect_width = min(final_range * t, final_range)
 		if not mouse_left_down:
 			queue_free()
 	else:
-		rect_width = _player_stats.get_stat("Weapon_Range") * range_multiplier
+		rect_width = final_range
 		animate()
 	rotation_travelled()
 
@@ -76,7 +75,6 @@ func initialize_location(weapon):
 
 func set_variable_sizes():
 	middle.region_rect = Rect2(0, 0, rect_width, middle.get_region_rect().size.y)
-	# NOTE: the beginning texture is divided by 2 because the collision shape is bigger than expected, for some reason
 	collision_shape_2d.shape.size.x = beginning.texture.get_width() + middle.get_region_rect().size.x
 	collision_shape_2d.position.x = collision_shape_2d.shape.size.x / 2
 	end.position.x = end.texture.get_width() + middle.get_region_rect().size.x
@@ -86,9 +84,9 @@ func _collide(body):
 	if body.is_in_group("Enemies"):
 		var knockback_angle = rotation + PI/2 * sign(angle_travelled)
 		var knockback_direction = Vector2.RIGHT.rotated(knockback_angle).normalized()
-		var damage = _player_stats.get_stat("Weapon_Damage") * damage_multiplier * abs(angle_travelled) / 10
+		var damage = final_damage * abs(angle_travelled) / 10
 		if _was_previous_weapon:
-			damage = _player_stats.get_stat("Weapon_Damage") * damage_multiplier * 3
+			damage = final_damage * 3
 		if damage < 1: # do nothing if the damage is a very small amount
 			return
 		body.get_parent()._enemy_stats.take_damage(damage)
@@ -100,7 +98,7 @@ func _collide(body):
 		var knockback_scene = resource_preloader.get_resource("Knockback").instantiate()
 		knockback_scene.knockback_direction = knockback_direction
 		knockback_scene.knockback_speed = abs(angle_travelled) * 50
-		knockback_scene.damage = _player_stats.get_stat("Weapon_Damage") * damage_multiplier
+		knockback_scene.damage = final_damage
 		if not body.get_parent().find_child(knockback_scene.name):
 			# add node to the enemy that gives velocity/position change and makes them take damage if they hit a wall
 			body.get_parent().add_child(knockback_scene)

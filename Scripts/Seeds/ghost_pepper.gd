@@ -26,11 +26,11 @@ func shoot_next_weapon():
 		return
 	var weapon_instance = get_next_weapon().instantiate()
 	weapon_direction = global_position.direction_to(get_nearest_enemy().global_position)
-	fire_rate.start(1.0/_player_stats.get_stat("Fire_Rate") / weapon_instance.fire_rate_multiplier)
+	fire_rate.start(1.0 / final_fire_rate)
 	get_weapon_properties(weapon_instance, weapon_direction)
 
 func update_position(delta):
-	current_velocity = direction * _player_stats.get_stat("Weapon_Speed") * speed_multiplier
+	current_velocity = direction * final_speed
 	position += current_velocity * delta
 
 func look():

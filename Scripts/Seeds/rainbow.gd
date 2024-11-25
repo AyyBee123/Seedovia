@@ -37,7 +37,7 @@ func _collide(body):
 		return
 	has_collided.emit(body) # for on-hit effects (ex: burning an enemy on hit)
 	if body.is_in_group("Enemies"):
-		body.get_parent()._enemy_stats.take_damage(_player_stats.get_stat("Weapon_Damage") * damage_multiplier)
+		body.get_parent()._enemy_stats.take_damage(final_damage)
 	SfxDeconflicter.play(hit_SFX)
 	if hit_SFX.playing:
 		await hit_SFX.finished
@@ -50,7 +50,7 @@ func travelled_distance():
 		starting_position = global_position
 	if total_distance > 0 and total_distance % MAX_DISTANCE_BEFORE_SHOOTING == 0:
 		shoot_next_weapon()
-	if total_distance >= _player_stats.get_stat("Weapon_Range") * range_multiplier:
+	if total_distance >= final_range:
 		queue_free.call_deferred()
 
 func shoot_next_weapon():
