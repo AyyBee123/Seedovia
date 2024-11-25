@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://qqx5mt2l85ns"]
+
+[ext_resource type="PackedScene" uid="uid://b8gxpiw6v8asa" path="res://Scenes/Levels/Floor 2 Base.tscn" id="1_yysp1"]
+[ext_resource type="PackedScene" uid="uid://bagmkum7q0yxi" path="res://Scenes/Enemies/Dummy.tscn" id="2_143cf"]
+
+[node name="Level" instance=ExtResource("1_yysp1")]
+
+[node name="Dummy" parent="." index="4" instance=ExtResource("2_143cf")]
+position = Vector2(-550, -200)

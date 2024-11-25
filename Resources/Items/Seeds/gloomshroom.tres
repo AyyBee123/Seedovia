@@ -2,12 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://blhp2514g8711" path="res://Scenes/Seeds/Gloomshroom.tscn" id="1_51qw4"]
 [ext_resource type="Script" path="res://Scripts/Stats/seed_stats.gd" id="1_f8jb8"]
-[ext_resource type="Texture2D" uid="uid://bcuw80t4443cm" path="res://Sprites/Items/Gloomshroom.png" id="3_0jakt"]
+[ext_resource type="Texture2D" uid="uid://bcuw80t4443cm" path="res://Sprites/Seeds (Inventory)/Gloomshroom.png" id="3_0jakt"]
 
 [resource]
 script = ExtResource("1_f8jb8")
 scene = ExtResource("1_51qw4")
-rarity = 3
+rarity = 1
 item_name = "Gloomshroom"
 texture = ExtResource("3_0jakt")
 description = "A stationary mushroom that emits a damaging aura. Shoots the next seed in a random direction."

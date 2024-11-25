@@ -45,7 +45,7 @@ func _on_quick_restart_button_pressed():
 	PlayerCharacter.add_passives()
 	Pool.start()
 	Global.save_room()
-	get_tree().change_scene_to_file("res://Scenes/Levels/Special/Starting Room.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Levels/Special/Starting Room 1.tscn")
 
 func _on_quit_to_menu_button_pressed():
 	get_tree().paused = false

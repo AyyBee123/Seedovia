@@ -7,6 +7,7 @@ var dice_value: int
 @onready var dice_roll_SFX = $DiceRoll
 
 func _ready():
+	super._ready()
 	SfxDeconflicter.play(dice_roll_SFX)
 	clockwise_rotation = randf() < 0.5
 

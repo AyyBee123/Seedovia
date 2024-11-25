@@ -55,7 +55,7 @@ func select_character():
 	Pool.start()
 	_player_stats = starting_stats
 	Global.save_room()
-	get_tree().change_scene_to_file("res://Scenes/Levels/Special/Starting Room.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Levels/Special/Starting Room 1.tscn")
 
 func set_base_stats():
 	_player_stats.max_health = starting_stats.max_health
