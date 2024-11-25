@@ -6,6 +6,9 @@
 
 [node name="Level" instance=ExtResource("1_5d21m")]
 
+[node name="Down" parent="." index="5"]
+visible = false
+
 [node name="The Baron" parent="." index="6" instance=ExtResource("2_2dlec")]
 
 [node name="Dancing Mushroom" parent="." index="7" instance=ExtResource("3_iqj1e")]
@@ -13,3 +16,12 @@ position = Vector2(-384, 0)
 
 [node name="Dancing Mushroom2" parent="." index="8" instance=ExtResource("3_iqj1e")]
 position = Vector2(384, 0)
+
+[node name="Up" parent="." index="9"]
+visible = false
+
+[node name="Left" parent="." index="10"]
+visible = false
+
+[node name="Right" parent="." index="11"]
+visible = false
