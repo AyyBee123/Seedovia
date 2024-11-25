@@ -3,28 +3,10 @@ extends "res://Scripts/Seeds/seed_template.gd"
 var enemy
 @onready var hit_SFX = $Hit
 
-const SHAPE = preload("res://Resources/Shapes/circle_shape_2d.tres")
-
 func _ready():
 	super._ready()
 	if slot_index != 0:
 		var nearest_enemy = get_nearest_enemy(hit_enemy)
-
-func _physics_process(delta):
-	super._physics_process(delta)
-	is_colliding()
-
-func is_colliding() -> bool:
-	var query := PhysicsShapeQueryParameters2D.new()
-	var direct_space_state := get_world_2d().direct_space_state
-	query.set_shape(SHAPE)
-	query.collide_with_areas = true
-	query.collision_mask = 5
-	query.transform = global_transform
-	var result := direct_space_state.intersect_shape(query, 1)
-	if result.size() > 0:
-		print(result[0]["collider"].is_in_group("Enemies"))
-	return not result.is_empty()
 
 func _collide(body):
 	if ignore_first_collision:

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dh0rggkyjbnqk" path="res://Scenes/Seeds/Walnut.tscn" id="1_0715t"]
 [ext_resource type="Script" path="res://Scripts/Stats/seed_stats.gd" id="2_q6wyq"]
-[ext_resource type="Texture2D" uid="uid://crmc5uw22dylk" path="res://Sprites/Items/Walnut.png" id="3_mmsr1"]
+[ext_resource type="Texture2D" uid="uid://crmc5uw22dylk" path="res://Sprites/Seeds (Inventory)/Walnut.png" id="3_mmsr1"]
 
 [resource]
 script = ExtResource("2_q6wyq")

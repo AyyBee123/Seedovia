@@ -1,14 +1,15 @@
 extends "res://Scripts/Seeds/seed_template.gd"
 
 @onready var rainbow_effect = $"Rainbow Effect"
-@onready var resource_preloader = $ResourcePreloader
 @onready var humming_SFX = $Humming
 @onready var hit_SFX = $Hit
+@onready var rainbow_particle = $"Rainbow Particle"
 
 var hue = 0.0
 var color
 var shooting_direction = 1
-var MAX_DISTANCE_BEFORE_SHOOTING: int = 10
+var MAX_DISTANCE_BEFORE_SHOOTING: int = 8
+var trail_delta = 0.0
 
 func _ready():
 	super._ready()
@@ -16,20 +17,14 @@ func _ready():
 
 func _physics_process(delta):
 	super._physics_process(delta)
-	var trail = resource_preloader.get_resource("Trail").instantiate()
 	color = Color.from_hsv(hue, 1.0, 1.0, 1.0)
 	if hue < 1.0:
-		hue += 0.002
+		hue += 0.0025
 	else:
 		hue = 0.0
 	rainbow_effect.modulate = color
-	trail.modulate = color
-	trail.modulate.s = 0.75
-	trail.modulate.v = 0.75
-	trail.scale = scale
-	trail.rotation = rotation
-	get_tree().current_scene.add_child(trail)
-	trail.global_position = global_position
+	rainbow_particle.modulate = color
+	rainbow_particle.rotation = rotation
 
 func _collide(body):
 	if ignore_first_collision:
