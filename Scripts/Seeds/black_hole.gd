@@ -32,7 +32,7 @@ func _physics_process(delta):
 	for i in enemies_in_area.size():
 		if tick_timers[i].is_stopped():
 			if is_instance_valid(enemies_in_area[i]):
-				enemies_in_area[i]._enemy_stats.take_damage(final_damage)
+				enemies_in_area[i]._enemy_stats.take_damage(player._player_stats.get_stat("Weapon_Damage") * damage_multiplier)
 				has_collided.emit(enemies_in_area[i].get_node("Enemy Hitbox"))
 				tick_timers[i].start(tick_rate / _player_stats.get_stat("Fire_Rate") * 20)
 	if not is_shrinking:
@@ -41,7 +41,7 @@ func _physics_process(delta):
 		shrink(delta)
 
 func update_position(delta):
-	current_velocity = direction * final_speed
+	current_velocity = direction * player._player_stats.get_stat("Weapon_Speed") * speed_multiplier
 	position += current_velocity * delta
 
 func _collide(body):
@@ -101,7 +101,7 @@ func orbit(delta):
 
 func travelled_distance():
 	distance_travelled = starting_position.distance_squared_to(self.global_position)
-	if distance_travelled >= final_range:
+	if distance_travelled >= player._player_stats.get_stat("Weapon_Range") * range_multiplier:
 		is_shrinking = true
 
 func shrink(delta):

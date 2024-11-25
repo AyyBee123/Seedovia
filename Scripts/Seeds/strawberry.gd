@@ -26,8 +26,8 @@ func _physics_process(delta):
 
 func explode():
 	var explosion = resource_preloader.get_resource("Explosion").instantiate()
-	explosion.damage = final_damage
-	explosion.size = final_blast_radius
+	explosion.damage = player._player_stats.get_stat("Weapon_Damage") * damage_multiplier
+	explosion.size = player._player_stats.get_stat("Weapon_Blast_Radius") * blast_radius_multiplier
 	explosion.source = self
 	explosion.modulate = Color("bc1414")
 	call_deferred("create_child", explosion)
@@ -46,7 +46,7 @@ func update_position(delta):
 	var current_velocity: Vector2
 	if not exploded:
 		# move in direction it's rotated
-		current_velocity = transform.x * final_speed
+		current_velocity = transform.x * player._player_stats.get_stat("Weapon_Speed") * speed_multiplier
 	else:
 		current_velocity = Vector2.ZERO
 	position += current_velocity * delta
@@ -56,7 +56,7 @@ func travelled_distance():
 	if distance_travelled >= 1:
 		total_distance += 1
 		starting_position = global_position
-	if total_distance >= final_range:
+	if total_distance >= player._player_stats.get_stat("Weapon_Range") * range_multiplier:
 		if not exploded:
 			exploded = true
 			explode()

@@ -19,7 +19,7 @@ func _physics_process(delta):
 	rotation = 0 # locks the rotation of the parent node (to prevent shapecasts from rotating)
 
 func update_position(delta):
-	current_velocity = direction * final_speed
+	current_velocity = direction * player._player_stats.get_stat("Weapon_Speed") * speed_multiplier
 	position += current_velocity * delta
 	$AnimatedSprite2D.look_at(global_position + current_velocity)
 
@@ -30,7 +30,7 @@ func travelled_distance():
 		starting_position = global_position
 		animation_frame = (animation_frame + 1) % $AnimatedSprite2D.sprite_frames.get_frame_count("default")
 		$AnimatedSprite2D.set_frame(animation_frame)
-	if total_distance >= final_range:
+	if total_distance >= player._player_stats.get_stat("Weapon_Range") * range_multiplier:
 		queue_free.call_deferred()
 
 func _on_hitbox_area_entered(area):

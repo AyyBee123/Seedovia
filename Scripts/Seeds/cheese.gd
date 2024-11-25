@@ -26,11 +26,11 @@ func _ready():
 		_was_previous_weapon = true
 		_initial_shot = false
 		rotation_degrees = rad_to_deg(desired_direction.angle()) - starting_rotation
-		angle_threshold = angle_threshold / final_fire_rate / 1.7
+		angle_threshold = angle_threshold / player._player_stats.get_stat("Fire_Rate") * fire_rate_multiplier / 1.7
 	else:
 		if name != "Cheese":
 			queue_free()
-		angle_threshold = angle_threshold / final_fire_rate
+		angle_threshold = angle_threshold / player._player_stats.get_stat("Fire_Rate") * fire_rate_multiplier
 	super._ready()
 	set_variable_sizes()
 	starting_position = global_position
@@ -48,11 +48,11 @@ func _physics_process(delta):
 	t += delta * 2.5
 	set_variable_sizes()
 	if not _was_previous_weapon: # if fired from the player
-		rect_width = min(final_range * t, final_range)
+		rect_width = min(player._player_stats.get_stat("Weapon_Range") * range_multiplier * t, player._player_stats.get_stat("Weapon_Range") * range_multiplier)
 		if not mouse_left_down:
 			queue_free()
 	else:
-		rect_width = final_range
+		rect_width = player._player_stats.get_stat("Weapon_Range") * range_multiplier
 		animate()
 	rotation_travelled()
 
@@ -84,9 +84,9 @@ func _collide(body):
 	if body.is_in_group("Enemies"):
 		var knockback_angle = rotation + PI/2 * sign(angle_travelled)
 		var knockback_direction = Vector2.RIGHT.rotated(knockback_angle).normalized()
-		var damage = final_damage * abs(angle_travelled) / 10
+		var damage = player._player_stats.get_stat("Weapon_Damage") * damage_multiplier * abs(angle_travelled) / 10
 		if _was_previous_weapon:
-			damage = final_damage * 3
+			damage = player._player_stats.get_stat("Weapon_Damage") * damage_multiplier * 3
 		if damage < 1: # do nothing if the damage is a very small amount
 			return
 		body.get_parent()._enemy_stats.take_damage(damage)
@@ -98,7 +98,7 @@ func _collide(body):
 		var knockback_scene = resource_preloader.get_resource("Knockback").instantiate()
 		knockback_scene.knockback_direction = knockback_direction
 		knockback_scene.knockback_speed = abs(angle_travelled) * 50
-		knockback_scene.damage = final_damage
+		knockback_scene.damage = player._player_stats.get_stat("Weapon_Damage") * damage_multiplier
 		if not body.get_parent().find_child(knockback_scene.name):
 			# add node to the enemy that gives velocity/position change and makes them take damage if they hit a wall
 			body.get_parent().add_child(knockback_scene)

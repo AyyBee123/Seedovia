@@ -135,9 +135,9 @@ layer_0/tile_data = PackedInt32Array(-196615, 1, 0, -196616, 1, 0, -131080, 1, 0
 [node name="Camera2D" type="Camera2D" parent="." groups=["Main Camera"]]
 
 [node name="Floor-Room Number" parent="." instance=ExtResource("5_igecr")]
-offset_left = 792.0
+offset_left = 909.0
 offset_top = -529.0
-offset_right = 832.0
+offset_right = 949.0
 offset_bottom = -489.0
 
 [node name="ResourcePreloader" type="ResourcePreloader" parent="."]

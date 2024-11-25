@@ -15,7 +15,7 @@ func _collide(body):
 	has_collided.emit(body)
 	if body.is_in_group("Enemies"):
 		enemy = body
-		body.get_parent()._enemy_stats.take_damage(final_damage)
+		body.get_parent()._enemy_stats.take_damage(player._player_stats.get_stat("Weapon_Damage") * damage_multiplier)
 	shoot_next_weapon()
 	SfxDeconflicter.play(hit_SFX)
 	if hit_SFX.playing:
@@ -23,7 +23,7 @@ func _collide(body):
 	queue_free.call_deferred()
 
 func update_position(delta):
-	current_velocity = direction * final_speed
+	current_velocity = direction * player._player_stats.get_stat("Weapon_Speed") * speed_multiplier
 	position += current_velocity * delta
 
 func shoot_next_weapon():
@@ -46,7 +46,7 @@ func travelled_distance():
 	if distance_travelled >= 1:
 		total_distance += 1
 		starting_position = global_position
-	if total_distance >= final_range:
+	if total_distance >= player._player_stats.get_stat("Weapon_Range") * range_multiplier:
 		for i in range(seed_slots.size()):
 			shoot_next_weapon()
 			break

@@ -8,7 +8,7 @@ func travelled_distance():
 	if distance_travelled >= 1:
 		total_distance += 1
 		starting_position = global_position
-	if total_distance >= final_range:
+	if total_distance >= player._player_stats.get_stat("Weapon_Range") * range_multiplier:
 		queue_free.call_deferred()
 	if total_distance % 10 == 0:
 		explode()
@@ -27,9 +27,9 @@ func explode():
 	var explosion = resource_preloader.get_resource("Non-Weapon Effect Explosion").instantiate()
 	for passive in $Passives.get_children():
 		explosion.get_node("Passives").add_child(passive.duplicate())
-	explosion.damage = final_damage
+	explosion.damage = player._player_stats.get_stat("Weapon_Damage") * damage_multiplier
 	explosion.damage_multiplier = damage_multiplier
-	explosion.size = final_blast_radius
+	explosion.size = player._player_stats.get_stat("Weapon_Blast_Radius") * blast_radius_multiplier
 	explosion.get_node("AnimatedSprite2D").self_modulate = Color.SADDLE_BROWN
 	SfxDeconflicter.play(mild_explosion_SFX)
 	call_deferred("create_child", explosion)

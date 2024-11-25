@@ -15,15 +15,15 @@ func _ready():
 	spread = deg_to_rad(randf_range(-30,30)) # random 30 degree spread
 	size = randf_range(0.8, 1) # random sizes to immitate how bubbles work irl
 	scale = Vector2.ONE * size
-	acceleration = randf_range(0.75, 1) * final_range / 100
+	acceleration = randf_range(0.75, 1) * player._player_stats.get_stat("Weapon_Range") * range_multiplier / 100
 	SfxDeconflicter.play(bubble_fire_SFX)
 	deceleration.start(acceleration)
 
 func update_position(delta):
 	if deceleration.time_left > decel_threshold:
-		current_velocity = direction.rotated(spread) * final_speed * deceleration.time_left
+		current_velocity = direction.rotated(spread) * player._player_stats.get_stat("Weapon_Speed") * speed_multiplier * deceleration.time_left
 	else:
-		current_velocity = direction.rotated(spread) * final_speed * decel_threshold
+		current_velocity = direction.rotated(spread) * player._player_stats.get_stat("Weapon_Speed") * speed_multiplier * decel_threshold
 	position += current_velocity * delta
 
 func _on_deceleration_timeout():
@@ -43,7 +43,7 @@ func _collide(body):
 	if body != null:
 		has_collided.emit(body)
 		if body.is_in_group("Enemies"):
-			body.get_parent()._enemy_stats.take_damage(final_damage)
+			body.get_parent()._enemy_stats.take_damage(player._player_stats.get_stat("Weapon_Damage") * damage_multiplier)
 	weapon_direction = direction.rotated(spread)
 	shoot_next_weapon()
 	# wait for the pop sound to play so it doesn't get cut off by the queue_free function

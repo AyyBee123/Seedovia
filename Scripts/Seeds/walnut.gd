@@ -20,7 +20,7 @@ func _physics_process(delta):
 		shoot_next_weapon()
 
 func update_position(delta):
-	current_velocity = direction * final_speed
+	current_velocity = direction * player._player_stats.get_stat("Weapon_Speed") * speed_multiplier
 	position += current_velocity * delta
 
 func shoot_next_weapon():
