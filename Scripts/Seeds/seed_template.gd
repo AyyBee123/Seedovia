@@ -48,8 +48,6 @@ var transferred_damage_multiplier: float = 1 # damage multiplier of the weapon
 var transferred_blast_radius_multiplier: float = 1 # blast/splash radius multiplier of the weapon
 var transferred_fire_rate_multiplier: float = 1 # fire rate multiplier of the weapon
 
-var ignore_first_collision_distance
-
 func _ready():
 	speed_multiplier *= transferred_speed_multiplier
 	range_multiplier *= transferred_range_multiplier
@@ -127,6 +125,5 @@ func get_next_weapon():
 			else PlayerSeeds.seeds[slot_index + 1]
 
 func set_ignore_first_collision():
-	ignore_first_collision_distance = starting_position.distance_squared_to(global_position)
-	if ignore_first_collision_distance >= 1 and $Hitbox.get_overlapping_areas().size() == 0:
-		ignore_first_collision = false
+	await get_tree().process_frame
+	ignore_first_collision = false

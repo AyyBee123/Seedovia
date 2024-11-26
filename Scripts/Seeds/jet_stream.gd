@@ -3,6 +3,18 @@ extends "res://Scripts/Seeds/seed_template.gd"
 var enemy
 @onready var hit_SFX = $Hit
 
+func travelled_distance():
+	distance_travelled = starting_position.distance_squared_to(global_position)
+	if distance_travelled >= 1:
+		total_distance += 1
+		starting_position = global_position
+	if total_distance >= player._player_stats.get_stat("Weapon_Range") * range_multiplier:
+		queue_free.call_deferred()
+	if get_next_weapon() != null:
+		if total_distance > 0 and total_distance % max(int(15/(player._player_stats.get_stat("Fire_Rate") \
+				* get_next_weapon().instantiate().fire_rate_multiplier)), 1) == 0:
+			shoot_next_weapon()
+
 func _collide(body):
 	if ignore_first_collision:
 		ignore_first_collision = false
@@ -10,38 +22,16 @@ func _collide(body):
 	has_collided.emit(body) # for on-hit effects (ex: burning an enemy on hit)
 	if body.is_in_group("Enemies"):
 		body.get_parent()._enemy_stats.take_damage(player._player_stats.get_stat("Weapon_Damage") * damage_multiplier)
-	shoot_next_weapon()
 	SfxDeconflicter.play(hit_SFX)
 	if hit_SFX.playing:
 		await hit_SFX.finished
 	queue_free()
 
 func shoot_next_weapon():
-	attempted_fire.emit()
 	if get_next_weapon() == null:
 		return
-	if get_nearest_enemy(enemy) != null:
-		weapon_direction = global_position.direction_to(get_nearest_enemy(enemy).global_position)
-	else:
-		weapon_direction = global_position.direction_to(player.global_position)
-	get_weapon_properties(get_next_weapon().instantiate(), weapon_direction, true, enemy)
-
-func get_nearest_enemy(enemy):
-	var enemies = get_tree().get_nodes_in_group("Enemies")
-	if enemy != null:
-		# removes the hit enemy from the array so that the projectile does not target it when "bouncing"
-		for i in range(enemies.size()): 
-			if enemies[i] == enemy:
-				enemies.remove_at(i)
-				break # break out of the loop because only one enemy is hit anyway, so it's reduntent to continue
-	var nearest_enemy = null
-	var nearest_distance = null
-	for i in enemies.size():
-		if nearest_enemy == null:
-			nearest_enemy = enemies[i]
-			nearest_distance = enemies[i].global_position.distance_squared_to(global_position)
-		else:
-			if nearest_distance > enemies[i].global_position.distance_squared_to(global_position):
-				nearest_distance = enemies[i].global_position.distance_squared_to(global_position)
-				nearest_enemy = enemies[i]
-	return nearest_enemy
+	var directions = [-PI/2, PI/2]
+	for rotated_direction in directions:
+		attempted_fire.emit()
+		weapon_direction = direction.rotated(rotated_direction)
+		get_weapon_properties(get_next_weapon().instantiate(), weapon_direction)

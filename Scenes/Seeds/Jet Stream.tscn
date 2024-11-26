@@ -8,7 +8,7 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y2bi6"]
 radius = 3.0
-height = 11.0
+height = 82.0
 
 [sub_resource type="Curve" id="Curve_jbe1f"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 0.901099), 0.0, 0.0, 0, 0]
@@ -29,6 +29,7 @@ blast_radius_multiplier = 0.5
 fire_rate_multiplier = 0.15
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2(-35, 0)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_y2bi6")
 
