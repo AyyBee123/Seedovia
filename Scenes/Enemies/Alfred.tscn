@@ -1,0 +1,86 @@
+[gd_scene load_steps=16 format=3 uid="uid://pbqovbr4s205"]
+
+[ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_r3kmi"]
+[ext_resource type="Resource" uid="uid://cj6j3hb5mk2ly" path="res://Resources/Enemies/alfred.tres" id="2_5shye"]
+[ext_resource type="Script" path="res://Scripts/Enemies/Alfred/alfred.gd" id="2_241fs"]
+[ext_resource type="Shader" path="res://Shaders/color_tint_shader.gdshader" id="2_s3vfr"]
+[ext_resource type="Texture2D" uid="uid://b7jfc2r353mgo" path="res://Sprites/Enemies/Alfred.png" id="3_es1oh"]
+[ext_resource type="Texture2D" uid="uid://bbmi4ffv5y71t" path="res://Sprites/Enemies/Alfred Eye.png" id="4_gswhn"]
+[ext_resource type="Texture2D" uid="uid://xxyym547o3vn" path="res://Sprites/Misc/Shadow.png" id="7_kaksf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vcqh0"]
+size = Vector2(28, 35.3333)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cxlp7"]
+resource_local_to_scene = true
+shader = ExtResource("2_s3vfr")
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/tint_factor = 0.0
+shader_parameter/fade = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_scmwu"]
+atlas = ExtResource("3_es1oh")
+region = Rect2(0, 0, 28, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_80qtl"]
+atlas = ExtResource("3_es1oh")
+region = Rect2(28, 0, 28, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ucrt5"]
+atlas = ExtResource("3_es1oh")
+region = Rect2(56, 0, 28, 39)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1o6qg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_scmwu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_80qtl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ucrt5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yqgd2"]
+shader = ExtResource("2_s3vfr")
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/tint_factor = 0.0
+shader_parameter/fade = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vckuj"]
+size = Vector2(28, 38.6667)
+
+[node name="Alfred" instance=ExtResource("1_r3kmi")]
+scale = Vector2(2, 2)
+script = ExtResource("2_241fs")
+_enemy_stats = ExtResource("2_5shye")
+
+[node name="CollisionPolygon2D" parent="." index="0"]
+position = Vector2(0, -1.66667)
+shape = SubResource("RectangleShape2D_vcqh0")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+material = SubResource("ShaderMaterial_cxlp7")
+sprite_frames = SubResource("SpriteFrames_1o6qg")
+autoplay = "default"
+
+[node name="Iris" type="Sprite2D" parent="." index="2"]
+material = SubResource("ShaderMaterial_yqgd2")
+position = Vector2(0, -5)
+texture = ExtResource("4_gswhn")
+
+[node name="CollisionPolygon2D" parent="Enemy Hitbox" index="0"]
+position = Vector2(0, -3.17891e-07)
+shape = SubResource("RectangleShape2D_vckuj")
+
+[node name="Shadow" type="Sprite2D" parent="." index="7"]
+z_index = -2
+position = Vector2(0, 22.5)
+scale = Vector2(1, 0.5)
+texture = ExtResource("7_kaksf")

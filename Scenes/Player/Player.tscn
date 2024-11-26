@@ -3,7 +3,7 @@
 [ext_resource type="Resource" uid="uid://bvjfk72dlusnu" path="res://Resources/Characters/Stats/base_stats.tres" id="2_50xvi"]
 [ext_resource type="Script" path="res://Scripts/Player/player.gd" id="2_f7nwd"]
 [ext_resource type="Script" path="res://Scripts/Player/StateMachine.gd" id="3_ojktk"]
-[ext_resource type="PackedScene" uid="uid://b51uuhjac0hmd" path="res://Scenes/Inventory/Inventory.tscn" id="4_px6lr"]
+[ext_resource type="PackedScene" uid="uid://b51uuhjac0hmd" path="res://Scenes/Inventory/inventory.tscn" id="4_px6lr"]
 [ext_resource type="Texture2D" uid="uid://2o0nxg1xv6xm" path="res://Sprites/UI/Cursor.png" id="6_ddx17"]
 [ext_resource type="Texture2D" uid="uid://xxyym547o3vn" path="res://Sprites/Misc/Shadow.png" id="7_u5ajd"]
 [ext_resource type="PackedScene" uid="uid://civnfvhref4lg" path="res://Scenes/Stats/Player UI.tscn" id="8_sj1lu"]

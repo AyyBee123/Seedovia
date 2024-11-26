@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dd6tkfl7y15r0" path="res://Sprites/Ground/Floor 2.png" id="5_u8eyv"]
 [ext_resource type="Texture2D" uid="uid://c73y4egv64mas" path="res://Sprites/Ground/Shop.png" id="6_irwv4"]
 [ext_resource type="Texture2D" uid="uid://bfowhdxa1dy0y" path="res://Sprites/Wall/Floor 2 Wall.png" id="6_pe0fj"]
-[ext_resource type="PackedScene" uid="uid://b3ibupvqneqor" path="res://Scenes/Items/Item.tscn" id="6_xrc8y"]
+[ext_resource type="PackedScene" uid="uid://b3ibupvqneqor" path="res://Scenes/Items/item.tscn" id="6_xrc8y"]
 [ext_resource type="Texture2D" uid="uid://bs6raq2gpx84a" path="res://Sprites/Wall/Shop.png" id="7_cqf8w"]
 [ext_resource type="Texture2D" uid="uid://b78p0tmywgm1e" path="res://Sprites/Wall/Shop Corner.png" id="8_ejksg"]
 [ext_resource type="PackedScene" uid="uid://d1x7xscaoh6wq" path="res://Scenes/UI/Pause Menu.tscn" id="8_v8rxb"]
