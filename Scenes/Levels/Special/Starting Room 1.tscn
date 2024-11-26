@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bo2oq75pfugsl"]
+[gd_scene load_steps=5 format=3 uid="uid://bo2oq75pfugsl"]
 
 [ext_resource type="PackedScene" uid="uid://cxoiy0x4nvtaa" path="res://Scenes/Levels/Base Level.tscn" id="1_ao5jt"]
 [ext_resource type="PackedScene" uid="uid://bagmkum7q0yxi" path="res://Scenes/Enemies/Dummy.tscn" id="2_o43ij"]
+[ext_resource type="PackedScene" uid="uid://cws31owdkv5jp" path="res://Scenes/Enemies/Obstacles/Death Ball.tscn" id="3_2b6lv"]
+[ext_resource type="PackedScene" uid="uid://dk7s8c4gd7p25" path="res://Scenes/Enemies/Yellow Slime.tscn" id="4_f2eim"]
 
 [node name="Level" instance=ExtResource("1_ao5jt")]
 
@@ -10,3 +12,9 @@ layer_0/tile_data = PackedInt32Array(-196615, 0, 0, -196616, 1, 0, -131080, 1, 0
 
 [node name="Dummy" parent="." index="4" instance=ExtResource("2_o43ij")]
 position = Vector2(-550, -200)
+
+[node name="Death Ball" parent="." index="10" instance=ExtResource("3_2b6lv")]
+position = Vector2(322, -215)
+
+[node name="Yellow Slime" parent="." index="11" instance=ExtResource("4_f2eim")]
+position = Vector2(-332, -191)
