@@ -5,11 +5,11 @@
 [resource]
 script = ExtResource("1_8rx30")
 max_health = 1.0
-speed = 500.0
+speed = 1500.0
 fire_rate = 0.0
 damage = 1.0
 acceleration = 1.0
-friction = 0.15
+friction = 0.025
 weapon_damage = 0.0
 weapon_range = 0.0
 weapon_speed = 0.0

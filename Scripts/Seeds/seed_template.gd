@@ -75,6 +75,9 @@ func travelled_distance():
 func _on_hitbox_area_entered(area):
 	_collide.call_deferred(area)
 
+func _on_hitbox_body_entered(body):
+	_collide.call_deferred(body)
+
 func _collide(body):
 	if ignore_first_collision:
 		ignore_first_collision = false

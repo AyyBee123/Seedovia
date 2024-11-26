@@ -1,0 +1,181 @@
+[gd_scene load_steps=27 format=3 uid="uid://beccqsvpy8njs"]
+
+[ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_q1s71"]
+[ext_resource type="Script" path="res://Scripts/Enemies/Puncky/puncky.gd" id="2_42lyw"]
+[ext_resource type="Resource" uid="uid://b4uy3ext0ni6m" path="res://Resources/Enemies/puncky.tres" id="2_ep3v4"]
+[ext_resource type="Shader" path="res://Shaders/color_tint_shader.gdshader" id="2_oqe4u"]
+[ext_resource type="Script" path="res://Scripts/Enemies/Puncky/state_machine.gd" id="4_gm3wa"]
+[ext_resource type="Texture2D" uid="uid://xgr73dsyn310" path="res://Sprites/Enemies/Puncky.png" id="5_6ri4g"]
+[ext_resource type="Texture2D" uid="uid://xxyym547o3vn" path="res://Sprites/Misc/Shadow.png" id="7_qjqm6"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pyx85"]
+radius = 8.0
+height = 26.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cwx27"]
+resource_local_to_scene = true
+shader = ExtResource("2_oqe4u")
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/tint_factor = 0.0
+shader_parameter/fade = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g8wnc"]
+atlas = ExtResource("5_6ri4g")
+region = Rect2(0, 0, 32, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sqo0h"]
+atlas = ExtResource("5_6ri4g")
+region = Rect2(32, 0, 32, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_37707"]
+atlas = ExtResource("5_6ri4g")
+region = Rect2(64, 0, 32, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h8tnd"]
+atlas = ExtResource("5_6ri4g")
+region = Rect2(256, 0, 32, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_12gct"]
+atlas = ExtResource("5_6ri4g")
+region = Rect2(288, 0, 32, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_glrqn"]
+atlas = ExtResource("5_6ri4g")
+region = Rect2(320, 0, 32, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_751q1"]
+atlas = ExtResource("5_6ri4g")
+region = Rect2(352, 0, 32, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2l7w5"]
+atlas = ExtResource("5_6ri4g")
+region = Rect2(384, 0, 32, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4c31f"]
+atlas = ExtResource("5_6ri4g")
+region = Rect2(416, 0, 32, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_33dhw"]
+atlas = ExtResource("5_6ri4g")
+region = Rect2(448, 0, 32, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_78mhp"]
+atlas = ExtResource("5_6ri4g")
+region = Rect2(160, 0, 32, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1cfwp"]
+atlas = ExtResource("5_6ri4g")
+region = Rect2(192, 0, 32, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ux854"]
+atlas = ExtResource("5_6ri4g")
+region = Rect2(224, 0, 32, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2v7em"]
+atlas = ExtResource("5_6ri4g")
+region = Rect2(96, 0, 32, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3civp"]
+atlas = ExtResource("5_6ri4g")
+region = Rect2(128, 0, 32, 34)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bndmb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g8wnc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sqo0h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_37707")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 0.2,
+"texture": SubResource("AtlasTexture_h8tnd")
+}, {
+"duration": 0.4,
+"texture": SubResource("AtlasTexture_12gct")
+}, {
+"duration": 0.4,
+"texture": SubResource("AtlasTexture_glrqn")
+}, {
+"duration": 0.4,
+"texture": SubResource("AtlasTexture_751q1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2l7w5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4c31f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_33dhw")
+}],
+"loop": false,
+"name": &"Punch",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_78mhp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1cfwp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ux854")
+}],
+"loop": true,
+"name": &"Ready",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2v7em")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3civp")
+}],
+"loop": false,
+"name": &"Ready Beginning",
+"speed": 8.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5b4jp"]
+radius = 8.0
+height = 26.0
+
+[node name="Puncky" instance=ExtResource("1_q1s71")]
+scale = Vector2(1.5, 1.5)
+collision_mask = 0
+script = ExtResource("2_42lyw")
+_enemy_stats = ExtResource("2_ep3v4")
+
+[node name="CollisionPolygon2D" parent="." index="0"]
+shape = SubResource("CapsuleShape2D_pyx85")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+material = SubResource("ShaderMaterial_cwx27")
+sprite_frames = SubResource("SpriteFrames_bndmb")
+animation = &"Ready Beginning"
+autoplay = "Idle"
+
+[node name="CollisionPolygon2D" parent="Enemy Hitbox" index="0"]
+shape = SubResource("CapsuleShape2D_5b4jp")
+
+[node name="state_machine" type="Node" parent="." index="6"]
+script = ExtResource("4_gm3wa")
+
+[node name="Shadow" type="Sprite2D" parent="." index="7"]
+z_index = -2
+position = Vector2(0, 20)
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("7_qjqm6")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
