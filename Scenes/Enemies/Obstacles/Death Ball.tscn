@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cws31owdkv5jp"]
+[gd_scene load_steps=9 format=3 uid="uid://cws31owdkv5jp"]
 
 [ext_resource type="PackedScene" uid="uid://b4qv2oi4vbgws" path="res://Scenes/Enemies/Obstacles/Obstacle.tscn" id="1_as8w0"]
 [ext_resource type="Texture2D" uid="uid://cm0auhl0xerwt" path="res://Sprites/Enemies/Death Ball.png" id="2_thihx"]
 [ext_resource type="Script" path="res://Scripts/Enemies/Obstacles/death_ball.gd" id="2_vo41m"]
 [ext_resource type="Resource" uid="uid://cidng1lhpshe2" path="res://Resources/Enemies/Obstacles/death_ball.tres" id="3_8oqks"]
+[ext_resource type="Texture2D" uid="uid://xxyym547o3vn" path="res://Sprites/Misc/Shadow.png" id="5_jvyc7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r1rki"]
 radius = 26.5
@@ -38,3 +39,9 @@ autoplay = "default"
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 shape = SubResource("CircleShape2D_dcx06")
+
+[node name="Shadow" type="Sprite2D" parent="." index="4"]
+z_index = -2
+position = Vector2(0, 30.5)
+scale = Vector2(1.53125, 0.75)
+texture = ExtResource("5_jvyc7")
