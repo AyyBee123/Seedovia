@@ -20,6 +20,7 @@ signal change_color
 @export var weapon_speed: float # the shot speed of the weapon used by the enemy (not every enemy has a weapon)
 
 var health # enemy's current health
+var damage_reduction: float = 1 # enemy damage reduction (usually altered during certain states/animations)
 
 func initialize_stats(stats: enemy_stats):
 	max_health = stats.max_health
@@ -47,7 +48,7 @@ func increase_max_health(amount):
 func take_damage(damage):
 	spawn_damage_number.emit(damage)
 	change_color.emit()
-	health -= damage
+	health -= damage * damage_reduction
 	health = max(0, health)
 	health_changed.emit(health)
 	if health <= 0:
