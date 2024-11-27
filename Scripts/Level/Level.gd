@@ -235,3 +235,10 @@ func check_for_possesions(reward_item):
 		if reward_item.item.item_name == possesion.item_name:
 			reward_item.set_item(Pool.get_item(Pool.pools[Pool.pools.find(Global.next_reward)]))
 			check_for_possesions(reward_item)
+
+func _notification(what: int):
+	if what == NOTIFICATION_APPLICATION_FOCUS_OUT:
+		if player.get_node("Inventory").visible: # or stat sheet is visible (when I add the stat sheet)
+			player.get_node("Inventory").visible = false
+		var pause_menu = resource_preloader.get_resource("Pause Menu").instantiate()
+		add_child.call_deferred(pause_menu)
