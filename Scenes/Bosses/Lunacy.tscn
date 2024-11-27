@@ -328,6 +328,7 @@ position = Vector2(0, -2.66667)
 sprite_frames = SubResource("SpriteFrames_28yne")
 animation = &"Idle"
 autoplay = "Idle"
+frame_progress = 0.602946
 
 [node name="CollisionPolygon2D" parent="Enemy Hitbox" index="0"]
 visible = false
