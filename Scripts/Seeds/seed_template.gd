@@ -48,6 +48,8 @@ var transferred_damage_multiplier: float = 1 # damage multiplier of the weapon
 var transferred_blast_radius_multiplier: float = 1 # blast/splash radius multiplier of the weapon
 var transferred_fire_rate_multiplier: float = 1 # fire rate multiplier of the weapon
 
+var seed_pool: Array = [] # pool to add the next seed to
+
 func _ready():
 	speed_multiplier *= transferred_speed_multiplier
 	range_multiplier *= transferred_range_multiplier
@@ -130,3 +132,24 @@ func get_next_weapon():
 func set_ignore_first_collision():
 	await get_tree().process_frame
 	ignore_first_collision = false
+
+## when the object is "destroyed", add it back to the pool
+## also add a couple to the pool on _ready
+func add_to_pool(object: Node2D) -> void:
+	seed_pool.append(object)
+	object.set_process(false)
+	object.set_physics_process(false)
+	object.hide()
+
+## pull the object from the pool and use it in the scene (when firing a projectile, for instance)
+func pull_from_pool(scene: PackedScene) -> Node2D:
+	var object: Node2D
+	if seed_pool.is_empty():
+		object = scene.instantiate()
+	else:
+		object = seed_pool[0]
+		seed_pool.remove_at(0)
+	object.set_process(true)
+	object.set_physics_process(true)
+	object.show()
+	return object
