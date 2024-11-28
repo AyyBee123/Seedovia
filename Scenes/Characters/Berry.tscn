@@ -60,4 +60,7 @@ position = Vector2(0, -2)
 [node name="Hand" parent="Rotation Point/Marker2D" index="0"]
 texture = ExtResource("4_n1ask")
 
+[node name="Shadow" parent="." index="13"]
+position = Vector2(0, 8)
+
 [node name="BerryStats" parent="." index="15" instance=ExtResource("2_vgwbe")]

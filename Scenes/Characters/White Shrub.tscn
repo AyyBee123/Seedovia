@@ -61,5 +61,8 @@ position = Vector2(0, 0.5)
 [node name="Hand" parent="Rotation Point/Marker2D" index="0"]
 texture = ExtResource("8_qnhjt")
 
+[node name="Shadow" parent="." index="13"]
+position = Vector2(0, 10.5)
+
 [node name="CollisionShape2D" parent="Pickup Radius" index="0"]
 visible = false
