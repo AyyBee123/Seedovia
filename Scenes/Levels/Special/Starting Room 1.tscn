@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=4 uid="uid://bo2oq75pfugsl"]
+[gd_scene load_steps=3 format=4 uid="uid://bo2oq75pfugsl"]
 
 [ext_resource type="PackedScene" uid="uid://cxoiy0x4nvtaa" path="res://Scenes/Levels/Base Level.tscn" id="1_ao5jt"]
 [ext_resource type="PackedScene" uid="uid://bagmkum7q0yxi" path="res://Scenes/Enemies/Dummy.tscn" id="2_o43ij"]
-[ext_resource type="PackedScene" uid="uid://dwdf1e1fw3t5u" path="res://Scenes/Bosses/Lunacy.tscn" id="3_ppstf"]
 
 [node name="Level" instance=ExtResource("1_ao5jt")]
 
@@ -11,6 +10,3 @@ tile_map_data = PackedByteArray("AAD5//z/AAAAAAAAAAD4//z/AQAAAAAAAAD4//3/AQAAAAA
 
 [node name="Dummy" parent="." index="4" instance=ExtResource("2_o43ij")]
 position = Vector2(-550, -200)
-
-[node name="Lunacy" parent="." index="10" instance=ExtResource("3_ppstf")]
-position = Vector2(-1, -175)
