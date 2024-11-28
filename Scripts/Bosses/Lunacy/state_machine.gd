@@ -14,7 +14,7 @@ func _ready():
 	add_state("lunacy")
 	set_state.call_deferred(states.idle)
 	# the random attacks are set up in the get_transition function
-	random_attack = randi_range(0, 2)
+	random_attack = random_attack_value()
 
 func _state_logic(delta):
 	if state == states.idle:
@@ -87,18 +87,24 @@ func _enter_state(new_state, old_state):
 func _exit_state(old_state, new_state):
 	match old_state:
 		states.teeth:
-			random_attack = randi_range(0, 2)
-			timer.start(randf_range(1,2.5))
+			random_attack = random_attack_value()
+			set_random_time()
 		states.lunacy:
-			random_attack = randi_range(0, 2)
-			timer.start(randf_range(1,2.5))
+			random_attack = random_attack_value()
+			set_random_time()
 		states.tahw:
-			random_attack = randi_range(0, 2)
-			timer.start(randf_range(1,2.5))
+			random_attack = random_attack_value()
+			set_random_time()
 		states.what:
-			timer.start(randf_range(1,2.5))
+			set_random_time()
 		states.laser:
 			timer.start(1)
+
+func random_attack_value():
+	return randi_range(0, 2)
+
+func set_random_time():
+	timer.start(randf_range(1,2.5))
 
 func create_timer():
 	add_child(timer)
