@@ -133,6 +133,8 @@ func pause():
 		if player.get_node("Inventory").visible: # or stat sheet is visible (when I add the stat sheet)
 			player.get_node("Inventory").visible = false
 		else:
+			if get_node_or_null("PauseMenu"):
+				return
 			var pause_menu = resource_preloader.get_resource("Pause Menu").instantiate()
 			add_child(pause_menu)
 
@@ -238,6 +240,8 @@ func check_for_possesions(reward_item):
 
 func _notification(what: int):
 	if what == NOTIFICATION_APPLICATION_FOCUS_OUT:
+		if get_node_or_null("PauseMenu"):
+			return
 		if player.get_node("Inventory").visible: # or stat sheet is visible (when I add the stat sheet)
 			player.get_node("Inventory").visible = false
 		var pause_menu = resource_preloader.get_resource("Pause Menu").instantiate()
