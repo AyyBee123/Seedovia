@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://dwdf1e1fw3t5u"]
+[gd_scene load_steps=50 format=3 uid="uid://dwdf1e1fw3t5u"]
 
 [ext_resource type="PackedScene" uid="uid://bfapejv6ymqws" path="res://Scenes/Bosses/Boss.tscn" id="1_ip7gk"]
 [ext_resource type="Script" path="res://Scripts/Bosses/Lunacy/lunacy.gd" id="2_1itmv"]
@@ -16,6 +16,66 @@ shader = ExtResource("2_2ba3b")
 shader_parameter/color = Color(1, 0, 0, 1)
 shader_parameter/tint_factor = 0.0
 shader_parameter/fade = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mkttt"]
+atlas = ExtResource("3_an2mv")
+region = Rect2(4004, 0, 154, 121)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_637ax"]
+atlas = ExtResource("3_an2mv")
+region = Rect2(3850, 0, 154, 121)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lrysg"]
+atlas = ExtResource("3_an2mv")
+region = Rect2(3696, 0, 154, 121)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_smv7w"]
+atlas = ExtResource("3_an2mv")
+region = Rect2(3542, 0, 154, 121)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qly8o"]
+atlas = ExtResource("3_an2mv")
+region = Rect2(3388, 0, 154, 121)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g0egt"]
+atlas = ExtResource("3_an2mv")
+region = Rect2(3234, 0, 154, 121)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p5k3o"]
+atlas = ExtResource("3_an2mv")
+region = Rect2(3080, 0, 154, 121)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kesfl"]
+atlas = ExtResource("3_an2mv")
+region = Rect2(2926, 0, 154, 121)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wteyw"]
+atlas = ExtResource("3_an2mv")
+region = Rect2(2772, 0, 154, 121)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_prv73"]
+atlas = ExtResource("3_an2mv")
+region = Rect2(2618, 0, 154, 121)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7t7jx"]
+atlas = ExtResource("3_an2mv")
+region = Rect2(2464, 0, 154, 121)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iljgo"]
+atlas = ExtResource("3_an2mv")
+region = Rect2(2310, 0, 154, 121)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_52mx6"]
+atlas = ExtResource("3_an2mv")
+region = Rect2(2156, 0, 154, 121)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uyl60"]
+atlas = ExtResource("3_an2mv")
+region = Rect2(2002, 0, 154, 121)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nvpiy"]
+atlas = ExtResource("3_an2mv")
+region = Rect2(1848, 0, 154, 121)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mj8bh"]
 atlas = ExtResource("3_an2mv")
@@ -85,66 +145,6 @@ region = Rect2(1540, 0, 154, 121)
 atlas = ExtResource("3_an2mv")
 region = Rect2(1694, 0, 154, 121)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nvpiy"]
-atlas = ExtResource("3_an2mv")
-region = Rect2(1848, 0, 154, 121)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uyl60"]
-atlas = ExtResource("3_an2mv")
-region = Rect2(2002, 0, 154, 121)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_52mx6"]
-atlas = ExtResource("3_an2mv")
-region = Rect2(2156, 0, 154, 121)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_iljgo"]
-atlas = ExtResource("3_an2mv")
-region = Rect2(2310, 0, 154, 121)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7t7jx"]
-atlas = ExtResource("3_an2mv")
-region = Rect2(2464, 0, 154, 121)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_prv73"]
-atlas = ExtResource("3_an2mv")
-region = Rect2(2618, 0, 154, 121)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wteyw"]
-atlas = ExtResource("3_an2mv")
-region = Rect2(2772, 0, 154, 121)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kesfl"]
-atlas = ExtResource("3_an2mv")
-region = Rect2(2926, 0, 154, 121)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_p5k3o"]
-atlas = ExtResource("3_an2mv")
-region = Rect2(3080, 0, 154, 121)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_g0egt"]
-atlas = ExtResource("3_an2mv")
-region = Rect2(3234, 0, 154, 121)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qly8o"]
-atlas = ExtResource("3_an2mv")
-region = Rect2(3388, 0, 154, 121)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_smv7w"]
-atlas = ExtResource("3_an2mv")
-region = Rect2(3542, 0, 154, 121)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lrysg"]
-atlas = ExtResource("3_an2mv")
-region = Rect2(3696, 0, 154, 121)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_637ax"]
-atlas = ExtResource("3_an2mv")
-region = Rect2(3850, 0, 154, 121)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mkttt"]
-atlas = ExtResource("3_an2mv")
-region = Rect2(4004, 0, 154, 121)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_iljhr"]
 atlas = ExtResource("3_an2mv")
 region = Rect2(4004, 0, 154, 121)
@@ -163,6 +163,56 @@ region = Rect2(4466, 0, 154, 121)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_28yne"]
 animations = [{
+"frames": [{
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_mkttt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_637ax")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lrysg")
+}, {
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_smv7w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qly8o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g0egt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p5k3o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kesfl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wteyw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_prv73")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7t7jx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iljgo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_52mx6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uyl60")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nvpiy")
+}],
+"loop": false,
+"name": &"FTW",
+"speed": 10.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_mj8bh")
@@ -320,6 +370,42 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_051yt"]
 radius = 58.0086
 
+[sub_resource type="Animation" id="Animation_72i4m"]
+resource_name = "WTF"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 3.14159]
+}
+
+[sub_resource type="Animation" id="Animation_yvcvw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jcojs"]
+_data = {
+"RESET": SubResource("Animation_yvcvw"),
+"WTF": SubResource("Animation_72i4m")
+}
+
 [node name="Lunacy" instance=ExtResource("1_ip7gk")]
 script = ExtResource("2_1itmv")
 _enemy_stats = ExtResource("3_kgrpg")
@@ -336,13 +422,25 @@ position = Vector2(0, -2.66667)
 sprite_frames = SubResource("SpriteFrames_28yne")
 animation = &"Idle"
 autoplay = "Idle"
-frame_progress = 0.556868
+frame_progress = 0.543386
 
 [node name="CollisionPolygon2D" parent="Enemy Hitbox" index="0"]
 shape = SubResource("CircleShape2D_051yt")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="8"]
+libraries = {
+"": SubResource("AnimationLibrary_jcojs")
+}
 
 [node name="Fire Rate" type="Timer" parent="." index="9"]
 wait_time = 0.3
 one_shot = true
+
+[node name="Lunacy Duration" type="Timer" parent="." index="10"]
+wait_time = 7.0
+one_shot = true
+
+[connection signal="animation_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_changed"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
+[connection signal="timeout" from="Lunacy Duration" to="." method="_on_lunacy_duration_timeout"]

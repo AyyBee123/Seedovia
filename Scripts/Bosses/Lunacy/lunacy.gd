@@ -2,6 +2,9 @@ extends "res://Scripts/Bosses/boss.gd"
 
 @onready var lunacy_projectile := preload("res://Scenes/Enemies/Weapons/Lunacy Projectile.tscn")
 @onready var fire_rate := $"Fire Rate"
+@onready var animation_player = $AnimationPlayer
+@onready var animated_sprite_2d = $AnimatedSprite2D
+@onready var lunacy_duration = $"Lunacy Duration"
 
 var lunacy_proj_pool := []
 var teeth_pool := []
@@ -9,13 +12,78 @@ var pos_x: float
 var pos_y: float
 var positions := ["UP", "DOWN", "LEFT", "RIGHT"]
 var pos
+var fade: float = 1
+var _in_lunacy: bool
+
+var teeth_finished: bool
+var what_finished: bool
+var laser_finished: bool
+var tahw_finished: bool
+var lunacy_almost_finished: bool
+var lunacy_finished: bool
 
 func _ready():
 	super._ready()
 
 func _physics_process(delta):
 	super._physics_process(delta)
-	fire_lunacy()
+
+func idle():
+	lunacy_duration.stop()
+	lunacy_almost_finished = false
+
+func teeth():
+	pass
+
+func what():
+	pass
+
+func what_idle():
+	pass
+
+func laser():
+	pass
+
+func tahw():
+	pass
+
+func lunacy():
+	animated_sprite_2d.material.set("shader_parameter/fade", fade)
+	if not lunacy_almost_finished:
+		fade = max(fade - 2 * get_physics_process_delta_time(), 0)
+	if lunacy_duration.is_stopped() and fade <= 0:
+		$"Enemy Hitbox/CollisionPolygon2D".disabled = true
+		_in_lunacy = true
+		lunacy_duration.start()
+	if lunacy_almost_finished:
+		lunacy_duration.stop()
+		await get_tree().create_timer(5).timeout
+		fade = min(fade + 2 * get_physics_process_delta_time(), 1)
+	if lunacy_almost_finished and fade >= 1:
+		$"Enemy Hitbox/CollisionPolygon2D".disabled = false
+		_in_lunacy = false
+		lunacy_finished = true
+	if not lunacy_duration.is_stopped():
+		fire_lunacy()
+
+func _on_lunacy_duration_timeout():
+	lunacy_almost_finished = true
+
+func _on_animated_sprite_2d_animation_changed():
+	pass
+
+func _on_animated_sprite_2d_animation_finished():
+	if animated_sprite_2d.animation == "WTF":
+		what_finished = true
+	if animated_sprite_2d.animation == "Laser":
+		laser_finished = true
+	if animated_sprite_2d.animation == "Teeth":
+		teeth_finished = true
+	if animated_sprite_2d.animation == "FTW":
+		tahw_finished = true
+
+func _on_animated_sprite_2d_frame_changed():
+	pass
 
 ## when the object is "destroyed", add it back to the pool
 ## also add a couple to the pool on _ready
@@ -69,3 +137,15 @@ func fire_lunacy():
 	var proj = pull_from_pool(lunacy_projectile, lunacy_proj_pool)
 	if not proj.get_parent(): # if it's not already added as a child
 		get_tree().current_scene.add_child(proj)
+
+func spawn_damage_number(damage: float):
+	if _in_lunacy:
+		return
+	var value = str(round(damage))
+	var pos = global_position
+	var height = 20
+	var spread = 75
+	var damage_text = damage_number.instantiate()
+	get_tree().current_scene.add_child(damage_text, true)
+	damage_text.global_position = global_position
+	damage_text.set_and_animate_damage(damage, pos, height, spread)
