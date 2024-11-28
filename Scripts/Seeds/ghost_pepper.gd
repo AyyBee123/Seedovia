@@ -10,6 +10,10 @@ var _is_dying := false
 @onready var fire_rate = $"Fire Rate"
 @onready var lifetime = $Lifetime
 
+func _ready():
+	super._ready()
+	transferred_damage_multiplier *= damage_multiplier
+
 func _physics_process(delta):
 	super._physics_process(delta)
 	look()
