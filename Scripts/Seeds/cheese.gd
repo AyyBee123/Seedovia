@@ -48,7 +48,8 @@ func _physics_process(delta):
 	t += delta * 2.5
 	set_variable_sizes()
 	if not _was_previous_weapon: # if fired from the player
-		rect_width = min(player._player_stats.get_stat("Weapon_Range") * range_multiplier * t, player._player_stats.get_stat("Weapon_Range") * range_multiplier)
+		rect_width = min(player._player_stats.get_stat("Weapon_Range") \
+				 * range_multiplier * t, player._player_stats.get_stat("Weapon_Range") * range_multiplier)
 		if not mouse_left_down:
 			queue_free()
 	else:
