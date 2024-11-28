@@ -6,6 +6,7 @@ var player
 func _ready():
 	_enemy_stats.initialize_stats(_enemy_stats)
 	_enemy_stats.set_health(_enemy_stats.max_health)
+	
 	_enemy_stats.health_changed.connect(update_health)
 	_enemy_stats.health_depleted.connect(die)
 

@@ -11,6 +11,7 @@ func _ready():
 	_enemy_stats.health_changed.connect(update_health)
 	_enemy_stats.health_depleted.connect(die)
 	_enemy_stats.spawn_damage_number.connect(spawn_damage_number)
+	_enemy_stats.change_color.connect(change_color)
 	boss_name.text = self.name
 	boss_health_bar.init_health(_enemy_stats.max_health)
 

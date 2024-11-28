@@ -1,11 +1,62 @@
 extends AnimatedSprite2D
 
+const SPEED := 150.0
 
-# Called when the node enters the scene tree for the first time.
+@export var _enemy_stats: enemy_stats
+
+var direction: Vector2
+var source
+var player
+var damage := 1
+var rotation_direction
+
 func _ready():
-	pass # Replace with function body.
+	_enemy_stats = _enemy_stats.duplicate()
+	_enemy_stats.initialize_stats(_enemy_stats)
+	_enemy_stats.set_health(_enemy_stats.max_health)
+	_enemy_stats.spawn_damage_number.connect(transfer_damage)
+	_enemy_stats.health_changed.connect(update_health)
+	_enemy_stats.change_color.connect(change_color)
+	
+	if randf() < 0.5:
+		play("Normal")
+	else:
+		play("WTF")
+	
+	if randf() < 0.5:
+		rotation_direction = 1
+	else:
+		rotation_direction = -1
 
+func _physics_process(delta):
+	update_position(delta)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func _on_visible_on_screen_notifier_2d_screen_exited():
+	if source:
+		source.add_to_pool(self, source.lunacy_proj_pool)
+	set_process(false)
+	set_physics_process(false)
+	hide()
+
+func update_position(delta):
+	var current_velocity: Vector2 = direction * SPEED
+	position += current_velocity * delta
+	rotation += PI/4 * delta * rotation_direction
+
+func _on_area_2d_body_entered(body):
+	if body.is_in_group("Players"):
+		player = body
+		player._player_stats.take_damage(self)
+
+func transfer_damage(amount):
+	if source == null:
+		return
+	source._enemy_stats.take_damage(amount * 0.1)
+
+func update_health(new_health):
+	_enemy_stats.set_health(_enemy_stats.max_health)
+
+func change_color():
+	material.set("shader_parameter/tint_factor", 0.8)
+	await get_tree().create_timer(0.05, false).timeout
+	material.set("shader_parameter/tint_factor", 0.0)
