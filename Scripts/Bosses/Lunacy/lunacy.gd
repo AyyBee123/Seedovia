@@ -5,6 +5,7 @@ extends "res://Scripts/Bosses/boss.gd"
 @onready var animation_player = $AnimationPlayer
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var lunacy_duration = $"Lunacy Duration"
+@onready var laser_animation = $"Lasers/Laser Animation"
 
 var lunacy_proj_pool := []
 var teeth_pool := []
@@ -21,9 +22,6 @@ var laser_finished: bool
 var tahw_finished: bool
 var lunacy_almost_finished: bool
 var lunacy_finished: bool
-
-func _ready():
-	super._ready()
 
 func _physics_process(delta):
 	super._physics_process(delta)
@@ -42,7 +40,14 @@ func what_idle():
 	pass
 
 func laser():
-	pass
+	$Lasers.scale = Vector2.ONE
+	if not laser_animation.is_playing() and not laser_finished:
+		laser_animation.play("Lasers")
+
+func finish_laser():
+	laser_finished = true
+	$Lasers.scale = Vector2.ZERO
+	animated_sprite_2d.play("Laser End")
 
 func tahw():
 	pass
@@ -75,15 +80,20 @@ func _on_animated_sprite_2d_animation_changed():
 func _on_animated_sprite_2d_animation_finished():
 	if animated_sprite_2d.animation == "WTF":
 		what_finished = true
-	if animated_sprite_2d.animation == "Laser":
-		laser_finished = true
 	if animated_sprite_2d.animation == "Teeth":
 		teeth_finished = true
 	if animated_sprite_2d.animation == "FTW":
 		tahw_finished = true
+	if animated_sprite_2d.animation == "Laser Beginning":
+		animated_sprite_2d.play("Laser")
 
 func _on_animated_sprite_2d_frame_changed():
-	pass
+	if animated_sprite_2d.animation == "WTF":
+		if animated_sprite_2d.frame == 6:
+			animation_player.play("WTF")
+	if animated_sprite_2d.animation == "FTW":
+		if animated_sprite_2d.frame == 4:
+			animation_player.play_backwards("WTF")
 
 ## when the object is "destroyed", add it back to the pool
 ## also add a couple to the pool on _ready

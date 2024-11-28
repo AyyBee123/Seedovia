@@ -52,11 +52,13 @@ func _get_transition(delta):
 				return states.what_idle
 		states.laser:
 			if parent.laser_finished:
-				parent.laser_finished = false
 				return states.what_idle
 		states.what_idle:
-			if timer.is_stopped() and parent.laser_finished and get_parent().player != null:
+			if timer.is_stopped() and not parent.laser_finished:
 				return states.laser
+			if timer.is_stopped() and parent.laser_finished:
+				parent.laser_finished = false
+				return states.tahw
 		states.tahw:
 			if parent.tahw_finished:
 				parent.tahw_finished = false
@@ -87,11 +89,13 @@ func _exit_state(old_state, new_state):
 		states.teeth:
 			random_attack = randi_range(0, 2)
 			timer.start(randf_range(1,2.5))
-		states.what:
-			random_attack = randi_range(0, 2)
-			timer.start(randf_range(1,2.5))
 		states.lunacy:
 			random_attack = randi_range(0, 2)
+			timer.start(randf_range(1,2.5))
+		states.tahw:
+			random_attack = randi_range(0, 2)
+			timer.start(randf_range(1,2.5))
+		states.what:
 			timer.start(randf_range(1,2.5))
 		states.laser:
 			timer.start(1)

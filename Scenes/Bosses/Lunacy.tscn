@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://dwdf1e1fw3t5u"]
+[gd_scene load_steps=60 format=3 uid="uid://dwdf1e1fw3t5u"]
 
 [ext_resource type="PackedScene" uid="uid://bfapejv6ymqws" path="res://Scenes/Bosses/Boss.tscn" id="1_ip7gk"]
 [ext_resource type="Script" path="res://Scripts/Bosses/Lunacy/lunacy.gd" id="2_1itmv"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://dt5icjd8t6jy5" path="res://Sprites/Bosses/Lunacy/Lunacy.png" id="3_an2mv"]
 [ext_resource type="Script" path="res://Scripts/Bosses/Lunacy/state_machine.gd" id="3_kcoqw"]
 [ext_resource type="Resource" uid="uid://ba7khgxopgh03" path="res://Resources/Bosses/lunacy.tres" id="3_kgrpg"]
+[ext_resource type="Texture2D" uid="uid://bnci24akyvubs" path="res://Sprites/Bosses/Lunacy/Laser.png" id="7_2gtas"]
+[ext_resource type="Script" path="res://Scripts/Bosses/Lunacy/laser.gd" id="8_wi3ux"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_y83ur"]
 radius = 57.3333
@@ -173,25 +175,25 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_lrysg")
 }, {
-"duration": 5.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_smv7w")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_qly8o")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_g0egt")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_p5k3o")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_kesfl")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_wteyw")
 }, {
-"duration": 1.0,
+"duration": 3.0,
 "texture": SubResource("AtlasTexture_prv73")
 }, {
 "duration": 1.0,
@@ -266,6 +268,17 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_j7j0u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7pv38")
+}],
+"loop": true,
+"name": &"Laser End",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_fsad0")
 }, {
 "duration": 5.0,
@@ -312,19 +325,19 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_prv73")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_wteyw")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_kesfl")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_p5k3o")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_g0egt")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_qly8o")
 }, {
 "duration": 5.0,
@@ -379,10 +392,10 @@ tracks/0/path = NodePath("AnimatedSprite2D:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 3.14159]
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0.0, 0.628319, 1.25664, 1.88496, 2.51327, 3.14159]
 }
 
 [sub_resource type="Animation" id="Animation_yvcvw"]
@@ -406,6 +419,162 @@ _data = {
 "WTF": SubResource("Animation_72i4m")
 }
 
+[sub_resource type="Animation" id="Animation_ngjid"]
+resource_name = "Lasers"
+length = 13.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Laser:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 4, 5, 8.5, 9, 11.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [1.52716, 1.52716, -1.52716, -1.52716, 1.52716, 1.52716, -1.52716]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Laser:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 12.5, 13.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1e-05), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1e-05)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Laser2:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 5, 8.5, 9, 11.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [1.52716, 1.52716, -1.52716, -1.52716, 1.52716]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Laser2:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 4.25, 5, 12.5, 13.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1e-05), Vector2(1, 0), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1e-05)]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("..")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(13.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"finish_laser"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_id67s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Laser:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Laser2:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1e-05)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Laser:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.52716]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Laser2:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.52716]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bjxpp"]
+_data = {
+"Lasers": SubResource("Animation_ngjid"),
+"RESET": SubResource("Animation_id67s")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bggcr"]
+atlas = ExtResource("7_2gtas")
+region = Rect2(0, 0, 18, 590)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_twr56"]
+atlas = ExtResource("7_2gtas")
+region = Rect2(18, 0, 18, 590)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1vk4o"]
+atlas = ExtResource("7_2gtas")
+region = Rect2(36, 0, 18, 590)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2icqu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bggcr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_twr56")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1vk4o")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xsn2u"]
+resource_local_to_scene = true
+size = Vector2(14, 590)
+
 [node name="Lunacy" instance=ExtResource("1_ip7gk")]
 script = ExtResource("2_1itmv")
 _enemy_stats = ExtResource("3_kgrpg")
@@ -420,9 +589,8 @@ shape = SubResource("CircleShape2D_y83ur")
 material = SubResource("ShaderMaterial_60kbx")
 position = Vector2(0, -2.66667)
 sprite_frames = SubResource("SpriteFrames_28yne")
-animation = &"Idle"
+animation = &"Laser End"
 autoplay = "Idle"
-frame_progress = 0.543386
 
 [node name="CollisionPolygon2D" parent="Enemy Hitbox" index="0"]
 shape = SubResource("CircleShape2D_051yt")
@@ -440,7 +608,60 @@ one_shot = true
 wait_time = 7.0
 one_shot = true
 
+[node name="Lasers" type="Node2D" parent="." index="11"]
+position = Vector2(0, -26)
+scale = Vector2(1e-05, 1e-05)
+
+[node name="Laser Animation" type="AnimationPlayer" parent="Lasers" index="0"]
+libraries = {
+"": SubResource("AnimationLibrary_bjxpp")
+}
+
+[node name="Laser" type="AnimatedSprite2D" parent="Lasers" index="1"]
+rotation = 1.52716
+scale = Vector2(1, 1e-05)
+sprite_frames = SubResource("SpriteFrames_2icqu")
+autoplay = "default"
+offset = Vector2(0, 295)
+script = ExtResource("8_wi3ux")
+
+[node name="Damage Buffer" type="Timer" parent="Lasers/Laser" index="0"]
+wait_time = 0.1
+one_shot = true
+
+[node name="Area2D" type="Area2D" parent="Lasers/Laser" index="1"]
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lasers/Laser/Area2D" index="0"]
+position = Vector2(0, 295)
+shape = SubResource("RectangleShape2D_xsn2u")
+
+[node name="Laser2" type="AnimatedSprite2D" parent="Lasers" index="2"]
+rotation = 1.52716
+scale = Vector2(1, 1e-05)
+sprite_frames = SubResource("SpriteFrames_2icqu")
+autoplay = "default"
+offset = Vector2(0, 295)
+script = ExtResource("8_wi3ux")
+
+[node name="Damage Buffer" type="Timer" parent="Lasers/Laser2" index="0"]
+wait_time = 0.1
+one_shot = true
+
+[node name="Area2D" type="Area2D" parent="Lasers/Laser2" index="1"]
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lasers/Laser2/Area2D" index="0"]
+position = Vector2(0, 295)
+shape = SubResource("RectangleShape2D_xsn2u")
+
 [connection signal="animation_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_changed"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="timeout" from="Lunacy Duration" to="." method="_on_lunacy_duration_timeout"]
+[connection signal="body_entered" from="Lasers/Laser/Area2D" to="Lasers/Laser" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Lasers/Laser/Area2D" to="Lasers/Laser" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="Lasers/Laser2/Area2D" to="Lasers/Laser2" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Lasers/Laser2/Area2D" to="Lasers/Laser2" method="_on_area_2d_body_exited"]
