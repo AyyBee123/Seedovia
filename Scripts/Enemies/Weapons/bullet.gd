@@ -15,6 +15,7 @@ func _ready():
 	starting_position = global_position
 
 func _physics_process(delta):
+	initialize_position()
 	travelled_distance()
 	update_position(delta)
 
@@ -42,3 +43,8 @@ func update_position(delta):
 	var current_velocity: Vector2 = direction * speed
 	position += current_velocity * delta
 	look_at(global_position + current_velocity)
+
+func initialize_position():
+	if not position_initialized:
+		starting_position = global_position
+		position_initialized = true
