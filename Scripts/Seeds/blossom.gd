@@ -9,6 +9,10 @@ var time_to_live: float = 5
 var blossom_fire_rate_multiplier: float = 0.5
 var hit_wall := false
 
+func _ready():
+	super._ready()
+	deceleration.start()
+
 func _physics_process(delta):
 	super._physics_process(delta)
 	if fire_rate.is_stopped() and get_nearest_enemy() != null and deceleration.is_stopped():

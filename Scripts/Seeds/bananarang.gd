@@ -15,6 +15,7 @@ var _was_previous_weapon := false
 
 func _ready():
 	super._ready()
+	lifetime.start()
 	if previous_weapon:
 		_was_previous_weapon = true
 

@@ -106,16 +106,16 @@ frame_progress = 0.0674326
 script = ExtResource("2_jhixh")
 _enemy_stats = ExtResource("3_c34ba")
 
-[node name="Area2D" type="Area2D" parent="." groups=["Enemies"]]
+[node name="Enemy Hitbox" type="Area2D" parent="." groups=["Enemies"]]
 collision_layer = 20
 collision_mask = 10
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy Hitbox"]
 shape = SubResource("CircleShape2D_fttd7")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(-1.19209e-07, 3.8147e-06)
 scale = Vector2(7.8, 6.2)
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Enemy Hitbox" to="." method="_on_enemy_hitbox_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

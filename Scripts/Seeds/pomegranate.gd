@@ -26,6 +26,8 @@ var time_elapsed: float
 
 func _ready():
 	super._ready()
+	deceleration.start()
+	lifetime.start()
 	spawn_id = spawn_order
 	spawn_order += 1
 	random_num = [-1, 1].pick_random()

@@ -19,6 +19,7 @@ func _ready():
 	visible = true
 	starting_position = global_position
 	direction = -desired_direction.normalized()
+	deceleration.start()
 
 func _physics_process(delta):
 	super._physics_process(delta)

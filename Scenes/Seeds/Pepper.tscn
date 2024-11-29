@@ -25,13 +25,11 @@ shape = SubResource("CircleShape2D_rsbvv")
 [node name="ResourcePreloader" type="ResourcePreloader" parent="." index="1"]
 resources = [PackedStringArray("Explosion", "Pepper Child"), [ExtResource("4_heiu2"), ExtResource("5_c7mbt")]]
 
-[node name="Projectile Deceleration" type="Timer" parent="." index="2"]
+[node name="Deceleration" type="Timer" parent="." index="2"]
 one_shot = true
-autostart = true
 
 [node name="Lifetime" type="Timer" parent="." index="3"]
 one_shot = true
-autostart = true
 
 [node name="MildExplosion" type="AudioStreamPlayer" parent="." index="5"]
 stream = ExtResource("6_b56dy")

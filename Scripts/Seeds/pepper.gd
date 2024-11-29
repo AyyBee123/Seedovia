@@ -1,18 +1,26 @@
 extends "res://Scripts/Seeds/seed_template.gd"
 
-@onready var projectile_speed_timer := $"Projectile Deceleration"
+@onready var deceleration := $Deceleration
 @onready var resource_preloader := $ResourcePreloader
 @onready var mild_explosion_SFX = $MildExplosion
+@onready var lifetime = $Lifetime
+
+func _ready():
+	super._ready()
+	lifetime.start()
+	deceleration.start()
 
 func update_position(delta):
-	current_velocity = direction * player._player_stats.get_stat("Weapon_Speed") * speed_multiplier * projectile_speed_timer.time_left
+	current_velocity = direction * player._player_stats.get_stat("Weapon_Speed") * speed_multiplier \
+			* deceleration.time_left
 	position += current_velocity * delta
 
 func _collide(body):
 	if not ignore_first_collision:
 		has_collided.emit(body)
 		if body.is_in_group("Enemies"):
-			body.get_parent()._enemy_stats.take_damage(player._player_stats.get_stat("Weapon_Damage") * damage_multiplier / 2)
+			body.get_parent()._enemy_stats.take_damage(player._player_stats.get_stat("Weapon_Damage") \
+					* damage_multiplier / 2)
 		explode()
 	else:
 		ignore_first_collision = false

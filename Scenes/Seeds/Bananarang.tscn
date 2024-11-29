@@ -39,7 +39,7 @@ one_shot = true
 
 [node name="Lifetime" type="Timer" parent="." index="5"]
 wait_time = 8.0
-autostart = true
+one_shot = true
 
 [node name="Hit" type="AudioStreamPlayer" parent="." index="6"]
 stream = ExtResource("4_f3f5d")

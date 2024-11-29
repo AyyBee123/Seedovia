@@ -28,7 +28,6 @@ shape = SubResource("CircleShape2D_akjco")
 [node name="Randomize Interval" type="Timer" parent="." index="1"]
 wait_time = 0.333
 one_shot = true
-autostart = true
 
 [node name="ResourcePreloader" type="ResourcePreloader" parent="." index="2"]
 resources = [PackedStringArray("D6 (1)", "D6 (2)", "D6 (3)", "D6 (4)", "D6 (5)", "D6 (6)", "D6 (I)"), [ExtResource("4_ooc7t"), ExtResource("5_g7fhl"), ExtResource("6_jsvrk"), ExtResource("7_4sfs0"), ExtResource("8_eosq7"), ExtResource("2_f03bl"), ExtResource("9_mj23h")]]

@@ -2,27 +2,30 @@ extends "res://Scripts/Seeds/seed_template.gd"
 
 var parent
 
-@onready var projectile_speed_timer := $"Projectile Deceleration"
-@onready var life_time := $Lifetime
+@onready var deceleration := $Deceleration
+@onready var lifetime := $Lifetime
 @onready var resource_preloader := $ResourcePreloader
 @onready var mild_explosion_SFX = $MildExplosion
 
 func _ready():
-	projectile_speed_timer.start()
-	life_time.start()
+	super._ready()
+	deceleration.start()
+	lifetime.start()
 
 func _physics_process(delta):
 	update_position(delta)
 
 func update_position(delta):
-	var current_velocity: Vector2 = direction * player._player_stats.get_stat("Weapon_Speed") * speed_multiplier * projectile_speed_timer.time_left
+	var current_velocity: Vector2 = direction * player._player_stats.get_stat("Weapon_Speed") * speed_multiplier \
+			* deceleration.time_left
 	position += current_velocity * delta
 	look_at(global_position + current_velocity)
 
 func _on_hitbox_area_entered(area):
 	has_collided.emit(area)
 	if area.is_in_group("Enemies"):
-			area.get_parent()._enemy_stats.take_damage(player._player_stats.get_stat("Weapon_Damage") * damage_multiplier / 2)
+			area.get_parent()._enemy_stats.take_damage(player._player_stats.get_stat("Weapon_Damage") \
+					* damage_multiplier / 2)
 	explode()
 
 func _on_hitbox_body_entered(body):

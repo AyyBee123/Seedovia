@@ -32,7 +32,8 @@ func _physics_process(delta):
 	for i in enemies_in_area.size():
 		if tick_timers[i].is_stopped():
 			if is_instance_valid(enemies_in_area[i]):
-				enemies_in_area[i]._enemy_stats.take_damage(player._player_stats.get_stat("Weapon_Damage") * damage_multiplier)
+				enemies_in_area[i]._enemy_stats.take_damage(player._player_stats.get_stat("Weapon_Damage") \
+				* damage_multiplier)
 				has_collided.emit(enemies_in_area[i].get_node("Enemy Hitbox"))
 				tick_timers[i].start(tick_rate / _player_stats.get_stat("Fire_Rate") * 20)
 	if not is_shrinking:
@@ -113,4 +114,5 @@ func shrink(delta):
 	is_shrunk = true
 	scale -= Vector2(delta, delta)
 	if scale <= Vector2.ZERO:
+		noise_SFX.stop()
 		queue_free.call_deferred()

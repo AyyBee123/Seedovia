@@ -8,6 +8,7 @@ var dice_value: int
 
 func _ready():
 	super._ready()
+	randomize_interval.start()
 	SfxDeconflicter.play(dice_roll_SFX)
 	clockwise_rotation = randf() < 0.5
 

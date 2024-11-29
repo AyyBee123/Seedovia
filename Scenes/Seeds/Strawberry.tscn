@@ -69,7 +69,6 @@ shape = SubResource("CapsuleShape2D_iu4f8")
 [node name="Fire Rate" type="Timer" parent="." index="3"]
 wait_time = 0.2
 one_shot = true
-autostart = true
 
 [node name="ResourcePreloader" type="ResourcePreloader" parent="." index="4"]
 resources = [PackedStringArray("Explosion"), [ExtResource("4_ewini")]]

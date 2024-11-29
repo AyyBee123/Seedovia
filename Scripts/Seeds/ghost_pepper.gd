@@ -12,6 +12,7 @@ var _is_dying := false
 
 func _ready():
 	super._ready()
+	lifetime.start()
 	transferred_damage_multiplier *= damage_multiplier
 
 func _physics_process(delta):

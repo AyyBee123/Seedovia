@@ -2,6 +2,7 @@ extends "res://Scripts/Seeds/seed_template.gd"
 
 @onready var resource_preloader = $ResourcePreloader
 @onready var mild_explosion_SFX = $MildExplosion
+@onready var animation_player = $AnimationPlayer
 
 const NUMBER_OF_SEEDS = 6
 var _set_as_visible: bool
@@ -9,6 +10,7 @@ var _set_as_visible: bool
 #TODO: add functionality to launch the corn to an enemy in front of the player when aim assist is on (or on controller)
 func _ready():
 	visible = false # make the first frame invisible to remove the jitter visual effect
+	animation_player.play("new_animation")
 
 func update_position(delta):
 	current_velocity = direction * player._player_stats.get_stat("Weapon_Speed") * speed_multiplier

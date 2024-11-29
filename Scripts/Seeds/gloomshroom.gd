@@ -13,6 +13,7 @@ var gloom_fire_rate_multiplier: float = 1
 
 func _ready():
 	super._ready()
+	deceleration.start()
 	fire_rate.start(1.0 / player._player_stats.get_stat("Fire_Rate") * fire_rate_multiplier)
 
 func _physics_process(delta):

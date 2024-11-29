@@ -29,15 +29,18 @@ func _ready():
 	if previous_weapon: # if fired by a non-player
 		_was_previous_weapon = true
 	super._ready()
+	fire_rate.start()
 	visible = false
-	middle.scale.y = max(0, player._player_stats.get_stat("Weapon_Range") * range_multiplier) # extends the beam length based on player range
+	# extends the beam length based on player range
+	middle.scale.y = max(0, player._player_stats.get_stat("Weapon_Range") * range_multiplier) 
 	top.position.y -= middle.scale.y - 1 # places the top portion of the beam above the middle portion
 	collision_shape_2d.shape.extents.y = 20 + middle.scale.y * 0.5
 	collision_shape_2d.position.y = -16 - middle.scale.y * 0.5
 	collision_shape_2d.disabled = true
 	top_left.position.y = -32 - middle.scale.y
 	top_right.position.y = top_left.position.y
-	lifetime.start(max(1.0 / player._player_stats.get_stat("Fire_Rate") * fire_rate_multiplier - lifetime_after.wait_time - 0.1, 0.1))
+	lifetime.start(max(1.0 / player._player_stats.get_stat("Fire_Rate") * fire_rate_multiplier \
+			- lifetime_after.wait_time - 0.1, 0.1))
 	SfxDeconflicter.play(noise_SFX)
 
 func _physics_process(delta):
@@ -46,7 +49,8 @@ func _physics_process(delta):
 	for i in enemies_in_area.size():
 		if tick_timers[i].is_stopped():
 			if is_instance_valid(enemies_in_area[i]):
-				enemies_in_area[i]._enemy_stats.take_damage(player._player_stats.get_stat("Weapon_Damage") * damage_multiplier)
+				enemies_in_area[i]._enemy_stats.take_damage(player._player_stats.get_stat("Weapon_Damage") \
+						* damage_multiplier)
 				has_collided.emit(enemies_in_area[i].get_node("Enemy Hitbox"))
 				tick_timers[i].start(0.2 / player._player_stats.get_stat("Fire_Rate") * fire_rate_multiplier)
 	if is_shrinking:
@@ -66,7 +70,6 @@ func initialize_position():
 			rotation = desired_direction.angle() + deg_to_rad(90)
 		visible = true
 		collision_shape_2d.disabled = false
-		
 
 func travelled_distance():
 	pass
@@ -128,6 +131,7 @@ func shrink(shrink_speed_mult):
 	top.scale.x -= get_process_delta_time() * shrink_speed_mult
 	noise_SFX.volume_db -= get_process_delta_time() * shrink_speed_mult * 10
 	if middle.scale.x <= 0:
+		noise_SFX.stop()
 		queue_free.call_deferred()
 
 func _on_lifetime_timeout():

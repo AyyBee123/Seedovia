@@ -121,7 +121,6 @@ root_node = NodePath("../ResourcePreloader")
 libraries = {
 "": SubResource("AnimationLibrary_of4mj")
 }
-autoplay = "new_animation"
 
 [node name="MildExplosion" type="AudioStreamPlayer" parent="." index="6"]
 stream = ExtResource("6_6aeg8")

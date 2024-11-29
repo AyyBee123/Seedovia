@@ -34,6 +34,7 @@ animations = [{
 
 [node name="Rupture" type="Sprite2D" groups=["Seed", "Weapon"]]
 script = ExtResource("1_rgj01")
+range_multiplier = 3.0
 damage_multiplier = 0.75
 fire_rate_multiplier = 0.2
 
@@ -91,7 +92,6 @@ one_shot = true
 [node name="Fire Rate" type="Timer" parent="."]
 wait_time = 0.25
 one_shot = true
-autostart = true
 
 [node name="Noise" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_qabio")

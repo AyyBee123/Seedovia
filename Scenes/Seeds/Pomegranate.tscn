@@ -35,12 +35,10 @@ one_shot = true
 [node name="Lifetime" type="Timer" parent="." index="3"]
 wait_time = 3.0
 one_shot = true
-autostart = true
 
 [node name="Deceleration" type="Timer" parent="." index="4"]
 wait_time = 1.5
 one_shot = true
-autostart = true
 
 [node name="Pomegranate Hit Area" type="Area2D" parent="." index="5"]
 position = Vector2(0, 1)

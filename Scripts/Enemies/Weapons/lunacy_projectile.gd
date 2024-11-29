@@ -43,7 +43,7 @@ func update_position(delta):
 	position += current_velocity * delta
 	rotation += PI/4 * delta * rotation_direction
 
-func _on_area_2d_body_entered(body):
+func _on_enemy_hitbox_body_entered(body):
 	if body.is_in_group("Players"):
 		player = body
 		player._player_stats.take_damage(self)
