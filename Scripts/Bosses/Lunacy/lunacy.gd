@@ -1,11 +1,14 @@
 extends "res://Scripts/Bosses/boss.gd"
 
 @onready var lunacy_projectile := preload("res://Scenes/Enemies/Weapons/Lunacy Projectile.tscn")
+@onready var tooth_projectile := preload("res://Scenes/Enemies/Weapons/Tooth.tscn")
 @onready var fire_rate := $"Fire Rate"
 @onready var animation_player = $AnimationPlayer
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var lunacy_duration = $"Lunacy Duration"
 @onready var laser_animation = $"Lasers/Laser Animation"
+@onready var tooth_positions = $"Tooth Positions".get_children()
+
 
 var lunacy_proj_pool := []
 var teeth_pool := []
@@ -94,6 +97,35 @@ func _on_animated_sprite_2d_frame_changed():
 	if animated_sprite_2d.animation == "FTW":
 		if animated_sprite_2d.frame == 4:
 			animation_player.play_backwards("WTF")
+	if animated_sprite_2d.animation == "Teeth":
+		var proj = []
+		match animated_sprite_2d.frame:
+			2:
+				proj.append(pull_tooth_from_pool(tooth_positions[4].global_position, Vector2.DOWN))
+				proj.append(pull_tooth_from_pool(tooth_positions[7].global_position, Vector2.DOWN))
+				proj.append(pull_tooth_from_pool(tooth_positions[12].global_position, Vector2.UP))
+			3:
+				proj.append(pull_tooth_from_pool(tooth_positions[2].global_position, Vector2.DOWN))
+				proj.append(pull_tooth_from_pool(tooth_positions[5].global_position, Vector2.DOWN))
+				proj.append(pull_tooth_from_pool(tooth_positions[14].global_position, Vector2.UP))
+			4:
+				proj.append(pull_tooth_from_pool(tooth_positions[1].global_position, Vector2.DOWN))
+				proj.append(pull_tooth_from_pool(tooth_positions[9].global_position, Vector2.DOWN))
+				proj.append(pull_tooth_from_pool(tooth_positions[10].global_position, Vector2.UP))
+			5:
+				proj.append(pull_tooth_from_pool(tooth_positions[0].global_position, Vector2.DOWN))
+				proj.append(pull_tooth_from_pool(tooth_positions[6].global_position, Vector2.DOWN))
+				proj.append(pull_tooth_from_pool(tooth_positions[13].global_position, Vector2.UP))
+			6:
+				proj.append(pull_tooth_from_pool(tooth_positions[3].global_position, Vector2.DOWN))
+				proj.append(pull_tooth_from_pool(tooth_positions[8].global_position, Vector2.DOWN))
+				proj.append(pull_tooth_from_pool(tooth_positions[11].global_position, Vector2.UP))
+				proj.append(pull_tooth_from_pool(tooth_positions[15].global_position, Vector2.UP))
+		for i in proj:
+			if not i.get_parent():
+				get_tree().current_scene.add_child(i)
+			else:
+				i._ready()
 
 ## when the object is "destroyed", add it back to the pool
 ## also add a couple to the pool on _ready
@@ -101,13 +133,13 @@ func add_to_pool(object: Node2D, object_pool: Array) -> void:
 	object_pool.append(object)
 
 ## pull the object from the pool and use it in the scene (when firing a projectile, for instance)
-func pull_from_pool(scene: PackedScene, object_pool: Array) -> Node2D:
+func pull_lunacy_from_pool() -> Node2D:
 	var object: Node2D
-	if object_pool.is_empty():
-		object = scene.instantiate()
+	if lunacy_proj_pool.is_empty():
+		object = lunacy_projectile.instantiate()
 	else:
-		object = object_pool[0]
-		object_pool.remove_at(0)
+		object = lunacy_proj_pool[0]
+		lunacy_proj_pool.remove_at(0)
 	object.source = self
 	object.global_position = Vector2(pos_x, pos_y)
 	match pos:
@@ -122,6 +154,19 @@ func pull_from_pool(scene: PackedScene, object_pool: Array) -> Node2D:
 	object.set_process(true)
 	object.set_physics_process(true)
 	object.show()
+	return object
+
+func pull_tooth_from_pool(pos: Vector2, dir: Vector2) -> Node2D:
+	var object: Node2D
+	if teeth_pool.is_empty():
+		object = tooth_projectile.instantiate()
+	else:
+		object = teeth_pool[0]
+		teeth_pool.remove_at(0)
+	object.source = self
+	object.global_position = pos
+	object.starting_position = pos
+	object.direction = dir.rotated(randf_range(-PI/3, PI/3))
 	return object
 
 func fire_lunacy():
@@ -144,7 +189,7 @@ func fire_lunacy():
 			pos_x = 1050
 			pos_y = randi_range(-3, 2) * 128 + 64
 	
-	var proj = pull_from_pool(lunacy_projectile, lunacy_proj_pool)
+	var proj = pull_lunacy_from_pool()
 	if not proj.get_parent(): # if it's not already added as a child
 		get_tree().current_scene.add_child(proj)
 

@@ -296,7 +296,7 @@ animations = [{
 "duration": 1.2,
 "texture": SubResource("AtlasTexture_8ks22")
 }, {
-"duration": 2.0,
+"duration": 5.0,
 "texture": SubResource("AtlasTexture_ttr51")
 }, {
 "duration": 1.0,
@@ -589,7 +589,7 @@ shape = SubResource("CircleShape2D_y83ur")
 material = SubResource("ShaderMaterial_60kbx")
 position = Vector2(0, -2.66667)
 sprite_frames = SubResource("SpriteFrames_28yne")
-animation = &"Laser End"
+animation = &"Idle"
 autoplay = "Idle"
 
 [node name="CollisionPolygon2D" parent="Enemy Hitbox" index="0"]
@@ -656,6 +656,56 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Lasers/Laser2/Area2D" index="0"]
 position = Vector2(0, 295)
 shape = SubResource("RectangleShape2D_xsn2u")
+
+[node name="Tooth Positions" type="Node2D" parent="." index="12"]
+
+[node name="Tooth Position 0" type="Marker2D" parent="Tooth Positions" index="0"]
+position = Vector2(-39, 1.33333)
+
+[node name="Tooth Position 1" type="Marker2D" parent="Tooth Positions" index="1"]
+position = Vector2(-31, 1.33333)
+
+[node name="Tooth Position 2" type="Marker2D" parent="Tooth Positions" index="2"]
+position = Vector2(-22.3333, 1.66667)
+
+[node name="Tooth Position 3" type="Marker2D" parent="Tooth Positions" index="3"]
+position = Vector2(-13.5, 1.667)
+
+[node name="Tooth Position 4" type="Marker2D" parent="Tooth Positions" index="4"]
+position = Vector2(-4.5, 1.667)
+
+[node name="Tooth Position 5" type="Marker2D" parent="Tooth Positions" index="5"]
+position = Vector2(4.5, 1.667)
+
+[node name="Tooth Position 6" type="Marker2D" parent="Tooth Positions" index="6"]
+position = Vector2(13.5, 1.667)
+
+[node name="Tooth Position 7" type="Marker2D" parent="Tooth Positions" index="7"]
+position = Vector2(22.3333, 1.66667)
+
+[node name="Tooth Position 8" type="Marker2D" parent="Tooth Positions" index="8"]
+position = Vector2(31, 1.33333)
+
+[node name="Tooth Position 9" type="Marker2D" parent="Tooth Positions" index="9"]
+position = Vector2(38.6667, 1.33333)
+
+[node name="Tooth Position 10" type="Marker2D" parent="Tooth Positions" index="10"]
+position = Vector2(-20.5, 38.667)
+
+[node name="Tooth Position 11" type="Marker2D" parent="Tooth Positions" index="11"]
+position = Vector2(-13.3333, 39.3333)
+
+[node name="Tooth Position 12" type="Marker2D" parent="Tooth Positions" index="12"]
+position = Vector2(-4.5, 39.667)
+
+[node name="Tooth Position 13" type="Marker2D" parent="Tooth Positions" index="13"]
+position = Vector2(4.5, 39.667)
+
+[node name="Tooth Position 14" type="Marker2D" parent="Tooth Positions" index="14"]
+position = Vector2(13.3333, 39.3333)
+
+[node name="Tooth Position 15" type="Marker2D" parent="Tooth Positions" index="15"]
+position = Vector2(20.3333, 38.6667)
 
 [connection signal="animation_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_changed"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
