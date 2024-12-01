@@ -62,7 +62,7 @@ func initialize_position():
 		position_initialized = true
 
 func destroy():
-	if source:
+	if is_instance_valid(source):
 		source.add_to_pool(self, source.teeth_pool)
 	$CollisionShape2D.set_deferred("disabled", true)
 	$"Bullet Hitbox/CollisionShape2D".set_deferred("disabled", true)

@@ -9,7 +9,6 @@ extends "res://Scripts/Bosses/boss.gd"
 @onready var laser_animation = $"Lasers/Laser Animation"
 @onready var tooth_positions = $"Tooth Positions".get_children()
 
-
 var lunacy_proj_pool := []
 var teeth_pool := []
 var pos_x: float
@@ -18,6 +17,7 @@ var positions := ["UP", "DOWN", "LEFT", "RIGHT"]
 var pos
 var fade: float = 1
 var _in_lunacy: bool
+var _used_WTF: bool
 
 var teeth_finished: bool
 var what_finished: bool
@@ -32,17 +32,19 @@ func _physics_process(delta):
 func idle():
 	lunacy_duration.stop()
 	lunacy_almost_finished = false
+	$Lasers.visible = false
 
 func teeth():
 	pass
 
 func what():
-	pass
+	_used_WTF = true
 
 func what_idle():
 	pass
 
 func laser():
+	$Lasers.visible = true
 	$Lasers.scale = Vector2.ONE
 	if not laser_animation.is_playing() and not laser_finished:
 		laser_animation.play("Lasers")
@@ -142,6 +144,7 @@ func pull_lunacy_from_pool() -> Node2D:
 		lunacy_proj_pool.remove_at(0)
 	object.source = self
 	object.global_position = Vector2(pos_x, pos_y)
+	object._used_WTF = _used_WTF
 	match pos:
 		"UP":
 			object.direction = Vector2.DOWN
@@ -151,9 +154,6 @@ func pull_lunacy_from_pool() -> Node2D:
 			object.direction = Vector2.RIGHT
 		"RIGHT":
 			object.direction = Vector2.LEFT
-	object.set_process(true)
-	object.set_physics_process(true)
-	object.show()
 	return object
 
 func pull_tooth_from_pool(pos: Vector2, dir: Vector2) -> Node2D:
@@ -192,6 +192,8 @@ func fire_lunacy():
 	var proj = pull_lunacy_from_pool()
 	if not proj.get_parent(): # if it's not already added as a child
 		get_tree().current_scene.add_child(proj)
+	else:
+		proj._ready()
 
 func spawn_damage_number(damage: float):
 	if _in_lunacy:

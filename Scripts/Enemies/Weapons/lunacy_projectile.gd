@@ -9,6 +9,7 @@ var source
 var player
 var damage := 1
 var rotation_direction
+var _used_WTF: bool
 
 func _ready():
 	_enemy_stats = _enemy_stats.duplicate()
@@ -17,22 +18,33 @@ func _ready():
 	_enemy_stats.spawn_damage_number.connect(transfer_damage)
 	_enemy_stats.health_changed.connect(update_health)
 	_enemy_stats.change_color.connect(change_color)
-	
-	if randf() < 0.5:
-		play("Normal")
+	if _used_WTF:
+		if randf() < 0.5:
+			play("Normal")
+		else:
+			play("WTF")
 	else:
-		play("WTF")
+		play("Normal")
 	
 	if randf() < 0.5:
 		rotation_direction = 1
 	else:
 		rotation_direction = -1
+	set_process(true)
+	set_physics_process(true)
+	show()
 
 func _physics_process(delta):
+	if not is_instance_valid(source):
+		set_process(false)
+		set_physics_process(false)
+		$"Enemy Hitbox/CollisionShape2D".disabled = true
+		hide()
+	
 	update_position(delta)
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
-	if source:
+	if is_instance_valid(source):
 		source.add_to_pool(self, source.lunacy_proj_pool)
 	set_process(false)
 	set_physics_process(false)
@@ -49,7 +61,7 @@ func _on_enemy_hitbox_body_entered(body):
 		player._player_stats.take_damage(self)
 
 func transfer_damage(amount):
-	if source == null:
+	if not is_instance_valid(source):
 		return
 	source._enemy_stats.take_damage(amount * 0.1)
 
