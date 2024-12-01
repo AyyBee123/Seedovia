@@ -160,6 +160,7 @@ func stop():
 func die():
 	hide() # temporary death effect
 	process_mode = 4 # = Mode: Disabled
+	Global.delete_data()
 	# TODO: add death animation
 	# TODO: pause game and add a menu with options to restart and go back to menu
 

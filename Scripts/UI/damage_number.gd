@@ -10,8 +10,10 @@ func remove():
 		get_parent().remove_child(self)
 	queue_free()
 	
-func set_and_animate_damage(value: float, start_pos: Vector2, height: float, spread: float) -> void:
+func set_and_animate_damage(value: float, start_pos: Vector2, height: float, spread: float, \
+		color: Color = Color.WHITE) -> void:
 	label.text = add_commas(int(round(value)))
+	label.modulate = color
 	ap.play("Rise and Fall")
 	
 	var tween = get_tree().create_tween()
