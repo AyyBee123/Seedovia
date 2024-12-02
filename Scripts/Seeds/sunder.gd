@@ -10,9 +10,9 @@ func travelled_distance():
 		starting_position = global_position
 	if total_distance >= player._player_stats.get_stat("Weapon_Range") * range_multiplier:
 		queue_free.call_deferred()
-	if total_distance % 10 == 0:
+	if total_distance % 5 == 0:
 		explode()
-		if total_distance % 20 == 0 and total_distance != 0:
+		if total_distance % 10 == 0 and total_distance != 0:
 			weapon_direction = Vector2.RIGHT.rotated(randf_range(0, 2 * PI))
 			shoot_next_weapon()
 
