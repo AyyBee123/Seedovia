@@ -222,8 +222,10 @@ func spawn_damage_number(damage: float):
 	damage_text.global_position = global_position
 	damage_text.set_and_animate_damage(damage, pos, height, spread)
 
+# playing from animation player
 func play_laser_sound():
 	space_laser_SFX.play()
 
+# playing from animation player
 func play_noise_sound():
 	space_laser_noise_SFX.play()
