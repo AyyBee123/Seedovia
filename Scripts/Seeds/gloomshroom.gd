@@ -23,9 +23,10 @@ func _physics_process(delta):
 	for i in enemies_in_area.size():
 		if tick_timers[i].is_stopped():
 			if is_instance_valid(enemies_in_area[i]):
-				enemies_in_area[i]._enemy_stats.take_damage(player._player_stats.get_stat("Weapon_Damage") * damage_multiplier)
+				enemies_in_area[i]._enemy_stats.take_damage(player._player_stats.get_stat("Weapon_Damage") \
+						* damage_multiplier)
 				has_collided.emit(enemies_in_area[i].get_node("Enemy Hitbox"))
-				tick_timers[i].start(0.1 / player._player_stats.get_stat("Fire_Rate") * fire_rate_multiplier * 10)
+				tick_timers[i].start(0.25 / player._player_stats.get_stat("Fire_Rate") * fire_rate_multiplier * 10)
 	if fire_rate.is_stopped():
 		shoot_next_weapon()
 

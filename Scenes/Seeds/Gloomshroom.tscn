@@ -47,7 +47,7 @@ radius = 75.0
 [node name="Gloomshroom" instance=ExtResource("1_3ypve")]
 scale = Vector2(2, 2)
 script = ExtResource("2_lpnje")
-damage_multiplier = 0.25
+damage_multiplier = 0.15
 fire_rate_multiplier = 0.15
 
 [node name="Hitbox" parent="." index="0"]
