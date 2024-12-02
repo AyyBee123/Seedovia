@@ -86,7 +86,7 @@ func shoot_next_weapon():
 	attempted_fire.emit()
 	if get_next_weapon() == null:
 		return
-	get_weapon_properties(get_next_weapon().instantiate(), weapon_direction, true)
+	set_weapon_properties(get_next_weapon().instantiate(), weapon_direction, true)
 
 func _on_detect_previous_seed_body_entered(body): # detects the player
 	if not has_stopped:

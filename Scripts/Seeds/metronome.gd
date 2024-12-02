@@ -12,13 +12,13 @@ func _ready():
 			continue
 		seed_list.append(ResourceLoader.load(seed).scene)
 	random_seed = seed_list.pick_random().instantiate()
-	get_weapon_properties(random_seed, desired_direction, ignore_first_collision, hit_enemy)
+	set_weapon_properties(random_seed, desired_direction, ignore_first_collision, hit_enemy)
 	queue_free.call_deferred()
 
 func _physics_process(delta):
 	pass
 
-func get_weapon_properties(weapon, _desired_direction, _ignore_first_collision = false, _enemy = null):
+func set_weapon_properties(weapon, _desired_direction, _ignore_first_collision = false, _enemy = null):
 	weapon.initial_weapon = false
 	weapon.ignore_first_collision = _ignore_first_collision
 	weapon.desired_direction = _desired_direction

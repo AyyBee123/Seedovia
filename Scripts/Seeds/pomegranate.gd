@@ -115,7 +115,7 @@ func explode():
 		shoot_next_weapon()
 	queue_free.call_deferred()
 
-func get_weapon_properties(weapon, _desired_direction, _ignore_first_collision = false, _enemy = null):
+func set_weapon_properties(weapon, _desired_direction, _ignore_first_collision = false, _enemy = null):
 	weapon.initial_weapon = false
 	weapon.ignore_first_collision = _ignore_first_collision
 	weapon.desired_direction = _desired_direction

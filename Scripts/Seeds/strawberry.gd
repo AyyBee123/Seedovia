@@ -76,7 +76,7 @@ func shoot_next_weapon():
 		return
 	fire_rate.wait_time = 1.0/(player._player_stats.get_stat("Fire_Rate") * strawberry_fire_rate_multiplier \
 			* get_next_weapon().instantiate().fire_rate_multiplier)
-	get_weapon_properties(get_next_weapon().instantiate(), transform.x)
+	set_weapon_properties(get_next_weapon().instantiate(), transform.x)
 	fire_rate.start()
 
 func get_nearest_enemy(object):

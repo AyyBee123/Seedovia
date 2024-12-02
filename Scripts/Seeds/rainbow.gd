@@ -55,4 +55,4 @@ func shoot_next_weapon():
 		return
 	weapon_direction = direction.rotated(PI/2 * shooting_direction)
 	shooting_direction = -shooting_direction
-	get_weapon_properties(get_next_weapon().instantiate(), weapon_direction)
+	set_weapon_properties(get_next_weapon().instantiate(), weapon_direction)

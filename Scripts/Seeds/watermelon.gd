@@ -57,7 +57,7 @@ func shoot_next_weapon():
 	attempted_fire.emit()
 	if get_next_weapon() == null:
 		return
-	get_weapon_properties(get_next_weapon().instantiate(), area_normal, true)
+	set_weapon_properties(get_next_weapon().instantiate(), area_normal, true)
 
 func collide(area):
 	var sounds = [metal_1_SFX, metal_2_SFX]

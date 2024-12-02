@@ -100,7 +100,7 @@ func shoot_next_weapon():
 		weapon_direction = Vector2.RIGHT.rotated(rotation + randf_range(deg_to_rad(-5), deg_to_rad(5))) * -1
 	else:
 		weapon_direction = Vector2.RIGHT.rotated(rotation + randf_range(deg_to_rad(-5), deg_to_rad(5)))
-	get_weapon_properties(get_next_weapon().instantiate(), weapon_direction)
+	set_weapon_properties(get_next_weapon().instantiate(), weapon_direction)
 
 func initialize_location(weapon):
 	get_tree().current_scene.add_child(weapon)

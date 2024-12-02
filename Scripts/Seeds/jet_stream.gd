@@ -34,4 +34,4 @@ func shoot_next_weapon():
 	for rotated_direction in directions:
 		attempted_fire.emit()
 		weapon_direction = direction.rotated(rotated_direction)
-		get_weapon_properties(get_next_weapon().instantiate(), weapon_direction)
+		set_weapon_properties(get_next_weapon().instantiate(), weapon_direction)

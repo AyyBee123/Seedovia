@@ -34,7 +34,7 @@ func shoot_next_weapon():
 		weapon_direction = global_position.direction_to(get_nearest_enemy(enemy).global_position)
 	else:
 		weapon_direction = global_position.direction_to(player.global_position)
-	get_weapon_properties(get_next_weapon().instantiate(), weapon_direction, true, enemy)
+	set_weapon_properties(get_next_weapon().instantiate(), weapon_direction, true, enemy)
 
 func initialize_location(weapon_instance):
 	get_tree().current_scene.add_child(weapon_instance)
