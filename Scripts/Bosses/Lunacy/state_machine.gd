@@ -83,6 +83,8 @@ func _enter_state(new_state, old_state):
 			parent.animated_sprite_2d.play("WTF Idle")
 		states.tahw:
 			parent.animated_sprite_2d.play("FTW")
+		states.lunacy:
+			parent.disappear_SFX.play()
 
 func _exit_state(old_state, new_state):
 	match old_state:
@@ -98,6 +100,7 @@ func _exit_state(old_state, new_state):
 		states.what:
 			set_random_time()
 		states.laser:
+			parent.space_laser_noise_SFX.stop()
 			timer.start(1)
 
 func random_attack_value():

@@ -8,6 +8,11 @@ extends "res://Scripts/Bosses/boss.gd"
 @onready var lunacy_duration = $"Lunacy Duration"
 @onready var laser_animation = $"Lasers/Laser Animation"
 @onready var tooth_positions = $"Tooth Positions".get_children()
+@onready var space_laser_SFX = $SpaceLaser
+@onready var space_laser_noise_SFX = $SpaceLaserNoise
+@onready var bubble_pop_SFX = $BubblePop
+@onready var disappear_SFX = $Disappear
+@onready var reappear_SFX = $Reappear
 
 var lunacy_proj_pool := []
 var teeth_pool := []
@@ -18,6 +23,7 @@ var pos
 var fade: float = 1
 var _in_lunacy: bool
 var _used_WTF: bool
+var _reappear_sound_played: bool
 
 var teeth_finished: bool
 var what_finished: bool
@@ -33,6 +39,7 @@ func idle():
 	lunacy_duration.stop()
 	lunacy_almost_finished = false
 	$Lasers.visible = false
+	_reappear_sound_played = false
 
 func teeth():
 	pass
@@ -68,6 +75,9 @@ func lunacy():
 	if lunacy_almost_finished:
 		lunacy_duration.stop()
 		await get_tree().create_timer(5).timeout
+		if not _reappear_sound_played:
+			reappear_SFX.play()
+			_reappear_sound_played = true
 		fade = min(fade + 2 * get_physics_process_delta_time(), 1)
 	if lunacy_almost_finished and fade >= 1:
 		$"Enemy Hitbox/CollisionPolygon2D".disabled = false
@@ -103,22 +113,27 @@ func _on_animated_sprite_2d_frame_changed():
 		var proj = []
 		match animated_sprite_2d.frame:
 			2:
+				bubble_pop_SFX.play()
 				proj.append(pull_tooth_from_pool(tooth_positions[4].global_position, Vector2.DOWN))
 				proj.append(pull_tooth_from_pool(tooth_positions[7].global_position, Vector2.DOWN))
 				proj.append(pull_tooth_from_pool(tooth_positions[12].global_position, Vector2.UP))
 			3:
+				bubble_pop_SFX.play()
 				proj.append(pull_tooth_from_pool(tooth_positions[2].global_position, Vector2.DOWN))
 				proj.append(pull_tooth_from_pool(tooth_positions[5].global_position, Vector2.DOWN))
 				proj.append(pull_tooth_from_pool(tooth_positions[14].global_position, Vector2.UP))
 			4:
+				bubble_pop_SFX.play()
 				proj.append(pull_tooth_from_pool(tooth_positions[1].global_position, Vector2.DOWN))
 				proj.append(pull_tooth_from_pool(tooth_positions[9].global_position, Vector2.DOWN))
 				proj.append(pull_tooth_from_pool(tooth_positions[10].global_position, Vector2.UP))
 			5:
+				bubble_pop_SFX.play()
 				proj.append(pull_tooth_from_pool(tooth_positions[0].global_position, Vector2.DOWN))
 				proj.append(pull_tooth_from_pool(tooth_positions[6].global_position, Vector2.DOWN))
 				proj.append(pull_tooth_from_pool(tooth_positions[13].global_position, Vector2.UP))
 			6:
+				bubble_pop_SFX.play()
 				proj.append(pull_tooth_from_pool(tooth_positions[3].global_position, Vector2.DOWN))
 				proj.append(pull_tooth_from_pool(tooth_positions[8].global_position, Vector2.DOWN))
 				proj.append(pull_tooth_from_pool(tooth_positions[11].global_position, Vector2.UP))
@@ -206,3 +221,9 @@ func spawn_damage_number(damage: float):
 	get_tree().current_scene.add_child(damage_text, true)
 	damage_text.global_position = global_position
 	damage_text.set_and_animate_damage(damage, pos, height, spread)
+
+func play_laser_sound():
+	space_laser_SFX.play()
+
+func play_noise_sound():
+	space_laser_noise_SFX.play()

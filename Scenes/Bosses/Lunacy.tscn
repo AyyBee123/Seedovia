@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://dwdf1e1fw3t5u"]
+[gd_scene load_steps=64 format=3 uid="uid://dwdf1e1fw3t5u"]
 
 [ext_resource type="PackedScene" uid="uid://bfapejv6ymqws" path="res://Scenes/Bosses/Boss.tscn" id="1_ip7gk"]
 [ext_resource type="Script" path="res://Scripts/Bosses/Lunacy/lunacy.gd" id="2_1itmv"]
@@ -7,7 +7,11 @@
 [ext_resource type="Script" path="res://Scripts/Bosses/Lunacy/state_machine.gd" id="3_kcoqw"]
 [ext_resource type="Resource" uid="uid://ba7khgxopgh03" path="res://Resources/Bosses/lunacy.tres" id="3_kgrpg"]
 [ext_resource type="Texture2D" uid="uid://bnci24akyvubs" path="res://Sprites/Bosses/Lunacy/Laser.png" id="7_2gtas"]
+[ext_resource type="AudioStream" uid="uid://d1tn6ymy3b3ti" path="res://Audio/SFX/Space Laser.mp3" id="7_g1j34"]
+[ext_resource type="AudioStream" uid="uid://bbi2dtrimxt82" path="res://Audio/SFX/Space Laser Noise.mp3" id="8_4sufp"]
 [ext_resource type="Script" path="res://Scripts/Bosses/Lunacy/laser.gd" id="8_wi3ux"]
+[ext_resource type="AudioStream" uid="uid://chjabrkxsndjf" path="res://Audio/SFX/Bubble Pop.mp3" id="9_pn0gk"]
+[ext_resource type="AudioStream" uid="uid://12krr2r6guun" path="res://Audio/SFX/Jump.mp3" id="10_uh3ed"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_y83ur"]
 radius = 57.3333
@@ -477,9 +481,18 @@ tracks/4/path = NodePath("..")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(13.5),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.02, 4.25, 13.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "values": [{
+"args": [],
+"method": &"play_laser_sound"
+}, {
+"args": [],
+"method": &"play_noise_sound"
+}, {
+"args": [],
+"method": &"play_laser_sound"
+}, {
 "args": [],
 "method": &"finish_laser"
 }]
@@ -600,15 +613,42 @@ libraries = {
 "": SubResource("AnimationLibrary_jcojs")
 }
 
-[node name="Fire Rate" type="Timer" parent="." index="9"]
+[node name="SpaceLaser" type="AudioStreamPlayer" parent="." index="9"]
+stream = ExtResource("7_g1j34")
+volume_db = -7.0
+pitch_scale = 1.2
+bus = &"SFX"
+
+[node name="SpaceLaserNoise" type="AudioStreamPlayer" parent="." index="10"]
+stream = ExtResource("8_4sufp")
+volume_db = -10.0
+pitch_scale = 1.2
+bus = &"SFX"
+
+[node name="BubblePop" type="AudioStreamPlayer" parent="." index="11"]
+stream = ExtResource("9_pn0gk")
+volume_db = -10.0
+pitch_scale = 0.4
+bus = &"SFX"
+
+[node name="Disappear" type="AudioStreamPlayer" parent="." index="12"]
+stream = ExtResource("10_uh3ed")
+pitch_scale = 0.35
+bus = &"SFX"
+
+[node name="Reappear" type="AudioStreamPlayer" parent="." index="13"]
+stream = ExtResource("10_uh3ed")
+pitch_scale = 0.65
+
+[node name="Fire Rate" type="Timer" parent="." index="14"]
 wait_time = 0.2
 one_shot = true
 
-[node name="Lunacy Duration" type="Timer" parent="." index="10"]
+[node name="Lunacy Duration" type="Timer" parent="." index="15"]
 wait_time = 7.0
 one_shot = true
 
-[node name="Lasers" type="Node2D" parent="." index="11"]
+[node name="Lasers" type="Node2D" parent="." index="16"]
 position = Vector2(0, -26)
 scale = Vector2(1e-05, 1e-05)
 
@@ -657,7 +697,7 @@ collision_mask = 2
 position = Vector2(0, 295)
 shape = SubResource("RectangleShape2D_xsn2u")
 
-[node name="Tooth Positions" type="Node2D" parent="." index="12"]
+[node name="Tooth Positions" type="Node2D" parent="." index="17"]
 
 [node name="Tooth Position 0" type="Marker2D" parent="Tooth Positions" index="0"]
 position = Vector2(-39, 1.33333)
