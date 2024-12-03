@@ -1,0 +1,161 @@
+[gd_scene load_steps=18 format=3 uid="uid://caoqkkdddk3k3"]
+
+[ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_1cr17"]
+[ext_resource type="Script" path="res://Scripts/Seeds/frenzy's_rage.gd" id="2_v25mg"]
+[ext_resource type="Texture2D" uid="uid://dt5icjd8t6jy5" path="res://Sprites/Bosses/Lunacy/Lunacy.png" id="2_y7r0y"]
+[ext_resource type="PackedScene" uid="uid://cttd7u6tngfqq" path="res://Scenes/Seeds/Effects/Frenzy's Rage Laser.tscn" id="3_81x2y"]
+[ext_resource type="AudioStream" uid="uid://bbi2dtrimxt82" path="res://Audio/SFX/Space Laser Noise.mp3" id="4_3gvnb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_562pm"]
+radius = 14.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7aaft"]
+resource_local_to_scene = true
+radius = 50.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iljhr"]
+atlas = ExtResource("2_y7r0y")
+region = Rect2(4004, 0, 154, 121)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gvo4n"]
+atlas = ExtResource("2_y7r0y")
+region = Rect2(4158, 0, 154, 121)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qvrng"]
+atlas = ExtResource("2_y7r0y")
+region = Rect2(4312, 0, 154, 121)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wybsl"]
+atlas = ExtResource("2_y7r0y")
+region = Rect2(4466, 0, 154, 121)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3gmas"]
+atlas = ExtResource("2_y7r0y")
+region = Rect2(4928, 0, 154, 121)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0cf0r"]
+atlas = ExtResource("2_y7r0y")
+region = Rect2(5082, 0, 154, 121)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kdvj8"]
+atlas = ExtResource("2_y7r0y")
+region = Rect2(5236, 0, 154, 121)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7pv38"]
+atlas = ExtResource("2_y7r0y")
+region = Rect2(4620, 0, 154, 121)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j7j0u"]
+atlas = ExtResource("2_y7r0y")
+region = Rect2(4774, 0, 154, 121)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j3j4c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iljhr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gvo4n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qvrng")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wybsl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qvrng")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gvo4n")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3gmas")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0cf0r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kdvj8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0cf0r")
+}],
+"loop": true,
+"name": &"Laser",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7pv38")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j7j0u")
+}],
+"loop": false,
+"name": &"Laser Beginning",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j7j0u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7pv38")
+}],
+"loop": false,
+"name": &"Laser End",
+"speed": 15.0
+}]
+
+[node name="Frenzy\'s Rage" instance=ExtResource("1_1cr17")]
+script = ExtResource("2_v25mg")
+speed_multiplier = 0.5
+range_multiplier = 3.5
+damage_multiplier = 3.0
+fire_rate_multiplier = 0.075
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource("CircleShape2D_562pm")
+
+[node name="ResourcePreloader" type="ResourcePreloader" parent="." index="2"]
+resources = [PackedStringArray("Frenzy\'s Rage Laser"), [ExtResource("3_81x2y")]]
+
+[node name="Fire Rate" type="Timer" parent="." index="3"]
+one_shot = true
+
+[node name="SpaceLaserNoise" type="AudioStreamPlayer" parent="." index="4"]
+stream = ExtResource("4_3gvnb")
+volume_db = -10.0
+pitch_scale = 1.2
+bus = &"SFX"
+
+[node name="Laser Marker" type="Marker2D" parent="." index="5"]
+unique_name_in_owner = true
+position = Vector2(0, -13.5)
+scale = Vector2(0.5, 0.5)
+
+[node name="Laser Area" type="Area2D" parent="." index="6"]
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Laser Area" index="0"]
+shape = SubResource("CircleShape2D_7aaft")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="7"]
+rotation = 3.14159
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_j3j4c")
+animation = &"Idle"
+autoplay = "Idle"
+
+[connection signal="area_entered" from="Laser Area" to="." method="_on_laser_area_area_entered"]
+[connection signal="area_exited" from="Laser Area" to="." method="_on_laser_area_area_exited"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

@@ -1,0 +1,108 @@
+extends "res://Scripts/Seeds/seed_template.gd"
+
+@onready var animated_sprite_2d = $AnimatedSprite2D
+@onready var fire_rate = $"Fire Rate"
+@onready var laser_marker = %"Laser Marker"
+@onready var laser_area = $"Laser Area/CollisionShape2D"
+@onready var resource_preloader = $ResourcePreloader
+@onready var area = $"Laser Area"
+@onready var space_laser_noise_SFX = $SpaceLaserNoise
+
+const BASE_LASER_RADIUS = 100
+const LASER_RADIUS_MULTIPLIER = 2
+const FRENZY_FIRE_RATE_MULTIPLIER = 2
+
+var enemies_in_area := []
+var tick_timers := []
+var lasers := []
+var tick_rate := 0.075
+var _beginning_played: bool
+var _end_played: bool = true
+
+func _ready():
+	super._ready()
+
+func _physics_process(delta):
+	super._physics_process(delta)
+	if area.get_overlapping_areas().size() > 0:
+		fire_laser()
+	else:
+		stop_laser()
+	laser_area.shape.radius = player._player_stats.get_stat("Weapon_Range") * LASER_RADIUS_MULTIPLIER \
+			+ BASE_LASER_RADIUS
+	for i in enemies_in_area.size():
+		if tick_timers[i].is_stopped():
+			if is_instance_valid(enemies_in_area[i]):
+				enemies_in_area[i]._enemy_stats.take_damage(player._player_stats.get_stat("Weapon_Damage") \
+				* damage_multiplier * 0.1)
+				has_collided.emit(enemies_in_area[i].get_node("Enemy Hitbox"))
+				tick_timers[i].start(tick_rate / _player_stats.get_stat("Fire_Rate") * 10)
+
+func update_position(delta):
+	current_velocity = direction * player._player_stats.get_stat("Weapon_Speed") * speed_multiplier
+	position += current_velocity * delta
+
+func _on_laser_area_area_entered(area):
+	if area.is_in_group("Enemies"):
+		if is_instance_valid(area):
+			enemies_in_area.append(area.get_parent())
+			var timer = Timer.new()
+			add_child(timer)
+			timer.wait_time = tick_rate / _player_stats.get_stat("Fire_Rate") * 10
+			timer.one_shot = true
+			tick_timers.append(timer)
+			var laser = resource_preloader.get_resource("Frenzy's Rage Laser").instantiate()
+			laser.source = self
+			laser.target = area.get_parent()
+			get_tree().current_scene.add_child.call_deferred(laser)
+			lasers.append(laser)
+
+func _on_laser_area_area_exited(area):
+	if area.is_in_group("Enemies"):
+		if is_instance_valid(area):
+			var index = enemies_in_area.find(area.get_parent())
+			enemies_in_area.remove_at(index)
+			tick_timers.remove_at(index)
+			lasers[index].queue_free()
+			lasers.remove_at(index)
+
+func _on_animated_sprite_2d_animation_finished():
+	if animated_sprite_2d.animation == "Laser Beginning":
+		animated_sprite_2d.play("Laser")
+	if animated_sprite_2d.animation == "Laser End":
+		animated_sprite_2d.play("Idle")
+
+func fire_laser():
+	if not _beginning_played:
+		if not space_laser_noise_SFX.playing:
+			SfxDeconflicter.play(space_laser_noise_SFX)
+		animated_sprite_2d.play("Laser Beginning")
+		_beginning_played = true
+		_end_played = false
+	if fire_rate.is_stopped():
+		shoot_next_weapon()
+
+func _collide(body):
+	if ignore_first_collision:
+		ignore_first_collision = false
+		return
+	has_collided.emit(body) # for on-hit effects (ex: burning an enemy on hit)
+	if body.is_in_group("Enemies"):
+		body.get_parent()._enemy_stats.take_damage(player._player_stats.get_stat("Weapon_Damage") * damage_multiplier)
+
+func shoot_next_weapon():
+	# for passives that require the weapon to not fire a seed (e.g the last seed slot fires itself again)
+	attempted_fire.emit()
+	if get_next_weapon() == null:
+		return
+	weapon_direction = Vector2.RIGHT.rotated(randf_range(0, 2 * PI))
+	set_weapon_properties(get_next_weapon().instantiate(), weapon_direction)
+	fire_rate.start(1.0 / (player._player_stats.get_stat("Fire_Rate") * FRENZY_FIRE_RATE_MULTIPLIER \
+			* get_next_weapon().instantiate().fire_rate_multiplier))
+
+func stop_laser():
+	if not _end_played:
+		space_laser_noise_SFX.stop()
+		animated_sprite_2d.play("Laser End")
+		_end_played = true
+		_beginning_played = false
