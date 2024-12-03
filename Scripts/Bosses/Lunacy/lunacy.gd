@@ -229,3 +229,6 @@ func play_laser_sound():
 # playing from animation player
 func play_noise_sound():
 	space_laser_noise_SFX.play()
+
+func change_name(new_name):
+	boss_name.text = new_name

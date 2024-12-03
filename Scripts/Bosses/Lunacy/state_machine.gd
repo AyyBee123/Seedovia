@@ -97,8 +97,10 @@ func _exit_state(old_state, new_state):
 		states.tahw:
 			random_attack = random_attack_value()
 			set_random_time()
+			parent.change_name("Lunacy")
 		states.what:
 			set_random_time()
+			parent.change_name("Frenzy")
 		states.laser:
 			parent.space_laser_noise_SFX.stop()
 			timer.start(1)
