@@ -94,9 +94,9 @@ func shoot_next_weapon():
 	attempted_fire.emit()
 	if get_next_weapon() == null:
 		return
-	get_weapon_properties(get_next_weapon().instantiate(), weapon_direction)
+	set_weapon_properties(get_next_weapon().instantiate(), weapon_direction)
 
-func get_weapon_properties(weapon, _desired_direction, _ignore_first_collision = false, _enemy = null):
+func set_weapon_properties(weapon, _desired_direction, _ignore_first_collision = false, _enemy = null):
 	weapon.initial_weapon = false
 	weapon.ignore_first_collision = _ignore_first_collision
 	weapon.desired_direction = _desired_direction
