@@ -4,6 +4,7 @@ extends "res://Scripts/Seeds/seed_template.gd"
 @onready var fire_rate = $"Fire Rate"
 @onready var laser_marker = %"Laser Marker"
 @onready var laser_area = $"Laser Area/CollisionShape2D"
+@onready var seed_marker = %"Seed Marker"
 @onready var resource_preloader = $ResourcePreloader
 @onready var area = $"Laser Area"
 @onready var space_laser_noise_SFX = $SpaceLaserNoise
@@ -82,14 +83,6 @@ func fire_laser():
 	if fire_rate.is_stopped():
 		shoot_next_weapon()
 
-func _collide(body):
-	if ignore_first_collision:
-		ignore_first_collision = false
-		return
-	has_collided.emit(body) # for on-hit effects (ex: burning an enemy on hit)
-	if body.is_in_group("Enemies"):
-		body.get_parent()._enemy_stats.take_damage(player._player_stats.get_stat("Weapon_Damage") * damage_multiplier)
-
 func shoot_next_weapon():
 	# for passives that require the weapon to not fire a seed (e.g the last seed slot fires itself again)
 	attempted_fire.emit()
@@ -99,6 +92,11 @@ func shoot_next_weapon():
 	set_weapon_properties(get_next_weapon().instantiate(), weapon_direction)
 	fire_rate.start(1.0 / (player._player_stats.get_stat("Fire_Rate") * FRENZY_FIRE_RATE_MULTIPLIER \
 			* get_next_weapon().instantiate().fire_rate_multiplier))
+
+func initialize_location(weapon):
+	get_tree().current_scene.add_child(weapon)
+	weapon_fired.emit(weapon)
+	weapon.global_position = seed_marker.global_position
 
 func stop_laser():
 	if not _end_played:
