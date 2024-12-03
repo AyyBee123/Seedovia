@@ -16,7 +16,7 @@ var _was_previous_weapon := false
 func _ready():
 	super._ready()
 	lifetime.start()
-	if previous_weapon:
+	if previous_weapon != player:
 		_was_previous_weapon = true
 
 func update_position(delta):
@@ -43,7 +43,7 @@ func update_position(delta):
 		current_velocity = direction * player._player_stats.get_stat("Weapon_Speed") * speed_multiplier \
 				* (deceleration.wait_time - acceleration.time_left) / deceleration.wait_time
 	position += current_velocity * delta
-	rotation += deg_to_rad(-10)
+	rotation += deg_to_rad(-15)
 
 func _collide(body):
 	if ignore_first_collision:
@@ -91,7 +91,7 @@ func shoot_next_weapon():
 func _on_detect_previous_seed_body_entered(body): # detects the player
 	if not has_stopped:
 		return
-	if previous_weapon == null:
+	if previous_weapon == player:
 		if body.is_in_group("Players"):
 			queue_free()
 

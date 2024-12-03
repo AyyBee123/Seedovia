@@ -132,24 +132,3 @@ func get_next_weapon():
 func set_ignore_first_collision():
 	await get_tree().process_frame
 	ignore_first_collision = false
-
-## when the object is "destroyed", add it back to the pool
-## also add a couple to the pool on _ready
-func add_to_pool(object: Node2D) -> void:
-	seed_pool.append(object)
-	object.set_process(false)
-	object.set_physics_process(false)
-	object.hide()
-
-## pull the object from the pool and use it in the scene (when firing a projectile, for instance)
-func pull_from_pool(scene: PackedScene) -> Node2D:
-	var object: Node2D
-	if seed_pool.is_empty():
-		object = scene.instantiate()
-	else:
-		object = seed_pool[0]
-		seed_pool.remove_at(0)
-	object.set_process(true)
-	object.set_physics_process(true)
-	object.show()
-	return object

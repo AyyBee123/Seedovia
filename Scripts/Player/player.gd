@@ -178,6 +178,7 @@ func _on_shoot(weapon, location):
 	var weapon_instance = weapon.instantiate()
 	weapon_instance.initial_weapon = true
 	weapon_instance.slot_index = 0
+	weapon_instance.previous_weapon = self
 	weapon_instance.seed_slot_number = PlayerSeeds.seed_indices[0]
 	weapon_instance.desired_direction = location.direction_to(weapon_direction_marker.global_position)
 	get_tree().current_scene.add_child(weapon_instance)

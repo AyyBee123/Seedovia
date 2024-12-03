@@ -101,8 +101,11 @@ func orbit(delta):
 			orbital.total_distance = 0 # to make the weapons not despawn mid-orbit
 
 func travelled_distance():
-	distance_travelled = starting_position.distance_squared_to(self.global_position)
-	if distance_travelled >= player._player_stats.get_stat("Weapon_Range") * range_multiplier:
+	distance_travelled = starting_position.distance_squared_to(global_position)
+	if distance_travelled >= 1:
+		total_distance += 1
+		starting_position = global_position
+	if total_distance >= player._player_stats.get_stat("Weapon_Range") * range_multiplier:
 		is_shrinking = true
 
 func shrink(delta):

@@ -37,7 +37,8 @@ func shoot_next_weapon():
 	var weapon_instance = get_next_weapon().instantiate()
 	weapon_direction = global_position.direction_to(get_nearest_enemy().global_position)
 	set_weapon_properties(weapon_instance, weapon_direction)
-	fire_rate.start(1.0 / player._player_stats.get_stat("Fire_Rate") * fire_rate_multiplier / blossom_fire_rate_multiplier)
+	fire_rate.start(1.0 / (player._player_stats.get_stat("Fire_Rate") * blossom_fire_rate_multiplier \
+			* get_next_weapon().instantiate().fire_rate_multiplier))
 
 func get_nearest_enemy():
 	var enemies = get_tree().get_nodes_in_group("Enemies")

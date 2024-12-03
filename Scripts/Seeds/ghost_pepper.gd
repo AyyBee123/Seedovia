@@ -1,5 +1,7 @@
 extends "res://Scripts/Seeds/seed_template.gd"
 
+const GHOST_FIRE_RATE_MULTIPLIER = 0.9
+
 var radius: float = 60
 var speed: float = 0.5
 var angle: float = 0
@@ -22,6 +24,8 @@ func _physics_process(delta):
 	if get_next_weapon() != null:
 		if fire_rate.is_stopped() and get_nearest_enemy() != null:
 			shoot_next_weapon()
+	if lifetime.time_left == 0:
+		die()
 
 func shoot_next_weapon():
 	if _is_dying:
@@ -31,7 +35,8 @@ func shoot_next_weapon():
 		return
 	var weapon_instance = get_next_weapon().instantiate()
 	weapon_direction = global_position.direction_to(get_nearest_enemy().global_position)
-	fire_rate.start(1.0 / player._player_stats.get_stat("Fire_Rate") * fire_rate_multiplier)
+	fire_rate.start(1.0 / (player._player_stats.get_stat("Fire_Rate") * GHOST_FIRE_RATE_MULTIPLIER \
+			* get_next_weapon().instantiate().fire_rate_multiplier))
 	set_weapon_properties(weapon_instance, weapon_direction)
 
 func update_position(delta):
@@ -68,7 +73,7 @@ func get_nearest_enemy(object = null):
 
 func orbit(delta):
 	angle += delta
-	if slot_index == 0: # if shot by the player
+	if previous_weapon == player: # if shot by the player
 		rotate_around(player.global_position)
 	else: # if shot by a seed
 		if previous_weapon == null: # if the previous weapon doesn't/no longer exists
@@ -79,8 +84,8 @@ func orbit(delta):
 func rotate_around(entity_position):
 	current_radius = min(current_radius + 1, radius)
 	global_position = Vector2(
-		sin(angle * speed * deg_to_rad(360.0/1)) * current_radius,
-		cos(angle * speed * deg_to_rad(360.0/1)) * current_radius
+		sin(angle * speed * deg_to_rad(360.0)) * current_radius,
+		cos(angle * speed * deg_to_rad(360.0)) * current_radius
 	) + entity_position
 
 func travelled_distance():

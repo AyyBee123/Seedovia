@@ -86,10 +86,10 @@ func _on_pomegranate_hit_area_area_entered(area):
 
 # make each stacked pomegranate stronger as they are combined together
 func combine():
-	damage_multiplier = min(damage_multiplier + 0.5 * num_of_stacks, MAX_DAMAGE)
-	size_multiplier = min(size_multiplier + 0.3 * num_of_stacks, MAX_SIZE)
-	speed_multiplier = max(speed_multiplier - 0.1, MIN_SPEED)
-	blast_radius_multiplier = min(blast_radius_multiplier + 0.2 * num_of_stacks, MAX_BLAST_RADIUS)
+	damage_multiplier = min(damage_multiplier + 0.5 * stacks, MAX_DAMAGE)
+	size_multiplier = min(size_multiplier + 0.3 * stacks, MAX_SIZE)
+	speed_multiplier = max(speed_multiplier - 0.1 * stacks, MIN_SPEED)
+	blast_radius_multiplier = min(blast_radius_multiplier + 0.2 * stacks, MAX_BLAST_RADIUS)
 	stacks = min(stacks + num_of_stacks, MAX_STACKS)
 	if deceleration.is_stopped():
 		deceleration.start(0.25)
