@@ -121,6 +121,9 @@ func get_health(was_equipped: bool):
 
 func get_stat(stat: String):
 	return stats[stat]["x"] * (stats[stat]["base"] + stats[stat]["+"])
+
+func set_stat(stat: String, operation: String, amount):
+	stats[stat][operation] += amount
 	
 func update_stat(stat: String, was_equipped: bool, old_stat_value):
 	if stat == "Max_Health":
