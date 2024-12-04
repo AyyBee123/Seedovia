@@ -1,4 +1,4 @@
-class_name seed_class extends "res://Scripts/Items/item_class.gd"
+class_name seed_class extends item_class
 
 @export var scene: PackedScene
 var category := "SEED"

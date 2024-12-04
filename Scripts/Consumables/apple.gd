@@ -1,4 +1,4 @@
-class_name apple extends "res://Scripts/Items/consumable_item_class.gd"
+class_name apple extends consumable_item_class
 
 func on_use() -> void:
 	var player = Targets.get_player()

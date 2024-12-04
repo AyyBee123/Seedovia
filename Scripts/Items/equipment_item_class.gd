@@ -1,4 +1,4 @@
-class_name equipment_item_class extends "res://Scripts/Items/item_class.gd"
+class_name equipment_item_class extends item_class
 
 var category := "TALISMAN"
 @export_enum("COMMON", "UNCOMMON", "RARE", "EPIC", "LEGENDARY", "MYSTIC", "UNIQUE", "N/A") var rarity: int

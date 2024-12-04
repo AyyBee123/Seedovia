@@ -9,7 +9,7 @@ script = ExtResource("1_r4dlx")
 rarity = 3
 properties = Array[String](["+20% Speed"])
 special_properties = Array[PackedScene]([ExtResource("2_fn21s")])
-item_name = "Sunflower Lantern"
+item_name = "Sunlight Lantern"
 texture = ExtResource("3_egob5")
 description = "+20% Movement Speed
 

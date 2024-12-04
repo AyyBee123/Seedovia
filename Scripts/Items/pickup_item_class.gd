@@ -1,4 +1,4 @@
-class_name pickup_item_class extends "res://Scripts/Items/item_class.gd"
+class_name pickup_item_class extends item_class
 
 var category := "PICKUP"
 var rarity := 7 # N/A
