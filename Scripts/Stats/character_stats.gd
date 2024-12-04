@@ -9,6 +9,7 @@ signal damaged
 # player values
 @export_group("Player Stats")
 @export var max_health: int # max health
+@export var leaf_hearts: int # number of leaf hearts
 @export var speed: float # movement speed
 @export var dash_rate: float # dash rate (in dashes/sec)
 @export var dash_distance: float # distance the player dashes from their original position
@@ -40,7 +41,10 @@ var overcapped_health: int
 func set_health(value):
 	health = max(0, value)
 	overcapped_health = max(0, value)
-	
+
+func set_leaf_hearts(value):
+	leaf_hearts = max(0, value)
+
 func increase_max_health(amount):
 	max_health += amount
 	max_health_changed.emit(max_health)
@@ -48,11 +52,14 @@ func increase_max_health(amount):
 func take_damage(source):
 	if source.damage == 0:
 		return
-	health -= source.damage
-	overcapped_health -= source.damage
-	health = max(0, health)
-	overcapped_health = max(0, health)
+	if leaf_hearts > 0:
+		leaf_hearts -= source.damage
+	else:
+		health -= source.damage
+		overcapped_health -= source.damage
+		health = max(0, health)
+		overcapped_health = max(0, health)
 	damaged.emit()
 	health_changed.emit(health)
-	if health <= 0:
+	if health <= 0 and leaf_hearts <= 0:
 		health_depleted.emit()

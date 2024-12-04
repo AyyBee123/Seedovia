@@ -39,6 +39,7 @@ var _isKeyboard := true
 func _ready():
 	if PlayerCharacter._is_starting: # when starting a new run
 		PlayerCharacter._is_starting = false
+		_player_stats.set_leaf_hearts(_player_stats.leaf_hearts)
 		_player_stats.set_health(_player_stats.get_stat("Max_Health"))
 		if PlayerPassives.starting_passives != null: # add starting passives to the player
 			PlayerPassives.add_starting_passives()
@@ -120,7 +121,7 @@ func _physics_process(delta):
 		inv_anim.stop()
 		
 	# die if health is 0 (or less)
-	if _player_stats.health <= 0:
+	if _player_stats.health <= 0 and _player_stats.leaf_hearts <= 0:
 		die()
 	
 	if can_be_damaged:

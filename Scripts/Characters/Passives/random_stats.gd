@@ -5,7 +5,10 @@ var player
 func _ready():
 	player = get_parent().get_parent()
 	
-	player._player_stats.max_health = Global.RNG.randi_range(1, 4)
+	var max_health_amount = Global.RNG.randi_range(1, 4)
+	var distributed_health = Global.RNG.randi_range(0, max_health_amount)
+	player._player_stats.max_health = distributed_health
+	player._player_stats.leaf_hearts = max_health_amount - distributed_health
 	player._player_stats.health = player._player_stats.max_health
 	player._player_stats.overcapped_health = player._player_stats.max_health
 	player._player_stats.speed = Global.RNG.randf_range(250, 400)

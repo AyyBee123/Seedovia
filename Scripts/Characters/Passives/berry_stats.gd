@@ -6,6 +6,7 @@ func _ready():
 	player = get_parent()
 	
 	player._player_stats.max_health = 4
+	player._player_stats.leaf_hearts = 0
 	player._player_stats.speed = 250.0
 	player._player_stats.dash_rate = 1.05
 	player._player_stats.dash_distance = 1850.0

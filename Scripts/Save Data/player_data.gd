@@ -15,6 +15,7 @@ class_name player_data extends Resource
 @export var stats: Dictionary
 @export var current_health: int
 @export var overcapped_health: int
+@export var leaf_hearts: int
 @export var floor_number: int
 @export var room_number: int
 @export var current_room: String
@@ -59,10 +60,12 @@ func get_stats():
 	stats = PlayerStatStorage.get_stats()
 	current_health = PlayerStatStorage.current_health
 	overcapped_health = PlayerStatStorage.overcapped_health
+	leaf_hearts = PlayerStatStorage.leaf_hearts
 
 func set_stats():
 	PlayerStatStorage.current_health = current_health
 	PlayerStatStorage.overcapped_health = overcapped_health
+	PlayerStatStorage.leaf_hearts = leaf_hearts
 	PlayerStatStorage.stats = stats
 
 func get_character():

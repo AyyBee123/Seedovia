@@ -60,6 +60,7 @@ func select_character():
 func set_base_stats():
 	_player_stats.max_health = starting_stats.max_health
 	_player_stats.health = starting_stats.max_health
+	_player_stats.leaf_hearts = starting_stats.leaf_hearts
 	_player_stats.overcapped_health = starting_stats.max_health
 	_player_stats.speed = starting_stats.speed
 	_player_stats.dash_rate = starting_stats.dash_rate

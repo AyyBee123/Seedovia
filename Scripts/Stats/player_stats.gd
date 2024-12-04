@@ -146,6 +146,10 @@ func heal(amount):
 	health_increased.emit()
 	health_changed.emit(health)
 
+func heal_leaf_hearts(amount):
+	leaf_hearts += amount
+	health_increased.emit()
+
 func set_coins(amount):
 	PlayerCharacter.coins += amount
 	change_coins.emit()
