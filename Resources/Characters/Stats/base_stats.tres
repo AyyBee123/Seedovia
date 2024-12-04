@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_474xu")
 max_health = 3
+leaf_hearts = 0
 speed = 300.0
 dash_rate = 1.0
 dash_distance = 2000.0

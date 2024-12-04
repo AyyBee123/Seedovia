@@ -1,13 +1,14 @@
-[gd_resource type="Resource" script_class="character_class" load_steps=5 format=3 uid="uid://dxk70g7cem73p"]
+[gd_resource type="Resource" script_class="character_class" load_steps=6 format=3 uid="uid://dxk70g7cem73p"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/character_class.gd" id="1_620up"]
+[ext_resource type="Script" path="res://Scripts/Items/item_class.gd" id="2_17cxn"]
 [ext_resource type="Script" path="res://Scripts/Stats/seed_stats.gd" id="2_m0vmv"]
 [ext_resource type="Script" path="res://Scripts/Items/equipment_item_class.gd" id="4_jtdbb"]
 [ext_resource type="Resource" uid="uid://cpavb28jlc2wj" path="res://Resources/Items/Seeds/strawberry.tres" id="8_x4txl"]
 
 [resource]
 script = ExtResource("1_620up")
-starting_inventory = Array[Resource]([])
+starting_inventory = Array[ExtResource("2_17cxn")]([])
 starting_talismans = Array[ExtResource("4_jtdbb")]([])
 starting_seeds = Array[ExtResource("2_m0vmv")]([ExtResource("8_x4txl")])
 starting_passives = Array[PackedScene]([])

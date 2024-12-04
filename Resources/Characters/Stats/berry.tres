@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_ptcda")
 max_health = 4
+leaf_hearts = 0
 speed = 250.0
 dash_rate = 1.05
 dash_distance = 1850.0
