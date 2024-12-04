@@ -8,11 +8,9 @@ var explosion_size: float = 0.1
 var spread: float
 var speed: float
 var weapon_direction: Vector2
-var source_pos
+var source_pos # so the bee doesn't just randomly change enemy targets mid-flight
 var previous_weapon
-var has_stopped := false
 var nearest_enemy
-var last_known_direction
 
 signal weapon_fired(weapon) # signal for firing the next seed
 signal has_collided(object) # signal for colliding with an enemy or wall
