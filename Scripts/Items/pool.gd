@@ -16,8 +16,8 @@ var talisman_weights = {
 	3: 0.075, # epic
 	4: 0.025, # legendary
 	5: 0.0001, # mystic
-	6: 1, # unique
-	7: 1, # N/A
+	6: 0, # unique
+	7: 0, # N/A
 }
 
 var seed_weights = {
@@ -27,8 +27,8 @@ var seed_weights = {
 	3: 0.075, # epic
 	4: 0.025, # legendary
 	5: 0.0001, # mystic
-	6: 1, # unique
-	7: 1, # N/A
+	6: 0, # unique
+	7: 0, # N/A
 }
 var consumable_weights = {
 		7: 1
@@ -53,8 +53,8 @@ func start():
 	3: 0.075, # epic
 	4: 0.025, # legendary
 	5: 0.0001, # mystic
-	6: 1, # unique
-	7: 1, # N/A
+	6: 0, # unique
+	7: 0, # N/A
 	}
 	seed_weights = {
 	0: 0.40, # common
@@ -63,8 +63,8 @@ func start():
 	3: 0.075, # epic
 	4: 0.025, # legendary
 	5: 0.0001, # mystic
-	6: 1, # unique
-	7: 1, # N/A
+	6: 0, # unique
+	7: 0, # N/A
 	}
 	add_pool = true # add the pool array to the room reward pool
 	populate_pool(equipment_pool, talisman_weights)
@@ -87,8 +87,8 @@ func continue_run():
 	3: 0.075 + LevelList.floor_number * 0.015, # epic
 	4: 0.025 + LevelList.floor_number * 0.015, # legendary
 	5: 0.0001, # mystic
-	6: 1, # unique
-	7: 1, # N/A
+	6: 0, # unique
+	7: 0, # N/A
 	}
 	seed_weights = {
 	0: 0.40 - LevelList.floor_number * 0.05, # common
@@ -97,8 +97,8 @@ func continue_run():
 	3: 0.075 + LevelList.floor_number * 0.015, # epic
 	4: 0.025 + LevelList.floor_number * 0.01, # legendary
 	5: 0.0001, # mystic
-	6: 1, # unique
-	7: 1, # N/A
+	6: 0, # unique
+	7: 0, # N/A
 	}
 	add_pool = true # add the pool array to the room reward pool
 	populate_pool(equipment_pool, talisman_weights)
@@ -118,8 +118,8 @@ func repopulate_weighted_pools():
 	3: 0.075 + LevelList.floor_number * 0.015, # epic
 	4: 0.025 + LevelList.floor_number * 0.01, # legendary
 	5: 0.0001, # mystic
-	6: 1, # unique
-	7: 1, # N/A
+	6: 0, # unique
+	7: 0, # N/A
 	}
 	seed_weights = {
 	0: 0.40 - LevelList.floor_number * 0.05, # common
@@ -128,8 +128,8 @@ func repopulate_weighted_pools():
 	3: 0.075 + LevelList.floor_number * 0.015, # epic
 	4: 0.025 + LevelList.floor_number * 0.01, # legendary
 	5: 0.0001, # mystic
-	6: 1, # unique
-	7: 1, # N/A
+	6: 0, # unique
+	7: 0, # N/A
 	}
 	equipment_pool.pool.clear()
 	seed_pool.pool.clear()
@@ -143,13 +143,13 @@ func populate_pool(pool: Resource, weight: Dictionary = {}):
 		var item = ResourceLoader.load(resource_path)
 		if weight.size() > 0:
 			# take the current item weight and accumulate it
-			if "rarity" in item:
+			if "rarity" in item: # seeds and talismans
 				accumulated_weight += weight[item.rarity]
 				# take the current accumulated weight and assign it to the item
 				item.acc_weight = accumulated_weight
 				# take the current total item weight and assign it to the item pool
 				pool.total_weight = accumulated_weight
-		elif "weight" in item:
+		elif "weight" in item: # consumables and pickups
 			accumulated_weight += item.weight
 			# take the current accumulated weight and assign it to the item
 			item.acc_weight = accumulated_weight
