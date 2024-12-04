@@ -35,6 +35,7 @@ func explode():
 func create_child(child):
 	SfxDeconflicter.play(mild_explosion_SFX)
 	visible = false
+	set_physics_process(false)
 	$Hitbox/CollisionShape2D.set_deferred("disabled", true)
 	get_tree().current_scene.add_child(child)
 	child.global_position = self.global_position

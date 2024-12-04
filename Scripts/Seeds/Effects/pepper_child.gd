@@ -42,6 +42,7 @@ func explode():
 	explosion.get_node("AnimatedSprite2D").self_modulate = Color.ORANGE_RED
 	SfxDeconflicter.play(mild_explosion_SFX)
 	visible = false
+	set_physics_process(false)
 	call_deferred("create_child", explosion)
 	$Hitbox/CollisionShape2D.set_deferred("disabled", true)
 	for i in range(seed_slots.size()):

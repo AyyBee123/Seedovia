@@ -18,6 +18,7 @@ func _collide(body):
 		body.get_parent()._enemy_stats.take_damage(player._player_stats.get_stat("Weapon_Damage") * damage_multiplier)
 	shoot_next_weapon()
 	SfxDeconflicter.play(hit_SFX)
+	set_physics_process(false)
 	if hit_SFX.playing:
 		await hit_SFX.finished
 	queue_free.call_deferred()

@@ -57,6 +57,7 @@ func explode():
 		explosion.get_node("Passives").add_child(passive.duplicate())
 	call_deferred("create_child", explosion)
 	SfxDeconflicter.play(mild_explosion_SFX)
+	set_physics_process(false)
 	if mild_explosion_SFX.playing:
 		visible = false
 		await mild_explosion_SFX.finished

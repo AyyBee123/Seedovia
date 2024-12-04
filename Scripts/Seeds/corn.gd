@@ -9,6 +9,7 @@ var _set_as_visible: bool
 
 #TODO: add functionality to launch the corn to an enemy in front of the player when aim assist is on (or on controller)
 func _ready():
+	super._ready()
 	visible = false # make the first frame invisible to remove the jitter visual effect
 	animation_player.play("new_animation")
 
@@ -31,6 +32,7 @@ func explode():
 	SfxDeconflicter.play(mild_explosion_SFX)
 	visible = false
 	$Hitbox/CollisionShape2D.set_deferred("disabled", true)
+	set_physics_process(false)
 	create_explosion.call_deferred(explosion)
 	if get_next_weapon():
 		for i in NUMBER_OF_SEEDS:

@@ -38,8 +38,8 @@ func update_position(delta):
 	position += current_velocity * delta
 
 func _on_hitbox_area_entered(area):
+	has_collided.emit(area)
 	if area.is_in_group("Enemies"):
-		has_collided.emit(area)
 		area.get_parent()._enemy_stats.take_damage(damage * damage_multiplier)
 	explode()
 	queue_free.call_deferred()

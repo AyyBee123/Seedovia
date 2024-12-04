@@ -37,6 +37,7 @@ func explode():
 	visible = false
 	$Hitbox/CollisionShape2D.set_deferred("disabled", true)
 	call_deferred("create_explosion", explosion)
+	set_physics_process(false)
 	spawn_child_peppers()
 	if mild_explosion_SFX.playing:
 		await mild_explosion_SFX.finished
