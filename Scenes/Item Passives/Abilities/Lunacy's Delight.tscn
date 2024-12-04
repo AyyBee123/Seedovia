@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dnu2ihbsqhuy5"]
+
+[ext_resource type="Script" path="res://Scripts/Item Passives/Abilities/lunacy's_delight.gd" id="1_sssoi"]
+
+[node name="Lunacy\'s Delight" type="Node"]
+script = ExtResource("1_sssoi")

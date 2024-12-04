@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="equipment_item_class" load_steps=4 format=3 uid="uid://blm441ofrth50"]
+
+[ext_resource type="Script" path="res://Scripts/Items/equipment_item_class.gd" id="1_7yi5j"]
+[ext_resource type="Texture2D" uid="uid://buky4ptbg8ogu" path="res://Sprites/Talismans/Lunacy's Delight.png" id="2_8bne5"]
+[ext_resource type="PackedScene" uid="uid://dnu2ihbsqhuy5" path="res://Scenes/Item Passives/Abilities/Lunacy's Delight.tscn" id="2_bterq"]
+
+[resource]
+script = ExtResource("1_7yi5j")
+rarity = 6
+properties = Array[String]([])
+special_properties = Array[PackedScene]([ExtResource("2_bterq")])
+item_name = "Lunacy's Delight"
+texture = ExtResource("2_8bne5")
+description = ""

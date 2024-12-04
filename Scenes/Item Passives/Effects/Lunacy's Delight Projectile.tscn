@@ -1,0 +1,68 @@
+[gd_scene load_steps=9 format=3 uid="uid://cbhhoqt7x76j2"]
+
+[ext_resource type="Texture2D" uid="uid://dt5icjd8t6jy5" path="res://Sprites/Bosses/Lunacy/Lunacy.png" id="1_bw201"]
+[ext_resource type="Script" path="res://Scripts/Item Passives/Effects/lunacy's_delight_projectile.gd" id="2_ds1ej"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mj8bh"]
+atlas = ExtResource("1_bw201")
+region = Rect2(0, 0, 154, 121)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_caa0q"]
+atlas = ExtResource("1_bw201")
+region = Rect2(154, 0, 154, 121)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yxlwq"]
+atlas = ExtResource("1_bw201")
+region = Rect2(308, 0, 154, 121)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y7iaj"]
+atlas = ExtResource("1_bw201")
+region = Rect2(462, 0, 154, 121)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sw5t4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mj8bh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_caa0q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yxlwq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y7iaj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yxlwq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_caa0q")
+}],
+"loop": true,
+"name": &"default",
+"speed": 16.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5e3sn"]
+radius = 55.0
+
+[node name="Lunacy" type="AnimatedSprite2D" groups=["Weapon"]]
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_sw5t4")
+autoplay = "default"
+frame_progress = 0.670724
+script = ExtResource("2_ds1ej")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 517
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_5e3sn")
+
+[node name="Passives" type="Node" parent="."]
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

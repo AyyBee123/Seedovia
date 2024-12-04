@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cteghlb80oot4"]
+
+[ext_resource type="Script" path="res://Scripts/Item Passives/Effects/lunacy's_delight_projectile_spawner.gd" id="1_bno66"]
+[ext_resource type="PackedScene" uid="uid://cbhhoqt7x76j2" path="res://Scenes/Item Passives/Effects/Lunacy's Delight Projectile.tscn" id="2_yernq"]
+
+[node name="Lunacy\'s Delight Projectile Spawner" type="Node"]
+script = ExtResource("1_bno66")
+
+[node name="ResourcePreloader" type="ResourcePreloader" parent="."]
+resources = [PackedStringArray("Lunacy\'s Delight Projectile"), [ExtResource("2_yernq")]]
+
+[node name="Fire Rate" type="Timer" parent="."]
+one_shot = true
