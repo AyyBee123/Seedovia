@@ -2,6 +2,7 @@ extends Node
 
 @onready var impulse_time = $"Impulse Time"
 @onready var deceleration_time = $"Deceleration Time"
+@onready var hit_SFX = $Hit
 
 var knockback_direction: Vector2
 var knockback_speed: float
@@ -26,11 +27,18 @@ func _physics_process(delta):
 		if not _took_damage:
 			enemy._enemy_stats.take_damage(damage)
 			_took_damage = true
+			SfxDeconflicter.play(hit_SFX)
+			if hit_SFX.playing:
+				await hit_SFX.finished
+			enemy.remove_child(self)
+			queue_free.call_deferred()
 
 func _on_impulse_time_timeout():
 	if deceleration_time.is_stopped():
 		deceleration_time.start()
 
 func _on_deceleration_time_timeout():
+	if hit_SFX.playing:
+		await hit_SFX.finished
 	enemy.remove_child(self)
 	queue_free.call_deferred()

@@ -8,12 +8,12 @@ var angle: float = 0
 var weapon = null
 var radius: float = 20
 var speed: float = 5
-var weapon_position
+var weapon_position: Vector2
 var damage
 var x_pos
 var y_pos
 var index: int
-var current_velocity
+var current_velocity: Vector2
 var is_in_area := false
 var number_of_orbitals: int
 var enemies_in_area: Array
@@ -25,9 +25,11 @@ func _ready():
 		radius = 20
 	else:
 		radius = min(max(weapon.texture.get_width(), weapon.texture.get_height()), 20)
+	weapon_position = weapon.global_position
+	current_velocity = weapon.current_velocity
 
 func _physics_process(delta):
-	if weapon != null:
+	if is_instance_valid(weapon):
 		weapon_position = weapon.global_position
 		current_velocity = weapon.current_velocity * delta
 		look_at(global_position + Vector2(sin(angle * speed + index * deg_to_rad(360.0/number_of_orbitals)), \

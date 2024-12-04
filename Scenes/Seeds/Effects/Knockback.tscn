@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dnjdwsa1miyp1"]
+[gd_scene load_steps=3 format=3 uid="uid://dnjdwsa1miyp1"]
 
 [ext_resource type="Script" path="res://Scripts/Seeds/Effects/knockback.gd" id="1_fovjq"]
+[ext_resource type="AudioStream" uid="uid://bpk6gao5jcjkq" path="res://Audio/SFX/Hit.mp3" id="2_fj7ki"]
 
 [node name="Knockback" type="Node"]
 script = ExtResource("1_fovjq")
@@ -13,6 +14,11 @@ autostart = true
 [node name="Deceleration Time" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
+
+[node name="Hit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_fj7ki")
+volume_db = -5.0
+pitch_scale = 0.5
 
 [connection signal="timeout" from="Impulse Time" to="." method="_on_impulse_time_timeout"]
 [connection signal="timeout" from="Deceleration Time" to="." method="_on_deceleration_time_timeout"]

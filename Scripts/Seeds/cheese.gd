@@ -84,7 +84,8 @@ func _collide(body):
 	if body.is_in_group("Enemies"):
 		var knockback_angle = rotation + PI/2 * sign(angle_travelled)
 		var knockback_direction = Vector2.RIGHT.rotated(knockback_angle).normalized()
-		var damage = player._player_stats.get_stat("Weapon_Damage") * damage_multiplier * abs(angle_travelled) / 10
+		var damage = min(player._player_stats.get_stat("Weapon_Damage") * damage_multiplier \
+				* abs(angle_travelled) / 10, player._player_stats.get_stat("Weapon_Damage") * damage_multiplier * 10)
 		if _was_previous_weapon:
 			damage = player._player_stats.get_stat("Weapon_Damage") * damage_multiplier * 3
 		if damage < 1: # do nothing if the damage is a very small amount
@@ -97,7 +98,7 @@ func _collide(body):
 		# add a node to the enemy that knocks them back when hit by the block of cheese
 		var knockback_scene = resource_preloader.get_resource("Knockback").instantiate()
 		knockback_scene.knockback_direction = knockback_direction
-		knockback_scene.knockback_speed = abs(angle_travelled) * 50
+		knockback_scene.knockback_speed = min(abs(angle_travelled) * 50, 1250)
 		knockback_scene.damage = player._player_stats.get_stat("Weapon_Damage") * damage_multiplier
 		if not body.get_parent().find_child(knockback_scene.name):
 			# add node to the enemy that gives velocity/position change and makes them take damage if they hit a wall
