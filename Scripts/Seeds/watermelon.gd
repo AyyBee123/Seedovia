@@ -12,6 +12,7 @@ var area_normal # gets the normal of the collsion area/wall
 var animation_frame = 0
 
 func _ready():
+	super._ready()
 	area_normal = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
 
 func _physics_process(delta):

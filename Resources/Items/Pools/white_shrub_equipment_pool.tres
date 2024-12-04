@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="item_pool" load_steps=2 format=3 uid="uid://cavqevk00b6tl"]
+
+[ext_resource type="Script" path="res://Scripts/Pools/item_pool.gd" id="1_qwd5i"]
+
+[resource]
+script = ExtResource("1_qwd5i")
+pool_name = "Talisman"
+path = "res://Resources/Items/Equipment/"

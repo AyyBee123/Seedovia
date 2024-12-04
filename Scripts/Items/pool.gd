@@ -7,6 +7,11 @@ var passive_pool = ResourceLoader.load("res://Resources/Items/Pools/passive_pool
 var seed_pool = ResourceLoader.load("res://Resources/Items/Pools/seed_pool.tres")
 var pickup_pool = ResourceLoader.load("res://Resources/Items/Pools/pickup_pool.tres")
 var coin_pool = ResourceLoader.load("res://Resources/Items/Pools/coin_pool.tres")
+
+# for the White Shrub character when they start a run
+var white_shrub_seed_pool = ResourceLoader.load("res://Resources/Items/Pools/white_shrub_seed_pool.tres")
+var white_shrub_talisman_pool = ResourceLoader.load("res://Resources/Items/Pools/white_shrub_equipment_pool.tres")
+
 var accumulated_weight: float # used to determine what item is chosen
 
 var talisman_weights = {
@@ -30,9 +35,32 @@ var seed_weights = {
 	6: 0, # unique
 	7: 0, # N/A
 }
+
 var consumable_weights = {
-		7: 1
-	}
+	7: 1
+}
+
+var white_shrub_talisman_weights = {
+	0: 0.40, # common
+	1: 0.35, # uncommon
+	2: 0.15, # rare
+	3: 0.075, # epic
+	4: 0.025, # legendary
+	5: 0.0001, # mystic
+	6: 0.005, # unique
+	7: 0, # N/A
+}
+
+var white_shrub_seed_weights = {
+	0: 0.40, # common
+	1: 0.35, # uncommon
+	2: 0.15, # rare
+	3: 0.075, # epic
+	4: 0.025, # legendary
+	5: 0.0001, # mystic
+	6: 0.005, # unique
+	7: 0, # N/A
+}
 
 #array of floor pools
 var floors: Array
@@ -67,12 +95,14 @@ func start():
 	7: 0, # N/A
 	}
 	add_pool = true # add the pool array to the room reward pool
-	populate_pool(equipment_pool, talisman_weights)
+	populate_pool(seed_pool, seed_weights)
 	populate_pool(consumable_pool, consumable_weights)
 	populate_pool(seed_pool, seed_weights)
 	populate_pool(coin_pool)
 	add_pool = false
 	populate_pool(pickup_pool)
+	populate_pool(white_shrub_seed_pool, white_shrub_seed_weights)
+	populate_pool(white_shrub_talisman_pool, white_shrub_talisman_weights)
 	if passive_pool.pool.size() == 0: # if one doesn't already exist from a current run save file
 		populate_pool(passive_pool)
 		shuffle_pool(passive_pool)

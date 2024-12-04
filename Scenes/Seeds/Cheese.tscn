@@ -15,7 +15,7 @@ size = Vector2(40, 33)
 [node name="Cheese" type="Sprite2D" groups=["Melee", "Seed", "Weapon"]]
 scale = Vector2(1.5, 1.5)
 script = ExtResource("2_dvplf")
-range_multiplier = 1.5
+range_multiplier = 3.0
 size_multiplier = 1.15
 fire_rate_multiplier = 0.25
 

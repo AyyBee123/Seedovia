@@ -42,6 +42,14 @@ func _ready():
 	lifetime.start(max(1.0 / player._player_stats.get_stat("Fire_Rate") * fire_rate_multiplier \
 			- lifetime_after.wait_time - 0.1, 0.1))
 	SfxDeconflicter.play(noise_SFX)
+	starting_position = global_position
+	direction = desired_direction.normalized()
+	if not _was_previous_weapon:
+		rotation = global_position.angle_to_point(player.weapon_direction_marker.global_position) + deg_to_rad(90)
+	else:
+		rotation = desired_direction.angle() + deg_to_rad(90)
+	visible = true
+	collision_shape_2d.disabled = false
 
 func _physics_process(delta):
 	super._physics_process(delta)
@@ -58,18 +66,6 @@ func _physics_process(delta):
 
 func rupture(): # this is just to find other ruptures that exist using the has_method function (a.k.a duck typing)
 	pass
-
-func initialize_position():
-	if not position_initialized:
-		starting_position = global_position
-		direction = desired_direction.normalized()
-		position_initialized = true
-		if not _was_previous_weapon:
-			rotation = global_position.angle_to_point(player.weapon_direction_marker.global_position) + deg_to_rad(90)
-		else:
-			rotation = desired_direction.angle() + deg_to_rad(90)
-		visible = true
-		collision_shape_2d.disabled = false
 
 func travelled_distance():
 	pass

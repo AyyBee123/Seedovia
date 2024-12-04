@@ -22,22 +22,21 @@ var _initial_shot := true # this is to prevent a seed from firing immediately wh
 var starting_rotation: float = 75.0
 
 func _ready():
-	if previous_weapon: # if fired by a non-player
+	if previous_weapon != player: # if fired by a non-player
 		_was_previous_weapon = true
 		_initial_shot = false
 		rotation_degrees = rad_to_deg(desired_direction.angle()) - starting_rotation
-		angle_threshold = angle_threshold / player._player_stats.get_stat("Fire_Rate") * fire_rate_multiplier / 1.7
+		angle_threshold = angle_threshold / (player._player_stats.get_stat("Fire_Rate") * fire_rate_multiplier * 1.7)
 	else:
 		if name != "Cheese":
 			queue_free()
-		angle_threshold = angle_threshold / player._player_stats.get_stat("Fire_Rate") * fire_rate_multiplier
+		angle_threshold = angle_threshold / (player._player_stats.get_stat("Fire_Rate") * fire_rate_multiplier)
 	super._ready()
 	set_variable_sizes()
 	starting_position = global_position
 	starting_angle = rotation_degrees
 	angle_travelled = 0.0
 	direction = desired_direction.normalized()
-	position_initialized = true
 	if not _was_previous_weapon: # if fired by the player
 		rotation = global_position.angle_to_point(player.weapon_direction_marker.global_position)
 	else:
@@ -104,24 +103,10 @@ func _collide(body):
 			# add node to the enemy that gives velocity/position change and makes them take damage if they hit a wall
 			body.get_parent().add_child(knockback_scene)
 
-func initialize_position():
-	if not position_initialized:
-		starting_position = global_position
-		starting_angle = rotation_degrees
-		angle_travelled = 0.0
-		direction = desired_direction.normalized()
-		position_initialized = true
-		if not _was_previous_weapon: # if fired by the player
-			rotation = global_position.angle_to_point(player.weapon_direction_marker.global_position)
-		else:
-			rotation_degrees = rad_to_deg(desired_direction.angle()) - starting_rotation
-
 func update_position(delta):
 	if not _was_previous_weapon:
 		global_position = player.hand.global_position
 		rotation = global_position.angle_to_point(player.weapon_direction_marker.global_position)
-	else:
-		global_position = starting_position
 
 func animate():
 	var tween = get_tree().create_tween()

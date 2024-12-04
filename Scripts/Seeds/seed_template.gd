@@ -16,10 +16,6 @@ var starting_position: Vector2 # gets the starting position from where the bulle
 var distance_travelled: float # gets the current range travelled by the bullet
 var total_distance := 0 # distance travelled (this is used for the weapon's range)
 
-# this value is set because the weapon's position is not updated until after the ready function.
-# That's why it's called in the physics process function instead of the ready function
-var position_initialized := false
-
 var initial_weapon := false # checks if the weapon is the first in slot (was directly fired by the player)
 var ignore_first_collision := false # this lets the projectiles spawn without instantly colliding with an object
 var short_distance_travelled: float # this lets the projectile move a little before enabling collisions again
