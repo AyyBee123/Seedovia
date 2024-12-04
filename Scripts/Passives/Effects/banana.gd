@@ -55,12 +55,12 @@ func explode():
 	explosion.size = explosion_size
 	explosion.source = self
 	explosion.modulate = Color.YELLOW
-	for passive in $Passives.get_children():
-		if passive.name == "ExplosiveTrigger":
+	for _passive in $Passives.get_children():
+		if _passive.name == "ExplosiveTrigger":
 			continue
-		if passive.name == "HuraCrepitans":
+		if _passive.name == "HuraCrepitans":
 			continue
-		explosion.get_node("Passives").add_child(passive.duplicate())
+		explosion.get_node("Passives").add_child(_passive.duplicate())
 	call_deferred("create_child", explosion)
 	SfxDeconflicter.play(mild_explosion_SFX)
 	set_physics_process(false)
