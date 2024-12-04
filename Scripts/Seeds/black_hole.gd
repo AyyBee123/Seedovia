@@ -1,5 +1,7 @@
 extends "res://Scripts/Seeds/seed_template.gd"
 
+const NUMBER_OF_ORBITALS = 4
+
 var is_in_area := false
 var enemy = null
 var orbitals: Array
@@ -66,7 +68,7 @@ func shoot_next_weapon():
 	attempted_fire.emit()
 	if get_next_weapon() == null:
 		return
-	for i in range(2):
+	for i in range(NUMBER_OF_ORBITALS):
 		var weapon_instance = get_next_weapon().instantiate()
 		orbitals.append(weapon_instance)
 		orbital_directions.append(Vector2.ZERO)
@@ -76,8 +78,8 @@ func shoot_next_weapon():
 func initialize_location(weapon):
 	get_tree().current_scene.add_child(weapon)
 	weapon.global_position = Vector2(
-		sin(index * deg_to_rad(360.0/2)) * radius,
-		cos(index * deg_to_rad(360.0/2)) * radius
+		sin(index * deg_to_rad(360.0/NUMBER_OF_ORBITALS)) * radius,
+		cos(index * deg_to_rad(360.0/NUMBER_OF_ORBITALS)) * radius
 	) + global_position
 	weapon_fired.emit(weapon)
 
@@ -90,8 +92,8 @@ func orbit(delta):
 			# reset starting position of next weapon to make it not disappear while orbiting
 			orbital.starting_position = orbital.global_position
 			orbital.global_position = Vector2(
-				sin(angle * speed + orbitals.find(orbital) * deg_to_rad(360.0/orbitals.size())) * radius,
-				cos(angle * speed + orbitals.find(orbital) * deg_to_rad(360.0/orbitals.size())) * radius
+				sin(angle * speed + orbitals.find(orbital) * deg_to_rad(360.0/NUMBER_OF_ORBITALS)) * radius,
+				cos(angle * speed + orbitals.find(orbital) * deg_to_rad(360.0/NUMBER_OF_ORBITALS)) * radius
 			) + pos
 			var op = global_position.direction_to(orbital.global_position)
 			# get vector perpedicular to vector from the orbital to black hole
