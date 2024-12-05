@@ -137,7 +137,6 @@ func pick_up(item):
 		if item.item.category == "PICKUP":
 			item.item.on_pickup()
 			item.queue_free.call_deferred()
-			
 			await get_tree().create_timer(0.5).timeout
 			Global.save_data()
 			Global.save_room()
