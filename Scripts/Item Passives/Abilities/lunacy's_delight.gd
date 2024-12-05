@@ -7,7 +7,7 @@ var source
 
 func _ready():
 	source = get_parent().get_parent()
-	slot_number = 2
+	slot_numbers = [1, 2]
 	super._ready()
 
 # transfers this passive over from the initial source (the player) to the next weapon
