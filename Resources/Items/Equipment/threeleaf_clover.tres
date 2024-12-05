@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="equipment_item_class" load_steps=4 format=3 uid="uid://ckxioe3l8oft5"]
+
+[ext_resource type="Script" path="res://Scripts/Items/equipment_item_class.gd" id="1_fnwgn"]
+[ext_resource type="PackedScene" uid="uid://rbm0k6df0m03" path="res://Scenes/Item Passives/Abilities/ThreeLeaf Clover.tscn" id="2_h1vcl"]
+[ext_resource type="Texture2D" uid="uid://dy4xkojvr54tj" path="res://Sprites/Talismans/Three-Leaf Clover.png" id="3_1ggoe"]
+
+[resource]
+script = ExtResource("1_fnwgn")
+rarity = 4
+properties = Array[String]([])
+special_properties = Array[PackedScene]([ExtResource("2_h1vcl")])
+item_name = "Three-Leaf Clover"
+texture = ExtResource("3_1ggoe")
+description = "The seed in the first seed slot fires two additional copies of iteself that deal 50% of its damage."
