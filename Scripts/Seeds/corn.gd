@@ -25,6 +25,7 @@ func update_position(delta):
 		_set_as_visible = true
 
 func explode():
+	has_collided.emit(null)
 	var explosion = resource_preloader.get_resource("Explosion").instantiate()
 	explosion.damage = player._player_stats.get_stat("Weapon_Damage") * damage_multiplier
 	explosion.size = player._player_stats.get_stat("Weapon_Blast_Radius") * blast_radius_multiplier
