@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="mysterious_rock_consumable" load_steps=3 format=3 uid="uid://6vx42hjbmqjg"]
+
+[ext_resource type="Script" path="res://Scripts/Consumables/mysterious_rock.gd" id="1_0isrl"]
+[ext_resource type="Texture2D" uid="uid://duqrbvok8emks" path="res://Sprites/Consumables/Mysterious Rock.png" id="2_a4csr"]
+
+[resource]
+script = ExtResource("1_0isrl")
+weight = 0.01
+shop_price = 100
+item_name = "Mysterious Rock"
+texture = ExtResource("2_a4csr")
+description = "Duplicates all items on the ground."

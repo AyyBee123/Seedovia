@@ -26,7 +26,6 @@ func _ready():
 	Global.load_data()
 	Global.load_room()
 	reward_given = LevelList.current_reward_given
-	Targets.get_entities()
 	LevelList.current_room = get_tree().current_scene.scene_file_path
 	if get_tree().get_nodes_in_group("Enemy").size() == 0:
 		was_cleared = true
