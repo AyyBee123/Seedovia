@@ -140,3 +140,11 @@ func _on_fire_rate_timeout():
 
 func _on_lifetime_after_timeout():
 	is_shrinking = true
+
+func get_next_weapon_pos():
+	if x_pos == true: # left
+		return Vector2(randf_range(bottom_left.global_position.x,top_left.global_position.x), \
+				randf_range(bottom_left.global_position.y,top_left.global_position.y))
+	else: # right
+		return Vector2(randf_range(bottom_right.global_position.x,top_right.global_position.x), \
+				randf_range(bottom_right.global_position.y,top_right.global_position.y))

@@ -20,6 +20,7 @@ var initial_weapon := false # checks if the weapon is the first in slot (was dir
 var ignore_first_collision := false # this lets the projectiles spawn without instantly colliding with an object
 var short_distance_travelled: float # this lets the projectile move a little before enabling collisions again
 var previous_weapon = null # this is used for weapons that persist and move as they're spawning the next weapon
+var next_weapon_pos: Vector2: get = get_next_weapon_pos # get the next weapon's position
 
 # these are declared in the player script (for the first weapon) and then passed over from weapon to weapon
 var slot_index: int # the index to determine the order the weapon is fired
@@ -128,3 +129,6 @@ func get_next_weapon():
 func set_ignore_first_collision():
 	await get_tree().process_frame
 	ignore_first_collision = false
+
+func get_next_weapon_pos():
+	return global_position

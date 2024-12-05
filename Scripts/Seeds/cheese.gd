@@ -130,3 +130,6 @@ func _input(event):
 
 func _on_animation_end_lifetime_timeout():
 	queue_free.call_deferred()
+
+func get_next_weapon_pos():
+	return marker_2d.global_position

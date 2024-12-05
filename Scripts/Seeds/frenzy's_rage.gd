@@ -104,3 +104,6 @@ func stop_laser():
 		animated_sprite_2d.play("Laser End")
 		_end_played = true
 		_beginning_played = false
+
+func get_next_weapon_pos():
+	return seed_marker.global_position

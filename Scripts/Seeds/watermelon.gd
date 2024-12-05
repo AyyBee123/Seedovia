@@ -58,7 +58,7 @@ func shoot_next_weapon():
 	attempted_fire.emit()
 	if get_next_weapon() == null:
 		return
-	set_weapon_properties(get_next_weapon().instantiate(), area_normal, true)
+	set_weapon_properties(get_next_weapon().instantiate(), weapon_direction, true)
 
 func collide(area):
 	var sounds = [metal_1_SFX, metal_2_SFX]
@@ -69,12 +69,8 @@ func collide(area):
 	if area != null:
 		has_collided.emit(area)
 	explode()
+	weapon_direction = area_normal
 	shoot_next_weapon()
-
-func initialize_location(weapon):
-	get_tree().current_scene.add_child(weapon)
-	weapon_fired.emit(weapon)
-	weapon.global_position = global_position
 
 func explode():
 	var explosion = resource_preloader.get_resource("Explosion").instantiate()

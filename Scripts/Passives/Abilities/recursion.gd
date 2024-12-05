@@ -22,7 +22,6 @@ func transfer_passive(weapon = null):
 		return
 	if weapon.is_in_group("Weapon Effect"):
 		return
-	# make a new banana mine passive and add it as a child of the next weapon
 	if weapon.seed_slot_number == 2:
 		weapon.slot_index -= 1
 	else:
