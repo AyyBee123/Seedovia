@@ -6,7 +6,7 @@ var third_seed
 
 func _ready():
 	source = get_parent().get_parent()
-	chance = 0.15
+	chance = 0.5
 	source.has_collided.connect(chance_to_trigger)
 	source.weapon_fired.connect(transfer_passive)
 	super._ready()
@@ -28,7 +28,30 @@ func trigger(enemy = null):
 	seed_instance.previous_weapon = source
 	seed_instance.ignore_first_collision = true
 	seed_instance.hit_enemy = enemy
-	seed_instance.desired_direction = Vector2.RIGHT.rotated(randf_range(0, 2 * PI))
+	if get_nearest_enemy(enemy) != null:
+		seed_instance.desired_direction = source.global_position.direction_to(get_nearest_enemy(enemy).global_position)
+	else:
+		seed_instance.desired_direction = Vector2.RIGHT.rotated(randf_range(0, 2 * PI))
 	get_tree().current_scene.add_child.call_deferred(seed_instance)
 	source.weapon_fired.emit(seed_instance)
 	seed_instance.global_position = enemy.get_parent().global_position
+
+func get_nearest_enemy(enemy):
+	var enemies = get_tree().get_nodes_in_group("Enemies")
+	if enemy != null:
+		# removes the hit enemy from the array so that the projectile does not target it when "bouncing"
+		for i in range(enemies.size()): 
+			if enemies[i] == enemy:
+				enemies.remove_at(i)
+				break # break out of the loop because only one enemy is hit anyway, so it's reduntent to continue
+	var nearest_enemy = null
+	var nearest_distance = null
+	for i in enemies.size():
+		if nearest_enemy == null:
+			nearest_enemy = enemies[i]
+			nearest_distance = enemies[i].global_position.distance_squared_to(source.global_position)
+		else:
+			if nearest_distance > enemies[i].global_position.distance_squared_to(source.global_position):
+				nearest_distance = enemies[i].global_position.distance_squared_to(source.global_position)
+				nearest_enemy = enemies[i]
+	return nearest_enemy
