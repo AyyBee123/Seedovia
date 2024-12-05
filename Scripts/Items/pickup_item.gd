@@ -23,20 +23,7 @@ func _on_attract_area_body_entered(body):
 func pick_up():
 	item.on_pickup()
 	await get_tree().process_frame
-	check_for_pickup_items()
+	ItemCheck.check_for_pickup_items()
 	Global.save_data()
 	Global.save_room()
 	queue_free()
-
-func check_for_pickup_items():
-	LevelList.pickup_items_on_ground.clear()
-	var i = 0
-	# check all direct children of the scene (i.e. all nodes on the ground)
-	for item in get_children():
-		# get the item and its current position, stored as a dictionary
-		if item.is_in_group("Pickup Item"):
-			LevelList.pickup_items_on_ground[i] = {
-				"item": item.item,
-				"position": item.global_position
-			}
-			i += 1

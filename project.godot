@@ -30,6 +30,7 @@ PlayerCharacter="*res://Scripts/Player/player_character.gd"
 SfxDeconflicter="*res://Scripts/Utils/sfx_deconflicter.gd"
 SteamIntegration="*res://Scripts/Utils/steam_integration.gd"
 ItemEffects="*res://Scripts/Items/item_effects.gd"
+ItemCheck="*res://Scripts/Level/item_check.gd"
 
 [debug]
 

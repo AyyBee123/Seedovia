@@ -8,5 +8,5 @@ func _ready():
 		add_child(passive_item)
 		passive_item.global_position = Vector2.ZERO
 	LevelList.entered_room = true
-	check_for_pickup_items()
+	ItemCheck.check_for_pickup_items()
 	Global.save_room()

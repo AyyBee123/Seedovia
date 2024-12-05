@@ -251,19 +251,6 @@ func _on_collision_buffer_time_timeout():
 func update_coins():
 	$"Player Health".set_coins()
 	await get_tree().process_frame
-	check_for_coins()
+	ItemCheck.check_for_coins()
 	await get_tree().create_timer(0.5).timeout
 	Global.save_coins()
-
-func check_for_coins():
-	LevelList.coins_on_ground.clear()
-	var i = 0
-	# check all direct children of the scene (i.e. all nodes on the ground)
-	for item in get_tree().current_scene.get_children():
-		# get the item and its current position, stored as a dictionary
-		if item.is_in_group("Coin"):
-			LevelList.coins_on_ground[i] = {
-				"item": item,
-				"position": item.global_position
-			}
-			i += 1

@@ -1,4 +1,4 @@
-class_name apple extends consumable_item_class
+class_name apple_consumable extends consumable_item_class
 
 func on_use() -> void:
 	var player = Targets.get_player()

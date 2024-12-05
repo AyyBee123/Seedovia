@@ -58,7 +58,7 @@ func set_shop_items():
 		else:
 			item.global_position = Vector2((shop_size - 4) * 150.0 / 4 - 100 * (index - 4), -50)
 		index += 1
-	check_for_shop_items()
+	ItemCheck.check_for_shop_items()
 	Global.save_room()
 
 
