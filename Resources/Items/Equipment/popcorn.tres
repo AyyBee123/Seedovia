@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="equipment_item_class" load_steps=3 format=3 uid="uid://h1dlg7p7i5yf"]
+
+[ext_resource type="Script" path="res://Scripts/Items/equipment_item_class.gd" id="1_ibxxs"]
+[ext_resource type="Texture2D" uid="uid://c0n03d7sdqfoh" path="res://Sprites/Talismans/Popcorn.png" id="2_puhb3"]
+
+[resource]
+script = ExtResource("1_ibxxs")
+rarity = 3
+properties = Array[String](["5x Fire_Rate", "0.2x Weapon_Damage", "0.5x Weapon_Size"])
+special_properties = Array[PackedScene]([])
+item_name = "Popcorn"
+texture = ExtResource("2_puhb3")
+description = "5x Fire Rate
+0.2x Damage
+0.5x Seed Size"
