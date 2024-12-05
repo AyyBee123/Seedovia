@@ -81,8 +81,6 @@ func player_has_item(shop_item) -> bool:
 
 
 func shop_has_item(shop_item) -> bool:
-	if shop_item.item.category == "CONSUMABLE": # for now, since there is only one consumable item
-		return false
 	for item in current_shop_items:
 		if shop_item.item.item_name == item.item.item_name: # check if there are duplicates
 			return true
