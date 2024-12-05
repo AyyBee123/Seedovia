@@ -46,7 +46,6 @@ func set_price():
 			price = item.shop_price
 	$Price.text = "[center]¢" + str(price)
 
-# TODO: add this in player script
 func _on_pickable_area_body_entered(body):
 	if body.is_in_group("Players"):
 		player_in_area = true
