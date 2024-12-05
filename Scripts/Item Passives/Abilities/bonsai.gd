@@ -30,4 +30,5 @@ func trigger(enemy = null):
 	seed_instance.hit_enemy = enemy
 	seed_instance.desired_direction = Vector2.RIGHT.rotated(randf_range(0, 2 * PI))
 	get_tree().current_scene.add_child.call_deferred(seed_instance)
+	source.weapon_fired.emit(seed_instance)
 	seed_instance.global_position = enemy.get_parent().global_position
