@@ -1,9 +1,10 @@
 extends Node
 
 # %APPDATA%\Roaming\Godot\app_userdata\Roguelike
-var SAVE_PATH := "user://save_run_data.res"
+var SAVE_PATH := "user://save_data.res"
 var RUN_SAVE_PATH := "user://current_run.res"
 var data := player_data.new()
+var super_data := overall_data.new()
 var rewards: Array
 static var next_reward: item_pool = null
 var cursor = load("res://Sprites/UI/Cursor.png")
@@ -56,3 +57,30 @@ func save_coins():
 	data.get_coins()
 	ResourceSaver.save(data, RUN_SAVE_PATH)
 	ResourceSaver.save(data, "user://current_run.tres") # for testing purposes, will remove later
+
+func load_data(_path = null):
+	if _path == null:
+		_path = SAVE_PATH
+	if not ResourceLoader.exists(_path):
+		return
+	super_data = ResourceLoader.load(_path)
+	super_data.set_save_selection_data()
+
+func save_save_selection():
+	super_data.get_save_selection_data()
+	ResourceSaver.save(super_data, SAVE_PATH)
+	ResourceSaver.save(super_data, "user://save_data.tres") # for testing purposes, will remove later
+
+func save_data():
+	ResourceSaver.save(super_data, SAVE_PATH)
+	ResourceSaver.save(super_data, "user://save_data.tres") # for testing purposes, will remove later
+
+func load_data_exists(_data) -> bool:
+	return ResourceLoader.exists(_data)
+
+func delete_data(_path = null):
+	if _path == null:
+		_path = SAVE_PATH
+	if not ResourceLoader.exists(_path):
+		return
+	DirAccess.remove_absolute(_path)

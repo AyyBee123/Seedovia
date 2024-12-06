@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://voseluffsvav"]
+[gd_scene load_steps=11 format=3 uid="uid://voseluffsvav"]
 
 [ext_resource type="Texture2D" uid="uid://lggjfuwvynu6" path="res://Sprites/UI/Save File Select.png" id="1_nnmx1"]
 [ext_resource type="Texture2D" uid="uid://c6ab63o7tjjv6" path="res://Sprites/UI/Save File Select Pressed.png" id="2_su74p"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://koekt8h21hw1" path="res://Sprites/UI/Delete.png" id="6_l137q"]
 [ext_resource type="Texture2D" uid="uid://wjmcs8muvj4n" path="res://Sprites/UI/Delete Pressed.png" id="7_1wumd"]
 [ext_resource type="Texture2D" uid="uid://c0voa1o2maemk" path="res://Sprites/UI/Delete Hover.png" id="8_hgh7x"]
+[ext_resource type="Texture2D" uid="uid://cqyeerffhki2l" path="res://Sprites/UI/Delete Disabled.png" id="10_k77xw"]
 
 [node name="Save File Select" type="Control"]
 layout_mode = 3
@@ -18,6 +19,7 @@ offset_bottom = 40.0
 script = ExtResource("5_ej0fd")
 
 [node name="Save Number Label" type="RichTextLabel" parent="."]
+layout_mode = 0
 offset_top = 23.0
 offset_right = 1920.0
 offset_bottom = 97.0
@@ -54,7 +56,26 @@ theme_override_font_sizes/normal_font_size = 48
 bbcode_enabled = true
 text = "[center]Save 1"
 
-[node name="Time Played Label" type="RichTextLabel" parent="GridContainer/Save1"]
+[node name="Empty Text" type="RichTextLabel" parent="GridContainer/Save1"]
+visible = false
+modulate = Color(0.509286, 0.509286, 0.509286, 1)
+layout_mode = 0
+offset_left = 2.0
+offset_top = 132.0
+offset_right = 350.0
+offset_bottom = 215.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("4_hc83d")
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "[center]EMPTY"
+
+[node name="Control" type="Control" parent="GridContainer/Save1"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Time Played Label" type="RichTextLabel" parent="GridContainer/Save1/Control"]
 modulate = Color(1, 1, 0.431373, 1)
 layout_mode = 0
 offset_left = 10.0
@@ -66,7 +87,7 @@ theme_override_fonts/normal_font = ExtResource("4_hc83d")
 theme_override_font_sizes/normal_font_size = 48
 text = "Time Played:"
 
-[node name="Time Played Info" type="RichTextLabel" parent="GridContainer/Save1"]
+[node name="Time Played Info" type="RichTextLabel" parent="GridContainer/Save1/Control"]
 layout_mode = 0
 offset_left = 10.0
 offset_top = 182.0
@@ -77,7 +98,7 @@ theme_override_fonts/normal_font = ExtResource("4_hc83d")
 theme_override_font_sizes/normal_font_size = 48
 text = "0h 0m 0s"
 
-[node name="Runs Played Label" type="RichTextLabel" parent="GridContainer/Save1"]
+[node name="Runs Played Label" type="RichTextLabel" parent="GridContainer/Save1/Control"]
 modulate = Color(1, 1, 0.431373, 1)
 layout_mode = 0
 offset_left = 10.0
@@ -89,7 +110,7 @@ theme_override_fonts/normal_font = ExtResource("4_hc83d")
 theme_override_font_sizes/normal_font_size = 48
 text = "Runs Played:"
 
-[node name="Runs Played Info" type="RichTextLabel" parent="GridContainer/Save1"]
+[node name="Runs Played Info" type="RichTextLabel" parent="GridContainer/Save1/Control"]
 layout_mode = 0
 offset_left = 10.0
 offset_top = 312.0
@@ -101,7 +122,7 @@ theme_override_font_sizes/normal_font_size = 48
 text = "0
 "
 
-[node name="Last Played Label" type="RichTextLabel" parent="GridContainer/Save1"]
+[node name="Last Played Label" type="RichTextLabel" parent="GridContainer/Save1/Control"]
 modulate = Color(1, 1, 0.431373, 1)
 layout_mode = 0
 offset_left = 10.0
@@ -113,7 +134,7 @@ theme_override_fonts/normal_font = ExtResource("4_hc83d")
 theme_override_font_sizes/normal_font_size = 48
 text = "Last Played:"
 
-[node name="Last Played Info" type="RichTextLabel" parent="GridContainer/Save1"]
+[node name="Last Played Info" type="RichTextLabel" parent="GridContainer/Save1/Control"]
 layout_mode = 0
 offset_left = 10.0
 offset_top = 442.0
@@ -125,7 +146,7 @@ theme_override_font_sizes/normal_font_size = 48
 text = "1999-08-28
 "
 
-[node name="Unlock Progress Label" type="RichTextLabel" parent="GridContainer/Save1"]
+[node name="Unlock Progress Label" type="RichTextLabel" parent="GridContainer/Save1/Control"]
 modulate = Color(1, 1, 0.431373, 1)
 layout_mode = 0
 offset_left = 10.0
@@ -137,7 +158,7 @@ theme_override_fonts/normal_font = ExtResource("4_hc83d")
 theme_override_font_sizes/normal_font_size = 48
 text = "Last Played:"
 
-[node name="Unlock Progress Info" type="RichTextLabel" parent="GridContainer/Save1"]
+[node name="Unlock Progress Info" type="RichTextLabel" parent="GridContainer/Save1/Control"]
 layout_mode = 0
 offset_left = 10.0
 offset_top = 572.0
@@ -158,6 +179,7 @@ offset_bottom = 878.0
 texture_normal = ExtResource("6_l137q")
 texture_pressed = ExtResource("7_1wumd")
 texture_hover = ExtResource("8_hgh7x")
+texture_disabled = ExtResource("10_k77xw")
 stretch_mode = 5
 
 [node name="Save2" type="TextureButton" parent="GridContainer"]
@@ -178,7 +200,25 @@ theme_override_font_sizes/normal_font_size = 48
 bbcode_enabled = true
 text = "[center]Save 2"
 
-[node name="Time Played Label" type="RichTextLabel" parent="GridContainer/Save2"]
+[node name="Empty Text" type="RichTextLabel" parent="GridContainer/Save2"]
+visible = false
+modulate = Color(0.509286, 0.509286, 0.509286, 1)
+offset_left = 2.0
+offset_top = 132.0
+offset_right = 350.0
+offset_bottom = 215.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("4_hc83d")
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "[center]EMPTY"
+
+[node name="Control" type="Control" parent="GridContainer/Save2"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Time Played Label" type="RichTextLabel" parent="GridContainer/Save2/Control"]
 modulate = Color(1, 1, 0.431373, 1)
 layout_mode = 0
 offset_left = 10.0
@@ -190,7 +230,7 @@ theme_override_fonts/normal_font = ExtResource("4_hc83d")
 theme_override_font_sizes/normal_font_size = 48
 text = "Time Played:"
 
-[node name="Time Played Info" type="RichTextLabel" parent="GridContainer/Save2"]
+[node name="Time Played Info" type="RichTextLabel" parent="GridContainer/Save2/Control"]
 layout_mode = 0
 offset_left = 10.0
 offset_top = 182.0
@@ -201,7 +241,7 @@ theme_override_fonts/normal_font = ExtResource("4_hc83d")
 theme_override_font_sizes/normal_font_size = 48
 text = "0h 0m 0s"
 
-[node name="Runs Played Label" type="RichTextLabel" parent="GridContainer/Save2"]
+[node name="Runs Played Label" type="RichTextLabel" parent="GridContainer/Save2/Control"]
 modulate = Color(1, 1, 0.431373, 1)
 layout_mode = 0
 offset_left = 10.0
@@ -213,7 +253,7 @@ theme_override_fonts/normal_font = ExtResource("4_hc83d")
 theme_override_font_sizes/normal_font_size = 48
 text = "Runs Played:"
 
-[node name="Runs Played Info" type="RichTextLabel" parent="GridContainer/Save2"]
+[node name="Runs Played Info" type="RichTextLabel" parent="GridContainer/Save2/Control"]
 layout_mode = 0
 offset_left = 10.0
 offset_top = 312.0
@@ -225,7 +265,7 @@ theme_override_font_sizes/normal_font_size = 48
 text = "0
 "
 
-[node name="Last Played Label" type="RichTextLabel" parent="GridContainer/Save2"]
+[node name="Last Played Label" type="RichTextLabel" parent="GridContainer/Save2/Control"]
 modulate = Color(1, 1, 0.431373, 1)
 layout_mode = 0
 offset_left = 10.0
@@ -237,7 +277,7 @@ theme_override_fonts/normal_font = ExtResource("4_hc83d")
 theme_override_font_sizes/normal_font_size = 48
 text = "Last Played:"
 
-[node name="Last Played Info" type="RichTextLabel" parent="GridContainer/Save2"]
+[node name="Last Played Info" type="RichTextLabel" parent="GridContainer/Save2/Control"]
 layout_mode = 0
 offset_left = 10.0
 offset_top = 442.0
@@ -249,7 +289,7 @@ theme_override_font_sizes/normal_font_size = 48
 text = "1999-08-28
 "
 
-[node name="Unlock Progress Label" type="RichTextLabel" parent="GridContainer/Save2"]
+[node name="Unlock Progress Label" type="RichTextLabel" parent="GridContainer/Save2/Control"]
 modulate = Color(1, 1, 0.431373, 1)
 layout_mode = 0
 offset_left = 10.0
@@ -261,7 +301,7 @@ theme_override_fonts/normal_font = ExtResource("4_hc83d")
 theme_override_font_sizes/normal_font_size = 48
 text = "Last Played:"
 
-[node name="Unlock Progress Info" type="RichTextLabel" parent="GridContainer/Save2"]
+[node name="Unlock Progress Info" type="RichTextLabel" parent="GridContainer/Save2/Control"]
 layout_mode = 0
 offset_left = 10.0
 offset_top = 572.0
@@ -282,6 +322,7 @@ offset_bottom = 878.0
 texture_normal = ExtResource("6_l137q")
 texture_pressed = ExtResource("7_1wumd")
 texture_hover = ExtResource("8_hgh7x")
+texture_disabled = ExtResource("10_k77xw")
 stretch_mode = 5
 
 [node name="Save3" type="TextureButton" parent="GridContainer"]
@@ -302,7 +343,25 @@ theme_override_font_sizes/normal_font_size = 48
 bbcode_enabled = true
 text = "[center]Save 3"
 
-[node name="Time Played Label" type="RichTextLabel" parent="GridContainer/Save3"]
+[node name="Empty Text" type="RichTextLabel" parent="GridContainer/Save3"]
+visible = false
+modulate = Color(0.509286, 0.509286, 0.509286, 1)
+offset_left = 2.0
+offset_top = 132.0
+offset_right = 350.0
+offset_bottom = 215.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("4_hc83d")
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "[center]EMPTY"
+
+[node name="Control" type="Control" parent="GridContainer/Save3"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Time Played Label" type="RichTextLabel" parent="GridContainer/Save3/Control"]
 modulate = Color(1, 1, 0.431373, 1)
 layout_mode = 0
 offset_left = 10.0
@@ -314,7 +373,7 @@ theme_override_fonts/normal_font = ExtResource("4_hc83d")
 theme_override_font_sizes/normal_font_size = 48
 text = "Time Played:"
 
-[node name="Time Played Info" type="RichTextLabel" parent="GridContainer/Save3"]
+[node name="Time Played Info" type="RichTextLabel" parent="GridContainer/Save3/Control"]
 layout_mode = 0
 offset_left = 10.0
 offset_top = 182.0
@@ -325,7 +384,7 @@ theme_override_fonts/normal_font = ExtResource("4_hc83d")
 theme_override_font_sizes/normal_font_size = 48
 text = "0h 0m 0s"
 
-[node name="Runs Played Label" type="RichTextLabel" parent="GridContainer/Save3"]
+[node name="Runs Played Label" type="RichTextLabel" parent="GridContainer/Save3/Control"]
 modulate = Color(1, 1, 0.431373, 1)
 layout_mode = 0
 offset_left = 10.0
@@ -337,7 +396,7 @@ theme_override_fonts/normal_font = ExtResource("4_hc83d")
 theme_override_font_sizes/normal_font_size = 48
 text = "Runs Played:"
 
-[node name="Runs Played Info" type="RichTextLabel" parent="GridContainer/Save3"]
+[node name="Runs Played Info" type="RichTextLabel" parent="GridContainer/Save3/Control"]
 layout_mode = 0
 offset_left = 10.0
 offset_top = 312.0
@@ -349,7 +408,7 @@ theme_override_font_sizes/normal_font_size = 48
 text = "0
 "
 
-[node name="Last Played Label" type="RichTextLabel" parent="GridContainer/Save3"]
+[node name="Last Played Label" type="RichTextLabel" parent="GridContainer/Save3/Control"]
 modulate = Color(1, 1, 0.431373, 1)
 layout_mode = 0
 offset_left = 10.0
@@ -361,7 +420,7 @@ theme_override_fonts/normal_font = ExtResource("4_hc83d")
 theme_override_font_sizes/normal_font_size = 48
 text = "Last Played:"
 
-[node name="Last Played Info" type="RichTextLabel" parent="GridContainer/Save3"]
+[node name="Last Played Info" type="RichTextLabel" parent="GridContainer/Save3/Control"]
 layout_mode = 0
 offset_left = 10.0
 offset_top = 442.0
@@ -373,7 +432,7 @@ theme_override_font_sizes/normal_font_size = 48
 text = "1999-08-28
 "
 
-[node name="Unlock Progress Label" type="RichTextLabel" parent="GridContainer/Save3"]
+[node name="Unlock Progress Label" type="RichTextLabel" parent="GridContainer/Save3/Control"]
 modulate = Color(1, 1, 0.431373, 1)
 layout_mode = 0
 offset_left = 10.0
@@ -385,7 +444,7 @@ theme_override_fonts/normal_font = ExtResource("4_hc83d")
 theme_override_font_sizes/normal_font_size = 48
 text = "Last Played:"
 
-[node name="Unlock Progress Info" type="RichTextLabel" parent="GridContainer/Save3"]
+[node name="Unlock Progress Info" type="RichTextLabel" parent="GridContainer/Save3/Control"]
 layout_mode = 0
 offset_left = 10.0
 offset_top = 572.0
@@ -406,6 +465,7 @@ offset_bottom = 878.0
 texture_normal = ExtResource("6_l137q")
 texture_pressed = ExtResource("7_1wumd")
 texture_hover = ExtResource("8_hgh7x")
+texture_disabled = ExtResource("10_k77xw")
 stretch_mode = 5
 
 [node name="Save4" type="TextureButton" parent="GridContainer"]
@@ -426,7 +486,25 @@ theme_override_font_sizes/normal_font_size = 48
 bbcode_enabled = true
 text = "[center]Save 4"
 
-[node name="Time Played Label" type="RichTextLabel" parent="GridContainer/Save4"]
+[node name="Empty Text" type="RichTextLabel" parent="GridContainer/Save4"]
+visible = false
+modulate = Color(0.509286, 0.509286, 0.509286, 1)
+offset_left = 2.0
+offset_top = 132.0
+offset_right = 350.0
+offset_bottom = 215.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("4_hc83d")
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "[center]EMPTY"
+
+[node name="Control" type="Control" parent="GridContainer/Save4"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Time Played Label" type="RichTextLabel" parent="GridContainer/Save4/Control"]
 modulate = Color(1, 1, 0.431373, 1)
 layout_mode = 0
 offset_left = 10.0
@@ -438,7 +516,7 @@ theme_override_fonts/normal_font = ExtResource("4_hc83d")
 theme_override_font_sizes/normal_font_size = 48
 text = "Time Played:"
 
-[node name="Time Played Info" type="RichTextLabel" parent="GridContainer/Save4"]
+[node name="Time Played Info" type="RichTextLabel" parent="GridContainer/Save4/Control"]
 layout_mode = 0
 offset_left = 10.0
 offset_top = 182.0
@@ -449,7 +527,7 @@ theme_override_fonts/normal_font = ExtResource("4_hc83d")
 theme_override_font_sizes/normal_font_size = 48
 text = "0h 0m 0s"
 
-[node name="Runs Played Label" type="RichTextLabel" parent="GridContainer/Save4"]
+[node name="Runs Played Label" type="RichTextLabel" parent="GridContainer/Save4/Control"]
 modulate = Color(1, 1, 0.431373, 1)
 layout_mode = 0
 offset_left = 10.0
@@ -461,7 +539,7 @@ theme_override_fonts/normal_font = ExtResource("4_hc83d")
 theme_override_font_sizes/normal_font_size = 48
 text = "Runs Played:"
 
-[node name="Runs Played Info" type="RichTextLabel" parent="GridContainer/Save4"]
+[node name="Runs Played Info" type="RichTextLabel" parent="GridContainer/Save4/Control"]
 layout_mode = 0
 offset_left = 10.0
 offset_top = 312.0
@@ -473,7 +551,7 @@ theme_override_font_sizes/normal_font_size = 48
 text = "0
 "
 
-[node name="Last Played Label" type="RichTextLabel" parent="GridContainer/Save4"]
+[node name="Last Played Label" type="RichTextLabel" parent="GridContainer/Save4/Control"]
 modulate = Color(1, 1, 0.431373, 1)
 layout_mode = 0
 offset_left = 10.0
@@ -485,7 +563,7 @@ theme_override_fonts/normal_font = ExtResource("4_hc83d")
 theme_override_font_sizes/normal_font_size = 48
 text = "Last Played:"
 
-[node name="Last Played Info" type="RichTextLabel" parent="GridContainer/Save4"]
+[node name="Last Played Info" type="RichTextLabel" parent="GridContainer/Save4/Control"]
 layout_mode = 0
 offset_left = 10.0
 offset_top = 442.0
@@ -497,7 +575,7 @@ theme_override_font_sizes/normal_font_size = 48
 text = "1999-08-28
 "
 
-[node name="Unlock Progress Label" type="RichTextLabel" parent="GridContainer/Save4"]
+[node name="Unlock Progress Label" type="RichTextLabel" parent="GridContainer/Save4/Control"]
 modulate = Color(1, 1, 0.431373, 1)
 layout_mode = 0
 offset_left = 10.0
@@ -509,7 +587,7 @@ theme_override_fonts/normal_font = ExtResource("4_hc83d")
 theme_override_font_sizes/normal_font_size = 48
 text = "Last Played:"
 
-[node name="Unlock Progress Info" type="RichTextLabel" parent="GridContainer/Save4"]
+[node name="Unlock Progress Info" type="RichTextLabel" parent="GridContainer/Save4/Control"]
 layout_mode = 0
 offset_left = 10.0
 offset_top = 572.0
@@ -530,4 +608,5 @@ offset_bottom = 878.0
 texture_normal = ExtResource("6_l137q")
 texture_pressed = ExtResource("7_1wumd")
 texture_hover = ExtResource("8_hgh7x")
+texture_disabled = ExtResource("10_k77xw")
 stretch_mode = 5
