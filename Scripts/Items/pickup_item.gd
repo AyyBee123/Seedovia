@@ -24,6 +24,6 @@ func pick_up():
 	item.on_pickup()
 	await get_tree().process_frame
 	ItemCheck.check_for_pickup_items()
-	Global.save_data()
-	Global.save_room()
+	Global.save_run_data()
+	Global.save_run_room()
 	queue_free()

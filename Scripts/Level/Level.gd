@@ -23,8 +23,8 @@ func _ready():
 	player = LevelList.player.instantiate()
 	add_child(player)
 	player.global_position = player_pos
-	Global.load_data()
-	Global.load_room()
+	Global.load_run_data()
+	Global.load_run_room()
 	reward_given = LevelList.current_reward_given
 	LevelList.current_room = get_tree().current_scene.scene_file_path
 	if get_tree().get_nodes_in_group("Enemy").size() == 0:
@@ -52,7 +52,7 @@ func _ready():
 		var item_instance = resource_preloader.get_resource("Coin").instantiate()
 		add_child(item_instance)
 		item_instance.global_position = LevelList.coins_on_ground[i]["position"]
-	Global.save_room()
+	Global.save_run_room()
 
 func _physics_process(delta):
 	player = Targets.get_player()
@@ -72,8 +72,8 @@ func check_for_enemies():
 			await get_tree().create_timer(0.5).timeout # buffer to allow the item to register in the level
 			ItemCheck.check_for_items()
 			ItemCheck.check_for_coins()
-			Global.save_data()
-			Global.save_room()
+			Global.save_run_data()
+			Global.save_run_room()
 
 func pause():
 	if Input.is_action_just_pressed("esc"):
@@ -86,7 +86,7 @@ func pause():
 			add_child(pause_menu)
 
 func spawn_doors(): # -785 to 785 = 1570 (size of level in x-axis) # -400 is the y-position for the door(s)
-	Global.load_room()
+	Global.load_run_room()
 	doors_spawned = true
 	if not was_cleared:
 		await get_tree().create_timer(0.5, false).timeout
@@ -121,7 +121,7 @@ func spawn_doors(): # -785 to 785 = 1570 (size of level in x-axis) # -400 is the
 		add_child(door)
 		door.position = Vector2(1570.0 * i / 5, -384)
 		LevelList.doors[door.text] = door.global_position
-	Global.save_room()
+	Global.save_run_room()
 
 func give_reward():
 	reward_given = true

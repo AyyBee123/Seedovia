@@ -1,7 +1,7 @@
 class_name player_data extends Resource
 
 # resource variables must have @export to be saved in a file
-# data is loaded from the load_data function in the global script
+# data is loaded from the load_run_data function in the global script
 @export var inventory: Dictionary = PlayerInventory.inventory
 @export var talismans: Dictionary = PlayerInventory.talismans
 @export var seeds: Dictionary = PlayerInventory.seeds

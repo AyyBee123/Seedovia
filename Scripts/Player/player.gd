@@ -54,13 +54,13 @@ func _ready():
 		PlayerPassives.set_passives()
 		PlayerPassives.set_item_passives()
 		PlayerStatStorage.set_stats()
-		Global.load_data()
+		Global.load_run_data()
 	_player_stats.set_health(PlayerStatStorage.current_health)
 	controller_cursor.visible = false
 	_player_stats.damaged.connect(took_damage)
 	_player_stats.health_increased.connect(heal)
 	_player_stats.change_coins.connect(update_coins)
-	Global.save_data()
+	Global.save_run_data()
 
 func _physics_process(delta):
 	update_timers()
@@ -138,8 +138,8 @@ func pick_up(item):
 			item.item.on_pickup()
 			item.queue_free.call_deferred()
 			await get_tree().create_timer(0.5).timeout
-			Global.save_data()
-			Global.save_room()
+			Global.save_run_data()
+			Global.save_run_room()
 			return
 		item.add_to_group("Item")
 		item.remove_from_group("Shop Item")
@@ -161,7 +161,7 @@ func stop():
 func die():
 	hide() # temporary death effect
 	process_mode = 4 # = Mode: Disabled
-	Global.delete_data()
+	Global.delete_run_data()
 	# TODO: add death animation
 	# TODO: pause game and add a menu with options to restart and go back to menu
 
@@ -201,12 +201,12 @@ func update_timers():
 
 func took_damage():
 	$"Player Health".set_health()
-	Global.save_data()
+	Global.save_run_data()
 	can_be_damaged = false
 	invulnerability_time.start()
 
 func heal():
-	Global.save_data()
+	Global.save_run_data()
 
 func _should_move() -> bool:
 	var input_direction = Input.get_vector("left", "right", "up", "down")

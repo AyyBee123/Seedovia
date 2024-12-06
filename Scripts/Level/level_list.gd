@@ -25,7 +25,7 @@ func load_char():
 	player = load(character_scene_file_path)
 
 func change_room(door):
-	Global.save_data()
+	Global.save_run_data()
 	if door.text == "Passive": # 5th room is the passive room
 		next_room = ResourceLoader.load("res://Scenes/Levels/Special/Passive Room.tscn")
 	elif door.text == "Shop": # one of the 8th rooms is always a shop
@@ -46,10 +46,10 @@ func change_room(door):
 	items_on_ground.clear()
 	doors.clear()
 	room_number = min(room_number + 1, 10)
-	Global.save_room()
+	Global.save_run_room()
 
 func change_floor():
-	Global.save_data()
+	Global.save_run_data()
 	floor.rooms.clear()
 	floor_number += 1
 	room_number = 0

@@ -8,7 +8,7 @@ func _ready():
 	if not LevelList.shop_items_spawned:
 		set_shop_items()
 		LevelList.shop_items_spawned = true
-	Global.save_room()
+	Global.save_run_room()
 
 func set_shop_items():
 	shop_size = randi_range(6, 8)
@@ -59,7 +59,7 @@ func set_shop_items():
 			item.global_position = Vector2((shop_size - 4) * 150.0 / 4 - 100 * (index - 4), -50)
 		index += 1
 	ItemCheck.check_for_shop_items()
-	Global.save_room()
+	Global.save_run_room()
 
 
 func player_has_item(shop_item) -> bool:

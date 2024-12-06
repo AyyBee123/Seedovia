@@ -19,4 +19,4 @@ func dupe_items():
 	ItemCheck.check_for_items()
 	ItemCheck.check_for_coins()
 	await get_tree().create_timer(0.5).timeout
-	Global.save_room()
+	Global.save_run_room()

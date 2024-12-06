@@ -16,7 +16,7 @@ func _on_resume_button_pressed():
 	queue_free()
 
 func _on_quick_restart_button_pressed():
-	Global.delete_data()
+	Global.delete_run_data()
 	PlayerCharacter._is_starting = true
 	Global.RNG = RandomNumberGenerator.new()
 	Global.rewards.clear()
@@ -44,7 +44,7 @@ func _on_quick_restart_button_pressed():
 	PlayerCharacter.set_inventory()
 	PlayerCharacter.add_passives()
 	Pool.start()
-	Global.save_room()
+	Global.save_run_room()
 	get_tree().change_scene_to_file("res://Scenes/Levels/Special/Starting Room 1.tscn")
 
 func _on_quit_to_menu_button_pressed():

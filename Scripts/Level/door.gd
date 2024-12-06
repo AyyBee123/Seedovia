@@ -42,7 +42,7 @@ func change_scene():
 	LevelList.pickup_items_on_ground.clear()
 	LevelList.coins_on_ground.clear()
 	LevelList.doors.clear()
-	Global.save_room()
+	Global.save_run_room()
 	LevelList.change_room.call_deferred(self)
 
 func set_reward(reward_text: String = ""):

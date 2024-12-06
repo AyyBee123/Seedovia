@@ -21,13 +21,13 @@ func add_item(item, player, inv):
 			await get_tree().process_frame
 			ItemCheck.check_for_items()
 			ItemCheck.check_for_shop_items()
-			Global.save_data()
-			Global.save_room()
+			Global.save_run_data()
+			Global.save_run_room()
 			return
 	# if inventory is full
 	drop_item(item, player)
-	Global.save_data()
-	Global.save_room()
+	Global.save_run_data()
+	Global.save_run_room()
 
 func drop_item(item, player):
 	var current_item = load("res://Scenes/Items/item.tscn").instantiate()
@@ -37,8 +37,8 @@ func drop_item(item, player):
 	current_item.global_position = player.global_position
 	await get_tree().process_frame
 	ItemCheck.check_for_items()
-	Global.save_data()
-	Global.save_room()
+	Global.save_run_data()
+	Global.save_run_room()
 
 func add_item_to_empty_slot(item: item_instance, slot: slot_class):
 	if slot.slot_type == slot_class.slot_types.INVENTORY:

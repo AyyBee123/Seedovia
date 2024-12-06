@@ -19,8 +19,8 @@ func load_scene(path):
 
 func load_save():
 	thread = Thread.new()
-	thread.start(Global.load_room)
-	Global.load_data()
+	thread.start(Global.load_run_room)
+	Global.load_run_data()
 	LevelList.load_char()
 	Pool.continue_run()
 

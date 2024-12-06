@@ -25,7 +25,7 @@ func _on_mouse_exited():
 	mouse_hovered = false
 
 func select_character():
-	Global.delete_data()
+	Global.delete_run_data()
 	PlayerCharacter._is_starting = true
 	PlayerCharacter.coins = starting_character.starting_coins
 	LevelList.character_scene_file_path = character_scene
@@ -54,7 +54,7 @@ func select_character():
 	PlayerCharacter.add_passives()
 	Pool.start()
 	_player_stats = starting_stats
-	Global.save_room()
+	Global.save_run_room()
 	get_tree().change_scene_to_file("res://Scenes/Levels/Special/Starting Room 1.tscn")
 
 func set_base_stats():

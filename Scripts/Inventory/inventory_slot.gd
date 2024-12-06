@@ -66,7 +66,7 @@ func initialize_item(slot_item):
 					PlayerEquipment.add_passive(player, p)
 				item.item.was_already_equipped = true
 				item.item.add_stats = false
-				Global.save_data()
+				Global.save_run_data()
 		add_child(item)
 		item.scale = Vector2(1,1)
 		item.position = Vector2(size.x / 2, size.y / 2)
