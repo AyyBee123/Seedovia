@@ -1,7 +1,531 @@
-[gd_scene format=3 uid="uid://voseluffsvav"]
+[gd_scene load_steps=9 format=3 uid="uid://voseluffsvav"]
+
+[ext_resource type="Texture2D" uid="uid://lggjfuwvynu6" path="res://Sprites/UI/Save File Select.png" id="1_nnmx1"]
+[ext_resource type="Texture2D" uid="uid://c6ab63o7tjjv6" path="res://Sprites/UI/Save File Select Pressed.png" id="2_su74p"]
+[ext_resource type="Texture2D" uid="uid://dnxl2v56fnhp0" path="res://Sprites/UI/Save File Select Hovered.png" id="3_64enp"]
+[ext_resource type="FontFile" uid="uid://wbj0boqv37y6" path="res://Fonts/Description Font.ttf" id="4_hc83d"]
+[ext_resource type="FontFile" uid="uid://bkn7gmgx1wxgx" path="res://Fonts/Name Font.ttf" id="5_fbc7t"]
+[ext_resource type="Texture2D" uid="uid://koekt8h21hw1" path="res://Sprites/UI/Delete.png" id="6_l137q"]
+[ext_resource type="Texture2D" uid="uid://wjmcs8muvj4n" path="res://Sprites/UI/Delete Pressed.png" id="7_1wumd"]
+[ext_resource type="Texture2D" uid="uid://c0voa1o2maemk" path="res://Sprites/UI/Delete Hover.png" id="8_hgh7x"]
 
 [node name="Save File Select" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="Save Number Label" type="RichTextLabel" parent="."]
+offset_top = 23.0
+offset_right = 1920.0
+offset_bottom = 97.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("5_fbc7t")
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "[center]Choose Save Slot"
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 128.0
+offset_right = 480.0
+offset_bottom = 824.0
+theme_override_constants/h_separation = 80
+columns = 4
+
+[node name="Save1" type="TextureButton" parent="GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_nnmx1")
+texture_pressed = ExtResource("2_su74p")
+texture_hover = ExtResource("3_64enp")
+
+[node name="Save Number Label" type="RichTextLabel" parent="GridContainer/Save1"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 29.0
+offset_right = 350.0
+offset_bottom = 103.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("5_fbc7t")
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "[center]Save 1"
+
+[node name="Time Played Label" type="RichTextLabel" parent="GridContainer/Save1"]
+modulate = Color(1, 1, 0.431373, 1)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 132.0
+offset_right = 350.0
+offset_bottom = 178.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("4_hc83d")
+theme_override_font_sizes/normal_font_size = 48
+text = "Time Played:"
+
+[node name="Time Played Info" type="RichTextLabel" parent="GridContainer/Save1"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 182.0
+offset_right = 313.0
+offset_bottom = 228.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("4_hc83d")
+theme_override_font_sizes/normal_font_size = 48
+text = "0h 0m 0s"
+
+[node name="Runs Played Label" type="RichTextLabel" parent="GridContainer/Save1"]
+modulate = Color(1, 1, 0.431373, 1)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 262.0
+offset_right = 350.0
+offset_bottom = 308.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("4_hc83d")
+theme_override_font_sizes/normal_font_size = 48
+text = "Runs Played:"
+
+[node name="Runs Played Info" type="RichTextLabel" parent="GridContainer/Save1"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 312.0
+offset_right = 313.0
+offset_bottom = 358.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("4_hc83d")
+theme_override_font_sizes/normal_font_size = 48
+text = "0
+"
+
+[node name="Last Played Label" type="RichTextLabel" parent="GridContainer/Save1"]
+modulate = Color(1, 1, 0.431373, 1)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 392.0
+offset_right = 350.0
+offset_bottom = 438.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("4_hc83d")
+theme_override_font_sizes/normal_font_size = 48
+text = "Last Played:"
+
+[node name="Last Played Info" type="RichTextLabel" parent="GridContainer/Save1"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 442.0
+offset_right = 313.0
+offset_bottom = 488.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("4_hc83d")
+theme_override_font_sizes/normal_font_size = 48
+text = "1999-08-28
+"
+
+[node name="Unlock Progress Label" type="RichTextLabel" parent="GridContainer/Save1"]
+modulate = Color(1, 1, 0.431373, 1)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 522.0
+offset_right = 350.0
+offset_bottom = 568.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("4_hc83d")
+theme_override_font_sizes/normal_font_size = 48
+text = "Last Played:"
+
+[node name="Unlock Progress Info" type="RichTextLabel" parent="GridContainer/Save1"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 572.0
+offset_right = 313.0
+offset_bottom = 618.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("4_hc83d")
+theme_override_font_sizes/normal_font_size = 48
+text = "0%
+"
+
+[node name="Delete Button" type="TextureButton" parent="GridContainer/Save1"]
+layout_mode = 0
+offset_left = 122.0
+offset_top = 733.0
+offset_right = 230.0
+offset_bottom = 878.0
+texture_normal = ExtResource("6_l137q")
+texture_pressed = ExtResource("7_1wumd")
+texture_hover = ExtResource("8_hgh7x")
+stretch_mode = 5
+
+[node name="Save2" type="TextureButton" parent="GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_nnmx1")
+texture_pressed = ExtResource("2_su74p")
+texture_hover = ExtResource("3_64enp")
+
+[node name="Save Number Label" type="RichTextLabel" parent="GridContainer/Save2"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 29.0
+offset_right = 350.0
+offset_bottom = 103.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("5_fbc7t")
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "[center]Save 2"
+
+[node name="Time Played Label" type="RichTextLabel" parent="GridContainer/Save2"]
+modulate = Color(1, 1, 0.431373, 1)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 132.0
+offset_right = 350.0
+offset_bottom = 178.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("4_hc83d")
+theme_override_font_sizes/normal_font_size = 48
+text = "Time Played:"
+
+[node name="Time Played Info" type="RichTextLabel" parent="GridContainer/Save2"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 182.0
+offset_right = 313.0
+offset_bottom = 228.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("4_hc83d")
+theme_override_font_sizes/normal_font_size = 48
+text = "0h 0m 0s"
+
+[node name="Runs Played Label" type="RichTextLabel" parent="GridContainer/Save2"]
+modulate = Color(1, 1, 0.431373, 1)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 262.0
+offset_right = 350.0
+offset_bottom = 308.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("4_hc83d")
+theme_override_font_sizes/normal_font_size = 48
+text = "Runs Played:"
+
+[node name="Runs Played Info" type="RichTextLabel" parent="GridContainer/Save2"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 312.0
+offset_right = 313.0
+offset_bottom = 358.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("4_hc83d")
+theme_override_font_sizes/normal_font_size = 48
+text = "0
+"
+
+[node name="Last Played Label" type="RichTextLabel" parent="GridContainer/Save2"]
+modulate = Color(1, 1, 0.431373, 1)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 392.0
+offset_right = 350.0
+offset_bottom = 438.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("4_hc83d")
+theme_override_font_sizes/normal_font_size = 48
+text = "Last Played:"
+
+[node name="Last Played Info" type="RichTextLabel" parent="GridContainer/Save2"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 442.0
+offset_right = 313.0
+offset_bottom = 488.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("4_hc83d")
+theme_override_font_sizes/normal_font_size = 48
+text = "1999-08-28
+"
+
+[node name="Unlock Progress Label" type="RichTextLabel" parent="GridContainer/Save2"]
+modulate = Color(1, 1, 0.431373, 1)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 522.0
+offset_right = 350.0
+offset_bottom = 568.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("4_hc83d")
+theme_override_font_sizes/normal_font_size = 48
+text = "Last Played:"
+
+[node name="Unlock Progress Info" type="RichTextLabel" parent="GridContainer/Save2"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 572.0
+offset_right = 313.0
+offset_bottom = 618.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("4_hc83d")
+theme_override_font_sizes/normal_font_size = 48
+text = "0%
+"
+
+[node name="Delete Button" type="TextureButton" parent="GridContainer/Save2"]
+layout_mode = 0
+offset_left = 122.0
+offset_top = 733.0
+offset_right = 230.0
+offset_bottom = 878.0
+texture_normal = ExtResource("6_l137q")
+texture_pressed = ExtResource("7_1wumd")
+texture_hover = ExtResource("8_hgh7x")
+stretch_mode = 5
+
+[node name="Save3" type="TextureButton" parent="GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_nnmx1")
+texture_pressed = ExtResource("2_su74p")
+texture_hover = ExtResource("3_64enp")
+
+[node name="Save Number Label" type="RichTextLabel" parent="GridContainer/Save3"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 29.0
+offset_right = 350.0
+offset_bottom = 103.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("5_fbc7t")
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "[center]Save 3"
+
+[node name="Time Played Label" type="RichTextLabel" parent="GridContainer/Save3"]
+modulate = Color(1, 1, 0.431373, 1)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 132.0
+offset_right = 350.0
+offset_bottom = 178.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("4_hc83d")
+theme_override_font_sizes/normal_font_size = 48
+text = "Time Played:"
+
+[node name="Time Played Info" type="RichTextLabel" parent="GridContainer/Save3"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 182.0
+offset_right = 313.0
+offset_bottom = 228.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("4_hc83d")
+theme_override_font_sizes/normal_font_size = 48
+text = "0h 0m 0s"
+
+[node name="Runs Played Label" type="RichTextLabel" parent="GridContainer/Save3"]
+modulate = Color(1, 1, 0.431373, 1)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 262.0
+offset_right = 350.0
+offset_bottom = 308.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("4_hc83d")
+theme_override_font_sizes/normal_font_size = 48
+text = "Runs Played:"
+
+[node name="Runs Played Info" type="RichTextLabel" parent="GridContainer/Save3"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 312.0
+offset_right = 313.0
+offset_bottom = 358.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("4_hc83d")
+theme_override_font_sizes/normal_font_size = 48
+text = "0
+"
+
+[node name="Last Played Label" type="RichTextLabel" parent="GridContainer/Save3"]
+modulate = Color(1, 1, 0.431373, 1)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 392.0
+offset_right = 350.0
+offset_bottom = 438.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("4_hc83d")
+theme_override_font_sizes/normal_font_size = 48
+text = "Last Played:"
+
+[node name="Last Played Info" type="RichTextLabel" parent="GridContainer/Save3"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 442.0
+offset_right = 313.0
+offset_bottom = 488.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("4_hc83d")
+theme_override_font_sizes/normal_font_size = 48
+text = "1999-08-28
+"
+
+[node name="Unlock Progress Label" type="RichTextLabel" parent="GridContainer/Save3"]
+modulate = Color(1, 1, 0.431373, 1)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 522.0
+offset_right = 350.0
+offset_bottom = 568.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("4_hc83d")
+theme_override_font_sizes/normal_font_size = 48
+text = "Last Played:"
+
+[node name="Unlock Progress Info" type="RichTextLabel" parent="GridContainer/Save3"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 572.0
+offset_right = 313.0
+offset_bottom = 618.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("4_hc83d")
+theme_override_font_sizes/normal_font_size = 48
+text = "0%
+"
+
+[node name="Delete Button" type="TextureButton" parent="GridContainer/Save3"]
+layout_mode = 0
+offset_left = 122.0
+offset_top = 733.0
+offset_right = 230.0
+offset_bottom = 878.0
+texture_normal = ExtResource("6_l137q")
+texture_pressed = ExtResource("7_1wumd")
+texture_hover = ExtResource("8_hgh7x")
+stretch_mode = 5
+
+[node name="Save4" type="TextureButton" parent="GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_nnmx1")
+texture_pressed = ExtResource("2_su74p")
+texture_hover = ExtResource("3_64enp")
+
+[node name="Save Number Label" type="RichTextLabel" parent="GridContainer/Save4"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 29.0
+offset_right = 350.0
+offset_bottom = 103.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("5_fbc7t")
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "[center]Save 4"
+
+[node name="Time Played Label" type="RichTextLabel" parent="GridContainer/Save4"]
+modulate = Color(1, 1, 0.431373, 1)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 132.0
+offset_right = 350.0
+offset_bottom = 178.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("4_hc83d")
+theme_override_font_sizes/normal_font_size = 48
+text = "Time Played:"
+
+[node name="Time Played Info" type="RichTextLabel" parent="GridContainer/Save4"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 182.0
+offset_right = 313.0
+offset_bottom = 228.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("4_hc83d")
+theme_override_font_sizes/normal_font_size = 48
+text = "0h 0m 0s"
+
+[node name="Runs Played Label" type="RichTextLabel" parent="GridContainer/Save4"]
+modulate = Color(1, 1, 0.431373, 1)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 262.0
+offset_right = 350.0
+offset_bottom = 308.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("4_hc83d")
+theme_override_font_sizes/normal_font_size = 48
+text = "Runs Played:"
+
+[node name="Runs Played Info" type="RichTextLabel" parent="GridContainer/Save4"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 312.0
+offset_right = 313.0
+offset_bottom = 358.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("4_hc83d")
+theme_override_font_sizes/normal_font_size = 48
+text = "0
+"
+
+[node name="Last Played Label" type="RichTextLabel" parent="GridContainer/Save4"]
+modulate = Color(1, 1, 0.431373, 1)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 392.0
+offset_right = 350.0
+offset_bottom = 438.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("4_hc83d")
+theme_override_font_sizes/normal_font_size = 48
+text = "Last Played:"
+
+[node name="Last Played Info" type="RichTextLabel" parent="GridContainer/Save4"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 442.0
+offset_right = 313.0
+offset_bottom = 488.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("4_hc83d")
+theme_override_font_sizes/normal_font_size = 48
+text = "1999-08-28
+"
+
+[node name="Unlock Progress Label" type="RichTextLabel" parent="GridContainer/Save4"]
+modulate = Color(1, 1, 0.431373, 1)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 522.0
+offset_right = 350.0
+offset_bottom = 568.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("4_hc83d")
+theme_override_font_sizes/normal_font_size = 48
+text = "Last Played:"
+
+[node name="Unlock Progress Info" type="RichTextLabel" parent="GridContainer/Save4"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 572.0
+offset_right = 313.0
+offset_bottom = 618.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("4_hc83d")
+theme_override_font_sizes/normal_font_size = 48
+text = "0%
+"
+
+[node name="Delete Button" type="TextureButton" parent="GridContainer/Save4"]
+layout_mode = 0
+offset_left = 122.0
+offset_top = 733.0
+offset_right = 230.0
+offset_bottom = 878.0
+texture_normal = ExtResource("6_l137q")
+texture_pressed = ExtResource("7_1wumd")
+texture_hover = ExtResource("8_hgh7x")
+stretch_mode = 5
