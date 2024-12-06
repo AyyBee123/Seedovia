@@ -6,7 +6,7 @@ extends Control
 var loading_screen_scene_instance
 
 func _ready():
-	if ResourceLoader.exists(Global.SAVE_PATH):
+	if ResourceLoader.exists(Global.RUN_SAVE_PATH):
 		continue_button.disabled = false
 	if continue_button.disabled:
 		$"Continue Button/Text".self_modulate = Color("818181") # matching the border colour

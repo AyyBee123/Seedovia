@@ -1,7 +1,8 @@
 extends Node
 
 # %APPDATA%\Roaming\Godot\app_userdata\Roguelike
-var SAVE_PATH := "user://current_run.res"
+var SAVE_PATH := "user://save_data.res"
+var RUN_SAVE_PATH := "user://current_run.res"
 var data := player_data.new()
 var rewards: Array
 static var next_reward: item_pool = null
@@ -17,13 +18,13 @@ func save_data():
 	data.get_item_passives()
 	data.get_stats()
 	data.get_pools()
-	ResourceSaver.save(data, SAVE_PATH)
+	ResourceSaver.save(data, RUN_SAVE_PATH)
 	ResourceSaver.save(data, "user://current_run.tres") # for testing purposes, will remove later
 
 func load_data():
-	if not ResourceLoader.exists(SAVE_PATH):
+	if not ResourceLoader.exists(RUN_SAVE_PATH):
 		return
-	data = ResourceLoader.load(SAVE_PATH)
+	data = ResourceLoader.load(RUN_SAVE_PATH)
 	data.set_character()
 	data.set_coins()
 	data.set_stats()
@@ -34,24 +35,24 @@ func load_data():
 
 func save_room():
 	data.get_current_room()
-	ResourceSaver.save(data, SAVE_PATH)
+	ResourceSaver.save(data, RUN_SAVE_PATH)
 	ResourceSaver.save(data, "user://current_run.tres") # for testing purposes, will remove later
 
 func load_room():
-	if not ResourceLoader.exists(SAVE_PATH):
+	if not ResourceLoader.exists(RUN_SAVE_PATH):
 		return
-	data = ResourceLoader.load(SAVE_PATH)
+	data = ResourceLoader.load(RUN_SAVE_PATH)
 	data.set_current_room()
 
 func delete_data():
-	if not ResourceLoader.exists(SAVE_PATH):
+	if not ResourceLoader.exists(RUN_SAVE_PATH):
 		return
-	DirAccess.remove_absolute(SAVE_PATH)
+	DirAccess.remove_absolute(RUN_SAVE_PATH)
 
 func load_data_exists() -> bool:
-	return ResourceLoader.exists(SAVE_PATH)
+	return ResourceLoader.exists(RUN_SAVE_PATH)
 
 func save_coins():
 	data.get_coins()
-	ResourceSaver.save(data, SAVE_PATH)
+	ResourceSaver.save(data, RUN_SAVE_PATH)
 	ResourceSaver.save(data, "user://current_run.tres") # for testing purposes, will remove later
