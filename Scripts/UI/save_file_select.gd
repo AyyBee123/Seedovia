@@ -21,7 +21,7 @@ func _ready():
 						, SelectionSaveData.time_played as int % 60]
 			else:
 				time_played = "%dh %2dm %02ds" % [SelectionSaveData.time_played as int / 3600 \
-						, SelectionSaveData.time_played as int / 60 \
+						, (SelectionSaveData.time_played as int / 60) % 60 \
 						, SelectionSaveData.time_played as int % 60]
 			save.find_child("Time Played Info").text = time_played
 		save.pressed.connect(_save_button_pressed.bind(save_num))
