@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=4 uid="uid://cxoiy0x4nvtaa"]
+[gd_scene load_steps=38 format=4 uid="uid://cxoiy0x4nvtaa"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_5cm3y"]
 [ext_resource type="Texture2D" uid="uid://cvgvhjvhndf2x" path="res://Sprites/Wall/Floor 1 Corner.png" id="2_1m20m"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://bgbbtw316u7ww" path="res://Scenes/Coin/Coin.tscn" id="10_f3i5w"]
 [ext_resource type="Texture2D" uid="uid://b162j3mtfuf1v" path="res://Sprites/Wall/Floor 2 Corner.png" id="10_mlkea"]
 [ext_resource type="Texture2D" uid="uid://by5wdeyn2ww8v" path="res://Sprites/Ground/Shading.png" id="12_5umvb"]
+[ext_resource type="FontFile" uid="uid://wbj0boqv37y6" path="res://Fonts/Description Font.ttf" id="14_atqiy"]
 [ext_resource type="PackedScene" uid="uid://bkbjq3dleklpw" path="res://Scenes/Items/Pickup Item.tscn" id="14_gnheq"]
 [ext_resource type="PackedScene" uid="uid://6qic3lphvydx" path="res://Scenes/Items/Shop Item.tscn" id="14_shhcr"]
 
@@ -139,6 +140,17 @@ offset_left = 909.0
 offset_top = -529.0
 offset_right = 949.0
 offset_bottom = -489.0
+
+[node name="Run Timer" type="RichTextLabel" parent="."]
+offset_left = 830.0
+offset_top = -479.0
+offset_right = 1178.0
+offset_bottom = -428.0
+theme_override_fonts/normal_font = ExtResource("14_atqiy")
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
 
 [node name="ResourcePreloader" type="ResourcePreloader" parent="."]
 resources = [PackedStringArray("Coin", "Door", "Item", "Pause Menu", "Pickup Item", "Shop Item"), [ExtResource("10_f3i5w"), ExtResource("4_5a3ht"), ExtResource("6_xrc8y"), ExtResource("8_v8rxb"), ExtResource("14_gnheq"), ExtResource("14_shhcr")]]

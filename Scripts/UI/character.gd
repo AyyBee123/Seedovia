@@ -26,6 +26,7 @@ func _on_mouse_exited():
 
 func select_character():
 	Global.delete_run_data()
+	LevelList.elapsed_time = 0
 	PlayerCharacter._is_starting = true
 	PlayerCharacter.coins = starting_character.starting_coins
 	LevelList.character_scene_file_path = character_scene

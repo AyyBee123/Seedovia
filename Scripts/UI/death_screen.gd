@@ -7,6 +7,7 @@ func _ready():
 	get_tree().paused = true
 
 func _on_quick_restart_button_pressed():
+	LevelList.elapsed_time = 0
 	Global.RNG = RandomNumberGenerator.new()
 	PlayerCharacter._is_starting = true
 	Global.rewards.clear()

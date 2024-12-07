@@ -156,7 +156,7 @@ offset_bottom = 568.0
 mouse_filter = 2
 theme_override_fonts/normal_font = ExtResource("4_hc83d")
 theme_override_font_sizes/normal_font_size = 48
-text = "Last Played:"
+text = "Unlock Progress:"
 
 [node name="Unlock Progress Info" type="RichTextLabel" parent="GridContainer/Save1/Control"]
 layout_mode = 0
@@ -203,6 +203,7 @@ text = "[center]Save 2"
 [node name="Empty Text" type="RichTextLabel" parent="GridContainer/Save2"]
 visible = false
 modulate = Color(0.509286, 0.509286, 0.509286, 1)
+layout_mode = 0
 offset_left = 2.0
 offset_top = 132.0
 offset_right = 350.0
@@ -299,7 +300,7 @@ offset_bottom = 568.0
 mouse_filter = 2
 theme_override_fonts/normal_font = ExtResource("4_hc83d")
 theme_override_font_sizes/normal_font_size = 48
-text = "Last Played:"
+text = "Unlock Progress:"
 
 [node name="Unlock Progress Info" type="RichTextLabel" parent="GridContainer/Save2/Control"]
 layout_mode = 0
@@ -346,6 +347,7 @@ text = "[center]Save 3"
 [node name="Empty Text" type="RichTextLabel" parent="GridContainer/Save3"]
 visible = false
 modulate = Color(0.509286, 0.509286, 0.509286, 1)
+layout_mode = 0
 offset_left = 2.0
 offset_top = 132.0
 offset_right = 350.0
@@ -442,7 +444,7 @@ offset_bottom = 568.0
 mouse_filter = 2
 theme_override_fonts/normal_font = ExtResource("4_hc83d")
 theme_override_font_sizes/normal_font_size = 48
-text = "Last Played:"
+text = "Unlock Progress:"
 
 [node name="Unlock Progress Info" type="RichTextLabel" parent="GridContainer/Save3/Control"]
 layout_mode = 0
@@ -489,6 +491,7 @@ text = "[center]Save 4"
 [node name="Empty Text" type="RichTextLabel" parent="GridContainer/Save4"]
 visible = false
 modulate = Color(0.509286, 0.509286, 0.509286, 1)
+layout_mode = 0
 offset_left = 2.0
 offset_top = 132.0
 offset_right = 350.0
@@ -585,7 +588,7 @@ offset_bottom = 568.0
 mouse_filter = 2
 theme_override_fonts/normal_font = ExtResource("4_hc83d")
 theme_override_font_sizes/normal_font_size = 48
-text = "Last Played:"
+text = "Unlock Progress:"
 
 [node name="Unlock Progress Info" type="RichTextLabel" parent="GridContainer/Save4/Control"]
 layout_mode = 0

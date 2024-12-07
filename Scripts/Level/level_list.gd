@@ -19,6 +19,7 @@ var entered_room: bool
 var doors: Dictionary
 var character_scene_file_path: String
 var shop_items_spawned: bool
+var elapsed_time: float
 # TODO: add character variable that gets the character scene add preloads it when choosing a character
 
 func load_char():
@@ -26,6 +27,7 @@ func load_char():
 
 func change_room(door):
 	Global.save_run_data()
+	Global.save_time_played()
 	if door.text == "Passive": # 5th room is the passive room
 		next_room = ResourceLoader.load("res://Scenes/Levels/Special/Passive Room.tscn")
 	elif door.text == "Shop": # one of the 8th rooms is always a shop
@@ -50,6 +52,7 @@ func change_room(door):
 
 func change_floor():
 	Global.save_run_data()
+	Global.save_time_played()
 	floor.rooms.clear()
 	floor_number += 1
 	room_number = 0

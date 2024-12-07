@@ -10,9 +10,23 @@ var was_cleared := false # checks if room initially has enemies on entering
 var number_of_doors := 2
 var doors_spawned := false
 var reward_given := false
-var is_paused := false
+
+var time_minutes: int: 
+	get:
+		return LevelList.elapsed_time as int / 60
+var time_seconds: int:
+	get:
+		return LevelList.elapsed_time as int % 60
+var time_milli_seconds: int:
+	get:
+		return LevelList.elapsed_time * 100 as int % 100
 
 func _ready():
+	# very start of the run
+	if LevelList.room_number == 0 and LevelList.floor_number == 0 and PlayerCharacter._is_starting:
+		SelectionSaveData.number_of_runs += 1
+		Global.save_save_selection()
+	
 	Global.RNG.randomize()
 	if LevelList.loaded_room_is_cleared:
 		for enemy in get_tree().get_nodes_in_group("Enemy"):
@@ -25,6 +39,7 @@ func _ready():
 	player.global_position = player_pos
 	Global.load_run_data()
 	Global.load_run_room()
+	Global.load_data()
 	reward_given = LevelList.current_reward_given
 	LevelList.current_room = get_tree().current_scene.scene_file_path
 	if get_tree().get_nodes_in_group("Enemy").size() == 0:
@@ -56,6 +71,7 @@ func _ready():
 
 func _physics_process(delta):
 	player = Targets.get_player()
+	count_up(delta)
 	pause()
 	check_for_enemies()
 
@@ -193,3 +209,8 @@ func _notification(what: int):
 			player.get_node("Inventory").visible = false
 		var pause_menu = resource_preloader.get_resource("Pause Menu").instantiate()
 		add_child.call_deferred(pause_menu)
+
+func count_up(delta):
+	LevelList.elapsed_time += delta
+	SelectionSaveData.time_played += delta
+	$"Run Timer".text = "%02d:%02d:%02d" % [time_minutes, time_seconds, time_milli_seconds]

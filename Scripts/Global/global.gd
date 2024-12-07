@@ -19,6 +19,7 @@ func save_run_data():
 	data.get_item_passives()
 	data.get_stats()
 	data.get_pools()
+	data.get_run_time()
 	ResourceSaver.save(data, RUN_SAVE_PATH)
 	ResourceSaver.save(data, "user://current_run.tres") # for testing purposes, will remove later
 
@@ -33,6 +34,7 @@ func load_run_data():
 	data.set_item_passives()
 	data.set_inventory()
 	data.set_pools()
+	data.set_run_time()
 
 func save_run_room():
 	data.get_current_room()
@@ -65,9 +67,11 @@ func load_data(_path = null):
 		return
 	super_data = ResourceLoader.load(_path)
 	super_data.set_save_selection_data()
+	super_data.set_time_played()
 
 func save_save_selection():
 	super_data.get_save_selection_data()
+	super_data.get_time_played()
 	ResourceSaver.save(super_data, SAVE_PATH)
 	ResourceSaver.save(super_data, "user://save_data.tres") # for testing purposes, will remove later
 
@@ -84,3 +88,8 @@ func delete_data(_path = null):
 	if not ResourceLoader.exists(_path):
 		return
 	DirAccess.remove_absolute(_path)
+
+func save_time_played():
+	super_data.get_time_played()
+	ResourceSaver.save(super_data, SAVE_PATH)
+	ResourceSaver.save(super_data, "user://save_data.tres") # for testing purposes, will remove later

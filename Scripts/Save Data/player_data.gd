@@ -30,6 +30,7 @@ class_name player_data extends Resource
 @export var next_reward: item_pool
 @export var passive_pool: Array
 @export var current_seed: int
+@export var run_time: float
 
 # these functions are called form the global script
 func get_inventory():
@@ -120,3 +121,9 @@ func get_pools():
 
 func set_pools():
 	Pool.passive_pool.pool = passive_pool
+
+func get_run_time():
+	run_time = LevelList.elapsed_time
+
+func set_run_time():
+	LevelList.elapsed_time = run_time
