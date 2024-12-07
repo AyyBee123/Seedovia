@@ -90,6 +90,7 @@ func check_for_enemies():
 			ItemCheck.check_for_coins()
 			Global.save_run_data()
 			Global.save_run_room()
+			Global.save_data()
 
 func pause():
 	if Input.is_action_just_pressed("esc"):

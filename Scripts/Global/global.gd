@@ -76,6 +76,7 @@ func save_save_selection():
 	ResourceSaver.save(super_data, "user://save_data.tres") # for testing purposes, will remove later
 
 func save_data():
+	super_data.get_time_played()
 	ResourceSaver.save(super_data, SAVE_PATH)
 	ResourceSaver.save(super_data, "user://save_data.tres") # for testing purposes, will remove later
 
