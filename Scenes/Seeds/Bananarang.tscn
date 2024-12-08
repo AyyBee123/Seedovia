@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dpqxo5lv4fcqr"]
+[gd_scene load_steps=6 format=3 uid="uid://dpqxo5lv4fcqr"]
 
 [ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_rosip"]
 [ext_resource type="Texture2D" uid="uid://07mogisnw6m" path="res://Sprites/Passives/Effects/Banana.png" id="2_nol6y"]
 [ext_resource type="Script" path="res://Scripts/Seeds/bananarang.gd" id="3_s1k5y"]
-[ext_resource type="AudioStream" uid="uid://bpk6gao5jcjkq" path="res://Audio/SFX/Hit.mp3" id="4_f3f5d"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1bbr8"]
 radius = 9.0
@@ -40,11 +39,6 @@ one_shot = true
 [node name="Lifetime" type="Timer" parent="." index="5"]
 wait_time = 8.0
 one_shot = true
-
-[node name="Hit" type="AudioStreamPlayer" parent="." index="6"]
-stream = ExtResource("4_f3f5d")
-volume_db = -5.0
-bus = &"SFX"
 
 [connection signal="area_entered" from="Detect Previous Seed" to="." method="_on_detect_previous_seed_area_entered"]
 [connection signal="body_entered" from="Detect Previous Seed" to="." method="_on_detect_previous_seed_body_entered"]

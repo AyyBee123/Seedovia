@@ -23,6 +23,16 @@ func update_position(delta):
 	current_velocity = direction * player._player_stats.get_stat("Weapon_Speed") * speed_multiplier
 	position += current_velocity * delta
 
+func _collide(body):
+	if ignore_first_collision:
+		ignore_first_collision = false
+		return
+	has_collided.emit(body) # for on-hit effects (ex: burning an enemy on hit)
+	if body.is_in_group("Enemies"):
+		body.get_parent()._enemy_stats.take_damage(player._player_stats.get_stat("Weapon_Damage") * damage_multiplier)
+	SfxDeconflicter.play(AudioManager.hit)
+	queue_free.call_deferred()
+
 func shoot_next_weapon():
 	super.shoot_next_weapon()
 	if get_next_weapon() == null:

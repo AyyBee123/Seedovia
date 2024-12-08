@@ -1,7 +1,6 @@
 extends "res://Scripts/Seeds/seed_template.gd"
 
 var enemy
-@onready var hit_SFX = $Hit
 
 func _ready():
 	super._ready()
@@ -17,10 +16,7 @@ func _collide(body):
 		enemy = body
 		body.get_parent()._enemy_stats.take_damage(player._player_stats.get_stat("Weapon_Damage") * damage_multiplier)
 	shoot_next_weapon()
-	SfxDeconflicter.play(hit_SFX)
-	set_physics_process(false)
-	if hit_SFX.playing:
-		await hit_SFX.finished
+	SfxDeconflicter.play(AudioManager.hit)
 	queue_free.call_deferred()
 
 func update_position(delta):

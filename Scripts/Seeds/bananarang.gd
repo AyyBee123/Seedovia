@@ -3,7 +3,6 @@ extends "res://Scripts/Seeds/seed_template.gd"
 @onready var deceleration = $Deceleration
 @onready var acceleration = $Acceleration
 @onready var lifetime = $Lifetime
-@onready var hit_SFX = $Hit
 
 var has_stopped := false
 var is_stopping := false
@@ -53,15 +52,12 @@ func _collide(body):
 	if body.is_in_group("Enemies"):
 		body.get_parent()._enemy_stats.take_damage(player._player_stats.get_stat("Weapon_Damage") * damage_multiplier)
 	if has_stopped:
-		SfxDeconflicter.play(hit_SFX)
-		set_physics_process(false)
-		if hit_SFX.playing:
-			await hit_SFX.finished
+		SfxDeconflicter.play(AudioManager.hit)
 		queue_free.call_deferred()
 	else:
 		has_stopped = true
 	weapon_direction = -direction
-	SfxDeconflicter.play(hit_SFX)
+	SfxDeconflicter.play(AudioManager.hit)
 	shoot_next_weapon()
 
 func travelled_distance():

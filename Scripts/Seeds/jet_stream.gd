@@ -1,7 +1,6 @@
 extends "res://Scripts/Seeds/seed_template.gd"
 
 var enemy
-@onready var hit_SFX = $Hit
 
 func travelled_distance():
 	distance_travelled = starting_position.distance_squared_to(global_position)
@@ -22,10 +21,7 @@ func _collide(body):
 	has_collided.emit(body) # for on-hit effects (ex: burning an enemy on hit)
 	if body.is_in_group("Enemies"):
 		body.get_parent()._enemy_stats.take_damage(player._player_stats.get_stat("Weapon_Damage") * damage_multiplier)
-	SfxDeconflicter.play(hit_SFX)
-	set_physics_process(false)
-	if hit_SFX.playing:
-		await hit_SFX.finished
+	SfxDeconflicter.play(AudioManager.jetstream_hit)
 	queue_free()
 
 func shoot_next_weapon():

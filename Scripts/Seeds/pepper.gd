@@ -2,7 +2,6 @@ extends "res://Scripts/Seeds/seed_template.gd"
 
 @onready var deceleration := $Deceleration
 @onready var resource_preloader := $ResourcePreloader
-@onready var mild_explosion_SFX = $MildExplosion
 @onready var lifetime = $Lifetime
 
 func _ready():
@@ -33,14 +32,9 @@ func explode():
 	explosion.damage = player._player_stats.get_stat("Weapon_Damage") * damage_multiplier
 	explosion.size = player._player_stats.get_stat("Weapon_Blast_Radius") * blast_radius_multiplier
 	explosion.get_node("AnimatedSprite2D").self_modulate = Color.ORANGE_RED
-	SfxDeconflicter.play(mild_explosion_SFX)
-	visible = false
-	$Hitbox/CollisionShape2D.set_deferred("disabled", true)
+	SfxDeconflicter.play(AudioManager.pepper_mild_explosion)
 	call_deferred("create_explosion", explosion)
-	set_physics_process(false)
 	spawn_child_peppers()
-	if mild_explosion_SFX.playing:
-		await mild_explosion_SFX.finished
 	queue_free.call_deferred()
 
 func travelled_distance():

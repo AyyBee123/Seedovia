@@ -13,6 +13,9 @@ const DEFAULT_SUPPRESS_SFX_MSEC := 20
 ## 	last played
 var last_played_msec_by_resource_path := {}
 
+func _ready():
+	SignalBus.play_audio.connect(play)
+
 ## Plays the specified sound effect, unless it was recently played.
 ##
 ## Parameters:

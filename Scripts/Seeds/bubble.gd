@@ -39,16 +39,13 @@ func _collide(body):
 	if ignore_first_collision:
 		ignore_first_collision = false
 		return
-	SfxDeconflicter.play(bubble_pop_SFX)
+	SfxDeconflicter.play(AudioManager.bubble_pop)
 	if body != null:
 		has_collided.emit(body)
 		if body.is_in_group("Enemies"):
 			body.get_parent()._enemy_stats.take_damage(player._player_stats.get_stat("Weapon_Damage") * damage_multiplier)
 	weapon_direction = direction.rotated(spread)
 	shoot_next_weapon()
-	# wait for the pop sound to play so it doesn't get cut off by the queue_free function
-	if bubble_pop_SFX.playing:
-		await bubble_pop_SFX.finished
 	queue_free.call_deferred()
 
 func shoot_next_weapon():

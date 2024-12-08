@@ -2,7 +2,6 @@ extends "res://Scripts/Seeds/seed_template.gd"
 
 @onready var rainbow_effect = $"Rainbow Effect"
 @onready var humming_SFX = $Humming
-@onready var hit_SFX = $Hit
 @onready var rainbow_particle = $"Rainbow Particle"
 
 var hue = 0.0
@@ -33,10 +32,7 @@ func _collide(body):
 	has_collided.emit(body) # for on-hit effects (ex: burning an enemy on hit)
 	if body.is_in_group("Enemies"):
 		body.get_parent()._enemy_stats.take_damage(player._player_stats.get_stat("Weapon_Damage") * damage_multiplier)
-	SfxDeconflicter.play(hit_SFX)
-	set_physics_process(false)
-	if hit_SFX.playing:
-		await hit_SFX.finished
+	SfxDeconflicter.play(AudioManager.hit)
 	queue_free.call_deferred()
 
 func travelled_distance():

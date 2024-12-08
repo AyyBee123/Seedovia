@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://csi1g5071kvtk"]
+[gd_scene load_steps=5 format=3 uid="uid://csi1g5071kvtk"]
 
 [ext_resource type="Texture2D" uid="uid://bhl3dp80njw2q" path="res://Sprites/Seeds/Explosive Pepper Child.png" id="1_t0alk"]
 [ext_resource type="Script" path="res://Scripts/Seeds/Effects/pepper_child.gd" id="2_gmm82"]
 [ext_resource type="PackedScene" uid="uid://cp3hdtxn75uyt" path="res://Scenes/Passives/Effects/Explosion.tscn" id="3_cxekc"]
-[ext_resource type="AudioStream" uid="uid://dviaq07q34iwy" path="res://Audio/SFX/Mild Explosion.mp3" id="4_666ft"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fu6k5"]
 radius = 9.33333
@@ -32,12 +31,6 @@ one_shot = true
 [node name="Lifetime" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
-
-[node name="MildExplosion" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_666ft")
-volume_db = -25.0
-pitch_scale = 1.35
-bus = &"SFX"
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

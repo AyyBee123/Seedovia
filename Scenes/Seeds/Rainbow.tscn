@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ctufmosaca1f1"]
+[gd_scene load_steps=13 format=3 uid="uid://ctufmosaca1f1"]
 
 [ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_nxddw"]
 [ext_resource type="Texture2D" uid="uid://hbu58ewp083q" path="res://Sprites/Seeds/Rainbow.png" id="3_devqh"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://bx3ocn0prpyld" path="res://Sprites/Seeds/Rainbow Front.png" id="4_s8qhh"]
 [ext_resource type="AudioStream" uid="uid://cxkhbwehh88pq" path="res://Audio/SFX/Humming.mp3" id="6_etj73"]
 [ext_resource type="Texture2D" uid="uid://2yeetoi1mvo3" path="res://Sprites/Seeds/Rainbow Particle.png" id="7_c7pol"]
-[ext_resource type="AudioStream" uid="uid://bpk6gao5jcjkq" path="res://Audio/SFX/Hit.mp3" id="7_fdum4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gh6a2"]
 radius = 5.0
@@ -58,11 +57,7 @@ volume_db = -20.0
 pitch_scale = 1.5
 bus = &"SFX"
 
-[node name="Hit" type="AudioStreamPlayer" parent="." index="4"]
-stream = ExtResource("7_fdum4")
-pitch_scale = 1.5
-
-[node name="Rainbow Particle" type="GPUParticles2D" parent="." index="5"]
+[node name="Rainbow Particle" type="GPUParticles2D" parent="." index="4"]
 show_behind_parent = true
 scale = Vector2(2, 2)
 amount = 60

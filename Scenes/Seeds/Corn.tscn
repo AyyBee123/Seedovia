@@ -1,11 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://ebe0bndngwrx"]
+[gd_scene load_steps=10 format=3 uid="uid://ebe0bndngwrx"]
 
 [ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_qcu64"]
 [ext_resource type="Script" path="res://Scripts/Seeds/corn.gd" id="2_2xfam"]
 [ext_resource type="Texture2D" uid="uid://3segmo1mb2il" path="res://Sprites/Seeds/Corn Shadow.png" id="3_2rl77"]
 [ext_resource type="Texture2D" uid="uid://ckpccoca8fbkv" path="res://Sprites/Seeds/Corn.png" id="4_ffa2p"]
 [ext_resource type="PackedScene" uid="uid://cp3hdtxn75uyt" path="res://Scenes/Passives/Effects/Explosion.tscn" id="5_c7w3c"]
-[ext_resource type="AudioStream" uid="uid://dviaq07q34iwy" path="res://Audio/SFX/Mild Explosion.mp3" id="6_6aeg8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hbguc"]
 radius = 2.06155
@@ -124,11 +123,5 @@ root_node = NodePath("../ResourcePreloader")
 libraries = {
 "": SubResource("AnimationLibrary_of4mj")
 }
-
-[node name="MildExplosion" type="AudioStreamPlayer" parent="." index="6"]
-stream = ExtResource("6_6aeg8")
-volume_db = -14.0
-pitch_scale = 0.75
-bus = &"SFX"
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

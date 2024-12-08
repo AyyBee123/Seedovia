@@ -32,6 +32,8 @@ SteamIntegration="*res://Scripts/Utils/steam_integration.gd"
 ItemEffects="*res://Scripts/Items/item_effects.gd"
 ItemCheck="*res://Scripts/Level/item_check.gd"
 SelectionSaveData="*res://Scripts/Save Data/selection_save_data.gd"
+SignalBus="*res://Scripts/Utils/signal_bus.gd"
+AudioManager="*res://Scenes/Utils/Audio Manager.tscn"
 
 [debug]
 

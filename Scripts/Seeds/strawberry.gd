@@ -2,7 +2,6 @@ extends "res://Scripts/Seeds/seed_template.gd"
 
 @onready var fire_rate = $"Fire Rate"
 @onready var resource_preloader = $ResourcePreloader
-@onready var mild_explosion_SFX = $MildExplosion
 var targeted_enemy = null
 var strawberry_fire_rate_multiplier: float = 0.6
 var explosion_damage_multiplier: float = 2.5
@@ -33,14 +32,12 @@ func explode():
 	call_deferred("create_child", explosion)
 
 func create_child(child):
-	SfxDeconflicter.play(mild_explosion_SFX)
+	SfxDeconflicter.play(AudioManager.strawberry_mild_explosion)
 	visible = false
 	set_physics_process(false)
 	$Hitbox/CollisionShape2D.set_deferred("disabled", true)
 	get_tree().current_scene.add_child(child)
 	child.global_position = self.global_position
-	if mild_explosion_SFX.playing:
-		await mild_explosion_SFX.finished
 	queue_free.call_deferred()
 
 func update_position(delta):

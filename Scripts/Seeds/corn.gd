@@ -1,7 +1,6 @@
 extends "res://Scripts/Seeds/seed_template.gd"
 
 @onready var resource_preloader = $ResourcePreloader
-@onready var mild_explosion_SFX = $MildExplosion
 @onready var animation_player = $AnimationPlayer
 
 const NUMBER_OF_SEEDS = 6
@@ -30,17 +29,12 @@ func explode():
 	explosion.damage = player._player_stats.get_stat("Weapon_Damage") * damage_multiplier
 	explosion.size = player._player_stats.get_stat("Weapon_Blast_Radius") * blast_radius_multiplier
 	explosion.get_node("AnimatedSprite2D").self_modulate = Color("c69b30") # match the corn's shaded color
-	SfxDeconflicter.play(mild_explosion_SFX)
-	visible = false
-	$Hitbox/CollisionShape2D.set_deferred("disabled", true)
-	set_physics_process(false)
+	SfxDeconflicter.play(AudioManager.corn_mild_explosion)
 	create_explosion.call_deferred(explosion)
 	if get_next_weapon():
 		for i in NUMBER_OF_SEEDS:
 			weapon_direction = Vector2.RIGHT.rotated(i * 2 * PI/NUMBER_OF_SEEDS)
 			shoot_next_weapon()
-	if mild_explosion_SFX.playing:
-		await mild_explosion_SFX.finished
 	queue_free.call_deferred()
 
 func create_explosion(explosion):

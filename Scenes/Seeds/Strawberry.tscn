@@ -1,10 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://bql266ahaqyu2"]
+[gd_scene load_steps=11 format=3 uid="uid://bql266ahaqyu2"]
 
 [ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_5xs2v"]
 [ext_resource type="Texture2D" uid="uid://dpv7ru8ple5ht" path="res://Sprites/Seeds/Strawberry.png" id="2_6hqge"]
 [ext_resource type="Script" path="res://Scripts/Seeds/strawberry.gd" id="3_ff0m5"]
 [ext_resource type="PackedScene" uid="uid://cp3hdtxn75uyt" path="res://Scenes/Passives/Effects/Explosion.tscn" id="4_ewini"]
-[ext_resource type="AudioStream" uid="uid://dviaq07q34iwy" path="res://Audio/SFX/Mild Explosion.mp3" id="5_awnh0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iaynw"]
 atlas = ExtResource("2_6hqge")
@@ -72,9 +71,3 @@ one_shot = true
 
 [node name="ResourcePreloader" type="ResourcePreloader" parent="." index="4"]
 resources = [PackedStringArray("Explosion"), [ExtResource("4_ewini")]]
-
-[node name="MildExplosion" type="AudioStreamPlayer" parent="." index="5"]
-stream = ExtResource("5_awnh0")
-volume_db = -15.0
-pitch_scale = 1.1
-bus = &"SFX"

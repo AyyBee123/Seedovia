@@ -5,7 +5,6 @@ var parent
 @onready var deceleration := $Deceleration
 @onready var lifetime := $Lifetime
 @onready var resource_preloader := $ResourcePreloader
-@onready var mild_explosion_SFX = $MildExplosion
 
 func _ready():
 	super._ready()
@@ -40,11 +39,8 @@ func explode():
 	explosion.damage = player._player_stats.get_stat("Weapon_Damage") * damage_multiplier
 	explosion.size = player._player_stats.get_stat("Weapon_Blast_Radius") * blast_radius_multiplier
 	explosion.get_node("AnimatedSprite2D").self_modulate = Color.ORANGE_RED
-	SfxDeconflicter.play(mild_explosion_SFX)
-	visible = false
-	set_physics_process(false)
+	SfxDeconflicter.play(AudioManager.pepper_child_mild_explosion)
 	call_deferred("create_child", explosion)
-	$Hitbox/CollisionShape2D.set_deferred("disabled", true)
 	for i in range(seed_slots.size()):
 		var weapon = null if PlayerSeeds.seeds.size() <= 1 + slot_index or \
 				slot_index >= 2 else PlayerSeeds.seeds[slot_index + 1]
@@ -52,8 +48,6 @@ func explode():
 		break
 	# call defer twice to allow passives that trigger off of weapon fire to work
 	# Otherwise, the weapon is destroyed before it has a chance to trigger the passives
-	if mild_explosion_SFX.playing:
-		await mild_explosion_SFX.finished
 	destroy.call_deferred()
 
 func shoot_next_weapon():

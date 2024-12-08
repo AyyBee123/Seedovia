@@ -1,10 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://qrg5sbj4sstd"]
+[gd_scene load_steps=8 format=3 uid="uid://qrg5sbj4sstd"]
 
 [ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_7qeku"]
 [ext_resource type="Texture2D" uid="uid://cerjnkxf8yqaf" path="res://Sprites/Seeds/Jet Stream.png" id="2_at4xh"]
 [ext_resource type="Script" path="res://Scripts/Seeds/jet_stream.gd" id="3_drn27"]
 [ext_resource type="Script" path="res://Scripts/Misc/trail.gd" id="5_8swle"]
-[ext_resource type="AudioStream" uid="uid://bpk6gao5jcjkq" path="res://Audio/SFX/Hit.mp3" id="5_78tsw"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y2bi6"]
 radius = 3.0
@@ -38,9 +37,3 @@ width = 6.0
 width_curve = SubResource("Curve_jbe1f")
 gradient = SubResource("Gradient_0lwm5")
 script = ExtResource("5_8swle")
-
-[node name="Hit" type="AudioStreamPlayer" parent="." index="3"]
-stream = ExtResource("5_78tsw")
-volume_db = -3.0
-pitch_scale = 0.75
-bus = &"SFX"
