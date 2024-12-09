@@ -1,5 +1,7 @@
 extends Control
 
+var DELETE_SAVE_POPUP = preload("res://Scenes/UI/Delete Save Popup.tscn")
+
 @onready var saves = $GridContainer.get_children()
 
 func _ready():
@@ -42,5 +44,9 @@ func _save_button_pressed(num):
 	get_tree().change_scene_to_file("res://Scenes/UI/Main Menu.tscn")
 
 func _delete_button_pressed(num):
-	print("Save", num)
-	# add confirmation popup
+	var delete_popup = DELETE_SAVE_POPUP.instantiate()
+	delete_popup.SAVE_PATH = "user://save_data%s.res" % num
+	delete_popup.RUN_SAVE_PATH = "user://current_run%s.res" % num
+	delete_popup.save = saves[num - 1]
+	delete_popup.delete_button = saves[num - 1].get_node("Delete Button")
+	get_tree().current_scene.add_child(delete_popup)

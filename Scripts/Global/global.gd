@@ -84,12 +84,13 @@ func save_data():
 func load_data_exists(_data) -> bool:
 	return ResourceLoader.exists(_data)
 
-func delete_data(_path = null):
+func delete_data(_path = null, _run_path = null):
 	if _path == null:
 		_path = SAVE_PATH
-	if not ResourceLoader.exists(_path):
-		return
-	DirAccess.remove_absolute(_path)
+	if ResourceLoader.exists(_path):
+		DirAccess.remove_absolute(_path)
+	if ResourceLoader.exists(_run_path):
+		DirAccess.remove_absolute(_run_path)
 
 func save_time_played():
 	super_data.get_time_played()
