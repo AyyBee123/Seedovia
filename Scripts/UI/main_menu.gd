@@ -10,6 +10,7 @@ func _ready():
 		continue_button.disabled = false
 	if continue_button.disabled:
 		$"Continue Button/Text".self_modulate = Color("818181") # matching the border colour
+	Global.load_achievements()
 
 func _on_play_button_pressed():
 	get_tree().change_scene_to_packed(character_select_scene)

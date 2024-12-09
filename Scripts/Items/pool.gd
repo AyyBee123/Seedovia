@@ -173,7 +173,6 @@ func populate_pool(pool: Resource, weight: Dictionary = {}):
 		var item = ResourceLoader.load(resource_path)
 		if "unlocked" in item:
 			if not item.unlocked: # don't add locked items to the pool
-				print(item.item_name)
 				continue
 		if weight.size() > 0:
 			# take the current item weight and accumulate it

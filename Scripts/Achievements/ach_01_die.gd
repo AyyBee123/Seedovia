@@ -4,7 +4,6 @@ var strawberry = preload("res://Resources/Items/Seeds/strawberry.tres")
 var berry = preload("res://Resources/Characters/berry.tres")
 
 func _ready():
-	Game.achievement_handler.add_child(self)
 	name = "Ach01Die"
 	
 	if not completed:
