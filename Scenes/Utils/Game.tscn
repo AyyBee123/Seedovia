@@ -7,6 +7,10 @@
 [node name="Game" type="Node"]
 script = ExtResource("1_w0svr")
 
+[node name="Handlers" type="Node" parent="."]
+
+[node name="Achievement Handler" parent="Handlers" instance=ExtResource("3_b0kvp")]
+unique_name_in_owner = true
 
 [node name="Managers" type="Node" parent="."]
 

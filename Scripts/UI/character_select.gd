@@ -8,6 +8,8 @@ func _ready():
 		characters[i].gui_input.connect(select_gui_input.bind(characters[i]))
 
 func select_gui_input(event: InputEvent, char_select: character):
+	if not char_select.starting_character.unlocked:
+		return
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT && event.pressed:
 			Global.RNG = RandomNumberGenerator.new()

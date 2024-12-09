@@ -10,9 +10,14 @@ var _player_stats: player_stats = preload("res://Resources/Characters/Stats/base
 func _ready():
 	mouse_entered.connect(_on_mouse_entered)
 	mouse_exited.connect(_on_mouse_exited)
+	
+	if not starting_character.unlocked:
+		get_node("Lock").visible = true
+		self_modulate = Color.BLACK
+		mouse_default_cursor_shape = 0
 
 func _physics_process(delta):
-	if mouse_hovered == true:
+	if mouse_hovered == true and starting_character.unlocked:
 	#TODO: [ph]
 		modulate = Color.BLACK
 	else:

@@ -14,3 +14,4 @@ texture = ExtResource("3_faci5")
 description = "+15% Fire Rate
 
 Hitting an enemy has a 50% chance to fire the seed in the third slot from the hit enemy's location towards the nearest enemy."
+unlocked = true

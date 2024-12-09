@@ -8,7 +8,7 @@ var super_data := overall_data.new()
 var rewards: Array
 static var next_reward: item_pool = null
 var cursor = load("res://Sprites/UI/Cursor.png")
-var RNG
+var RNG: RandomNumberGenerator
 var loaded_room_file: String
 
 func save_run_data():
@@ -76,6 +76,7 @@ func save_save_selection():
 	ResourceSaver.save(super_data, "user://save_data.tres") # for testing purposes, will remove later
 
 func save_data():
+	super_data.get_achievements()
 	super_data.get_time_played()
 	ResourceSaver.save(super_data, SAVE_PATH)
 	ResourceSaver.save(super_data, "user://save_data.tres") # for testing purposes, will remove later
@@ -94,3 +95,16 @@ func save_time_played():
 	super_data.get_time_played()
 	ResourceSaver.save(super_data, SAVE_PATH)
 	ResourceSaver.save(super_data, "user://save_data.tres") # for testing purposes, will remove later
+
+func save_achievements():
+	super_data.get_achievements()
+	ResourceSaver.save(super_data, SAVE_PATH)
+	ResourceSaver.save(super_data, "user://save_data.tres") # for testing purposes, will remove later
+
+func load_achievements(_path = null):
+	if _path == null:
+		_path = SAVE_PATH
+	if not ResourceLoader.exists(_path):
+		return
+	super_data = ResourceLoader.load(_path)
+	super_data.set_achievements()
