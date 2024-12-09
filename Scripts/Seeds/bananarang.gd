@@ -52,12 +52,12 @@ func _collide(body):
 	if body.is_in_group("Enemies"):
 		body.get_parent()._enemy_stats.take_damage(player._player_stats.get_stat("Weapon_Damage") * damage_multiplier)
 	if has_stopped:
-		SfxDeconflicter.play(AudioManager.hit)
+		SfxDeconflicter.play(Game.audio_manager.hit)
 		queue_free.call_deferred()
 	else:
 		has_stopped = true
 	weapon_direction = -direction
-	SfxDeconflicter.play(AudioManager.hit)
+	SfxDeconflicter.play(Game.audio_manager.hit)
 	shoot_next_weapon()
 
 func travelled_distance():

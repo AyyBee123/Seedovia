@@ -39,7 +39,7 @@ func explode():
 	explosion.damage = player._player_stats.get_stat("Weapon_Damage") * damage_multiplier
 	explosion.size = player._player_stats.get_stat("Weapon_Blast_Radius") * blast_radius_multiplier
 	explosion.get_node("AnimatedSprite2D").self_modulate = Color.ORANGE_RED
-	SfxDeconflicter.play(AudioManager.pepper_child_mild_explosion)
+	SfxDeconflicter.play(Game.audio_manager.pepper_child_mild_explosion)
 	call_deferred("create_child", explosion)
 	for i in range(seed_slots.size()):
 		var weapon = null if PlayerSeeds.seeds.size() <= 1 + slot_index or \

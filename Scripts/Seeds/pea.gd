@@ -16,7 +16,7 @@ func _collide(body):
 		enemy = body
 		body.get_parent()._enemy_stats.take_damage(player._player_stats.get_stat("Weapon_Damage") * damage_multiplier)
 	shoot_next_weapon()
-	SfxDeconflicter.play(AudioManager.hit)
+	SfxDeconflicter.play(Game.audio_manager.hit)
 	queue_free.call_deferred()
 
 func update_position(delta):

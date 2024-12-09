@@ -29,7 +29,7 @@ func explode():
 	explosion.damage = player._player_stats.get_stat("Weapon_Damage") * damage_multiplier
 	explosion.size = player._player_stats.get_stat("Weapon_Blast_Radius") * blast_radius_multiplier
 	explosion.get_node("AnimatedSprite2D").self_modulate = Color("c69b30") # match the corn's shaded color
-	SfxDeconflicter.play(AudioManager.corn_mild_explosion)
+	SfxDeconflicter.play(Game.audio_manager.corn_mild_explosion)
 	create_explosion.call_deferred(explosion)
 	if get_next_weapon():
 		for i in NUMBER_OF_SEEDS:

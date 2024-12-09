@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3 uid="uid://f8fbanpyxqhp"]
+
+[ext_resource type="Script" path="res://Scripts/Utils/game.gd" id="1_w0svr"]
+[ext_resource type="PackedScene" uid="uid://usetxd7ii511" path="res://Scenes/Utils/Audio Manager.tscn" id="2_qwgo3"]
+
+[node name="Game" type="Node"]
+script = ExtResource("1_w0svr")
+
+[node name="Audio Manager" parent="." instance=ExtResource("2_qwgo3")]
+

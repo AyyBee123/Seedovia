@@ -21,7 +21,7 @@ func _collide(body):
 	has_collided.emit(body) # for on-hit effects (ex: burning an enemy on hit)
 	if body.is_in_group("Enemies"):
 		body.get_parent()._enemy_stats.take_damage(player._player_stats.get_stat("Weapon_Damage") * damage_multiplier)
-	SfxDeconflicter.play(AudioManager.jetstream_hit)
+	SfxDeconflicter.play(Game.audio_manager.jetstream_hit)
 	queue_free()
 
 func shoot_next_weapon():

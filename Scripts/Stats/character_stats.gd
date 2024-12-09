@@ -61,5 +61,6 @@ func take_damage(source):
 		overcapped_health = max(0, health)
 	damaged.emit()
 	health_changed.emit(health)
-	if health <= 0 and leaf_hearts <= 0:
+	if health <= 0 and leaf_hearts <= 0: # on death
 		health_depleted.emit()
+		SignalBus.player_die.emit()

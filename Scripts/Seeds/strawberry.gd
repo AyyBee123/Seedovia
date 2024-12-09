@@ -32,7 +32,7 @@ func explode():
 	call_deferred("create_child", explosion)
 
 func create_child(child):
-	SfxDeconflicter.play(AudioManager.strawberry_mild_explosion)
+	SfxDeconflicter.play(Game.audio_manager.strawberry_mild_explosion)
 	visible = false
 	set_physics_process(false)
 	$Hitbox/CollisionShape2D.set_deferred("disabled", true)

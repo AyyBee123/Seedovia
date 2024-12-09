@@ -32,7 +32,7 @@ func explode():
 	explosion.damage = player._player_stats.get_stat("Weapon_Damage") * damage_multiplier
 	explosion.size = player._player_stats.get_stat("Weapon_Blast_Radius") * blast_radius_multiplier
 	explosion.get_node("AnimatedSprite2D").self_modulate = Color.ORANGE_RED
-	SfxDeconflicter.play(AudioManager.pepper_mild_explosion)
+	SfxDeconflicter.play(Game.audio_manager.pepper_mild_explosion)
 	call_deferred("create_explosion", explosion)
 	spawn_child_peppers()
 	queue_free.call_deferred()

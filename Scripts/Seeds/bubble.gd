@@ -39,7 +39,7 @@ func _collide(body):
 	if ignore_first_collision:
 		ignore_first_collision = false
 		return
-	SfxDeconflicter.play(AudioManager.bubble_pop)
+	SfxDeconflicter.play(Game.audio_manager.bubble_pop)
 	if body != null:
 		has_collided.emit(body)
 		if body.is_in_group("Enemies"):
