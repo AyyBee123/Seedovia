@@ -5,36 +5,36 @@
 [ext_resource type="Script" path="res://Scripts/Seeds/strawberry.gd" id="3_ff0m5"]
 [ext_resource type="PackedScene" uid="uid://cp3hdtxn75uyt" path="res://Scenes/Passives/Effects/Explosion.tscn" id="4_ewini"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_iaynw"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_34l38"]
 atlas = ExtResource("2_6hqge")
-region = Rect2(0, 0, 17, 28)
+region = Rect2(0, 0, 19, 29)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_y6481"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_e3m17"]
 atlas = ExtResource("2_6hqge")
-region = Rect2(17, 0, 17, 28)
+region = Rect2(19, 0, 19, 29)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0q0e0"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_xkokf"]
 atlas = ExtResource("2_6hqge")
-region = Rect2(34, 0, 17, 28)
+region = Rect2(38, 0, 19, 29)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6gw83"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_2edy4"]
 atlas = ExtResource("2_6hqge")
-region = Rect2(51, 0, 17, 28)
+region = Rect2(57, 0, 19, 29)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_um1r6"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_iaynw")
+"texture": SubResource("AtlasTexture_34l38")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_y6481")
+"texture": SubResource("AtlasTexture_e3m17")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0q0e0")
+"texture": SubResource("AtlasTexture_xkokf")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6gw83")
+"texture": SubResource("AtlasTexture_2edy4")
 }],
 "loop": true,
 "name": &"default",
@@ -59,7 +59,6 @@ position = Vector2(-3, 0)
 rotation = -1.5708
 sprite_frames = SubResource("SpriteFrames_um1r6")
 autoplay = "default"
-frame_progress = 0.442417
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 rotation = 1.5708

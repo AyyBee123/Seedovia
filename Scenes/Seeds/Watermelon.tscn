@@ -9,22 +9,22 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_x7c61"]
 radius = 16.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_x7g4k"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_afuka"]
 atlas = ExtResource("2_uewwp")
-region = Rect2(0, 0, 32, 38)
+region = Rect2(0, 0, 34, 40)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3uglo"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_lp6by"]
 atlas = ExtResource("2_uewwp")
-region = Rect2(32, 0, 32, 38)
+region = Rect2(34, 0, 34, 40)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3biqj"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_x7g4k")
+"texture": SubResource("AtlasTexture_afuka")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3uglo")
+"texture": SubResource("AtlasTexture_lp6by")
 }],
 "loop": true,
 "name": &"default",
@@ -52,7 +52,7 @@ shape = SubResource("CircleShape2D_x7c61")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_3biqj")
-frame_progress = 0.332163
+autoplay = "default"
 
 [node name="Down" type="ShapeCast2D" parent="."]
 scale = Vector2(0.5, 0.5)
