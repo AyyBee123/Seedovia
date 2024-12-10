@@ -79,6 +79,7 @@ character_scene = "res://Scenes/Characters/White Shrub.tscn"
 
 [node name="Lock" type="TextureRect" parent="Characters/Character 3"]
 visible = false
+layout_mode = 0
 offset_left = 25.0
 offset_top = 70.0
 offset_right = 52.0

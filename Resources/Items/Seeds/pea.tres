@@ -11,3 +11,4 @@ rarity = 0
 item_name = "Pea"
 texture = ExtResource("3_yucv4")
 description = "Simple projectile that shoots the next seed towards the nearest enemy when hitting an enemy or obstacle."
+unlocked = true

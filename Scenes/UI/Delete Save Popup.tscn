@@ -50,6 +50,7 @@ text = "[center]Are you sure you want to delete this save file?"
 scroll_active = false
 
 [node name="YesButton" type="TextureButton" parent="TextureRect"]
+layout_mode = 0
 offset_left = 8.0
 offset_top = 81.0
 offset_right = 248.0
@@ -71,6 +72,7 @@ text = "[center]Yes"
 scroll_active = false
 
 [node name="NoButton" type="TextureButton" parent="TextureRect"]
+layout_mode = 0
 offset_left = 8.0
 offset_top = 167.0
 offset_right = 248.0

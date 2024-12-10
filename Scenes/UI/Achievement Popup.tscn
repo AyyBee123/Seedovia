@@ -1,0 +1,135 @@
+[gd_scene load_steps=9 format=3 uid="uid://da8pvpkf3645"]
+
+[ext_resource type="Script" path="res://Scripts/UI/achievement_popup.gd" id="1_s547r"]
+[ext_resource type="Texture2D" uid="uid://dxs3447ypgnio" path="res://Sprites/UI/Achievement Bar.png" id="1_umodg"]
+[ext_resource type="Texture2D" uid="uid://csjhrpih1bhqa" path="res://Sprites/Achievements/Die.png" id="2_tgmfj"]
+[ext_resource type="FontFile" uid="uid://wbj0boqv37y6" path="res://Fonts/Description Font.ttf" id="3_m4jdo"]
+[ext_resource type="FontFile" uid="uid://bkn7gmgx1wxgx" path="res://Fonts/Name Font.ttf" id="4_ov2cw"]
+
+[sub_resource type="Animation" id="Animation_cwmht"]
+resource_name = "new_animation"
+length = 3.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-408, -350), Vector2(-408, -230), Vector2(-408, -230), Vector2(-408, -350)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(3.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"destroy"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_3whei"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-408, -350)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vqv8y"]
+_data = {
+"RESET": SubResource("Animation_3whei"),
+"new_animation": SubResource("Animation_cwmht")
+}
+
+[node name="Achievement Popup" type="Control"]
+z_index = 9
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -655.0
+offset_top = -310.0
+offset_right = -655.0
+offset_bottom = -310.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+script = ExtResource("1_s547r")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -408.0
+offset_top = -350.0
+offset_right = -180.0
+offset_bottom = -312.0
+grow_horizontal = 2
+scale = Vector2(2.5, 2.5)
+pivot_offset = Vector2(114, -10)
+texture = ExtResource("1_umodg")
+
+[node name="Sprite" type="TextureRect" parent="TextureRect"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 35.0
+offset_bottom = 35.0
+texture = ExtResource("2_tgmfj")
+stretch_mode = 3
+
+[node name="Name" type="RichTextLabel" parent="TextureRect"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 38.0
+offset_top = 22.0
+offset_right = 225.0
+offset_bottom = 34.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("3_m4jdo")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "Death"
+fit_content = true
+scroll_active = false
+
+[node name="Title" type="RichTextLabel" parent="TextureRect"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 38.0
+offset_top = -1.0
+offset_right = 225.0
+offset_bottom = 19.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("4_ov2cw")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "Achievement Unlocked"
+fit_content = true
+scroll_active = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_vqv8y")
+}
+autoplay = "new_animation"

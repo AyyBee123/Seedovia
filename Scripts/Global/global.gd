@@ -87,10 +87,14 @@ func load_data_exists(_data) -> bool:
 func delete_data(_path = null, _run_path = null):
 	if _path == null:
 		_path = SAVE_PATH
+	if _run_path == null:
+		_run_path = RUN_SAVE_PATH
 	if ResourceLoader.exists(_path):
 		DirAccess.remove_absolute(_path)
 	if ResourceLoader.exists(_run_path):
 		DirAccess.remove_absolute(_run_path)
+	super_data.reset_achievements()
+	super_data.reset_stats()
 
 func save_time_played():
 	super_data.get_time_played()

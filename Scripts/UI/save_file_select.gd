@@ -36,6 +36,7 @@ func _save_button_pressed(num):
 		var res = overall_data.new()
 		res.resource_path = Global.SAVE_PATH
 		var error = ResourceSaver.save(res, res.resource_path)
+		
 	Global.load_data()
 	Global.load_achievements()
 	var d = Time.get_datetime_dict_from_system()
