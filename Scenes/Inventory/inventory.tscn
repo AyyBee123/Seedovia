@@ -6444,7 +6444,6 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_s7kfb")
 script = ExtResource("7_g75im")
 
 [node name="1" type="RichTextLabel" parent="Inventory Screen/Seed Slots/Slot1"]
-self_modulate = Color(1, 0.964706, 0.921569, 1)
 layout_mode = 0
 offset_top = -11.0
 offset_right = 4.0
@@ -6453,7 +6452,6 @@ theme_override_fonts/normal_font = SubResource("FontFile_jfyn1")
 text = "1"
 
 [node name="SeedSlotLink" type="Sprite2D" parent="Inventory Screen/Seed Slots/Slot1"]
-self_modulate = Color(1, 0.964706, 0.921569, 1)
 position = Vector2(34, 16)
 rotation = 1.5708
 texture = ExtResource("11_51to6")
@@ -6465,7 +6463,6 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_s7kfb")
 script = ExtResource("7_g75im")
 
 [node name="2" type="RichTextLabel" parent="Inventory Screen/Seed Slots/Slot2"]
-self_modulate = Color(1, 0.964706, 0.921569, 1)
 layout_mode = 0
 offset_top = -11.0
 offset_right = 6.0
@@ -6475,7 +6472,6 @@ text = "2
 "
 
 [node name="SeedSlotLink2" type="Sprite2D" parent="Inventory Screen/Seed Slots/Slot2"]
-self_modulate = Color(1, 0.964706, 0.921569, 1)
 position = Vector2(34, 16)
 rotation = 1.5708
 texture = ExtResource("11_51to6")
@@ -6487,7 +6483,6 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_s7kfb")
 script = ExtResource("7_g75im")
 
 [node name="3" type="RichTextLabel" parent="Inventory Screen/Seed Slots/Slot3"]
-self_modulate = Color(1, 0.964706, 0.921569, 1)
 layout_mode = 0
 offset_top = -11.0
 offset_right = 6.0
@@ -6497,19 +6492,16 @@ text = "3
 "
 
 [node name="Seperator2" type="Sprite2D" parent="Inventory Screen"]
-self_modulate = Color(1, 0.964706, 0.921569, 1)
 position = Vector2(77.6875, 69.0625)
 scale = Vector2(75.3125, 0.375002)
 texture = ExtResource("11_51to6")
 
 [node name="Seperator" type="Sprite2D" parent="Inventory Screen"]
-self_modulate = Color(1, 0.964706, 0.921569, 1)
 position = Vector2(77.6875, 125.313)
 scale = Vector2(75.3125, 0.275)
 texture = ExtResource("11_51to6")
 
 [node name="Inventory Label" type="RichTextLabel" parent="."]
-self_modulate = Color(1, 0.964706, 0.921569, 1)
 layout_mode = 0
 offset_left = 4.0
 offset_top = 129.0
@@ -6521,7 +6513,6 @@ theme_override_font_sizes/normal_font_size = 16
 text = "Inventory"
 
 [node name="Talismans Label" type="RichTextLabel" parent="."]
-self_modulate = Color(1, 0.964706, 0.921569, 1)
 layout_mode = 0
 offset_left = 4.0
 offset_top = 72.0
@@ -6534,7 +6525,6 @@ text = "Talismans
 "
 
 [node name="Seeds Label" type="RichTextLabel" parent="."]
-self_modulate = Color(1, 0.964706, 0.921569, 1)
 layout_mode = 0
 offset_left = 4.0
 offset_top = 3.0

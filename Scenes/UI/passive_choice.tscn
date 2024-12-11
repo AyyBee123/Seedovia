@@ -40,7 +40,6 @@ offset_bottom = 256.0
 texture = ExtResource("1_ayyp6")
 
 [node name="Choose One Upgrade" type="RichTextLabel" parent="PassiveBackground"]
-self_modulate = Color(1, 0.964706, 0.921569, 1)
 layout_mode = 0
 offset_left = 2.5
 offset_top = 8.5
@@ -88,7 +87,6 @@ texture = ExtResource("5_yjevb")
 stretch_mode = 3
 
 [node name="Description" type="RichTextLabel" parent="PassiveBackground/GridContainer/Button"]
-self_modulate = Color(1, 0.964706, 0.921569, 1)
 layout_mode = 0
 offset_left = 53.0
 offset_top = 18.0
@@ -103,7 +101,6 @@ fit_content = true
 scroll_active = false
 
 [node name="Name" type="RichTextLabel" parent="PassiveBackground/GridContainer/Button"]
-self_modulate = Color(1, 0.964706, 0.921569, 1)
 layout_mode = 0
 offset_left = 53.0
 offset_top = -2.0
@@ -145,7 +142,6 @@ texture = ExtResource("8_0e54s")
 stretch_mode = 3
 
 [node name="Description" type="RichTextLabel" parent="PassiveBackground/GridContainer/Button2"]
-self_modulate = Color(1, 0.964706, 0.921569, 1)
 layout_mode = 0
 offset_left = 53.0
 offset_top = 18.0
@@ -160,7 +156,6 @@ fit_content = true
 scroll_active = false
 
 [node name="Name" type="RichTextLabel" parent="PassiveBackground/GridContainer/Button2"]
-self_modulate = Color(1, 0.964706, 0.921569, 1)
 layout_mode = 0
 offset_left = 53.0
 offset_top = -2.0
@@ -202,7 +197,6 @@ texture = ExtResource("9_ga1yx")
 stretch_mode = 3
 
 [node name="Description" type="RichTextLabel" parent="PassiveBackground/GridContainer/Button3"]
-self_modulate = Color(1, 0.964706, 0.921569, 1)
 layout_mode = 0
 offset_left = 53.0
 offset_top = 18.0
@@ -217,7 +211,6 @@ fit_content = true
 scroll_active = false
 
 [node name="Name" type="RichTextLabel" parent="PassiveBackground/GridContainer/Button3"]
-self_modulate = Color(1, 0.964706, 0.921569, 1)
 layout_mode = 0
 offset_left = 53.0
 offset_top = -2.0
