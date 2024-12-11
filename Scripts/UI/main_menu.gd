@@ -9,7 +9,7 @@ func _ready():
 	if ResourceLoader.exists(Global.RUN_SAVE_PATH):
 		continue_button.disabled = false
 	if continue_button.disabled:
-		$"Continue Button/Text".self_modulate = Color("818181") # matching the border colour
+		$"Continue Button/Text".self_modulate = Color("a19c95") # matching the border colour
 	Global.load_achievements()
 
 func _on_play_button_pressed():
