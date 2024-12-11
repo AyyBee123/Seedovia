@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://drhy5pt6svekf"]
+
+[ext_resource type="FontFile" uid="uid://wbj0boqv37y6" path="res://Fonts/Description Font.ttf" id="1_8s4rq"]
+[ext_resource type="Script" path="res://Scripts/Utils/console.gd" id="1_clrka"]
+
+[node name="Console" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_clrka")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+z_index = 20
+offset_right = 1920.0
+offset_bottom = 500.0
+
+[node name="Background" type="ColorRect" parent="MarginContainer"]
+layout_mode = 2
+color = Color(0, 0, 0, 0.392157)
+
+[node name="Contents" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Console" type="RichTextLabel" parent="MarginContainer/Contents"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(1920, 428)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_8s4rq")
+theme_override_font_sizes/normal_font_size = 64
+scroll_active = false
+
+[node name="Input" type="LineEdit" parent="MarginContainer/Contents"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(1920, 72)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_8s4rq")
+theme_override_font_sizes/font_size = 64
+placeholder_text = "Enter Command..."
