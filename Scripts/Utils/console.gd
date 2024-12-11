@@ -2,37 +2,78 @@ extends CanvasLayer
 
 var level
 var expression = Expression.new()
-var history: Array[String] = []
-var hitory_index: int = -1
+
+static var history: Array[String] = []
+static var history_index: int = -1
+var auto_complete_methods := []
 
 var ITEM = preload("res://Scenes/Items/item.tscn")
 var PICKUP_ITEM = preload("res://Scenes/Items/Pickup Item.tscn")
 var SHOP_ITEM = preload("res://Scenes/Items/Shop Item.tscn")
 
+var player
+
 func _ready():
+	player = Targets.get_player()
 	level = get_parent()
 	get_tree().paused = true
 	%Input.text_submitted.connect(self._on_text_submitted)
 	await get_tree().process_frame # prevent ` from being typed in the console immediately
 	%Input.grab_focus()
+	auto_complete_methods = get_script().get_script_method_list().map(func(x): return x.name)
+	auto_complete_methods = auto_complete_methods.filter(get_methods)
+
+func get_methods(_method):
+	return not (_method == "_ready" or _method == "_on_text_submitted" or _method == "_input" \
+			or _method == "get_all_file_paths" or _method == "get_methods")
 
 func _on_text_submitted(command):
 	var error = expression.parse(command)
 	if error != OK:
 		%Console.text += "- " + %Input.text + "\n"
 		%Console.text += expression.get_error_text() + "\n"
-		%Input.text = ""
-		return
-	var result = expression.execute([], self)
-	if not expression.has_execute_failed():
+	if not expression.has_execute_failed() and error == OK:
+		var result = expression.execute([], self)
 		%Console.text += "- " + %Input.text + "\n"
 		%Console.text += str(result) + "\n"
+	history.push_front(%Input.text)
+	history_index = -1
 	%Input.text = ""
 
 func _input(event):
-	if event is InputEventKey:
-		if (event.keycode == KEY_ESCAPE or event.keycode == 96) and event.pressed:
+	if event is InputEventKey and not event.echo and event.pressed:
+		if (event.keycode == KEY_ESCAPE or event.keycode == 96):
 			get_tree().paused = false
+		if event.keycode == KEY_UP:
+			if history.size() == 0:
+				return
+			if history_index == history.size() - 1:
+				history_index = -1
+				%Input.text = ""
+				%Input.caret_column = 100000
+				return
+			history_index = clamp(history_index + 1, 0, history.size() - 1)
+			%Input.text = history[history_index]
+			# Hack to make caret go to the end of the line
+			%Input.caret_column = 100000
+		if event.keycode == KEY_DOWN:
+			if history.size() == 0:
+				return
+			if history_index == 0:
+				history_index = -1
+				%Input.text = ""
+				%Input.caret_column = 100000
+				return
+			history_index = clamp(history_index - 1, 0, history.size() - 1)
+			%Input.text = history[history_index]
+			%Input.caret_column = 100000
+		if event.keycode == KEY_TAB:
+			for method in auto_complete_methods:
+				if method.begins_with(%Input.text):
+					# populate console input with text matches
+					%Input.text = method
+					%Input.caret_column = 100000
+					return
 
 func spawn_item(_entity: String, pos: Vector2 = Vector2.ZERO):
 	var item_file_paths := []
@@ -71,6 +112,9 @@ func spawn_enemy(_enemy: String, pos: Vector2 = Vector2.ZERO):
 		if _enemy == scene.name:
 			level.add_child(scene)
 			scene.global_position = pos
+
+func give_coins(amount: int = 1):
+	player._player_stats.coins += amount
 
 func get_all_file_paths(path: String) -> Array[String]:
 	var file_paths: Array[String] = []

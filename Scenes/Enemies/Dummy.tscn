@@ -8,7 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://bfpmq41k18tdi" path="res://Scenes/Passives/Effects/Burn Stacks.tscn" id="5_la8sp"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4n8gi"]
-height = 44.0
+radius = 11.0
+height = 56.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_esige"]
 shader = ExtResource("3_uguyq")
@@ -17,7 +18,8 @@ shader_parameter/tint_factor = 0.0
 shader_parameter/fade = 1.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hklkb"]
-height = 44.0
+radius = 11.0
+height = 56.0
 
 [node name="Dummy" type="CharacterBody2D"]
 collision_layer = 0
@@ -29,8 +31,7 @@ shape = SubResource("CapsuleShape2D_4n8gi")
 
 [node name="AnimatedSprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_esige")
-position = Vector2(-1, 0)
-scale = Vector2(2, 2)
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("3_db4vc")
 
 [node name="Enemy Hitbox" type="Area2D" parent="." groups=["Enemies"]]
@@ -41,6 +42,8 @@ collision_mask = 10
 shape = SubResource("CapsuleShape2D_hklkb")
 
 [node name="Health Bar" parent="." instance=ExtResource("4_0p02j")]
+offset_top = -53.0
+offset_bottom = -45.0
 
 [node name="Debuffs UI" type="GridContainer" parent="."]
 offset_left = -22.0

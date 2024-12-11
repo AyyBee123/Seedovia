@@ -7,6 +7,7 @@ extends Node
 @onready var pepper_mild_explosion = $"Pepper MildExplosion"
 @onready var strawberry_mild_explosion = $"Strawberry MildExplosion"
 @onready var pepper_child_mild_explosion = $"Pepper Child MildExplosion"
+@onready var walnut_hit = $"Walnut Hit"
 
 func _ready():
 	SignalBus.play_audio.connect(play)
