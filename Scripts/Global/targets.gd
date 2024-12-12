@@ -25,6 +25,7 @@ func get_items():
 	for i in get_tree().current_scene.get_children():
 		if i.is_in_group("Item"):
 			new_array.append(i)
+	return new_array
 
 func get_pickup_items():
 	return get_tree().get_nodes_in_group("Pickup Item")
