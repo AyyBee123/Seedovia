@@ -18,7 +18,7 @@ func _ready():
 	player._player_stats.friction = 0.5
 	player._player_stats.luck = 0.0
 	player._player_stats.weapon_speed = 500.0
-	player._player_stats.weapon_range = 35.0
+	player._player_stats.weapon_range = 250.0
 	player._player_stats.weapon_size = 1.0
 	player._player_stats.weapon_damage = 10.0
 	player._player_stats.weapon_blast_radius = 1.0

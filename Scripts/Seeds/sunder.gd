@@ -1,20 +1,28 @@
 extends "res://Scripts/Seeds/seed_template.gd"
 
+const SUNDER_DIST = 35
+const SEED_DIST = SUNDER_DIST * 2
+
 @onready var resource_preloader = $ResourcePreloader
-@onready var mild_explosion_SFX = $SunderExplosion
+
+var distance_threshold: float = 0
+var seed_distance_threshold: float = 0
 
 func travelled_distance():
-	distance_travelled = starting_position.distance_squared_to(global_position)
-	if distance_travelled >= 1:
-		total_distance += 1
-		starting_position = global_position
+	distance_travelled = starting_position.distance_to(global_position)
+	total_distance += distance_travelled
+	starting_position = global_position
+	distance_threshold += distance_travelled
+	seed_distance_threshold += distance_travelled
 	if total_distance >= player._player_stats.get_stat("Weapon_Range") * range_multiplier:
 		queue_free.call_deferred()
-	if total_distance % 5 == 0:
+	if distance_threshold >= SUNDER_DIST:
 		explode()
-		if total_distance % 10 == 0 and total_distance != 0:
-			weapon_direction = Vector2.RIGHT.rotated(randf_range(0, 2 * PI))
-			shoot_next_weapon()
+		distance_threshold = 0
+	if seed_distance_threshold >= SEED_DIST:
+		weapon_direction = Vector2.RIGHT.rotated(randf_range(0, 2 * PI))
+		shoot_next_weapon()
+		seed_distance_threshold = 0
 
 func _collide(body):
 	if ignore_first_collision:
@@ -31,7 +39,7 @@ func explode():
 	explosion.damage_multiplier = damage_multiplier
 	explosion.size = player._player_stats.get_stat("Weapon_Blast_Radius") * blast_radius_multiplier
 	explosion.get_node("AnimatedSprite2D").self_modulate = Color.SADDLE_BROWN
-	SfxDeconflicter.play(mild_explosion_SFX)
+	SfxDeconflicter.play(Game.audio_manager.sunder_explosion)
 	call_deferred("create_child", explosion)
 
 func create_child(child):

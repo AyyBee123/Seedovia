@@ -55,8 +55,9 @@ func _ready():
 	blast_radius_multiplier *= transferred_blast_radius_multiplier
 	fire_rate_multiplier *= transferred_fire_rate_multiplier
 	scale = scale * player._player_stats.get_stat("Weapon_Size") * size_multiplier
-	starting_position = global_position
 	direction = desired_direction.normalized()
+	await get_tree().physics_frame
+	starting_position = global_position
 
 func _physics_process(delta):
 	travelled_distance()
@@ -65,9 +66,8 @@ func _physics_process(delta):
 
 func travelled_distance():
 	distance_travelled = starting_position.distance_squared_to(global_position)
-	if distance_travelled >= 1:
-		total_distance += 1
-		starting_position = global_position
+	total_distance += distance_travelled
+	starting_position = global_position
 	if total_distance >= player._player_stats.get_stat("Weapon_Range") * range_multiplier:
 		queue_free.call_deferred()
 

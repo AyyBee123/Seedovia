@@ -5,7 +5,7 @@ var CONSOLE = preload("res://Scenes/Utils/Console.tscn")
 var _player_stats: player_stats = preload("res://Resources/Characters/Stats/base_stats.tres")
 
 @export var starting_character: character_class
-@export var starting_stats: player_stats
+var starting_stats: player_stats = preload("res://Resources/Characters/Stats/base_stats.tres")
 @export var character_scene: String
 
 func _ready():

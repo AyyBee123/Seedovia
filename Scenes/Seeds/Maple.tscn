@@ -1,24 +1,133 @@
-[gd_scene load_steps=5 format=3 uid="uid://qo24c3wu6pr1"]
+[gd_scene load_steps=9 format=3 uid="uid://qo24c3wu6pr1"]
 
 [ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_ocymi"]
 [ext_resource type="Script" path="res://Scripts/Seeds/maple.gd" id="2_dmcic"]
-[ext_resource type="PackedScene" uid="uid://dev51narn5xpv" path="res://Scenes/Seeds/Effects/Syrup.tscn" id="3_bgxpo"]
+[ext_resource type="Texture2D" uid="uid://cnwvxhgwfjrw" path="res://Sprites/Seeds/Maple Syrup.png" id="2_laj06"]
+[ext_resource type="Texture2D" uid="uid://bjjmov8hqm320" path="res://Sprites/Seeds/Maple Syrup End.png" id="4_e0byf"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_pjyq8"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sqvu4"]
+resource_local_to_scene = true
+size = Vector2(50, 40)
+
+[sub_resource type="Animation" id="Animation_rbdgb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_mwv3e"]
+resource_name = "new_animation"
+length = 0.75
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.5, 0.5)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.75),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7y6oh"]
+_data = {
+"RESET": SubResource("Animation_rbdgb"),
+"new_animation": SubResource("Animation_mwv3e")
+}
 
 [node name="Maple" instance=ExtResource("1_ocymi")]
+z_index = -2
+scale = Vector2(2, 2)
+texture = ExtResource("2_laj06")
+centered = false
+offset = Vector2(0, -20)
+region_enabled = true
+region_rect = Rect2(0, 0, 50, 40)
 script = ExtResource("2_dmcic")
-speed_multiplier = 3.0
-range_multiplier = 0.333
-damage_multiplier = 2.0
+range_multiplier = 0.65
+damage_multiplier = 0.2
 blast_radius_multiplier = 1.15
 fire_rate_multiplier = 0.15
 
 [node name="Hitbox" parent="." index="0"]
-collision_mask = 513
+collision_mask = 516
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
-shape = SubResource("CircleShape2D_pjyq8")
+position = Vector2(25, 0)
+shape = SubResource("RectangleShape2D_sqvu4")
 
-[node name="ResourcePreloader" type="ResourcePreloader" parent="." index="2"]
-resources = [PackedStringArray("Syrup"), [ExtResource("3_bgxpo")]]
+[node name="Fire Rate" type="Timer" parent="." index="2"]
+wait_time = 0.2
+one_shot = true
+
+[node name="Lifetime" type="Timer" parent="." index="3"]
+wait_time = 7.0
+one_shot = true
+autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
+libraries = {
+"": SubResource("AnimationLibrary_7y6oh")
+}
+
+[node name="End" type="Sprite2D" parent="." index="5"]
+position = Vector2(50, -0.5)
+texture = ExtResource("4_e0byf")
+offset = Vector2(3, 0)
+
+[node name="Beginning" type="Sprite2D" parent="." index="6"]
+position = Vector2(-3, -0.5)
+texture = ExtResource("4_e0byf")
+flip_h = true
+flip_v = true
+
+[connection signal="area_exited" from="Hitbox" to="." method="_on_hitbox_area_exited"]

@@ -1,7 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://jmqrc0iy1uob"]
+[gd_scene load_steps=10 format=3 uid="uid://jmqrc0iy1uob"]
 
 [ext_resource type="PackedScene" uid="uid://cu63rxmy71bcg" path="res://Scenes/Player/Player.tscn" id="1_uo5hu"]
-[ext_resource type="Resource" uid="uid://bgnhohltve07x" path="res://Resources/Characters/Stats/white_shrub.tres" id="2_20k5p"]
 [ext_resource type="Script" path="res://Scripts/Characters/white_shrub.gd" id="2_wbuoh"]
 [ext_resource type="Texture2D" uid="uid://b53os8trmovki" path="res://Sprites/Character/White Shrub/White Shrub1.png" id="3_344h6"]
 [ext_resource type="Texture2D" uid="uid://6vom2g6kgnh7" path="res://Sprites/Character/White Shrub/White Shrub2.png" id="4_fbg48"]
@@ -48,7 +47,6 @@ animations = [{
 
 [node name="White Shrub" instance=ExtResource("1_uo5hu")]
 script = ExtResource("2_wbuoh")
-_player_stats = ExtResource("2_20k5p")
 
 [node name="Player Sprite" parent="." index="3"]
 sprite_frames = SubResource("SpriteFrames_6lyiw")

@@ -36,10 +36,9 @@ func _collide(body):
 	queue_free.call_deferred()
 
 func travelled_distance():
-	distance_travelled = starting_position.distance_squared_to(global_position)
-	if distance_travelled >= 1:
-		total_distance += 1
-		starting_position = global_position
+	distance_travelled = starting_position.distance_to(global_position)
+	total_distance += distance_travelled
+	starting_position = global_position
 	if total_distance > 0 and total_distance % MAX_DISTANCE_BEFORE_SHOOTING == 0:
 		shoot_next_weapon()
 	if total_distance >= player._player_stats.get_stat("Weapon_Range") * range_multiplier:

@@ -1,8 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://q8f0tcp3j8n"]
+[gd_scene load_steps=10 format=3 uid="uid://q8f0tcp3j8n"]
 
 [ext_resource type="PackedScene" uid="uid://cu63rxmy71bcg" path="res://Scenes/Player/Player.tscn" id="1_adbqg"]
 [ext_resource type="PackedScene" uid="uid://c8dr4s3wyxmkf" path="res://Scenes/Characters/Passives/Sapling Stats.tscn" id="2_ag84k"]
-[ext_resource type="Resource" uid="uid://bqt3svbfi7lhb" path="res://Resources/Characters/Stats/sapling.tres" id="2_aqyge"]
 [ext_resource type="Texture2D" uid="uid://2whsjb1rg2lm" path="res://Sprites/Character/Sapling/Sapling1.png" id="3_hxejm"]
 [ext_resource type="Texture2D" uid="uid://bb4kqvwltq1up" path="res://Sprites/Character/Sapling/Sapling2.png" id="4_jtr0i"]
 [ext_resource type="Texture2D" uid="uid://dgb26neumbjnf" path="res://Sprites/Character/Sapling/Sapling3.png" id="5_eeohf"]
@@ -47,7 +46,6 @@ animations = [{
 }]
 
 [node name="Sapling" instance=ExtResource("1_adbqg")]
-_player_stats = ExtResource("2_aqyge")
 
 [node name="Player Sprite" parent="." index="3"]
 sprite_frames = SubResource("SpriteFrames_ckkwj")

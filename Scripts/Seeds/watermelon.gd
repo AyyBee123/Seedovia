@@ -7,6 +7,7 @@ extends "res://Scripts/Seeds/seed_template.gd"
 @onready var resource_preloader = $ResourcePreloader
 @onready var metal_1_SFX = $Metal1
 @onready var metal_2_SFX = $Metal2
+@onready var frame_change_timer = $"Frame Change Timer"
 
 var area_normal # gets the normal of the collsion area/wall
 var animation_frame = 0
@@ -14,6 +15,7 @@ var animation_frame = 0
 func _ready():
 	super._ready()
 	area_normal = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
+	frame_change_timer.wait_time = 1.0 / (player._player_stats.get_stat("Weapon_Speed") * speed_multiplier) * 50
 
 func _physics_process(delta):
 	super._physics_process(delta)
@@ -22,15 +24,16 @@ func _physics_process(delta):
 func update_position(delta):
 	current_velocity = direction * player._player_stats.get_stat("Weapon_Speed") * speed_multiplier
 	position += current_velocity * delta
-	$AnimatedSprite2D.look_at(global_position + current_velocity)
+	animation_frame = (animation_frame + 1) % $AnimatedSprite2D.sprite_frames.get_frame_count("default")
+	if frame_change_timer.is_stopped():
+		$AnimatedSprite2D.set_frame(animation_frame)
+		$AnimatedSprite2D.look_at(global_position + current_velocity)
+		frame_change_timer.start()
 
 func travelled_distance():
-	distance_travelled = starting_position.distance_squared_to(global_position)
-	if distance_travelled >= 1:
-		total_distance += 1
-		starting_position = global_position
-		animation_frame = (animation_frame + 1) % $AnimatedSprite2D.sprite_frames.get_frame_count("default")
-		$AnimatedSprite2D.set_frame(animation_frame)
+	distance_travelled = starting_position.distance_to(global_position)
+	total_distance += distance_travelled
+	starting_position = global_position
 	if total_distance >= player._player_stats.get_stat("Weapon_Range") * range_multiplier:
 		queue_free.call_deferred()
 

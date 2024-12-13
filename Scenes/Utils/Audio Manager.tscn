@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://usetxd7ii511"]
+[gd_scene load_steps=6 format=3 uid="uid://usetxd7ii511"]
 
 [ext_resource type="Script" path="res://Scripts/Utils/audio_manager.gd" id="1_bpx0j"]
 [ext_resource type="AudioStream" uid="uid://bpk6gao5jcjkq" path="res://Audio/SFX/Hit.mp3" id="1_qnkjs"]
 [ext_resource type="AudioStream" uid="uid://dviaq07q34iwy" path="res://Audio/SFX/Mild Explosion.mp3" id="2_fp62v"]
 [ext_resource type="AudioStream" uid="uid://chjabrkxsndjf" path="res://Audio/SFX/Bubble Pop.mp3" id="3_olhkt"]
+[ext_resource type="AudioStream" uid="uid://c58aj3yosgiit" path="res://Audio/SFX/Sunder Explosion.mp3" id="5_mgngl"]
 
 [node name="Audio Manager" type="Node"]
 script = ExtResource("1_bpx0j")
@@ -53,4 +54,10 @@ bus = &"SFX"
 stream = ExtResource("2_fp62v")
 volume_db = -14.0
 pitch_scale = 0.75
+bus = &"SFX"
+
+[node name="SunderExplosion" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_mgngl")
+volume_db = -32.0
+pitch_scale = 0.9
 bus = &"SFX"

@@ -33,7 +33,6 @@ func _ready():
 		angle_threshold = angle_threshold / (player._player_stats.get_stat("Fire_Rate") * fire_rate_multiplier)
 	super._ready()
 	set_variable_sizes()
-	starting_position = global_position
 	starting_angle = rotation_degrees
 	angle_travelled = 0.0
 	direction = desired_direction.normalized()

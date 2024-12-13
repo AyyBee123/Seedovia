@@ -1,7 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://m1j34tlvalwr"]
+[gd_scene load_steps=10 format=3 uid="uid://m1j34tlvalwr"]
 
 [ext_resource type="PackedScene" uid="uid://cu63rxmy71bcg" path="res://Scenes/Player/Player.tscn" id="1_dhg8r"]
-[ext_resource type="Resource" uid="uid://bn8q0ppmt06w1" path="res://Resources/Characters/Stats/berry.tres" id="2_50cca"]
 [ext_resource type="PackedScene" uid="uid://dg7y5b86ajmig" path="res://Scenes/Characters/Passives/Berry Stats.tscn" id="2_vgwbe"]
 [ext_resource type="Texture2D" uid="uid://b7ynn50wtvp24" path="res://Sprites/Character/Berry/Berry1.png" id="3_afc0e"]
 [ext_resource type="Texture2D" uid="uid://b56ybys41hcn8" path="res://Sprites/Character/Berry/Berry2.png" id="4_lahev"]
@@ -47,7 +46,6 @@ animations = [{
 }]
 
 [node name="Berry" instance=ExtResource("1_dhg8r")]
-_player_stats = ExtResource("2_50cca")
 
 [node name="Player Sprite" parent="." index="3"]
 sprite_frames = SubResource("SpriteFrames_6lyiw")
