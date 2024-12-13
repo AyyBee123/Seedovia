@@ -18,6 +18,7 @@ func _ready():
 	super._ready()
 	set_lengths()
 	original_size = scale.x
+	SfxDeconflicter.play(Game.audio_manager.maple_splat)
 
 func _physics_process(delta):
 	super._physics_process(delta)

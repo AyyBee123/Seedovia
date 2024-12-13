@@ -10,6 +10,7 @@ extends Node
 @onready var walnut_hit = $"Walnut Hit"
 @onready var sunder_explosion = $SunderExplosion
 @onready var sentient_pot_bite = $"Sentient Pot Bite"
+@onready var maple_splat = $"Maple Splat"
 
 func _ready():
 	SignalBus.play_audio.connect(play)

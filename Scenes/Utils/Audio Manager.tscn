@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://usetxd7ii511"]
+[gd_scene load_steps=8 format=3 uid="uid://usetxd7ii511"]
 
 [ext_resource type="Script" path="res://Scripts/Utils/audio_manager.gd" id="1_bpx0j"]
 [ext_resource type="AudioStream" uid="uid://bpk6gao5jcjkq" path="res://Audio/SFX/Hit.mp3" id="1_qnkjs"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://chjabrkxsndjf" path="res://Audio/SFX/Bubble Pop.mp3" id="3_olhkt"]
 [ext_resource type="AudioStream" uid="uid://c58aj3yosgiit" path="res://Audio/SFX/Sunder Explosion.mp3" id="5_mgngl"]
 [ext_resource type="AudioStream" uid="uid://dxvs3t6m7coyv" path="res://Audio/SFX/Hit2.mp3" id="6_8awm8"]
+[ext_resource type="AudioStream" uid="uid://bnwgdhdobsrbm" path="res://Audio/SFX/Splat2.mp3" id="7_hi1cj"]
 
 [node name="Audio Manager" type="Node"]
 script = ExtResource("1_bpx0j")
@@ -67,3 +68,7 @@ bus = &"SFX"
 stream = ExtResource("6_8awm8")
 volume_db = -10.0
 pitch_scale = 0.85
+
+[node name="Maple Splat" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_hi1cj")
+volume_db = -7.0

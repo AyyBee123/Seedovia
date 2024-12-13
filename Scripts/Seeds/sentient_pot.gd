@@ -92,15 +92,6 @@ func get_nearest_enemy(enemy):
 				nearest_enemy = enemies[i]
 	return nearest_enemy
 
-func update_position(delta):
-	pass
-
-func _collide(body):
-	pass
-
-func travelled_distance():
-	pass
-
 func _on_animated_sprite_2d_frame_changed():
 	if not is_instance_valid(target) or target == null:
 		return
@@ -114,6 +105,15 @@ func _on_animated_sprite_2d_frame_changed():
 			target.get_parent()._enemy_stats.take_damage(player._player_stats.get_stat("Weapon_Damage") \
 					* damage_multiplier)
 			SfxDeconflicter.play(Game.audio_manager.sentient_pot_bite)
+
+func update_position(delta):
+	pass
+
+func _collide(body):
+	pass
+
+func travelled_distance():
+	pass
 
 func _on_lifetime_timeout():
 	queue_free()
