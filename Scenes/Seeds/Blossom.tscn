@@ -35,7 +35,7 @@ fire_rate_multiplier = 0.1
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -2)
 sprite_frames = SubResource("SpriteFrames_uywqr")
-animation = &"Shoot"
+animation = &"Idle"
 autoplay = "Idle"
 
 [node name="Hitbox" type="Area2D" parent="."]

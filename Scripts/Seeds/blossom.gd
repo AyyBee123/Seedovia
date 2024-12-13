@@ -20,7 +20,8 @@ func _physics_process(delta):
 
 func update_position(delta):
 	if not hit_wall:
-		current_velocity = direction * player._player_stats.get_stat("Weapon_Speed") * speed_multiplier * deceleration.time_left
+		current_velocity = direction * player._player_stats.get_stat("Weapon_Speed") * speed_multiplier \
+				* deceleration.time_left
 		position += current_velocity * delta
 
 func travelled_distance():
@@ -32,6 +33,9 @@ func _collide(body):
 func shoot_next_weapon():
 	attempted_fire.emit()
 	if get_next_weapon() == null:
+		return
+	if global_position.distance_to(get_nearest_enemy().global_position) > \
+			player._player_stats.get_stat("Weapon_Range") * get_next_weapon().instantiate().range_multiplier:
 		return
 	play_animation()
 	var weapon_instance = get_next_weapon().instantiate()

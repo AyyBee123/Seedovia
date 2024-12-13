@@ -16,6 +16,7 @@ radius = 46.0
 texture = ExtResource("2_a3sjy")
 offset = Vector2(0, -4.55)
 script = ExtResource("3_moec4")
+range_multiplier = 0.05
 damage_multiplier = 0.3
 fire_rate_multiplier = 0.25
 

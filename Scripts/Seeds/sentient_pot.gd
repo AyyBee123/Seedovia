@@ -24,8 +24,9 @@ func _physics_process(delta):
 		_can_bite = false
 		_can_shoot = false
 		enemy = get_nearest_enemy(null)
-	if $"Shoot Range".get_overlapping_areas().size() > 0 and get_next_weapon():
-		target = $"Shoot Range".get_overlapping_areas()[0]
+	if get_next_weapon() and enemy and global_position.distance_to(enemy.global_position) <= \
+				player._player_stats.get_stat("Weapon_Range") * get_next_weapon().instantiate().range_multiplier:
+		target = enemy
 		_can_shoot = true
 	else:
 		_can_shoot = false
