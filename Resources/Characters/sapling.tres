@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="character_class" load_steps=10 format=3 uid="uid://cj0ugaawbg6a"]
+[gd_resource type="Resource" script_class="character_class" load_steps=8 format=3 uid="uid://cj0ugaawbg6a"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/character_class.gd" id="1_1twko"]
 [ext_resource type="Texture2D" uid="uid://2whsjb1rg2lm" path="res://Sprites/Character/Sapling/Sapling1.png" id="1_unb1q"]
@@ -6,8 +6,6 @@
 [ext_resource type="Resource" uid="uid://c4uomd0l52hvy" path="res://Resources/Items/Consumables/apple.tres" id="3_dqta1"]
 [ext_resource type="Script" path="res://Scripts/Stats/seed_stats.gd" id="4_rkp74"]
 [ext_resource type="Script" path="res://Scripts/Items/equipment_item_class.gd" id="6_ocpfj"]
-[ext_resource type="Resource" uid="uid://pvpjnpjkonpt" path="res://Resources/Items/Seeds/sentient_pot.tres" id="7_vlw00"]
-[ext_resource type="Resource" uid="uid://hd2lygavsmq5" path="res://Resources/Items/Seeds/cheese.tres" id="8_jcjvk"]
 [ext_resource type="Resource" uid="uid://cuy80aorwngdg" path="res://Resources/Items/Seeds/pea.tres" id="10_guhko"]
 
 [resource]
@@ -16,7 +14,7 @@ character_name = "Sapling"
 character_sprite = ExtResource("1_unb1q")
 starting_inventory = Array[ExtResource("2_t6kep")]([ExtResource("3_dqta1")])
 starting_talismans = Array[ExtResource("6_ocpfj")]([])
-starting_seeds = Array[ExtResource("4_rkp74")]([ExtResource("10_guhko"), ExtResource("7_vlw00"), ExtResource("8_jcjvk")])
+starting_seeds = Array[ExtResource("4_rkp74")]([ExtResource("10_guhko")])
 starting_passives = Array[PackedScene]([])
 starting_coins = 5
 unlocked = true
