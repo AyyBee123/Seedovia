@@ -40,7 +40,7 @@ func _physics_process(delta):
 	set_lengths()
 	if lifetime.is_stopped():
 		var tween = get_tree().create_tween()
-		tween.tween_property(self, "scale", Vector2(scale.x, original_size / 1.25), 1)
+		tween.tween_property(self, "scale", Vector2(scale.x, original_size / 4), 1)
 		tween.parallel().tween_property(self, "modulate", Color(modulate.r, modulate.g, modulate.b, 0), 1)
 		tween.finished.connect(queue_free)
 
