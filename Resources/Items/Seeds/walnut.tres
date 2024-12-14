@@ -11,3 +11,4 @@ rarity = 1
 item_name = "Walnut"
 texture = ExtResource("3_mmsr1")
 description = "Slow moving. Shoots the next seed in one of 8 cardinal directions, alternating as it travels."
+unlocked = true
