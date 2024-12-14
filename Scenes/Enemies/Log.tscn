@@ -1,13 +1,21 @@
-[gd_scene load_steps=15 format=3 uid="uid://chovoyax176wv"]
+[gd_scene load_steps=17 format=3 uid="uid://chovoyax176wv"]
 
 [ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_73v7o"]
 [ext_resource type="Texture2D" uid="uid://w8b38p0kcypf" path="res://Sprites/Enemies/Log.png" id="2_4uaf8"]
 [ext_resource type="Script" path="res://Scripts/Enemies/Log/log.gd" id="2_xbpxq"]
 [ext_resource type="Resource" uid="uid://b4cou6pw7ljam" path="res://Resources/Enemies/log.tres" id="3_hsdmr"]
+[ext_resource type="Shader" path="res://Shaders/color_tint_shader.gdshader" id="4_2lqar"]
 [ext_resource type="Script" path="res://Scripts/Enemies/Log/state_machine.gd" id="5_kxjhe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kgcj4"]
 size = Vector2(23.5, 41.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m2kd1"]
+resource_local_to_scene = true
+shader = ExtResource("4_2lqar")
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/tint_factor = 0.0
+shader_parameter/fade = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nfpbs"]
 atlas = ExtResource("2_4uaf8")
@@ -64,6 +72,7 @@ position = Vector2(-0.25, 0.75)
 shape = SubResource("RectangleShape2D_kgcj4")
 
 [node name="AnimatedSprite2D" parent="." index="1"]
+material = SubResource("ShaderMaterial_m2kd1")
 scale = Vector2(0.85, 0.85)
 sprite_frames = SubResource("SpriteFrames_kbkut")
 frame_progress = 0.988177
