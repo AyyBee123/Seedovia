@@ -1,0 +1,55 @@
+[gd_scene load_steps=9 format=3 uid="uid://curmn3ypxaoih"]
+
+[ext_resource type="Texture2D" uid="uid://0o7biv8pusfm" path="res://Sprites/Enemies/Weapons/Pop.png" id="1_ao8tt"]
+[ext_resource type="Script" path="res://Scripts/Enemies/Weapons/liquid_pop.gd" id="1_v0o40"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bhc2t"]
+atlas = ExtResource("1_ao8tt")
+region = Rect2(0, 0, 16, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wbqsc"]
+atlas = ExtResource("1_ao8tt")
+region = Rect2(16, 0, 16, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yjh3b"]
+atlas = ExtResource("1_ao8tt")
+region = Rect2(32, 0, 16, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m6m0c"]
+atlas = ExtResource("1_ao8tt")
+region = Rect2(48, 0, 16, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4cfki"]
+atlas = ExtResource("1_ao8tt")
+region = Rect2(64, 0, 16, 13)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v51v6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bhc2t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wbqsc")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_yjh3b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m6m0c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4cfki")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Pop" type="AnimatedSprite2D"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_v51v6")
+autoplay = "default"
+script = ExtResource("1_v0o40")
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]

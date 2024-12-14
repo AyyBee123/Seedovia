@@ -1,0 +1,113 @@
+[gd_scene load_steps=17 format=3 uid="uid://nugyieleg8w1"]
+
+[ext_resource type="PackedScene" uid="uid://b4qv2oi4vbgws" path="res://Scenes/Enemies/Obstacles/Obstacle.tscn" id="1_w7bch"]
+[ext_resource type="Script" path="res://Scripts/Enemies/Obstacles/pot.gd" id="2_3ypn4"]
+[ext_resource type="Texture2D" uid="uid://cvkbldh1cvjhc" path="res://Sprites/Enemies/Pot.png" id="2_wtvaw"]
+[ext_resource type="Resource" uid="uid://uao1nagap3e1" path="res://Resources/Enemies/Obstacles/pot.tres" id="3_w4sjd"]
+[ext_resource type="Script" path="res://Scripts/Enemies/Log/state_machine.gd" id="4_hxku6"]
+[ext_resource type="PackedScene" uid="uid://ckespv7sxyjn3" path="res://Scenes/Enemies/Weapons/Liquid.tscn" id="4_o1o50"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yhmui"]
+radius = 26.0432
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_puy85"]
+atlas = ExtResource("2_wtvaw")
+region = Rect2(0, 0, 60, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ceom"]
+atlas = ExtResource("2_wtvaw")
+region = Rect2(60, 0, 60, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eouhs"]
+atlas = ExtResource("2_wtvaw")
+region = Rect2(120, 0, 60, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w8m2u"]
+atlas = ExtResource("2_wtvaw")
+region = Rect2(180, 0, 60, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hc2so"]
+atlas = ExtResource("2_wtvaw")
+region = Rect2(240, 0, 60, 53)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xpfrc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_puy85")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ceom")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eouhs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w8m2u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hc2so")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vtyta"]
+radius = 27.0046
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lu1w4"]
+size = Vector2(54, 104)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mh0dt"]
+size = Vector2(54, 104)
+
+[node name="Pot" instance=ExtResource("1_w7bch")]
+scale = Vector2(2, 2)
+script = ExtResource("2_3ypn4")
+_enemy_stats = ExtResource("3_w4sjd")
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource("CircleShape2D_yhmui")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+sprite_frames = SubResource("SpriteFrames_xpfrc")
+autoplay = "default"
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource("CircleShape2D_vtyta")
+
+[node name="Right Detect" type="Area2D" parent="." index="4"]
+scale = Vector2(0.5, 0.5)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Right Detect" index="0"]
+position = Vector2(27, 0)
+shape = SubResource("RectangleShape2D_lu1w4")
+
+[node name="Left Detect" type="Area2D" parent="." index="5"]
+position = Vector2(13.5, 0)
+scale = Vector2(0.5, 0.5)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Left Detect" index="0"]
+position = Vector2(-54, 0)
+shape = SubResource("RectangleShape2D_mh0dt")
+
+[node name="ResourcePreloader" type="ResourcePreloader" parent="." index="6"]
+resources = [PackedStringArray("Liquid"), [ExtResource("4_o1o50")]]
+
+[node name="Fire Rate" type="Timer" parent="." index="7"]
+wait_time = 0.5
+one_shot = true
+
+[node name="Right Direction Point" type="Marker2D" parent="." index="8"]
+position = Vector2(19, 0)
+
+[node name="StateMachine" type="Node" parent="." index="9"]
+script = ExtResource("4_hxku6")
+
+[node name="Liquids" type="Node" parent="." index="10"]
+
+[connection signal="body_entered" from="Right Detect" to="." method="_on_right_detect_body_entered"]
+[connection signal="body_entered" from="Left Detect" to="." method="_on_left_detect_body_entered"]
