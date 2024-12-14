@@ -17,7 +17,6 @@ func _ready():
 	radius = 50 * player._player_stats.get_stat("Weapon_Size") * size_multiplier
 	fire_rate.start(randf_range(0, 1))
 	angle = desired_direction.angle() / (player._player_stats.get_stat("Weapon_Speed") * speed_multiplier) * 50
-	direction = desired_direction
 
 func _physics_process(delta):
 	update_position(delta)
@@ -64,6 +63,8 @@ func shoot_next_weapon():
 		return
 	var weapon_instance = get_next_weapon().instantiate()
 	
+	if direction == Vector2.ZERO: # direction is sometimes zero
+		direction = Vector2.RIGHT.rotated(randf_range(0, 2 * PI))
 	weapon_direction = direction
 	fire_rate.start(1.0 / (player._player_stats.get_stat("Fire_Rate") * DANDELION_FIRE_RATE \
 			* get_next_weapon().instantiate().fire_rate_multiplier))
