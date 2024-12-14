@@ -11,6 +11,7 @@ extends Node
 @onready var sunder_explosion = $SunderExplosion
 @onready var sentient_pot_bite = $"Sentient Pot Bite"
 @onready var maple_splat = $"Maple Splat"
+@onready var blessed_dandelion_hit = $"Blessed Dandelion Hit"
 
 func _ready():
 	SignalBus.play_audio.connect(play)
