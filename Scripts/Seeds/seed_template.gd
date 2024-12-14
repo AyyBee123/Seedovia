@@ -65,7 +65,7 @@ func _physics_process(delta):
 	set_ignore_first_collision()
 
 func travelled_distance():
-	distance_travelled = starting_position.distance_squared_to(global_position)
+	distance_travelled = starting_position.distance_to(global_position)
 	total_distance += distance_travelled
 	starting_position = global_position
 	if total_distance >= player._player_stats.get_stat("Weapon_Range") * range_multiplier:
