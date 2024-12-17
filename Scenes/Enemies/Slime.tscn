@@ -350,6 +350,7 @@ material = SubResource("ShaderMaterial_c3ya1")
 sprite_frames = SubResource("SpriteFrames_j0q0p")
 animation = &"Jump"
 autoplay = "Idle"
+frame = 4
 offset = Vector2(0, -40)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
@@ -378,3 +379,4 @@ bus = &"SFX"
 [node name="Splat2" type="AudioStreamPlayer" parent="." index="10"]
 volume_db = -20.0
 pitch_scale = 1.2
+bus = &"SFX"
