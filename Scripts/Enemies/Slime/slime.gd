@@ -2,8 +2,6 @@ extends "res://Scripts/Enemies/enemy.gd"
 
 @onready var animation_player = $AnimationPlayer
 @onready var animated_sprite_2d = $AnimatedSprite2D
-@onready var splat_SFX = $Splat
-@onready var splat_2_SFX = $Splat2
 
 var _can_move: bool = false: set = set_move
 var direction: Vector2
@@ -29,12 +27,6 @@ func idle():
 
 func set_move(value: bool):
 	_can_move = value
-
-func play_splat():
-	splat_SFX.play()
-
-func play_jump():
-	splat_2_SFX.play()
 
 func jump_finished():
 	_jumping = false
