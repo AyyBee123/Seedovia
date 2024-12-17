@@ -68,10 +68,13 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_bdyyk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e0x5m")
 }],
 "loop": true,
 "name": &"Idle",
-"speed": 8.0
+"speed": 9.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -333,7 +336,6 @@ radius = 11.0
 height = 34.0
 
 [node name="Slime" instance=ExtResource("1_060oy")]
-position = Vector2(0, -87.1478)
 scale = Vector2(1.5, 1.5)
 script = ExtResource("2_do8dp")
 _enemy_stats = ExtResource("3_7cgcg")
