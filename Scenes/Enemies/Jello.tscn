@@ -1,0 +1,367 @@
+[gd_scene load_steps=24 format=3 uid="uid://cu4nkraqvyn0v"]
+
+[ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_17wyg"]
+[ext_resource type="Script" path="res://Scripts/Enemies/Jello Sr/jello.gd" id="2_ld6hk"]
+[ext_resource type="Resource" uid="uid://diblaijdub2it" path="res://Resources/Enemies/jello.tres" id="3_b8gc0"]
+[ext_resource type="Shader" path="res://Shaders/color_tint_shader.gdshader" id="4_hv6xd"]
+[ext_resource type="Texture2D" uid="uid://clt377wqhks8r" path="res://Sprites/Enemies/Jello.png" id="5_l0ppc"]
+[ext_resource type="AudioStream" uid="uid://caljmag43g88" path="res://Audio/SFX/Splat3.mp3" id="6_psbox"]
+[ext_resource type="AudioStream" uid="uid://bnwgdhdobsrbm" path="res://Audio/SFX/Splat2.mp3" id="7_44h05"]
+[ext_resource type="Texture2D" uid="uid://byxqhvd60jyc1" path="res://Sprites/Misc/Big Shadow.png" id="8_mfd4q"]
+[ext_resource type="Script" path="res://Scripts/Enemies/Slime/state_machine.gd" id="9_j3ty3"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mo5ki"]
+radius = 20.6667
+height = 73.3333
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c3ya1"]
+resource_local_to_scene = true
+shader = ExtResource("4_hv6xd")
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/tint_factor = 0.0
+shader_parameter/fade = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u4csd"]
+atlas = ExtResource("5_l0ppc")
+region = Rect2(0, 0, 75, 107)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xaugm"]
+atlas = ExtResource("5_l0ppc")
+region = Rect2(75, 0, 75, 107)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r0g2h"]
+atlas = ExtResource("5_l0ppc")
+region = Rect2(150, 0, 75, 107)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0rg5e"]
+atlas = ExtResource("5_l0ppc")
+region = Rect2(225, 0, 75, 107)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g0nrt"]
+atlas = ExtResource("5_l0ppc")
+region = Rect2(300, 0, 75, 107)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lrgff"]
+atlas = ExtResource("5_l0ppc")
+region = Rect2(375, 0, 75, 107)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fcxy6"]
+atlas = ExtResource("5_l0ppc")
+region = Rect2(450, 0, 75, 107)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j0q0p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u4csd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xaugm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r0g2h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0rg5e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r0g2h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xaugm")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xaugm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r0g2h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0rg5e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g0nrt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lrgff")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fcxy6")
+}],
+"loop": false,
+"name": &"Jump",
+"speed": 12.0
+}]
+
+[sub_resource type="Animation" id="Animation_tuuym"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Health Bar:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-22, -34)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Shadow:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Shadow:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1.25)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:animation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Jump"]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Enemy Hitbox/CollisionPolygon2D:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_jn043"]
+resource_name = "new_animation"
+length = 1.1533
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.73333, 1.03333, 1.08333, 1.11833, 1.15333),
+"transitions": PackedFloat32Array(1e+06, 1e+06, 1e+06, 1e+06, 1e+06, 1e+06, 1e+06, 1e+06, 1e+06),
+"update": 1,
+"values": [4, 5, 4, 3, 4, 3, 2, 1, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Health Bar:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.666667, 1.1),
+"transitions": PackedFloat32Array(1, 0.5, 2, 1),
+"update": 0,
+"values": [Vector2(-22, -50), Vector2(-22, -195), Vector2(-22, -205), Vector2(-22, -50)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.6, 1.03333),
+"transitions": PackedFloat32Array(1e+06, 0.5, 2, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -100), Vector2(0, -130), Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Shadow:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.15, 0.766667, 1.06667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1), Vector2(0.4, 0.4), Vector2(0.4, 0.4), Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Shadow:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.1, 1.03333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:animation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1.1533),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [&"Jump", &"Idle"]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Enemy Hitbox/CollisionPolygon2D:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.1, 1.03333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("..")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.0666667, 0.0667667, 1.03333, 1.03343, 1.03353, 1.03363, 1.1533),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [true],
+"method": &"set_move"
+}, {
+"args": [],
+"method": &"play_splat_3"
+}, {
+"args": [false],
+"method": &"set_move"
+}, {
+"args": [],
+"method": &"play_splat_2"
+}, {
+"args": [],
+"method": &"goop"
+}, {
+"args": [],
+"method": &"goop"
+}, {
+"args": [],
+"method": &"jump_finished"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yd317"]
+_data = {
+"RESET": SubResource("Animation_tuuym"),
+"new_animation": SubResource("Animation_jn043")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y2118"]
+radius = 20.6667
+height = 73.3334
+
+[node name="Jello" instance=ExtResource("1_17wyg")]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("2_ld6hk")
+_enemy_stats = ExtResource("3_b8gc0")
+
+[node name="CollisionPolygon2D" parent="." index="0"]
+position = Vector2(-4.85064e-12, -9.33333)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_mo5ki")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+z_index = -1
+material = SubResource("ShaderMaterial_c3ya1")
+sprite_frames = SubResource("SpriteFrames_j0q0p")
+animation = &"Jump"
+autoplay = "Idle"
+offset = Vector2(0, -40)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
+root_node = NodePath("../AnimatedSprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_yd317")
+}
+speed_scale = 0.9
+
+[node name="CollisionPolygon2D" parent="Enemy Hitbox" index="0"]
+position = Vector2(0, -9.33333)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_y2118")
+
+[node name="Health Bar" parent="." index="4"]
+offset_top = -50.0
+offset_bottom = -42.0
+
+[node name="Shadow" type="Sprite2D" parent="." index="7"]
+scale = Vector2(1, 1.25)
+texture = ExtResource("8_mfd4q")
+
+[node name="state_machine" type="Node" parent="." index="8"]
+script = ExtResource("9_j3ty3")
+
+[node name="Splat2" type="AudioStreamPlayer" parent="." index="9"]
+stream = ExtResource("6_psbox")
+volume_db = -20.0
+pitch_scale = 0.75
+
+[node name="Splat" type="AudioStreamPlayer" parent="." index="10"]
+stream = ExtResource("7_44h05")
+volume_db = -15.0
+pitch_scale = 0.75

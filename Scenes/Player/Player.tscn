@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cu63rxmy71bcg"]
+[gd_scene load_steps=16 format=3 uid="uid://cu63rxmy71bcg"]
 
 [ext_resource type="Resource" uid="uid://bvjfk72dlusnu" path="res://Resources/Characters/Stats/base_stats.tres" id="2_50xvi"]
 [ext_resource type="Script" path="res://Scripts/Player/player.gd" id="2_f7nwd"]
@@ -7,6 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://2o0nxg1xv6xm" path="res://Sprites/UI/Cursor.png" id="6_ddx17"]
 [ext_resource type="Texture2D" uid="uid://xxyym547o3vn" path="res://Sprites/Misc/Shadow.png" id="7_u5ajd"]
 [ext_resource type="PackedScene" uid="uid://civnfvhref4lg" path="res://Scenes/Stats/Player UI.tscn" id="8_sj1lu"]
+[ext_resource type="Script" path="res://Scripts/Player/slow_detect.gd" id="8_ydoyx"]
+[ext_resource type="Script" path="res://Scripts/Player/ground_damage_detect.gd" id="9_41aww"]
+[ext_resource type="Script" path="res://Scripts/Player/slippery_detect.gd" id="10_qetuo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iqaxp"]
 size = Vector2(12, 20)
@@ -34,6 +37,9 @@ _data = {
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5m6np"]
 radius = 50.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pe6q8"]
+size = Vector2(12, 0.666666)
 
 [node name="Player" type="CharacterBody2D" groups=["Players"]]
 z_index = 1
@@ -130,6 +136,36 @@ shape = SubResource("CircleShape2D_5m6np")
 wait_time = 0.05
 one_shot = true
 autostart = true
+
+[node name="Slow Detect" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2048
+monitorable = false
+script = ExtResource("8_ydoyx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Slow Detect"]
+position = Vector2(0, 9.66667)
+shape = SubResource("RectangleShape2D_pe6q8")
+
+[node name="Ground Damage Detect" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4096
+monitorable = false
+script = ExtResource("9_41aww")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground Damage Detect"]
+position = Vector2(0, 9.66667)
+shape = SubResource("RectangleShape2D_pe6q8")
+
+[node name="Slippery Detect" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8192
+monitorable = false
+script = ExtResource("10_qetuo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Slippery Detect"]
+position = Vector2(0, 9.66667)
+shape = SubResource("RectangleShape2D_pe6q8")
 
 [connection signal="shoot" from="." to="." method="_on_shoot"]
 [connection signal="mouse_entered" from="Inventory" to="." method="_on_inventory_mouse_entered"]

@@ -211,6 +211,9 @@ esc={
 2d_physics/layer_9="Pomegranate"
 2d_physics/layer_10="Obstacle"
 2d_physics/layer_11="Pomegranate Hitbox"
+2d_physics/layer_12="Slow Liquid"
+2d_physics/layer_13="Damage Liquid"
+2d_physics/layer_14="Slippery Liquid"
 2d_physics/canvas_textures/default_texture_filter=1
 
 [physics]
