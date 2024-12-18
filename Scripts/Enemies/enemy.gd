@@ -31,7 +31,7 @@ func _physics_process(delta):
 	if player == null: # keep looking for the player until they are found
 		player = Targets.get_player()
 	if is_in_area and damage_buffer.is_stopped() and _enemy_stats.damage > 0:
-		player._player_stats.take_damage(_enemy_stats)
+		player._player_stats.take_damage(_enemy_stats.damage)
 		damage_buffer.start()
 
 func _on_enemy_hitbox_body_exited(body):

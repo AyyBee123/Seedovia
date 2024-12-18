@@ -4,7 +4,7 @@ signal health_changed(new_health) # send signal that current health changed
 signal max_health_changed(new_max_health) # send signal that max health changed
 signal health_increased # send signal that current health increased
 signal health_depleted # send signal that health reached 0 (death)
-signal damaged
+signal damaged(amount)
 
 # player values
 @export_group("Player Stats")
@@ -49,17 +49,6 @@ func increase_max_health(amount):
 	max_health += amount
 	max_health_changed.emit(max_health)
 	
-func take_damage(source):
-	if source.damage == 0:
-		return
-	if leaf_hearts > 0:
-		leaf_hearts -= source.damage
-	else:
-		health -= source.damage
-		overcapped_health -= source.damage
-		health = max(0, health)
-		overcapped_health = max(0, health)
-	damaged.emit()
+func take_damage(damage):
+	damaged.emit(damage)
 	health_changed.emit(health)
-	if health <= 0 and leaf_hearts <= 0: # on death
-		health_depleted.emit()

@@ -58,7 +58,7 @@ func update_position(delta):
 func _on_enemy_hitbox_body_entered(body):
 	if body.is_in_group("Players"):
 		player = body
-		player._player_stats.take_damage(self)
+		player._player_stats.take_damage(damage)
 
 func transfer_damage(amount):
 	if not is_instance_valid(source):

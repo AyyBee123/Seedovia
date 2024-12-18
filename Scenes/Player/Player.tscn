@@ -39,7 +39,7 @@ _data = {
 radius = 50.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pe6q8"]
-size = Vector2(12, 0.666666)
+size = Vector2(12, 2.80142e-06)
 
 [node name="Player" type="CharacterBody2D" groups=["Players"]]
 z_index = 1
@@ -144,7 +144,7 @@ monitorable = false
 script = ExtResource("8_ydoyx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Slow Detect"]
-position = Vector2(0, 9.66667)
+position = Vector2(0, 10)
 shape = SubResource("RectangleShape2D_pe6q8")
 
 [node name="Ground Damage Detect" type="Area2D" parent="."]
@@ -154,8 +154,12 @@ monitorable = false
 script = ExtResource("9_41aww")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground Damage Detect"]
-position = Vector2(0, 9.66667)
+position = Vector2(0, 10)
 shape = SubResource("RectangleShape2D_pe6q8")
+
+[node name="Damage Buffer" type="Timer" parent="Ground Damage Detect"]
+wait_time = 0.1
+one_shot = true
 
 [node name="Slippery Detect" type="Area2D" parent="."]
 collision_layer = 0
@@ -164,7 +168,7 @@ monitorable = false
 script = ExtResource("10_qetuo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Slippery Detect"]
-position = Vector2(0, 9.66667)
+position = Vector2(0, 10)
 shape = SubResource("RectangleShape2D_pe6q8")
 
 [connection signal="shoot" from="." to="." method="_on_shoot"]

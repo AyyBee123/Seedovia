@@ -123,11 +123,6 @@ func _physics_process(delta):
 	# die if health is 0 (or less)
 	if _player_stats.health <= 0 and _player_stats.leaf_hearts <= 0:
 		die()
-	
-	if can_be_damaged:
-		set_collision_layer(initial_collision_layer)
-	else:
-		set_collision_layer(initial_collision_layer - 2) # 2 is the player's collision layer
 
 func pick_up(item):
 	if item.is_in_group("Shop Item"):
@@ -201,7 +196,16 @@ func update_timers():
 	dash_cooldown.wait_time = _player_stats.get_stat("Dash_Rate")
 	dash_invulnerability_time.wait_time = _player_stats.get_stat("Dash_Invulnerability")
 
-func took_damage():
+func took_damage(amount):
+	if amount == 0 or not can_be_damaged:
+		return
+	if _player_stats.leaf_hearts > 0:
+		_player_stats.leaf_hearts -= amount
+	else:
+		_player_stats.health -= amount
+		_player_stats.overcapped_health -= amount
+		_player_stats.health = max(0, _player_stats.health)
+		_player_stats.overcapped_health = max(0, _player_stats.health)
 	$"Player Health".set_health()
 	Global.save_run_data()
 	can_be_damaged = false

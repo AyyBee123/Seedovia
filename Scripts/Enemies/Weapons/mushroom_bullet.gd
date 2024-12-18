@@ -32,7 +32,7 @@ func travelled_distance():
 
 func _collide(body):
 	if body.is_in_group("Players"):
-		player._player_stats.take_damage(self)
+		player._player_stats.take_damage(damage)
 	# if the bullet hits anything else (i.e. a wall)
 	else:
 		queue_free()

@@ -21,7 +21,7 @@ func _ready():
 
 func _physics_process(delta):
 	if is_in_area and damage_buffer.is_stopped():
-		player._player_stats.take_damage(self)
+		player._player_stats.take_damage(damage)
 		damage_buffer.start()
 	if attack_delay.is_stopped() and not played:
 		played = true

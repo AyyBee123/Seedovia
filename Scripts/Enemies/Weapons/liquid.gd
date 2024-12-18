@@ -29,18 +29,3 @@ func _physics_process(delta):
 		add_child(pop)
 		pop.position = Vector2(randf_range(-20, 20), randf_range(-20, 20))
 		pop_rate.start()
-	
-	if is_in_area and damage_buffer.is_stopped():
-		player._player_stats.take_damage(self)
-		damage_buffer.start()
-
-
-func _on_area_2d_body_exited(body):
-	if body.is_in_group("Players"):
-		is_in_area = false
-
-
-func _on_area_2d_body_entered(body):
-	if body.is_in_group("Players"):
-		player = body # just in case
-		is_in_area = true

@@ -14,7 +14,7 @@ func _ready():
 
 func _physics_process(delta):
 	if is_in_area and damage_buffer.is_stopped() and _enemy_stats.damage > 0:
-		player._player_stats.take_damage(_enemy_stats)
+		player._player_stats.take_damage(_enemy_stats.damage)
 		damage_buffer.start()
 	# once all the enemies in the current room are defeated, destroy the obstacle
 	if get_tree().get_nodes_in_group("Enemy").size() == 0:

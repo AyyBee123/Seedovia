@@ -19,7 +19,7 @@ func _physics_process(delta):
 func _on_hitbox_body_entered(body):
 	if body.is_in_group("Players"):
 		player = body
-		player._player_stats.take_damage(self._enemy_stats)
+		player._player_stats.take_damage(self._enemy_stats.damage)
 		
 func die():
 	process_mode = 4 # = Mode: Disabled
