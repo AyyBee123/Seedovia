@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://bp27ydbuenb27"]
+
+[ext_resource type="Script" path="res://Scripts/Misc/player_knockback.gd" id="1_q8wb1"]
+
+[node name="Player Knockback" type="Node"]
+script = ExtResource("1_q8wb1")
+
+[node name="Impulse Time" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+autostart = true
+
+[node name="Deceleration Time" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+
+[connection signal="timeout" from="Impulse Time" to="." method="_on_impulse_time_timeout"]
+[connection signal="timeout" from="Deceleration Time" to="." method="_on_deceleration_time_timeout"]

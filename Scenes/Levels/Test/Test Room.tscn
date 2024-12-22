@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=4 uid="uid://bvpg8r7ejtyp2"]
+[gd_scene load_steps=6 format=4 uid="uid://bvpg8r7ejtyp2"]
 
 [ext_resource type="PackedScene" uid="uid://cxoiy0x4nvtaa" path="res://Scenes/Levels/Base Level.tscn" id="1_n4hkv"]
 [ext_resource type="PackedScene" uid="uid://bagmkum7q0yxi" path="res://Scenes/Enemies/Dummy.tscn" id="2_nuiav"]
 [ext_resource type="Script" path="res://Scripts/Level/test_room.gd" id="2_vy0ks"]
 [ext_resource type="Resource" uid="uid://cj0ugaawbg6a" path="res://Resources/Characters/sapling.tres" id="3_bqv6t"]
+[ext_resource type="PackedScene" uid="uid://bjwe43k0tlcdg" path="res://Scenes/Enemies/Jellofish.tscn" id="5_0efqe"]
 
 [node name="Level" instance=ExtResource("1_n4hkv")]
 script = ExtResource("2_vy0ks")
@@ -15,3 +16,5 @@ tile_map_data = PackedByteArray("AAD5//z/EAAAAAAAAGD4//z/AQAAAAAAAAD4//3/AQAAAAA
 
 [node name="Dummy" parent="." index="4" instance=ExtResource("2_nuiav")]
 position = Vector2(-550, -200)
+
+[node name="Jellofish" parent="." index="11" instance=ExtResource("5_0efqe")]
