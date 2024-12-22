@@ -1,4 +1,4 @@
-extends "res://Scripts/State/state_machine.gd"
+extends state_machine
 
 const COOLDOWN_TIME = 1
 

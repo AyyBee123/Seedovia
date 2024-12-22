@@ -633,22 +633,19 @@ bus = &"SFX"
 
 [node name="Disappear" type="AudioStreamPlayer" parent="." index="12"]
 stream = ExtResource("10_uh3ed")
+volume_db = -8.0
 pitch_scale = 0.35
 bus = &"SFX"
 
-[node name="Reappear" type="AudioStreamPlayer" parent="." index="13"]
-stream = ExtResource("10_uh3ed")
-pitch_scale = 0.65
-
-[node name="Fire Rate" type="Timer" parent="." index="14"]
+[node name="Fire Rate" type="Timer" parent="." index="13"]
 wait_time = 0.2
 one_shot = true
 
-[node name="Lunacy Duration" type="Timer" parent="." index="15"]
+[node name="Lunacy Duration" type="Timer" parent="." index="14"]
 wait_time = 7.0
 one_shot = true
 
-[node name="Lasers" type="Node2D" parent="." index="16"]
+[node name="Lasers" type="Node2D" parent="." index="15"]
 position = Vector2(0, -26)
 scale = Vector2(1e-05, 1e-05)
 
@@ -697,7 +694,7 @@ collision_mask = 2
 position = Vector2(0, 295)
 shape = SubResource("RectangleShape2D_xsn2u")
 
-[node name="Tooth Positions" type="Node2D" parent="." index="17"]
+[node name="Tooth Positions" type="Node2D" parent="." index="16"]
 
 [node name="Tooth Position 0" type="Marker2D" parent="Tooth Positions" index="0"]
 position = Vector2(-39, 1.33333)

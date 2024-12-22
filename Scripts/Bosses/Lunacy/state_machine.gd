@@ -1,4 +1,4 @@
-extends "res://Scripts/State/state_machine.gd"
+extends state_machine
 
 var timer = Timer.new()
 var random_attack: int

@@ -12,7 +12,6 @@ extends "res://Scripts/Bosses/boss.gd"
 @onready var space_laser_noise_SFX = $SpaceLaserNoise
 @onready var bubble_pop_SFX = $BubblePop
 @onready var disappear_SFX = $Disappear
-@onready var reappear_SFX = $Reappear
 
 var lunacy_proj_pool := []
 var teeth_pool := []
@@ -75,9 +74,6 @@ func lunacy():
 	if lunacy_almost_finished:
 		lunacy_duration.stop()
 		await get_tree().create_timer(5).timeout
-		if not _reappear_sound_played:
-			reappear_SFX.play()
-			_reappear_sound_played = true
 		fade = min(fade + 2 * get_physics_process_delta_time(), 1)
 	if lunacy_almost_finished and fade >= 1:
 		$"Enemy Hitbox/CollisionPolygon2D".disabled = false
