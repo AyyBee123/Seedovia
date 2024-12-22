@@ -68,6 +68,7 @@ func _on_wall_detect_body_entered(body):
 	_state_machine.set_state(_state_machine.states.stun)
 	if not body.is_in_group("Players"):
 		return
+	# knock the player back if they are hit
 	var knockback_scene = KNOCKBACK.instantiate()
 	knockback_scene.knockback_direction = Vector2.UP.rotated(launch_rotation).normalized()
 	knockback_scene.knockback_speed = 250
