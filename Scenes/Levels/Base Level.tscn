@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=4 uid="uid://cxoiy0x4nvtaa"]
+[gd_scene load_steps=47 format=4 uid="uid://cxoiy0x4nvtaa"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_5cm3y"]
 [ext_resource type="Texture2D" uid="uid://cvgvhjvhndf2x" path="res://Sprites/Wall/Floor 1 Corner.png" id="2_1m20m"]
@@ -25,6 +25,7 @@
 [ext_resource type="FontFile" uid="uid://wbj0boqv37y6" path="res://Fonts/Description Font.ttf" id="14_atqiy"]
 [ext_resource type="PackedScene" uid="uid://bkbjq3dleklpw" path="res://Scenes/Items/Pickup Item.tscn" id="14_gnheq"]
 [ext_resource type="PackedScene" uid="uid://6qic3lphvydx" path="res://Scenes/Items/Shop Item.tscn" id="14_shhcr"]
+[ext_resource type="Script" path="res://Scripts/Level/camera.gd" id="17_vc7xa"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d5ujs"]
 resource_name = "Floor 1 Wall Corner"
@@ -168,6 +169,7 @@ tile_map_data = PackedByteArray("AAD5//z/AQAAAAAAAAD4//z/AQAAAAAAAAD4//3/AQAAAAA
 tile_set = SubResource("TileSet_dsidl")
 
 [node name="Camera2D" type="Camera2D" parent="." groups=["Main Camera"]]
+script = ExtResource("17_vc7xa")
 
 [node name="Floor-Room Number" parent="." instance=ExtResource("5_igecr")]
 offset_left = 909.0
