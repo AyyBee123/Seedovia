@@ -6,6 +6,9 @@ extends "res://Scripts/Enemies/enemy.gd"
 @onready var _state_machine = $state_machine
 @onready var deceleration = $Deceleration
 @onready var trail_rate = $"Trail Rate"
+@onready var launch_SFX = $Launch
+@onready var electric_SFX = $Electric
+@onready var impact_SFX = $Impact
 
 const JELLOFISH_TRAIL = preload("res://Scenes/Enemies/Effects/Jellofish Trail.tscn")
 var KNOCKBACK = preload("res://Scenes/Misc/Player Knockback.tscn")

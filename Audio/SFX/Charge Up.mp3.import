@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cgndp0j65hoc"
+path="res://.godot/imported/Charge Up.mp3-2e07b23a96cb84ed65df453f1edd3ca0.mp3str"
+
+[deps]
+
+source_file="res://Audio/SFX/Charge Up.mp3"
+dest_files=["res://.godot/imported/Charge Up.mp3-2e07b23a96cb84ed65df453f1edd3ca0.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

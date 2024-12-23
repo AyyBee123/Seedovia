@@ -36,10 +36,12 @@ func _enter_state(new_state, old_state):
 			timer.start()
 			parent.animated_sprite_2d.play("Idle")
 		states.charge:
+			parent.electric_SFX.play()
 			parent.animated_sprite_2d.play("Charge Up")
 		states.launch:
-			pass
+			parent.launch_SFX.play()
 		states.stun:
+			parent.impact_SFX.play()
 			parent.animated_sprite_2d.play("Stun")
 
 func _exit_state(old_state, new_state):
@@ -47,7 +49,7 @@ func _exit_state(old_state, new_state):
 		states.idle:
 			pass
 		states.charge:
-			pass
+			parent.electric_SFX.stop()
 		states.launch:
 			pass
 		states.stun:
