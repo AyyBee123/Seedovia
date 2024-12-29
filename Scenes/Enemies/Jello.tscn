@@ -331,6 +331,7 @@ material = SubResource("ShaderMaterial_c3ya1")
 sprite_frames = SubResource("SpriteFrames_j0q0p")
 animation = &"Jump"
 autoplay = "Idle"
+frame = 4
 offset = Vector2(0, -40)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
@@ -345,10 +346,6 @@ position = Vector2(0, -9.33333)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_y2118")
 
-[node name="Health Bar" parent="." index="4"]
-offset_top = -50.0
-offset_bottom = -42.0
-
 [node name="Shadow" type="Sprite2D" parent="." index="7"]
 scale = Vector2(1, 1.25)
 texture = ExtResource("8_mfd4q")
@@ -360,8 +357,10 @@ script = ExtResource("9_j3ty3")
 stream = ExtResource("6_psbox")
 volume_db = -20.0
 pitch_scale = 0.75
+bus = &"SFX"
 
 [node name="Splat" type="AudioStreamPlayer" parent="." index="10"]
 stream = ExtResource("7_44h05")
 volume_db = -15.0
 pitch_scale = 0.75
+bus = &"SFX"
