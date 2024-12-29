@@ -329,6 +329,8 @@ _enemy_stats = ExtResource("3_g0b1f")
 script = ExtResource("3_o3b0u")
 
 [node name="Shadow" type="Sprite2D" parent="." index="1"]
+z_index = -1
+z_as_relative = false
 position = Vector2(0, 3.16667)
 scale = Vector2(0.802083, 0.677083)
 texture = ExtResource("5_wppk4")
