@@ -76,7 +76,7 @@ _bundled = {
 }
 
 [node name="Laser" type="Node2D" groups=["Enemy Weapon", "Haunted Fortress Laser"]]
-z_index = 3
+z_index = 5
 script = ExtResource("1_aejpa")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

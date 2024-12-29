@@ -160,6 +160,7 @@ size = Vector2(192, 1080)
 size = Vector2(192, 1080)
 
 [node name="Level" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1_5cm3y")
 
 [node name="TileMap" type="TileMapLayer" parent="."]

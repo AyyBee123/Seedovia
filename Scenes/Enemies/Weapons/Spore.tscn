@@ -8,7 +8,7 @@ radius = 4.9886
 height = 20.5425
 
 [node name="Spore" type="Sprite2D" groups=["Enemy Weapon"]]
-z_index = 3
+z_index = 5
 scale = Vector2(1.25, 1.25)
 texture = ExtResource("1_ildfp")
 script = ExtResource("2_yt0ip")
