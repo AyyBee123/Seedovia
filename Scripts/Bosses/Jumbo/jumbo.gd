@@ -14,6 +14,11 @@ extends "res://Scripts/Bosses/boss.gd"
 @onready var launch_SFX = $Launch
 @onready var jellofish_time = $"Jellofish Time"
 @onready var jellofish_launch_delay = $"Jellofish Launch Delay"
+@onready var shake_time = $"Shake Time"
+@onready var chocolate_bottom_left = $"Chocolate Bottom Left"
+@onready var chocolate_top_right = $"Chocolate Top Right"
+@onready var chocolate_rate = $"Chocolate Rate"
+@onready var center = $Center
 
 var dist: Vector2 # declared in the state machine script when entering the "jump_to_transform" state
 var _can_move: bool = false: set = set_move
@@ -33,6 +38,7 @@ const JELLOFISH = preload("res://Scenes/Enemies/Jellofish.tscn")
 const JELLO = preload("res://Scenes/Enemies/Jello.tscn")
 const JELLOFISH_PROJECTILE = preload("res://Scenes/Enemies/Weapons/Jellofish Projectile.tscn")
 const JELLOFISH_PROJECTILE_LEFT = preload("res://Scenes/Enemies/Weapons/Jellofish Projectile Left.tscn")
+const CHOCOLATE_PROJECTILE = preload("res://Scenes/Enemies/Weapons/Chocolate Projectile.tscn")
 
 var KNOCKBACK = preload("res://Scenes/Misc/Player Knockback.tscn")
 
@@ -57,6 +63,19 @@ func jump():
 		velocity = velocity.lerp(direction.normalized() * _enemy_stats.speed, _enemy_stats.acceleration)
 	else:
 		velocity = Vector2.ZERO
+
+func shake():
+	if shake_time.is_stopped():
+		shake_time.start()
+	if chocolate_rate.is_stopped():
+		chocolate_rate.start()
+		var choco = CHOCOLATE_PROJECTILE.instantiate()
+		var bottom_left = chocolate_bottom_left.global_position
+		var top_right = chocolate_top_right.global_position
+		var pos = Vector2(randf_range(bottom_left.x, top_right.x), randf_range(bottom_left.y, top_right.y))
+		choco.direction = (pos - center.global_position).normalized()
+		get_tree().current_scene.add_child(choco)
+		choco.global_position = pos
 
 func wall():
 	if stop_shooting:
@@ -171,3 +190,6 @@ func _on_wall_area_body_entered(body):
 func _on_wall_area_body_exited(body):
 	if body.is_in_group("Players"):
 		is_in_area = false
+
+func _on_shake_time_timeout():
+	_state_machine.set_state(_state_machine.states.idle)

@@ -625,11 +625,28 @@ one_shot = true
 [node name="Jellofish Time" type="Timer" parent="." index="20"]
 one_shot = true
 
-[node name="Launch" type="AudioStreamPlayer" parent="." index="21"]
+[node name="Shake Time" type="Timer" parent="." index="21"]
+wait_time = 4.0
+one_shot = true
+
+[node name="Chocolate Rate" type="Timer" parent="." index="22"]
+wait_time = 0.05
+one_shot = true
+
+[node name="Launch" type="AudioStreamPlayer" parent="." index="23"]
 stream = ExtResource("11_cmopl")
 volume_db = -25.0
 pitch_scale = 1.25
 bus = &"SFX"
+
+[node name="Chocolate Bottom Left" type="Marker2D" parent="." index="24"]
+position = Vector2(-38.8, -92.4)
+
+[node name="Chocolate Top Right" type="Marker2D" parent="." index="25"]
+position = Vector2(36.4, -107.6)
+
+[node name="Center" type="Marker2D" parent="." index="26"]
+position = Vector2(-4.76837e-07, -100)
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
@@ -639,3 +656,4 @@ bus = &"SFX"
 [connection signal="timeout" from="Wall Duration" to="." method="_on_wall_duration_timeout"]
 [connection signal="timeout" from="Jellofish Launch Delay" to="." method="_on_jellofish_launch_delay_timeout"]
 [connection signal="timeout" from="Jellofish Time" to="." method="_on_jellofish_time_timeout"]
+[connection signal="timeout" from="Shake Time" to="." method="_on_shake_time_timeout"]

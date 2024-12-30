@@ -2,6 +2,7 @@ extends state_machine
 
 var timer = Timer.new()
 var random_attack: int
+var attack_count: int = 0
 
 func _ready():
 	create_timer()
@@ -42,8 +43,10 @@ func _get_transition(delta):
 					return states.short_jump
 				else:
 					random_attack = random_attack_value()
-				if random_attack == 2:
+				if random_attack == 2 and attack_count >= 2:
 					return states.jump_to_transform
+				else:
+					random_attack = random_attack_value()
 				if random_attack == 3:
 					return states.shake
 		states.idle_to_transform:
@@ -90,6 +93,8 @@ func _enter_state(new_state, old_state):
 
 func _exit_state(old_state, new_state):
 	match old_state:
+		states.idle:
+			attack_count += 1
 		states.jump:
 			timer.start(1.5)
 		states.transform_reverse:
@@ -102,13 +107,14 @@ func _exit_state(old_state, new_state):
 		states.jump_to_transform:
 			timer.start(1)
 		states.wall:
+			attack_count = 0
 			parent.z_index -= 1
 			parent._enemy_stats.damage_taken_multiplier = 1
 			parent.disable_wall_collisions()
 			parent.global_position.y -= 37
 
 func random_attack_value():
-	return randi_range(0, 0)
+	return randi_range(0, 3)
 
 func set_random_time():
 	timer.start(randf_range(2,3))

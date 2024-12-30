@@ -27,8 +27,6 @@ func _collide(body):
 	if body.is_in_group("Players"):
 		player = body
 		player._player_stats.take_damage(damage)
-	# bullet gets destroyed, for whatever reason, even when the bullet's mask is not set to include the obstacle
-	# so, I added this conditional statement
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	queue_free()
