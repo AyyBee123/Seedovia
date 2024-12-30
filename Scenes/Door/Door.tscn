@@ -8,6 +8,7 @@
 size = Vector2(16, 16.6667)
 
 [node name="Door" type="Node2D" groups=["Door"]]
+z_index = 3
 scale = Vector2(3, 3)
 script = ExtResource("1_xo7uy")
 
