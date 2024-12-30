@@ -169,19 +169,15 @@ func give_reward():
 				if roll <= acc_chance:
 					amount_of_coins = i
 					break
-			var horizontal_positions = [0, 16, -16]
+			var horizontal_positions = [0, 16, -16, 32, -32]
 			var index = 0
 			for i in amount_of_coins:
 				if i % 5 == 0 and i != 0:
 					index += 1
 				var coin = resource_preloader.get_resource("Coin").instantiate()
 				add_child(coin)
-				# this stupid block of code is to get the ordering of the coins correct
-				if amount_of_coins == 15 or amount_of_coins == 10 or amount_of_coins == 5:
-					coin.global_position = Vector2(horizontal_positions[amount_of_coins / 5 - index - 1], \
-							(4 - (i % 5) + i/5) * 3)
-				else:
-					coin.global_position = Vector2(horizontal_positions[index], 0)
+				coin.global_position = Vector2(horizontal_positions[amount_of_coins / 5 - index - 1], \
+						(4 - (i % 5) + i/5) * 3)
 	Global.next_reward = null
 
 func check_for_possesions(reward_item):
