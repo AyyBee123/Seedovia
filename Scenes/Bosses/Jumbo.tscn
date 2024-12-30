@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://cfx83c1w2rerq"]
+[gd_scene load_steps=54 format=3 uid="uid://cfx83c1w2rerq"]
 
 [ext_resource type="PackedScene" uid="uid://bfapejv6ymqws" path="res://Scenes/Bosses/Boss.tscn" id="1_wvxb2"]
 [ext_resource type="Script" path="res://Scripts/Bosses/Jumbo/jumbo.gd" id="2_n3t3u"]
@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://bnwgdhdobsrbm" path="res://Audio/SFX/Splat2.mp3" id="8_2bn8l"]
 [ext_resource type="AudioStream" uid="uid://mc66wc8mdc1d" path="res://Audio/SFX/Stomp.mp3" id="9_4bi4l"]
 [ext_resource type="Texture2D" uid="uid://dxsb6y3bbn4fb" path="res://Sprites/Bosses/Jumbo/Shadow.png" id="10_twtsd"]
+[ext_resource type="AudioStream" uid="uid://cfb0jdhwmi744" path="res://Audio/SFX/Launch.mp3" id="11_cmopl"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o28ts"]
 radius = 21.2
@@ -306,6 +307,20 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_s18xt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ha58y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pbnsx")
+}],
+"loop": false,
+"name": &"Transform Reverse",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_02qog")
 }, {
 "duration": 1.0,
@@ -404,7 +419,7 @@ tracks/5/path = NodePath("Shadow:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.15, 1.23333),
+"times": PackedFloat32Array(0, 0.15, 1.265),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, true, false]
@@ -504,7 +519,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qvfh8"]
-size = Vector2(89.6, 386.4)
+size = Vector2(89.6, 307)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sj2ts"]
 size = Vector2(90, 387)
@@ -518,7 +533,6 @@ _enemy_stats = ExtResource("3_nh3aw")
 script = ExtResource("5_o4gg0")
 
 [node name="CollisionPolygon2D" parent="." index="1"]
-visible = false
 position = Vector2(1.63425e-14, -7.2)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_o28ts")
@@ -531,9 +545,6 @@ animation = &"Jump"
 autoplay = "Idle"
 frame = 10
 
-[node name="Enemy Hitbox" parent="." index="3"]
-visible = false
-
 [node name="CollisionPolygon2D" parent="Enemy Hitbox" index="0"]
 position = Vector2(-2.27374e-14, -6.8)
 rotation = 1.5708
@@ -545,19 +556,22 @@ libraries = {
 }
 
 [node name="Wall Body" type="CharacterBody2D" parent="." index="9"]
-visible = false
+collision_layer = 512
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall Body" index="0"]
-position = Vector2(1.52588e-06, -14.4)
+position = Vector2(0, -14.5)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_qvfh8")
 disabled = true
 
-[node name="Wall Area" type="Area2D" parent="." index="10"]
-visible = false
+[node name="Wall Area" type="Area2D" parent="." index="10" groups=["Enemies"]]
+collision_layer = 4
+collision_mask = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall Area" index="0"]
 position = Vector2(1.52588e-06, -14.5)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_sj2ts")
 disabled = true
 
@@ -579,13 +593,49 @@ volume_db = -15.0
 pitch_scale = 0.75
 bus = &"SFX"
 
-[node name="Shadow" type="Sprite2D" parent="." index="14"]
+[node name="Stomp2" type="AudioStreamPlayer" parent="." index="14"]
+stream = ExtResource("9_4bi4l")
+volume_db = -15.0
+pitch_scale = 0.5
+bus = &"SFX"
+
+[node name="Shadow" type="Sprite2D" parent="." index="15"]
 z_index = -1
 z_as_relative = false
 position = Vector2(0, 7.15256e-07)
 scale = Vector2(1, 1.63636)
 texture = ExtResource("10_twtsd")
 
+[node name="Wall Duration" type="Timer" parent="." index="16"]
+wait_time = 4.0
+one_shot = true
+
+[node name="Start Delay" type="Timer" parent="." index="17"]
+wait_time = 0.5
+one_shot = true
+
+[node name="Wall Fire Rate" type="Timer" parent="." index="18"]
+wait_time = 0.1
+one_shot = true
+
+[node name="Jellofish Launch Delay" type="Timer" parent="." index="19"]
+wait_time = 0.5
+one_shot = true
+
+[node name="Jellofish Time" type="Timer" parent="." index="20"]
+one_shot = true
+
+[node name="Launch" type="AudioStreamPlayer" parent="." index="21"]
+stream = ExtResource("11_cmopl")
+volume_db = -25.0
+pitch_scale = 1.25
+bus = &"SFX"
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="body_entered" from="Wall Area" to="." method="_on_wall_area_body_entered"]
+[connection signal="body_exited" from="Wall Area" to="." method="_on_wall_area_body_exited"]
+[connection signal="timeout" from="Wall Duration" to="." method="_on_wall_duration_timeout"]
+[connection signal="timeout" from="Jellofish Launch Delay" to="." method="_on_jellofish_launch_delay_timeout"]
+[connection signal="timeout" from="Jellofish Time" to="." method="_on_jellofish_time_timeout"]

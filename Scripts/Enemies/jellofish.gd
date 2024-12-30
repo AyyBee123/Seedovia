@@ -16,6 +16,7 @@ var KNOCKBACK = preload("res://Scenes/Misc/Player Knockback.tscn")
 var direction: Vector2
 var SPEED_MULTIPLIER = 35
 var launch_rotation: float
+var starting_state = null
 
 func _ready():
 	super._ready()

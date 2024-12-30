@@ -10,7 +10,10 @@ func _ready():
 	add_state("launch")
 	add_state("stun")
 	create_timer()
-	set_state.call_deferred(states.idle)
+	if parent.starting_state == null:
+		set_state.call_deferred(states.idle)
+	else:
+		set_state.call_deferred(parent.starting_state)
 
 func _state_logic(delta):
 	parent.move_and_slide()
@@ -33,7 +36,7 @@ func _get_transition(delta):
 func _enter_state(new_state, old_state):
 	match new_state:
 		states.idle:
-			timer.start()
+			timer.start(2)
 			parent.animated_sprite_2d.play("Idle")
 		states.charge:
 			parent.electric_SFX.play()

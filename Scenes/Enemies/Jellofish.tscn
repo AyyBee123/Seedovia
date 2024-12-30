@@ -232,7 +232,7 @@ height = 56.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_6vr7t"]
 radius = 18.0
 
-[node name="Jellofish" groups=["Slime"] instance=ExtResource("1_rdokm")]
+[node name="Jellofish" groups=["Jellofish", "Slime"] instance=ExtResource("1_rdokm")]
 scale = Vector2(1.5, 1.5)
 script = ExtResource("2_fy437")
 _enemy_stats = ExtResource("3_2jqav")
