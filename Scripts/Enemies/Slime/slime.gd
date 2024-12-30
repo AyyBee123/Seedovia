@@ -2,8 +2,10 @@ extends "res://Scripts/Enemies/enemy.gd"
 
 @onready var animation_player = $AnimationPlayer
 @onready var animated_sprite_2d = $AnimatedSprite2D
+@onready var jumbo_spawn_animation = $"Jumbo Spawn Animation"
 @onready var splat_3 = $Splat2
 @onready var splat_2 = $Splat
+@onready var _state_machine = $state_machine
 
 var _can_move: bool = false: set = set_move
 var direction: Vector2
@@ -14,6 +16,7 @@ func _ready():
 	$Shadow.visible = false
 
 func _physics_process(delta):
+	visible = true
 	super._physics_process(delta)
 
 func jump():
@@ -38,3 +41,9 @@ func play_splat_3():
 
 func jump_finished():
 	_jumping = false
+
+func set_spawn_state():
+	_state_machine.set_state(_state_machine.states.spawn)
+
+func _on_jumbo_spawn_animation_animation_finished(anim_name):
+	_state_machine.set_state(_state_machine.states.idle)

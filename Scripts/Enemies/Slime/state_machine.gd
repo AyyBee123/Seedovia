@@ -7,6 +7,7 @@ var timer = Timer.new()
 func _ready():
 	add_state("idle")
 	add_state("jump")
+	add_state("spawn") # initial state when spawned by Jumbo
 	create_timer()
 	set_state.call_deferred(states.idle)
 
@@ -36,6 +37,9 @@ func _enter_state(new_state, old_state):
 		states.jump:
 			parent.animated_sprite_2d.stop()
 			parent.animation_player.play("new_animation")
+		states.spawn:
+			parent.animated_sprite_2d.stop()
+			parent.jumbo_spawn_animation.play("spawn")
 
 func _exit_state(old_state, new_state):
 	match old_state:

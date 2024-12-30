@@ -24,18 +24,12 @@ func _state_logic(delta):
 		parent.idle()
 	if state == states.jump:
 		parent.jump()
-	if state == states.short_jump:
-		parent.short_jump()
 	if state == states.shake:
 		parent.shake()
 	if state == states.jump_to_transform:
 		parent.jump_to_transform()
 	if state == states.wall:
 		parent.wall()
-	if state == states.transform:
-		parent.transform()
-	if state == states.transform_reverse:
-		parent.transform_reverse()
 
 func _get_transition(delta):
 	match state:
@@ -43,8 +37,11 @@ func _get_transition(delta):
 			if timer.is_stopped() and get_parent().player != null:
 				if random_attack == 0:
 					return states.jump
-				#if random_attack == 1:
-					#return states.short_jump
+				if random_attack == 1 and parent.number_of_slimes < parent.MAX_SLIMES:
+					return states.short_jump
+				else:
+					print("hi")
+					random_attack = random_attack_value()
 				#if random_attack == 2:
 					#return states.jump_to_transform
 				#if random_attack == 3:
@@ -83,7 +80,7 @@ func _exit_state(old_state, new_state):
 			set_random_time()
 
 func random_attack_value():
-	return randi_range(0, 0)
+	return randi_range(0, 1)
 
 func set_random_time():
 	timer.start(randf_range(2,3))

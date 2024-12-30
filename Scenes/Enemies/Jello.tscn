@@ -315,7 +315,7 @@ _data = {
 radius = 20.6667
 height = 73.3334
 
-[node name="Jello" instance=ExtResource("1_17wyg")]
+[node name="Jello" groups=["Slime"] instance=ExtResource("1_17wyg")]
 scale = Vector2(1.5, 1.5)
 script = ExtResource("2_ld6hk")
 _enemy_stats = ExtResource("3_b8gc0")
