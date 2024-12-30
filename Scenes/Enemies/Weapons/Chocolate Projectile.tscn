@@ -39,7 +39,7 @@ tracks/2/path = NodePath("AnimatedSprite2D/Area2D/CollisionShape2D:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 1.23333),
+"times": PackedFloat32Array(0, 1.215),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -196,6 +196,7 @@ libraries = {
 }
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 50)
 sprite_frames = SubResource("SpriteFrames_iund2")
 animation = &"Pop"
 autoplay = "Start"
