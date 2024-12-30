@@ -511,6 +511,7 @@ size = Vector2(90, 387)
 
 [node name="Jumbo" instance=ExtResource("1_wvxb2")]
 z_index = 3
+y_sort_enabled = true
 scale = Vector2(2.5, 2.5)
 script = ExtResource("2_n3t3u")
 _enemy_stats = ExtResource("3_nh3aw")
@@ -551,7 +552,6 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall Body" index="0"]
 position = Vector2(1.52588e-06, -14.4)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_qvfh8")
 disabled = true
 
@@ -560,7 +560,6 @@ visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall Area" index="0"]
 position = Vector2(1.52588e-06, -14.5)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_sj2ts")
 disabled = true
 
@@ -583,7 +582,7 @@ pitch_scale = 0.75
 bus = &"SFX"
 
 [node name="Shadow" type="Sprite2D" parent="." index="14"]
-z_index = -2
+z_index = -1
 z_as_relative = false
 position = Vector2(0, 7.15256e-07)
 scale = Vector2(1, 1.63636)
