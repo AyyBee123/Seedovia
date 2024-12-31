@@ -33,5 +33,5 @@ func _on_animated_sprite_2d_animation_finished():
 func pop():
 	set_physics_process(false)
 	$Shadow.visible = false
-	$AnimatedSprite2D/Area2D/CollisionShape2D.disabled = true
+	%CollisionShape2D.disabled = true
 	animated_sprite_2d.play("Pop")

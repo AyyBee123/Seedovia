@@ -561,7 +561,6 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall Body" index="0"]
 position = Vector2(0, -14.5)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_qvfh8")
 disabled = true
 
@@ -571,7 +570,6 @@ collision_mask = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall Area" index="0"]
 position = Vector2(1.52588e-06, -14.5)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_sj2ts")
 disabled = true
 
@@ -626,7 +624,7 @@ one_shot = true
 one_shot = true
 
 [node name="Shake Time" type="Timer" parent="." index="21"]
-wait_time = 4.0
+wait_time = 3.0
 one_shot = true
 
 [node name="Chocolate Rate" type="Timer" parent="." index="22"]
@@ -640,10 +638,10 @@ pitch_scale = 1.25
 bus = &"SFX"
 
 [node name="Chocolate Bottom Left" type="Marker2D" parent="." index="24"]
-position = Vector2(-38.8, -92.4)
+position = Vector2(-38, -88)
 
 [node name="Chocolate Top Right" type="Marker2D" parent="." index="25"]
-position = Vector2(36.4, -107.6)
+position = Vector2(33.6, -103.6)
 
 [node name="Center" type="Marker2D" parent="." index="26"]
 position = Vector2(-4.76837e-07, -100)
