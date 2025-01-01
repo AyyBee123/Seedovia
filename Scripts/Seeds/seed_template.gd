@@ -14,7 +14,7 @@ var hit_enemy = null # sometimes, the weapon wants information on the enemy it c
 
 var starting_position: Vector2 # gets the starting position from where the bullet is fired
 var distance_travelled: float # gets the current range travelled by the bullet
-var total_distance := 0 # distance travelled (this is used for the weapon's range)
+var total_distance := 0.0 # distance travelled (this is used for the weapon's range)
 
 var initial_weapon := false # checks if the weapon is the first in slot (was directly fired by the player)
 var ignore_first_collision := false # this lets the projectiles spawn without instantly colliding with an object
