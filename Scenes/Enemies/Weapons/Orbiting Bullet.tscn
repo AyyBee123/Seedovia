@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://q84eq5xlto2h"]
+
+[ext_resource type="PackedScene" uid="uid://bbc2vnfngjpdx" path="res://Scenes/Enemies/Weapons/Bullet.tscn" id="1_65xtx"]
+[ext_resource type="Script" path="res://Scripts/Enemies/Weapons/orbiting_bullet.gd" id="2_4t6rf"]
+
+[node name="Orbiting Bullet" instance=ExtResource("1_65xtx")]
+script = ExtResource("2_4t6rf")

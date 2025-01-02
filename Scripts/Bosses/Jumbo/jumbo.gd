@@ -32,6 +32,9 @@ var number_of_slimes: int:
 var number_of_jellofish: int:
 	get:
 		return get_tree().get_nodes_in_group("Jellofish").size()
+var number_of_puddlings: int:
+	get:
+		return get_tree().get_nodes_in_group("Puddling").size()
 
 const SLIME = preload("res://Scenes/Enemies/Slime.tscn")
 const JELLOFISH = preload("res://Scenes/Enemies/Jellofish.tscn")
@@ -39,6 +42,7 @@ const JELLO = preload("res://Scenes/Enemies/Jello.tscn")
 const JELLOFISH_PROJECTILE = preload("res://Scenes/Enemies/Weapons/Jellofish Projectile.tscn")
 const JELLOFISH_PROJECTILE_LEFT = preload("res://Scenes/Enemies/Weapons/Jellofish Projectile Left.tscn")
 const CHOCOLATE_PROJECTILE = preload("res://Scenes/Enemies/Weapons/Chocolate Projectile.tscn")
+const PUDDLING = preload("res://Scenes/Enemies/Puddling.tscn")
 
 var KNOCKBACK = preload("res://Scenes/Misc/Player Knockback.tscn")
 
@@ -192,4 +196,14 @@ func _on_wall_area_body_exited(body):
 		is_in_area = false
 
 func _on_shake_time_timeout():
+	if number_of_puddlings < 1:
+		var puddling = PUDDLING.instantiate()
+		var bottom_left = chocolate_bottom_left.global_position
+		var top_right = chocolate_top_right.global_position
+		var pos = Vector2(randf_range(bottom_left.x, top_right.x), randf_range(bottom_left.y, top_right.y))
+		puddling.launch_direction = (pos - center.global_position).normalized()
+		puddling.launch_speed = randf_range(200, 500)
+		puddling.starting_state = 3 # spawn state
+		get_tree().current_scene.add_child(puddling)
+		puddling.global_position = pos
 	_state_machine.set_state(_state_machine.states.idle)
