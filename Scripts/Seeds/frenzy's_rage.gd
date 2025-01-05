@@ -88,7 +88,7 @@ func shoot_next_weapon():
 	attempted_fire.emit()
 	if get_next_weapon() == null:
 		return
-	weapon_direction = Vector2.RIGHT.rotated(randf_range(0, 2 * PI))
+	weapon_direction = Vector2.RIGHT.rotated(randf_range(0, TAU))
 	set_weapon_properties(get_next_weapon().instantiate(), weapon_direction)
 	fire_rate.start(1.0 / (player._player_stats.get_stat("Fire_Rate") * FRENZY_FIRE_RATE_MULTIPLIER \
 			* get_next_weapon().instantiate().fire_rate_multiplier))

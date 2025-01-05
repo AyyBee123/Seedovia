@@ -59,7 +59,7 @@ func trigger(weapon = null):
 			lightning.damage_multiplier = source.damage_multiplier
 		get_tree().current_scene.add_child.call_deferred(lightning)
 		lightning.global_position = pos
-		lightning.rotation = randf_range(0, 2 * PI)
+		lightning.rotation = randf_range(0, TAU)
 
 func get_nearest_enemy(object):
 	if object != null and object.is_in_group("Enemies"):

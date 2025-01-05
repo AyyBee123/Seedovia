@@ -57,7 +57,7 @@ func _on_lifetime_timeout():
 	queue_free.call_deferred()
 
 func shoot_next_weapon():
-	weapon_direction = Vector2.RIGHT.rotated(randf_range(0, 2 * PI))
+	weapon_direction = Vector2.RIGHT.rotated(randf_range(0, TAU))
 	super.shoot_next_weapon()
 
 func _on_hurtbox_area_entered(area):
@@ -82,7 +82,7 @@ func _on_hitbox_body_entered(body):
 
 func _on_stink_rate_timeout():
 	var stink = resource_preloader.get_resource("Stink").instantiate()
-	var stink_direction = Vector2.RIGHT.rotated(randf_range(0, 2 * PI))
+	var stink_direction = Vector2.RIGHT.rotated(randf_range(0, TAU))
 	stink.direction = stink_direction
 	get_tree().current_scene.add_child(stink)
 	stink.global_position = global_position

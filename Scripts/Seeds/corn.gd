@@ -33,7 +33,7 @@ func explode():
 	create_explosion.call_deferred(explosion)
 	if get_next_weapon():
 		for i in NUMBER_OF_SEEDS:
-			weapon_direction = Vector2.RIGHT.rotated(i * 2 * PI/NUMBER_OF_SEEDS)
+			weapon_direction = Vector2.RIGHT.rotated(i * TAU/NUMBER_OF_SEEDS)
 			shoot_next_weapon()
 	queue_free.call_deferred()
 

@@ -31,7 +31,7 @@ func trigger(enemy = null):
 	if get_nearest_enemy(enemy) != null:
 		seed_instance.desired_direction = source.global_position.direction_to(get_nearest_enemy(enemy).global_position)
 	else:
-		seed_instance.desired_direction = Vector2.RIGHT.rotated(randf_range(0, 2 * PI))
+		seed_instance.desired_direction = Vector2.RIGHT.rotated(randf_range(0, TAU))
 	get_tree().current_scene.add_child.call_deferred(seed_instance)
 	source.weapon_fired.emit(seed_instance)
 	seed_instance.global_position = enemy.get_parent().global_position

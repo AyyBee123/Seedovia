@@ -11,7 +11,7 @@ func _ready():
 	super._ready()
 	max_speed = speed * 2
 	current_speed = speed
-	starting_angle = randf_range(0, 2 * PI)
+	starting_angle = randf_range(0, TAU)
 
 func _physics_process(delta):
 	initialize_position()

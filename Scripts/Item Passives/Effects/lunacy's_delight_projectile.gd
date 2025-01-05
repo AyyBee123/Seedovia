@@ -19,7 +19,7 @@ var total_distance: float
 func _ready():
 	previous_weapon.weapon_fired.emit(self)
 	starting_position = global_position
-	rotation = randf_range(0, 2 * PI)
+	rotation = randf_range(0, TAU)
 
 func _physics_process(delta):
 	update_position(delta)

@@ -65,7 +65,7 @@ func _collide(body):
 
 func shoot_next_weapon():
 	for i in dice_value:
-		weapon_direction = Vector2.RIGHT.rotated(randf_range(0, 2 * PI))
+		weapon_direction = Vector2.RIGHT.rotated(randf_range(0, TAU))
 		super.shoot_next_weapon()
 
 func travelled_distance():

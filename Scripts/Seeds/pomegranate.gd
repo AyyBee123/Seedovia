@@ -42,7 +42,7 @@ func _physics_process(delta):
 func update_position(delta):
 	current_velocity = direction * _player_stats.get_stat("Weapon_Speed") * speed_multiplier
 	position += current_velocity * delta * deceleration.time_left / deceleration.wait_time
-	rotation += 2 * PI * random_num * delta * deceleration.time_left / deceleration.wait_time
+	rotation += TAU * random_num * delta * deceleration.time_left / deceleration.wait_time
 	pome_queue = detect_pomegranate.get_overlapping_areas()
 	if pome_queue.size() > 0:
 		if is_instance_valid(pome_queue[0]):
@@ -111,7 +111,7 @@ func explode():
 	var rotated_direction = [0, PI/num_of_shots] # some variance in the rotation of the shots
 	var random_rotation = rotated_direction.pick_random()
 	for i in num_of_shots:
-		weapon_direction = Vector2.RIGHT.rotated(i * 2 * PI/num_of_shots + random_rotation)
+		weapon_direction = Vector2.RIGHT.rotated(i * TAU/num_of_shots + random_rotation)
 		shoot_next_weapon()
 	queue_free.call_deferred()
 

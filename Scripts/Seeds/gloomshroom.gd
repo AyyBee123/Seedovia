@@ -42,7 +42,7 @@ func collide(body):
 
 func shoot_next_weapon():
 	attempted_fire.emit()
-	weapon_direction = Vector2.RIGHT.rotated(randf_range(0, 2 * PI))
+	weapon_direction = Vector2.RIGHT.rotated(randf_range(0, TAU))
 	if get_next_weapon() == null:
 		return
 	fire_rate.wait_time = 1.0/(player._player_stats.get_stat("Fire_Rate") * gloom_fire_rate_multiplier \

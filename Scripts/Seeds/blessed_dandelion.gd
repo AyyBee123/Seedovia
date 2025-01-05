@@ -64,7 +64,7 @@ func shoot_next_weapon():
 	var weapon_instance = get_next_weapon().instantiate()
 	
 	if direction == Vector2.ZERO: # direction is sometimes zero
-		direction = Vector2.RIGHT.rotated(randf_range(0, 2 * PI))
+		direction = Vector2.RIGHT.rotated(randf_range(0, TAU))
 	weapon_direction = direction
 	fire_rate.start(1.0 / (player._player_stats.get_stat("Fire_Rate") * DANDELION_FIRE_RATE \
 			* get_next_weapon().instantiate().fire_rate_multiplier))

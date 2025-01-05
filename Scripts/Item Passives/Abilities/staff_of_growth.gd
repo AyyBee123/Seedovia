@@ -33,7 +33,7 @@ func trigger(weapon = null):
 		return
 	var seed_instance = first_inv_seed.scene.instantiate()
 	seed_instance.previous_weapon = weapon
-	seed_instance.desired_direction = Vector2.RIGHT.rotated(randf_range(0, 2 * PI))
+	seed_instance.desired_direction = Vector2.RIGHT.rotated(randf_range(0, TAU))
 	seed_instance.seed_slot_number = 3 # to not trigger any slot-specific effects
 	seed_instance.slot_index = 2 # to not fire any other seeds
 	seed_instance.transferred_speed_multiplier = weapon.transferred_speed_multiplier

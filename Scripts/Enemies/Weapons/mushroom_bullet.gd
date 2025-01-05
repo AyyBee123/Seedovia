@@ -9,7 +9,7 @@ var lifetime_amount = 0
 
 func _ready():
 	super._ready()
-	rotation = randf_range(0, 2 * PI)
+	rotation = randf_range(0, TAU)
 	if lifetime_amount <= 0:
 		lifetime_amount = lifetime.wait_time
 	lifetime.start(lifetime_amount)

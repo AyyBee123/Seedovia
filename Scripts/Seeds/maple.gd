@@ -33,7 +33,7 @@ func _physics_process(delta):
 				has_collided.emit()
 	if fire_rate.is_stopped() and rect_width == player._player_stats.get_stat("Weapon_Range") * range_multiplier \
 			and not lifetime.is_stopped():
-		weapon_direction = Vector2.RIGHT.rotated(randf_range(0, 2 * PI))
+		weapon_direction = Vector2.RIGHT.rotated(randf_range(0, TAU))
 		shoot_next_weapon()
 		fire_rate.start()
 	rect_width = min(player._player_stats.get_stat("Weapon_Range") \

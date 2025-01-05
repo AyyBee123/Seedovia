@@ -61,7 +61,7 @@ func shoot_seed():
 		var seed_instance = first_seed.instantiate()
 		seed_instance.transferred_damage_multiplier *= 1.5
 		# split the directions of each shot equally
-		weapon_direction = Vector2.UP.rotated(2 * PI / number_of_shots * i)
+		weapon_direction = Vector2.UP.rotated(TAU / number_of_shots * i)
 		seed_instance.desired_direction = weapon_direction
 		seed_instance.previous_weapon = self
 		seed_instance.initial_weapon = true

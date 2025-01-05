@@ -18,7 +18,7 @@ func _physics_process(delta):
 		proj.damage = player._player_stats.get_stat("Weapon_Damage")
 		proj.range = player._player_stats.get_stat("Weapon_Range")
 		proj.speed = player._player_stats.get_stat("Weapon_Speed")
-		proj.direction = Vector2.RIGHT.rotated(randf_range(0, 2 * PI))
+		proj.direction = Vector2.RIGHT.rotated(randf_range(0, TAU))
 		proj.previous_weapon = source
 		get_tree().current_scene.add_child(proj)
 		proj.global_position = source.global_position

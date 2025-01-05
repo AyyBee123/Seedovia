@@ -20,7 +20,7 @@ func travelled_distance():
 		explode()
 		distance_threshold = 0
 	if seed_distance_threshold >= SEED_DIST:
-		weapon_direction = Vector2.RIGHT.rotated(randf_range(0, 2 * PI))
+		weapon_direction = Vector2.RIGHT.rotated(randf_range(0, TAU))
 		shoot_next_weapon()
 		seed_distance_threshold = 0
 
