@@ -1,0 +1,160 @@
+[gd_scene load_steps=19 format=3 uid="uid://cqgt7hbhaae2b"]
+
+[ext_resource type="PackedScene" uid="uid://b4qv2oi4vbgws" path="res://Scenes/Enemies/Obstacles/Obstacle.tscn" id="1_4aj6p"]
+[ext_resource type="Script" path="res://Scripts/Bosses/Mad Hat/mad_hat_hand.gd" id="2_6g525"]
+[ext_resource type="Texture2D" uid="uid://b2tfuugaaj8a0" path="res://Sprites/Bosses/Mad Hat/Mad Hat Hand.png" id="2_djoc1"]
+[ext_resource type="Resource" uid="uid://bh3bc506gpaqo" path="res://Resources/Enemies/Obstacles/mad_hat_hand.tres" id="3_kjh2v"]
+[ext_resource type="Script" path="res://Scripts/Bosses/Mad Hat/hand_state_machine.gd" id="4_lhes7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dwdcc"]
+atlas = ExtResource("2_djoc1")
+region = Rect2(942, 0, 157, 143)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5mdla"]
+atlas = ExtResource("2_djoc1")
+region = Rect2(1570, 0, 157, 143)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_inhbq"]
+atlas = ExtResource("2_djoc1")
+region = Rect2(1413, 0, 157, 143)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ihlhd"]
+atlas = ExtResource("2_djoc1")
+region = Rect2(1099, 0, 157, 143)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rmfdg"]
+atlas = ExtResource("2_djoc1")
+region = Rect2(1256, 0, 157, 143)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_63bnh"]
+atlas = ExtResource("2_djoc1")
+region = Rect2(0, 0, 157, 143)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fu2gd"]
+atlas = ExtResource("2_djoc1")
+region = Rect2(157, 0, 157, 143)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_65b43"]
+atlas = ExtResource("2_djoc1")
+region = Rect2(314, 0, 157, 143)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_32885"]
+atlas = ExtResource("2_djoc1")
+region = Rect2(471, 0, 157, 143)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vj6x2"]
+atlas = ExtResource("2_djoc1")
+region = Rect2(628, 0, 157, 143)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_40adq"]
+atlas = ExtResource("2_djoc1")
+region = Rect2(785, 0, 157, 143)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vyxg7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dwdcc")
+}],
+"loop": true,
+"name": &"Charge Down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5mdla")
+}],
+"loop": true,
+"name": &"Charge Left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_inhbq")
+}],
+"loop": true,
+"name": &"Charge Right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ihlhd")
+}],
+"loop": true,
+"name": &"Charge Up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rmfdg")
+}],
+"loop": true,
+"name": &"Huh",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_63bnh")
+}, {
+"duration": 1.4,
+"texture": SubResource("AtlasTexture_fu2gd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_65b43")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_32885")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_65b43")
+}, {
+"duration": 1.4,
+"texture": SubResource("AtlasTexture_fu2gd")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 13.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vj6x2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_40adq")
+}],
+"loop": false,
+"name": &"Slam",
+"speed": 12.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sywo7"]
+radius = 38.5
+height = 128.0
+
+[node name="Mad Hat Hand" instance=ExtResource("1_4aj6p")]
+z_index = 4
+y_sort_enabled = true
+scale = Vector2(2, 2)
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("2_6g525")
+_enemy_stats = ExtResource("3_kjh2v")
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(-0.5, -23.5)
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+position = Vector2(10, -6)
+sprite_frames = SubResource("SpriteFrames_vyxg7")
+animation = &"Idle"
+autoplay = "Idle"
+
+[node name="Hitbox" parent="." index="2"]
+collision_layer = 512
+collision_mask = 2
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource("CapsuleShape2D_sywo7")
+
+[node name="StateMachine" type="Node" parent="." index="4"]
+script = ExtResource("4_lhes7")

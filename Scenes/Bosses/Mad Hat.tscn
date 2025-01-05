@@ -1,0 +1,183 @@
+[gd_scene load_steps=26 format=3 uid="uid://bibfc5xdf0ygi"]
+
+[ext_resource type="PackedScene" uid="uid://bfapejv6ymqws" path="res://Scenes/Bosses/Boss.tscn" id="1_qnygg"]
+[ext_resource type="Script" path="res://Scripts/Bosses/Mad Hat/mad_hat.gd" id="2_3m7wg"]
+[ext_resource type="Shader" path="res://Shaders/color_tint_shader.gdshader" id="2_8brnf"]
+[ext_resource type="Script" path="res://Scripts/Bosses/Mad Hat/state_machine.gd" id="3_2yk65"]
+[ext_resource type="Resource" uid="uid://dkmwqtm3yuqyt" path="res://Resources/Bosses/mad_hat.tres" id="3_xjqh5"]
+[ext_resource type="Texture2D" uid="uid://u6j60ygaou5i" path="res://Sprites/Bosses/Mad Hat/Mad Hat.png" id="5_c14x3"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5toyn"]
+radius = 43.25
+height = 115.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x2nx4"]
+resource_local_to_scene = true
+shader = ExtResource("2_8brnf")
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/tint_factor = 0.0
+shader_parameter/fade = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7o5fq"]
+atlas = ExtResource("5_c14x3")
+region = Rect2(0, 0, 156, 129)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_02jaw"]
+atlas = ExtResource("5_c14x3")
+region = Rect2(156, 0, 156, 129)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1lm4n"]
+atlas = ExtResource("5_c14x3")
+region = Rect2(312, 0, 156, 129)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x53ng"]
+atlas = ExtResource("5_c14x3")
+region = Rect2(468, 0, 156, 129)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qy42y"]
+atlas = ExtResource("5_c14x3")
+region = Rect2(1872, 0, 156, 129)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mqtv4"]
+atlas = ExtResource("5_c14x3")
+region = Rect2(2028, 0, 156, 129)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lb2lb"]
+atlas = ExtResource("5_c14x3")
+region = Rect2(2184, 0, 156, 129)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_glfue"]
+atlas = ExtResource("5_c14x3")
+region = Rect2(1716, 0, 156, 129)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m0pho"]
+atlas = ExtResource("5_c14x3")
+region = Rect2(624, 0, 156, 129)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ncdml"]
+atlas = ExtResource("5_c14x3")
+region = Rect2(780, 0, 156, 129)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_00l5m"]
+atlas = ExtResource("5_c14x3")
+region = Rect2(936, 0, 156, 129)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iakar"]
+atlas = ExtResource("5_c14x3")
+region = Rect2(1092, 0, 156, 129)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iql6m"]
+atlas = ExtResource("5_c14x3")
+region = Rect2(1248, 0, 156, 129)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mcncu"]
+atlas = ExtResource("5_c14x3")
+region = Rect2(1404, 0, 156, 129)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0pasn"]
+atlas = ExtResource("5_c14x3")
+region = Rect2(1560, 0, 156, 129)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jtjmq"]
+animations = [{
+"frames": [{
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_7o5fq")
+}, {
+"duration": 1.4,
+"texture": SubResource("AtlasTexture_02jaw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1lm4n")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_x53ng")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1lm4n")
+}, {
+"duration": 1.4,
+"texture": SubResource("AtlasTexture_02jaw")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 13.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qy42y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mqtv4")
+}],
+"loop": false,
+"name": &"Look Left",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lb2lb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_glfue")
+}],
+"loop": false,
+"name": &"Look Right",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m0pho")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ncdml")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_00l5m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iakar")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iql6m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mcncu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0pasn")
+}],
+"loop": true,
+"name": &"Mad",
+"speed": 20.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_37cxv"]
+radius = 43.5
+height = 115.0
+
+[node name="Mad Hat" groups=["Mad Hat"] instance=ExtResource("1_qnygg")]
+z_index = 4
+scale = Vector2(2, 2)
+script = ExtResource("2_3m7wg")
+_enemy_stats = ExtResource("3_xjqh5")
+
+[node name="StateMachine" parent="." index="0"]
+script = ExtResource("3_2yk65")
+
+[node name="CollisionPolygon2D" parent="." index="1"]
+visible = false
+shape = SubResource("CapsuleShape2D_5toyn")
+
+[node name="AnimatedSprite2D" parent="." index="2"]
+material = SubResource("ShaderMaterial_x2nx4")
+sprite_frames = SubResource("SpriteFrames_jtjmq")
+animation = &"Mad"
+autoplay = "Idle"
+frame_progress = 0.118089
+
+[node name="Enemy Hitbox" parent="." index="3"]
+visible = false
+
+[node name="CollisionPolygon2D" parent="Enemy Hitbox" index="0"]
+shape = SubResource("CapsuleShape2D_37cxv")

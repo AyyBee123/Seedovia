@@ -18,4 +18,4 @@ tile_map_data = PackedByteArray("AAD5//z/EAAAAAAAAGD4//z/AQAAAAAAAAD4//3/AQAAAAA
 position = Vector2(-594, -241)
 
 [node name="Mad Hat" parent="." index="11" instance=ExtResource("5_hci87")]
-position = Vector2(1, -57)
+position = Vector2(-1, -203)
