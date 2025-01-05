@@ -3,8 +3,10 @@ extends "res://Scripts/Bosses/boss.gd"
 @onready var _state_machine = $StateMachine
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var collision_polygon_2d = $"Enemy Hitbox/CollisionPolygon2D"
+@onready var mad_fire_rate = $"Mad Fire Rate"
 
 const MAD_HAT_HAND = preload("res://Scenes/Bosses/Mad Hat Hand.tscn")
+const FALLING_BULLET = preload("res://Scenes/Enemies/Weapons/Falling Bullet.tscn")
 const MAD_FPS_CAP = 1.0 / 20.0
 
 var tween_x
@@ -36,6 +38,16 @@ func mad():
 		animated_sprite_2d.frame = rnd
 		last_mad_frame = rnd
 		mad_fps = 0
+	if mad_fire_rate.is_stopped():
+		mad_fire_rate.start()
+		var bullet = FALLING_BULLET.instantiate()
+		bullet.direction = Vector2.RIGHT.rotated(randf_range(0, TAU))
+		bullet.temp_speed = _enemy_stats.weapon_speed
+		bullet.start_pos = $Marker2D.position.y
+		bullet.end_pos = $Shadow.position.y
+		bullet.range = 999999
+		get_tree().current_scene.add_child(bullet)
+		bullet.global_position = $Shadow.global_position + Vector2(randf_range(-1, 1) * 72, randf_range(-1, 1) * 16)
 
 func handpocalypse():
 	pass

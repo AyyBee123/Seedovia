@@ -1,10 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://cqgt7hbhaae2b"]
+[gd_scene load_steps=20 format=3 uid="uid://cqgt7hbhaae2b"]
 
 [ext_resource type="PackedScene" uid="uid://b4qv2oi4vbgws" path="res://Scenes/Enemies/Obstacles/Obstacle.tscn" id="1_4aj6p"]
 [ext_resource type="Script" path="res://Scripts/Bosses/Mad Hat/mad_hat_hand.gd" id="2_6g525"]
 [ext_resource type="Texture2D" uid="uid://b2tfuugaaj8a0" path="res://Sprites/Bosses/Mad Hat/Mad Hat Hand.png" id="2_djoc1"]
 [ext_resource type="Resource" uid="uid://bh3bc506gpaqo" path="res://Resources/Enemies/Obstacles/mad_hat_hand.tres" id="3_kjh2v"]
 [ext_resource type="Script" path="res://Scripts/Bosses/Mad Hat/hand_state_machine.gd" id="4_lhes7"]
+[ext_resource type="Texture2D" uid="uid://dc38rl0gq1dtu" path="res://Sprites/Bosses/Mad Hat/Shadow.png" id="6_ucugf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dwdcc"]
 atlas = ExtResource("2_djoc1")
@@ -158,3 +159,10 @@ shape = SubResource("CapsuleShape2D_sywo7")
 
 [node name="StateMachine" type="Node" parent="." index="4"]
 script = ExtResource("4_lhes7")
+
+[node name="Shadow" type="Sprite2D" parent="." index="5"]
+z_index = -1
+z_as_relative = false
+position = Vector2(0, 70)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("6_ucugf")

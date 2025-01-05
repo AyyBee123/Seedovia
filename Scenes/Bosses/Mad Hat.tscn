@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bibfc5xdf0ygi"]
+[gd_scene load_steps=27 format=3 uid="uid://bibfc5xdf0ygi"]
 
 [ext_resource type="PackedScene" uid="uid://bfapejv6ymqws" path="res://Scenes/Bosses/Boss.tscn" id="1_qnygg"]
 [ext_resource type="Script" path="res://Scripts/Bosses/Mad Hat/mad_hat.gd" id="2_3m7wg"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/Bosses/Mad Hat/state_machine.gd" id="3_2yk65"]
 [ext_resource type="Resource" uid="uid://dkmwqtm3yuqyt" path="res://Resources/Bosses/mad_hat.tres" id="3_xjqh5"]
 [ext_resource type="Texture2D" uid="uid://u6j60ygaou5i" path="res://Sprites/Bosses/Mad Hat/Mad Hat.png" id="5_c14x3"]
+[ext_resource type="Texture2D" uid="uid://dc38rl0gq1dtu" path="res://Sprites/Bosses/Mad Hat/Shadow.png" id="7_8805d"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5toyn"]
 radius = 43.25
@@ -172,12 +173,25 @@ shape = SubResource("CapsuleShape2D_5toyn")
 [node name="AnimatedSprite2D" parent="." index="2"]
 material = SubResource("ShaderMaterial_x2nx4")
 sprite_frames = SubResource("SpriteFrames_jtjmq")
-animation = &"Mad"
+animation = &"Idle"
 autoplay = "Idle"
-frame_progress = 0.118089
+frame_progress = 0.746482
 
 [node name="Enemy Hitbox" parent="." index="3"]
 visible = false
 
 [node name="CollisionPolygon2D" parent="Enemy Hitbox" index="0"]
 shape = SubResource("CapsuleShape2D_37cxv")
+
+[node name="Marker2D" type="Marker2D" parent="." index="8"]
+position = Vector2(0, 32)
+
+[node name="Mad Fire Rate" type="Timer" parent="." index="9"]
+wait_time = 0.125
+one_shot = true
+
+[node name="Shadow" type="Sprite2D" parent="." index="10"]
+z_index = -1
+z_as_relative = false
+position = Vector2(0, 90)
+texture = ExtResource("7_8805d")
