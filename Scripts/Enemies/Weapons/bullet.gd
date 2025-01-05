@@ -23,10 +23,9 @@ func _collide(body):
 	if body.is_in_group("Players"):
 		player = body
 		player._player_stats.take_damage(damage)
-	# bullet gets destroyed, for whatever reason, even when the bullet's mask is not set to include the obstacle
-	# so, I added this conditional statement
-	if not body.is_in_group("Obstacles"):
-		queue_free()
+		if not player.can_be_damaged:
+			return
+	queue_free()
 
 func travelled_distance():
 	distance_travelled = starting_position.distance_to(self.global_position)

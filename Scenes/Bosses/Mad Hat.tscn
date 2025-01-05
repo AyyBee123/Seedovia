@@ -175,7 +175,7 @@ material = SubResource("ShaderMaterial_x2nx4")
 sprite_frames = SubResource("SpriteFrames_jtjmq")
 animation = &"Idle"
 autoplay = "Idle"
-frame_progress = 0.746482
+frame_progress = 0.387751
 
 [node name="Enemy Hitbox" parent="." index="3"]
 visible = false
