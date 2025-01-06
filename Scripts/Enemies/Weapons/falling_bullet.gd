@@ -24,5 +24,10 @@ func update_position(delta):
 	var current_velocity: Vector2 = direction * speed
 	position += current_velocity * delta
 
+func _collide(body):
+	if body.is_in_group("Players"):
+		player = body
+		player._player_stats.take_damage(damage)
+
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	queue_free()

@@ -32,15 +32,14 @@ func _get_transition(delta):
 			if timer.is_stopped() and get_parent().player != null:
 				if random_attack == 0:
 					return states.slam
-				if random_attack == 1 and attack_count >= 3:
-					return states.handpocalypse
-				else:
-					random_attack = random_attack_value()
-				if random_attack == 2:
+				if random_attack == 1:
 					return states.charge
+				#if random_attack == 1 and attack_count >= 3:
+					#return states.handpocalypse
+				#else:
+					#random_attack = random_attack_value()
 		states.slam:
-			if timer.is_stopped():
-				return states.idle
+			pass
 		states.handpocalypse:
 			if timer.is_stopped():
 				return states.idle
@@ -51,10 +50,11 @@ func _get_transition(delta):
 func _enter_state(new_state, old_state):
 	match new_state:
 		states.idle:
+			set_random_time()
 			random_attack = random_attack_value()
 			parent.animated_sprite_2d.play("Idle")
 		states.slam:
-			timer.start(5)
+			parent.slam_start()
 		states.handpocalypse:
 			timer.start(8)
 		states.charge:
@@ -64,15 +64,17 @@ func _exit_state(old_state, new_state):
 	match old_state:
 		states.idle:
 			attack_count += 1
+			parent.t_idle = 0.0
+			parent.other_hand._state_machine.timer.start(randf_range(1, 3))
 		states.slam:
-			pass
+			parent.t_slam = 0.0
 		states.handpocalypse:
 			attack_count = 0
 		states.charge:
 			parent._enemy_stats.damage = 0
 
 func random_attack_value():
-	return randi_range(0, 2)
+	return randi_range(0, 0)
 
 func set_random_time():
 	timer.start(randf_range(2,3))
