@@ -5,6 +5,7 @@ const COOLDOWN_TIME = 2
 var timer = Timer.new()
 
 func _ready():
+	randomize()
 	add_state("idle")
 	add_state("charge")
 	add_state("launch")

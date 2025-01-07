@@ -4,6 +4,7 @@ var timer = Timer.new()
 var random_attack: int
 
 func _ready():
+	randomize()
 	create_timer()
 	add_state("idle")
 	add_state("laser")

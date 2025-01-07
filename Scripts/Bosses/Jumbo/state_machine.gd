@@ -5,6 +5,7 @@ var random_attack: int
 var attack_count: int = 0
 
 func _ready():
+	randomize()
 	create_timer()
 	add_state("idle")
 	add_state("jump")

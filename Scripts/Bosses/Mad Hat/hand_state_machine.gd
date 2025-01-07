@@ -5,6 +5,7 @@ var random_attack: int
 var attack_count: int = 0
 
 func _ready():
+	randomize()
 	create_timer()
 	add_state("idle")
 	add_state("slam")
@@ -58,26 +59,27 @@ func _enter_state(new_state, old_state):
 		states.handpocalypse:
 			timer.start(8)
 		states.charge:
-			parent._enemy_stats.damage = 1
+			parent.set_side()
 
 func _exit_state(old_state, new_state):
 	match old_state:
 		states.idle:
 			attack_count += 1
 			parent.t_idle = 0.0
-			parent.other_hand._state_machine.timer.start(randf_range(1, 3))
+			parent.other_hand._state_machine.timer.start(randf_range(4, 6))
 		states.slam:
 			parent.t_slam = 0.0
 		states.handpocalypse:
 			attack_count = 0
 		states.charge:
-			parent._enemy_stats.damage = 0
+			parent.velocity = Vector2.ZERO
+			parent.side_index = -1
 
 func random_attack_value():
-	return randi_range(0, 0)
+	return randi_range(0, 1)
 
 func set_random_time():
-	timer.start(randf_range(2,3))
+	timer.start(randf_range(5, 7))
 
 func create_timer():
 	add_child(timer)

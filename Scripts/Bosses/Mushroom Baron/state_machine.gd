@@ -8,6 +8,7 @@ var has_jumped := false
 var has_spit := false
 
 func _ready():
+	randomize()
 	create_timer()
 	add_state("idle")
 	add_state("spit")
