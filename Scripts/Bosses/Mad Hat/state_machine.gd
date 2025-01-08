@@ -8,9 +8,10 @@ func _ready():
 	randomize()
 	create_timer()
 	add_state("idle")
+	add_state("spit")
 	add_state("mad")
-	add_state("handpocalypse")
 	add_state("hats")
+	add_state("hat_start")
 	set_state.call_deferred(states.idle)
 	# the random attacks are set up in the get_transition function
 	random_attack = random_attack_value()
@@ -22,10 +23,10 @@ func _state_logic(delta):
 		parent.idle()
 	if state == states.mad:
 		parent.mad()
-	if state == states.handpocalypse:
-		parent.handpocalypse()
 	if state == states.hats:
 		parent.hats()
+	if state == states.hat_start:
+		parent.spawn_hands()
 
 func _get_transition(delta):
 	match state:
@@ -33,15 +34,12 @@ func _get_transition(delta):
 			if timer.is_stopped() and get_parent().player != null:
 				if random_attack == 0:
 					return states.mad
-				if random_attack == 1 and attack_count >= 3:
-					return states.handpocalypse
+				if random_attack == 1:
+					return states.spit
+				if random_attack == 2 and attack_count >= 3:
+					return states.hats
 				else:
 					random_attack = random_attack_value()
-				if random_attack == 2:
-					return states.hats
-		states.handpocalypse:
-			if timer.is_stopped():
-				return states.idle
 		states.hats:
 			pass
 	return null
@@ -57,27 +55,31 @@ func _enter_state(new_state, old_state):
 			parent.animated_sprite_2d.play("Mad")
 			parent.animated_sprite_2d.stop()
 			parent.move_eratically()
-		states.handpocalypse:
-			timer.start(8)
 		states.hats:
-			parent._enemy_stats.damage = 1
+			pass
+		states.hat_start:
+			parent.hat_start()
+		states.spit:
+			parent.animated_sprite_2d.play("Spit")
 
 func _exit_state(old_state, new_state):
 	match old_state:
 		states.idle:
+			parent.velocity = Vector2.ZERO
 			attack_count += 1
 		states.mad:
-			pass
-		states.handpocalypse:
-			attack_count = 0
+			parent.mad_sfx_rate.stop()
+			parent.what_SFX.stop()
 		states.hats:
-			parent._enemy_stats.damage = 0
+			pass
+		states.hat_start:
+			attack_count = 0
 
 func random_attack_value():
-	return randi_range(0, 0)
+	return randi_range(0, 2)
 
 func set_random_time():
-	timer.start(randf_range(2,3))
+	timer.start(randf_range(2, 3))
 
 func create_timer():
 	add_child(timer)

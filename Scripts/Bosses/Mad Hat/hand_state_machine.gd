@@ -9,6 +9,7 @@ func _ready():
 	create_timer()
 	add_state("idle")
 	add_state("slam")
+	add_state("hats")
 	add_state("handpocalypse")
 	add_state("charge")
 	set_state.call_deferred(states.idle)
@@ -30,20 +31,15 @@ func _state_logic(delta):
 func _get_transition(delta):
 	match state:
 		states.idle:
-			if timer.is_stopped() and get_parent().player != null:
+			if parent.mad_hat._state_machine.state == parent.mad_hat._state_machine.states.hats:
+				return states.hats
+			elif timer.is_stopped() and get_parent().player != null:
 				if random_attack == 0:
 					return states.slam
 				if random_attack == 1:
 					return states.charge
-				#if random_attack == 1 and attack_count >= 3:
-					#return states.handpocalypse
-				#else:
-					#random_attack = random_attack_value()
 		states.slam:
 			pass
-		states.handpocalypse:
-			if timer.is_stopped():
-				return states.idle
 		states.charge:
 			pass
 	return null
@@ -60,6 +56,8 @@ func _enter_state(new_state, old_state):
 			timer.start(8)
 		states.charge:
 			parent.set_side()
+		states.hats:
+			parent.launch()
 
 func _exit_state(old_state, new_state):
 	match old_state:

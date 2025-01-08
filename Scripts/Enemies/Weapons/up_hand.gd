@@ -3,12 +3,16 @@ extends "res://Scripts/Enemies/Weapons/bullet.gd"
 @export var charge_direction: Vector2
 @onready var damage_buffer = $"Damage Buffer"
 
+const FUNNY_HAND = preload("res://Sprites/Bosses/Mad Hat/Funny Hand.png")
+
 var hand
+var mad_hat
 var is_in_area
 
 func _ready():
 	super._ready()
-	damage = 1
+	if randf() < 0.001:
+		texture = FUNNY_HAND
 	speed = 700
 	direction = charge_direction
 
@@ -17,7 +21,7 @@ func _physics_process(delta):
 	if is_in_area and damage_buffer.is_stopped():
 		player._player_stats.take_damage(damage)
 		damage_buffer.start()
-	if not is_instance_valid(hand):
+	if not is_instance_valid(mad_hat):
 		queue_free()
 
 func _collide(body):
@@ -38,6 +42,7 @@ func update_position(delta):
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	await get_tree().create_timer(1).timeout
-	hand._state_machine.set_state(hand._state_machine.states.idle)
-	hand.global_position = global_position
+	if hand != null:
+		hand._state_machine.set_state(hand._state_machine.states.idle)
+		hand.global_position = global_position
 	queue_free()

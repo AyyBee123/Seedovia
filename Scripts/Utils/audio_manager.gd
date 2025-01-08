@@ -13,6 +13,7 @@ extends Node
 @onready var maple_splat = $"Maple Splat"
 @onready var blessed_dandelion_hit = $"Blessed Dandelion Hit"
 @onready var chocolate_splat = $"Chocolate Splat"
+@onready var stomp = $Stomp
 
 func _ready():
 	SignalBus.play_audio.connect(play)

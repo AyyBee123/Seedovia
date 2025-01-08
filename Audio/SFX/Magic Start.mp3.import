@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cr7nhxxkdpjhm"
+path="res://.godot/imported/Magic Start.mp3-9608346b690d2be6083e766e6921ef99.mp3str"
+
+[deps]
+
+source_file="res://Audio/SFX/Magic Start.mp3"
+dest_files=["res://.godot/imported/Magic Start.mp3-9608346b690d2be6083e766e6921ef99.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

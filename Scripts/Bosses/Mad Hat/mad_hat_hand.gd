@@ -3,6 +3,8 @@ extends "res://Scripts/Enemies/Obstacles/obstacle.gd"
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var _state_machine = $StateMachine
 @onready var animation_player = $AnimationPlayer
+@onready var jump_SFX = $Jump
+@onready var stomp_SFX = $Stomp
 
 const RIGHT_HAND = preload("res://Scenes/Enemies/Weapons/Right Hand.tscn")
 const LEFT_HAND = preload("res://Scenes/Enemies/Weapons/Left Hand.tscn")
@@ -15,10 +17,16 @@ var in_pos: bool
 var t_slam = 0.0
 var t_idle = 0.0
 var other_hand
+
+# variables for charge state
 var side_index: int = -1
 var charge_area_range: Vector2
 var charge_area_direction: Vector2
 var ready_to_charge: bool
+
+# vairables for hats state
+var off_screen: bool
+
 var charge_pos: Vector2
 
 func _ready():
@@ -33,9 +41,16 @@ func _ready():
 			break
 
 func _physics_process(delta):
-	super._physics_process(delta)
+	if is_in_area and damage_buffer.is_stopped() and _enemy_stats.damage > 0:
+		player._player_stats.take_damage(_enemy_stats.damage)
+		damage_buffer.start()
+	# once Mad Hat is defeated, destroy the hand
+	if get_tree().get_nodes_in_group("Mad Hat").size() == 0:
+		await get_tree().create_timer(0.5, false).timeout
+		die()
 
 func idle():
+	velocity = Vector2.ZERO
 	t_idle = min(t_idle + get_physics_process_delta_time() * 0.5, 1)
 	global_position = lerp(global_position, pos + mad_hat.animated_sprite_2d.global_position, t_idle)
 	if mad_hat._state_machine.state == mad_hat._state_machine.states.idle:
@@ -50,9 +65,6 @@ func slam():
 	if in_pos:
 		global_position = lerp(global_position, \
 				Vector2(player.global_position.x, player.global_position.y - $Shadow.position.y * scale.y + 4),t_slam)
-
-func handpocalypse():
-	pass
 
 func charge():
 	if side_index < 0:
@@ -91,25 +103,38 @@ func slam_attack():
 	animated_sprite_2d.play("Slam")
 	animation_player.play("new_animation")
 
+func launch():
+	var tween = get_tree().create_tween()
+	tween.tween_property(self, "global_position", pos + mad_hat.animated_sprite_2d.global_position, 0.5)
+
 func _on_animation_player_animation_finished(anim_name):
 	_state_machine.set_state(_state_machine.states.idle)
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
-	if _state_machine.state != _state_machine.states.charge:
-		return
-	ready_to_charge = true
+	if _state_machine.state == _state_machine.states.charge:
+		ready_to_charge = true
 	
-	var charging_hand
-	match side_index:
-		0:
-			charging_hand = UP_HAND.instantiate()
-		1:
-			charging_hand = DOWN_HAND.instantiate()
-		2:
-			charging_hand = LEFT_HAND.instantiate()
-		3:
-			charging_hand = RIGHT_HAND.instantiate()
-	charging_hand.hand = self
-	await get_tree().create_timer(1).timeout
-	get_tree().current_scene.add_child(charging_hand)
-	charging_hand.global_position = charge_pos
+		var charging_hand
+		match side_index:
+			0:
+				charging_hand = UP_HAND.instantiate()
+			1:
+				charging_hand = DOWN_HAND.instantiate()
+			2:
+				charging_hand = LEFT_HAND.instantiate()
+			3:
+				charging_hand = RIGHT_HAND.instantiate()
+		charging_hand.hand = self
+		await get_tree().create_timer(1).timeout
+		charging_hand.mad_hat = mad_hat
+		get_tree().current_scene.add_child(charging_hand)
+		charging_hand.global_position = charge_pos
+	
+	if _state_machine.state == _state_machine.states.hats:
+		velocity = Vector2.ZERO
+
+func play_jump():
+	jump_SFX.play()
+
+func play_stomp():
+	stomp_SFX.play()

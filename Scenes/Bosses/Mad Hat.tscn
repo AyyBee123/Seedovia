@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bibfc5xdf0ygi"]
+[gd_scene load_steps=39 format=3 uid="uid://bibfc5xdf0ygi"]
 
 [ext_resource type="PackedScene" uid="uid://bfapejv6ymqws" path="res://Scenes/Bosses/Boss.tscn" id="1_qnygg"]
 [ext_resource type="Script" path="res://Scripts/Bosses/Mad Hat/mad_hat.gd" id="2_3m7wg"]
@@ -7,6 +7,10 @@
 [ext_resource type="Resource" uid="uid://dkmwqtm3yuqyt" path="res://Resources/Bosses/mad_hat.tres" id="3_xjqh5"]
 [ext_resource type="Texture2D" uid="uid://u6j60ygaou5i" path="res://Sprites/Bosses/Mad Hat/Mad Hat.png" id="5_c14x3"]
 [ext_resource type="Texture2D" uid="uid://dc38rl0gq1dtu" path="res://Sprites/Bosses/Mad Hat/Shadow.png" id="7_8805d"]
+[ext_resource type="AudioStream" uid="uid://dde2kk17h7o0g" path="res://Audio/SFX/What.mp3" id="9_orioj"]
+[ext_resource type="AudioStream" uid="uid://bn5m3gqyvafcq" path="res://Audio/SFX/Pick up.mp3" id="10_cnfdb"]
+[ext_resource type="AudioStream" uid="uid://comps6gc1nhci" path="res://Audio/SFX/Boing.mp3" id="10_skwgd"]
+[ext_resource type="AudioStream" uid="uid://qcsu4lhts47k" path="res://Audio/SFX/Fart.mp3" id="10_tphxg"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5toyn"]
 radius = 43.25
@@ -78,6 +82,38 @@ region = Rect2(1404, 0, 156, 129)
 [sub_resource type="AtlasTexture" id="AtlasTexture_0pasn"]
 atlas = ExtResource("5_c14x3")
 region = Rect2(1560, 0, 156, 129)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_td82a"]
+atlas = ExtResource("5_c14x3")
+region = Rect2(2340, 0, 156, 129)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wppkn"]
+atlas = ExtResource("5_c14x3")
+region = Rect2(2496, 0, 156, 129)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mkvl6"]
+atlas = ExtResource("5_c14x3")
+region = Rect2(2652, 0, 156, 129)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hfx8x"]
+atlas = ExtResource("5_c14x3")
+region = Rect2(2808, 0, 156, 129)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7fts7"]
+atlas = ExtResource("5_c14x3")
+region = Rect2(2964, 0, 156, 129)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hxt7w"]
+atlas = ExtResource("5_c14x3")
+region = Rect2(3120, 0, 156, 129)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_icctb"]
+atlas = ExtResource("5_c14x3")
+region = Rect2(3276, 0, 156, 129)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7q4lt"]
+atlas = ExtResource("5_c14x3")
+region = Rect2(3432, 0, 156, 129)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jtjmq"]
 animations = [{
@@ -151,6 +187,65 @@ animations = [{
 "loop": true,
 "name": &"Mad",
 "speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_td82a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wppkn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mkvl6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hfx8x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mkvl6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wppkn")
+}],
+"loop": true,
+"name": &"Magic",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7fts7")
+}],
+"loop": false,
+"name": &"Magic Beginning",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wppkn")
+}],
+"loop": false,
+"name": &"Magic End",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.2,
+"texture": SubResource("AtlasTexture_hxt7w")
+}, {
+"duration": 1.2,
+"texture": SubResource("AtlasTexture_icctb")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_7q4lt")
+}, {
+"duration": 0.4,
+"texture": SubResource("AtlasTexture_icctb")
+}, {
+"duration": 0.4,
+"texture": SubResource("AtlasTexture_hxt7w")
+}],
+"loop": false,
+"name": &"Spit",
+"speed": 12.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_37cxv"]
@@ -173,9 +268,10 @@ shape = SubResource("CapsuleShape2D_5toyn")
 [node name="AnimatedSprite2D" parent="." index="2"]
 material = SubResource("ShaderMaterial_x2nx4")
 sprite_frames = SubResource("SpriteFrames_jtjmq")
-animation = &"Idle"
+animation = &"Spit"
 autoplay = "Idle"
-frame_progress = 0.387751
+frame = 4
+frame_progress = 1.0
 
 [node name="Enemy Hitbox" parent="." index="3"]
 visible = false
@@ -195,3 +291,40 @@ z_index = -1
 z_as_relative = false
 position = Vector2(0, 90)
 texture = ExtResource("7_8805d")
+
+[node name="Hand Rate" type="Timer" parent="." index="11"]
+wait_time = 1.5
+one_shot = true
+
+[node name="Mad SFX Rate" type="Timer" parent="." index="12"]
+wait_time = 0.575
+one_shot = true
+
+[node name="What" type="AudioStreamPlayer" parent="." index="13"]
+stream = ExtResource("9_orioj")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="Fart" type="AudioStreamPlayer" parent="." index="14"]
+stream = ExtResource("10_tphxg")
+volume_db = -8.0
+pitch_scale = 1.5
+bus = &"SFX"
+
+[node name="PickUp" type="AudioStreamPlayer" parent="." index="15"]
+stream = ExtResource("10_cnfdb")
+pitch_scale = 0.8
+
+[node name="Boing" type="AudioStreamPlayer" parent="." index="16"]
+stream = ExtResource("10_skwgd")
+volume_db = -5.0
+pitch_scale = 1.1
+bus = &"SFX"
+
+[node name="Boing2" type="AudioStreamPlayer" parent="." index="17"]
+stream = ExtResource("10_skwgd")
+volume_db = -5.0
+pitch_scale = 1.25
+bus = &"SFX"
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

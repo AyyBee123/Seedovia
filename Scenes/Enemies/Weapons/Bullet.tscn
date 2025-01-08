@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dpylmph7q5urk" path="res://Sprites/Enemies/Weapons/Basic Bullet.png" id="2_u24ko"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o6fb0"]
+resource_local_to_scene = true
 radius = 9.0
 
 [node name="Bullet" type="Sprite2D" groups=["Enemy Weapon"]]

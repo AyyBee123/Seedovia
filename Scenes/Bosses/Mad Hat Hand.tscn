@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cqgt7hbhaae2b"]
+[gd_scene load_steps=25 format=3 uid="uid://cqgt7hbhaae2b"]
 
 [ext_resource type="PackedScene" uid="uid://b4qv2oi4vbgws" path="res://Scenes/Enemies/Obstacles/Obstacle.tscn" id="1_4aj6p"]
 [ext_resource type="Script" path="res://Scripts/Bosses/Mad Hat/mad_hat_hand.gd" id="2_6g525"]
@@ -6,6 +6,8 @@
 [ext_resource type="Resource" uid="uid://bh3bc506gpaqo" path="res://Resources/Enemies/Obstacles/mad_hat_hand.tres" id="3_kjh2v"]
 [ext_resource type="Script" path="res://Scripts/Bosses/Mad Hat/hand_state_machine.gd" id="4_lhes7"]
 [ext_resource type="Texture2D" uid="uid://dc38rl0gq1dtu" path="res://Sprites/Bosses/Mad Hat/Shadow.png" id="6_ucugf"]
+[ext_resource type="AudioStream" uid="uid://12krr2r6guun" path="res://Audio/SFX/Jump.mp3" id="7_bremr"]
+[ext_resource type="AudioStream" uid="uid://mc66wc8mdc1d" path="res://Audio/SFX/Stomp.mp3" id="8_wjkah"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dwdcc"]
 atlas = ExtResource("2_djoc1")
@@ -234,6 +236,23 @@ tracks/3/keys = {
 "update": 1,
 "values": [true, false, true]
 }
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"play_jump"
+}, {
+"args": [],
+"method": &"play_stomp"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yp2ec"]
 _data = {
@@ -285,6 +304,18 @@ libraries = {
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." index="7"]
 position = Vector2(3.8147e-06, 43.75)
 scale = Vector2(12.6, 12.375)
+
+[node name="Jump" type="AudioStreamPlayer" parent="." index="8"]
+stream = ExtResource("7_bremr")
+volume_db = -10.0
+pitch_scale = 1.25
+bus = &"SFX"
+
+[node name="Stomp" type="AudioStreamPlayer" parent="." index="9"]
+stream = ExtResource("8_wjkah")
+volume_db = -5.0
+pitch_scale = 1.25
+bus = &"SFX"
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
