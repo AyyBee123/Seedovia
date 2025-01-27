@@ -27,6 +27,19 @@ func _ready():
 		SelectionSaveData.number_of_runs += 1
 		Global.save_save_selection()
 	
+	# play floor theme music
+	match LevelList.floor_number:
+		0:
+			if LevelList.room_number != 10:
+				Game.music_manager.play(Game.music_manager.GARDEN_THEME)
+			else:
+				Game.music_manager.stop() # add boss music here
+		1:
+			if LevelList.room_number != 10:
+				Game.music_manager.play(Game.music_manager.HALL_THEME)
+			else:
+				pass
+	
 	Global.RNG.randomize()
 	if LevelList.loaded_room_is_cleared:
 		for enemy in get_tree().get_nodes_in_group("Enemy"):

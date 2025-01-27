@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ctywuxkva7v8q"
+path="res://.godot/imported/Hall Theme.ogg-da02bbad4276aa771dc2ad080f9ce232.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Music/Hall Theme.ogg"
+dest_files=["res://.godot/imported/Hall Theme.ogg-da02bbad4276aa771dc2ad080f9ce232.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4
