@@ -1,17 +1,19 @@
 extends "res://Scripts/Seeds/seed_template.gd"
 
 var enemy
+var distance_to_shoot: float
 
 func travelled_distance():
 	distance_travelled = starting_position.distance_to(global_position)
 	total_distance += distance_travelled
+	distance_to_shoot += distance_travelled
 	starting_position = global_position
 	if total_distance >= player._player_stats.get_stat("Weapon_Range") * range_multiplier:
 		queue_free.call_deferred()
 	if get_next_weapon() != null:
-		if total_distance > 0 and total_distance % max(int(15/(player._player_stats.get_stat("Fire_Rate") \
-				* get_next_weapon().instantiate().fire_rate_multiplier)), 1) == 0:
+		if total_distance > 0 and distance_to_shoot >= 70.0 / get_next_weapon().instantiate().fire_rate_multiplier:
 			shoot_next_weapon()
+			distance_to_shoot = 0
 
 func _collide(body):
 	if ignore_first_collision:
