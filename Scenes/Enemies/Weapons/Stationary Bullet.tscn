@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://btj7fce3d0awr"]
+
+[ext_resource type="PackedScene" uid="uid://bbc2vnfngjpdx" path="res://Scenes/Enemies/Weapons/Bullet.tscn" id="1_vapop"]
+[ext_resource type="Script" path="res://Scripts/Enemies/Weapons/stationary_bullet.gd" id="2_ldy0s"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p64ug"]
+resource_local_to_scene = true
+radius = 9.0
+
+[node name="Stationary Bullet" instance=ExtResource("1_vapop")]
+script = ExtResource("2_ldy0s")
+
+[node name="CollisionShape2D" parent="Bullet Hitbox" index="0"]
+shape = SubResource("CircleShape2D_p64ug")
+
+[node name="Lifetime" type="Timer" parent="." index="1"]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]

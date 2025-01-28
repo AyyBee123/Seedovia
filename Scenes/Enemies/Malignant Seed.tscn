@@ -1,0 +1,95 @@
+[gd_scene load_steps=14 format=3 uid="uid://f1csqvgtqoj5"]
+
+[ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_hn3r1"]
+[ext_resource type="Script" path="res://Scripts/Enemies/Malignant Seed/malignant_seed.gd" id="2_jty25"]
+[ext_resource type="Resource" uid="uid://mlo3vhxdsjoc" path="res://Resources/Enemies/malignant_seed.tres" id="3_4rius"]
+[ext_resource type="Shader" path="res://Shaders/color_tint_shader.gdshader" id="3_p3g52"]
+[ext_resource type="Texture2D" uid="uid://y872hidntbsd" path="res://Sprites/Enemies/Malignant Seed.png" id="4_d887j"]
+[ext_resource type="Texture2D" uid="uid://xxyym547o3vn" path="res://Sprites/Misc/Shadow.png" id="5_pmor8"]
+[ext_resource type="AudioStream" uid="uid://qcsu4lhts47k" path="res://Audio/SFX/Fart.mp3" id="7_i8mw5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dnxx5"]
+radius = 16.6667
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r2bgm"]
+resource_local_to_scene = true
+shader = ExtResource("3_p3g52")
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/tint_factor = 0.0
+shader_parameter/fade = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xs5p8"]
+atlas = ExtResource("4_d887j")
+region = Rect2(0, 0, 26, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t5mix"]
+atlas = ExtResource("4_d887j")
+region = Rect2(26, 0, 26, 27)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_axvwu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xs5p8")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t5mix")
+}],
+"loop": false,
+"name": &"Shoot",
+"speed": 6.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c7uk4"]
+radius = 15.0
+
+[node name="Malignant Seed" instance=ExtResource("1_hn3r1")]
+scale = Vector2(1.2, 1.2)
+script = ExtResource("2_jty25")
+x_direction = 1
+y_direction = 1
+_enemy_stats = ExtResource("3_4rius")
+
+[node name="CollisionPolygon2D" parent="." index="0"]
+shape = SubResource("CircleShape2D_dnxx5")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+z_index = 1
+material = SubResource("ShaderMaterial_r2bgm")
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_axvwu")
+animation = &"Shoot"
+
+[node name="CollisionPolygon2D" parent="Enemy Hitbox" index="0"]
+shape = SubResource("CircleShape2D_c7uk4")
+
+[node name="Health Bar" parent="." index="3"]
+offset_left = -27.5
+offset_top = -35.8333
+offset_right = 16.5
+offset_bottom = -27.8333
+scale = Vector2(1.25, 1.25)
+
+[node name="Shadow" type="Sprite2D" parent="." index="6"]
+z_index = -1
+z_as_relative = false
+position = Vector2(0, 18.3333)
+texture = ExtResource("5_pmor8")
+
+[node name="Fire Rate" type="Timer" parent="." index="7"]
+one_shot = true
+
+[node name="Fart" type="AudioStreamPlayer" parent="." index="8"]
+stream = ExtResource("7_i8mw5")
+volume_db = -5.0
+pitch_scale = 1.75
+bus = &"SFX"
+
+[connection signal="animation_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_changed"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="timeout" from="Fire Rate" to="." method="_on_fire_rate_timeout"]
