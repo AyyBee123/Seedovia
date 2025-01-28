@@ -1,0 +1,76 @@
+[gd_scene load_steps=12 format=3 uid="uid://bx78leai7uqql"]
+
+[ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_jmmwr"]
+[ext_resource type="Script" path="res://Scripts/Enemies/Cursed Blossom/cursed_blossom.gd" id="2_j28a4"]
+[ext_resource type="Shader" path="res://Shaders/color_tint_shader.gdshader" id="2_r2bbe"]
+[ext_resource type="Resource" uid="uid://dmtkjlyvca7y3" path="res://Resources/Enemies/cursed_blossom.tres" id="3_5echr"]
+[ext_resource type="Texture2D" uid="uid://chdo8id6jmeah" path="res://Sprites/Enemies/Cursed Dandelion.png" id="3_xil1k"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_66p4p"]
+radius = 14.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_43awx"]
+resource_local_to_scene = true
+shader = ExtResource("2_r2bbe")
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/tint_factor = 0.0
+shader_parameter/fade = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k8nny"]
+atlas = ExtResource("3_xil1k")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ul5gj"]
+atlas = ExtResource("3_xil1k")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ubkww"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k8nny")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ul5gj")
+}],
+"loop": false,
+"name": &"Shoot",
+"speed": 7.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d4w2u"]
+radius = 14.0
+
+[node name="Cursed Blossom" instance=ExtResource("1_jmmwr")]
+scale = Vector2(1.2, 1.2)
+script = ExtResource("2_j28a4")
+_enemy_stats = ExtResource("3_5echr")
+
+[node name="CollisionPolygon2D" parent="." index="0"]
+shape = SubResource("CircleShape2D_66p4p")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+material = SubResource("ShaderMaterial_43awx")
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_ubkww")
+animation = &"Idle"
+offset = Vector2(0, -2)
+
+[node name="CollisionPolygon2D" parent="Enemy Hitbox" index="0"]
+shape = SubResource("CircleShape2D_d4w2u")
+
+[node name="Health Bar" parent="." index="3"]
+offset_top = -40.0
+offset_bottom = -32.0
+
+[node name="Fire Rate" type="Timer" parent="." index="6"]
+one_shot = true
+
+[connection signal="animation_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_changed"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="timeout" from="Fire Rate" to="." method="_on_fire_rate_timeout"]
