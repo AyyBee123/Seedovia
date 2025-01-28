@@ -3,8 +3,8 @@ extends "res://Scripts/Enemies/Obstacles/obstacle.gd"
 var collision
 var direction
 
-@export_range(-1, 1) var x_direction: int
-@export_range(-1, 1) var y_direction: int
+@export_range(-1, 1) var x_direction: int = 1
+@export_range(-1, 1) var y_direction: int = 1
 
 func _ready():
 	super._ready()
