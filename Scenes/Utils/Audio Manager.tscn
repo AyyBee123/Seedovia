@@ -88,3 +88,7 @@ pitch_scale = 1.25
 stream = ExtResource("8_0yw3u")
 volume_db = -8.0
 bus = &"SFX"
+
+[node name="Bomb Pot Explosion" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_fp62v")
+pitch_scale = 0.9

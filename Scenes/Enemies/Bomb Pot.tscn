@@ -1,0 +1,197 @@
+[gd_scene load_steps=26 format=3 uid="uid://cwhuabj3fk773"]
+
+[ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_3jdd0"]
+[ext_resource type="Script" path="res://Scripts/Enemies/Bomb Pot/bomb_pot.gd" id="2_bas7n"]
+[ext_resource type="Shader" path="res://Shaders/color_tint_shader.gdshader" id="2_bvus4"]
+[ext_resource type="Resource" uid="uid://rmdwnamdo50n" path="res://Resources/Enemies/bomb_pot.tres" id="3_f6f3i"]
+[ext_resource type="Texture2D" uid="uid://dbfgcx0ln8nx8" path="res://Sprites/Enemies/Bomb Pot.png" id="3_ymeya"]
+[ext_resource type="Texture2D" uid="uid://xxyym547o3vn" path="res://Sprites/Misc/Shadow.png" id="5_qdswe"]
+[ext_resource type="AudioStream" uid="uid://bvvorvktbr0qx" path="res://Audio/SFX/Ding.mp3" id="6_b1vrc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rk74o"]
+radius = 8.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_okg71"]
+resource_local_to_scene = true
+shader = ExtResource("2_bvus4")
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/tint_factor = 0.0
+shader_parameter/fade = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sx5np"]
+atlas = ExtResource("3_ymeya")
+region = Rect2(0, 0, 23, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lsv0p"]
+atlas = ExtResource("3_ymeya")
+region = Rect2(23, 0, 23, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8v35f"]
+atlas = ExtResource("3_ymeya")
+region = Rect2(46, 0, 23, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jf4c5"]
+atlas = ExtResource("3_ymeya")
+region = Rect2(69, 0, 23, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5v41l"]
+atlas = ExtResource("3_ymeya")
+region = Rect2(92, 0, 23, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cn6h8"]
+atlas = ExtResource("3_ymeya")
+region = Rect2(115, 0, 23, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6fyak"]
+atlas = ExtResource("3_ymeya")
+region = Rect2(138, 0, 23, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yohlt"]
+atlas = ExtResource("3_ymeya")
+region = Rect2(161, 0, 23, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gtx0s"]
+atlas = ExtResource("3_ymeya")
+region = Rect2(184, 0, 23, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nlei3"]
+atlas = ExtResource("3_ymeya")
+region = Rect2(207, 0, 23, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0663s"]
+atlas = ExtResource("3_ymeya")
+region = Rect2(230, 0, 23, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fx2hd"]
+atlas = ExtResource("3_ymeya")
+region = Rect2(253, 0, 23, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3che8"]
+atlas = ExtResource("3_ymeya")
+region = Rect2(276, 0, 23, 35)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4xpmq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sx5np")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lsv0p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8v35f")
+}, {
+"duration": 0.2,
+"texture": SubResource("AtlasTexture_lsv0p")
+}],
+"loop": true,
+"name": &"Calm",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jf4c5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5v41l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cn6h8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6fyak")
+}],
+"loop": true,
+"name": &"Primed",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yohlt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gtx0s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nlei3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0663s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fx2hd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3che8")
+}],
+"loop": true,
+"name": &"Ready",
+"speed": 15.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2sima"]
+radius = 8.0399
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_csf7c"]
+radius = 70.0
+
+[node name="Bomb Pot" instance=ExtResource("1_3jdd0")]
+scale = Vector2(1.75, 1.75)
+collision_mask = 0
+script = ExtResource("2_bas7n")
+_enemy_stats = ExtResource("3_f6f3i")
+
+[node name="CollisionPolygon2D" parent="." index="0"]
+shape = SubResource("CircleShape2D_rk74o")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+material = SubResource("ShaderMaterial_okg71")
+sprite_frames = SubResource("SpriteFrames_4xpmq")
+animation = &"Ready"
+autoplay = "Calm"
+frame_progress = 0.00980047
+offset = Vector2(0, -8)
+
+[node name="CollisionPolygon2D" parent="Enemy Hitbox" index="0"]
+shape = SubResource("CircleShape2D_2sima")
+
+[node name="Area2D" type="Area2D" parent="." index="3"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+shape = SubResource("CircleShape2D_csf7c")
+
+[node name="Health Bar" parent="." index="4"]
+offset_top = -36.0
+offset_bottom = -28.0
+
+[node name="Primed Timer" type="Timer" parent="." index="7"]
+wait_time = 2.0
+one_shot = true
+
+[node name="Ready Timer" type="Timer" parent="." index="8"]
+one_shot = true
+
+[node name="Shadow" type="Sprite2D" parent="." index="9"]
+z_index = -1
+z_as_relative = false
+position = Vector2(0, 11.2)
+scale = Vector2(0.45, 0.5)
+texture = ExtResource("5_qdswe")
+
+[node name="Ding" type="AudioStreamPlayer" parent="." index="10"]
+stream = ExtResource("6_b1vrc")
+pitch_scale = 1.1
+bus = &"SFX"
+
+[node name="Pointer" type="Node2D" parent="." index="11"]
+
+[node name="Marker2D" type="Marker2D" parent="Pointer" index="0"]
+position = Vector2(28.5714, 0)
+
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Primed Timer" to="." method="_on_primed_timer_timeout"]
+[connection signal="timeout" from="Ready Timer" to="." method="_on_ready_timer_timeout"]
