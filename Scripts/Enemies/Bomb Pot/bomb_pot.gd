@@ -16,7 +16,8 @@ var rotation_speed: float
 func _ready():
 	super._ready()
 	INITIAL_SPEED = _enemy_stats.speed
-	rotation_speed = 2.5
+	randomize()
+	rotation_speed = randf_range(2, 10)
 
 func _physics_process(delta):
 	super._physics_process(delta)
