@@ -1,0 +1,125 @@
+[gd_scene load_steps=18 format=3 uid="uid://d4j1lfex5tqx0"]
+
+[ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_lsvdx"]
+[ext_resource type="Script" path="res://Scripts/Enemies/Clay Potato/clay_potato.gd" id="2_7ws2c"]
+[ext_resource type="Shader" path="res://Shaders/color_tint_shader.gdshader" id="2_vmxee"]
+[ext_resource type="Texture2D" uid="uid://74a278x3c14b" path="res://Sprites/Enemies/Clay Potato.png" id="3_5omuu"]
+[ext_resource type="Resource" uid="uid://cax00a2vvquaf" path="res://Resources/Enemies/clay_potato.tres" id="3_mgxam"]
+[ext_resource type="AudioStream" uid="uid://mc66wc8mdc1d" path="res://Audio/SFX/Stomp.mp3" id="6_eod3y"]
+[ext_resource type="Texture2D" uid="uid://xxyym547o3vn" path="res://Sprites/Misc/Shadow.png" id="7_s7aso"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b8gdd"]
+radius = 12.0
+height = 55.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_08skd"]
+resource_local_to_scene = true
+shader = ExtResource("2_vmxee")
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/tint_factor = 0.0
+shader_parameter/fade = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_er6nb"]
+atlas = ExtResource("3_5omuu")
+region = Rect2(0, 0, 62, 61)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1qmn"]
+atlas = ExtResource("3_5omuu")
+region = Rect2(62, 0, 62, 61)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u8vpt"]
+atlas = ExtResource("3_5omuu")
+region = Rect2(124, 0, 62, 61)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m4nni"]
+atlas = ExtResource("3_5omuu")
+region = Rect2(186, 0, 62, 61)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fa1gr"]
+atlas = ExtResource("3_5omuu")
+region = Rect2(248, 0, 62, 61)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ncn2h"]
+atlas = ExtResource("3_5omuu")
+region = Rect2(310, 0, 62, 61)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4hc7i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_er6nb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h1qmn")
+}, {
+"duration": 0.8,
+"texture": SubResource("AtlasTexture_u8vpt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h1qmn")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m4nni")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fa1gr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ncn2h")
+}],
+"loop": false,
+"name": &"Jump",
+"speed": 15.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k27dw"]
+radius = 12.0
+height = 55.0
+
+[node name="Clay Potato" instance=ExtResource("1_lsvdx")]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("2_7ws2c")
+_enemy_stats = ExtResource("3_mgxam")
+
+[node name="CollisionPolygon2D" parent="." index="0"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_b8gdd")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+material = SubResource("ShaderMaterial_08skd")
+sprite_frames = SubResource("SpriteFrames_4hc7i")
+animation = &"Idle"
+autoplay = "Idle"
+offset = Vector2(0, -16)
+
+[node name="CollisionPolygon2D" parent="Enemy Hitbox" index="0"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_k27dw")
+
+[node name="Health Bar" parent="." index="3"]
+offset_top = -60.0
+offset_bottom = -52.0
+
+[node name="Fire Rate" type="Timer" parent="." index="6"]
+wait_time = 5.0
+one_shot = true
+
+[node name="Stomp" type="AudioStreamPlayer" parent="." index="7"]
+stream = ExtResource("6_eod3y")
+volume_db = -5.0
+pitch_scale = 1.25
+
+[node name="Shadow" type="Sprite2D" parent="." index="8"]
+z_index = -1
+z_as_relative = false
+position = Vector2(0, 8)
+scale = Vector2(1.36, 1.3)
+texture = ExtResource("7_s7aso")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="timeout" from="Fire Rate" to="." method="_on_fire_rate_timeout"]
