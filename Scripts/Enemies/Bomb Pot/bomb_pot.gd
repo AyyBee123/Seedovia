@@ -18,6 +18,10 @@ func _ready():
 	INITIAL_SPEED = _enemy_stats.speed
 	randomize()
 	rotation_speed = randf_range(2, 10)
+	
+	# look at the player at the start to avoid turning when entering a new room
+	if player:
+		pointer.rotation = global_position.direction_to(player.global_position).angle()
 
 func _physics_process(delta):
 	super._physics_process(delta)
