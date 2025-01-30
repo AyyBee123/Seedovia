@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://du00k6rsqc3p3"]
+
+[ext_resource type="PackedScene" uid="uid://bbc2vnfngjpdx" path="res://Scenes/Enemies/Weapons/Bullet.tscn" id="1_nf7fa"]
+[ext_resource type="Script" path="res://Scripts/Enemies/Weapons/totem_bullet.gd" id="2_eq32m"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_atqdc"]
+resource_local_to_scene = true
+radius = 9.0
+
+[node name="Totem Bullet" instance=ExtResource("1_nf7fa")]
+z_index = 4
+script = ExtResource("2_eq32m")
+
+[node name="CollisionShape2D" parent="Bullet Hitbox" index="0"]
+shape = SubResource("CircleShape2D_atqdc")
