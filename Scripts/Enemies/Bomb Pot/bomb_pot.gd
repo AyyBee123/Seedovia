@@ -34,7 +34,7 @@ func _physics_process(delta):
 		_enemy_stats.speed -= 5
 	
 	if animated_sprite_2d.animation == "Primed":
-		_enemy_stats.speed = min(INITIAL_SPEED * 2, _enemy_stats.speed + 5)
+		_enemy_stats.speed = min(INITIAL_SPEED * 1.75, _enemy_stats.speed + 5)
 		rotation_speed += 1.25 * delta
 	
 	move_and_slide()
