@@ -56,4 +56,3 @@ func _on_animated_sprite_2d_frame_changed():
 	# frame 3 is the "shoot" sprite frame
 	if animated_sprite_2d.frame == 3:
 		shoot()
-

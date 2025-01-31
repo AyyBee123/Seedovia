@@ -7,42 +7,45 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1a1e6"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ep53j"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_uhtv1"]
 atlas = ExtResource("2_isdkg")
-region = Rect2(0, 0, 28, 28)
+region = Rect2(0, 0, 30, 30)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_s11hv"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_w0ac1"]
 atlas = ExtResource("2_isdkg")
-region = Rect2(28, 0, 28, 28)
+region = Rect2(30, 0, 30, 30)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pfgs1"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_m5gob"]
 atlas = ExtResource("2_isdkg")
-region = Rect2(56, 0, 28, 28)
+region = Rect2(60, 0, 30, 30)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_osltd"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_da5jd"]
 atlas = ExtResource("2_isdkg")
-region = Rect2(84, 0, 28, 28)
+region = Rect2(90, 0, 30, 30)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_r1ei5"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ep53j")
+"texture": SubResource("AtlasTexture_uhtv1")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_s11hv")
+"texture": SubResource("AtlasTexture_w0ac1")
 }, {
 "duration": 0.9,
-"texture": SubResource("AtlasTexture_pfgs1")
+"texture": SubResource("AtlasTexture_m5gob")
 }, {
 "duration": 0.8,
-"texture": SubResource("AtlasTexture_osltd")
+"texture": SubResource("AtlasTexture_da5jd")
 }, {
 "duration": 0.2,
-"texture": SubResource("AtlasTexture_pfgs1")
+"texture": SubResource("AtlasTexture_m5gob")
 }, {
 "duration": 0.4,
-"texture": SubResource("AtlasTexture_s11hv")
+"texture": SubResource("AtlasTexture_w0ac1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uhtv1")
 }],
 "loop": false,
 "name": &"default",
@@ -62,7 +65,7 @@ shape = SubResource("CapsuleShape2D_1a1e6")
 position = Vector2(0, -14)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_r1ei5")
-frame = 5
+frame = 6
 frame_progress = 1.0
 
 [node name="Hitbox" parent="." index="2" groups=["Obstacle"]]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cu4nkraqvyn0v"]
+[gd_scene load_steps=27 format=3 uid="uid://cu4nkraqvyn0v"]
 
 [ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_17wyg"]
 [ext_resource type="Script" path="res://Scripts/Enemies/Jello Sr/jello.gd" id="2_ld6hk"]
@@ -21,54 +21,66 @@ shader_parameter/color = Color(1, 0, 0, 1)
 shader_parameter/tint_factor = 0.0
 shader_parameter/fade = 1.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_u4csd"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_1dop4"]
 atlas = ExtResource("5_l0ppc")
-region = Rect2(0, 0, 75, 107)
+region = Rect2(0, 0, 77, 109)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xaugm"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_jl4bj"]
 atlas = ExtResource("5_l0ppc")
-region = Rect2(75, 0, 75, 107)
+region = Rect2(77, 0, 77, 109)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_r0g2h"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_vi0me"]
 atlas = ExtResource("5_l0ppc")
-region = Rect2(150, 0, 75, 107)
+region = Rect2(154, 0, 77, 109)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0rg5e"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_p75h7"]
 atlas = ExtResource("5_l0ppc")
-region = Rect2(225, 0, 75, 107)
+region = Rect2(231, 0, 77, 109)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_g0nrt"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_mv3xa"]
 atlas = ExtResource("5_l0ppc")
-region = Rect2(300, 0, 75, 107)
+region = Rect2(77, 0, 77, 109)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lrgff"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ysa5"]
 atlas = ExtResource("5_l0ppc")
-region = Rect2(375, 0, 75, 107)
+region = Rect2(154, 0, 77, 109)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fcxy6"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ltxk"]
 atlas = ExtResource("5_l0ppc")
-region = Rect2(450, 0, 75, 107)
+region = Rect2(231, 0, 77, 109)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mpusd"]
+atlas = ExtResource("5_l0ppc")
+region = Rect2(308, 0, 77, 109)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kp3r7"]
+atlas = ExtResource("5_l0ppc")
+region = Rect2(385, 0, 77, 109)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rwb3d"]
+atlas = ExtResource("5_l0ppc")
+region = Rect2(462, 0, 77, 109)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_j0q0p"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_u4csd")
+"texture": SubResource("AtlasTexture_1dop4")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xaugm")
+"texture": SubResource("AtlasTexture_jl4bj")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_r0g2h")
+"texture": SubResource("AtlasTexture_vi0me")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0rg5e")
+"texture": SubResource("AtlasTexture_p75h7")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_r0g2h")
+"texture": SubResource("AtlasTexture_vi0me")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xaugm")
+"texture": SubResource("AtlasTexture_jl4bj")
 }],
 "loop": true,
 "name": &"Idle",
@@ -76,22 +88,22 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xaugm")
+"texture": SubResource("AtlasTexture_mv3xa")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_r0g2h")
+"texture": SubResource("AtlasTexture_4ysa5")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0rg5e")
+"texture": SubResource("AtlasTexture_2ltxk")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_g0nrt")
+"texture": SubResource("AtlasTexture_mpusd")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_lrgff")
+"texture": SubResource("AtlasTexture_kp3r7")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fcxy6")
+"texture": SubResource("AtlasTexture_rwb3d")
 }],
 "loop": false,
 "name": &"Jump",
@@ -210,7 +222,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.15, 0.666667, 1.1),
 "transitions": PackedFloat32Array(1, 0.5, 2, 1),
 "update": 0,
-"values": [Vector2(-22, -50), Vector2(-22, -195), Vector2(-22, -205), Vector2(-22, -50)]
+"values": [Vector2(-22, -60), Vector2(-22, -195), Vector2(-22, -205), Vector2(-22, -60)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -331,7 +343,6 @@ material = SubResource("ShaderMaterial_c3ya1")
 sprite_frames = SubResource("SpriteFrames_j0q0p")
 animation = &"Jump"
 autoplay = "Idle"
-frame = 4
 offset = Vector2(0, -40)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]

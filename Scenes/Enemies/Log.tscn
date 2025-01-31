@@ -17,36 +17,36 @@ shader_parameter/color = Color(1, 0, 0, 1)
 shader_parameter/tint_factor = 0.0
 shader_parameter/fade = 1.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nfpbs"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_e8sv0"]
 atlas = ExtResource("2_4uaf8")
-region = Rect2(0, 0, 28, 61)
+region = Rect2(0, 0, 30, 63)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mqbyv"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_fd1gi"]
 atlas = ExtResource("2_4uaf8")
-region = Rect2(28, 0, 28, 61)
+region = Rect2(30, 0, 30, 63)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_th0v7"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_vta5j"]
 atlas = ExtResource("2_4uaf8")
-region = Rect2(56, 0, 28, 61)
+region = Rect2(60, 0, 30, 63)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vbdik"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_imxme"]
 atlas = ExtResource("2_4uaf8")
-region = Rect2(84, 0, 28, 61)
+region = Rect2(90, 0, 30, 63)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kbkut"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_nfpbs")
+"texture": SubResource("AtlasTexture_e8sv0")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_mqbyv")
+"texture": SubResource("AtlasTexture_fd1gi")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_th0v7")
+"texture": SubResource("AtlasTexture_vta5j")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vbdik")
+"texture": SubResource("AtlasTexture_imxme")
 }],
 "loop": true,
 "name": &"default",
@@ -75,11 +75,15 @@ shape = SubResource("RectangleShape2D_kgcj4")
 material = SubResource("ShaderMaterial_m2kd1")
 scale = Vector2(0.85, 0.85)
 sprite_frames = SubResource("SpriteFrames_kbkut")
-frame_progress = 0.988177
+frame_progress = 0.25545
 
 [node name="CollisionPolygon2D" parent="Enemy Hitbox" index="0"]
 position = Vector2(0, 0.75)
 shape = SubResource("RectangleShape2D_gs4ms")
+
+[node name="Health Bar" parent="." index="3"]
+offset_top = -38.0
+offset_bottom = -30.0
 
 [node name="Left Detect" type="Area2D" parent="." index="6"]
 collision_layer = 0

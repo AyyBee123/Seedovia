@@ -18,29 +18,29 @@ shader_parameter/color = Color(1, 0, 0, 1)
 shader_parameter/tint_factor = 0.0
 shader_parameter/fade = 1.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_scmwu"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_rlp48"]
 atlas = ExtResource("3_es1oh")
-region = Rect2(0, 0, 28, 39)
+region = Rect2(0, 0, 30, 41)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_80qtl"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_8k51h"]
 atlas = ExtResource("3_es1oh")
-region = Rect2(28, 0, 28, 39)
+region = Rect2(30, 0, 30, 41)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ucrt5"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_g0gkd"]
 atlas = ExtResource("3_es1oh")
-region = Rect2(56, 0, 28, 39)
+region = Rect2(60, 0, 30, 41)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1o6qg"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_scmwu")
+"texture": SubResource("AtlasTexture_rlp48")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_80qtl")
+"texture": SubResource("AtlasTexture_8k51h")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ucrt5")
+"texture": SubResource("AtlasTexture_g0gkd")
 }],
 "loop": true,
 "name": &"default",
@@ -69,6 +69,7 @@ shape = SubResource("RectangleShape2D_vcqh0")
 material = SubResource("ShaderMaterial_cxlp7")
 sprite_frames = SubResource("SpriteFrames_1o6qg")
 autoplay = "default"
+frame_progress = 0.730308
 
 [node name="Iris" type="Sprite2D" parent="." index="2"]
 material = SubResource("ShaderMaterial_yqgd2")

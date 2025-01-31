@@ -1,44 +1,52 @@
-[gd_scene load_steps=15 format=3 uid="uid://dro5juqd1bdju"]
+[gd_scene load_steps=17 format=3 uid="uid://dro5juqd1bdju"]
 
 [ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_73v7o"]
 [ext_resource type="Texture2D" uid="uid://w8b38p0kcypf" path="res://Sprites/Enemies/Log.png" id="2_4uaf8"]
 [ext_resource type="Script" path="res://Scripts/Enemies/Log/log_vertical.gd" id="2_jtxup"]
 [ext_resource type="Resource" uid="uid://b4cou6pw7ljam" path="res://Resources/Enemies/log.tres" id="3_hsdmr"]
+[ext_resource type="Shader" path="res://Shaders/color_tint_shader.gdshader" id="4_7op4s"]
 [ext_resource type="Script" path="res://Scripts/Enemies/Log/state_machine.gd" id="5_kxjhe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kgcj4"]
 size = Vector2(24, 41.5)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nfpbs"]
-atlas = ExtResource("2_4uaf8")
-region = Rect2(0, 0, 28, 61)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ilmdu"]
+resource_local_to_scene = true
+shader = ExtResource("4_7op4s")
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/tint_factor = 0.0
+shader_parameter/fade = 1.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mqbyv"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_f5t16"]
 atlas = ExtResource("2_4uaf8")
-region = Rect2(28, 0, 28, 61)
+region = Rect2(0, 0, 30, 63)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_th0v7"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_e5osw"]
 atlas = ExtResource("2_4uaf8")
-region = Rect2(56, 0, 28, 61)
+region = Rect2(30, 0, 30, 63)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vbdik"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1kqx"]
 atlas = ExtResource("2_4uaf8")
-region = Rect2(84, 0, 28, 61)
+region = Rect2(60, 0, 30, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u8827"]
+atlas = ExtResource("2_4uaf8")
+region = Rect2(90, 0, 30, 63)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kbkut"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_nfpbs")
+"texture": SubResource("AtlasTexture_f5t16")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_mqbyv")
+"texture": SubResource("AtlasTexture_e5osw")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_th0v7")
+"texture": SubResource("AtlasTexture_h1kqx")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vbdik")
+"texture": SubResource("AtlasTexture_u8827")
 }],
 "loop": true,
 "name": &"default",
@@ -65,6 +73,7 @@ rotation = 1.5708
 shape = SubResource("RectangleShape2D_kgcj4")
 
 [node name="AnimatedSprite2D" parent="." index="1"]
+material = SubResource("ShaderMaterial_ilmdu")
 rotation = 1.5708
 scale = Vector2(0.85, 0.85)
 sprite_frames = SubResource("SpriteFrames_kbkut")

@@ -1,44 +1,52 @@
-[gd_scene load_steps=15 format=3 uid="uid://b16cgf7hnwo6q"]
+[gd_scene load_steps=17 format=3 uid="uid://b16cgf7hnwo6q"]
 
 [ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_gc1fs"]
 [ext_resource type="Script" path="res://Scripts/Enemies/Log/log flipped.gd" id="2_arx0u"]
 [ext_resource type="Resource" uid="uid://b4cou6pw7ljam" path="res://Resources/Enemies/log.tres" id="3_18t8u"]
 [ext_resource type="Texture2D" uid="uid://w8b38p0kcypf" path="res://Sprites/Enemies/Log.png" id="4_acvbb"]
+[ext_resource type="Shader" path="res://Shaders/color_tint_shader.gdshader" id="4_obu0u"]
 [ext_resource type="Script" path="res://Scripts/Enemies/Log/state_machine.gd" id="5_johrf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kgcj4"]
 size = Vector2(23.5, 41.5)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nfpbs"]
-atlas = ExtResource("4_acvbb")
-region = Rect2(0, 0, 28, 61)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vwpgc"]
+resource_local_to_scene = true
+shader = ExtResource("4_obu0u")
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/tint_factor = 0.0
+shader_parameter/fade = 1.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mqbyv"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_dsmdd"]
 atlas = ExtResource("4_acvbb")
-region = Rect2(28, 0, 28, 61)
+region = Rect2(0, 0, 30, 63)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_th0v7"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_tj7jk"]
 atlas = ExtResource("4_acvbb")
-region = Rect2(56, 0, 28, 61)
+region = Rect2(30, 0, 30, 63)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vbdik"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_8yqm4"]
 atlas = ExtResource("4_acvbb")
-region = Rect2(84, 0, 28, 61)
+region = Rect2(60, 0, 30, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a0721"]
+atlas = ExtResource("4_acvbb")
+region = Rect2(90, 0, 30, 63)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kbkut"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_nfpbs")
+"texture": SubResource("AtlasTexture_dsmdd")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_mqbyv")
+"texture": SubResource("AtlasTexture_tj7jk")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_th0v7")
+"texture": SubResource("AtlasTexture_8yqm4")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vbdik")
+"texture": SubResource("AtlasTexture_a0721")
 }],
 "loop": true,
 "name": &"default",
@@ -64,15 +72,20 @@ position = Vector2(-0.25, 0.75)
 shape = SubResource("RectangleShape2D_kgcj4")
 
 [node name="AnimatedSprite2D" parent="." index="1"]
+material = SubResource("ShaderMaterial_vwpgc")
 position = Vector2(0, 1.5)
 rotation = 3.14159
 scale = Vector2(0.85, 0.85)
 sprite_frames = SubResource("SpriteFrames_kbkut")
-frame_progress = 0.41344
+frame_progress = 0.802433
 
 [node name="CollisionPolygon2D" parent="Enemy Hitbox" index="0"]
 position = Vector2(0, 0.75)
 shape = SubResource("RectangleShape2D_gs4ms")
+
+[node name="Health Bar" parent="." index="3"]
+offset_top = -38.0
+offset_bottom = -30.0
 
 [node name="Left Detect" type="Area2D" parent="." index="6"]
 collision_layer = 0
