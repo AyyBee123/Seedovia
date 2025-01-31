@@ -9,32 +9,32 @@
 radius = 9.5
 height = 19.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_113ci"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_er7p4"]
 atlas = ExtResource("2_4e538")
-region = Rect2(0, 0, 24, 28)
+region = Rect2(0, 0, 26, 30)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dytoc"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ps2dr"]
 atlas = ExtResource("2_4e538")
-region = Rect2(24, 0, 24, 28)
+region = Rect2(26, 0, 26, 30)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_c3uwf"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_b6mw5"]
 atlas = ExtResource("2_4e538")
-region = Rect2(48, 0, 24, 28)
+region = Rect2(52, 0, 26, 30)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wvlr0"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_113ci")
+"texture": SubResource("AtlasTexture_er7p4")
 }, {
 "duration": 0.8,
-"texture": SubResource("AtlasTexture_dytoc")
+"texture": SubResource("AtlasTexture_ps2dr")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_c3uwf")
+"texture": SubResource("AtlasTexture_b6mw5")
 }, {
 "duration": 0.4,
-"texture": SubResource("AtlasTexture_dytoc")
+"texture": SubResource("AtlasTexture_ps2dr")
 }],
 "loop": true,
 "name": &"default",
@@ -60,7 +60,7 @@ shape = SubResource("CapsuleShape2D_ovcfo")
 position = Vector2(-1, -4.5)
 sprite_frames = SubResource("SpriteFrames_wvlr0")
 autoplay = "default"
-frame_progress = 0.442397
+frame_progress = 0.423935
 
 [node name="Deceleration" type="Timer" parent="." index="3"]
 wait_time = 0.15

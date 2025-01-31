@@ -8,29 +8,29 @@
 radius = 7.0
 height = 22.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dy31l"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_qjchy"]
 atlas = ExtResource("3_l48bm")
-region = Rect2(0, 0, 18, 31)
+region = Rect2(0, 0, 20, 33)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_h4mqp"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_xl0v7"]
 atlas = ExtResource("3_l48bm")
-region = Rect2(18, 0, 18, 31)
+region = Rect2(20, 0, 20, 33)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4p67d"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ruyqc"]
 atlas = ExtResource("3_l48bm")
-region = Rect2(36, 0, 18, 31)
+region = Rect2(40, 0, 20, 33)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_u38eu"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dy31l")
+"texture": SubResource("AtlasTexture_qjchy")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_h4mqp")
+"texture": SubResource("AtlasTexture_xl0v7")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4p67d")
+"texture": SubResource("AtlasTexture_ruyqc")
 }],
 "loop": true,
 "name": &"default",
