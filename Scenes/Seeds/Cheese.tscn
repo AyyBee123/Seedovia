@@ -10,7 +10,7 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_petpg"]
 resource_local_to_scene = true
-size = Vector2(40, 33)
+size = Vector2(42, 33)
 
 [node name="Cheese" type="Sprite2D" groups=["Melee", "Seed", "Weapon"]]
 scale = Vector2(1.5, 1.5)
@@ -25,7 +25,7 @@ collision_mask = 517
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(20, -0.5)
+position = Vector2(21, -0.5)
 shape = SubResource("RectangleShape2D_petpg")
 one_way_collision_margin = 0.0
 
@@ -38,15 +38,15 @@ offset = Vector2(3, 0)
 
 [node name="Cheese Middle" type="Sprite2D" parent="."]
 texture_repeat = 2
-position = Vector2(6, -0.5)
+position = Vector2(6.5, -1.5)
 texture = ExtResource("3_cdqqv")
 centered = false
 offset = Vector2(0, -16.5)
 region_enabled = true
-region_rect = Rect2(0, 0, 32, 33)
+region_rect = Rect2(0, 0, 32, 35)
 
 [node name="Cheese End" type="Sprite2D" parent="."]
-position = Vector2(36, -0.499999)
+position = Vector2(37.5, -0.5)
 texture = ExtResource("4_tabyy")
 offset = Vector2(3, 0)
 
