@@ -42,7 +42,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Move",
-"speed": 8.0
+"speed": 9.0
 }]
 
 [node name="White Shrub" instance=ExtResource("1_uo5hu")]
@@ -50,8 +50,9 @@ script = ExtResource("2_wbuoh")
 
 [node name="Player Sprite" parent="." index="3"]
 sprite_frames = SubResource("SpriteFrames_6lyiw")
-animation = &"Idle"
+animation = &"Move"
 autoplay = "Idle"
+frame_progress = 0.814048
 
 [node name="Hitbox" parent="." index="4"]
 position = Vector2(0, 0.5)
@@ -61,9 +62,6 @@ texture = ExtResource("8_qnhjt")
 
 [node name="Shadow" parent="." index="13"]
 position = Vector2(0, 10.5)
-
-[node name="CollisionShape2D" parent="Pickup Radius" index="0"]
-visible = false
 
 [node name="CollisionShape2D" parent="Slow Detect" index="0"]
 position = Vector2(0, 10.5)

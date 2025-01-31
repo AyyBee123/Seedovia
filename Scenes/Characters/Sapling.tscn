@@ -42,16 +42,15 @@ animations = [{
 }],
 "loop": true,
 "name": &"Move",
-"speed": 8.0
+"speed": 9.0
 }]
 
 [node name="Sapling" instance=ExtResource("1_adbqg")]
 
 [node name="Player Sprite" parent="." index="3"]
 sprite_frames = SubResource("SpriteFrames_ckkwj")
-animation = &"Idle"
+animation = &"Move"
 autoplay = "Idle"
-frame_progress = 0.543164
 
 [node name="Hand" parent="Rotation Point/Marker2D" index="0"]
 texture = ExtResource("8_r625u")

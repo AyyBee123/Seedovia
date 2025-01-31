@@ -42,14 +42,15 @@ animations = [{
 }],
 "loop": true,
 "name": &"Move",
-"speed": 8.0
+"speed": 9.0
 }]
 
 [node name="Berry" instance=ExtResource("1_dhg8r")]
 
 [node name="Player Sprite" parent="." index="3"]
+position = Vector2(0, -10)
 sprite_frames = SubResource("SpriteFrames_6lyiw")
-animation = &"Idle"
+animation = &"Move"
 autoplay = "Idle"
 
 [node name="Hitbox" parent="." index="4"]
