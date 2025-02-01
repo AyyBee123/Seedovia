@@ -34,15 +34,6 @@ func _get_transition(delta):
 					return states.ghosts
 				if random_attack == 2:
 					return states.suck
-		states.laser:
-			if not parent.animated_sprite_2d.is_playing():
-				return states.idle
-		states.ghosts:
-			if not parent.animated_sprite_2d.is_playing():
-				return states.idle
-		states.suck:
-			if not parent.animated_sprite_2d.is_playing():
-				return states.idle
 	return null
 
 func _enter_state(new_state, old_state):
@@ -50,11 +41,11 @@ func _enter_state(new_state, old_state):
 		states.idle:
 			parent.animated_sprite_2d.play("Idle")
 		states.laser:
-			parent.animated_sprite_2d.play("Laser")
+			parent.animated_sprite_2d.play("Laser Beginning")
 		states.ghosts:
-			parent.animated_sprite_2d.play("Ghosts")
+			parent.animated_sprite_2d.play("Ghosts Beginning")
 		states.suck:
-			parent.animated_sprite_2d.play("Suck")
+			parent.animated_sprite_2d.play("Suck Beginning")
 
 func _exit_state(old_state, new_state):
 	match old_state:
