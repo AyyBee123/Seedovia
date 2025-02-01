@@ -93,7 +93,7 @@ func _on_animated_sprite_2d_frame_changed():
 	if $AnimatedSprite2D.animation == "Suck":
 		_enemy_stats.damage = 1
 		var player_direction = player.global_position.direction_to($Marker2D.global_position)
-		player.velocity = player_direction.normalized() * 100
+		player.velocity += player_direction.normalized() * 200
 		if $AnimatedSprite2D.frame % 1 == 0 and not suck_rock_time.is_stopped():
 			# make the rock projectile
 			var rock = $ResourcePreloader.get_resource("Rock").instantiate()
@@ -111,9 +111,11 @@ func _on_animated_sprite_2d_animation_finished():
 	if animated_sprite_2d.animation == "Laser Beginning":
 		laser_time.start()
 		animated_sprite_2d.play("Laser")
+	
 	if animated_sprite_2d.animation == "Ghosts Beginning":
 		ghost_time.start()
 		animated_sprite_2d.play("Ghosts")
+	
 	if animated_sprite_2d.animation == "Suck Beginning":
 		suck_time.start()
 		suck_rock_time.start()

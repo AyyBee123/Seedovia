@@ -541,10 +541,11 @@ wait_time = 2.0
 one_shot = true
 
 [node name="Suck Time" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 2.25
 one_shot = true
 
 [node name="Suck Rock Time" type="Timer" parent="."]
+wait_time = 0.75
 one_shot = true
 
 [node name="Ghost Time" type="Timer" parent="."]
@@ -557,5 +558,4 @@ one_shot = true
 [connection signal="body_exited" from="Enemy Hitbox" to="." method="_on_enemy_hitbox_body_exited"]
 [connection signal="timeout" from="Laser Time" to="." method="_on_laser_time_timeout"]
 [connection signal="timeout" from="Suck Time" to="." method="_on_suck_time_timeout"]
-[connection signal="timeout" from="Suck Rock Time" to="." method="_on_suck_time_timeout"]
 [connection signal="timeout" from="Ghost Time" to="." method="_on_ghost_time_timeout"]

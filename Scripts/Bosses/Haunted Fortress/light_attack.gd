@@ -6,6 +6,7 @@ extends Node2D
 @onready var damage_buffer = $"Damage Buffer"
 @onready var attack_delay = $"Attack Delay"
 @onready var fade_timer = $"Fade Timer"
+@onready var fade_timer_2 = $"Fade Timer2"
 @onready var light_beam_SFX = $LightBeam
 
 var is_in_area := false
@@ -32,8 +33,9 @@ func _physics_process(delta):
 		$Hitbox.set_collision_mask(2)
 		$"Warning Circle".visible = false
 	if fade:
-		$Beam.modulate.a = fade_timer_mult * fade_timer.time_left
-		if $Beam.modulate.a == 0: # when the light attack beam is fully invisible, delete the node
+		$Hitbox/CollisionShape2D.set_deferred("disabled", true)
+		$Beam.modulate.a = fade_timer_mult * fade_timer_2.time_left
+		if not $Beam.is_playing(): # when the light attack beam is fully invisible, delete the node
 			queue_free()
 
 func _on_hitbox_body_entered(body):
@@ -50,3 +52,5 @@ func _on_beam_animation_finished():
 
 func _on_fade_timer_timeout():
 	fade = true
+	$Beam.play_backwards("default")
+	fade_timer_2.start()
