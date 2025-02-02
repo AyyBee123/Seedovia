@@ -173,14 +173,14 @@ tile_set = SubResource("TileSet_dsidl")
 script = ExtResource("17_vc7xa")
 
 [node name="Floor-Room Number" parent="." instance=ExtResource("5_igecr")]
-z_index = 5
+z_index = 9
 offset_left = 909.0
 offset_top = -529.0
 offset_right = 949.0
 offset_bottom = -489.0
 
 [node name="Run Timer" type="RichTextLabel" parent="."]
-z_index = 5
+z_index = 9
 offset_left = 830.0
 offset_top = -479.0
 offset_right = 1178.0

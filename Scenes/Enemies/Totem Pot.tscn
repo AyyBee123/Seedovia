@@ -211,7 +211,7 @@ animations = [{
 size = Vector2(16, 26)
 
 [node name="Totem Pot" instance=ExtResource("1_dgmgt")]
-scale = Vector2(2, 2)
+scale = Vector2(2.25, 2.25)
 script = ExtResource("2_aebym")
 _enemy_stats = ExtResource("3_ij7dq")
 
