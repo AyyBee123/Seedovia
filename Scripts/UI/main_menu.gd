@@ -17,6 +17,11 @@ func _on_play_button_pressed():
 
 func _on_continue_button_pressed():
 	loading_screen_scene_instance = loading_screen_scene.instantiate()
-	get_tree().root.add_child.call_deferred(loading_screen_scene_instance)
-	loading_screen_scene_instance.load_save()
-	loading_screen_scene_instance.load_scene(LevelList.loaded_current_room)
+	get_tree().current_scene.add_child.call_deferred(loading_screen_scene_instance)
+	await get_tree().create_timer(0.5).timeout # delay to let the loading screen load in and display on-screen
+	Global.load_run_room
+	Global.load_run_data()
+	Global.load_run_room()
+	LevelList.load_char()
+	Pool.continue_run()
+	get_tree().change_scene_to_file(LevelList.loaded_current_room)

@@ -5,6 +5,7 @@ var event: InputEvent
 @export var starting_character: character_class
 @export var starting_stats: player_stats
 @export var character_scene: String
+
 var _player_stats: player_stats = preload("res://Resources/Characters/Stats/base_stats.tres")
 
 func _ready():

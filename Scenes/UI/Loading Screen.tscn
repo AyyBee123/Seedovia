@@ -1,12 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://mta4uipsttsn"]
+[gd_scene load_steps=4 format=3 uid="uid://mta4uipsttsn"]
 
 [ext_resource type="Script" path="res://Scripts/UI/loading_screen.gd" id="1_lia4c"]
 [ext_resource type="FontFile" uid="uid://bkn7gmgx1wxgx" path="res://Fonts/Name Font.ttf" id="1_wkkth"]
-[ext_resource type="FontFile" uid="uid://wbj0boqv37y6" path="res://Fonts/Description Font.ttf" id="2_vqwqk"]
-[ext_resource type="Texture2D" uid="uid://cyqqthnkqh3mo" path="res://Sprites/UI/Loading Progress Bar.png" id="3_mu6xr"]
-[ext_resource type="Texture2D" uid="uid://dfgywyt5r4g4f" path="res://Sprites/UI/Loading Filled Progress Bar.png" id="4_mwdnq"]
+[ext_resource type="Texture2D" uid="uid://dbgltdk3p41hc" path="res://Sprites/Seeds/Walnut.png" id="3_pct4q"]
 
 [node name="Loading Screen" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -34,21 +33,21 @@ theme_override_font_sizes/normal_font_size = 128
 bbcode_enabled = true
 text = "[center]Loading"
 
-[node name="ProgressNumber" type="RichTextLabel" parent="."]
-layout_mode = 0
-offset_left = 593.0
-offset_top = 535.0
-offset_right = 819.0
-offset_bottom = 751.0
-theme_override_fonts/normal_font = ExtResource("2_vqwqk")
-theme_override_font_sizes/normal_font_size = 64
-text = "0%"
-
-[node name="ProgressBar" type="TextureProgressBar" parent="."]
-layout_mode = 0
-offset_left = 656.0
-offset_top = 546.0
-offset_right = 1296.0
-offset_bottom = 578.0
-texture_under = ExtResource("3_mu6xr")
-texture_progress = ExtResource("4_mwdnq")
+[node name="Walnut" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -129.5
+offset_top = -129.5
+offset_right = 129.5
+offset_bottom = 129.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+pivot_offset = Vector2(128.5, 128.5)
+texture = ExtResource("3_pct4q")
+expand_mode = 2
