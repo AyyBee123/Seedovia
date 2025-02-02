@@ -8,7 +8,7 @@ const inventory = preload("res://Scripts/Inventory/inventory.gd")
 @onready var radius = $"Pickable Area/Radius"
 
 func _ready():
-	scale = Vector2(1.5,1.5)
+	scale = Vector2.ONE * 2
 	radius.disabled = false
 
 func set_item(new_item: Resource):
