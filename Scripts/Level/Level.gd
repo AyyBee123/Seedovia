@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var resource_preloader := $ResourcePreloader
+@onready var circle_transition = %"Circle Transition"
 
 var player
 var player_pos = Vector2(0, 330)
@@ -26,6 +27,15 @@ func _ready():
 	if LevelList.room_number == 0 and LevelList.floor_number == 0 and PlayerCharacter._is_starting:
 		SelectionSaveData.number_of_runs += 1
 		Global.save_save_selection()
+	
+	# transition when entering new floor
+	if LevelList._entered_new_floor:
+		circle_transition.material.set("shader_parameter/circle_position_y", 0.695)
+		circle_transition.get_node("AnimationPlayer").play("Open")
+		LevelList._entered_new_floor = false
+	else:
+		# prevent black screen when entering a new room
+		circle_transition.material.set("shader_parameter/circle_size", 1)
 	
 	# play floor theme music
 	match LevelList.floor_number:

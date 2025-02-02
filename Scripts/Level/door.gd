@@ -1,5 +1,7 @@
 extends Node2D
 
+var circle_transition
+var _transitioned: bool
 var transition_scene := false
 var reward
 var text
@@ -13,11 +15,18 @@ var reward_weight = {
 }
 
 func _ready():
+	circle_transition = get_tree().current_scene.get_node("%Circle Transition")
 	Global.RNG.randomize()
 
 func _physics_process(delta):
 	if transition_scene:
-		change_scene.call_deferred()
+		if LevelList.room_number == 10 and not _transitioned:
+			circle_transition.material.set("shader_parameter/circle_position_y", 0.305)
+			circle_transition.get_node("AnimationPlayer").play("Close")
+			Targets.get_player().process_mode = Node.PROCESS_MODE_DISABLED
+			_transitioned = true
+		if not circle_transition.get_node("AnimationPlayer").is_playing():
+			change_scene.call_deferred()
 
 func _on_enter_radius_body_entered(body):
 	if body.is_in_group("Players"):
@@ -27,10 +36,6 @@ func _on_enter_radius_body_entered(body):
 			body.get_node("Inventory").holding_item.queue_free()
 			body.get_node("Inventory").holding_item = null
 		transition_scene = true
-
-func _on_enter_radius_body_exited(body):
-	if body.is_in_group("Players"):
-		transition_scene = false
 
 func change_scene():
 	Global.next_reward = reward

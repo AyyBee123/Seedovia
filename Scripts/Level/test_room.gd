@@ -15,6 +15,7 @@ func _ready():
 	player = LevelList.player.instantiate()
 	add_child(player)
 	player.global_position = player_pos
+	circle_transition.get_node("AnimationPlayer").play("Instant Open")
 
 func _physics_process(delta):
 	player = Targets.get_player()
