@@ -9,7 +9,7 @@ radius = 5.0
 height = 28.0
 
 [node name="Falling Bullet" type="Sprite2D" groups=["Enemy Weapon"]]
-z_index = 3
+z_index = 4
 scale = Vector2(1.5, 1.5)
 script = ExtResource("2_6que3")
 

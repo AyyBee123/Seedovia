@@ -8,7 +8,7 @@
 radius = 32.0
 
 [node name="Big Falling Bullet" type="Sprite2D" groups=["Enemy Weapon"]]
-z_index = 3
+z_index = 4
 script = ExtResource("1_ucn8k")
 
 [node name="Bullet Hitbox" type="Area2D" parent="."]

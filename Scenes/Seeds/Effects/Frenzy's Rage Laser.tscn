@@ -7,7 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://d1tn6ymy3b3ti" path="res://Audio/SFX/Space Laser.mp3" id="5_l2t8p"]
 
 [node name="Laser" type="Sprite2D"]
-z_index = 4
+z_index = 5
 texture = ExtResource("1_3ih03")
 centered = false
 offset = Vector2(0, -9)

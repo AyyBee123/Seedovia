@@ -4,6 +4,7 @@ extends Node
 
 var floor = ResourceLoader.load("res://Resources/Current Floor/floor.tres")
 var floor_number: int
+var _entered_new_floor: bool
 var room_number: int
 var current_room: String
 var loaded_current_room: String
@@ -54,6 +55,7 @@ func change_floor():
 	Global.save_run_data()
 	Global.save_time_played()
 	floor.rooms.clear()
+	_entered_new_floor = true
 	floor_number += 1
 	room_number = 0
 	doors_spawned = false

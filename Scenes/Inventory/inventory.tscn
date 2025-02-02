@@ -6286,7 +6286,7 @@ cache/0/8/0/kerning_overrides/8/0 = Vector2(0, 0)
 
 [node name="Inventory" type="Control" groups=["Persist"]]
 top_level = true
-z_index = 3
+z_index = 10
 layout_mode = 3
 anchors_preset = 6
 anchor_left = 1.0
