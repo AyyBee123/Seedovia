@@ -5,36 +5,36 @@
 [ext_resource type="Script" path="res://Scripts/Seeds/strawberry.gd" id="3_ff0m5"]
 [ext_resource type="PackedScene" uid="uid://cp3hdtxn75uyt" path="res://Scenes/Passives/Effects/Explosion.tscn" id="4_ewini"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_34l38"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_6xlna"]
 atlas = ExtResource("2_6hqge")
-region = Rect2(0, 0, 19, 29)
+region = Rect2(0, 0, 21, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_e3m17"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_1uahc"]
 atlas = ExtResource("2_6hqge")
-region = Rect2(19, 0, 19, 29)
+region = Rect2(21, 0, 21, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xkokf"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_bfq75"]
 atlas = ExtResource("2_6hqge")
-region = Rect2(38, 0, 19, 29)
+region = Rect2(42, 0, 21, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2edy4"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_pa4ye"]
 atlas = ExtResource("2_6hqge")
-region = Rect2(57, 0, 19, 29)
+region = Rect2(63, 0, 21, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_um1r6"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_34l38")
+"texture": SubResource("AtlasTexture_6xlna")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_e3m17")
+"texture": SubResource("AtlasTexture_1uahc")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xkokf")
+"texture": SubResource("AtlasTexture_bfq75")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2edy4")
+"texture": SubResource("AtlasTexture_pa4ye")
 }],
 "loop": true,
 "name": &"default",
