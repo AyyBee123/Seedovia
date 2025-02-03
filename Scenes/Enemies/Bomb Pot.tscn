@@ -148,9 +148,9 @@ shape = SubResource("CircleShape2D_rk74o")
 [node name="AnimatedSprite2D" parent="." index="1"]
 material = SubResource("ShaderMaterial_okg71")
 sprite_frames = SubResource("SpriteFrames_4xpmq")
-animation = &"Ready"
+animation = &"Calm"
 autoplay = "Calm"
-frame_progress = 0.00980047
+frame_progress = 0.451405
 offset = Vector2(0, -8)
 
 [node name="CollisionPolygon2D" parent="Enemy Hitbox" index="0"]
