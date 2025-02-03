@@ -253,7 +253,7 @@ radius = 43.5
 height = 115.0
 
 [node name="Mad Hat" groups=["Mad Hat"] instance=ExtResource("1_qnygg")]
-z_index = 4
+z_index = 5
 scale = Vector2(2, 2)
 script = ExtResource("2_3m7wg")
 _enemy_stats = ExtResource("3_xjqh5")

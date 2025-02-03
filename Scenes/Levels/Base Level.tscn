@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=4 uid="uid://cxoiy0x4nvtaa"]
+[gd_scene load_steps=50 format=4 uid="uid://cxoiy0x4nvtaa"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_5cm3y"]
 [ext_resource type="Texture2D" uid="uid://cvgvhjvhndf2x" path="res://Sprites/Wall/Floor 1 Corner.png" id="2_1m20m"]
@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://6qic3lphvydx" path="res://Scenes/Items/Shop Item.tscn" id="14_shhcr"]
 [ext_resource type="Script" path="res://Scripts/Level/camera.gd" id="17_vc7xa"]
 [ext_resource type="PackedScene" uid="uid://bwnklarbsachr" path="res://Scenes/Misc/Circle Transition.tscn" id="27_nhpnk"]
+[ext_resource type="Shader" path="res://Shaders/circle_transition.gdshader" id="28_rryfq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d5ujs"]
 resource_name = "Floor 1 Wall Corner"
@@ -160,6 +161,13 @@ size = Vector2(192, 1080)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6q71m"]
 size = Vector2(192, 1080)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0ecxy"]
+resource_local_to_scene = true
+shader = ExtResource("28_rryfq")
+shader_parameter/circle_size = 0.0
+shader_parameter/circle_position_x = 0.5
+shader_parameter/circle_position_y = 0.695
+
 [node name="Level" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_5cm3y")
@@ -233,6 +241,7 @@ shape = SubResource("RectangleShape2D_6q71m")
 
 [node name="Circle Transition" parent="." instance=ExtResource("27_nhpnk")]
 unique_name_in_owner = true
+material = SubResource("ShaderMaterial_0ecxy")
 offset_left = -960.0
 offset_top = -540.0
 offset_right = 960.0
