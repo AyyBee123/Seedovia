@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/Enemies/Obstacles/obstacle.gd" id="1_hnu15"]
 
 [node name="Obstacle" type="CharacterBody2D" groups=["Obstacles"]]
+z_index = 4
 collision_layer = 512
 collision_mask = 9
 script = ExtResource("1_hnu15")

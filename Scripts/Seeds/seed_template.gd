@@ -127,7 +127,7 @@ func get_next_weapon():
 			else PlayerSeeds.seeds[slot_index + 1]
 
 func set_ignore_first_collision():
-	await get_tree().process_frame
+	await get_tree().create_timer(0.05).timeout
 	ignore_first_collision = false
 
 func get_next_weapon_pos():
