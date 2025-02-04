@@ -1,0 +1,158 @@
+[gd_scene load_steps=23 format=3 uid="uid://bgp0jvhp4e40j"]
+
+[ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_qburm"]
+[ext_resource type="Shader" path="res://Shaders/color_tint_shader.gdshader" id="2_6xvxd"]
+[ext_resource type="Script" path="res://Scripts/Enemies/Gungo/gungo.gd" id="2_m4y7e"]
+[ext_resource type="Resource" uid="uid://bd3wbhkkm4dqy" path="res://Resources/Enemies/gungo.tres" id="3_0nmnq"]
+[ext_resource type="Texture2D" uid="uid://dn4qof31cbtpb" path="res://Sprites/Enemies/Gungo.png" id="3_j8exa"]
+[ext_resource type="Texture2D" uid="uid://xxyym547o3vn" path="res://Sprites/Misc/Shadow.png" id="6_sohnd"]
+[ext_resource type="AudioStream" uid="uid://ybovr5cxugmh" path="res://Audio/SFX/Burp.mp3" id="7_xv4il"]
+[ext_resource type="AudioStream" uid="uid://cp5tw87kfxwxa" path="res://Audio/SFX/Thud.mp3" id="8_ye4af"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_eq81i"]
+radius = 20.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7k5dv"]
+resource_local_to_scene = true
+shader = ExtResource("2_6xvxd")
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/tint_factor = 0.0
+shader_parameter/fade = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kc24a"]
+atlas = ExtResource("3_j8exa")
+region = Rect2(0, 0, 51, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tuuv1"]
+atlas = ExtResource("3_j8exa")
+region = Rect2(51, 0, 51, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6s6i1"]
+atlas = ExtResource("3_j8exa")
+region = Rect2(102, 0, 51, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cj37g"]
+atlas = ExtResource("3_j8exa")
+region = Rect2(153, 0, 51, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_66am0"]
+atlas = ExtResource("3_j8exa")
+region = Rect2(204, 0, 51, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uwapt"]
+atlas = ExtResource("3_j8exa")
+region = Rect2(255, 0, 51, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xvwrq"]
+atlas = ExtResource("3_j8exa")
+region = Rect2(306, 0, 51, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g41vx"]
+atlas = ExtResource("3_j8exa")
+region = Rect2(357, 0, 51, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8iyh0"]
+atlas = ExtResource("3_j8exa")
+region = Rect2(408, 0, 51, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1dgw6"]
+atlas = ExtResource("3_j8exa")
+region = Rect2(459, 0, 51, 58)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l660i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kc24a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tuuv1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6s6i1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tuuv1")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cj37g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_66am0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uwapt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xvwrq")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_g41vx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8iyh0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1dgw6")
+}],
+"loop": false,
+"name": &"Shoot",
+"speed": 12.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wu3b0"]
+radius = 20.0
+
+[node name="Gungo" instance=ExtResource("1_qburm")]
+scale = Vector2(2, 2)
+script = ExtResource("2_m4y7e")
+_enemy_stats = ExtResource("3_0nmnq")
+
+[node name="CollisionPolygon2D" parent="." index="0"]
+shape = SubResource("CircleShape2D_eq81i")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+material = SubResource("ShaderMaterial_7k5dv")
+position = Vector2(0, 6)
+sprite_frames = SubResource("SpriteFrames_l660i")
+animation = &"Shoot"
+autoplay = "Idle"
+
+[node name="CollisionPolygon2D" parent="Enemy Hitbox" index="0"]
+shape = SubResource("CircleShape2D_wu3b0")
+
+[node name="Health Bar" parent="." index="3"]
+offset_top = -44.0
+offset_bottom = -36.0
+
+[node name="Marker2D" type="Marker2D" parent="." index="6"]
+position = Vector2(-4, 16)
+
+[node name="Fire Rate" type="Timer" parent="." index="7"]
+one_shot = true
+
+[node name="Shadow" type="Sprite2D" parent="." index="8"]
+z_index = -1
+z_as_relative = false
+position = Vector2(0, 26)
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("6_sohnd")
+
+[node name="Burp" type="AudioStreamPlayer" parent="." index="9"]
+stream = ExtResource("7_xv4il")
+volume_db = -3.0
+pitch_scale = 0.8
+bus = &"SFX"
+
+[node name="Thud" type="AudioStreamPlayer" parent="." index="10"]
+stream = ExtResource("8_ye4af")
+pitch_scale = 0.9
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
+[connection signal="timeout" from="Fire Rate" to="." method="_on_fire_rate_timeout"]
