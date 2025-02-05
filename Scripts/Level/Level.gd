@@ -23,6 +23,7 @@ var time_milli_seconds: int:
 		return LevelList.elapsed_time * 100 as int % 100
 
 func _ready():
+	%"Circle Transition".visible = true # disable it from the editor because it blocks the whole room
 	# very start of the run
 	if LevelList.room_number == 0 and LevelList.floor_number == 0 and PlayerCharacter._is_starting:
 		SelectionSaveData.number_of_runs += 1

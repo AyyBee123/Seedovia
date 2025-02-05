@@ -241,6 +241,7 @@ shape = SubResource("RectangleShape2D_6q71m")
 
 [node name="Circle Transition" parent="." instance=ExtResource("27_nhpnk")]
 unique_name_in_owner = true
+visible = false
 material = SubResource("ShaderMaterial_0ecxy")
 offset_left = -960.0
 offset_top = -540.0
