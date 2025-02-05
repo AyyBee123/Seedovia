@@ -1,0 +1,88 @@
+[gd_scene load_steps=14 format=3 uid="uid://inbvexnx3t21"]
+
+[ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_5uvft"]
+[ext_resource type="Script" path="res://Scripts/Enemies/Hot Pot/hot_pot.gd" id="2_8rtvn"]
+[ext_resource type="Resource" uid="uid://bed78ubjylnkc" path="res://Resources/Enemies/hot_pot.tres" id="2_20x8r"]
+[ext_resource type="Shader" path="res://Shaders/color_tint_shader.gdshader" id="2_wic8r"]
+[ext_resource type="Texture2D" uid="uid://cquyeui68djwp" path="res://Sprites/Enemies/Hot Pot.png" id="4_b0oh0"]
+[ext_resource type="Texture2D" uid="uid://xxyym547o3vn" path="res://Sprites/Misc/Shadow.png" id="5_mj6fr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l4fl2"]
+radius = 8.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1nalm"]
+resource_local_to_scene = true
+shader = ExtResource("2_wic8r")
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/tint_factor = 0.0
+shader_parameter/fade = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_od1i2"]
+atlas = ExtResource("4_b0oh0")
+region = Rect2(0, 0, 23, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cq0nh"]
+atlas = ExtResource("4_b0oh0")
+region = Rect2(23, 0, 23, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yhb3d"]
+atlas = ExtResource("4_b0oh0")
+region = Rect2(46, 0, 23, 35)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3etkx"]
+animations = [{
+"frames": [{
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_od1i2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cq0nh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yhb3d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cq0nh")
+}],
+"loop": true,
+"name": &"Chase",
+"speed": 9.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nov0j"]
+radius = 8.0
+
+[node name="Hot Pot" instance=ExtResource("1_5uvft")]
+scale = Vector2(1.65, 1.65)
+script = ExtResource("2_8rtvn")
+_enemy_stats = ExtResource("2_20x8r")
+
+[node name="CollisionPolygon2D" parent="." index="0"]
+shape = SubResource("CircleShape2D_l4fl2")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+material = SubResource("ShaderMaterial_1nalm")
+sprite_frames = SubResource("SpriteFrames_3etkx")
+animation = &"Chase"
+autoplay = "Chase"
+frame_progress = 0.346068
+offset = Vector2(0, -8)
+
+[node name="CollisionPolygon2D" parent="Enemy Hitbox" index="0"]
+shape = SubResource("CircleShape2D_nov0j")
+
+[node name="Health Bar" parent="." index="3"]
+offset_top = -36.0
+offset_bottom = -28.0
+
+[node name="Pointer" type="Node2D" parent="." index="6"]
+
+[node name="Marker2D" type="Marker2D" parent="Pointer" index="0"]
+position = Vector2(28.5714, 0)
+
+[node name="Shadow" type="Sprite2D" parent="." index="7"]
+z_index = -1
+z_as_relative = false
+position = Vector2(0, 11.2)
+scale = Vector2(0.45, 0.5)
+texture = ExtResource("5_mj6fr")
