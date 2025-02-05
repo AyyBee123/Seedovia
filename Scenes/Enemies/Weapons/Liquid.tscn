@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://curmn3ypxaoih" path="res://Scenes/Enemies/Weapons/pop.tscn" id="3_misd4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u6ry2"]
+resource_local_to_scene = true
 radius = 28.5
 
 [node name="Liquid" type="Sprite2D" groups=["Enemy Weapon"]]

@@ -1,0 +1,93 @@
+[gd_scene load_steps=15 format=3 uid="uid://b50lirnqd7i1t"]
+
+[ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_khd1o"]
+[ext_resource type="Script" path="res://Scripts/Enemies/Ice Pot/ice_pot.gd" id="2_4irb3"]
+[ext_resource type="Shader" path="res://Shaders/color_tint_shader.gdshader" id="2_qlu3v"]
+[ext_resource type="Resource" uid="uid://dpaiadl17vko5" path="res://Resources/Enemies/ice_pot.tres" id="3_xyx2c"]
+[ext_resource type="Texture2D" uid="uid://cfmmycyytrdhb" path="res://Sprites/Enemies/Ice Pot.png" id="4_pkxko"]
+[ext_resource type="Texture2D" uid="uid://xxyym547o3vn" path="res://Sprites/Misc/Shadow.png" id="6_43hmw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xv1mg"]
+radius = 9.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wk5bu"]
+resource_local_to_scene = true
+shader = ExtResource("2_qlu3v")
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/tint_factor = 0.0
+shader_parameter/fade = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_su7fy"]
+atlas = ExtResource("4_pkxko")
+region = Rect2(0, 0, 26, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fo7hm"]
+atlas = ExtResource("4_pkxko")
+region = Rect2(26, 0, 26, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qi10k"]
+atlas = ExtResource("4_pkxko")
+region = Rect2(52, 0, 26, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q8v1p"]
+atlas = ExtResource("4_pkxko")
+region = Rect2(78, 0, 26, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vioqo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_su7fy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fo7hm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qi10k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q8v1p")
+}],
+"loop": true,
+"name": &"Spin",
+"speed": 9.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wl5ay"]
+radius = 9.0
+
+[node name="Ice Pot" instance=ExtResource("1_khd1o")]
+scale = Vector2(2.15, 2.15)
+script = ExtResource("2_4irb3")
+_enemy_stats = ExtResource("3_xyx2c")
+
+[node name="CollisionPolygon2D" parent="." index="0"]
+shape = SubResource("CircleShape2D_xv1mg")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+material = SubResource("ShaderMaterial_wk5bu")
+sprite_frames = SubResource("SpriteFrames_vioqo")
+animation = &"Spin"
+autoplay = "Spin"
+frame_progress = 0.347937
+offset = Vector2(0, -4)
+
+[node name="Shadow" type="Sprite2D" parent="AnimatedSprite2D" index="0"]
+z_index = -1
+z_as_relative = false
+position = Vector2(0, 6.97674)
+scale = Vector2(0.675676, 0.858108)
+texture = ExtResource("6_43hmw")
+
+[node name="CollisionPolygon2D" parent="Enemy Hitbox" index="0"]
+shape = SubResource("CircleShape2D_wl5ay")
+
+[node name="Lifetime" type="Timer" parent="." index="6"]
+wait_time = 7.0
+one_shot = true
+autostart = true
+
+[node name="Pointer" type="Node2D" parent="." index="7"]
+
+[node name="Marker2D" type="Marker2D" parent="Pointer" index="0"]
+position = Vector2(28.5714, 0)

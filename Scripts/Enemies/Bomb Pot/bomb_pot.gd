@@ -19,9 +19,8 @@ func _ready():
 	randomize()
 	rotation_speed = randf_range(2, 10)
 	
-	# look at the player at the start to avoid turning when entering a new room
-	if player:
-		pointer.rotation = global_position.direction_to(player.global_position).angle()
+	# look at the player's spawn point at the start to avoid turning when entering a new room
+	pointer.rotation = global_position.direction_to(Vector2(0, 330)).angle()
 
 func _physics_process(delta):
 	super._physics_process(delta)

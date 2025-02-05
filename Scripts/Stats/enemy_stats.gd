@@ -54,6 +54,14 @@ func take_damage(damage):
 	if health <= 0:
 		health_depleted.emit()
 
+# for enemies that lose health as a "mechanic" (ex: Ice Pot losing health overtime)
+func health_decay(amount):
+	health -= amount
+	health = max(0, health)
+	health_changed.emit(health)
+	if health <= 0:
+		health_depleted.emit()
+
 func heal(amount):
 	health += amount
 	health = min(health, max_health)
