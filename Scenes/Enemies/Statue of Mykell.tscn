@@ -193,7 +193,7 @@ libraries = {
 
 [node name="Jump" type="AudioStreamPlayer" parent="." index="8"]
 stream = ExtResource("6_yav4k")
-volume_db = -15.0
+volume_db = -8.0
 pitch_scale = 1.5
 bus = &"SFX"
 

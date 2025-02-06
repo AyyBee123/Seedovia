@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://bjh8nf24g24rj"]
+
+[ext_resource type="PackedScene" uid="uid://b8gxpiw6v8asa" path="res://Scenes/Levels/Floor 2 Base.tscn" id="1_7viup"]
+[ext_resource type="Shader" path="res://Shaders/circle_transition.gdshader" id="2_m0y3b"]
+[ext_resource type="PackedScene" uid="uid://beccqsvpy8njs" path="res://Scenes/Enemies/Puncky.tscn" id="3_cdfc2"]
+[ext_resource type="PackedScene" uid="uid://c1a4mvn6opy65" path="res://Scenes/Enemies/Obstacles/Death Puck.tscn" id="4_gh1fq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0ecxy"]
+resource_local_to_scene = true
+shader = ExtResource("2_m0y3b")
+shader_parameter/circle_size = 0.0
+shader_parameter/circle_position_x = 0.5
+shader_parameter/circle_position_y = 0.695
+
+[node name="Level" instance=ExtResource("1_7viup")]
+
+[node name="Circle Transition" parent="." index="10"]
+material = SubResource("ShaderMaterial_0ecxy")
+
+[node name="Puncky" parent="." index="11" instance=ExtResource("3_cdfc2")]
+position = Vector2(608, -288)
+
+[node name="Puncky2" parent="." index="12" instance=ExtResource("3_cdfc2")]
+position = Vector2(-672, -288)
+
+[node name="Death Puck" parent="." index="13" instance=ExtResource("4_gh1fq")]
+position = Vector2(0, -288)

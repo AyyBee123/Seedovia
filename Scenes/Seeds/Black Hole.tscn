@@ -24,7 +24,7 @@ one_shot = true
 
 [node name="Noise" type="AudioStreamPlayer" parent="." index="3"]
 stream = ExtResource("4_70dgj")
-volume_db = -20.0
+volume_db = -5.0
 pitch_scale = 0.6
 bus = &"SFX"
 

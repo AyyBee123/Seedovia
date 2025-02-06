@@ -343,6 +343,7 @@ material = SubResource("ShaderMaterial_c3ya1")
 sprite_frames = SubResource("SpriteFrames_j0q0p")
 animation = &"Jump"
 autoplay = "Idle"
+frame = 4
 offset = Vector2(0, -40)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
@@ -367,12 +368,11 @@ script = ExtResource("9_j3ty3")
 
 [node name="Splat2" type="AudioStreamPlayer" parent="." index="9"]
 stream = ExtResource("6_psbox")
-volume_db = -20.0
+volume_db = -5.0
 pitch_scale = 0.75
 bus = &"SFX"
 
 [node name="Splat" type="AudioStreamPlayer" parent="." index="10"]
 stream = ExtResource("7_44h05")
-volume_db = -15.0
 pitch_scale = 0.75
 bus = &"SFX"

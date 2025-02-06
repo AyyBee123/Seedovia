@@ -98,12 +98,12 @@ resources = [PackedStringArray("Explosion"), [ExtResource("3_uyl80")]]
 
 [node name="Metal1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_amymn")
-volume_db = -17.0
+volume_db = -5.0
 bus = &"SFX"
 
 [node name="Metal2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_1c0ml")
-volume_db = -15.0
+volume_db = -5.0
 bus = &"SFX"
 
 [node name="Frame Change Timer" type="Timer" parent="."]

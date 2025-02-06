@@ -513,6 +513,7 @@ shape = SubResource("CapsuleShape2D_ujka0")
 material = SubResource("ShaderMaterial_xyd1h")
 sprite_frames = SubResource("SpriteFrames_we6sr")
 animation = &"Jump"
+frame = 4
 
 [node name="CollisionPolygon2D" parent="Enemy Hitbox" index="0"]
 rotation = 1.5708
@@ -536,18 +537,16 @@ libraries = {
 speed_scale = 0.9
 
 [node name="Splat" type="AudioStreamPlayer" parent="." index="9"]
-volume_db = -20.0
 pitch_scale = 1.2
 bus = &"SFX"
 
 [node name="Splat2" type="AudioStreamPlayer" parent="." index="10"]
-volume_db = -22.0
+volume_db = -5.0
 pitch_scale = 1.2
 bus = &"SFX"
 
 [node name="Pop" type="AudioStreamPlayer" parent="." index="11"]
 stream = ExtResource("9_bj36o")
-volume_db = -10.0
 pitch_scale = 0.85
 bus = &"SFX"
 

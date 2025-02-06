@@ -62,12 +62,10 @@ resources = [PackedStringArray("Knockback"), [ExtResource("5_swcrf")]]
 
 [node name="Bonk" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_w3sqg")
-volume_db = -10.0
 bus = &"SFX"
 
 [node name="Smack" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_e6s8f")
-volume_db = -10.0
 pitch_scale = 1.2
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

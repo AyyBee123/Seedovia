@@ -583,12 +583,11 @@ texture = ExtResource("4_0r8v0")
 script = ExtResource("6_m40q1")
 
 [node name="Splat" type="AudioStreamPlayer" parent="." index="9"]
-volume_db = -15.0
 pitch_scale = 1.2
 bus = &"SFX"
 
 [node name="Splat2" type="AudioStreamPlayer" parent="." index="10"]
-volume_db = -20.0
+volume_db = -5.0
 pitch_scale = 1.2
 bus = &"SFX"
 

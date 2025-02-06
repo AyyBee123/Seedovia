@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://d08w6mej3y00y"]
+
+[ext_resource type="PackedScene" uid="uid://b8gxpiw6v8asa" path="res://Scenes/Levels/Floor 2 Base.tscn" id="1_lvjyt"]
+[ext_resource type="Shader" path="res://Shaders/circle_transition.gdshader" id="2_r4d7h"]
+[ext_resource type="PackedScene" uid="uid://0clgydaeshno" path="res://Scenes/Enemies/Obstacles/Wall Face.tscn" id="3_p83b8"]
+[ext_resource type="PackedScene" uid="uid://c4iasewjfsbsc" path="res://Scenes/Enemies/Statue of Mykell.tscn" id="4_obdyi"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0ecxy"]
+resource_local_to_scene = true
+shader = ExtResource("2_r4d7h")
+shader_parameter/circle_size = 0.0
+shader_parameter/circle_position_x = 0.5
+shader_parameter/circle_position_y = 0.695
+
+[node name="Level" instance=ExtResource("1_lvjyt")]
+
+[node name="Circle Transition" parent="." index="10"]
+material = SubResource("ShaderMaterial_0ecxy")
+
+[node name="Wall Face" parent="." index="11" instance=ExtResource("3_p83b8")]
+position = Vector2(832, 192)
+rotation = 1.5708
+
+[node name="Wall Face2" parent="." index="12" instance=ExtResource("3_p83b8")]
+position = Vector2(-832, -192)
+rotation = 4.71239
+
+[node name="Statue of Mykell" parent="." index="13" instance=ExtResource("4_obdyi")]
+position = Vector2(0, -256)

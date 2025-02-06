@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://1qqfo51e340"]
+
+[ext_resource type="PackedScene" uid="uid://bnawmyjsajle3" path="res://Scenes/Levels/Floor 1 Base.tscn" id="1_whv1c"]
+[ext_resource type="Shader" path="res://Shaders/circle_transition.gdshader" id="2_kwj2d"]
+[ext_resource type="PackedScene" uid="uid://d4j1lfex5tqx0" path="res://Scenes/Enemies/Clay Potato.tscn" id="3_tbqdl"]
+[ext_resource type="PackedScene" uid="uid://dooq0rslv0rx2" path="res://Scenes/Enemies/Dancing Mushroom.tscn" id="4_i0r0s"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0ecxy"]
+resource_local_to_scene = true
+shader = ExtResource("2_kwj2d")
+shader_parameter/circle_size = 0.0
+shader_parameter/circle_position_x = 0.5
+shader_parameter/circle_position_y = 0.695
+
+[node name="Level" instance=ExtResource("1_whv1c")]
+
+[node name="Circle Transition" parent="." index="10"]
+material = SubResource("ShaderMaterial_0ecxy")
+
+[node name="Clay Potato" parent="." index="11" instance=ExtResource("3_tbqdl")]
+position = Vector2(0, -160)
+
+[node name="Dancing Mushroom" parent="." index="12" instance=ExtResource("4_i0r0s")]
+position = Vector2(480, -88)
+
+[node name="Dancing Mushroom2" parent="." index="13" instance=ExtResource("4_i0r0s")]
+position = Vector2(-480, -88)

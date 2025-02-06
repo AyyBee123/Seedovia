@@ -53,12 +53,12 @@ texture = ExtResource("3_roh4i")
 
 [node name="Metal1" type="AudioStreamPlayer" parent="." index="5"]
 stream = ExtResource("6_f213a")
-volume_db = -18.0
+volume_db = -5.0
 pitch_scale = 1.15
 bus = &"SFX"
 
 [node name="Metal2" type="AudioStreamPlayer" parent="." index="6"]
 stream = ExtResource("7_bwiou")
-volume_db = -15.0
+volume_db = -5.0
 pitch_scale = 1.1
 bus = &"SFX"
