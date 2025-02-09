@@ -113,10 +113,13 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_4echs")
 }, {
-"duration": 1.0,
+"duration": 4.0,
 "texture": SubResource("AtlasTexture_vceq6")
 }, {
-"duration": 1.0,
+"duration": 0.4,
+"texture": SubResource("AtlasTexture_4echs")
+}, {
+"duration": 0.4,
 "texture": SubResource("AtlasTexture_6d3i5")
 }],
 "loop": false,
@@ -130,10 +133,13 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_gq31p")
 }, {
-"duration": 1.0,
+"duration": 4.0,
 "texture": SubResource("AtlasTexture_djs6u")
 }, {
-"duration": 1.0,
+"duration": 0.4,
+"texture": SubResource("AtlasTexture_gq31p")
+}, {
+"duration": 0.4,
 "texture": SubResource("AtlasTexture_bqck6")
 }],
 "loop": false,
@@ -162,8 +168,10 @@ script = ExtResource("4_55ksp")
 [node name="AnimatedSprite2D" parent="." index="2"]
 material = SubResource("ShaderMaterial_3u36u")
 sprite_frames = SubResource("SpriteFrames_kn2uu")
-animation = &"Shoot Side"
+animation = &"Shoot Down"
 autoplay = "Idle Side"
+frame = 4
+frame_progress = 1.0
 offset = Vector2(0, 2)
 
 [node name="Hitbox" parent="." index="3" groups=["Enemies"]]

@@ -11,10 +11,13 @@ var distance_per_frame
 var previous_pos
 var previous_dir
 var tick_delay: int
-var change_dir: int = 5
+var change_dir: int
+var _direction_changed: bool
 
 func _ready():
 	super._ready()
+	randomize()
+	change_dir = randi_range(2, 30)
 	frame_time.wait_time = 1.0 / speed * 100
 	distance_per_frame = texture.get_size().x * scale.x
 	tick_delay = segment_num
@@ -66,8 +69,9 @@ func _on_frame_time_timeout():
 		if change_dir > 0:
 			change_dir -= 1
 		else:
-			#direction = direction.rotated(-PI/2)
-			pass
+			if not _direction_changed:
+				_direction_changed = true
+				direction = direction.rotated(-PI/2) if randf() < 0.5 else direction.rotated(PI/2)
 		position += distance_per_frame * direction
 	frame_time.start()
 	previous_dir = old_dir

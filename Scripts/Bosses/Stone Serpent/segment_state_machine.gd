@@ -26,6 +26,8 @@ func _get_transition(delta):
 
 func _exit_state(old_state, new_state):
 	match old_state:
+		states.idle:
+			parent.animated_sprite_2d.stop()
 		states.shoot:
 			set_random_time()
 		
@@ -39,9 +41,9 @@ func _enter_state(new_state, old_state):
 			parent.current_progress = 0
 
 func set_random_time():
-	timer.start(randf_range(4, 8))
+	timer.start(randf_range(1, 8))
 
 func create_timer():
 	add_child(timer)
 	timer.one_shot = true
-	timer.start(randf_range(2,3))
+	timer.start(randf_range(1.5,3))

@@ -40,18 +40,21 @@ func _physics_process(delta):
 
 func idle():
 	velocity = direction * speed
+	
 	if direction.x != 0:
 		animated_sprite_2d.play("Idle Side")
 		animated_sprite_2d.offset.y = 2
 	else:
 		animated_sprite_2d.play("Idle Down")
 		animated_sprite_2d.offset.y = 0
+	
 	check_position()
 	
 	move_and_slide()
 
 func shoot():
 	velocity = direction * speed
+	
 	if direction.x != 0:
 		current_frame = animated_sprite_2d.get_frame()
 		current_progress = animated_sprite_2d.get_frame_progress()
@@ -64,6 +67,7 @@ func shoot():
 		animated_sprite_2d.play("Shoot Down")
 		animated_sprite_2d.set_frame_and_progress(current_frame, current_progress)
 		animated_sprite_2d.offset.y = 0
+	
 	check_position()
 	
 	move_and_slide()
@@ -103,10 +107,9 @@ func _on_animated_sprite_2d_animation_finished():
 		if direction.x == 0:
 			if global_position.x > 0:
 				bullet.direction = Vector2.LEFT
-				offset = Vector2.LEFT * 10
 			else:
 				bullet.direction = Vector2.RIGHT
-				offset = Vector2.RIGHT * 10
+			offset = bullet.direction * 64
 		else:
 			if global_position.y > 0:
 				bullet.direction = Vector2.UP
