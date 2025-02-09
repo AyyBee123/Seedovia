@@ -25,11 +25,11 @@ func _get_transition(delta):
 	match state:
 		states.idle:
 			pass
-			#if timer.is_stopped() and get_parent().player != null:
-				#if random_attack == 0:
+			if timer.is_stopped() and get_parent().player != null and parent.direction.y == 0:
+				if random_attack == 0:
 					#return states.charge
 				#if random_attack == 1:
-					#return states.jump
+					return states.jump
 		states.charge:
 			pass
 		states.jump:
@@ -40,20 +40,26 @@ func _enter_state(new_state, old_state):
 	match new_state:
 		states.idle:
 			pass
+		states.jump:
+			parent.start_jump()
+			parent.animated_sprite_2d.play("Jump")
 
 func _exit_state(old_state, new_state):
 	match old_state:
 		states.charge:
 			random_attack = random_attack_value()
 			set_random_time()
+		states.jump:
+			random_attack = random_attack_value()
+			set_random_time()
 
 func random_attack_value():
-	return randi_range(0, 2)
+	return randi_range(0, 0)
 
 func set_random_time():
-	timer.start(randf_range(1,2.5))
+	timer.start(randf_range(7, 10))
 
 func create_timer():
 	add_child(timer)
 	timer.one_shot = true
-	timer.start(randf_range(2,3))
+	timer.start(randf_range(4, 6))

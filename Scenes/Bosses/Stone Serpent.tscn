@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://bl7yfmhdjfd5l"]
+[gd_scene load_steps=43 format=3 uid="uid://bl7yfmhdjfd5l"]
 
 [ext_resource type="PackedScene" uid="uid://bfapejv6ymqws" path="res://Scenes/Bosses/Boss.tscn" id="1_xvga5"]
 [ext_resource type="Shader" path="res://Shaders/color_tint_shader.gdshader" id="2_4g725"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/Bosses/Stone Serpent/state_machine.gd" id="3_0iia1"]
 [ext_resource type="Texture2D" uid="uid://q8l0wp1asbp1" path="res://Sprites/Bosses/Stone Serpent/Head.png" id="3_mqfth"]
 [ext_resource type="Resource" uid="uid://btsfopt47ddxm" path="res://Resources/Bosses/stone_serpent.tres" id="3_xslpg"]
+[ext_resource type="AudioStream" uid="uid://mc66wc8mdc1d" path="res://Audio/SFX/Stomp.mp3" id="7_vnpnh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_r8cje"]
 resource_local_to_scene = true
@@ -291,7 +292,7 @@ disabled = true
 [node name="AnimatedSprite2D" parent="." index="2"]
 material = SubResource("ShaderMaterial_r8cje")
 sprite_frames = SubResource("SpriteFrames_0u72r")
-animation = &"Idle Side"
+animation = &"Jump"
 autoplay = "Idle Side"
 offset = Vector2(-12, -14.5)
 
@@ -356,7 +357,14 @@ position = Vector2(52, -58)
 rotation = -1.5708
 shape = SubResource("RectangleShape2D_h7gwj")
 
+[node name="Stomp" type="AudioStreamPlayer" parent="." index="12"]
+stream = ExtResource("7_vnpnh")
+volume_db = -5.0
+pitch_scale = 0.75
+bus = &"SFX"
+
 [connection signal="animation_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_changed"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="Detect Up" to="." method="_on_detect_up_body_entered"]
 [connection signal="body_entered" from="Detect Down" to="." method="_on_detect_down_body_entered"]
 [connection signal="body_entered" from="Detect Right" to="." method="_on_detect_right_body_entered"]

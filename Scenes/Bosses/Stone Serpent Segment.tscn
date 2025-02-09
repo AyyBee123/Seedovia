@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dffw4xx3df670"]
+[gd_scene load_steps=33 format=3 uid="uid://dffw4xx3df670"]
 
 [ext_resource type="PackedScene" uid="uid://b4qv2oi4vbgws" path="res://Scenes/Enemies/Obstacles/Obstacle.tscn" id="1_1gqqr"]
 [ext_resource type="Resource" uid="uid://d2p6fgnbm515l" path="res://Resources/Bosses/stone_serpent_segment.tres" id="2_caxgy"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" path="res://Scripts/Bosses/Stone Serpent/stone_serpent_segment.gd" id="2_w6ycy"]
 [ext_resource type="Texture2D" uid="uid://cbctmbvfjhhov" path="res://Sprites/Bosses/Stone Serpent/Body Segment.png" id="3_ygwwr"]
 [ext_resource type="Script" path="res://Scripts/Bosses/Stone Serpent/segment_state_machine.gd" id="4_55ksp"]
+[ext_resource type="AudioStream" uid="uid://dnl3t4q05xv0x" path="res://Audio/SFX/Dice Roll.mp3" id="7_etq6j"]
+[ext_resource type="AudioStream" uid="uid://mc66wc8mdc1d" path="res://Audio/SFX/Stomp.mp3" id="7_n0ak4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3u36u"]
 resource_local_to_scene = true
@@ -45,6 +47,30 @@ region = Rect2(128, 0, 64, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_t0phr"]
 atlas = ExtResource("3_ygwwr")
 region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qhbxn"]
+atlas = ExtResource("3_ygwwr")
+region = Rect2(1088, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pdbwa"]
+atlas = ExtResource("3_ygwwr")
+region = Rect2(1152, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yki2e"]
+atlas = ExtResource("3_ygwwr")
+region = Rect2(1216, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p4gk4"]
+atlas = ExtResource("3_ygwwr")
+region = Rect2(896, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xef8f"]
+atlas = ExtResource("3_ygwwr")
+region = Rect2(960, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xk2ch"]
+atlas = ExtResource("3_ygwwr")
+region = Rect2(1024, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6d3i5"]
 atlas = ExtResource("3_ygwwr")
@@ -104,6 +130,46 @@ animations = [{
 }],
 "loop": true,
 "name": &"Idle Side",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qhbxn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pdbwa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yki2e")
+}, {
+"duration": 0.6,
+"texture": SubResource("AtlasTexture_pdbwa")
+}, {
+"duration": 0.4,
+"texture": SubResource("AtlasTexture_qhbxn")
+}],
+"loop": false,
+"name": &"Jump Down",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p4gk4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xef8f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xk2ch")
+}, {
+"duration": 0.6,
+"texture": SubResource("AtlasTexture_xef8f")
+}, {
+"duration": 0.4,
+"texture": SubResource("AtlasTexture_p4gk4")
+}],
+"loop": false,
+"name": &"Jump Side",
 "speed": 10.0
 }, {
 "frames": [{
@@ -168,10 +234,8 @@ script = ExtResource("4_55ksp")
 [node name="AnimatedSprite2D" parent="." index="2"]
 material = SubResource("ShaderMaterial_3u36u")
 sprite_frames = SubResource("SpriteFrames_kn2uu")
-animation = &"Shoot Down"
+animation = &"Jump Side"
 autoplay = "Idle Side"
-frame = 4
-frame_progress = 1.0
 offset = Vector2(0, 2)
 
 [node name="Hitbox" parent="." index="3" groups=["Enemies"]]
@@ -185,5 +249,14 @@ shape = SubResource("CapsuleShape2D_hxgdn")
 [node name="Down" type="CollisionShape2D" parent="Hitbox" index="2"]
 visible = false
 shape = SubResource("CapsuleShape2D_38r1d")
+
+[node name="DiceRoll" type="AudioStreamPlayer" parent="." index="5"]
+stream = ExtResource("7_etq6j")
+
+[node name="Stomp" type="AudioStreamPlayer" parent="." index="6"]
+stream = ExtResource("7_n0ak4")
+volume_db = -5.0
+pitch_scale = 0.75
+bus = &"SFX"
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

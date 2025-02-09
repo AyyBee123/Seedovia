@@ -8,6 +8,7 @@ func _ready():
 	add_state("idle")
 	add_state("charge")
 	add_state("shoot")
+	add_state("jump")
 	set_state.call_deferred(states.idle)
 
 func _state_logic(delta):
@@ -30,7 +31,8 @@ func _exit_state(old_state, new_state):
 			parent.animated_sprite_2d.stop()
 		states.shoot:
 			set_random_time()
-		
+		states.jump:
+			set_random_time()
 
 func _enter_state(new_state, old_state):
 	match new_state:
@@ -39,6 +41,10 @@ func _enter_state(new_state, old_state):
 		states.shoot:
 			parent.current_frame = 0
 			parent.current_progress = 0
+		states.jump:
+			parent.current_frame = 0
+			parent.current_progress = 0
+			parent.jump()
 
 func set_random_time():
 	timer.start(randf_range(1, 8))

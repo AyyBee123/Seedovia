@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_xa4g2")
-max_health = 3000.0
+max_health = 2000.0
 speed = 300.0
 fire_rate = 0.0
 damage = 1.0
@@ -12,4 +12,4 @@ acceleration = 1.0
 friction = 1.0
 weapon_damage = 1.0
 weapon_range = 999999.0
-weapon_speed = 350.0
+weapon_speed = 500.0

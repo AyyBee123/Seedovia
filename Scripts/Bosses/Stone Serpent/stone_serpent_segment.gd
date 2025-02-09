@@ -1,12 +1,21 @@
 extends "res://Scripts/Enemies/Obstacles/obstacle.gd"
 
+signal jump_shoot
+signal shoot_finished(segment)
+
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var _state_machine = $state_machine
+@onready var stomp_SFX = $Stomp
+@onready var dice_roll_SFX = $DiceRoll
 
+const BULLET = preload("res://Scenes/Enemies/Weapons/Bullet.tscn")
 const SNAKE_BULLET = preload("res://Scenes/Enemies/Weapons/Snake Bullet.tscn")
 var damage_number = preload("res://Scenes/UI/damage_number.tscn")
 
+const SPREAD = PI/8
+
 var lead_segment
+var previous_segment
 var serpent
 var speed: float
 var direction: Vector2
@@ -20,6 +29,7 @@ var current_progress = 0
 func _ready():
 	super._ready()
 	player = Targets.get_player()
+	lead_segment.jump_shoot.connect(shoot_after_jump)
 	$Hitbox/Side.set_deferred("disabled", direction.x == 0)
 	$Hitbox/Down.set_deferred("disabled", direction.y == 0)
 	_enemy_stats.spawn_damage_number.connect(transfer_damage)
@@ -28,28 +38,22 @@ func _ready():
 	_enemy_stats.change_color.connect(change_color)
 
 func _physics_process(delta):
+	# once all the enemies in the current room are defeated, destroy the obstacle
+	if not is_instance_valid(serpent):
+		die()
+		return
+	
 	speed = serpent._enemy_stats.speed
 	if player == null: # keep looking for the player until they are found
 		player = Targets.get_player()
 	if is_in_area and damage_buffer.is_stopped() and _enemy_stats.damage > 0:
 		player._player_stats.take_damage(_enemy_stats.damage)
 		damage_buffer.start()
-	# once all the enemies in the current room are defeated, destroy the obstacle
-	if get_tree().get_nodes_in_group("Stone Serpent").size() == 0:
-		die()
 
 func idle():
 	velocity = direction * speed
-	
-	if direction.x != 0:
-		animated_sprite_2d.play("Idle Side")
-		animated_sprite_2d.offset.y = 2
-	else:
-		animated_sprite_2d.play("Idle Down")
-		animated_sprite_2d.offset.y = 0
-	
+	play_idle()
 	check_position()
-	
 	move_and_slide()
 
 func shoot():
@@ -71,6 +75,21 @@ func shoot():
 	check_position()
 	
 	move_and_slide()
+
+func jump_shot():
+	if direction.x != 0:
+		animated_sprite_2d.play("Jump Side")
+		animated_sprite_2d.offset.y = 2
+	else:
+		animated_sprite_2d.play("Jump Down")
+		animated_sprite_2d.offset.y = 0
+
+func shoot_after_jump():
+	animated_sprite_2d.stop()
+	jump_shot()
+
+func jump():
+	play_idle()
 
 func check_position():
 	if positions.is_empty():
@@ -97,6 +116,23 @@ func change_direction():
 	$Hitbox/Down.set_deferred("disabled", direction.y == 0)
 
 func _on_animated_sprite_2d_animation_finished():
+	if _state_machine.state == _state_machine.states.jump:
+		Targets.get_camera().add_trauma(0.2)
+		var angle = 0
+		while angle < TAU:
+			var bullet = BULLET.instantiate()
+			bullet.direction = Vector2.RIGHT.rotated(angle)
+			bullet.speed = _enemy_stats.weapon_speed * 0.75
+			bullet.range = _enemy_stats.weapon_range
+			get_tree().current_scene.add_child(bullet)
+			bullet.global_position = global_position
+			angle += SPREAD
+		stomp_SFX.play()
+		jump_shoot.emit()
+		shoot_finished.emit(self)
+		play_idle()
+		return
+	
 	if animated_sprite_2d.animation == "Shoot Side" or animated_sprite_2d.animation == "Shoot Down":
 		var bullet = SNAKE_BULLET.instantiate()
 		bullet.damage = _enemy_stats.weapon_damage
@@ -118,6 +154,15 @@ func _on_animated_sprite_2d_animation_finished():
 		_state_machine.set_state(_state_machine.states.idle)
 		get_tree().current_scene.add_child(bullet)
 		bullet.global_position = global_position + offset
+		dice_roll_SFX.play()
+
+func play_idle():
+	if direction.x != 0:
+		animated_sprite_2d.play("Idle Side")
+		animated_sprite_2d.offset.y = 2
+	else:
+		animated_sprite_2d.play("Idle Down")
+		animated_sprite_2d.offset.y = 0
 
 func transfer_damage(amount):
 	serpent._enemy_stats.take_damage_no_red(amount)

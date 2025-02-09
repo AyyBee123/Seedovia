@@ -1,9 +1,15 @@
 extends "res://Scripts/Bosses/boss.gd"
 
+signal jump_shoot
+
 @onready var animated_sprite_2d = $AnimatedSprite2D
+@onready var _state_machine = $StateMachine
+@onready var stomp_SFX = $Stomp
 
 const STONE_SERPENT_SEGMENT = preload("res://Scenes/Bosses/Stone Serpent Segment.tscn")
+const BULLET = preload("res://Scenes/Enemies/Weapons/Bullet.tscn")
 
+const SPREAD = PI/8
 const NUMBER_OF_SEGMENTS = 6
 const DISTANCE_BETWEEN_SEGMENTS = 150
 const change_dir_chance = 0.002
@@ -25,6 +31,7 @@ func _ready():
 			segment.lead_segment = segments[i - 1]
 		else:
 			segment.lead_segment = self
+		segment.shoot_finished.connect(shoot_finished)
 		get_tree().current_scene.add_child.call_deferred(segment)
 		segment.global_position = global_position + Vector2(DISTANCE_BETWEEN_SEGMENTS * (i + 1) - 30, 0)
 		segments.append(segment)
@@ -83,8 +90,18 @@ func set_random_direction():
 func charge():
 	pass
 
+func start_jump():
+	for seg in segments:
+		seg._state_machine.state = seg._state_machine.states.jump
+
 func jump():
 	pass
+
+func shoot_finished(s):
+	if s == segments[-1]:
+		_state_machine.state = _state_machine.states.idle
+		for seg in segments:
+			seg._state_machine.state = seg._state_machine.states.idle
 
 func play_anim(anim: String):
 	if animated_sprite_2d.animation != anim:
@@ -113,3 +130,17 @@ func _on_detect_right_body_entered(body):
 
 func _on_detect_left_body_entered(body):
 	set_random_direction()
+
+func _on_animated_sprite_2d_animation_finished():
+	Targets.get_camera().add_trauma(0.2)
+	var angle = 0
+	while angle < TAU:
+		var bullet = BULLET.instantiate()
+		bullet.direction = Vector2.RIGHT.rotated(angle)
+		bullet.speed = _enemy_stats.weapon_speed * 0.75
+		bullet.range = _enemy_stats.weapon_range
+		get_tree().current_scene.add_child(bullet)
+		bullet.global_position = global_position
+		angle += SPREAD
+	stomp_SFX.play()
+	segments[0].shoot_after_jump()
