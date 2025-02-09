@@ -14,6 +14,8 @@ var damage_number = preload("res://Scenes/UI/damage_number.tscn")
 
 const SPREAD = PI/8
 
+var launch_pos: Vector2
+var collision
 var lead_segment
 var previous_segment
 var serpent
@@ -21,6 +23,7 @@ var speed: float
 var direction: Vector2
 var positions: Array
 var new_directions: Array
+var launch_direction: Vector2
 
 ## for shooting animation when switching directions mid-animation
 var current_frame = 0
@@ -49,6 +52,12 @@ func _physics_process(delta):
 	if is_in_area and damage_buffer.is_stopped() and _enemy_stats.damage > 0:
 		player._player_stats.take_damage(_enemy_stats.damage)
 		damage_buffer.start()
+	# to ease the deceleration when the detached segments are connecting back together
+	if _state_machine.state == _state_machine.states.restore:
+		collision = move_and_collide(velocity * delta)
+		if collision:
+			velocity = velocity.bounce(collision.get_normal())
+			launch_direction = velocity.normalized()
 
 func idle():
 	velocity = direction * speed
@@ -94,6 +103,25 @@ func jump():
 func charge():
 	pass
 
+func launch():
+	velocity = launch_direction * speed * 1.5
+	
+	collision = move_and_collide(velocity * get_physics_process_delta_time())
+	if collision:
+		velocity = velocity.bounce(collision.get_normal())
+		launch_direction = velocity.normalized()
+
+func restore():
+	var tween = get_tree().create_tween()
+	
+	tween.tween_property(self, "velocity", Vector2.ZERO, 1)
+	tween.tween_interval(0.5)
+	tween.tween_property(self, "global_position", launch_pos, 1).set_trans(Tween.TRANS_QUAD)
+	tween.parallel().tween_callback(func(): 
+		$Hitbox/Side.set_deferred("disabled", true)
+		$Hitbox/Down.set_deferred("disabled", true)
+	)
+
 func check_position():
 	if positions.is_empty():
 		return
@@ -115,6 +143,12 @@ func check_position():
 func change_direction():
 	global_position = positions.pop_front()
 	direction = new_directions.pop_front()
+	$Hitbox/Side.set_deferred("disabled", direction.x == 0)
+	$Hitbox/Down.set_deferred("disabled", direction.y == 0)
+	$Side.set_deferred("disabled", direction.x == 0)
+	$Down.set_deferred("disabled", direction.y == 0)
+
+func reenable_hitbox():
 	$Hitbox/Side.set_deferred("disabled", direction.x == 0)
 	$Hitbox/Down.set_deferred("disabled", direction.y == 0)
 

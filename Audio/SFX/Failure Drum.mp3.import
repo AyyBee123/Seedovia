@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c5jvs77cn2767"
+path="res://.godot/imported/Failure Drum.mp3-f114f5d667dc93c104fd47dd83089bff.mp3str"
+
+[deps]
+
+source_file="res://Audio/SFX/Failure Drum.mp3"
+dest_files=["res://.godot/imported/Failure Drum.mp3-f114f5d667dc93c104fd47dd83089bff.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

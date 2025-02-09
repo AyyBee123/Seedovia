@@ -5,7 +5,11 @@ signal jump_shoot
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var _state_machine = $StateMachine
 @onready var stomp_SFX = $Stomp
+@onready var boing_SFX = $Boing
+@onready var failure_drum_SFX = $FailureDrum
+@onready var mild_explosion_SFX = $MildExplosion
 
+const ENEMY_EXPLOSION = preload("res://Scenes/Enemies/Weapons/Enemy Explosion.tscn")
 const STONE_SERPENT_SEGMENT = preload("res://Scenes/Bosses/Stone Serpent Segment.tscn")
 const BULLET = preload("res://Scenes/Enemies/Weapons/Bullet.tscn")
 
@@ -14,12 +18,15 @@ const NUMBER_OF_SEGMENTS = 6
 const DISTANCE_BETWEEN_SEGMENTS = 150
 const change_dir_chance = 0.002
 
+var Z_INDEX
 var direction: Vector2
 var segments: Array
 var lead_segment
+var launch_pos: Vector2
 
 func _ready():
 	super._ready()
+	Z_INDEX = z_index
 	direction = Vector2(-1, 0)
 	randomize()
 	for i in NUMBER_OF_SEGMENTS:
@@ -46,6 +53,8 @@ func idle():
 	move_and_slide()
 
 func set_random_direction():
+	if _state_machine.state == _state_machine.states.charge:
+		return
 	var directions = [Vector2.UP, Vector2.DOWN, Vector2.LEFT, Vector2.RIGHT]
 	var old_direction = direction
 	var new_direction = directions.pick_random()
@@ -88,18 +97,71 @@ func set_random_direction():
 			play_anim("Idle Side")
 
 func charge():
-	pass
+	boing_SFX.play()
+	failure_drum_SFX.play()
+	mild_explosion_SFX.play()
+	
+	$"Enemy Hitbox/Up".set_deferred("disabled", true)
+	$"Enemy Hitbox/Down".set_deferred("disabled", true)
+	$"Enemy Hitbox/Side".set_deferred("disabled", true)
+	
+	var tween = get_tree().create_tween()
+	
+	# launch the head and detach it from the other segments
+	tween.tween_property(self, "global_position:x", 2000 * direction.x, 2).as_relative()
+	tween.parallel().tween_property(self, "global_position:y", -2000, 2).as_relative()
+	tween.parallel().tween_property(animated_sprite_2d, "rotation", 2 * TAU, 2)
+	tween.parallel().tween_callback(launch_segments)
+	
+	tween.tween_interval(4)
+	
+	tween.tween_callback(func(): 
+		for seg in segments: 
+			seg._state_machine.state = seg._state_machine.states.restore
+	)
+	
+	# restore the head to its original position
+	tween.tween_interval(1.5)
+	tween.tween_callback(func(): global_position.y = launch_pos.y)
+	tween.parallel().tween_callback(func(): animated_sprite_2d.rotation = 0)
+	tween.parallel().tween_property(self, "global_position:x", launch_pos.x, 1).set_trans(Tween.TRANS_QUAD)
+	tween.tween_callback(func():
+		animated_sprite_2d.play("Idle Side")
+		global_position = launch_pos
+		_state_machine.state = _state_machine.states.idle
+		for seg in segments:
+			seg.global_position = seg.launch_pos
+			seg._state_machine.state = seg._state_machine.states.idle
+	)
 
 func start_jump():
 	for seg in segments:
 		seg._state_machine.state = seg._state_machine.states.jump
 
+func launch_segments():
+	var exp = ENEMY_EXPLOSION.instantiate()
+	exp.is_vanity = true
+	exp.size = 1.25
+	exp.modulate = "FF0000"
+	exp.z_index = Z_INDEX + 1
+	get_tree().current_scene.add_child.call_deferred(exp)
+	exp.global_position = segments[0].global_position + Vector2(32 * 2.8, 0)
+	
+	z_index = Z_INDEX + 1
+	for seg in segments:
+		seg.launch_direction = global_position.direction_to(seg.global_position).rotated(randf_range(-PI/2, PI/2)) \
+				.normalized()
+		seg._state_machine.state = seg._state_machine.states.launch
+
 func jump():
 	pass
 
 func start_charge():
+	launch_pos = global_position
 	for seg in segments:
 		seg._state_machine.state = seg._state_machine.states.charge
+		seg.launch_pos = seg.global_position
+		seg.play_idle()
 	animated_sprite_2d.play("Charge Beginning")
 
 func shoot_finished(s):
@@ -120,6 +182,8 @@ func play_anim(anim: String):
 		$"Enemy Hitbox/Side".position.x = -12
 
 func _on_animated_sprite_2d_animation_changed():
+	if $AnimatedSprite2D.animation == "Charge Beginning" or $AnimatedSprite2D.animation == "Jump":
+		return
 	$"Enemy Hitbox/Up".set_deferred("disabled", $AnimatedSprite2D.animation != "Idle Up")
 	$"Enemy Hitbox/Down".set_deferred("disabled", $AnimatedSprite2D.animation != "Idle Down")
 	$"Enemy Hitbox/Side".set_deferred("disabled", $AnimatedSprite2D.animation != "Idle Side")
@@ -152,3 +216,4 @@ func _on_animated_sprite_2d_animation_finished():
 		segments[0].shoot_after_jump()
 	if animated_sprite_2d.animation == "Charge Beginning":
 		animated_sprite_2d.play("Charge")
+		charge()

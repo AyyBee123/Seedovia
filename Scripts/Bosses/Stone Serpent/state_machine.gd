@@ -17,8 +17,6 @@ func _ready():
 func _state_logic(delta):
 	if state == states.idle:
 		parent.idle()
-	if state == states.charge:
-		parent.charge()
 	if state == states.jump:
 		parent.jump()
 
@@ -57,6 +55,7 @@ func _exit_state(old_state, new_state):
 			attack_count = 0
 			random_attack = random_attack_value()
 			set_random_time()
+			parent.z_index = parent.Z_INDEX
 		states.jump:
 			random_attack = random_attack_value()
 			set_random_time()

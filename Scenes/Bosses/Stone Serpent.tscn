@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://bl7yfmhdjfd5l"]
+[gd_scene load_steps=46 format=3 uid="uid://bl7yfmhdjfd5l"]
 
 [ext_resource type="PackedScene" uid="uid://bfapejv6ymqws" path="res://Scenes/Bosses/Boss.tscn" id="1_xvga5"]
 [ext_resource type="Shader" path="res://Shaders/color_tint_shader.gdshader" id="2_4g725"]
@@ -7,6 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://q8l0wp1asbp1" path="res://Sprites/Bosses/Stone Serpent/Head.png" id="3_mqfth"]
 [ext_resource type="Resource" uid="uid://btsfopt47ddxm" path="res://Resources/Bosses/stone_serpent.tres" id="3_xslpg"]
 [ext_resource type="AudioStream" uid="uid://mc66wc8mdc1d" path="res://Audio/SFX/Stomp.mp3" id="7_vnpnh"]
+[ext_resource type="AudioStream" uid="uid://comps6gc1nhci" path="res://Audio/SFX/Boing.mp3" id="7_yd3a8"]
+[ext_resource type="AudioStream" uid="uid://dviaq07q34iwy" path="res://Audio/SFX/Mild Explosion.mp3" id="8_31vjj"]
+[ext_resource type="AudioStream" uid="uid://c5jvs77cn2767" path="res://Audio/SFX/Failure Drum.mp3" id="9_581n7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_r8cje"]
 resource_local_to_scene = true
@@ -292,7 +295,7 @@ disabled = true
 [node name="AnimatedSprite2D" parent="." index="2"]
 material = SubResource("ShaderMaterial_r8cje")
 sprite_frames = SubResource("SpriteFrames_0u72r")
-animation = &"Jump"
+animation = &"Charge"
 autoplay = "Idle Side"
 offset = Vector2(-12, -14.5)
 
@@ -357,10 +360,25 @@ position = Vector2(52, -58)
 rotation = -1.5708
 shape = SubResource("RectangleShape2D_h7gwj")
 
-[node name="Stomp" type="AudioStreamPlayer" parent="." index="12"]
+[node name="Boing" type="AudioStreamPlayer" parent="." index="12"]
+stream = ExtResource("7_yd3a8")
+volume_db = -5.0
+pitch_scale = 1.25
+bus = &"SFX"
+
+[node name="MildExplosion" type="AudioStreamPlayer" parent="." index="13"]
+stream = ExtResource("8_31vjj")
+pitch_scale = 0.8
+bus = &"SFX"
+
+[node name="Stomp" type="AudioStreamPlayer" parent="." index="14"]
 stream = ExtResource("7_vnpnh")
 volume_db = -5.0
 pitch_scale = 0.75
+bus = &"SFX"
+
+[node name="FailureDrum" type="AudioStreamPlayer" parent="." index="15"]
+stream = ExtResource("9_581n7")
 bus = &"SFX"
 
 [connection signal="animation_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_changed"]
