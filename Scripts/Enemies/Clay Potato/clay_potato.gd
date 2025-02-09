@@ -8,7 +8,6 @@ const BULLET = preload("res://Scenes/Enemies/Weapons/Bullet.tscn")
 
 const SPREAD = PI/12
 
-var angle := 0.0
 var direction: Vector2
 
 func _ready():
@@ -36,6 +35,7 @@ func _on_fire_rate_timeout():
 func _on_animated_sprite_2d_animation_finished():
 	animated_sprite_2d.play("Idle")
 	$Shadow.visible = false
+	var angle = 0
 	while angle < TAU:
 		var bullet = BULLET.instantiate()
 		bullet.direction = Vector2.RIGHT.rotated(angle)
@@ -44,7 +44,6 @@ func _on_animated_sprite_2d_animation_finished():
 		get_tree().current_scene.add_child(bullet)
 		bullet.global_position = global_position
 		angle += SPREAD
-	angle = 0
 	
 	fire_rate.start()
 	stomp_SFX.play()
