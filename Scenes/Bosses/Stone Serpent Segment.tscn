@@ -252,6 +252,7 @@ shape = SubResource("CapsuleShape2D_38r1d")
 
 [node name="DiceRoll" type="AudioStreamPlayer" parent="." index="5"]
 stream = ExtResource("7_etq6j")
+bus = &"SFX"
 
 [node name="Stomp" type="AudioStreamPlayer" parent="." index="6"]
 stream = ExtResource("7_n0ak4")
