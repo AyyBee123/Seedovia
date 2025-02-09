@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://y1yluq5x2pcr"]
+
+[ext_resource type="PackedScene" uid="uid://bbc2vnfngjpdx" path="res://Scenes/Enemies/Weapons/Bullet.tscn" id="1_rsv1r"]
+[ext_resource type="Texture2D" uid="uid://6bak4gsuheof" path="res://Sprites/Enemies/Weapons/Square Bullet.png" id="2_tkinh"]
+[ext_resource type="Script" path="res://Scripts/Enemies/Weapons/snake_bullet.gd" id="3_gja8y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nh2fj"]
+
+[node name="Snake Bullet" instance=ExtResource("1_rsv1r")]
+z_index = 5
+texture = ExtResource("2_tkinh")
+script = ExtResource("3_gja8y")
+
+[node name="CollisionShape2D" parent="Bullet Hitbox" index="0"]
+shape = SubResource("RectangleShape2D_nh2fj")
+
+[node name="Frame Time" type="Timer" parent="." index="1"]
+one_shot = true
+
+[connection signal="timeout" from="Frame Time" to="." method="_on_frame_time_timeout"]

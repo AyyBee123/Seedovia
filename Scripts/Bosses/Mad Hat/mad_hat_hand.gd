@@ -46,7 +46,6 @@ func _physics_process(delta):
 		damage_buffer.start()
 	# once Mad Hat is defeated, destroy the hand
 	if get_tree().get_nodes_in_group("Mad Hat").size() == 0:
-		await get_tree().create_timer(0.5, false).timeout
 		die()
 
 func idle():

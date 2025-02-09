@@ -11,6 +11,7 @@ func _ready():
 	_enemy_stats = _enemy_stats.duplicate()
 	_enemy_stats.initialize_stats(_enemy_stats)
 	_enemy_stats.set_health(1)
+	player = Targets.get_player()
 
 func _physics_process(delta):
 	if player == null: # keep looking for the player until they are found

@@ -1,0 +1,181 @@
+[gd_scene load_steps=25 format=3 uid="uid://dffw4xx3df670"]
+
+[ext_resource type="PackedScene" uid="uid://b4qv2oi4vbgws" path="res://Scenes/Enemies/Obstacles/Obstacle.tscn" id="1_1gqqr"]
+[ext_resource type="Resource" uid="uid://d2p6fgnbm515l" path="res://Resources/Bosses/stone_serpent_segment.tres" id="2_caxgy"]
+[ext_resource type="Shader" path="res://Shaders/color_tint_shader.gdshader" id="2_q4ggv"]
+[ext_resource type="Script" path="res://Scripts/Bosses/Stone Serpent/stone_serpent_segment.gd" id="2_w6ycy"]
+[ext_resource type="Texture2D" uid="uid://cbctmbvfjhhov" path="res://Sprites/Bosses/Stone Serpent/Body Segment.png" id="3_ygwwr"]
+[ext_resource type="Script" path="res://Scripts/Bosses/Stone Serpent/segment_state_machine.gd" id="4_55ksp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3u36u"]
+resource_local_to_scene = true
+shader = ExtResource("2_q4ggv")
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/tint_factor = 0.0
+shader_parameter/fade = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ndeo"]
+atlas = ExtResource("3_ygwwr")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qhlr0"]
+atlas = ExtResource("3_ygwwr")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4blan"]
+atlas = ExtResource("3_ygwwr")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_clw7w"]
+atlas = ExtResource("3_ygwwr")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b6iqy"]
+atlas = ExtResource("3_ygwwr")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i3kiy"]
+atlas = ExtResource("3_ygwwr")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o1rvp"]
+atlas = ExtResource("3_ygwwr")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t0phr"]
+atlas = ExtResource("3_ygwwr")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6d3i5"]
+atlas = ExtResource("3_ygwwr")
+region = Rect2(704, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4echs"]
+atlas = ExtResource("3_ygwwr")
+region = Rect2(768, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vceq6"]
+atlas = ExtResource("3_ygwwr")
+region = Rect2(832, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bqck6"]
+atlas = ExtResource("3_ygwwr")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gq31p"]
+atlas = ExtResource("3_ygwwr")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_djs6u"]
+atlas = ExtResource("3_ygwwr")
+region = Rect2(640, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kn2uu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ndeo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qhlr0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4blan")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_clw7w")
+}],
+"loop": true,
+"name": &"Idle Down",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b6iqy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i3kiy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o1rvp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t0phr")
+}],
+"loop": true,
+"name": &"Idle Side",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6d3i5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4echs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vceq6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6d3i5")
+}],
+"loop": false,
+"name": &"Shoot Down",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bqck6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gq31p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_djs6u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bqck6")
+}],
+"loop": false,
+"name": &"Shoot Side",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hxgdn"]
+radius = 14.0
+height = 58.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_38r1d"]
+radius = 20.0
+height = 58.0
+
+[node name="Stone Serpent Segment" instance=ExtResource("1_1gqqr")]
+scale = Vector2(2.8, 2.8)
+collision_layer = 4
+collision_mask = 8
+script = ExtResource("2_w6ycy")
+_enemy_stats = ExtResource("2_caxgy")
+
+[node name="state_machine" type="Node" parent="." index="0"]
+script = ExtResource("4_55ksp")
+
+[node name="AnimatedSprite2D" parent="." index="2"]
+material = SubResource("ShaderMaterial_3u36u")
+sprite_frames = SubResource("SpriteFrames_kn2uu")
+animation = &"Shoot Side"
+autoplay = "Idle Side"
+offset = Vector2(0, 2)
+
+[node name="Hitbox" parent="." index="3" groups=["Enemies"]]
+collision_layer = 4
+
+[node name="Side" type="CollisionShape2D" parent="Hitbox" index="1"]
+visible = false
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_hxgdn")
+
+[node name="Down" type="CollisionShape2D" parent="Hitbox" index="2"]
+visible = false
+shape = SubResource("CapsuleShape2D_38r1d")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
