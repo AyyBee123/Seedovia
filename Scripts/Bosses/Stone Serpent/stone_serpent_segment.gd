@@ -91,6 +91,9 @@ func shoot_after_jump():
 func jump():
 	play_idle()
 
+func charge():
+	pass
+
 func check_position():
 	if positions.is_empty():
 		return

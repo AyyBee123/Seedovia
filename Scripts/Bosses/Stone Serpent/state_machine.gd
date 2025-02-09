@@ -2,6 +2,7 @@ extends state_machine
 
 var timer = Timer.new()
 var random_attack: int
+var attack_count: int = 0
 
 func _ready():
 	randomize()
@@ -26,9 +27,11 @@ func _get_transition(delta):
 		states.idle:
 			pass
 			if timer.is_stopped() and get_parent().player != null and parent.direction.y == 0:
-				if random_attack == 0:
-					#return states.charge
-				#if random_attack == 1:
+				if random_attack == 0 and attack_count >= 2:
+					return states.charge
+				else:
+					random_attack = random_attack_value()
+				if random_attack == 1:
 					return states.jump
 		states.charge:
 			pass
@@ -43,10 +46,15 @@ func _enter_state(new_state, old_state):
 		states.jump:
 			parent.start_jump()
 			parent.animated_sprite_2d.play("Jump")
+		states.charge:
+			parent.start_charge()
 
 func _exit_state(old_state, new_state):
 	match old_state:
+		states.idle:
+			attack_count += 1
 		states.charge:
+			attack_count = 0
 			random_attack = random_attack_value()
 			set_random_time()
 		states.jump:
@@ -54,7 +62,7 @@ func _exit_state(old_state, new_state):
 			set_random_time()
 
 func random_attack_value():
-	return randi_range(0, 0)
+	return randi_range(0, 1)
 
 func set_random_time():
 	timer.start(randf_range(7, 10))

@@ -16,6 +16,8 @@ func _state_logic(delta):
 		parent.idle()
 	if state == states.shoot:
 		parent.shoot()
+	if state == states.charge:
+		parent.charge()
 
 func _get_transition(delta):
 	match state:

@@ -97,6 +97,11 @@ func start_jump():
 func jump():
 	pass
 
+func start_charge():
+	for seg in segments:
+		seg._state_machine.state = seg._state_machine.states.charge
+	animated_sprite_2d.play("Charge Beginning")
+
 func shoot_finished(s):
 	if s == segments[-1]:
 		_state_machine.state = _state_machine.states.idle
@@ -132,15 +137,18 @@ func _on_detect_left_body_entered(body):
 	set_random_direction()
 
 func _on_animated_sprite_2d_animation_finished():
-	Targets.get_camera().add_trauma(0.2)
-	var angle = 0
-	while angle < TAU:
-		var bullet = BULLET.instantiate()
-		bullet.direction = Vector2.RIGHT.rotated(angle)
-		bullet.speed = _enemy_stats.weapon_speed * 0.75
-		bullet.range = _enemy_stats.weapon_range
-		get_tree().current_scene.add_child(bullet)
-		bullet.global_position = global_position
-		angle += SPREAD
-	stomp_SFX.play()
-	segments[0].shoot_after_jump()
+	if animated_sprite_2d.animation == "Jump":
+		Targets.get_camera().add_trauma(0.2)
+		var angle = 0
+		while angle < TAU:
+			var bullet = BULLET.instantiate()
+			bullet.direction = Vector2.RIGHT.rotated(angle)
+			bullet.speed = _enemy_stats.weapon_speed * 0.75
+			bullet.range = _enemy_stats.weapon_range
+			get_tree().current_scene.add_child(bullet)
+			bullet.global_position = global_position
+			angle += SPREAD
+		stomp_SFX.play()
+		segments[0].shoot_after_jump()
+	if animated_sprite_2d.animation == "Charge Beginning":
+		animated_sprite_2d.play("Charge")
