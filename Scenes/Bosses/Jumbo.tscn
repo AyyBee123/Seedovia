@@ -575,25 +575,23 @@ disabled = true
 
 [node name="Splat2" type="AudioStreamPlayer" parent="." index="11"]
 stream = ExtResource("7_mvsl1")
-volume_db = -20.0
+volume_db = -5.0
 pitch_scale = 0.65
 bus = &"SFX"
 
 [node name="Splat" type="AudioStreamPlayer" parent="." index="12"]
 stream = ExtResource("8_2bn8l")
-volume_db = -20.0
+volume_db = -5.0
 pitch_scale = 0.65
 bus = &"SFX"
 
 [node name="Stomp" type="AudioStreamPlayer" parent="." index="13"]
 stream = ExtResource("9_4bi4l")
-volume_db = -15.0
 pitch_scale = 0.75
 bus = &"SFX"
 
 [node name="Stomp2" type="AudioStreamPlayer" parent="." index="14"]
 stream = ExtResource("9_4bi4l")
-volume_db = -15.0
 pitch_scale = 0.5
 bus = &"SFX"
 

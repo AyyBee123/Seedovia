@@ -466,27 +466,24 @@ position = Vector2(0, 45)
 
 [node name="HauntedFortressMouthSlam" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_apror")
-volume_db = -10.0
+volume_db = -5.0
 bus = &"SFX"
 
 [node name="Bfg" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("15_lrbjh")
-volume_db = -5.0
 bus = &"SFX"
 
 [node name="Rumble" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("16_6ogai")
-volume_db = -5.0
 bus = &"SFX"
 
 [node name="Humming" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("17_p7356")
-volume_db = -30.0
+volume_db = -7.0
 bus = &"SFX"
 
 [node name="Vacuum" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("18_oxhgb")
-volume_db = -5.0
 bus = &"SFX"
 
 [node name="Light Beam Points" type="Node2D" parent="."]
