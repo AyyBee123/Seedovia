@@ -40,7 +40,7 @@ func _get_transition(delta):
 func _enter_state(new_state, old_state):
 	match new_state:
 		states.idle:
-			pass
+			parent.animated_sprite_2d.play("Idle Side")
 		states.jump:
 			parent.start_jump()
 			parent.animated_sprite_2d.play("Jump")

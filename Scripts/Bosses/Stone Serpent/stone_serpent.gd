@@ -47,6 +47,11 @@ func _ready():
 func idle():
 	velocity = direction * _enemy_stats.speed
 	
+	$"Detect Up/Detect Up".set_deferred("disabled", false)
+	$"Detect Down/Detect Down".set_deferred("disabled", false)
+	$"Detect Right/Detect Right".set_deferred("disabled", false)
+	$"Detect Left/Detect Left".set_deferred("disabled", false)
+	
 	if randf() <= change_dir_chance:
 		set_random_direction()
 	
@@ -100,6 +105,11 @@ func charge():
 	boing_SFX.play()
 	failure_drum_SFX.play()
 	mild_explosion_SFX.play()
+	
+	$"Detect Up/Detect Up".set_deferred("disabled", true)
+	$"Detect Down/Detect Down".set_deferred("disabled", true)
+	$"Detect Right/Detect Right".set_deferred("disabled", true)
+	$"Detect Left/Detect Left".set_deferred("disabled", true)
 	
 	$"Enemy Hitbox/Up".set_deferred("disabled", true)
 	$"Enemy Hitbox/Down".set_deferred("disabled", true)
