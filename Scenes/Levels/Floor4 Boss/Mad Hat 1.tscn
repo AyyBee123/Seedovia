@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://dsxt1to7roiy4"]
+
+[ext_resource type="PackedScene" uid="uid://chj80f72y8sfx" path="res://Scenes/Levels/Floor 4 Base.tscn" id="1_nrtdg"]
+[ext_resource type="Shader" path="res://Shaders/circle_transition.gdshader" id="2_k86lh"]
+[ext_resource type="PackedScene" uid="uid://bibfc5xdf0ygi" path="res://Scenes/Bosses/Mad Hat.tscn" id="3_1daq8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5xmff"]
+resource_local_to_scene = true
+shader = ExtResource("2_k86lh")
+shader_parameter/circle_size = 0.0
+shader_parameter/circle_position_x = 0.5
+shader_parameter/circle_position_y = 0.695
+
+[node name="Level" instance=ExtResource("1_nrtdg")]
+
+[node name="Circle Transition" parent="." index="10"]
+material = SubResource("ShaderMaterial_5xmff")
+
+[node name="Mad Hat" parent="." index="11" instance=ExtResource("3_1daq8")]
+position = Vector2(0, -256)
