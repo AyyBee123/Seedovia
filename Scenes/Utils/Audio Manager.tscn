@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://usetxd7ii511"]
+[gd_scene load_steps=10 format=3 uid="uid://usetxd7ii511"]
 
 [ext_resource type="Script" path="res://Scripts/Utils/audio_manager.gd" id="1_bpx0j"]
 [ext_resource type="AudioStream" uid="uid://bpk6gao5jcjkq" path="res://Audio/SFX/Hit.mp3" id="1_qnkjs"]
@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://dxvs3t6m7coyv" path="res://Audio/SFX/Hit2.mp3" id="6_8awm8"]
 [ext_resource type="AudioStream" uid="uid://bnwgdhdobsrbm" path="res://Audio/SFX/Splat2.mp3" id="7_hi1cj"]
 [ext_resource type="AudioStream" uid="uid://mc66wc8mdc1d" path="res://Audio/SFX/Stomp.mp3" id="8_0yw3u"]
+[ext_resource type="AudioStream" uid="uid://bfcswe4vt2exs" path="res://Audio/SFX/Bubble Pop 2.mp3" id="9_70u3o"]
 
 [node name="Audio Manager" type="Node"]
 script = ExtResource("1_bpx0j")
@@ -89,3 +90,9 @@ bus = &"SFX"
 [node name="Bomb Pot Explosion" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_fp62v")
 pitch_scale = 0.9
+
+[node name="BubblePop2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_70u3o")
+volume_db = -8.0
+pitch_scale = 0.7
+bus = &"SFX"

@@ -58,6 +58,7 @@ func _collide(body):
 		has_stopped = true
 	weapon_direction = -direction
 	SfxDeconflicter.play(Game.audio_manager.hit)
+	SfxDeconflicter.play(Game.audio_manager.bubble_pop_2)
 	shoot_next_weapon()
 
 func travelled_distance():

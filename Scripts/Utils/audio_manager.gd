@@ -15,6 +15,7 @@ extends Node
 @onready var chocolate_splat = $"Chocolate Splat"
 @onready var stomp = $Stomp
 @onready var bomb_pot_explosion = $"Bomb Pot Explosion"
+@onready var bubble_pop_2 = $BubblePop2
 
 func _ready():
 	SignalBus.play_audio.connect(play)

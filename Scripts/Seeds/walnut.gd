@@ -31,6 +31,7 @@ func _collide(body):
 	if body.is_in_group("Enemies"):
 		body.get_parent()._enemy_stats.take_damage(player._player_stats.get_stat("Weapon_Damage") * damage_multiplier)
 	SfxDeconflicter.play(Game.audio_manager.walnut_hit)
+	SfxDeconflicter.play(Game.audio_manager.bubble_pop_2)
 	queue_free.call_deferred()
 
 func shoot_next_weapon():

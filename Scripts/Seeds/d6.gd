@@ -60,6 +60,8 @@ func _collide(body):
 		body.get_parent()._enemy_stats.take_damage(player._player_stats.get_stat("Weapon_Damage") * damage_multiplier * get_dice_damage_multiplier())
 	var weapon = null if PlayerSeeds.seeds.size() <= 1 + slot_index or slot_index >= 2 \
 			else PlayerSeeds.seeds[slot_index + 1]
+	SfxDeconflicter.play(Game.audio_manager.hit)
+	SfxDeconflicter.play(Game.audio_manager.bubble_pop_2)
 	shoot_next_weapon()
 	queue_free.call_deferred()
 
