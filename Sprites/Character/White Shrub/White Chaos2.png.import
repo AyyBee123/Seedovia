@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3ap2ddmxb1a8"
-path="res://.godot/imported/White Shrub3.png-cec8777da675addf2074e750b95076b3.ctex"
+uid="uid://6vom2g6kgnh7"
+path="res://.godot/imported/White Chaos2.png-1b49362dac12414e480b9a5024e27f64.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Character/White Shrub/White Shrub3.png"
-dest_files=["res://.godot/imported/White Shrub3.png-cec8777da675addf2074e750b95076b3.ctex"]
+source_file="res://Sprites/Character/White Shrub/White Chaos2.png"
+dest_files=["res://.godot/imported/White Chaos2.png-1b49362dac12414e480b9a5024e27f64.ctex"]
 
 [params]
 

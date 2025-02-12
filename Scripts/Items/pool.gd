@@ -9,8 +9,8 @@ var pickup_pool = ResourceLoader.load("res://Resources/Items/Pools/pickup_pool.t
 var coin_pool = ResourceLoader.load("res://Resources/Items/Pools/coin_pool.tres")
 
 # for the White Shrub character when they start a run
-var white_shrub_seed_pool = ResourceLoader.load("res://Resources/Items/Pools/white_shrub_seed_pool.tres")
-var white_shrub_talisman_pool = ResourceLoader.load("res://Resources/Items/Pools/white_shrub_equipment_pool.tres")
+var white_shrub_seed_pool = ResourceLoader.load("res://Resources/Items/Pools/white_chaos_seed_pool.tres")
+var white_shrub_talisman_pool = ResourceLoader.load("res://Resources/Items/Pools/white_chaos_equipment_pool.tres")
 
 var accumulated_weight: float # used to determine what item is chosen
 

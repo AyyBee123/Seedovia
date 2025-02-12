@@ -9,10 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://b7ynn50wtvp24" path="res://Sprites/Character/Berry/Berry1.png" id="6_ubcw7"]
 [ext_resource type="Resource" uid="uid://dxk70g7cem73p" path="res://Resources/Characters/berry.tres" id="7_yw2tk"]
 [ext_resource type="Resource" uid="uid://bn8q0ppmt06w1" path="res://Resources/Characters/Stats/berry.tres" id="8_kytvv"]
-[ext_resource type="Texture2D" uid="uid://b53os8trmovki" path="res://Sprites/Character/White Shrub/White Shrub1.png" id="9_ifkyc"]
+[ext_resource type="Texture2D" uid="uid://b53os8trmovki" path="res://Sprites/Character/White Shrub/White Chaos1.png" id="9_ifkyc"]
 [ext_resource type="Texture2D" uid="uid://bjgufl8bibvcq" path="res://Sprites/Achievements/Locked.png" id="9_swufb"]
-[ext_resource type="Resource" uid="uid://bvqprp6nul3d2" path="res://Resources/Characters/white_shrub.tres" id="10_q0efv"]
-[ext_resource type="Resource" uid="uid://bgnhohltve07x" path="res://Resources/Characters/Stats/white_shrub.tres" id="11_nofwc"]
+[ext_resource type="Resource" uid="uid://bvqprp6nul3d2" path="res://Resources/Characters/white_chaos.tres" id="10_q0efv"]
+[ext_resource type="Resource" uid="uid://bgnhohltve07x" path="res://Resources/Characters/Stats/white_chaos.tres" id="11_nofwc"]
 
 [node name="Character Select" type="Control"]
 layout_mode = 3
@@ -75,7 +75,7 @@ texture = ExtResource("9_ifkyc")
 script = ExtResource("3_alya1")
 starting_character = ExtResource("10_q0efv")
 starting_stats = ExtResource("11_nofwc")
-character_scene = "res://Scenes/Characters/White Shrub.tscn"
+character_scene = "res://Scenes/Characters/White Chaos.tscn"
 
 [node name="Lock" type="TextureRect" parent="Characters/Character 3"]
 visible = false
