@@ -13,10 +13,10 @@ const ENEMY_EXPLOSION = preload("res://Scenes/Enemies/Weapons/Enemy Explosion.ts
 const STONE_SERPENT_SEGMENT = preload("res://Scenes/Bosses/Stone Serpent Segment.tscn")
 const BULLET = preload("res://Scenes/Enemies/Weapons/Bullet.tscn")
 
-const SPREAD = PI/8
+const SPREAD = PI/6
 const NUMBER_OF_SEGMENTS = 6
 const DISTANCE_BETWEEN_SEGMENTS = 150
-const change_dir_chance = 0.002
+const change_dir_chance = 0.005
 
 var Z_INDEX
 var direction: Vector2
@@ -33,6 +33,7 @@ func _ready():
 		var segment = STONE_SERPENT_SEGMENT.instantiate()
 		segment.serpent = self
 		segment.direction = direction
+		segment.SPREAD = SPREAD
 		# assign the leading segment for each segment to directly follow
 		if lead_segment:
 			segment.lead_segment = segments[i - 1]
@@ -74,11 +75,6 @@ func set_random_direction():
 		set_random_direction()
 		return
 	if new_direction == Vector2.RIGHT and not $"Detect Right".get_overlapping_bodies().is_empty():
-		set_random_direction()
-		return
-	
-	# only change direction left or right relative to the current direction
-	if abs(old_direction) == abs(new_direction):
 		set_random_direction()
 		return
 	

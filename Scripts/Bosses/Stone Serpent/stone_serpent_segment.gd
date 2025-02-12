@@ -12,8 +12,7 @@ const BULLET = preload("res://Scenes/Enemies/Weapons/Bullet.tscn")
 const SNAKE_BULLET = preload("res://Scenes/Enemies/Weapons/Snake Bullet.tscn")
 var damage_number = preload("res://Scenes/UI/damage_number.tscn")
 
-const SPREAD = PI/8
-
+var SPREAD: float
 var launch_pos: Vector2
 var collision
 var lead_segment
