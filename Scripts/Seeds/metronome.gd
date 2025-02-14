@@ -1,22 +1,19 @@
 extends "res://Scripts/Seeds/seed_template.gd"
 
-var seed_list: Array = []
-var seed_resources
 var random_seed
 
 func _ready():
 	super._ready()
-	seed_resources = get_all_file_paths("res://Resources/Items/Seeds/")
-	for seed in seed_resources:
-		if ResourceLoader.load(seed).item_name == "Metronome": # skip metronome (obviously)
-			continue
-		seed_list.append(ResourceLoader.load(seed).scene)
-	random_seed = seed_list.pick_random().instantiate()
-	set_weapon_properties(random_seed, desired_direction, ignore_first_collision, hit_enemy)
-	queue_free.call_deferred()
+	shoot_seed()
 
-func _physics_process(delta):
-	pass
+func shoot_seed():
+	var seed = Pool.seed_list.pick_random()
+	if ResourceLoader.load(seed).item_name == "Metronome": # skip metronome (obviously)
+		shoot_seed()
+		return
+	var seed_instance = ResourceLoader.load(seed).scene.instantiate()
+	set_weapon_properties(seed_instance, desired_direction, ignore_first_collision, hit_enemy)
+	queue_free.call_deferred()
 
 func set_weapon_properties(weapon, _desired_direction, _ignore_first_collision = false, _enemy = null):
 	weapon.initial_weapon = false

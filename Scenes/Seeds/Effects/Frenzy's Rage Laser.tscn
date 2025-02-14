@@ -20,6 +20,5 @@ resources = [PackedStringArray("Frenzy\'s Rage Laser 1", "Frenzy\'s Rage Laser 2
 
 [node name="SpaceLaser" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_l2t8p")
-volume_db = -10.0
 pitch_scale = 1.2
 bus = &"SFX"

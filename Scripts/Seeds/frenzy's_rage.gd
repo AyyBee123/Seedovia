@@ -9,8 +9,8 @@ extends "res://Scripts/Seeds/seed_template.gd"
 @onready var area = $"Laser Area"
 @onready var space_laser_noise_SFX = $SpaceLaserNoise
 
-const BASE_LASER_RADIUS = 100
-const LASER_RADIUS_MULTIPLIER = 2
+const BASE_LASER_RADIUS = 50
+const LASER_RADIUS_MULTIPLIER = 0.5
 const FRENZY_FIRE_RATE_MULTIPLIER = 2
 
 var enemies_in_area := []
