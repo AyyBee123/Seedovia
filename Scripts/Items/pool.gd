@@ -8,6 +8,7 @@ var seed_pool = ResourceLoader.load("res://Resources/Items/Pools/seed_pool.tres"
 var pickup_pool = ResourceLoader.load("res://Resources/Items/Pools/pickup_pool.tres")
 var coin_pool = ResourceLoader.load("res://Resources/Items/Pools/coin_pool.tres")
 
+# for metronome to get a random seed from
 @onready var seed_list = get_all_file_paths("res://Resources/Items/Seeds/")
 
 # for the White Shrub character when they start a run
