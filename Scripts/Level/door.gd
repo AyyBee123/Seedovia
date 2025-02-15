@@ -7,11 +7,12 @@ var reward
 var text
 
 var reward_weight = {
-	# index 0, 1, and 2 are talisman, consumable, seed pools, and money respectively
-	0: 0.15,
-	1: 0.30,
-	2: 0.10,
-	3: 0.45
+	# index 0, 1, 2, 3, and 4 are talisman, consumable, seed pools, money, and stat up respectively
+	0: 0.10,
+	1: 0.14,
+	2: 0.06,
+	3: 0.30,
+	4: 0.40
 }
 
 func _ready():
@@ -69,6 +70,11 @@ func set_reward(reward_text: String = ""):
 			return
 		"Coins":
 			reward = Pool.pools[3]
+			text = reward.pool_name
+			$"Background/Reward Text".text = "[center]Reward\n" + reward.pool_name
+			return
+		"Stat Up":
+			reward = Pool.pools[4]
 			text = reward.pool_name
 			$"Background/Reward Text".text = "[center]Reward\n" + reward.pool_name
 			return

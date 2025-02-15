@@ -7,6 +7,7 @@ var passive_pool = ResourceLoader.load("res://Resources/Items/Pools/passive_pool
 var seed_pool = ResourceLoader.load("res://Resources/Items/Pools/seed_pool.tres")
 var pickup_pool = ResourceLoader.load("res://Resources/Items/Pools/pickup_pool.tres")
 var coin_pool = ResourceLoader.load("res://Resources/Items/Pools/coin_pool.tres")
+var stat_up_pool = ResourceLoader.load("res://Resources/Items/Pools/stat_up_pool.tres")
 
 # for metronome to get a random seed from
 @onready var seed_list = get_all_file_paths("res://Resources/Items/Seeds/")
@@ -102,6 +103,7 @@ func start():
 	populate_pool(consumable_pool, consumable_weights)
 	populate_pool(seed_pool, seed_weights)
 	populate_pool(coin_pool)
+	populate_pool(stat_up_pool)
 	add_pool = false
 	populate_pool(pickup_pool)
 	populate_pool(white_shrub_seed_pool, white_shrub_seed_weights)
@@ -138,6 +140,7 @@ func continue_run():
 	populate_pool(consumable_pool, consumable_weights)
 	populate_pool(seed_pool, seed_weights)
 	populate_pool(coin_pool)
+	populate_pool(stat_up_pool)
 	add_pool = false
 	populate_pool(pickup_pool)
 	add_floors()

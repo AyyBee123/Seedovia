@@ -42,6 +42,7 @@ func set_shop_items():
 				pool = Pool.seed_pool
 			"Pickup":
 				pool = Pool.pickup_pool
+				pool.append_array(Pool.stat_up_pool)
 		item.set_item(Pool.get_item(pool))
 		# prevents seeds and talismans in the player's inventory from being chosen
 		# also prevents shop items from selling the same item twice

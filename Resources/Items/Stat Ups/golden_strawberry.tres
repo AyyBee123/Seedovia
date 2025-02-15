@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="golden_strawberry" load_steps=3 format=3 uid="uid://prcakcnqju1j"]
+
+[ext_resource type="Script" path="res://Scripts/Pickups/golden_strawberrry.gd" id="1_q84qg"]
+[ext_resource type="Texture2D" uid="uid://pirc8jbonxlt" path="res://Sprites/Stat Ups/Golden Strawberry.png" id="2_sqx66"]
+
+[resource]
+script = ExtResource("1_q84qg")
+amount = 10.0
+weight = 1.0
+shop_price = 10
+item_name = "Golden Strawberry"
+texture = ExtResource("2_sqx66")
+description = ""
+unlocked = true

@@ -10,3 +10,4 @@ shop_price = 35
 item_name = "Max Health"
 texture = ExtResource("2_qeb6s")
 description = "+1 Max Health"
+unlocked = true

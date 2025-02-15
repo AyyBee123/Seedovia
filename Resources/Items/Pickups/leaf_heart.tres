@@ -9,4 +9,5 @@ weight = 0.25
 shop_price = 20
 item_name = "Leaf Heart"
 texture = ExtResource("2_jqwmo")
-description = "Grants +1 Leaf Heart"
+description = "+1 Leaf Heart"
+unlocked = true

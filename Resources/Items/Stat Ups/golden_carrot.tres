@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="golden_carrot" load_steps=3 format=3 uid="uid://c0sotuxgcaqy6"]
+
+[ext_resource type="Script" path="res://Scripts/Pickups/golden_carrot.gd" id="1_aw0fr"]
+[ext_resource type="Texture2D" uid="uid://c0wwlouy08tuj" path="res://Sprites/Stat Ups/Golden Carrot.png" id="2_8s3go"]
+
+[resource]
+script = ExtResource("1_aw0fr")
+amount = 25.0
+weight = 1.0
+shop_price = 10
+item_name = "Golden Carrot"
+texture = ExtResource("2_8s3go")
+description = ""
+unlocked = true

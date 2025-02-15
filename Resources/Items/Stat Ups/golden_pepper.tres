@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="golden_pepper" load_steps=3 format=3 uid="uid://do661bp0s0h6t"]
+
+[ext_resource type="Script" path="res://Scripts/Pickups/golden_pepper.gd" id="1_62jhb"]
+[ext_resource type="Texture2D" uid="uid://dt2t4awhrey0b" path="res://Sprites/Stat Ups/Golden Pepper.png" id="2_o7lml"]
+
+[resource]
+script = ExtResource("1_62jhb")
+amount = 0.1
+weight = 1.0
+shop_price = 10
+item_name = "Golden Pepper"
+texture = ExtResource("2_o7lml")
+description = ""
+unlocked = true

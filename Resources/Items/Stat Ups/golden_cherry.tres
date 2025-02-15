@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="golden_cherry" load_steps=3 format=3 uid="uid://daeh2rf8ijwce"]
+
+[ext_resource type="Script" path="res://Scripts/Pickups/golden_cherry.gd" id="1_w6xv8"]
+[ext_resource type="Texture2D" uid="uid://00k63y726lvv" path="res://Sprites/Stat Ups/Golden Cherry.png" id="2_w5v87"]
+
+[resource]
+script = ExtResource("1_w6xv8")
+amount = 1.0
+weight = 1.0
+shop_price = 10
+item_name = "Golden Cherry"
+texture = ExtResource("2_w5v87")
+description = ""
+unlocked = true
