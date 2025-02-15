@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://jxchnjlygpqv"
-path="res://.godot/imported/Hermes Boots.png-067b56a2e374c63e72ebb2a669e38e06.ctex"
+uid="uid://ct7nvank8kxdu"
+path="res://.godot/imported/Coffee Bean.png-362982b3e2262c717211cc122c5e832d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Talismans/Hermes Boots.png"
-dest_files=["res://.godot/imported/Hermes Boots.png-067b56a2e374c63e72ebb2a669e38e06.ctex"]
+source_file="res://Sprites/Talismans/Coffee Bean.png"
+dest_files=["res://.godot/imported/Coffee Bean.png-362982b3e2262c717211cc122c5e832d.ctex"]
 
 [params]
 
