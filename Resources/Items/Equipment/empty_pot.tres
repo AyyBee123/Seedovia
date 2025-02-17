@@ -12,3 +12,4 @@ special_properties = Array[PackedScene]([ExtResource("2_mr5ig")])
 item_name = "Empty Pot"
 texture = ExtResource("2_phbcg")
 description = "The seed in the first slot deals 20% more damage."
+unlocked = true

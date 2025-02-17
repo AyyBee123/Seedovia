@@ -26,6 +26,8 @@ func transfer_passive(weapon = null):
 	weapon.get_node("Passives").add_child(self.duplicate())
 
 func trigger(weapon = null):
+	if source.is_in_group("Staff of Growth Seed"):
+		return
 	first_inv_seed = PlayerInventory.inventory.get(0)
 	if first_inv_seed == null:
 		return
@@ -42,6 +44,7 @@ func trigger(weapon = null):
 	seed_instance.transferred_damage_multiplier = weapon.transferred_damage_multiplier
 	seed_instance.transferred_blast_radius_multiplier = weapon.transferred_blast_radius_multiplier
 	seed_instance.transferred_fire_rate_multiplier = weapon.transferred_fire_rate_multiplier
+	seed_instance.add_to_group("Staff of Growth Seed")
 	get_tree().current_scene.add_child.call_deferred(seed_instance)
 	weapon.weapon_fired.emit(seed_instance)
 	seed_instance.global_position = weapon.next_weapon_pos

@@ -12,3 +12,4 @@ special_properties = Array[PackedScene]([ExtResource("2_gpget")])
 item_name = "Cherry"
 texture = ExtResource("3_nwt6y")
 description = "When directly firing a seed, 20% chance to fire an extra seed after a short delay."
+unlocked = true

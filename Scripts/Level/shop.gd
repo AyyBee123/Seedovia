@@ -13,8 +13,8 @@ func _ready():
 func set_shop_items():
 	shop_size = randi_range(6, 8)
 	var shop_item_categories = []
-	shop_item_categories.append("Pickup")
-	shop_item_categories.append("Pickup")
+	shop_item_categories.append("Pickup" if randf() < 0.4 else "Stat")
+	shop_item_categories.append("Pickup" if randf() < 0.4 else "Stat")
 	shop_item_categories.append("Consumable")
 	shop_item_categories.append("Consumable")
 	# for sort order in the shop (right-to-left, bottom-to-top)
@@ -42,7 +42,8 @@ func set_shop_items():
 				pool = Pool.seed_pool
 			"Pickup":
 				pool = Pool.pickup_pool
-				pool.append_array(Pool.stat_up_pool)
+			"Stat":
+				pool = Pool.stat_up_pool
 		item.set_item(Pool.get_item(pool))
 		# prevents seeds and talismans in the player's inventory from being chosen
 		# also prevents shop items from selling the same item twice

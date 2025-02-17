@@ -11,3 +11,4 @@ special_properties = Array[PackedScene]([])
 item_name = "Leather Gloves"
 texture = ExtResource("2_bdb67")
 description = "Leather gloves"
+unlocked = true

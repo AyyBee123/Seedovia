@@ -87,6 +87,73 @@ var stats := {
 	},
 }
 
+var temp_stats := {
+	"Max_Health": {
+		"+": 0,
+		"x": 1
+	},
+	"Speed": {
+		"+": 0.0,
+		"x": 1.0
+	},
+	"Dash_Rate": {
+		"+": 0.0,
+		"x": 1.0
+	},
+	"Dash_Distance": {
+		"+": 0.0,
+		"x": 1.0
+	},
+	"Dash_Invulnerability": {
+		"+": 0.0,
+		"x": 1.0
+	},
+	"Fire_Rate": {
+		"+": 0.0,
+		"x": 1.0
+	},
+	"Contact_Damage": {
+		"+": 0.0,
+		"x": 1.0
+	},
+	"Invulnerability_Time": {
+		"+": 0.0,
+		"x": 1.0
+	},
+	"Acceleration": {
+		"+": 0.0,
+		"x": 1.0
+	},
+	"Friction": {
+		"+": 0.0,
+		"x": 1.0
+	},
+	"Weapon_Speed": {
+		"+": 0.0,
+		"x": 1.0
+	},
+	"Weapon_Range": {
+		"+": 0.0,
+		"x": 1.0
+	},
+	"Weapon_Size": {
+		"+": 0.0,
+		"x": 1.0
+	},
+	"Weapon_Damage": {
+		"+": 0.0,
+		"x": 1.0
+	},
+	"Weapon_Blast_Radius": {
+		"+": 0.0,
+		"x": 1.0
+	},
+	"Luck": {
+		"+": 0.0,
+		"x": 1.0
+	},
+}
+
 # initialize the base stats in the player script because exports don't get assigned until _ready() is called
 func initialize_base_stats():
 	stats["Max_Health"]["base"] = max_health
@@ -105,7 +172,7 @@ func initialize_base_stats():
 	stats["Weapon_Damage"]["base"] = weapon_damage
 	stats["Weapon_Blast_Radius"]["base"] = weapon_blast_radius
 	stats["Luck"]["+"] = luck
-	
+
 func get_health(was_equipped: bool):
 	var previous_max_health = max_health
 	max_health = get_stat("Max_Health")
@@ -120,14 +187,14 @@ func get_health(was_equipped: bool):
 		health = current_health
 
 func get_stat(stat: String):
-	return stats[stat]["x"] * (stats[stat]["base"] + stats[stat]["+"])
+	return stats[stat]["x"] * temp_stats[stat]["x"] * (stats[stat]["base"] + stats[stat]["+"] + temp_stats[stat]["+"])
 
 func set_stat(stat: String, operation: String, amount):
 	if operation == "+":
 		stats[stat][operation] += amount
 	elif operation == "x":
 		stats[stat][operation] *= amount
-	
+
 func update_stat(stat: String, was_equipped: bool, old_stat_value):
 	if stat == "Max_Health":
 		var previous_max_health = get_stat("Max_Health")

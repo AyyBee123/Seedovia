@@ -48,7 +48,7 @@ offset_bottom = 32.5
 theme_override_fonts/normal_font = ExtResource("7_f1dvr")
 theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
-text = "[center]CHOOSE ONE UPGRADE"
+text = "[center]CHOOSE AN UPGRADE"
 scroll_active = false
 
 [node name="GridContainer" type="GridContainer" parent="PassiveBackground"]
@@ -96,7 +96,7 @@ mouse_filter = 2
 theme_override_fonts/normal_font = ExtResource("7_f1dvr")
 theme_override_font_sizes/normal_font_size = 16
 bbcode_enabled = true
-text = "Every 3 attacks, an explosion triggers around you."
+text = "[center]CHOOSE AN UPGRADE"
 fit_content = true
 scroll_active = false
 
@@ -110,7 +110,7 @@ mouse_filter = 2
 theme_override_fonts/normal_font = ExtResource("3_4afso")
 theme_override_font_sizes/normal_font_size = 16
 bbcode_enabled = true
-text = "Explosive Trigger"
+text = "[center]CHOOSE AN UPGRADE"
 fit_content = true
 scroll_active = false
 
@@ -151,7 +151,7 @@ mouse_filter = 2
 theme_override_fonts/normal_font = ExtResource("7_f1dvr")
 theme_override_font_sizes/normal_font_size = 16
 bbcode_enabled = true
-text = "25% chance when attacking to shoot a banana mine, which splits into smaller explosive bananas."
+text = "[center]CHOOSE AN UPGRADE"
 fit_content = true
 scroll_active = false
 
@@ -165,7 +165,7 @@ mouse_filter = 2
 theme_override_fonts/normal_font = ExtResource("3_4afso")
 theme_override_font_sizes/normal_font_size = 16
 bbcode_enabled = true
-text = "Banana Mine"
+text = "[center]CHOOSE AN UPGRADE"
 fit_content = true
 scroll_active = false
 
@@ -206,7 +206,7 @@ mouse_filter = 2
 theme_override_fonts/normal_font = ExtResource("7_f1dvr")
 theme_override_font_sizes/normal_font_size = 16
 bbcode_enabled = true
-text = "Seeds have a 30% chance to ignite enemies on hit."
+text = "[center]CHOOSE AN UPGRADE"
 fit_content = true
 scroll_active = false
 
@@ -220,6 +220,6 @@ mouse_filter = 2
 theme_override_fonts/normal_font = ExtResource("3_4afso")
 theme_override_font_sizes/normal_font_size = 16
 bbcode_enabled = true
-text = "Fire Flower"
+text = "[center]CHOOSE AN UPGRADE"
 fit_content = true
 scroll_active = false

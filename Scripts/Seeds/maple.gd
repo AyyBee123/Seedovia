@@ -16,6 +16,7 @@ var tick_rate := 0.25
 
 func _ready():
 	super._ready()
+	randomize()
 	set_lengths()
 	original_size = scale.x
 	SfxDeconflicter.play(Game.audio_manager.maple_splat)
@@ -96,5 +97,5 @@ func _collide(body):
 	pass
 
 func get_next_weapon_pos():
-	next_weapon_pos = Vector2(randf_range(end.global_position.x, global_position.x), \
+	return Vector2(randf_range(end.global_position.x, global_position.x), \
 			randf_range(end.global_position.y, global_position.y))
