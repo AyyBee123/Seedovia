@@ -53,10 +53,4 @@ func set_pos():
 
 func set_values(color: Color, text: String):
 	%Rarity.self_modulate = color
-	%"Name Portion".self_modulate = color
-	%"Type & Rarity".self_modulate = color
-	%"Description Portion".self_modulate = color
-	%Bottom.self_modulate = color
 	%Rarity.text = "[right]" + text
-	%Top.self_modulate = color
-	%Name.self_modulate = color

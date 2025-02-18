@@ -10,7 +10,8 @@
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_olhi0"]
 texture = ExtResource("4_aygkx")
-texture_margin_left = 4.0
+texture_margin_left = 8.0
+texture_margin_right = 8.0
 
 [node name="Item Popup" type="Control"]
 z_index = 10
@@ -56,8 +57,15 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_olhi0")
 
 [node name="Name" type="RichTextLabel" parent="Box/Name Portion"]
 unique_name_in_owner = true
+self_modulate = Color(0.905882, 0.8, 0.627451, 1)
 layout_mode = 2
 mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.188235)
+theme_override_constants/table_v_separation = 0
+theme_override_constants/text_highlight_h_padding = 0
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 0
 theme_override_fonts/normal_font = ExtResource("2_vk73d")
 theme_override_font_sizes/normal_font_size = 16
 bbcode_enabled = true
@@ -73,11 +81,18 @@ texture = ExtResource("5_ynuig")
 
 [node name="Type" type="RichTextLabel" parent="Box/Type & Rarity"]
 unique_name_in_owner = true
+self_modulate = Color(0.905882, 0.8, 0.627451, 1)
 layout_mode = 0
-offset_left = 4.0
-offset_right = 153.0
+offset_left = 8.0
+offset_right = 152.0
 offset_bottom = 11.0
 mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.188235)
+theme_override_constants/table_v_separation = 0
+theme_override_constants/text_highlight_h_padding = 0
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 0
 theme_override_fonts/normal_font = ExtResource("2_vk73d")
 theme_override_font_sizes/normal_font_size = 8
 bbcode_enabled = true
@@ -86,16 +101,23 @@ scroll_active = false
 
 [node name="Rarity" type="RichTextLabel" parent="Box/Type & Rarity"]
 unique_name_in_owner = true
+self_modulate = Color(0.905882, 0.8, 0.627451, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 4.0
-offset_right = -3.0
+offset_left = -1.0
+offset_right = -8.0
 offset_bottom = -7.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.188235)
+theme_override_constants/table_v_separation = 0
+theme_override_constants/text_highlight_h_padding = 0
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 0
 theme_override_fonts/normal_font = ExtResource("2_vk73d")
 theme_override_font_sizes/normal_font_size = 8
 bbcode_enabled = true
@@ -110,8 +132,15 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_olhi0")
 
 [node name="Description" type="RichTextLabel" parent="Box/Description Portion"]
 unique_name_in_owner = true
+self_modulate = Color(0.905882, 0.8, 0.627451, 1)
 layout_mode = 2
 mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.188235)
+theme_override_constants/table_v_separation = 0
+theme_override_constants/text_highlight_h_padding = 0
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 0
 theme_override_fonts/normal_font = ExtResource("3_lnxbw")
 theme_override_font_sizes/normal_font_size = 16
 text = "Description"
