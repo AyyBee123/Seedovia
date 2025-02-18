@@ -6444,6 +6444,7 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_s7kfb")
 script = ExtResource("7_g75im")
 
 [node name="1" type="RichTextLabel" parent="Inventory Screen/Seed Slots/Slot1"]
+modulate = Color(0.905882, 0.8, 0.627451, 1)
 layout_mode = 0
 offset_top = -11.0
 offset_right = 4.0
@@ -6452,6 +6453,7 @@ theme_override_fonts/normal_font = SubResource("FontFile_jfyn1")
 text = "1"
 
 [node name="SeedSlotLink" type="Sprite2D" parent="Inventory Screen/Seed Slots/Slot1"]
+modulate = Color(0.376471, 0.188235, 0.164706, 1)
 position = Vector2(34, 16)
 rotation = 1.5708
 texture = ExtResource("11_51to6")
@@ -6463,6 +6465,7 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_s7kfb")
 script = ExtResource("7_g75im")
 
 [node name="2" type="RichTextLabel" parent="Inventory Screen/Seed Slots/Slot2"]
+modulate = Color(0.905882, 0.8, 0.627451, 1)
 layout_mode = 0
 offset_top = -11.0
 offset_right = 6.0
@@ -6472,6 +6475,7 @@ text = "2
 "
 
 [node name="SeedSlotLink2" type="Sprite2D" parent="Inventory Screen/Seed Slots/Slot2"]
+modulate = Color(0.376471, 0.188235, 0.164706, 1)
 position = Vector2(34, 16)
 rotation = 1.5708
 texture = ExtResource("11_51to6")
@@ -6483,6 +6487,7 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_s7kfb")
 script = ExtResource("7_g75im")
 
 [node name="3" type="RichTextLabel" parent="Inventory Screen/Seed Slots/Slot3"]
+modulate = Color(0.905882, 0.8, 0.627451, 1)
 layout_mode = 0
 offset_top = -11.0
 offset_right = 6.0
@@ -6491,21 +6496,28 @@ theme_override_fonts/normal_font = SubResource("FontFile_jfyn1")
 text = "3
 "
 
-[node name="Seperator2" type="Sprite2D" parent="Inventory Screen"]
-position = Vector2(77.6875, 69.0625)
-scale = Vector2(75.3125, 0.375002)
-texture = ExtResource("11_51to6")
+[node name="ColorRect" type="ColorRect" parent="Inventory Screen"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 68.0
+offset_right = 150.0
+offset_bottom = 69.0
+color = Color(0.376471, 0.188235, 0.164706, 1)
 
-[node name="Seperator" type="Sprite2D" parent="Inventory Screen"]
-position = Vector2(77.6875, 125.313)
-scale = Vector2(75.3125, 0.275)
-texture = ExtResource("11_51to6")
+[node name="ColorRect2" type="ColorRect" parent="Inventory Screen"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 124.0
+offset_right = 150.0
+offset_bottom = 125.0
+color = Color(0.376471, 0.188235, 0.164706, 1)
 
 [node name="Inventory Label" type="RichTextLabel" parent="."]
+modulate = Color(0.905882, 0.8, 0.627451, 1)
 layout_mode = 0
-offset_left = 4.0
+offset_left = 8.0
 offset_top = 129.0
-offset_right = 81.0
+offset_right = 85.0
 offset_bottom = 141.0
 mouse_filter = 2
 theme_override_fonts/normal_font = ExtResource("6_uoote")
@@ -6513,10 +6525,11 @@ theme_override_font_sizes/normal_font_size = 16
 text = "Inventory"
 
 [node name="Talismans Label" type="RichTextLabel" parent="."]
+modulate = Color(0.905882, 0.8, 0.627451, 1)
 layout_mode = 0
-offset_left = 4.0
+offset_left = 8.0
 offset_top = 72.0
-offset_right = 81.0
+offset_right = 85.0
 offset_bottom = 84.0
 mouse_filter = 2
 theme_override_fonts/normal_font = ExtResource("6_uoote")
@@ -6525,11 +6538,12 @@ text = "Talismans
 "
 
 [node name="Seeds Label" type="RichTextLabel" parent="."]
+modulate = Color(0.905882, 0.8, 0.627451, 1)
 layout_mode = 0
-offset_left = 4.0
-offset_top = 3.0
-offset_right = 81.0
-offset_bottom = 17.0
+offset_left = 8.0
+offset_top = 6.0
+offset_right = 85.0
+offset_bottom = 20.0
 mouse_filter = 2
 theme_override_fonts/normal_font = ExtResource("6_uoote")
 theme_override_font_sizes/normal_font_size = 16
