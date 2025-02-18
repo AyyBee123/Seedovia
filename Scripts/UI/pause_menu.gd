@@ -5,6 +5,7 @@ var starting_stats: player_stats
 
 func _ready():
 	get_tree().paused = true
+	Game.music_manager.music.volume_db = -10
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed("esc"):
@@ -15,6 +16,7 @@ func _on_resume_button_pressed():
 
 func un_pause():
 	get_tree().paused = false
+	Game.music_manager.music.volume_db = 0
 	queue_free()
 
 func _on_quick_restart_button_pressed():
