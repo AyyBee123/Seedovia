@@ -1,8 +1,9 @@
 extends Control
 
 @onready var continue_button = $"Continue Button"
-@onready var character_select_scene = preload("res://Scenes/UI/Character Select.tscn")
-@onready var loading_screen_scene = preload("res://Scenes/UI/Loading Screen.tscn")
+var character_select_scene = preload("res://Scenes/UI/Character Select.tscn")
+var loading_screen_scene = preload("res://Scenes/UI/Loading Screen.tscn")
+const SETTINGS = preload("res://Scenes/UI/Settings.tscn")
 var loading_screen_scene_instance
 
 func _ready():
@@ -25,3 +26,9 @@ func _on_continue_button_pressed():
 	LevelList.load_char()
 	Pool.continue_run()
 	get_tree().change_scene_to_file(LevelList.loaded_current_room)
+
+func _on_settings_button_pressed():
+	if get_tree().current_scene.find_child("Settings"): # if a settings scene already exists
+		return
+	var settings = SETTINGS.instantiate()
+	get_tree().current_scene.add_child(settings)

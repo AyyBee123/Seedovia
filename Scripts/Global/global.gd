@@ -3,8 +3,10 @@ extends Node
 # %APPDATA%\Roaming\Godot\app_userdata\Roguelike
 var SAVE_PATH := "user://save_data.res"
 var RUN_SAVE_PATH := "user://current_run.res"
+var SETTINGS_PATH := "user://settings.res"
 var data := player_data.new()
 var super_data := overall_data.new()
+var settings := settings_data.new()
 var rewards: Array
 static var next_reward: item_pool = null
 var cursor = load("res://Sprites/UI/Cursor.png")
@@ -113,3 +115,20 @@ func load_achievements(_path = null):
 		return
 	super_data = ResourceLoader.load(_path)
 	super_data.set_achievements()
+
+func save_settings():
+	settings.get_audio_volumes()
+	ResourceSaver.save(settings, SETTINGS_PATH)
+	ResourceSaver.save(settings, "user://settings.tres") # for testing purposes, will remove later
+
+func load_settings():
+	if not ResourceLoader.exists(SETTINGS_PATH):
+		return
+	settings = ResourceLoader.load(SETTINGS_PATH)
+	settings
+
+func load_audio_volumes():
+	if not ResourceLoader.exists(SETTINGS_PATH):
+		return
+	settings = ResourceLoader.load(SETTINGS_PATH)
+	settings.set_audio_volumes()

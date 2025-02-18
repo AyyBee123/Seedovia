@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://f8fbanpyxqhp"]
+[gd_scene load_steps=8 format=3 uid="uid://f8fbanpyxqhp"]
 
 [ext_resource type="Script" path="res://Scripts/Utils/game.gd" id="1_w0svr"]
 [ext_resource type="PackedScene" uid="uid://usetxd7ii511" path="res://Scenes/Utils/Audio Manager.tscn" id="2_qwgo3"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bkd1wu3qxry0c" path="res://Scenes/Utils/Achievement Popups Manager.tscn" id="4_uu2pv"]
 [ext_resource type="Script" path="res://Scripts/Utils/achievement_popups_manager.gd" id="5_xhg0c"]
 [ext_resource type="PackedScene" uid="uid://cmt8s6fn3yh87" path="res://Scenes/Utils/Music Manager.tscn" id="6_6urvc"]
+[ext_resource type="PackedScene" uid="uid://bp0w585nxu3b2" path="res://Scenes/Utils/Audio Settings.tscn" id="7_ij2n3"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_w0svr")
@@ -25,4 +26,9 @@ unique_name_in_owner = true
 script = ExtResource("5_xhg0c")
 
 [node name="Music Manager" parent="Managers" instance=ExtResource("6_6urvc")]
+unique_name_in_owner = true
+
+[node name="Settings" type="Node" parent="."]
+
+[node name="Audio Settings" parent="Settings" instance=ExtResource("7_ij2n3")]
 unique_name_in_owner = true
