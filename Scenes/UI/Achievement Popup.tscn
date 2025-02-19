@@ -6,6 +6,21 @@
 [ext_resource type="FontFile" uid="uid://wbj0boqv37y6" path="res://Fonts/Description Font.ttf" id="3_m4jdo"]
 [ext_resource type="FontFile" uid="uid://bkn7gmgx1wxgx" path="res://Fonts/Name Font.ttf" id="4_ov2cw"]
 
+[sub_resource type="Animation" id="Animation_3whei"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-408, -350)]
+}
+
 [sub_resource type="Animation" id="Animation_cwmht"]
 resource_name = "new_animation"
 length = 3.5
@@ -34,21 +49,6 @@ tracks/1/keys = {
 "args": [],
 "method": &"destroy"
 }]
-}
-
-[sub_resource type="Animation" id="Animation_3whei"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TextureRect:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-408, -350)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vqv8y"]

@@ -21,7 +21,7 @@ func _ready():
 		1: # Uncommon
 			set_values(Color.LIGHT_SKY_BLUE, "Uncommon")
 		2: # Rare
-			set_values(Color.PALE_GOLDENROD, "Rare")
+			set_values(Color("ffea81"), "Rare")
 		3: # Epic
 			set_values(Color.BLUE_VIOLET, "Epic")
 		4: # Legendary
