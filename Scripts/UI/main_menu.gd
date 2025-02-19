@@ -9,8 +9,10 @@ var loading_screen_scene_instance
 func _ready():
 	if ResourceLoader.exists(Global.RUN_SAVE_PATH):
 		continue_button.disabled = false
-	if continue_button.disabled:
-		$"Continue Button/Text".self_modulate = Color("818181") # matching the border colour
+		$"Continue Button/Text".modulate = Color("e7cca0")
+	else:
+		continue_button.disabled = true
+		$"Continue Button/Text".modulate = Color("d2bdaa")
 	Global.load_achievements()
 
 func _on_play_button_pressed():

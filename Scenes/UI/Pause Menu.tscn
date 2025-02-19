@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://didv5fjskcrdi" path="res://Sprites/Pause UI/Pause Menu Choice.png" id="2_s1kdf"]
 [ext_resource type="Texture2D" uid="uid://ciyk64aevmyv" path="res://Sprites/Pause UI/Pause Menu Choice Pressed.png" id="3_lv6ny"]
 [ext_resource type="Texture2D" uid="uid://dmb2vfptumg3l" path="res://Sprites/Pause UI/Pause Menu Choice Hover.png" id="4_x5ukf"]
-[ext_resource type="FontFile" uid="uid://wbj0boqv37y6" path="res://Fonts/Description Font.ttf" id="5_f45s5"]
+[ext_resource type="FontFile" uid="uid://bkn7gmgx1wxgx" path="res://Fonts/Name Font.ttf" id="6_t5gae"]
 
 [node name="PauseMenu" type="Control"]
 process_mode = 3
@@ -43,9 +43,9 @@ texture = ExtResource("1_q7u0e")
 [node name="GridContainer" type="GridContainer" parent="TextureRect"]
 layout_mode = 0
 offset_left = 8.0
-offset_top = 27.0
+offset_top = 24.0
 offset_right = 248.0
-offset_bottom = 256.0
+offset_bottom = 260.0
 
 [node name="ResumeButton" type="TextureButton" parent="TextureRect/GridContainer"]
 layout_mode = 2
@@ -54,13 +54,18 @@ texture_pressed = ExtResource("3_lv6ny")
 texture_hover = ExtResource("4_x5ukf")
 
 [node name="Text" type="RichTextLabel" parent="TextureRect/GridContainer/ResumeButton"]
+modulate = Color(0.905882, 0.8, 0.627451, 1)
 layout_mode = 0
-offset_top = 7.0
+offset_top = 10.2
 offset_right = 240.0
-offset_bottom = 56.0
+offset_bottom = 59.2
 mouse_filter = 2
-theme_override_fonts/normal_font = ExtResource("5_f45s5")
-theme_override_font_sizes/normal_font_size = 48
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/normal_font = ExtResource("6_t5gae")
+theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
 text = "[center]Resume"
 scroll_active = false
@@ -72,13 +77,18 @@ texture_pressed = ExtResource("3_lv6ny")
 texture_hover = ExtResource("4_x5ukf")
 
 [node name="Text" type="RichTextLabel" parent="TextureRect/GridContainer/SettingsButton"]
+modulate = Color(0.905882, 0.8, 0.627451, 1)
 layout_mode = 0
-offset_top = 7.0
+offset_top = 10.2
 offset_right = 240.0
-offset_bottom = 56.0
+offset_bottom = 59.2
 mouse_filter = 2
-theme_override_fonts/normal_font = ExtResource("5_f45s5")
-theme_override_font_sizes/normal_font_size = 48
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/normal_font = ExtResource("6_t5gae")
+theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
 text = "[center]Settings"
 scroll_active = false
@@ -90,13 +100,18 @@ texture_pressed = ExtResource("3_lv6ny")
 texture_hover = ExtResource("4_x5ukf")
 
 [node name="Text" type="RichTextLabel" parent="TextureRect/GridContainer/QuickRestartButton"]
+modulate = Color(0.905882, 0.8, 0.627451, 1)
 layout_mode = 0
-offset_top = 7.0
+offset_top = 10.2
 offset_right = 240.0
-offset_bottom = 56.0
+offset_bottom = 59.2
 mouse_filter = 2
-theme_override_fonts/normal_font = ExtResource("5_f45s5")
-theme_override_font_sizes/normal_font_size = 48
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/normal_font = ExtResource("6_t5gae")
+theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
 text = "[center]Quick Restart"
 scroll_active = false
@@ -108,13 +123,18 @@ texture_pressed = ExtResource("3_lv6ny")
 texture_hover = ExtResource("4_x5ukf")
 
 [node name="Text" type="RichTextLabel" parent="TextureRect/GridContainer/QuitToMenuButton"]
+modulate = Color(0.905882, 0.8, 0.627451, 1)
 layout_mode = 0
-offset_top = 7.0
+offset_top = 10.2
 offset_right = 240.0
-offset_bottom = 56.0
+offset_bottom = 59.2
 mouse_filter = 2
-theme_override_fonts/normal_font = ExtResource("5_f45s5")
-theme_override_font_sizes/normal_font_size = 48
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/normal_font = ExtResource("6_t5gae")
+theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
 text = "[center]Quit to Menu"
 scroll_active = false
