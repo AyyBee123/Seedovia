@@ -1,6 +1,6 @@
 extends "res://Scripts/Seeds/seed_template.gd"
 
-const EXPLOSION = preload("res://Scenes/Passives/Effects/Explosion.tscn")
+const SPLASH = preload("res://Scenes/Misc/Splash.tscn")
 
 var clockwise_rotation: bool
 var dice_value: int
@@ -105,13 +105,11 @@ func get_dice_damage_multiplier() -> float:
 	return dice_damage
 
 func explode():
-	var explosion = EXPLOSION.instantiate()
-	explosion.damage = 0
-	explosion.size = 0.2
-	explosion.source = self
-	explosion.modulate = Color("611e30")
-	explosion.is_vanity = true
-	call_deferred("create_child", explosion)
+	var splash = SPLASH.instantiate()
+	splash.size = 0.2
+	splash.source = self
+	splash.modulate = Color("611e30")
+	call_deferred("create_child", splash)
 
 func create_child(child):
 	get_tree().current_scene.add_child(child)

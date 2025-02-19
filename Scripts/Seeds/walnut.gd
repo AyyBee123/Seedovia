@@ -4,8 +4,7 @@ extends "res://Scripts/Seeds/seed_template.gd"
 
 @export var orb_fire_rate_multiplier: float = 1
 
-const EXPLOSION = preload("res://Scenes/Passives/Effects/Explosion.tscn")
-
+const SPLASH = preload("res://Scenes/Misc/Splash.tscn")
 func _ready():
 	super._ready()
 	weapon_direction = Vector2(0,-1)
@@ -65,13 +64,11 @@ func change_direction():
 			weapon_direction = Vector2(0,-1)
 
 func explode():
-	var explosion = EXPLOSION.instantiate()
-	explosion.damage = 0
-	explosion.size = 0.3
-	explosion.source = self
-	explosion.modulate = Color("aa7053")
-	explosion.is_vanity = true
-	call_deferred("create_child", explosion)
+	var splash = SPLASH.instantiate()
+	splash.size = 0.3
+	splash.source = self
+	splash.modulate = Color("aa7053")
+	call_deferred("create_child", splash)
 
 func create_child(child):
 	get_tree().current_scene.add_child(child)

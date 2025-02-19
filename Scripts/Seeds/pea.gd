@@ -1,6 +1,6 @@
 extends "res://Scripts/Seeds/seed_template.gd"
 
-const EXPLOSION = preload("res://Scenes/Passives/Effects/Explosion.tscn")
+const SPLASH = preload("res://Scenes/Misc/Splash.tscn")
 
 var enemy
 
@@ -73,13 +73,11 @@ func get_nearest_enemy(enemy):
 	return nearest_enemy
 
 func explode():
-	var explosion = EXPLOSION.instantiate()
-	explosion.damage = 0
-	explosion.size = 0.2
-	explosion.source = self
-	explosion.modulate = Color("4ba329")
-	explosion.is_vanity = true
-	call_deferred("create_child", explosion)
+	var splash = SPLASH.instantiate()
+	splash.size = 0.2
+	splash.source = self
+	splash.modulate = Color("4ba329")
+	call_deferred("create_child", splash)
 
 func create_child(child):
 	get_tree().current_scene.add_child(child)

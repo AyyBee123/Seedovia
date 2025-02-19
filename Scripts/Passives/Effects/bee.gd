@@ -45,12 +45,10 @@ func _on_hitbox_area_entered(area):
 	queue_free.call_deferred()
 
 func explode():
-	var explosion = resource_preloader.get_resource("Explosion").instantiate()
-	explosion.damage = 0
+	var explosion = resource_preloader.get_resource("Splash").instantiate()
 	explosion.size = 0.1
 	explosion.source = self
 	explosion.modulate = Color.YELLOW
-	explosion.is_vanity = true
 	call_deferred("create_child", explosion)
 	queue_free.call_deferred()
 

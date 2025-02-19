@@ -1,0 +1,74 @@
+[gd_scene load_steps=11 format=3 uid="uid://g3su60jb1mb"]
+
+[ext_resource type="Script" path="res://Scripts/Misc/splash.gd" id="1_a0mnl"]
+[ext_resource type="Texture2D" uid="uid://qmvwufg2u3tt" path="res://Sprites/Passives/Effects/Splash.png" id="2_ilihk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cnc6p"]
+atlas = ExtResource("2_ilihk")
+region = Rect2(0, 0, 28, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fo5oj"]
+atlas = ExtResource("2_ilihk")
+region = Rect2(28, 0, 28, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u3slm"]
+atlas = ExtResource("2_ilihk")
+region = Rect2(56, 0, 28, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o5wch"]
+atlas = ExtResource("2_ilihk")
+region = Rect2(84, 0, 28, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w6l16"]
+atlas = ExtResource("2_ilihk")
+region = Rect2(112, 0, 28, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y73jc"]
+atlas = ExtResource("2_ilihk")
+region = Rect2(140, 0, 28, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bah4j"]
+atlas = ExtResource("2_ilihk")
+region = Rect2(168, 0, 28, 28)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kkyme"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cnc6p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fo5oj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u3slm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o5wch")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w6l16")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y73jc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bah4j")
+}],
+"loop": false,
+"name": &"default",
+"speed": 60.0
+}]
+
+[node name="Splash" type="Node2D" groups=["Weapon Effect"]]
+z_index = 4
+script = ExtResource("1_a0mnl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(5.25, 5.25)
+sprite_frames = SubResource("SpriteFrames_kkyme")
+autoplay = "default"
+frame = 6
+frame_progress = 1.0
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
