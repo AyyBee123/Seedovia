@@ -6,6 +6,7 @@ extends "res://Scripts/Seeds/seed_template.gd"
 @onready var detect_pomegranate = $"Detect Pomegranate"
 @onready var collision_shape_2d = $"Detect Pomegranate/CollisionShape2D"
 
+const EXPLOSION = preload("res://Scenes/Passives/Effects/Explosion.tscn")
 const MAX_STACKS: int = 8
 const MAX_DAMAGE: float = 5.0
 const MAX_SIZE: float = 3.0
@@ -106,16 +107,29 @@ func explode():
 	match stacks:
 		1, 2, 3:
 			num_of_shots = 4
+			SfxDeconflicter.play(Game.audio_manager.pome_mild_explosion_3)
 		4, 5, 6:
 			num_of_shots = 6
+			SfxDeconflicter.play(Game.audio_manager.pome_mild_explosion_2)
 		7, 8:
 			num_of_shots = 8
+			SfxDeconflicter.play(Game.audio_manager.pome_mild_explosion)
 	var rotated_direction = [0, PI/num_of_shots] # some variance in the rotation of the shots
 	var random_rotation = rotated_direction.pick_random()
 	for i in num_of_shots:
 		weapon_direction = Vector2.RIGHT.rotated(i * TAU/num_of_shots + random_rotation)
 		shoot_next_weapon()
+	var explosion = EXPLOSION.instantiate()
+	explosion.damage = _player_stats.get_stat("Weapon_Damage") * damage_multiplier / 10 + 1 / MAX_STACKS * stacks
+	explosion.size = _player_stats.get_stat("Weapon_Size") * size_multiplier / 5 + 1 / MAX_STACKS * stacks
+	explosion.source = self
+	explosion.modulate = Color("bf214d")
+	call_deferred("create_child", explosion)
 	queue_free.call_deferred()
+
+func create_child(child):
+	get_tree().current_scene.add_child(child)
+	child.global_position = self.global_position
 
 func set_weapon_properties(weapon, _desired_direction, _ignore_first_collision = false, _enemy = null):
 	weapon.initial_weapon = false

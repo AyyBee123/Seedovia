@@ -1,7 +1,10 @@
 extends "res://Scripts/Seeds/seed_template.gd"
 
+const EXPLOSION = preload("res://Scenes/Passives/Effects/Explosion.tscn")
+
 var clockwise_rotation: bool
 var dice_value: int
+
 @onready var randomize_interval = $"Randomize Interval"
 @onready var resource_preloader = $ResourcePreloader
 @onready var dice_roll_SFX = $DiceRoll
@@ -63,6 +66,7 @@ func _collide(body):
 	SfxDeconflicter.play(Game.audio_manager.hit)
 	SfxDeconflicter.play(Game.audio_manager.bubble_pop_2)
 	shoot_next_weapon()
+	explode()
 	queue_free.call_deferred()
 
 func shoot_next_weapon():
@@ -99,3 +103,16 @@ func get_dice_damage_multiplier() -> float:
 		6:
 			dice_damage = 2.0
 	return dice_damage
+
+func explode():
+	var explosion = EXPLOSION.instantiate()
+	explosion.damage = 0
+	explosion.size = 0.2
+	explosion.source = self
+	explosion.modulate = Color("611e30")
+	explosion.is_vanity = true
+	call_deferred("create_child", explosion)
+
+func create_child(child):
+	get_tree().current_scene.add_child(child)
+	child.global_position = self.global_position

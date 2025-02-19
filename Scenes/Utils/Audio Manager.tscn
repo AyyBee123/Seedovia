@@ -45,6 +45,24 @@ volume_db = -6.0
 pitch_scale = 1.1
 bus = &"SFX"
 
+[node name="Pome MildExplosion" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_fp62v")
+volume_db = -8.0
+pitch_scale = 1.1
+bus = &"SFX"
+
+[node name="Pome MildExplosion2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_fp62v")
+volume_db = -10.0
+pitch_scale = 1.5
+bus = &"SFX"
+
+[node name="Pome MildExplosion3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_fp62v")
+volume_db = -12.0
+pitch_scale = 2.0
+bus = &"SFX"
+
 [node name="Pepper Child MildExplosion" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_fp62v")
 volume_db = -6.0

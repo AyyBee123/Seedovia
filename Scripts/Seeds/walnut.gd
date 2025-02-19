@@ -4,6 +4,8 @@ extends "res://Scripts/Seeds/seed_template.gd"
 
 @export var orb_fire_rate_multiplier: float = 1
 
+const EXPLOSION = preload("res://Scenes/Passives/Effects/Explosion.tscn")
+
 func _ready():
 	super._ready()
 	weapon_direction = Vector2(0,-1)
@@ -31,6 +33,7 @@ func _collide(body):
 	if body.is_in_group("Enemies"):
 		body.get_parent()._enemy_stats.take_damage(player._player_stats.get_stat("Weapon_Damage") * damage_multiplier)
 	SfxDeconflicter.play(Game.audio_manager.walnut_hit)
+	explode()
 	queue_free.call_deferred()
 
 func shoot_next_weapon():
@@ -60,3 +63,16 @@ func change_direction():
 			weapon_direction = Vector2(-1/sqrt(2),-1/sqrt(2))
 		Vector2(-1/sqrt(2),-1/sqrt(2)):
 			weapon_direction = Vector2(0,-1)
+
+func explode():
+	var explosion = EXPLOSION.instantiate()
+	explosion.damage = 0
+	explosion.size = 0.3
+	explosion.source = self
+	explosion.modulate = Color("aa7053")
+	explosion.is_vanity = true
+	call_deferred("create_child", explosion)
+
+func create_child(child):
+	get_tree().current_scene.add_child(child)
+	child.global_position = self.global_position

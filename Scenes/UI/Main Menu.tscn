@@ -65,6 +65,7 @@ bbcode_enabled = true
 text = "[center]Continue"
 
 [node name="Settings Button" type="TextureButton" parent="."]
+layout_mode = 0
 offset_left = 630.0
 offset_top = 450.0
 offset_right = 1269.06

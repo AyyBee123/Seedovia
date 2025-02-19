@@ -1,5 +1,7 @@
 extends "res://Scripts/Seeds/seed_template.gd"
 
+const EXPLOSION = preload("res://Scenes/Passives/Effects/Explosion.tscn")
+
 var enemy
 
 func _ready():
@@ -18,6 +20,7 @@ func _collide(body):
 	shoot_next_weapon()
 	SfxDeconflicter.play(Game.audio_manager.hit)
 	SfxDeconflicter.play(Game.audio_manager.bubble_pop_2)
+	explode()
 	queue_free.call_deferred()
 
 func update_position(delta):
@@ -68,3 +71,16 @@ func get_nearest_enemy(enemy):
 				nearest_distance = enemies[i].global_position.distance_squared_to(global_position)
 				nearest_enemy = enemies[i]
 	return nearest_enemy
+
+func explode():
+	var explosion = EXPLOSION.instantiate()
+	explosion.damage = 0
+	explosion.size = 0.2
+	explosion.source = self
+	explosion.modulate = Color("4ba329")
+	explosion.is_vanity = true
+	call_deferred("create_child", explosion)
+
+func create_child(child):
+	get_tree().current_scene.add_child(child)
+	child.global_position = self.global_position
