@@ -6,11 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://cbgu0fp1f5ewh" path="res://Sprites/Passive UI/Passive Choice.png" id="4_3krng"]
 [ext_resource type="Texture2D" uid="uid://bw488sd3i0ynn" path="res://Sprites/Passive UI/Passive Border.png" id="5_kbpep"]
 [ext_resource type="Texture2D" uid="uid://c71sltkefy26t" path="res://Sprites/Passive UI/Passive Choice Pressed.png" id="5_w603p"]
-[ext_resource type="Texture2D" uid="uid://dc186h5pvg1wi" path="res://Sprites/Passives/Icons/Explosive Trigger.png" id="5_yjevb"]
 [ext_resource type="Texture2D" uid="uid://ck1cqd6wikm0p" path="res://Sprites/Passive UI/Passive Choice Hover.png" id="6_y7fth"]
 [ext_resource type="FontFile" uid="uid://wbj0boqv37y6" path="res://Fonts/Description Font.ttf" id="7_f1dvr"]
-[ext_resource type="Texture2D" uid="uid://bpkva3bwyblw1" path="res://Sprites/Passives/Icons/Banana Bomb.png" id="8_0e54s"]
+[ext_resource type="Texture2D" uid="uid://dqiw78ps81daw" path="res://Sprites/Passives/Icons/Hura Crepitans.png" id="8_xdwvq"]
 [ext_resource type="Texture2D" uid="uid://dissosonsok68" path="res://Sprites/Passives/Icons/Fire Flower.png" id="9_ga1yx"]
+[ext_resource type="Texture2D" uid="uid://cnjqnk6pf8hov" path="res://Sprites/Passives/Icons/Prickly Growth.png" id="10_25pok"]
 
 [node name="PassiveChoice" type="Control"]
 process_mode = 3
@@ -40,23 +40,28 @@ offset_bottom = 256.0
 texture = ExtResource("1_ayyp6")
 
 [node name="Choose One Upgrade" type="RichTextLabel" parent="PassiveBackground"]
+modulate = Color(0.905882, 0.8, 0.627451, 1)
 layout_mode = 0
-offset_left = 2.5
-offset_top = 8.5
+offset_left = 2.50003
+offset_top = 6.0
 offset_right = 254.5
-offset_bottom = 32.5
-theme_override_fonts/normal_font = ExtResource("7_f1dvr")
-theme_override_font_sizes/normal_font_size = 32
+offset_bottom = 30.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/normal_font = ExtResource("3_4afso")
+theme_override_font_sizes/normal_font_size = 16
 bbcode_enabled = true
-text = "[center]CHOOSE AN UPGRADE"
+text = "[center]CHOOSE A PASSIVE UPGRADE"
 scroll_active = false
 
 [node name="GridContainer" type="GridContainer" parent="PassiveBackground"]
 layout_mode = 0
-offset_left = 7.75
-offset_top = 47.75
-offset_right = 247.75
-offset_bottom = 255.75
+offset_left = 8.0
+offset_top = 32.0
+offset_right = 248.0
+offset_bottom = 246.0
 theme_override_constants/v_separation = 11
 
 [node name="Button" type="TextureButton" parent="PassiveBackground/GridContainer"]
@@ -69,48 +74,60 @@ texture_hover = ExtResource("6_y7fth")
 custom_minimum_size = Vector2(44, 44)
 layout_mode = 1
 anchors_preset = -1
-offset_left = 6.25
-offset_top = 5.75
-offset_right = 50.25
-offset_bottom = 49.75
+offset_left = 6.4
+offset_top = 6.0
+offset_right = 58.4
+offset_bottom = 58.0
 mouse_filter = 2
 texture = ExtResource("5_kbpep")
 stretch_mode = 3
 
 [node name="Sprite" type="TextureRect" parent="PassiveBackground/GridContainer/Button"]
 layout_mode = 0
-offset_left = 6.25
-offset_top = 6.25
-offset_right = 50.25
-offset_bottom = 50.25
-texture = ExtResource("5_yjevb")
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 54.0
+offset_bottom = 54.0
+texture = ExtResource("8_xdwvq")
 stretch_mode = 3
 
 [node name="Description" type="RichTextLabel" parent="PassiveBackground/GridContainer/Button"]
+modulate = Color(0.905882, 0.8, 0.627451, 1)
 layout_mode = 0
-offset_left = 53.0
+offset_left = 60.0
 offset_top = 18.0
-offset_right = 238.0
-offset_bottom = 54.0
+offset_right = 264.0
+offset_bottom = 66.0
+scale = Vector2(0.85, 0.85)
 mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 1
 theme_override_fonts/normal_font = ExtResource("7_f1dvr")
 theme_override_font_sizes/normal_font_size = 16
 bbcode_enabled = true
-text = "[center]CHOOSE AN UPGRADE"
+text = "Description"
 fit_content = true
 scroll_active = false
 
 [node name="Name" type="RichTextLabel" parent="PassiveBackground/GridContainer/Button"]
+modulate = Color(0.905882, 0.8, 0.627451, 1)
 layout_mode = 0
-offset_left = 53.0
-offset_top = -2.0
-offset_right = 238.0
-offset_bottom = 18.0
+offset_left = 60.0
+offset_top = 0.8
+offset_right = 233.0
+offset_bottom = 20.8
+scale = Vector2(0.95, 0.95)
 mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 1
 theme_override_fonts/normal_font = ExtResource("3_4afso")
 theme_override_font_sizes/normal_font_size = 16
 bbcode_enabled = true
-text = "[center]CHOOSE AN UPGRADE"
+text = "Name"
 fit_content = true
 scroll_active = false
 
@@ -124,48 +141,60 @@ texture_hover = ExtResource("6_y7fth")
 custom_minimum_size = Vector2(44, 44)
 layout_mode = 1
 anchors_preset = -1
-offset_left = 6.25
-offset_top = 5.75
-offset_right = 50.25
-offset_bottom = 49.75
+offset_left = 6.4
+offset_top = 6.0
+offset_right = 58.4
+offset_bottom = 58.0
 mouse_filter = 2
 texture = ExtResource("5_kbpep")
 stretch_mode = 3
 
 [node name="Sprite" type="TextureRect" parent="PassiveBackground/GridContainer/Button2"]
 layout_mode = 0
-offset_left = 6.25
-offset_top = 6.25
-offset_right = 50.25
-offset_bottom = 50.25
-texture = ExtResource("8_0e54s")
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 54.0
+offset_bottom = 54.0
+texture = ExtResource("10_25pok")
 stretch_mode = 3
 
 [node name="Description" type="RichTextLabel" parent="PassiveBackground/GridContainer/Button2"]
+modulate = Color(0.905882, 0.8, 0.627451, 1)
 layout_mode = 0
-offset_left = 53.0
+offset_left = 60.0
 offset_top = 18.0
-offset_right = 238.0
-offset_bottom = 54.0
+offset_right = 264.0
+offset_bottom = 66.0
+scale = Vector2(0.85, 0.85)
 mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 1
 theme_override_fonts/normal_font = ExtResource("7_f1dvr")
 theme_override_font_sizes/normal_font_size = 16
 bbcode_enabled = true
-text = "[center]CHOOSE AN UPGRADE"
+text = "Description"
 fit_content = true
 scroll_active = false
 
 [node name="Name" type="RichTextLabel" parent="PassiveBackground/GridContainer/Button2"]
+modulate = Color(0.905882, 0.8, 0.627451, 1)
 layout_mode = 0
-offset_left = 53.0
-offset_top = -2.0
-offset_right = 238.0
-offset_bottom = 18.0
+offset_left = 60.0
+offset_top = 0.8
+offset_right = 233.0
+offset_bottom = 20.8
+scale = Vector2(0.95, 0.95)
 mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 1
 theme_override_fonts/normal_font = ExtResource("3_4afso")
 theme_override_font_sizes/normal_font_size = 16
 bbcode_enabled = true
-text = "[center]CHOOSE AN UPGRADE"
+text = "Name"
 fit_content = true
 scroll_active = false
 
@@ -179,47 +208,59 @@ texture_hover = ExtResource("6_y7fth")
 custom_minimum_size = Vector2(44, 44)
 layout_mode = 1
 anchors_preset = -1
-offset_left = 6.25
-offset_top = 5.75
-offset_right = 50.25
-offset_bottom = 49.75
+offset_left = 6.4
+offset_top = 6.0
+offset_right = 58.4
+offset_bottom = 58.0
 mouse_filter = 2
 texture = ExtResource("5_kbpep")
 stretch_mode = 3
 
 [node name="Sprite" type="TextureRect" parent="PassiveBackground/GridContainer/Button3"]
 layout_mode = 0
-offset_left = 6.25
-offset_top = 6.25
-offset_right = 50.25
-offset_bottom = 50.25
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 54.0
+offset_bottom = 54.0
 texture = ExtResource("9_ga1yx")
 stretch_mode = 3
 
 [node name="Description" type="RichTextLabel" parent="PassiveBackground/GridContainer/Button3"]
+modulate = Color(0.905882, 0.8, 0.627451, 1)
 layout_mode = 0
-offset_left = 53.0
+offset_left = 60.0
 offset_top = 18.0
-offset_right = 238.0
-offset_bottom = 54.0
+offset_right = 264.0
+offset_bottom = 66.0
+scale = Vector2(0.85, 0.85)
 mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 1
 theme_override_fonts/normal_font = ExtResource("7_f1dvr")
 theme_override_font_sizes/normal_font_size = 16
 bbcode_enabled = true
-text = "[center]CHOOSE AN UPGRADE"
+text = "Description"
 fit_content = true
 scroll_active = false
 
 [node name="Name" type="RichTextLabel" parent="PassiveBackground/GridContainer/Button3"]
+modulate = Color(0.905882, 0.8, 0.627451, 1)
 layout_mode = 0
-offset_left = 53.0
-offset_top = -2.0
-offset_right = 238.0
-offset_bottom = 18.0
+offset_left = 60.0
+offset_top = 0.8
+offset_right = 233.0
+offset_bottom = 20.8
+scale = Vector2(0.95, 0.95)
 mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 1
 theme_override_fonts/normal_font = ExtResource("3_4afso")
 theme_override_font_sizes/normal_font_size = 16
 bbcode_enabled = true
-text = "[center]CHOOSE AN UPGRADE"
+text = "Name"
 fit_content = true
 scroll_active = false

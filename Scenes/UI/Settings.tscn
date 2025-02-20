@@ -1,8 +1,30 @@
-[gd_scene load_steps=4 format=3 uid="uid://n5g6ni5wasec"]
+[gd_scene load_steps=10 format=3 uid="uid://n5g6ni5wasec"]
 
 [ext_resource type="Script" path="res://Scripts/UI/settings.gd" id="1_lpe4k"]
 [ext_resource type="Texture2D" uid="uid://b65hvaep5bu1g" path="res://Sprites/UI/Settings Background.png" id="1_vm6er"]
 [ext_resource type="FontFile" uid="uid://bkn7gmgx1wxgx" path="res://Fonts/Name Font.ttf" id="2_28sra"]
+[ext_resource type="Texture2D" uid="uid://dan8ovr484x1g" path="res://Sprites/UI/Settings Grabber.png" id="4_7uv2c"]
+[ext_resource type="Texture2D" uid="uid://bwdfrsyq4o4wa" path="res://Sprites/UI/Settings Slider.png" id="5_qqndn"]
+[ext_resource type="Texture2D" uid="uid://c24kdky7tmo11" path="res://Sprites/UI/Settings Grabber Hovered.png" id="5_vsnd0"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wqlhe"]
+texture = ExtResource("5_qqndn")
+texture_margin_top = 16.0
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_axrof"]
+bg_color = Color(0.905882, 0.8, 0.627451, 0.784314)
+border_width_left = 3
+border_width_top = 3
+border_width_bottom = 3
+border_color = Color(0.8, 0.8, 0.8, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ihou"]
+bg_color = Color(0.905882, 0.8, 0.627451, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_bottom = 3
+border_color = Color(0.8, 0.8, 0.8, 0)
 
 [node name="Settings" type="Control"]
 layout_mode = 3
@@ -62,7 +84,12 @@ theme_override_constants/v_separation = 20
 columns = 2
 
 [node name="MasterLabel" type="Label" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer/GridContainer"]
+modulate = Color(0.905882, 0.8, 0.627451, 1)
 layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 2
 theme_override_fonts/font = ExtResource("2_28sra")
 theme_override_font_sizes/font_size = 32
 text = "Master"
@@ -72,12 +99,22 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
+theme_override_icons/grabber = ExtResource("4_7uv2c")
+theme_override_icons/grabber_highlight = ExtResource("5_vsnd0")
+theme_override_styles/slider = SubResource("StyleBoxTexture_wqlhe")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_axrof")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_4ihou")
 max_value = 1.0
 step = 0.01
 value = 1.0
 
 [node name="SFXLabel" type="Label" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer/GridContainer"]
+modulate = Color(0.905882, 0.8, 0.627451, 1)
 layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 2
 theme_override_fonts/font = ExtResource("2_28sra")
 theme_override_font_sizes/font_size = 32
 text = "SFX"
@@ -87,12 +124,22 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
+theme_override_icons/grabber = ExtResource("4_7uv2c")
+theme_override_icons/grabber_highlight = ExtResource("5_vsnd0")
+theme_override_styles/slider = SubResource("StyleBoxTexture_wqlhe")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_axrof")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_4ihou")
 max_value = 1.0
 step = 0.01
 value = 1.0
 
 [node name="MusicLabel" type="Label" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer/GridContainer"]
+modulate = Color(0.905882, 0.8, 0.627451, 1)
 layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 2
 theme_override_fonts/font = ExtResource("2_28sra")
 theme_override_font_sizes/font_size = 32
 text = "Music"
@@ -102,6 +149,11 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
+theme_override_icons/grabber = ExtResource("4_7uv2c")
+theme_override_icons/grabber_highlight = ExtResource("5_vsnd0")
+theme_override_styles/slider = SubResource("StyleBoxTexture_wqlhe")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_axrof")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_4ihou")
 max_value = 1.0
 step = 0.01
 value = 1.0
