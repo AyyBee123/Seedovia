@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="seed_class" load_steps=4 format=3 uid="uid://ckpcv3jj2qnt8"]
+
+[ext_resource type="PackedScene" uid="uid://b68ixib6ps6sa" path="res://Scenes/Seeds/Avocado.tscn" id="1_i0d31"]
+[ext_resource type="Script" path="res://Scripts/Stats/seed_stats.gd" id="1_y3cgu"]
+[ext_resource type="Texture2D" uid="uid://0bj0pvq2bjej" path="res://Sprites/Seeds (Inventory)/Avocado.png" id="3_nkodl"]
+
+[resource]
+script = ExtResource("1_y3cgu")
+scene = ExtResource("1_i0d31")
+rarity = 1
+item_name = "Avocado"
+texture = ExtResource("3_nkodl")
+description = "Shoots a projectile that splits in two and shoots out its seed forward after a short delay. the two avocado halfs shoot the next seed after a short delay."
+unlocked = true

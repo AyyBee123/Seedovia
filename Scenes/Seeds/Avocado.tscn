@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://b68ixib6ps6sa"]
+
+[ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_i7cwq"]
+[ext_resource type="Texture2D" uid="uid://dy31qd1whpohl" path="res://Sprites/Seeds/Avocado.png" id="2_yeu68"]
+[ext_resource type="Script" path="res://Scripts/Seeds/avocado.gd" id="3_5qbfi"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dgghp"]
+radius = 7.27273
+height = 26.2727
+
+[node name="Avocado" instance=ExtResource("1_i7cwq")]
+scale = Vector2(2.2, 2.2)
+texture = ExtResource("2_yeu68")
+offset = Vector2(5, 0)
+script = ExtResource("3_5qbfi")
+speed_multiplier = 0.9
+range_multiplier = 0.5
+fire_rate_multiplier = 0.25
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2(4.5, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_dgghp")

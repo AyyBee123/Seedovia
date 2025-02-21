@@ -19,6 +19,8 @@ extends Node
 @onready var pome_mild_explosion = $"Pome MildExplosion"
 @onready var pome_mild_explosion_2 = $"Pome MildExplosion2"
 @onready var pome_mild_explosion_3 = $"Pome MildExplosion3"
+@onready var crunch = $Crunch
+@onready var hit_2 = $Hit2
 
 func _ready():
 	SignalBus.play_audio.connect(play)
