@@ -1,5 +1,7 @@
 extends Control
 
+const SETTINGS = preload("res://Scenes/UI/Settings.tscn")
+
 var starting_character: character_class
 var starting_stats: player_stats
 
@@ -51,6 +53,12 @@ func _on_quick_restart_button_pressed():
 	Pool.start()
 	Global.save_run_room()
 	get_tree().change_scene_to_file("res://Scenes/Levels/Special/Starting Room 1.tscn")
+
+func _on_settings_button_pressed():
+	if get_tree().current_scene.find_child("Settings"): # if a settings scene already exists
+		return
+	var settings = SETTINGS.instantiate()
+	get_tree().current_scene.add_child(settings)
 
 func _on_quit_to_menu_button_pressed():
 	get_tree().paused = false

@@ -140,5 +140,6 @@ text = "[center]Quit to Menu"
 scroll_active = false
 
 [connection signal="pressed" from="TextureRect/GridContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="TextureRect/GridContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="TextureRect/GridContainer/QuickRestartButton" to="." method="_on_quick_restart_button_pressed"]
 [connection signal="pressed" from="TextureRect/GridContainer/QuitToMenuButton" to="." method="_on_quit_to_menu_button_pressed"]
