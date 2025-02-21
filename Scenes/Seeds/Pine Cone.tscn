@@ -11,12 +11,14 @@ height = 20.0
 [node name="Pine Cone" instance=ExtResource("1_urqx3")]
 scale = Vector2(2, 2)
 texture = ExtResource("2_c14qg")
+offset = Vector2(1.5, 0)
 script = ExtResource("3_5kxy1")
 range_multiplier = 0.5
 damage_multiplier = 0.2
 fire_rate_multiplier = 0.333
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2(1, 0)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_61x12")
 
