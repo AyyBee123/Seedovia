@@ -2,9 +2,8 @@ extends "res://Scripts/Seeds/seed_template.gd"
 
 const SPLASH = preload("res://Scenes/Misc/Splash.tscn")
 
-@onready var deceleration = $Deceleration
-
 var enemy = null
+var range_reached: bool
 
 func shoot_next_weapon():
 	attempted_fire.emit()
@@ -21,8 +20,9 @@ func travelled_distance():
 	total_distance += distance_travelled
 	starting_position = global_position
 	if total_distance >= player._player_stats.get_stat("Weapon_Range") * range_multiplier:
-		if deceleration.is_stopped():
-			deceleration.start()
+		if not range_reached:
+			range_reached_done()
+			range_reached = true
 
 func get_nearest_enemy(enemy):
 	var enemies = get_tree().get_nodes_in_group("Enemies")
@@ -68,8 +68,12 @@ func create_child(child):
 	get_tree().current_scene.add_child(child)
 	child.global_position = self.global_position
 
-func _on_deceleration_timeout():
-	shoot_next_weapon()
-	SfxDeconflicter.play(Game.audio_manager.bubble_pop_2)
-	explode()
-	queue_free.call_deferred()
+func range_reached_done():
+	var tween = get_tree().create_tween()
+	tween.tween_property(self, "direction", direction / 2, 0.1)
+	tween.tween_callback(func():
+		shoot_next_weapon()
+		SfxDeconflicter.play(Game.audio_manager.bubble_pop_2)
+		explode()
+		queue_free.call_deferred()
+	)

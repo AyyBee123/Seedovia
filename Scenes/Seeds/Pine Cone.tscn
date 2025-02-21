@@ -15,15 +15,9 @@ offset = Vector2(1.5, 0)
 script = ExtResource("3_5kxy1")
 range_multiplier = 0.5
 damage_multiplier = 0.2
-fire_rate_multiplier = 0.333
+fire_rate_multiplier = 0.275
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 position = Vector2(1, 0)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_61x12")
-
-[node name="Deceleration" type="Timer" parent="." index="2"]
-wait_time = 0.1
-one_shot = true
-
-[connection signal="timeout" from="Deceleration" to="." method="_on_deceleration_timeout"]
