@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="seed_class" load_steps=4 format=3 uid="uid://caogjerxeofpe"]
+
+[ext_resource type="Script" path="res://Scripts/Stats/seed_stats.gd" id="1_d16yk"]
+[ext_resource type="PackedScene" uid="uid://wgf1xrdqumiy" path="res://Scenes/Seeds/Pine Cone.tscn" id="1_da5sl"]
+[ext_resource type="Texture2D" uid="uid://b2wqrgfxehc61" path="res://Sprites/Seeds (Inventory)/Pine Cone.png" id="3_uxxlb"]
+
+[resource]
+script = ExtResource("1_d16yk")
+scene = ExtResource("1_da5sl")
+rarity = 2
+item_name = "Pine Cone"
+texture = ExtResource("3_uxxlb")
+description = "Shoots a projectile forward. The next seed is shot towards the nearest enemy when the it expires."
+unlocked = true

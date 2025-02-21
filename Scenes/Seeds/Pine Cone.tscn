@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://wgf1xrdqumiy"]
+
+[ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_urqx3"]
+[ext_resource type="Texture2D" uid="uid://dbk2fxlpkbpe1" path="res://Sprites/Seeds/Pine Cone.png" id="2_c14qg"]
+[ext_resource type="Script" path="res://Scripts/Seeds/pine_cone.gd" id="3_5kxy1"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_61x12"]
+radius = 7.0
+height = 20.0
+
+[node name="Pine Cone" instance=ExtResource("1_urqx3")]
+scale = Vector2(2, 2)
+texture = ExtResource("2_c14qg")
+script = ExtResource("3_5kxy1")
+range_multiplier = 0.5
+damage_multiplier = 0.2
+fire_rate_multiplier = 0.333
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_61x12")
+
+[node name="Deceleration" type="Timer" parent="." index="2"]
+wait_time = 0.1
+one_shot = true
+
+[connection signal="timeout" from="Deceleration" to="." method="_on_deceleration_timeout"]

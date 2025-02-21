@@ -2,30 +2,9 @@ extends "res://Scripts/Seeds/seed_template.gd"
 
 const SPLASH = preload("res://Scenes/Misc/Splash.tscn")
 
-var enemy
+@onready var deceleration = $Deceleration
 
-func _ready():
-	super._ready()
-	if slot_index != 0:
-		var nearest_enemy = get_nearest_enemy(hit_enemy)
-
-func _collide(body):
-	if ignore_first_collision:
-		ignore_first_collision = false
-		return
-	has_collided.emit(body)
-	if body.is_in_group("Enemies"):
-		enemy = body
-		body.get_parent()._enemy_stats.take_damage(player._player_stats.get_stat("Weapon_Damage") * damage_multiplier)
-	shoot_next_weapon()
-	SfxDeconflicter.play(Game.audio_manager.hit)
-	SfxDeconflicter.play(Game.audio_manager.bubble_pop_2)
-	explode()
-	queue_free.call_deferred()
-
-func update_position(delta):
-	current_velocity = direction * player._player_stats.get_stat("Weapon_Speed") * speed_multiplier
-	position += current_velocity * delta
+var enemy = null
 
 func shoot_next_weapon():
 	attempted_fire.emit()
@@ -37,17 +16,13 @@ func shoot_next_weapon():
 		weapon_direction = global_position.direction_to(player.global_position)
 	set_weapon_properties(get_next_weapon().instantiate(), weapon_direction, true, enemy)
 
-func initialize_location(weapon_instance):
-	get_tree().current_scene.add_child(weapon_instance)
-	weapon_instance.global_position = global_position
-	weapon_fired.emit(weapon_instance)
-	
 func travelled_distance():
 	distance_travelled = starting_position.distance_to(global_position)
 	total_distance += distance_travelled
 	starting_position = global_position
 	if total_distance >= player._player_stats.get_stat("Weapon_Range") * range_multiplier:
-		queue_free.call_deferred()
+		if deceleration.is_stopped():
+			deceleration.start()
 
 func get_nearest_enemy(enemy):
 	var enemies = get_tree().get_nodes_in_group("Enemies")
@@ -69,13 +44,32 @@ func get_nearest_enemy(enemy):
 				nearest_enemy = enemies[i]
 	return nearest_enemy
 
+func _collide(body):
+	if ignore_first_collision:
+		ignore_first_collision = false
+		return
+	has_collided.emit(body)
+	if body.is_in_group("Enemies"):
+		enemy = body
+		body.get_parent()._enemy_stats.take_damage(player._player_stats.get_stat("Weapon_Damage") * damage_multiplier)
+	SfxDeconflicter.play(Game.audio_manager.hit)
+	SfxDeconflicter.play(Game.audio_manager.bubble_pop_2)
+	explode()
+	queue_free.call_deferred()
+
 func explode():
 	var splash = SPLASH.instantiate()
-	splash.size = 0.2
+	splash.size = 0.3
 	splash.source = self
-	splash.modulate = Color("4ba329")
+	splash.modulate = Color("4a2014")
 	call_deferred("create_child", splash)
 
 func create_child(child):
 	get_tree().current_scene.add_child(child)
 	child.global_position = self.global_position
+
+func _on_deceleration_timeout():
+	shoot_next_weapon()
+	SfxDeconflicter.play(Game.audio_manager.bubble_pop_2)
+	explode()
+	queue_free.call_deferred()
