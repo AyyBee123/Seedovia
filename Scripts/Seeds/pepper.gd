@@ -51,6 +51,12 @@ func spawn_child_peppers():
 		pepper_child.slot_index = slot_index
 		pepper_child.seed_slot_number = seed_slot_number
 		pepper_child.parent = self
+		pepper_child.transferred_speed_multiplier = transferred_speed_multiplier
+		pepper_child.transferred_range_multiplier = transferred_range_multiplier
+		pepper_child.transferred_size_multiplier = transferred_size_multiplier
+		pepper_child.transferred_damage_multiplier = transferred_damage_multiplier
+		pepper_child.transferred_blast_radius_multiplier = transferred_blast_radius_multiplier
+		pepper_child.transferred_fire_rate_multiplier = transferred_fire_rate_multiplier
 		pepper_child.add_child(get_node("Passives").duplicate())
 		call_deferred("create_child", pepper_child)
 		weapon_fired.emit(pepper_child)
