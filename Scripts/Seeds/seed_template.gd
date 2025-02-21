@@ -48,6 +48,7 @@ var transferred_fire_rate_multiplier: float = 1 # fire rate multiplier of the we
 var seed_pool: Array = [] # pool to add the next seed to
 
 func _ready():
+	visible = false # avoid "jitter" on the very first frame
 	speed_multiplier *= transferred_speed_multiplier
 	range_multiplier *= transferred_range_multiplier
 	size_multiplier *= transferred_size_multiplier
@@ -57,12 +58,14 @@ func _ready():
 	scale = scale * player._player_stats.get_stat("Weapon_Size") * size_multiplier
 	direction = desired_direction.normalized()
 	await get_tree().physics_frame
+	visible = true
 	starting_position = global_position
 
 func _physics_process(delta):
 	travelled_distance()
 	update_position(delta)
 	set_ignore_first_collision()
+	visible = true
 
 func travelled_distance():
 	distance_travelled = starting_position.distance_to(global_position)
@@ -100,12 +103,12 @@ func set_weapon_properties(weapon, _desired_direction, _ignore_first_collision =
 	weapon.previous_weapon = self
 	weapon.hit_enemy = _enemy
 	weapon.slot_index = slot_index + 1
-	weapon.transferred_speed_multiplier = transferred_speed_multiplier
-	weapon.transferred_range_multiplier = transferred_range_multiplier
-	weapon.transferred_size_multiplier = transferred_size_multiplier
-	weapon.transferred_damage_multiplier = transferred_damage_multiplier
-	weapon.transferred_blast_radius_multiplier = transferred_blast_radius_multiplier
-	weapon.transferred_fire_rate_multiplier = transferred_fire_rate_multiplier
+	weapon.transferred_speed_multiplier *= transferred_speed_multiplier
+	weapon.transferred_range_multiplier *= transferred_range_multiplier
+	weapon.transferred_size_multiplier *= transferred_size_multiplier
+	weapon.transferred_damage_multiplier *= transferred_damage_multiplier
+	weapon.transferred_blast_radius_multiplier *= transferred_blast_radius_multiplier
+	weapon.transferred_fire_rate_multiplier *= transferred_fire_rate_multiplier
 	if seed_slot_number < 2:
 		weapon.seed_slot_number = PlayerSeeds.seed_indices[slot_index + 1]
 	else:

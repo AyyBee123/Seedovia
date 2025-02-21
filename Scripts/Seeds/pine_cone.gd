@@ -70,7 +70,7 @@ func create_child(child):
 
 func range_reached_done():
 	var tween = get_tree().create_tween()
-	tween.tween_property(self, "direction", direction / 2, 0.1)
+	tween.tween_property(self, "direction", direction / 2, 0.1).set_ease(Tween.EASE_OUT)
 	tween.tween_callback(func():
 		shoot_next_weapon()
 		SfxDeconflicter.play(Game.audio_manager.bubble_pop_2)
