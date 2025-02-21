@@ -37,6 +37,8 @@ border_color = Color(0.8, 0.8, 0.8, 0)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c7xgy"]
 
 [node name="Settings" type="Control"]
+process_mode = 3
+z_index = 11
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

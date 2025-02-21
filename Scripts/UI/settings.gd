@@ -1,5 +1,7 @@
 extends Control
 
+var source
+
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
 		Global.save_settings()
@@ -73,7 +75,11 @@ func change_volume(audio, value):
 
 func _on_save_button_pressed():
 	Global.save_settings()
+	if source: # if the settings menu was instantiated from the pause menu
+		source.priority_popups.pop_front()
 	queue_free()
 
 func _on_cancel_button_pressed():
+	if source: # if the settings menu was instantiated from the pause menu
+		source.priority_popups.pop_front()
 	queue_free()
