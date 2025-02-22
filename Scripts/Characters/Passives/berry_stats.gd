@@ -16,17 +16,5 @@ func _ready():
 	player._player_stats.acceleration = 0.2
 	player._player_stats.friction = 0.5
 	player._player_stats.luck = 0.0
-	player._player_stats.weapon_speed = 400.0
-	player._player_stats.weapon_range = 300.0
-	player._player_stats.weapon_size = 1.1
-	player._player_stats.weapon_damage = 8.0
-	player._player_stats.weapon_blast_radius = 1.15
-	player._player_stats.fire_rate = 7.5
-	player._player_stats.stats["Fire_Rate"]["x"] = 0.75
-	player._player_stats.stats["Weapon_Speed"]["x"] = 0.8
-	player._player_stats.stats["Weapon_Range"]["x"] = 1.2
-	player._player_stats.stats["Weapon_Size"]["x"] = 1.1
-	player._player_stats.stats["Weapon_Damage"]["x"] = 0.8
-	player._player_stats.stats["Weapon_Blast_Radius"]["x"] = 1.15
 	
 	player._player_stats.initialize_base_stats()
