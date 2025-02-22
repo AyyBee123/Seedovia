@@ -3,6 +3,7 @@ extends "res://Scripts/Seeds/seed_template.gd"
 @onready var animated_sprite_2d = $AnimatedSprite2D
 
 const POT_FIRE_RATE_MULTIPLIER = 0.25
+const POT_DAMAGE_MULTIPLIER = 0.8
 
 var has_next_seed: bool
 var target = null
@@ -14,7 +15,7 @@ var angle := 0.0
 
 func _ready():
 	super._ready()
-	transferred_damage_multiplier *= damage_multiplier
+	transferred_damage_multiplier *= POT_DAMAGE_MULTIPLIER
 	radius = $"Shoot Range/CollisionShape2D".shape.radius * scale.x
 
 func _physics_process(delta):
@@ -25,7 +26,7 @@ func _physics_process(delta):
 		_can_shoot = false
 		enemy = get_nearest_enemy(null)
 	if get_next_weapon() and enemy and global_position.distance_to(enemy.global_position) <= \
-				player._player_stats.get_stat("Weapon_Range") * get_next_weapon().instantiate().range_multiplier:
+				get_next_weapon().instantiate().RANGE:
 		target = enemy
 		_can_shoot = true
 	else:

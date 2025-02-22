@@ -4,7 +4,7 @@ extends Sprite2D
 
 var target
 var source
-var damage
+var DAMAGE
 var size
 var tick_rate
 var enemies_in_area: Array
@@ -36,7 +36,7 @@ func _physics_process(delta):
 	for i in enemies_in_area.size():
 		if tick_timers[i].is_stopped():
 			if is_instance_valid(enemies_in_area[i]):
-				enemies_in_area[i]._enemy_stats.take_damage(damage)
+				enemies_in_area[i]._enemy_stats.take_damage(DAMAGE)
 				tick_timers[i].start()
 
 func _on_area_2d_area_entered(area):

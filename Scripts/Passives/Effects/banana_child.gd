@@ -3,8 +3,8 @@ extends Sprite2D
 var position_initialized = false
 var direction
 var object
-var damage: float
-var explosion_size: float
+var DAMAGE: float
+var BLAST_RADIUS: float
 var spread: float
 var speed: float
 var weapon_direction: Vector2
@@ -45,8 +45,8 @@ func _on_lifetime_timeout():
 	
 func explode():
 	var explosion = resource_preloader.get_resource("Explosion").instantiate()
-	explosion.damage = damage
-	explosion.size = explosion_size
+	explosion.damage = DAMAGE
+	explosion.size = BLAST_RADIUS
 	explosion.source = self
 	explosion.modulate = Color.YELLOW
 	for passive in $Passives.get_children():

@@ -8,10 +8,9 @@ signal weapon_fired(weapon) # signal for firing the next seed
 signal has_collided(object) # signal for colliding with an enemy or wall
 signal attempted_fire # signal for attempting to fire the next seed (even if the next seed is null)
 
-var damage: float
+var DAMAGE: float
 var damage_multiplier: float = 1.5
-var explosion_size: float = 1
-var blast_radius_multiplier: float
+var BLAST_RADIUS: float
 var first_seed
 var number_of_shots: int = 6
 var player
@@ -37,8 +36,8 @@ func explode():
 		return
 	_has_exploded = true
 	var explosion = resource_preloader.get_resource("Explosion").instantiate()
-	explosion.damage = damage * damage_multiplier
-	explosion.size = explosion_size * blast_radius_multiplier
+	explosion.damage = DAMAGE * damage_multiplier
+	explosion.size = BLAST_RADIUS
 	explosion.source = self
 	explosion.modulate = Color("ce9e54")
 	SfxDeconflicter.play(mild_explosion_SFX)

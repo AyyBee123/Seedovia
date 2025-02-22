@@ -2,6 +2,7 @@ extends Control
 
 const OFFSET = 20
 
+var item
 var item_name
 var type
 var description
@@ -12,9 +13,16 @@ var hue = 0.0
 var mystic_color
 
 func _ready():
+	
 	%Name.text = item_name
 	%Type.text = type
-	%Description.text = description
+	if type == "SEED":
+		%Description.text = "Damage:  " + str(item.BASE_DAMAGE) + "\n" \
+							+ "Fire Rate:  " + str(item.BASE_FIRE_RATE) + "\n" \
+							+ "Range:  " + str(item.BASE_RANGE) + "\n" \
+							+ "Speed:  " + str(item.BASE_SPEED)
+	else:
+		%Description.text = description
 	match rarity:
 		0: # Common
 			set_values(Color.DARK_GRAY, "Common")

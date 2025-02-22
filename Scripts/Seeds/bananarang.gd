@@ -24,9 +24,9 @@ func update_position(delta):
 		previous_weapon_position = previous_weapon.global_position
 	if not has_stopped:
 		if not is_stopping:
-			current_velocity = direction * player._player_stats.get_stat("Weapon_Speed") * speed_multiplier
+			current_velocity = direction * SPEED
 		else:
-			current_velocity = direction * player._player_stats.get_stat("Weapon_Speed") * speed_multiplier * deceleration.time_left
+			current_velocity = direction * SPEED * deceleration.time_left
 	else:
 		if not _was_previous_weapon:
 			direction = global_position.direction_to(player.global_position) # goes towards the player's position
@@ -39,7 +39,7 @@ func update_position(delta):
 					direction = -direction
 				if previous_weapon == null:
 					direction_changed = true
-		current_velocity = direction * player._player_stats.get_stat("Weapon_Speed") * speed_multiplier \
+		current_velocity = direction * SPEED \
 				* (deceleration.wait_time - acceleration.time_left) / deceleration.wait_time
 	position += current_velocity * delta
 	rotation += deg_to_rad(-15)
@@ -50,7 +50,7 @@ func _collide(body):
 		return
 	has_collided.emit(body) # for on-hit effects (ex: burning an enemy on hit)
 	if body.is_in_group("Enemies"):
-		body.get_parent()._enemy_stats.take_damage(player._player_stats.get_stat("Weapon_Damage") * damage_multiplier)
+		body.get_parent()._enemy_stats.take_damage(DAMAGE)
 	if has_stopped:
 		SfxDeconflicter.play(Game.audio_manager.hit)
 		queue_free.call_deferred()
@@ -65,7 +65,7 @@ func travelled_distance():
 	distance_travelled = starting_position.distance_to(global_position)
 	total_distance += distance_travelled
 	starting_position = global_position
-	if total_distance >= player._player_stats.get_stat("Weapon_Range") * range_multiplier:
+	if total_distance >= RANGE:
 		if not is_stopping:
 			is_decelerating = true
 			is_stopping = true

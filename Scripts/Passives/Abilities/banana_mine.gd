@@ -2,18 +2,18 @@ extends "res://Scripts/Passives/Classes/passive_chance.gd"
 
 @onready var resource_preloader := $ResourcePreloader
 
-@export var damage_multiplier: float = 1.5
+@export var damage_multiplier: float = 1.25
 @export var speed_multiplier: float = 1
 var source
 var source_passives: Array
 
 func _ready():
 	# first get_parent is the Passives node, second get_parent is the object node (player or ally)
+	super._ready()
 	source = get_parent().get_parent()
 	chance = 0.25
 	source.weapon_fired.connect(chance_to_trigger)
 	source.weapon_fired.connect(transfer_passive)
-	super._ready()
 
 func banana_mine():
 	pass
@@ -32,11 +32,13 @@ func transfer_passive(weapon = null):
 
 func trigger(weapon = null):
 	var banana = resource_preloader.get_resource("Banana").instantiate()
-	banana.previous_weapon = weapon
+	banana.DAMAGE = 10 * (1 + player._player_stats.stats["Weapon_Damage"]["+"]) \
+			* player._player_stats.stats["Weapon_Damage"]["x"]
+	banana.speed = 250 * (1 + player._player_stats.stats["Weapon_Speed"]["+"]) \
+			* player._player_stats.stats["Weapon_Speed"]["x"]
+	banana.previous_weapon = source
 	banana.source_pos = source.global_position
 	banana.weapon_direction = source.weapon_direction
-	banana.damage = player._player_stats.get_stat("Weapon_Damage")
 	banana.damage_multiplier = damage_multiplier
-	banana.speed = player._player_stats.get_stat("Weapon_Speed") * speed_multiplier
-	banana.explosion_size = player._player_stats.get_stat("Weapon_Blast_Radius")
+	banana.BLAST_RADIUS = 1
 	get_tree().current_scene.add_child.call_deferred(banana)

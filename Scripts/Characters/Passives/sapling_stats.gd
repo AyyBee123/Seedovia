@@ -11,16 +11,10 @@ func _ready():
 	player._player_stats.dash_rate = 1.0
 	player._player_stats.dash_distance = 2000.0
 	player._player_stats.dash_invulnerability = 0.25
-	player._player_stats.fire_rate = 10.0
 	player._player_stats.contact_damage = 0.0
 	player._player_stats.invulnerability_time = 1.0
 	player._player_stats.acceleration = 0.2
 	player._player_stats.friction = 0.5
 	player._player_stats.luck = 0.0
-	player._player_stats.weapon_speed = 500.0
-	player._player_stats.weapon_range = 250.0
-	player._player_stats.weapon_size = 1.0
-	player._player_stats.weapon_damage = 10.0
-	player._player_stats.weapon_blast_radius = 1.0
 	
 	player._player_stats.initialize_base_stats()

@@ -29,18 +29,16 @@ func _physics_process(delta):
 		fire_laser()
 	else:
 		stop_laser()
-	laser_area.shape.radius = player._player_stats.get_stat("Weapon_Range") * LASER_RADIUS_MULTIPLIER \
-			+ BASE_LASER_RADIUS
+	laser_area.shape.radius = RANGE * LASER_RADIUS_MULTIPLIER / 2 + BASE_LASER_RADIUS
 	for i in enemies_in_area.size():
 		if tick_timers[i].is_stopped():
 			if is_instance_valid(enemies_in_area[i]):
-				enemies_in_area[i]._enemy_stats.take_damage(player._player_stats.get_stat("Weapon_Damage") \
-				* damage_multiplier * 0.1)
+				enemies_in_area[i]._enemy_stats.take_damage(DAMAGE * 0.1)
 				has_collided.emit(enemies_in_area[i].get_node("Enemy Hitbox"))
-				tick_timers[i].start(tick_rate / _player_stats.get_stat("Fire_Rate") * 10)
+				tick_timers[i].start(tick_rate * FIRE_RATE)
 
 func update_position(delta):
-	current_velocity = direction * player._player_stats.get_stat("Weapon_Speed") * speed_multiplier
+	current_velocity = direction * SPEED
 	position += current_velocity * delta
 
 func _on_laser_area_area_entered(area):
@@ -49,7 +47,7 @@ func _on_laser_area_area_entered(area):
 			enemies_in_area.append(area.get_parent())
 			var timer = Timer.new()
 			add_child(timer)
-			timer.wait_time = tick_rate / _player_stats.get_stat("Fire_Rate") * 10
+			timer.wait_time = tick_rate * FIRE_RATE
 			timer.one_shot = true
 			tick_timers.append(timer)
 			var laser = resource_preloader.get_resource("Frenzy's Rage Laser").instantiate()
@@ -90,8 +88,7 @@ func shoot_next_weapon():
 		return
 	weapon_direction = Vector2.RIGHT.rotated(randf_range(0, TAU))
 	set_weapon_properties(get_next_weapon().instantiate(), weapon_direction)
-	fire_rate.start(1.0 / (player._player_stats.get_stat("Fire_Rate") * FRENZY_FIRE_RATE_MULTIPLIER \
-			* get_next_weapon().instantiate().fire_rate_multiplier))
+	fire_rate.start(1.0 / (FRENZY_FIRE_RATE_MULTIPLIER * get_next_weapon().instantiate().FIRE_RATE))
 
 func initialize_location(weapon):
 	get_tree().current_scene.add_child(weapon)

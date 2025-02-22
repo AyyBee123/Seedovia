@@ -4,6 +4,7 @@
 
 [node name="Metronome" type="Sprite2D" groups=["Seed", "Weapon"]]
 script = ExtResource("2_lxk1q")
+BASE_FIRE_RATE = 2.0
 fire_rate_multiplier = 0.2
 
 [node name="Passives" type="Node" parent="."]

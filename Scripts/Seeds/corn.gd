@@ -13,7 +13,7 @@ func _ready():
 	animation_player.play("new_animation")
 
 func update_position(delta):
-	current_velocity = direction * player._player_stats.get_stat("Weapon_Speed") * speed_multiplier
+	current_velocity = direction * SPEED
 	position += current_velocity * delta
 	if current_velocity.x < 0:
 		scale.x = -abs(scale.x) # keep the x-scale negative
@@ -26,8 +26,8 @@ func update_position(delta):
 func explode():
 	has_collided.emit(null)
 	var explosion = resource_preloader.get_resource("Explosion").instantiate()
-	explosion.damage = player._player_stats.get_stat("Weapon_Damage") * damage_multiplier
-	explosion.size = player._player_stats.get_stat("Weapon_Blast_Radius") * blast_radius_multiplier
+	explosion.damage = DAMAGE
+	explosion.size = BLAST_RADIUS
 	explosion.get_node("AnimatedSprite2D").self_modulate = Color("c69b30") # match the corn's shaded color
 	SfxDeconflicter.play(Game.audio_manager.corn_mild_explosion)
 	create_explosion.call_deferred(explosion)

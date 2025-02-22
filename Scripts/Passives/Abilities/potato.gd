@@ -9,8 +9,8 @@ func _ready():
 
 func trigger(weapon = null):
 	var potato = resource_preloader.get_resource("Potato Mine").instantiate()
-	potato.damage = player._player_stats.get_stat("Weapon_Damage")
-	potato.blast_radius_multiplier = player._player_stats.get_stat("Weapon_Blast_Radius")
+	potato.DAMAGE = player.DAMAGE
+	potato.BLAST_RADIUS = player.BLAST_RADIUS
 	potato.player = player
 	get_tree().current_scene.add_child(potato)
 	potato.global_position = player.global_position

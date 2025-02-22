@@ -10,16 +10,14 @@ func _ready():
 	deceleration.start()
 
 func update_position(delta):
-	current_velocity = direction * player._player_stats.get_stat("Weapon_Speed") * speed_multiplier \
-			* deceleration.time_left
+	current_velocity = direction * SPEED * deceleration.time_left
 	position += current_velocity * delta
 
 func _collide(body):
 	if not ignore_first_collision:
 		has_collided.emit(body)
 		if body.is_in_group("Enemies"):
-			body.get_parent()._enemy_stats.take_damage(player._player_stats.get_stat("Weapon_Damage") \
-					* damage_multiplier / 2)
+			body.get_parent()._enemy_stats.take_damage(DAMAGE / 2)
 		explode()
 	else:
 		ignore_first_collision = false
@@ -29,8 +27,8 @@ func _on_lifetime_timeout():
 
 func explode():
 	var explosion = resource_preloader.get_resource("Explosion").instantiate()
-	explosion.damage = player._player_stats.get_stat("Weapon_Damage") * damage_multiplier
-	explosion.size = player._player_stats.get_stat("Weapon_Blast_Radius") * blast_radius_multiplier
+	explosion.damage = DAMAGE
+	explosion.size = BLAST_RADIUS
 	explosion.get_node("AnimatedSprite2D").self_modulate = Color.ORANGE_RED
 	SfxDeconflicter.play(Game.audio_manager.pepper_mild_explosion)
 	call_deferred("create_explosion", explosion)

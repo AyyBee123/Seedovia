@@ -12,11 +12,13 @@ signal attempted_fire # signal for attempting to fire the next seed (even if the
 var nearest_enemy = null
 var pos
 var damage_multiplier: float = 1
-var damage: float
+var DAMAGE: float
+var BLAST_RADIUS: float = 0.05
+var SIZE = 0.05
 
 func _ready():
 	if nearest_enemy != null:
-		nearest_enemy.get_parent()._enemy_stats.take_damage(damage)
+		nearest_enemy.get_parent()._enemy_stats.take_damage(DAMAGE)
 
 func _on_flip_timer_timeout():
 	flip_v = not flip_v

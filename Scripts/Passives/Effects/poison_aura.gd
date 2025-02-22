@@ -4,7 +4,7 @@ extends Sprite2D
 
 var enemies_in_area: Array
 var tick_timers: Array
-var damage
+var DAMAGE
 var damage_multiplier
 var radius: float = scale.x
 var radius_multiplier
@@ -15,7 +15,7 @@ func _physics_process(delta):
 	for i in enemies_in_area.size():
 		if tick_timers[i].is_stopped():
 			if is_instance_valid(enemies_in_area[i]):
-				enemies_in_area[i]._enemy_stats.take_damage(damage * damage_multiplier)
+				enemies_in_area[i]._enemy_stats.take_damage(DAMAGE * damage_multiplier)
 				tick_timers[i].start()
 
 func _on_area_2d_area_entered(area):

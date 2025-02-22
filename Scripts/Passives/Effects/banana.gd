@@ -2,8 +2,8 @@ extends Sprite2D
 
 var position_initialized = false
 var direction
-var damage: float
-var explosion_size: float
+var DAMAGE: float
+var BLAST_RADIUS: float
 var spread: float
 var speed: float
 var weapon_direction: Vector2
@@ -51,8 +51,8 @@ func _on_lifetime_timeout():
 	
 func explode():
 	var explosion = resource_preloader.get_resource("Explosion").instantiate()
-	explosion.damage = damage
-	explosion.size = explosion_size
+	explosion.damage = DAMAGE
+	explosion.size = BLAST_RADIUS
 	explosion.source = self
 	explosion.modulate = Color.YELLOW
 	for _passive in $Passives.get_children():
@@ -78,10 +78,10 @@ func spawn_child_bananas():
 		var banana_child = resource_preloader.get_resource("Banana Child").instantiate()
 		for passive in $Passives.get_children():
 			banana_child.get_node("Passives").add_child(passive.duplicate())
-		banana_child.damage = damage
+		banana_child.DAMAGE = DAMAGE
 		banana_child.damage_multiplier = 0.35 * damage_multiplier
 		banana_child.speed = speed
-		banana_child.explosion_size = 0.65
+		banana_child.BLAST_RADIUS = 0.65
 		banana_child.direction = direction.rotated(spread)
 		call_deferred("create_child", banana_child)
 

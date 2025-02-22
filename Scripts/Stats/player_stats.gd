@@ -3,6 +3,7 @@ class_name player_stats extends "res://Scripts/Stats/character_stats.gd"
 signal change_stat
 signal change_coins
 
+# Seed stats' (range, damage, fire rate, etc.) bonuses are percent increases
 var stats := {
 	"Max_Health": {
 		"base": max_health,
@@ -161,11 +162,11 @@ func initialize_base_stats():
 	stats["Dash_Rate"]["base"] = dash_rate
 	stats["Dash_Distance"]["base"] = dash_distance
 	stats["Dash_Invulnerability"]["base"] = dash_invulnerability
-	stats["Fire_Rate"]["base"] = fire_rate
 	stats["Contact_Damage"]["base"] = contact_damage
 	stats["Invulnerability_Time"]["base"] = invulnerability_time
 	stats["Acceleration"]["base"] = acceleration
 	stats["Friction"]["base"] = friction
+	stats["Fire_Rate"]["base"] = fire_rate
 	stats["Weapon_Speed"]["base"] = weapon_speed
 	stats["Weapon_Range"]["base"] = weapon_range
 	stats["Weapon_Size"]["base"] = weapon_size
@@ -188,6 +189,9 @@ func get_health(was_equipped: bool):
 
 func get_stat(stat: String):
 	return stats[stat]["x"] * temp_stats[stat]["x"] * (stats[stat]["base"] + stats[stat]["+"] + temp_stats[stat]["+"])
+
+func get_seed_stat(stat: String):
+	return stats[stat]["x"] * stats[stat]["base"] * (1 + stats[stat]["+"])
 
 func set_stat(stat: String, operation: String, amount):
 	if operation == "+":

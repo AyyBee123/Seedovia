@@ -26,6 +26,12 @@ func _ready():
 	player._player_stats.weapon_size = Global.RNG.randf_range(0.8, 1.2)
 	player._player_stats.weapon_damage = Global.RNG.randf_range(6, 15)
 	player._player_stats.weapon_blast_radius = Global.RNG.randf_range(0.8, 1.2)
+	player._player_stats.stats["Fire_Rate"]["x"] = Global.RNG.randf_range(0.6, 1.5)
+	player._player_stats.stats["Weapon_Speed"]["x"] = Global.RNG.randf_range(0.8, 1.2)
+	player._player_stats.stats["Weapon_Range"]["x"] = Global.RNG.randf_range(0.6, 1.5)
+	player._player_stats.stats["Weapon_Size"]["x"] = Global.RNG.randf_range(0.8, 1.2)
+	player._player_stats.stats["Weapon_Damage"]["x"] = Global.RNG.randf_range(0.6, 1.5)
+	player._player_stats.stats["Weapon_Blast_Radius"]["x"] = Global.RNG.randf_range(0.8, 1.2)
 	
 	player._player_stats.initialize_base_stats()
 	

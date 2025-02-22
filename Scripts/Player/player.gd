@@ -5,7 +5,7 @@ signal weapon_fired(weapon)
 signal dashed
 signal has_collided(object)
 
-@export var _player_stats: player_stats
+var _player_stats: player_stats = preload("res://Resources/Characters/Stats/base_stats.tres")
 
 @onready var bullets_per_second := $"Bullets Per Second"
 @onready var invulnerability_time := $"Invulnerability Time"
@@ -36,6 +36,14 @@ var item_in_area = false
 var _isMouse := true
 var _isKeyboard := true
 
+# stats mainly for passives
+var DAMAGE = 10
+var SPEED = 500
+var RANGE = 250
+var FIRE_RATE = 10
+var BLAST_RADIUS = 1
+var SIZE = 1
+
 func _ready():
 	if PlayerCharacter._is_starting: # when starting a new run
 		PlayerCharacter._is_starting = false
@@ -43,13 +51,6 @@ func _ready():
 		_player_stats.set_health(_player_stats.get_stat("Max_Health"))
 		if PlayerPassives.starting_passives != null: # add starting passives to the player
 			PlayerPassives.add_starting_passives()
-		for stat in _player_stats.stats.keys():
-			if stat == "Max_Health":
-				_player_stats.stats[stat]["x"] = 1
-				_player_stats.stats[stat]["+"] = 0
-				continue
-			_player_stats.stats[stat]["x"] = 1.0
-			_player_stats.stats[stat]["+"] = 0.0
 	else:
 		PlayerPassives.set_passives()
 		PlayerPassives.set_item_passives()
@@ -60,6 +61,12 @@ func _ready():
 	_player_stats.damaged.connect(took_damage)
 	_player_stats.health_increased.connect(heal)
 	_player_stats.change_coins.connect(update_coins)
+	DAMAGE = _player_stats.get_seed_stat("Weapon_Damage")
+	FIRE_RATE = _player_stats.get_seed_stat("Fire_Rate")
+	SPEED = _player_stats.get_seed_stat("Weapon_Speed")
+	RANGE = _player_stats.get_seed_stat("Weapon_Range")
+	BLAST_RADIUS = _player_stats.get_seed_stat("Weapon_Blast_Radius")
+	SIZE = _player_stats.get_seed_stat("Weapon_Size")
 	Global.save_run_data()
 
 func _physics_process(delta):
@@ -188,10 +195,10 @@ func update_timers():
 	current_weapon = null if PlayerInventory.seeds.size() == 0 else PlayerSeeds.load_weapons()[0]
 	if current_weapon != null:
 		var weapon = current_weapon.instantiate()
-		bullets_per_second.wait_time = 1.0/(_player_stats.get_stat("Fire_Rate") * weapon.fire_rate_multiplier)
-		damage_multiplier = weapon.damage_multiplier
+		bullets_per_second.wait_time = 1.0 / (weapon.BASE_FIRE_RATE * (1 + _player_stats.stats["Fire_Rate"]["+"]) \
+				* _player_stats.stats["Fire_Rate"]["x"])
 	else:
-		bullets_per_second.wait_time = 1.0/_player_stats.get_stat("Fire_Rate")
+		bullets_per_second.stop()
 	invulnerability_time.wait_time = _player_stats.get_stat("Invulnerability_Time")
 	dash_cooldown.wait_time = _player_stats.get_stat("Dash_Rate")
 	dash_invulnerability_time.wait_time = _player_stats.get_stat("Dash_Invulnerability")

@@ -29,10 +29,9 @@ func _physics_process(delta):
 	for i in enemies_in_area.size():
 		if tick_timers[i].is_stopped():
 			if is_instance_valid(enemies_in_area[i]):
-				enemies_in_area[i]._enemy_stats.take_damage(player._player_stats.get_stat("Weapon_Damage") \
-				* damage_multiplier)
+				enemies_in_area[i]._enemy_stats.take_damage(DAMAGE)
 				has_collided.emit(enemies_in_area[i].get_node("Enemy Hitbox"))
-				tick_timers[i].start(tick_rate.wait_time / _player_stats.get_stat("Fire_Rate") * 20)
+				tick_timers[i].start(tick_rate.wait_time * FIRE_RATE)
 
 func travelled_distance():
 	pass
@@ -42,8 +41,7 @@ func _collide(body):
 
 func update_position(delta):
 	if not hit_wall:
-		current_velocity = direction * player._player_stats.get_stat("Weapon_Speed") * speed_multiplier \
-				* deceleration.time_left
+		current_velocity = direction * SPEED * deceleration.time_left
 		position += current_velocity * delta
 
 func _on_deceleration_timeout():
@@ -66,7 +64,7 @@ func _on_hurtbox_area_entered(area):
 			enemies_in_area.append(area.get_parent())
 			var timer = Timer.new()
 			add_child(timer)
-			timer.wait_time = tick_rate.wait_time / _player_stats.get_stat("Fire_Rate") * 20
+			timer.wait_time = tick_rate.wait_time * FIRE_RATE
 			timer.one_shot = true
 			tick_timers.append(timer)
 

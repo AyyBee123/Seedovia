@@ -10,7 +10,7 @@ const EXPLOSION = preload("res://Scenes/Passives/Effects/Explosion.tscn")
 const MAX_STACKS: int = 8
 const MAX_DAMAGE: float = 5.0
 const MAX_SIZE: float = 3.0
-const MIN_SPEED: float = 0.0
+const MAX_SPEED: float = 0.0
 const MAX_BLAST_RADIUS: float = 2.0
 const ELAPSED_TIME_BUFFER: float = 0.25
 
@@ -89,10 +89,10 @@ func _on_pomegranate_hit_area_area_entered(area):
 
 # make each stacked pomegranate stronger as they are combined together
 func combine():
-	damage_multiplier = min(damage_multiplier + 0.5 * stacks, MAX_DAMAGE)
-	size_multiplier = min(size_multiplier + 0.3 * stacks, MAX_SIZE)
-	speed_multiplier = max(speed_multiplier - 0.1 * stacks, MIN_SPEED)
-	blast_radius_multiplier = min(blast_radius_multiplier + 0.2 * stacks, MAX_BLAST_RADIUS)
+	DAMAGE = min(DAMAGE + 0.5 * stacks, MAX_DAMAGE)
+	SIZE = min(SIZE + 0.3 * stacks, MAX_SIZE)
+	SPEED = max(SPEED - 0.1 * stacks, MAX_SPEED)
+	BLAST_RADIUS = min(BLAST_RADIUS + 0.2 * stacks, MAX_BLAST_RADIUS)
 	stacks = min(stacks + num_of_stacks, MAX_STACKS)
 	if deceleration.is_stopped():
 		deceleration.start(0.25)
@@ -120,8 +120,8 @@ func explode():
 		weapon_direction = Vector2.RIGHT.rotated(i * TAU/num_of_shots + random_rotation)
 		shoot_next_weapon()
 	var explosion = EXPLOSION.instantiate()
-	explosion.damage = _player_stats.get_stat("Weapon_Damage") * damage_multiplier / 10 + 1 / MAX_STACKS * stacks
-	explosion.size = _player_stats.get_stat("Weapon_Size") * size_multiplier / 5 + 1 / MAX_STACKS * stacks
+	explosion.damage = DAMAGE / 10 + 1 / MAX_STACKS * stacks
+	explosion.size = SIZE / 5 + 1 / MAX_STACKS * stacks
 	explosion.source = self
 	explosion.modulate = Color("bf214d")
 	call_deferred("create_child", explosion)

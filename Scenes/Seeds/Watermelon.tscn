@@ -35,6 +35,12 @@ animations = [{
 
 [node name="Watermelon" type="Sprite2D" groups=["Seed", "Weapon"]]
 script = ExtResource("1_rf7tf")
+BASE_DAMAGE = 30.0
+BASE_FIRE_RATE = 1.5
+BASE_RANGE = 2500.0
+BASE_SPEED = 600.0
+BASE_SIZE = 1.0
+BASE_BLAST_RADIUS = 1.0
 range_multiplier = 10.0
 damage_multiplier = 3.0
 blast_radius_multiplier = 0.333

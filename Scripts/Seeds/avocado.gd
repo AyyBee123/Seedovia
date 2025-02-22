@@ -26,7 +26,7 @@ func _collide(body):
 		return
 	has_collided.emit(body) # for on-hit effects (ex: burning an enemy on hit)
 	if body.is_in_group("Enemies"):
-		body.get_parent()._enemy_stats.take_damage(player._player_stats.get_stat("Weapon_Damage") * damage_multiplier)
+		body.get_parent()._enemy_stats.take_damage(DAMAGE)
 	SfxDeconflicter.play(Game.audio_manager.hit)
 	SfxDeconflicter.play(Game.audio_manager.crunch)
 	queue_free.call_deferred()
@@ -35,7 +35,7 @@ func travelled_distance():
 	distance_travelled = starting_position.distance_to(global_position)
 	total_distance += distance_travelled
 	starting_position = global_position
-	if total_distance >= player._player_stats.get_stat("Weapon_Range") * range_multiplier:
+	if total_distance >= RANGE:
 		if not range_reached:
 			range_reached_done()
 			range_reached = true
@@ -45,20 +45,20 @@ func range_reached_done():
 	var avocado_seed = AVOCADO_SEED.instantiate()
 	transfer_properties(avocado_seed)
 	avocado_seed.desired_direction = direction
-	avocado_seed.speed_multiplier = speed_multiplier
-	avocado_seed.range_multiplier = range_multiplier * 2
-	avocado_seed.damage_multiplier = damage_multiplier * 2
-	avocado_seed.fire_rate_multiplier = fire_rate_multiplier * 2
+	avocado_seed.SPEED = SPEED
+	avocado_seed.RANGE = RANGE * 2
+	avocado_seed.DAMAGE = DAMAGE * 2
+	avocado_seed.FIRE_RATE = FIRE_RATE * 2
 	get_tree().current_scene.add_child(avocado_seed)
 	avocado_seed.global_position = global_position
 	# spawn the left side
 	var avocado_left = AVOCADO_LEFT.instantiate()
 	transfer_properties(avocado_left)
 	avocado_left.desired_direction = direction.rotated(-PI/2)
-	avocado_left.speed_multiplier = speed_multiplier
-	avocado_left.range_multiplier = range_multiplier
-	avocado_left.damage_multiplier = damage_multiplier * 0.5
-	avocado_left.fire_rate_multiplier = fire_rate_multiplier
+	avocado_left.SPEED = SPEED
+	avocado_left.RANGE = RANGE
+	avocado_left.DAMAGE = DAMAGE * 0.5
+	avocado_left.FIRE_RATE = FIRE_RATE
 	avocado_left.parent_direction = direction
 	avocado_left.angle_sign = -1
 	get_tree().current_scene.add_child(avocado_left)
@@ -67,10 +67,10 @@ func range_reached_done():
 	var avocado_right = AVOCADO_RIGHT.instantiate()
 	transfer_properties(avocado_right)
 	avocado_right.desired_direction = direction.rotated(PI/2)
-	avocado_right.speed_multiplier = speed_multiplier
-	avocado_right.range_multiplier = range_multiplier
-	avocado_right.damage_multiplier = damage_multiplier * 0.5
-	avocado_right.fire_rate_multiplier = fire_rate_multiplier
+	avocado_right.SPEED = SPEED
+	avocado_right.RANGE = RANGE
+	avocado_right.DAMAGE = DAMAGE * 0.5
+	avocado_right.FIRE_RATE = FIRE_RATE
 	avocado_right.parent_direction = direction
 	avocado_right.angle_sign = 1
 	get_tree().current_scene.add_child(avocado_right)

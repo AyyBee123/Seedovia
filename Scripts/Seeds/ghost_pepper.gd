@@ -1,6 +1,7 @@
 extends "res://Scripts/Seeds/seed_template.gd"
 
 const GHOST_FIRE_RATE_MULTIPLIER = 0.9
+const GHOST_DAMAGE_MULTIPLIER = 0.75
 
 var radius: float = 60
 var speed: float = 0.5
@@ -15,7 +16,7 @@ var _is_dying := false
 func _ready():
 	super._ready()
 	lifetime.start()
-	transferred_damage_multiplier *= damage_multiplier
+	transferred_damage_multiplier *= GHOST_DAMAGE_MULTIPLIER
 
 func _physics_process(delta):
 	super._physics_process(delta)
@@ -35,12 +36,11 @@ func shoot_next_weapon():
 		return
 	var weapon_instance = get_next_weapon().instantiate()
 	weapon_direction = global_position.direction_to(get_nearest_enemy().global_position)
-	fire_rate.start(1.0 / (player._player_stats.get_stat("Fire_Rate") * GHOST_FIRE_RATE_MULTIPLIER \
-			* get_next_weapon().instantiate().fire_rate_multiplier))
+	fire_rate.start(1.0 / (GHOST_FIRE_RATE_MULTIPLIER * get_next_weapon().instantiate().FIRE_RATE))
 	set_weapon_properties(weapon_instance, weapon_direction)
 
 func update_position(delta):
-	current_velocity = direction * player._player_stats.get_stat("Weapon_Speed") * speed_multiplier
+	current_velocity = direction * SPEED
 	position += current_velocity * delta
 
 func look():

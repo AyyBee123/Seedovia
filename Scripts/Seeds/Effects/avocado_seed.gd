@@ -8,7 +8,7 @@ func _collide(body):
 		return
 	has_collided.emit(body) # for on-hit effects (ex: burning an enemy on hit)
 	if body.is_in_group("Enemies"):
-		body.get_parent()._enemy_stats.take_damage(player._player_stats.get_stat("Weapon_Damage") * damage_multiplier)
+		body.get_parent()._enemy_stats.take_damage(DAMAGE)
 	explode()
 	SfxDeconflicter.play(Game.audio_manager.walnut_hit)
 	queue_free.call_deferred()

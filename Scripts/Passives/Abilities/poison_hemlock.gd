@@ -12,9 +12,9 @@ func _ready():
 
 func trigger(weapon = null):
 	var poison_aura = resource_preloader.get_resource("Poison Aura").instantiate()
-	poison_aura.damage = player._player_stats.get_stat("Weapon_Damage") * weapon.damage_multiplier
+	poison_aura.DAMAGE = source.DAMAGE
 	poison_aura.damage_multiplier = 0.2
-	poison_aura.radius_multiplier = player._player_stats.get_stat("Weapon_Size")
+	poison_aura.radius_multiplier = source.SIZE
 	poison_aura.weapon = weapon
 	weapon.add_child.call_deferred(poison_aura)
 	poison_aura.position = Vector2.ZERO

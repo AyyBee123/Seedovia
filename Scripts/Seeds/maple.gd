@@ -28,17 +28,14 @@ func _physics_process(delta):
 	for i in enemies_in_area.size():
 		if tick_timers[i].is_stopped():
 			if is_instance_valid(enemies_in_area[i]):
-				enemies_in_area[i]._enemy_stats.take_damage(player._player_stats.get_stat("Weapon_Damage") \
-						* damage_multiplier)
+				enemies_in_area[i]._enemy_stats.take_damage(DAMAGE)
 				tick_timers[i].start()
 				has_collided.emit()
-	if fire_rate.is_stopped() and rect_width == player._player_stats.get_stat("Weapon_Range") * range_multiplier \
-			and not lifetime.is_stopped():
+	if fire_rate.is_stopped() and rect_width == RANGE and not lifetime.is_stopped():
 		weapon_direction = Vector2.RIGHT.rotated(randf_range(0, TAU))
 		shoot_next_weapon()
 		fire_rate.start()
-	rect_width = min(player._player_stats.get_stat("Weapon_Range") \
-			* range_multiplier * t, player._player_stats.get_stat("Weapon_Range") * range_multiplier)
+	rect_width = min(RANGE * t, RANGE)
 	set_lengths()
 	if lifetime.is_stopped():
 		var tween = get_tree().create_tween()
@@ -68,8 +65,7 @@ func shoot_next_weapon():
 	if get_next_weapon() == null:
 		return
 	var weapon_instance = get_next_weapon().instantiate()
-	fire_rate.start(1.0 / (player._player_stats.get_stat("Fire_Rate") * SYRUP_FIRE_RATE_MULTIPLIER \
-			* get_next_weapon().instantiate().fire_rate_multiplier))
+	fire_rate.start(1.0 / (SYRUP_FIRE_RATE_MULTIPLIER * get_next_weapon().instantiate().FIRE_RATE))
 	set_weapon_properties(weapon_instance, weapon_direction)
 
 func initialize_location(weapon):

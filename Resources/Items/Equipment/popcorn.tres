@@ -13,3 +13,4 @@ texture = ExtResource("2_puhb3")
 description = "5x Fire Rate
 0.2x Damage
 0.5x Seed Size"
+unlocked = true

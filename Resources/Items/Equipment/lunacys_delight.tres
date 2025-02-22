@@ -12,3 +12,4 @@ special_properties = Array[PackedScene]([ExtResource("2_bterq")])
 item_name = "Lunacy's Delight"
 texture = ExtResource("2_8bne5")
 description = "The seeds in the 2nd and 3rd seed slots rapidly shoots Lunacy projectiles in random directions."
+unlocked = true

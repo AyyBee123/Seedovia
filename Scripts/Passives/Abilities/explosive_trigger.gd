@@ -36,9 +36,9 @@ func explode():
 			continue
 		explosion.get_node("Passives").add_child(passive.duplicate())
 	explosion.object = source
-	explosion.damage = player._player_stats.get_stat("Weapon_Damage") * source.damage_multiplier
-	explosion.damage_multiplier = source.damage_multiplier
-	explosion.size = player._player_stats.get_stat("Weapon_Blast_Radius") * explosion_size_multiplier
+	explosion.damage = source.DAMAGE
+	explosion.damage_multiplier = 1
+	explosion.size = source.BLAST_RADIUS * explosion_size_multiplier
 	spawn_explosion.call_deferred(explosion)
 
 func spawn_explosion(explosion):

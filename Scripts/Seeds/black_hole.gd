@@ -34,17 +34,16 @@ func _physics_process(delta):
 	for i in enemies_in_area.size():
 		if tick_timers[i].is_stopped():
 			if is_instance_valid(enemies_in_area[i]):
-				enemies_in_area[i]._enemy_stats.take_damage(player._player_stats.get_stat("Weapon_Damage") \
-				* damage_multiplier)
+				enemies_in_area[i]._enemy_stats.take_damage(DAMAGE)
 				has_collided.emit(enemies_in_area[i].get_node("Enemy Hitbox"))
-				tick_timers[i].start(tick_rate / _player_stats.get_stat("Fire_Rate") * 20)
+				tick_timers[i].start(tick_rate / FIRE_RATE)
 	if not is_shrinking:
 		orbit(delta)
 	else:
 		shrink(delta)
 
 func update_position(delta):
-	current_velocity = direction * player._player_stats.get_stat("Weapon_Speed") * speed_multiplier
+	current_velocity = direction * SPEED
 	position += current_velocity * delta
 
 func _collide(body):
@@ -53,7 +52,7 @@ func _collide(body):
 			enemies_in_area.append(body.get_parent())
 			var timer = Timer.new()
 			add_child(timer)
-			timer.wait_time = tick_rate / _player_stats.get_stat("Fire_Rate") * 20
+			timer.wait_time = tick_rate / FIRE_RATE
 			timer.one_shot = true
 			tick_timers.append(timer)
 
@@ -106,7 +105,7 @@ func travelled_distance():
 	distance_travelled = starting_position.distance_squared_to(global_position)
 	total_distance += distance_travelled
 	starting_position = global_position
-	if total_distance >= player._player_stats.get_stat("Weapon_Range") * range_multiplier:
+	if total_distance >= RANGE:
 		is_shrinking = true
 
 func shrink(delta):

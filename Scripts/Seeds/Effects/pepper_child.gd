@@ -15,16 +15,14 @@ func _physics_process(delta):
 	update_position(delta)
 
 func update_position(delta):
-	var current_velocity: Vector2 = direction * player._player_stats.get_stat("Weapon_Speed") * speed_multiplier \
-			* deceleration.time_left
+	var current_velocity: Vector2 = direction * SPEED * deceleration.time_left
 	position += current_velocity * delta
 	look_at(global_position + current_velocity)
 
 func _on_hitbox_area_entered(area):
 	has_collided.emit(area)
 	if area.is_in_group("Enemies"):
-			area.get_parent()._enemy_stats.take_damage(player._player_stats.get_stat("Weapon_Damage") \
-					* damage_multiplier / 2)
+			area.get_parent()._enemy_stats.take_damage(DAMAGE / 2)
 	explode()
 
 func _on_hitbox_body_entered(body):
@@ -36,8 +34,8 @@ func _on_lifetime_timeout():
 
 func explode():
 	var explosion = resource_preloader.get_resource("Explosion").instantiate()
-	explosion.damage = player._player_stats.get_stat("Weapon_Damage") * damage_multiplier
-	explosion.size = player._player_stats.get_stat("Weapon_Blast_Radius") * blast_radius_multiplier
+	explosion.damage = DAMAGE
+	explosion.size = BLAST_RADIUS
 	explosion.get_node("AnimatedSprite2D").self_modulate = Color.ORANGE_RED
 	SfxDeconflicter.play(Game.audio_manager.pepper_child_mild_explosion)
 	call_deferred("create_child", explosion)

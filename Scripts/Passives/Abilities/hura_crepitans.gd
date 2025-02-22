@@ -9,6 +9,7 @@ var player
 @onready var resource_preloader = $ResourcePreloader
 
 var explosion_size_multiplier = 0.25
+var damage_multiplier = 0.4
 
 func _ready():
 	player = Targets.get_player()
@@ -42,9 +43,9 @@ func trigger(weapon = null):
 			continue
 		explosion.get_node("Passives").add_child(passive.duplicate())
 	explosion.object = source
-	explosion.damage = player._player_stats.get_stat("Weapon_Damage") * source.damage_multiplier / 3
-	explosion.damage_multiplier = source.damage_multiplier
-	explosion.size = player._player_stats.get_stat("Weapon_Blast_Radius") * explosion_size_multiplier
+	explosion.damage = source.DAMAGE
+	explosion.damage_multiplier = damage_multiplier
+	explosion.size = source.BLAST_RADIUS * explosion_size_multiplier
 	spawn_explosion.call_deferred(explosion)
 
 func spawn_explosion(explosion):

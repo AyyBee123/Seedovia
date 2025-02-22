@@ -1,6 +1,5 @@
-[gd_scene load_steps=16 format=3 uid="uid://cu63rxmy71bcg"]
+[gd_scene load_steps=15 format=3 uid="uid://cu63rxmy71bcg"]
 
-[ext_resource type="Resource" uid="uid://bvjfk72dlusnu" path="res://Resources/Characters/Stats/base_stats.tres" id="2_50xvi"]
 [ext_resource type="Script" path="res://Scripts/Player/player.gd" id="2_f7nwd"]
 [ext_resource type="Script" path="res://Scripts/Player/StateMachine.gd" id="3_ojktk"]
 [ext_resource type="PackedScene" uid="uid://b51uuhjac0hmd" path="res://Scenes/Inventory/inventory.tscn" id="4_px6lr"]
@@ -48,7 +47,6 @@ scale = Vector2(2, 2)
 collision_layer = 130
 collision_mask = 629
 script = ExtResource("2_f7nwd")
-_player_stats = ExtResource("2_50xvi")
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("3_ojktk")

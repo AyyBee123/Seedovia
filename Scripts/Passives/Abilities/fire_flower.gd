@@ -22,7 +22,7 @@ func collide(object):
 		burning = resource_preloader.get_resource("Burning").instantiate()
 		burning.duration = duration
 		burning.tick = tick
-		burning.damage = player._player_stats.get_stat("Weapon_Damage") * damage_multiplier
+		burning.damage = source.DAMAGE
 		object.get_parent().get_node("Burn Stacks").add_child(burning)
 
 func trigger(weapon = null):
@@ -32,7 +32,7 @@ func trigger(weapon = null):
 	else:
 		weapon.modulate += Color.DARK_ORANGE
 	weapon.has_collided.connect(collide)
-	fire_effect.damage = player._player_stats.get_stat("Weapon_Damage") * damage_multiplier
+	fire_effect.damage = source.DAMAGE
 	transfer_passive(weapon)
 
 func transfer_passive(weapon = null):

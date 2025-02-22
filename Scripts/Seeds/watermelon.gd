@@ -15,14 +15,14 @@ var animation_frame = 0
 func _ready():
 	super._ready()
 	area_normal = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
-	frame_change_timer.wait_time = 1.0 / (player._player_stats.get_stat("Weapon_Speed") * speed_multiplier) * 50
+	frame_change_timer.wait_time = 1.0 / (SPEED) * 50
 
 func _physics_process(delta):
 	super._physics_process(delta)
 	rotation = 0 # locks the rotation of the parent node (to prevent shapecasts from rotating)
 
 func update_position(delta):
-	current_velocity = direction * player._player_stats.get_stat("Weapon_Speed") * speed_multiplier
+	current_velocity = direction * SPEED
 	position += current_velocity * delta
 	animation_frame = (animation_frame + 1) % $AnimatedSprite2D.sprite_frames.get_frame_count("default")
 	if frame_change_timer.is_stopped():
@@ -34,7 +34,7 @@ func travelled_distance():
 	distance_travelled = starting_position.distance_to(global_position)
 	total_distance += distance_travelled
 	starting_position = global_position
-	if total_distance >= player._player_stats.get_stat("Weapon_Range") * range_multiplier:
+	if total_distance >= RANGE:
 		queue_free.call_deferred()
 
 func _on_hitbox_area_entered(area):
@@ -42,7 +42,7 @@ func _on_hitbox_area_entered(area):
 		ignore_first_collision = false
 		return
 	if area.is_in_group("Enemies"):
-		area.get_parent()._enemy_stats.take_damage(_player_stats.get_stat("Weapon_Damage") * damage_multiplier)
+		area.get_parent()._enemy_stats.take_damage(DAMAGE)
 	# shapecasts allow the projectile to bounce after detecting an enemy
 	area_normal = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized() # just in case
 	if down.is_colliding():
@@ -77,8 +77,8 @@ func collide(area):
 
 func explode():
 	var explosion = resource_preloader.get_resource("Explosion").instantiate()
-	explosion.damage = _player_stats.get_stat("Weapon_Damage") * damage_multiplier * 0.25
-	explosion.size = _player_stats.get_stat("Weapon_Blast_Radius") * blast_radius_multiplier
+	explosion.damage = DAMAGE * 0.25
+	explosion.size = BLAST_RADIUS
 	explosion.get_node("AnimatedSprite2D").self_modulate = Color.INDIAN_RED
 	create_explosion.call_deferred(explosion)
 

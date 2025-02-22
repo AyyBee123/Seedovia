@@ -20,8 +20,7 @@ func _physics_process(delta):
 
 func update_position(delta):
 	if not hit_wall:
-		current_velocity = direction * player._player_stats.get_stat("Weapon_Speed") * speed_multiplier \
-				* deceleration.time_left
+		current_velocity = direction * SPEED * deceleration.time_left
 		position += current_velocity * delta
 
 func travelled_distance():
@@ -34,15 +33,13 @@ func shoot_next_weapon():
 	attempted_fire.emit()
 	if get_next_weapon() == null:
 		return
-	if global_position.distance_to(get_nearest_enemy().global_position) > \
-			player._player_stats.get_stat("Weapon_Range") * get_next_weapon().instantiate().range_multiplier:
+	if global_position.distance_to(get_nearest_enemy().global_position) > get_next_weapon().instantiate().RANGE:
 		return
 	play_animation()
 	var weapon_instance = get_next_weapon().instantiate()
 	weapon_direction = global_position.direction_to(get_nearest_enemy().global_position)
 	set_weapon_properties(weapon_instance, weapon_direction)
-	fire_rate.start(1.0 / (player._player_stats.get_stat("Fire_Rate") * blossom_fire_rate_multiplier \
-			* get_next_weapon().instantiate().fire_rate_multiplier))
+	fire_rate.start(1.0 / (blossom_fire_rate_multiplier * get_next_weapon().instantiate().FIRE_RATE))
 
 func get_nearest_enemy():
 	var enemies = get_tree().get_nodes_in_group("Enemies")

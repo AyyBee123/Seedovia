@@ -14,3 +14,4 @@ texture = ExtResource("3_egob5")
 description = "+20% Movement Speed
 
 Creates an aura of light around the player that deals damage to nearby enemies. Dealing damage with the aura has a 10% chance to shoot the seed in the second slot towards that enemy."
+unlocked = true

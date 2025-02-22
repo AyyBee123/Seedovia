@@ -13,6 +13,12 @@ y_sort_enabled = true
 texture = ExtResource("2_2ln0g")
 offset = Vector2(5, 2.5)
 script = ExtResource("2_wj7uw")
+BASE_DAMAGE = 10.0
+BASE_FIRE_RATE = 10.0
+BASE_RANGE = 250.0
+BASE_SPEED = 500.0
+BASE_SIZE = 1.0
+BASE_BLAST_RADIUS = 1.0
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 0

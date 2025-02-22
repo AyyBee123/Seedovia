@@ -14,9 +14,9 @@ var tween
 
 func _ready():
 	super._ready()
-	radius = 50 * player._player_stats.get_stat("Weapon_Size") * size_multiplier
+	radius = 50 * SIZE
 	fire_rate.start(randf_range(0, 1))
-	angle = desired_direction.angle() / (player._player_stats.get_stat("Weapon_Speed") * speed_multiplier) * 50
+	angle = desired_direction.angle() / SPEED * 50
 
 func _physics_process(delta):
 	update_position(delta)
@@ -38,8 +38,8 @@ func orbit(delta):
 	angle += delta
 	tween = get_tree().create_tween()
 	tween.tween_property(self, "current_radius", radius, \
-			1.0 / (player._player_stats.get_stat("Weapon_Speed") * speed_multiplier / 50))
-	var speed = player._player_stats.get_stat("Weapon_Speed") * speed_multiplier / 50
+			1.0 / (SPEED / 50))
+	var speed = SPEED / 50
 	global_position = Vector2(
 		sin(angle * speed) * current_radius,
 		cos(angle * speed) * current_radius
@@ -54,7 +54,7 @@ func launch(delta):
 		starting_position = global_position
 	travelled_distance()
 	
-	current_velocity = direction * player._player_stats.get_stat("Weapon_Speed") * speed_multiplier
+	current_velocity = direction * SPEED
 	position += current_velocity * delta
 
 func shoot_next_weapon():
@@ -66,8 +66,7 @@ func shoot_next_weapon():
 	if direction == Vector2.ZERO: # direction is sometimes zero
 		direction = Vector2.RIGHT.rotated(randf_range(0, TAU))
 	weapon_direction = direction
-	fire_rate.start(1.0 / (player._player_stats.get_stat("Fire_Rate") * DANDELION_FIRE_RATE \
-			* get_next_weapon().instantiate().fire_rate_multiplier))
+	fire_rate.start(1.0 / (DANDELION_FIRE_RATE * get_next_weapon().instantiate().FIRE_RATE))
 	set_weapon_properties(weapon_instance, weapon_direction)
 
 func _collide(body):
@@ -76,7 +75,7 @@ func _collide(body):
 		return
 	has_collided.emit(body) # for on-hit effects (ex: burning an enemy on hit)
 	if body.is_in_group("Enemies"):
-		body.get_parent()._enemy_stats.take_damage(player._player_stats.get_stat("Weapon_Damage") * damage_multiplier)
+		body.get_parent()._enemy_stats.take_damage(DAMAGE)
 	SfxDeconflicter.play(Game.audio_manager.blessed_dandelion_hit)
 	queue_free.call_deferred()
 

@@ -47,6 +47,12 @@ radius = 75.0
 [node name="Gloomshroom" instance=ExtResource("1_3ypve")]
 scale = Vector2(2, 2)
 script = ExtResource("2_lpnje")
+BASE_DAMAGE = 2.0
+BASE_FIRE_RATE = 1.5
+BASE_RANGE = 250.0
+BASE_SPEED = 500.0
+BASE_SIZE = 1.0
+BASE_BLAST_RADIUS = 1.0
 damage_multiplier = 0.15
 fire_rate_multiplier = 0.15
 

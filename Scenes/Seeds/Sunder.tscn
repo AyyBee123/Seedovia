@@ -9,6 +9,12 @@ radius = 2.0
 
 [node name="Sunder" instance=ExtResource("1_e8fhm")]
 script = ExtResource("2_i74ag")
+BASE_DAMAGE = 10.0
+BASE_FIRE_RATE = 2.5
+BASE_RANGE = 250.0
+BASE_SPEED = 425.0
+BASE_SIZE = 1.0
+BASE_BLAST_RADIUS = 0.5
 speed_multiplier = 0.85
 blast_radius_multiplier = 0.5
 fire_rate_multiplier = 0.25

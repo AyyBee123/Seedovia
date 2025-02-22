@@ -2,7 +2,7 @@ extends Node
 
 @onready var resource_preloader = $ResourcePreloader
 
-var damage
+var DAMAGE
 var damage_multiplier: float = 0.5
 var size: float
 var size_multiplier: float = 0.5
@@ -17,8 +17,8 @@ func _ready():
 		if seed == weapon: # if the currently looked at weapon is itself, do nothing
 			continue
 		var prickle_stem = resource_preloader.get_resource("Prickle Stem").instantiate()
-		prickle_stem.damage = player._player_stats.get_stat("Weapon_Damage") * damage_multiplier
-		prickle_stem.size = player._player_stats.get_stat("Weapon_Size") * size_multiplier
+		prickle_stem.DAMAGE = weapon.DAMAGE
+		prickle_stem.size = weapon.SIZE
 		prickle_stem.target = seed
 		prickle_stem.source = weapon
 		prickle_stem.tick_rate = tick_rate

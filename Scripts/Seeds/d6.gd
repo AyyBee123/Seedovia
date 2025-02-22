@@ -22,7 +22,7 @@ func _physics_process(delta):
 	randomize_value()
 
 func update_position(delta):
-	current_velocity = direction * player._player_stats.get_stat("Weapon_Speed") * speed_multiplier
+	current_velocity = direction * SPEED
 	position += current_velocity * delta
 
 func spin():
@@ -61,7 +61,7 @@ func _collide(body):
 		return
 	has_collided.emit(body)
 	if body.is_in_group("Enemies"):
-		body.get_parent()._enemy_stats.take_damage(player._player_stats.get_stat("Weapon_Damage") * damage_multiplier * get_dice_damage_multiplier())
+		body.get_parent()._enemy_stats.take_damage(DAMAGE * get_dice_damage_multiplier())
 	var weapon = null if PlayerSeeds.seeds.size() <= 1 + slot_index or slot_index >= 2 \
 			else PlayerSeeds.seeds[slot_index + 1]
 	SfxDeconflicter.play(Game.audio_manager.hit)
@@ -79,7 +79,7 @@ func travelled_distance():
 	distance_travelled = starting_position.distance_to(global_position)
 	total_distance += distance_travelled
 	starting_position = global_position
-	if total_distance >= player._player_stats.get_stat("Weapon_Range") * range_multiplier:
+	if total_distance >= RANGE:
 		attempted_fire.emit()
 		for i in range(seed_slots.size()):
 			var weapon = null if PlayerSeeds.seeds.size() <= 1 + slot_index or slot_index >= 2 \

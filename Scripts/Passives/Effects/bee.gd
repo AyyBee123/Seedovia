@@ -2,9 +2,10 @@ extends AnimatedSprite2D
 
 var position_initialized = false
 var direction
-var damage: float
+var DAMAGE: float
+var BLAST_RADIUS: float = 0.1
+var SIZE = 0.1
 var damage_multiplier: float
-var explosion_size: float = 0.1
 var spread: float
 var speed: float
 var weapon_direction: Vector2
@@ -40,7 +41,7 @@ func update_position(delta):
 func _on_hitbox_area_entered(area):
 	has_collided.emit(area)
 	if area.is_in_group("Enemies"):
-		area.get_parent()._enemy_stats.take_damage(damage * damage_multiplier)
+		area.get_parent()._enemy_stats.take_damage(DAMAGE * damage_multiplier)
 	explode()
 	queue_free.call_deferred()
 

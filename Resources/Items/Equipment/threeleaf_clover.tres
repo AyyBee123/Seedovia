@@ -12,3 +12,4 @@ special_properties = Array[PackedScene]([ExtResource("2_h1vcl")])
 item_name = "Three-Leaf Clover"
 texture = ExtResource("3_1ggoe")
 description = "The seed in the first seed slot fires two additional copies of iteself that deal 50% of its damage."
+unlocked = true

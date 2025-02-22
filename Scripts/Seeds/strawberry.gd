@@ -10,7 +10,7 @@ var exploded := false
 func _ready():
 	super._ready()
 	look_at(global_position + desired_direction)
-	fire_rate.start(1.0/(player._player_stats.get_stat("Fire_Rate") * strawberry_fire_rate_multiplier))
+	fire_rate.start(0.5)
 
 func _physics_process(delta):
 	super._physics_process(delta)
@@ -25,8 +25,8 @@ func _physics_process(delta):
 
 func explode():
 	var explosion = resource_preloader.get_resource("Explosion").instantiate()
-	explosion.damage = player._player_stats.get_stat("Weapon_Damage") * damage_multiplier
-	explosion.size = player._player_stats.get_stat("Weapon_Blast_Radius") * blast_radius_multiplier
+	explosion.damage = DAMAGE
+	explosion.size = BLAST_RADIUS
 	explosion.source = self
 	explosion.modulate = Color("bc1414")
 	call_deferred("create_child", explosion)
@@ -44,7 +44,7 @@ func update_position(delta):
 	var current_velocity: Vector2
 	if not exploded:
 		# move in direction it's rotated
-		current_velocity = transform.x * player._player_stats.get_stat("Weapon_Speed") * speed_multiplier
+		current_velocity = transform.x * SPEED
 	else:
 		current_velocity = Vector2.ZERO
 	position += current_velocity * delta
@@ -53,7 +53,7 @@ func travelled_distance():
 	distance_travelled = starting_position.distance_to(global_position)
 	total_distance += distance_travelled
 	starting_position = global_position
-	if total_distance >= player._player_stats.get_stat("Weapon_Range") * range_multiplier:
+	if total_distance >= RANGE:
 		if not exploded:
 			exploded = true
 			explode()
@@ -71,8 +71,8 @@ func shoot_next_weapon():
 	attempted_fire.emit()
 	if get_next_weapon() == null:
 		return
-	fire_rate.wait_time = 1.0/(player._player_stats.get_stat("Fire_Rate") * strawberry_fire_rate_multiplier \
-			* get_next_weapon().instantiate().fire_rate_multiplier)
+	fire_rate.wait_time = 1.0 / (strawberry_fire_rate_multiplier \
+			* get_next_weapon().instantiate().FIRE_RATE)
 	set_weapon_properties(get_next_weapon().instantiate(), transform.x)
 	fire_rate.start()
 

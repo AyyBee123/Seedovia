@@ -5,23 +5,24 @@ extends "res://Scripts/Seeds/seed_template.gd"
 @export var orb_fire_rate_multiplier: float = 1
 
 const SPLASH = preload("res://Scenes/Misc/Splash.tscn")
+
 func _ready():
 	super._ready()
 	weapon_direction = Vector2(0,-1)
-	orb_fire_rate.start(1.0/(player._player_stats.get_stat("Fire_Rate") * orb_fire_rate_multiplier))
+	orb_fire_rate.start(1.0/(FIRE_RATE * orb_fire_rate_multiplier))
 
 func _physics_process(delta):
 	super._physics_process(delta)
 	if get_next_weapon():
-		rotation_degrees += 45.0 * player._player_stats.get_stat("Fire_Rate") * orb_fire_rate_multiplier \
+		rotation_degrees += 45.0 * FIRE_RATE * orb_fire_rate_multiplier \
 				* get_next_weapon().instantiate().fire_rate_multiplier * 2 * delta
 	else:
-		rotation_degrees += 45.0 * player._player_stats.get_stat("Fire_Rate") * orb_fire_rate_multiplier * delta
+		rotation_degrees += 45.0 * FIRE_RATE * orb_fire_rate_multiplier * delta
 	if orb_fire_rate.is_stopped():
 		shoot_next_weapon()
 
 func update_position(delta):
-	current_velocity = direction * player._player_stats.get_stat("Weapon_Speed") * speed_multiplier
+	current_velocity = direction * SPEED
 	position += current_velocity * delta
 
 func _collide(body):
@@ -30,7 +31,7 @@ func _collide(body):
 		return
 	has_collided.emit(body) # for on-hit effects (ex: burning an enemy on hit)
 	if body.is_in_group("Enemies"):
-		body.get_parent()._enemy_stats.take_damage(player._player_stats.get_stat("Weapon_Damage") * damage_multiplier)
+		body.get_parent()._enemy_stats.take_damage(DAMAGE)
 	SfxDeconflicter.play(Game.audio_manager.walnut_hit)
 	explode()
 	queue_free.call_deferred()

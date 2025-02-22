@@ -8,6 +8,14 @@ signal attempted_fire # signal for attempting to fire the next seed (even if the
 @onready var _player_stats = player._player_stats
 @onready var seed_slots = player.find_child("Seed Slots").get_children()
 
+# base stats of the seed
+@export var BASE_DAMAGE: float
+@export var BASE_FIRE_RATE: float
+@export var BASE_RANGE: float
+@export var BASE_SPEED: float
+@export var BASE_SIZE: float
+@export var BASE_BLAST_RADIUS: float
+
 var weapon_direction: Vector2 # the direction the weapon goes, based on the previous weapon/player
 var desired_direction: Vector2 # the direction the weapon wants the next weapon to go
 var hit_enemy = null # sometimes, the weapon wants information on the enemy it collided with
@@ -37,6 +45,33 @@ var current_velocity: Vector2 # the current speed/velocity the weapon is moving 
 @export var blast_radius_multiplier: float = 1 # blast/splash radius multiplier of the weapon
 @export var fire_rate_multiplier: float = 1 # fire rate multiplier of the weapon
 
+var DAMAGE: float:
+	get:
+		return BASE_DAMAGE * (1 + _player_stats.stats["Weapon_Damage"]["+"]) \
+				* _player_stats.stats["Weapon_Damage"]["x"]
+var FIRE_RATE: float:
+	get:
+		if _player_stats:
+			return BASE_FIRE_RATE * (1 + _player_stats.stats["Fire_Rate"]["+"]) \
+					* _player_stats.stats["Fire_Rate"]["x"]
+		else:
+			return BASE_FIRE_RATE
+var RANGE: float:
+	get:
+		return BASE_RANGE * (1 + _player_stats.stats["Weapon_Range"]["+"]) \
+				* _player_stats.stats["Weapon_Range"]["x"]
+var SPEED: float:
+	get:
+		return BASE_SPEED * (1 + _player_stats.stats["Weapon_Speed"]["+"]) \
+				* _player_stats.stats["Weapon_Speed"]["x"]
+var SIZE: float:
+	get:
+		return BASE_SIZE * (1 + _player_stats.stats["Weapon_Size"]["+"]) * _player_stats.stats["Weapon_Size"]["x"]
+var BLAST_RADIUS: float:
+	get:
+		return BASE_BLAST_RADIUS * (1 + _player_stats.stats["Weapon_Blast_Radius"]["+"]) \
+				* _player_stats.stats["Weapon_Blast_Radius"]["x"]
+
 # multipliers transferred from an external source, like passive effects that shoot a seed
 var transferred_speed_multiplier: float = 1 # shot speed multiplier of the weapon
 var transferred_range_multiplier: float = 1 # range multiplier of the weapon before it gets destroyed
@@ -49,13 +84,13 @@ var seed_pool: Array = [] # pool to add the next seed to
 
 func _ready():
 	visible = false # avoid "jitter" on the very first frame
-	speed_multiplier *= transferred_speed_multiplier
-	range_multiplier *= transferred_range_multiplier
-	size_multiplier *= transferred_size_multiplier
-	damage_multiplier *= transferred_damage_multiplier
-	blast_radius_multiplier *= transferred_blast_radius_multiplier
-	fire_rate_multiplier *= transferred_fire_rate_multiplier
-	scale = scale * player._player_stats.get_stat("Weapon_Size") * size_multiplier
+	BASE_SPEED *= transferred_speed_multiplier
+	BASE_RANGE *= transferred_range_multiplier
+	BASE_SIZE *= transferred_size_multiplier
+	BASE_DAMAGE *= transferred_damage_multiplier
+	BASE_BLAST_RADIUS *= transferred_blast_radius_multiplier
+	BASE_FIRE_RATE *= transferred_fire_rate_multiplier
+	scale = scale * SIZE
 	direction = desired_direction.normalized()
 	await get_tree().physics_frame
 	visible = true
@@ -71,7 +106,7 @@ func travelled_distance():
 	distance_travelled = starting_position.distance_to(global_position)
 	total_distance += distance_travelled
 	starting_position = global_position
-	if total_distance >= player._player_stats.get_stat("Weapon_Range") * range_multiplier:
+	if total_distance >= RANGE:
 		queue_free.call_deferred()
 
 func _on_hitbox_area_entered(area):
@@ -86,7 +121,7 @@ func _collide(body):
 		return
 	has_collided.emit(body) # for on-hit effects (ex: burning an enemy on hit)
 	if body.is_in_group("Enemies"):
-		body.get_parent()._enemy_stats.take_damage(player._player_stats.get_stat("Weapon_Damage") * damage_multiplier)
+		body.get_parent()._enemy_stats.take_damage(DAMAGE)
 	queue_free.call_deferred()
 
 func shoot_next_weapon():
@@ -121,7 +156,7 @@ func initialize_location(weapon):
 	weapon.global_position = global_position
 
 func update_position(delta):
-	current_velocity = direction * player._player_stats.get_stat("Weapon_Speed") * speed_multiplier
+	current_velocity = direction * SPEED
 	position += current_velocity * delta
 	look_at(global_position + current_velocity)
 

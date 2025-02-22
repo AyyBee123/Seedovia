@@ -14,3 +14,4 @@ texture = ExtResource("3_ktemb")
 description = "+10% Dash Rate
 
 Trigger on-dash effect every 5th shot from directly fired seeds."
+unlocked = true

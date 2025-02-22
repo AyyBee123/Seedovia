@@ -16,7 +16,7 @@ func _collide(body):
 	has_collided.emit(body)
 	if body.is_in_group("Enemies"):
 		enemy = body
-		body.get_parent()._enemy_stats.take_damage(player._player_stats.get_stat("Weapon_Damage") * damage_multiplier)
+		body.get_parent()._enemy_stats.take_damage(DAMAGE)
 	shoot_next_weapon()
 	SfxDeconflicter.play(Game.audio_manager.hit)
 	SfxDeconflicter.play(Game.audio_manager.bubble_pop_2)
@@ -24,7 +24,7 @@ func _collide(body):
 	queue_free.call_deferred()
 
 func update_position(delta):
-	current_velocity = direction * player._player_stats.get_stat("Weapon_Speed") * speed_multiplier
+	current_velocity = direction * SPEED
 	position += current_velocity * delta
 
 func shoot_next_weapon():
@@ -46,7 +46,7 @@ func travelled_distance():
 	distance_travelled = starting_position.distance_to(global_position)
 	total_distance += distance_travelled
 	starting_position = global_position
-	if total_distance >= player._player_stats.get_stat("Weapon_Range") * range_multiplier:
+	if total_distance >= RANGE:
 		queue_free.call_deferred()
 
 func get_nearest_enemy(enemy):
@@ -71,7 +71,7 @@ func get_nearest_enemy(enemy):
 
 func explode():
 	var splash = SPLASH.instantiate()
-	splash.size = 0.2
+	splash.size = 0.2 * SIZE
 	splash.source = self
 	splash.modulate = Color("4ba329")
 	call_deferred("create_child", splash)

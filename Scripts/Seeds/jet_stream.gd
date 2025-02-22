@@ -8,10 +8,10 @@ func travelled_distance():
 	total_distance += distance_travelled
 	distance_to_shoot += distance_travelled
 	starting_position = global_position
-	if total_distance >= player._player_stats.get_stat("Weapon_Range") * range_multiplier:
+	if total_distance >= RANGE:
 		queue_free.call_deferred()
 	if get_next_weapon() != null:
-		if total_distance > 0 and distance_to_shoot >= 70.0 / get_next_weapon().instantiate().fire_rate_multiplier:
+		if total_distance > 0 and distance_to_shoot >= 70.0 / get_next_weapon().instantiate().FIRE_RATE:
 			shoot_next_weapon()
 			distance_to_shoot = 0
 
@@ -21,7 +21,7 @@ func _collide(body):
 		return
 	has_collided.emit(body) # for on-hit effects (ex: burning an enemy on hit)
 	if body.is_in_group("Enemies"):
-		body.get_parent()._enemy_stats.take_damage(player._player_stats.get_stat("Weapon_Damage") * damage_multiplier)
+		body.get_parent()._enemy_stats.take_damage(DAMAGE)
 	SfxDeconflicter.play(Game.audio_manager.jetstream_hit)
 	queue_free()
 

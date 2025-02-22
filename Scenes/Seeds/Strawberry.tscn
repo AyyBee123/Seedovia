@@ -48,6 +48,12 @@ height = 22.0
 [node name="Strawberry" instance=ExtResource("1_5xs2v")]
 scale = Vector2(2.5, 2.5)
 script = ExtResource("3_ff0m5")
+BASE_DAMAGE = 25.0
+BASE_FIRE_RATE = 2.0
+BASE_RANGE = 1250.0
+BASE_SPEED = 100.0
+BASE_SIZE = 1.0
+BASE_BLAST_RADIUS = 1.25
 speed_multiplier = 0.2
 range_multiplier = 5.0
 damage_multiplier = 2.5

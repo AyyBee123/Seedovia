@@ -46,7 +46,7 @@ func trigger(weapon = null):
 		else:
 			lightning.nearest_enemy = get_random_enemy(collided_object)
 		if source.damage_multiplier:
-			lightning.damage = player._player_stats.get_stat("Weapon_Damage") * source.damage_multiplier / 2
+			lightning.DAMAGE = source.DAMAGE / 2
 			lightning.damage_multiplier = source.damage_multiplier
 		get_tree().current_scene.add_child.call_deferred(lightning)
 		lightning.global_position = pos
@@ -55,7 +55,7 @@ func trigger(weapon = null):
 	elif nearest_enemy == null and not weapon.has_method("chain_lightning"):
 		lightning.region_rect = Rect2(0, 0, randf_range(50, 150), 17)
 		if source.damage_multiplier:
-			lightning.damage = player._player_stats.get_stat("Weapon_Damage") * source.damage_multiplier / 2
+			lightning.DAMAGE = source.DAMAGE / 2
 			lightning.damage_multiplier = source.damage_multiplier
 		get_tree().current_scene.add_child.call_deferred(lightning)
 		lightning.global_position = pos

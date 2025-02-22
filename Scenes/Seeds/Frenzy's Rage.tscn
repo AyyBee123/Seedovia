@@ -116,6 +116,12 @@ animations = [{
 
 [node name="Frenzy\'s Rage" instance=ExtResource("1_1cr17")]
 script = ExtResource("2_v25mg")
+BASE_DAMAGE = 30.0
+BASE_FIRE_RATE = 0.75
+BASE_RANGE = 850.0
+BASE_SPEED = 250.0
+BASE_SIZE = 1.0
+BASE_BLAST_RADIUS = 1.0
 speed_multiplier = 0.5
 range_multiplier = 3.5
 damage_multiplier = 3.0

@@ -11,6 +11,12 @@ radius = 25.0
 [node name="Black Hole" groups=["Projectile"] instance=ExtResource("1_nmxc7")]
 texture = ExtResource("2_mgpa6")
 script = ExtResource("3_pd5y3")
+BASE_DAMAGE = 10.0
+BASE_FIRE_RATE = 0.85
+BASE_RANGE = 1000.0
+BASE_SPEED = 125.0
+BASE_SIZE = 1.0
+BASE_BLAST_RADIUS = 1.0
 speed_multiplier = 0.25
 range_multiplier = 2.5
 fire_rate_multiplier = 0.085

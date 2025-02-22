@@ -40,6 +40,12 @@ animations = [{
 [node name="Ghost Pepper" instance=ExtResource("1_dk4f8")]
 scale = Vector2(2, 2)
 script = ExtResource("2_by00h")
+BASE_DAMAGE = 7.0
+BASE_FIRE_RATE = 1.0
+BASE_RANGE = 250.0
+BASE_SPEED = 500.0
+BASE_SIZE = 1.0
+BASE_BLAST_RADIUS = 1.0
 damage_multiplier = 0.75
 fire_rate_multiplier = 0.1
 
