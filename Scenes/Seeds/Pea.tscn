@@ -11,6 +11,12 @@ radius = 12.0
 scale = Vector2(1.1, 1.1)
 texture = ExtResource("2_f4lgv")
 script = ExtResource("3_fbuh6")
+BASE_DAMAGE = 10.0
+BASE_FIRE_RATE = 5.0
+BASE_RANGE = 250.0
+BASE_SPEED = 500.0
+BASE_SIZE = 1.0
+BASE_BLAST_RADIUS = 1.0
 fire_rate_multiplier = 0.5
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
