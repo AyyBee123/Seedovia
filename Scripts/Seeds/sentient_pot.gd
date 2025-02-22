@@ -45,7 +45,7 @@ func move():
 	angle = 0
 	if enemy:
 		direction = global_position.direction_to(enemy.global_position)
-		current_velocity = direction * DAMAGE
+		current_velocity = direction * SPEED
 		position += current_velocity * get_physics_process_delta_time()
 	else:
 		current_velocity = Vector2.ZERO
@@ -56,11 +56,9 @@ func shoot():
 		_can_shoot = false
 	animated_sprite_2d.flip_h = false
 	angle += get_physics_process_delta_time()
-	var speed = SPEED / 100
 	if is_instance_valid(target):
 		if get_next_weapon():
-			animated_sprite_2d.speed_scale = player._player_stats.get_stat("Fire_Rate") * POT_FIRE_RATE_MULTIPLIER \
-					* get_next_weapon().instantiate().fire_rate_multiplier
+			animated_sprite_2d.speed_scale = POT_FIRE_RATE_MULTIPLIER * get_next_weapon().instantiate().FIRE_RATE
 			if not animated_sprite_2d.animation == "Shoot":
 				animated_sprite_2d.play("Shoot")
 
@@ -70,7 +68,7 @@ func bite():
 		animated_sprite_2d.flip_h = true
 	else:
 		animated_sprite_2d.flip_h = false
-	animated_sprite_2d.speed_scale = player._player_stats.get_stat("Fire_Rate") / 10
+	animated_sprite_2d.speed_scale = FIRE_RATE / 3
 	if not animated_sprite_2d.animation == "Bite":
 		animated_sprite_2d.play("Bite")
 

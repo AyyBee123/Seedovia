@@ -39,8 +39,11 @@ var current_velocity: Vector2 # the current speed/velocity the weapon is moving 
 
 var DAMAGE: float:
 	get:
-		return BASE_DAMAGE * (1 + _player_stats.stats["Weapon_Damage"]["+"]) \
-				* _player_stats.stats["Weapon_Damage"]["x"]
+		if _player_stats:
+			return BASE_DAMAGE * (1 + _player_stats.stats["Weapon_Damage"]["+"]) \
+					* _player_stats.stats["Weapon_Damage"]["x"]
+		else:
+			return BASE_DAMAGE
 var FIRE_RATE: float:
 	get:
 		if _player_stats:
@@ -50,19 +53,31 @@ var FIRE_RATE: float:
 			return BASE_FIRE_RATE
 var RANGE: float:
 	get:
-		return BASE_RANGE * (1 + _player_stats.stats["Weapon_Range"]["+"]) \
-				* _player_stats.stats["Weapon_Range"]["x"]
+		if _player_stats:
+			return BASE_RANGE * (1 + _player_stats.stats["Weapon_Range"]["+"]) \
+					* _player_stats.stats["Weapon_Range"]["x"]
+		else:
+			return BASE_RANGE
 var SPEED: float:
 	get:
-		return BASE_SPEED * (1 + _player_stats.stats["Weapon_Speed"]["+"]) \
-				* _player_stats.stats["Weapon_Speed"]["x"]
+		if _player_stats:
+			return BASE_SPEED * (1 + _player_stats.stats["Weapon_Speed"]["+"]) \
+					* _player_stats.stats["Weapon_Speed"]["x"]
+		else:
+			return BASE_SPEED
 var SIZE: float:
 	get:
-		return BASE_SIZE * (1 + _player_stats.stats["Weapon_Size"]["+"]) * _player_stats.stats["Weapon_Size"]["x"]
+		if _player_stats:
+			return BASE_SIZE * (1 + _player_stats.stats["Weapon_Size"]["+"]) * _player_stats.stats["Weapon_Size"]["x"]
+		else:
+			return BASE_SIZE
 var BLAST_RADIUS: float:
 	get:
-		return BASE_BLAST_RADIUS * (1 + _player_stats.stats["Weapon_Blast_Radius"]["+"]) \
-				* _player_stats.stats["Weapon_Blast_Radius"]["x"]
+		if _player_stats:
+			return BASE_BLAST_RADIUS * (1 + _player_stats.stats["Weapon_Blast_Radius"]["+"]) \
+					* _player_stats.stats["Weapon_Blast_Radius"]["x"]
+		else:
+			return BASE_BLAST_RADIUS
 
 # multipliers transferred from an external source, like passive effects that shoot a seed
 var transferred_speed_multiplier: float = 1 # shot speed multiplier of the weapon
@@ -89,6 +104,7 @@ func _ready():
 	starting_position = global_position
 
 func _physics_process(delta):
+	player = Targets.get_player()
 	travelled_distance()
 	update_position(delta)
 	set_ignore_first_collision()
