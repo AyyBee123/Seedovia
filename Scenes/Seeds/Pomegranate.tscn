@@ -23,12 +23,8 @@ BASE_DAMAGE = 10.0
 BASE_FIRE_RATE = 7.0
 BASE_RANGE = 250.0
 BASE_SPEED = 400.0
-BASE_SIZE = 0.6
+BASE_SIZE = 0.7
 BASE_BLAST_RADIUS = 0.4
-speed_multiplier = 0.8
-size_multiplier = 0.6
-blast_radius_multiplier = 0.4
-fire_rate_multiplier = 0.8
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 position = Vector2(0, 1)

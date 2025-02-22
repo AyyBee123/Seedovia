@@ -20,8 +20,8 @@ var player
 func _ready():
 	visible = false
 	player = Targets.get_player()
-	damage = player._player_stats.get_stat("Weapon_Damage")
-	size = player._player_stats.get_stat("Weapon_Size")
+	damage = player.DAMAGE
+	size = player.SIZE
 	has_collided.connect(shoot_seed)
 
 func _physics_process(delta):

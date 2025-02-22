@@ -9,7 +9,6 @@ var weapon = null
 var radius: float = 20
 var speed: float = 5
 var weapon_position: Vector2
-var damage
 var x_pos
 var y_pos
 var index: int
@@ -19,6 +18,13 @@ var number_of_orbitals: int
 var enemies_in_area: Array
 var tick_timers: Array
 var tick_rate := 0.05
+
+var DAMAGE: float
+var BLAST_RADIUS: float
+var FIRE_RATE: float
+var RANGE: float
+var SIZE: float
+var SPEED: float
 
 func _ready():
 	if weapon.texture == null:
@@ -45,7 +51,7 @@ func _physics_process(delta):
 	for i in enemies_in_area.size():
 		if tick_timers[i].is_stopped():
 			if is_instance_valid(enemies_in_area[i]):
-				enemies_in_area[i]._enemy_stats.take_damage(damage)
+				enemies_in_area[i]._enemy_stats.take_damage(DAMAGE)
 				has_collided.emit(enemies_in_area[i].get_node("Enemy Hitbox"))
 			tick_timers[i].start(tick_rate)
 

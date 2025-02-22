@@ -32,16 +32,16 @@ func _ready():
 	spawn_id = spawn_order
 	spawn_order += 1
 	random_num = [-1, 1].pick_random()
-	original_size = scale * player._player_stats.get_stat("Weapon_Size")
+	original_size = scale * SIZE
 
 func _physics_process(delta):
 	super._physics_process(delta)
-	scale = original_size * size_multiplier
+	scale = original_size * SIZE
 	time_elapsed += delta
 	check_stack_size()
 
 func update_position(delta):
-	current_velocity = direction * _player_stats.get_stat("Weapon_Speed") * speed_multiplier
+	current_velocity = direction * SPEED
 	position += current_velocity * delta * deceleration.time_left / deceleration.wait_time
 	rotation += TAU * random_num * delta * deceleration.time_left / deceleration.wait_time
 	pome_queue = detect_pomegranate.get_overlapping_areas()
@@ -68,7 +68,7 @@ func _collide(body):
 		return
 	has_collided.emit(body) # for on-hit effects (ex: burning an enemy on hit)
 	if body.is_in_group("Enemies"):
-		body.get_parent()._enemy_stats.take_damage(_player_stats.get_stat("Weapon_Damage") * damage_multiplier)
+		body.get_parent()._enemy_stats.take_damage(DAMAGE)
 	SfxDeconflicter.play(Game.audio_manager.hit)
 	SfxDeconflicter.play(Game.audio_manager.bubble_pop_2)
 	explode()
@@ -89,11 +89,11 @@ func _on_pomegranate_hit_area_area_entered(area):
 
 # make each stacked pomegranate stronger as they are combined together
 func combine():
-	DAMAGE = min(DAMAGE + 0.5 * stacks, MAX_DAMAGE)
-	SIZE = min(SIZE + 0.3 * stacks, MAX_SIZE)
-	SPEED = max(SPEED - 0.1 * stacks, MAX_SPEED)
-	BLAST_RADIUS = min(BLAST_RADIUS + 0.2 * stacks, MAX_BLAST_RADIUS)
 	stacks = min(stacks + num_of_stacks, MAX_STACKS)
+	BASE_DAMAGE = min(BASE_DAMAGE + 0.5 * stacks, MAX_DAMAGE)
+	BASE_SIZE = min(BASE_SIZE + 0.1 * stacks, MAX_SIZE)
+	BASE_SPEED = max(BASE_SPEED - 0.1 * stacks, MAX_SPEED)
+	BASE_BLAST_RADIUS = min(BASE_BLAST_RADIUS + 0.2 * stacks, MAX_BLAST_RADIUS)
 	if deceleration.is_stopped():
 		deceleration.start(0.25)
 

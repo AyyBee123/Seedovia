@@ -12,9 +12,13 @@ signal attempted_fire # signal for attempting to fire the next seed (even if the
 var nearest_enemy = null
 var pos
 var damage_multiplier: float = 1
+
 var DAMAGE: float
 var BLAST_RADIUS: float = 0.05
 var SIZE = 0.05
+var FIRE_RATE: float
+var RANGE: float
+var SPEED: float
 
 func _ready():
 	if nearest_enemy != null:

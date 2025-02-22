@@ -8,15 +8,20 @@ signal weapon_fired(weapon) # signal for firing the next seed
 signal has_collided(object) # signal for colliding with an enemy or wall
 signal attempted_fire # signal for attempting to fire the next seed (even if the next seed is null)
 
-var DAMAGE: float
 var damage_multiplier: float = 1.5
-var BLAST_RADIUS: float
 var first_seed
 var number_of_shots: int = 6
 var player
 var player_passives
 var _has_exploded := false
 var weapon_direction
+
+var DAMAGE: float
+var BLAST_RADIUS: float
+var FIRE_RATE: float
+var RANGE: float
+var SIZE: float
+var SPEED: float
 
 func _ready():
 	first_seed = null if PlayerInventory.seeds.get(0) == null else PlayerInventory.seeds.get(0).scene

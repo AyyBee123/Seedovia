@@ -149,9 +149,6 @@ BASE_RANGE = 250.0
 BASE_SPEED = 350.0
 BASE_SIZE = 1.0
 BASE_BLAST_RADIUS = 1.0
-speed_multiplier = 0.75
-damage_multiplier = 0.85
-fire_rate_multiplier = 0.25
 
 [node name="Hitbox" parent="." index="0"]
 collision_mask = 512

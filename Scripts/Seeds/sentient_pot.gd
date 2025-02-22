@@ -45,7 +45,7 @@ func move():
 	angle = 0
 	if enemy:
 		direction = global_position.direction_to(enemy.global_position)
-		current_velocity = direction * player._player_stats.get_stat("Weapon_Speed") * speed_multiplier
+		current_velocity = direction * DAMAGE
 		position += current_velocity * get_physics_process_delta_time()
 	else:
 		current_velocity = Vector2.ZERO
@@ -56,7 +56,7 @@ func shoot():
 		_can_shoot = false
 	animated_sprite_2d.flip_h = false
 	angle += get_physics_process_delta_time()
-	var speed = player._player_stats.get_stat("Weapon_Speed") * speed_multiplier / 100
+	var speed = SPEED / 100
 	if is_instance_valid(target):
 		if get_next_weapon():
 			animated_sprite_2d.speed_scale = player._player_stats.get_stat("Fire_Rate") * POT_FIRE_RATE_MULTIPLIER \
@@ -104,8 +104,7 @@ func _on_animated_sprite_2d_frame_changed():
 				shoot_next_weapon()
 	if animated_sprite_2d.animation == "Bite":
 		if animated_sprite_2d.frame == 3:
-			target.get_parent()._enemy_stats.take_damage(player._player_stats.get_stat("Weapon_Damage") \
-					* damage_multiplier)
+			target.get_parent()._enemy_stats.take_damage(DAMAGE)
 			SfxDeconflicter.play(Game.audio_manager.sentient_pot_bite)
 
 func update_position(delta):

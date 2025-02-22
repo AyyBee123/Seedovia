@@ -4,11 +4,17 @@ extends Sprite2D
 
 var enemies_in_area: Array
 var tick_timers: Array
-var DAMAGE
 var damage_multiplier
 var radius: float = scale.x
 var radius_multiplier
 var weapon
+
+var DAMAGE: float
+var BLAST_RADIUS: float
+var FIRE_RATE: float
+var RANGE: float
+var SIZE: float
+var SPEED: float
 
 func _physics_process(delta):
 	scale = Vector2.ONE * radius * radius_multiplier

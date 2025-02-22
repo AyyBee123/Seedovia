@@ -37,14 +37,6 @@ var seed_slot_number: int # determines which slot the weapon is in, in the inven
 var direction: Vector2 # the current direction the weapon is moving towards
 var current_velocity: Vector2 # the current speed/velocity the weapon is moving at
 
-# initialize multipliers
-@export var speed_multiplier: float = 1 # shot speed multiplier of the weapon
-@export var range_multiplier: float = 1 # range multiplier of the weapon before it gets destroyed
-@export var size_multiplier: float = 1 # size multiplier of the weapon
-@export var damage_multiplier: float = 1 # damage multiplier of the weapon
-@export var blast_radius_multiplier: float = 1 # blast/splash radius multiplier of the weapon
-@export var fire_rate_multiplier: float = 1 # fire rate multiplier of the weapon
-
 var DAMAGE: float:
 	get:
 		return BASE_DAMAGE * (1 + _player_stats.stats["Weapon_Damage"]["+"]) \

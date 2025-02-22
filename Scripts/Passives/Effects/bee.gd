@@ -2,9 +2,6 @@ extends AnimatedSprite2D
 
 var position_initialized = false
 var direction
-var DAMAGE: float
-var BLAST_RADIUS: float = 0.1
-var SIZE = 0.1
 var damage_multiplier: float
 var spread: float
 var speed: float
@@ -12,6 +9,13 @@ var weapon_direction: Vector2
 var source_pos # so the bee doesn't just randomly change enemy targets mid-flight
 var previous_weapon
 var nearest_enemy
+
+var DAMAGE: float
+var BLAST_RADIUS: float = 0.1
+var FIRE_RATE: float
+var RANGE: float
+var SIZE: float = 0.1
+var SPEED: float
 
 signal weapon_fired(weapon) # signal for firing the next seed
 signal has_collided(object) # signal for colliding with an enemy or wall

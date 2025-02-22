@@ -3,13 +3,18 @@ extends Sprite2D
 var position_initialized = false
 var direction
 var object
-var DAMAGE: float
-var BLAST_RADIUS: float
 var spread: float
 var speed: float
 var weapon_direction: Vector2
 var parent_banana
 var damage_multiplier: float = 1
+
+var DAMAGE: float
+var BLAST_RADIUS: float
+var FIRE_RATE: float
+var RANGE: float
+var SIZE: float
+var SPEED: float
 
 signal weapon_fired(weapon)
 signal has_collided(object)

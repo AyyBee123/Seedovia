@@ -14,7 +14,7 @@ func trigger(weapon):
 	for i in range(number_of_orbitals):
 		var dark_orbital = resource_preloader.get_resource("Dark Fire Orbital").instantiate()
 		dark_orbital.weapon = weapon
-		dark_orbital.damage = player._player_stats.get_stat("Weapon_Damage") * damage_multiplier
+		dark_orbital.DAMAGE = weapon.DAMAGE
 		dark_orbital.index = i
 		dark_orbital.number_of_orbitals = number_of_orbitals
 		# spawn the oribital outside the screen to prevent 1 frame of it spawning at the center

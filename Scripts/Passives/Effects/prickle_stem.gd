@@ -4,11 +4,17 @@ extends Sprite2D
 
 var target
 var source
-var DAMAGE
 var size
 var tick_rate
 var enemies_in_area: Array
 var tick_timers: Array
+
+var DAMAGE: float
+var BLAST_RADIUS: float
+var FIRE_RATE: float
+var RANGE: float
+var SIZE: float
+var SPEED: float
 
 func _ready():
 	visible = false # avoids first frame "flickering"

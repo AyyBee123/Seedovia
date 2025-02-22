@@ -2,14 +2,19 @@ extends Sprite2D
 
 var position_initialized = false
 var direction
-var DAMAGE: float
-var BLAST_RADIUS: float
 var spread: float
 var speed: float
 var weapon_direction: Vector2
 var source_pos
 var previous_weapon
 var damage_multiplier
+
+var DAMAGE: float
+var BLAST_RADIUS: float
+var FIRE_RATE: float
+var RANGE: float
+var SIZE: float
+var SPEED: float
 
 signal weapon_fired(weapon) # signal for firing the next seed
 signal has_collided(object) # signal for colliding with an enemy or wall
