@@ -1,6 +1,7 @@
 extends "res://Scripts/Seeds/seed_template.gd"
 
 const SPLASH = preload("res://Scenes/Misc/Splash.tscn")
+const GRAPE = preload("res://Scenes/Seeds/Grape.tscn")
 
 const CHANCE_TO_SHOOT = 0.4
 
@@ -21,7 +22,7 @@ func _ready():
 		await get_tree().physics_frame
 		var number_of_grapes = randi_range(5, 7)
 		for i in number_of_grapes:
-			var grape = duplicate()
+			var grape = GRAPE.instantiate()
 			grape._spawn_more_grapes = false
 			grape.desired_direction = desired_direction
 			grape.seed_slots = seed_slots
