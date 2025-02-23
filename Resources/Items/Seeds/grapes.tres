@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="seed_class" load_steps=4 format=3 uid="uid://j2b7y4l1w5m3"]
+
+[ext_resource type="PackedScene" uid="uid://kegcsuskikp0" path="res://Scenes/Seeds/Grape.tscn" id="1_bjb0a"]
+[ext_resource type="Script" path="res://Scripts/Stats/seed_stats.gd" id="1_xnb7d"]
+[ext_resource type="Texture2D" uid="uid://brttgdina563x" path="res://Sprites/Seeds (Inventory)/Grapes.png" id="2_ppjdx"]
+
+[resource]
+script = ExtResource("1_xnb7d")
+scene = ExtResource("1_bjb0a")
+rarity = 1
+item_name = "Grapes"
+texture = ExtResource("2_ppjdx")
+description = ""
+unlocked = true

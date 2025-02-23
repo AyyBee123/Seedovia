@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://kegcsuskikp0"]
+
+[ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_s8jl7"]
+[ext_resource type="Script" path="res://Scripts/Seeds/grape.gd" id="2_cl254"]
+[ext_resource type="Texture2D" uid="uid://2c2rxeeslovu" path="res://Sprites/Seeds/Grape.png" id="2_tgd4q"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tnb5p"]
+radius = 7.0
+
+[node name="Grape" instance=ExtResource("1_s8jl7")]
+scale = Vector2(2, 2)
+texture = ExtResource("2_tgd4q")
+script = ExtResource("2_cl254")
+BASE_DAMAGE = 6.0
+BASE_FIRE_RATE = 1.25
+BASE_RANGE = 150.0
+BASE_SPEED = 1000.0
+BASE_SIZE = 1.0
+BASE_BLAST_RADIUS = 1.0
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource("CircleShape2D_tnb5p")
