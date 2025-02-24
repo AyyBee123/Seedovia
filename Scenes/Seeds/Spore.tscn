@@ -1,0 +1,83 @@
+[gd_scene load_steps=11 format=3 uid="uid://bt77edt6fjld3"]
+
+[ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_cc56n"]
+[ext_resource type="Script" path="res://Scripts/Seeds/spore.gd" id="2_ggmfa"]
+[ext_resource type="Texture2D" uid="uid://ecr03rpk6dux" path="res://Sprites/Seeds/Spore.png" id="3_x0pal"]
+[ext_resource type="Texture2D" uid="uid://xxyym547o3vn" path="res://Sprites/Misc/Shadow.png" id="4_moc8x"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_aobxn"]
+radius = 6.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bfgm4"]
+atlas = ExtResource("3_x0pal")
+region = Rect2(0, 0, 15, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h3yk0"]
+atlas = ExtResource("3_x0pal")
+region = Rect2(15, 0, 15, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pv5xk"]
+atlas = ExtResource("3_x0pal")
+region = Rect2(30, 0, 15, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_in0o7"]
+atlas = ExtResource("3_x0pal")
+region = Rect2(45, 0, 15, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vm4x5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bfgm4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h3yk0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pv5xk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_in0o7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="Spore" instance=ExtResource("1_cc56n")]
+scale = Vector2(2, 2)
+script = ExtResource("2_ggmfa")
+BASE_DAMAGE = 4.0
+BASE_FIRE_RATE = 0.667
+BASE_RANGE = 800.0
+BASE_SPEED = 500.0
+BASE_SIZE = 0.65
+BASE_BLAST_RADIUS = 1.0
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource("CircleShape2D_aobxn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="2"]
+sprite_frames = SubResource("SpriteFrames_vm4x5")
+autoplay = "default"
+frame_progress = 0.374332
+
+[node name="Pointer" type="Node2D" parent="." index="3"]
+unique_name_in_owner = true
+
+[node name="Marker2D" type="Marker2D" parent="Pointer" index="0"]
+unique_name_in_owner = true
+position = Vector2(2, 0)
+
+[node name="Fire Delay" type="Timer" parent="." index="4"]
+wait_time = 0.05
+autostart = true
+
+[node name="Shadow" type="Sprite2D" parent="." index="5"]
+z_index = -1
+z_as_relative = false
+position = Vector2(0, 9)
+scale = Vector2(0.421875, 0.625)
+texture = ExtResource("4_moc8x")
+
+[connection signal="timeout" from="Fire Delay" to="." method="_on_fire_delay_timeout"]
