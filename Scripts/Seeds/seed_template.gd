@@ -31,7 +31,7 @@ var previous_weapon = null # this is used for weapons that persist and move as t
 var next_weapon_pos: Vector2: get = get_next_weapon_pos # get the next weapon's position
 
 # these are declared in the player script (for the first weapon) and then passed over from weapon to weapon
-var slot_index: int # the index to determine the order the weapon is fired
+var slot_index: int # the index to determine the order the weapon is fired (set to 2 to not fire next seed)
 var seed_slot_number: int # determines which slot the weapon is in, in the inventory
 
 var direction: Vector2 # the current direction the weapon is moving towards
