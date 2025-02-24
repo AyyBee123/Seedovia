@@ -7,4 +7,4 @@ func _ready():
 
 func on_pickup() -> void:
 	var player = Targets.get_player()
-	player._player_stats.set_stat("Weapon_Range", "+", amount)
+	player._player_stats.set_stat("Weapon_Range", "+", amount / 100)
