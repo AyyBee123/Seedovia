@@ -1,7 +1,7 @@
 extends "res://Scripts/Seeds/seed_template.gd"
 
 const SPLASH = preload("res://Scenes/Misc/Splash.tscn")
-const WOOD_THORN = preload("res://Scenes/Seeds/Wood Thorn.tscn")
+var WOOD_THORN = load("res://Scenes/Seeds/Wood Thorn.tscn")
 
 const SPREAD = PI/6
 

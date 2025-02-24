@@ -1,7 +1,7 @@
 extends "res://Scripts/Seeds/seed_template.gd"
 
 const SPLASH = preload("res://Scenes/Misc/Splash.tscn")
-const GRAPE = preload("res://Scenes/Seeds/Grape.tscn")
+var GRAPE = load("res://Scenes/Seeds/Grape.tscn")
 
 const CHANCE_TO_SHOOT = 0.4
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bk2usmrq8j7ox"]
+[gd_scene load_steps=5 format=3 uid="uid://dxucau6jnatul"]
 
 [ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_my4v5"]
 [ext_resource type="Texture2D" uid="uid://c168dsmdwu17m" path="res://Sprites/Seeds/Wood Thorn.png" id="2_ocjhd"]
