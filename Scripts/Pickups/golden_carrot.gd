@@ -3,7 +3,7 @@ class_name golden_carrot extends pickup_item_class
 @export var amount: float = 10
 
 func _ready():
-	description = "+" + str(amount) + " Seed Speed"
+	description = "+" + str(amount) + "% Seed Speed"
 
 func on_pickup() -> void:
 	var player = Targets.get_player()
