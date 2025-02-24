@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://b56c0nehfg5ad"]
+[gd_scene load_steps=11 format=3 uid="uid://b56c0nehfg5ad"]
 
-[ext_resource type="Script" path="res://Scripts/Seeds/rupture.gd" id="1_rgj01"]
+[ext_resource type="Script" path="res://Scripts/Seeds/rupture.gd" id="1_y6qnn"]
 [ext_resource type="Texture2D" uid="uid://kyw3l7wk0ela" path="res://Sprites/Seeds/Rupture Bottom.png" id="2_prvs3"]
 [ext_resource type="Texture2D" uid="uid://b6djtn5hmg7o1" path="res://Sprites/Seeds/Rupture Middle.png" id="3_jcm6m"]
 [ext_resource type="Texture2D" uid="uid://dwum1xxlmmks2" path="res://Sprites/Seeds/Rupture Top.png" id="4_wl20k"]
-[ext_resource type="AudioStream" uid="uid://ni7nl6f1niks" path="res://Audio/SFX/Noise.mp3" id="5_qabio"]
+[ext_resource type="AudioStream" uid="uid://dxvs3t6m7coyv" path="res://Audio/SFX/Hit2.mp3" id="5_kr6qc"]
+[ext_resource type="AudioStream" uid="uid://ctplsf74d6raa" path="res://Audio/SFX/Laser2.mp3" id="6_tbnkq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bbrmn"]
 resource_local_to_scene = true
@@ -33,22 +34,15 @@ animations = [{
 }]
 
 [node name="Rupture" type="Sprite2D" groups=["Seed", "Weapon"]]
-script = ExtResource("1_rgj01")
-range_multiplier = 3.0
-damage_multiplier = 0.75
-fire_rate_multiplier = 0.2
-
-[node name="Bottom Left" type="Marker2D" parent="."]
-position = Vector2(-16, 0)
-
-[node name="Bottom Right" type="Marker2D" parent="."]
-position = Vector2(16, 0)
-
-[node name="Top Left" type="Marker2D" parent="."]
-position = Vector2(-16, -32)
-
-[node name="Top Right" type="Marker2D" parent="."]
-position = Vector2(16, -32)
+z_index = 4
+scale = Vector2(1.25, 1.25)
+script = ExtResource("1_y6qnn")
+BASE_DAMAGE = 4.0
+BASE_FIRE_RATE = 1.5
+BASE_RANGE = 150.0
+BASE_SPEED = 500.0
+BASE_SIZE = 1.0
+BASE_BLAST_RADIUS = 1.0
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 0
@@ -77,31 +71,23 @@ autoplay = "default"
 frame_progress = 0.507388
 offset = Vector2(0, -12)
 
-[node name="Lifetime" type="Timer" parent="."]
-wait_time = 0.5
-one_shot = true
-
 [node name="Tick Rate" type="Timer" parent="."]
 wait_time = 0.1
-one_shot = true
-
-[node name="Lifetime After" type="Timer" parent="."]
-wait_time = 0.25
 one_shot = true
 
 [node name="Fire Rate" type="Timer" parent="."]
 wait_time = 0.25
 one_shot = true
 
-[node name="Noise" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_qabio")
-volume_db = -5.0
-pitch_scale = 0.75
+[node name="Hit2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_kr6qc")
+
+[node name="Laser2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_tbnkq")
+pitch_scale = 1.15
 bus = &"SFX"
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="area_exited" from="Hitbox" to="." method="_on_hitbox_area_exited"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
-[connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]
-[connection signal="timeout" from="Lifetime After" to="." method="_on_lifetime_after_timeout"]
 [connection signal="timeout" from="Fire Rate" to="." method="_on_fire_rate_timeout"]

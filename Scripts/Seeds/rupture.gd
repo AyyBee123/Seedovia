@@ -1,55 +1,42 @@
 extends "res://Scripts/Seeds/seed_template.gd"
 
-@onready var noise_SFX = $Noise
-
-var _was_previous_weapon := false # check if the branch was fired by a non-player (seed, passive effect, etc.)
-
 @onready var bottom = $Bottom
 @onready var middle = $Middle
 @onready var top = $Top
 @onready var tick_rate = $"Tick Rate"
 @onready var collision_shape_2d = $Hitbox/CollisionShape2D
-@onready var lifetime = $Lifetime
-@onready var lifetime_after = $"Lifetime After"
 @onready var fire_rate = $"Fire Rate"
-@onready var bottom_left = $"Bottom Left"
-@onready var bottom_right = $"Bottom Right"
-@onready var top_left = $"Top Left"
-@onready var top_right = $"Top Right"
+@onready var hit_SFX = $Hit2
+@onready var laser_SFX = $Laser2
 
-var enemy = null
-var x_pos: bool
-var lifetime_after_started := false
-var is_shrinking := false
+const FIRE_RATE_MULTIPLIER = 1.5
+const SPREAD = PI/4
 
 var enemies_in_area: Array
 var tick_timers: Array
 
 func _ready():
-	if previous_weapon: # if fired by a non-player
-		_was_previous_weapon = true
 	super._ready()
-	fire_rate.start()
-	visible = false
 	# extends the beam length based on player range
-	middle.scale.y = max(0, RANGE) 
+	middle.scale.y = max(0, RANGE)
 	top.position.y -= middle.scale.y - 1 # places the top portion of the beam above the middle portion
 	collision_shape_2d.shape.extents.y = 20 + middle.scale.y * 0.5
 	collision_shape_2d.position.y = -16 - middle.scale.y * 0.5
 	collision_shape_2d.disabled = true
-	top_left.position.y = -32 - middle.scale.y
-	top_right.position.y = top_left.position.y
-	lifetime.start(max(1.0 / FIRE_RATE \
-			- lifetime_after.wait_time - 0.1, 0.1))
-	SfxDeconflicter.play(noise_SFX)
 	starting_position = global_position
 	direction = desired_direction.normalized()
-	if not _was_previous_weapon:
-		rotation = global_position.angle_to_point(player.weapon_direction_marker.global_position) + deg_to_rad(90)
-	else:
-		rotation = desired_direction.angle() + deg_to_rad(90)
-	visible = true
+	rotation = desired_direction.angle() + PI/2
 	collision_shape_2d.disabled = false
+	SfxDeconflicter.play(hit_SFX)
+	SfxDeconflicter.play(laser_SFX)
+	
+	var tween = get_tree().create_tween()
+	tween.tween_interval(0.175)
+	var shrink_time = 0.175
+	tween.tween_property($Bottom, "scale:x", 0, shrink_time)
+	tween.parallel().tween_property($Middle, "scale:x", 0, shrink_time)
+	tween.parallel().tween_property($Top, "scale:x", 0, shrink_time)
+	tween.tween_callback(queue_free)
 
 func _physics_process(delta):
 	super._physics_process(delta)
@@ -60,11 +47,24 @@ func _physics_process(delta):
 				enemies_in_area[i]._enemy_stats.take_damage(DAMAGE)
 				has_collided.emit(enemies_in_area[i].get_node("Enemy Hitbox"))
 				tick_timers[i].start(0.2 / FIRE_RATE)
-	if is_shrinking:
-		shrink(65)
+	
+	if fire_rate.is_stopped():
+		weapon_direction = direction.rotated(randf_range(-SPREAD, SPREAD))
+		shoot_next_weapon()
 
-func rupture(): # this is just to find other ruptures that exist using the has_method function (a.k.a duck typing)
-	pass
+func shoot_next_weapon():
+	# for passives that require the weapon to not fire a seed (e.g the last seed slot fires itself again)
+	attempted_fire.emit()
+	if get_next_weapon() == null:
+		return
+	var next_seed = get_next_weapon().instantiate()
+	fire_rate.start(1.0 / (next_seed.FIRE_RATE * FIRE_RATE_MULTIPLIER))
+	set_weapon_properties(next_seed, weapon_direction)
+
+func update_position(delta):
+	rotation = desired_direction.angle() + PI/2
+	if is_instance_valid(previous_weapon):
+		global_position = previous_weapon.global_position + direction * 4
 
 func travelled_distance():
 	pass
@@ -85,65 +85,3 @@ func _on_hitbox_area_exited(area):
 			var index = enemies_in_area.find(area.get_parent())
 			enemies_in_area.remove_at(index)
 			tick_timers.remove_at(index)
-
-func shoot_next_weapon():
-	attempted_fire.emit()
-	if get_next_weapon() == null:
-		return
-	x_pos = randi_range(0, 1) == 0 # chooses a random direction (either left or right)
-	if x_pos == true: # left
-		weapon_direction = Vector2.RIGHT.rotated(rotation + randf_range(deg_to_rad(-5), deg_to_rad(5))) * -1
-	else:
-		weapon_direction = Vector2.RIGHT.rotated(rotation + randf_range(deg_to_rad(-5), deg_to_rad(5)))
-	set_weapon_properties(get_next_weapon().instantiate(), weapon_direction)
-
-func initialize_location(weapon):
-	get_tree().current_scene.add_child(weapon)
-	if x_pos == true: # left
-		weapon.global_position = Vector2(randf_range(bottom_left.global_position.x,top_left.global_position.x), \
-				randf_range(bottom_left.global_position.y,top_left.global_position.y))
-	else: # right
-		weapon.global_position = Vector2(randf_range(bottom_right.global_position.x,top_right.global_position.x), \
-				randf_range(bottom_right.global_position.y,top_right.global_position.y))
-	weapon_fired.emit(weapon)
-
-func update_position(delta):
-	if not _was_previous_weapon:
-		global_position = player.hand.global_position
-		rotation = global_position.angle_to_point(player.weapon_direction_marker.global_position) + deg_to_rad(90)
-	else:
-		if previous_weapon != null:
-			global_position = starting_position
-			rotation = desired_direction.angle() + deg_to_rad(90)
-		else:
-			if not lifetime_after_started:
-				lifetime_after.start()
-				lifetime_after_started = true
-
-func shrink(shrink_speed_mult):
-	bottom.scale.x -= get_process_delta_time() * shrink_speed_mult
-	middle.scale.x -= get_process_delta_time() * shrink_speed_mult
-	top.scale.x -= get_process_delta_time() * shrink_speed_mult
-	noise_SFX.volume_db -= get_process_delta_time() * shrink_speed_mult * 10
-	if middle.scale.x <= 0:
-		noise_SFX.stop()
-		queue_free.call_deferred()
-
-func _on_lifetime_timeout():
-	if lifetime_after.is_stopped():
-		lifetime_after.start()
-
-func _on_fire_rate_timeout():
-	shoot_next_weapon()
-	fire_rate.start()
-
-func _on_lifetime_after_timeout():
-	is_shrinking = true
-
-func get_next_weapon_pos():
-	if x_pos == true: # left
-		return Vector2(randf_range(bottom_left.global_position.x,top_left.global_position.x), \
-				randf_range(bottom_left.global_position.y,top_left.global_position.y))
-	else: # right
-		return Vector2(randf_range(bottom_right.global_position.x,top_right.global_position.x), \
-				randf_range(bottom_right.global_position.y,top_right.global_position.y))
