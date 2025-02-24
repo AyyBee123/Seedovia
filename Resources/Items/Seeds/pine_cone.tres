@@ -10,5 +10,5 @@ scene = ExtResource("1_da5sl")
 rarity = 2
 item_name = "Pine Cone"
 texture = ExtResource("3_uxxlb")
-description = "Shoots a projectile forward. The next seed is shot towards the nearest enemy when the it expires."
+description = ""
 unlocked = true

@@ -10,5 +10,5 @@ scene = ExtResource("1_i0d31")
 rarity = 1
 item_name = "Avocado"
 texture = ExtResource("3_nkodl")
-description = "Shoots a projectile that splits in two and shoots out its seed forward after a short delay. the two avocado halfs shoot the next seed after a short delay."
+description = ""
 unlocked = true

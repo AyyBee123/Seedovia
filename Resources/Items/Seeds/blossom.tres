@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dc7x0qodxeev4" path="res://Scenes/Seeds/Blossom.tscn" id="1_8as2q"]
 [ext_resource type="Script" path="res://Scripts/Stats/seed_stats.gd" id="1_nx8wk"]
-[ext_resource type="Texture2D" uid="uid://yjcuq47atj4s" path="res://Sprites/Items/Blossom.png" id="3_nhw1b"]
+[ext_resource type="Texture2D" uid="uid://yjcuq47atj4s" path="res://Sprites/Seeds (Inventory)/Blossom.png" id="3_nhw1b"]
 
 [resource]
 script = ExtResource("1_nx8wk")
@@ -10,4 +10,5 @@ scene = ExtResource("1_8as2q")
 rarity = 2
 item_name = "Blossom"
 texture = ExtResource("3_nhw1b")
-description = "Summons a stationary flower that shoots the next seed at the nearest enemy."
+description = ""
+unlocked = true

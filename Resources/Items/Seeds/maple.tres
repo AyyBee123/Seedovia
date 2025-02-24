@@ -10,5 +10,5 @@ scene = ExtResource("1_5785u")
 rarity = 2
 item_name = "Maple"
 texture = ExtResource("3_od4l6")
-description = "Shoots a line of damaging maple syrup on the ground. Shoots the next seeds in random directions while it lingers."
+description = ""
 unlocked = true

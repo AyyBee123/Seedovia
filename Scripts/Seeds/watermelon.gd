@@ -78,7 +78,7 @@ func collide(area):
 func explode():
 	var explosion = resource_preloader.get_resource("Explosion").instantiate()
 	explosion.damage = DAMAGE * 0.25
-	explosion.size = BLAST_RADIUS
+	explosion.size = BLAST_RADIUS / 4
 	explosion.get_node("AnimatedSprite2D").self_modulate = Color.INDIAN_RED
 	create_explosion.call_deferred(explosion)
 

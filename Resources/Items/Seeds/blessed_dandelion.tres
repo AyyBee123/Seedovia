@@ -10,5 +10,5 @@ scene = ExtResource("1_hm3j2")
 rarity = 2
 item_name = "Blessed Dandelion"
 texture = ExtResource("3_w4dy0")
-description = "Rotates around the player or previous seed, shooting the next seed as it rotates. Releasing the fire button or upon destroying the previous seed, releases all dandelions at once."
+description = ""
 unlocked = true

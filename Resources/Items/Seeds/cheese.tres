@@ -10,5 +10,5 @@ scene = ExtResource("1_vj8jt")
 rarity = 3
 item_name = "Block of Cheese"
 texture = ExtResource("3_5wq6v")
-description = "A long block of cheese that can be swung around. The damage dealt is based on the speed of the swing. Shoots the next weapon from the tip as it is swung around."
+description = ""
 unlocked = true

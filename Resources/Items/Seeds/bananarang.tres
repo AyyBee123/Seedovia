@@ -10,4 +10,5 @@ scene = ExtResource("1_tj7eo")
 rarity = 2
 item_name = "Bananarang"
 texture = ExtResource("3_d2evf")
-description = "A projectile that returns to its source after stopping or hitting an enemy or obstacle, and shoots the next seed upon doing so."
+description = ""
+unlocked = true

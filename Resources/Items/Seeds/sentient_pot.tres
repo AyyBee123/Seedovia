@@ -10,5 +10,5 @@ scene = ExtResource("1_ey3mk")
 rarity = 4
 item_name = "Sentient Pot"
 texture = ExtResource("3_akpev")
-description = "Moves towards the nearest enemy and shoots the next at it. If this seed is the last in the chain, it bites its enemies instead."
+description = ""
 unlocked = true

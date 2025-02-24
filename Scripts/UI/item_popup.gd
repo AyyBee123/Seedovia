@@ -6,6 +6,7 @@ var item
 var item_name
 var type
 var description
+var detailed_description
 var rarity
 var inventory
 var source
@@ -13,14 +14,29 @@ var hue = 0.0
 var mystic_color
 
 func _ready():
-	
 	%Name.text = item_name
 	%Type.text = type
+	%Description.text = ""
 	if type == "SEED":
-		%Description.text = "Damage:  " + str(item.BASE_DAMAGE) + "\n" \
-							+ "Fire Rate:  " + str(item.BASE_FIRE_RATE) + "\n" \
-							+ "Range:  " + str(item.BASE_RANGE) + "\n" \
-							+ "Speed:  " + str(item.BASE_SPEED)
+		var stats = {
+			"Damage" : item.BASE_DAMAGE, 
+			"Fire Rate" : item.BASE_FIRE_RATE, 
+			"Range" : item.BASE_RANGE, 
+			"Speed" : item.BASE_SPEED
+		}
+		
+		var make_new_line = false
+		for text in stats:
+			var stat = stats[text]
+			if make_new_line:
+				%Description.text += "\n"
+			make_new_line = false
+			if stat != 0:
+				%Description.text += text + ":  " + str(stat)
+				make_new_line = true
+		if description != "" and %Description.text != "":
+			%Description.text += "\n"
+		%Description.text += description
 	else:
 		%Description.text = description
 	match rarity:

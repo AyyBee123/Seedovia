@@ -10,4 +10,5 @@ scene = ExtResource("1_gli33")
 rarity = 0
 item_name = "Fertlizer"
 texture = ExtResource("3_ck4lb")
-description = "Shoots backwards. Shoots the next seed in a random direction when it expires."
+description = ""
+unlocked = true

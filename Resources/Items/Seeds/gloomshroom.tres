@@ -10,4 +10,5 @@ scene = ExtResource("1_51qw4")
 rarity = 2
 item_name = "Gloomshroom"
 texture = ExtResource("3_0jakt")
-description = "A stationary mushroom that emits a damaging aura. Shoots the next seed in a random direction."
+description = ""
+unlocked = true

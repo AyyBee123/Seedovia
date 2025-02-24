@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://duy5h3oyofb8y" path="res://Scenes/Seeds/Ghost Pepper.tscn" id="1_5yp7x"]
 [ext_resource type="Script" path="res://Scripts/Stats/seed_stats.gd" id="1_fiu6c"]
-[ext_resource type="Texture2D" uid="uid://c2oftc6gr2i5a" path="res://Sprites/Items/Ghost Pepper.png" id="3_072yp"]
+[ext_resource type="Texture2D" uid="uid://c2oftc6gr2i5a" path="res://Sprites/Seeds (Inventory)/Ghost Pepper.png" id="3_072yp"]
 
 [resource]
 script = ExtResource("1_fiu6c")
@@ -10,4 +10,5 @@ scene = ExtResource("1_5yp7x")
 rarity = 3
 item_name = "Ghost Pepper"
 texture = ExtResource("3_072yp")
-description = "Rotates around it's source and shoots the next seed at the nearest enemy. If the source no longer exists, the ghost leaves."
+description = ""
+unlocked = true

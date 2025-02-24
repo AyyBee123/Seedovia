@@ -10,5 +10,5 @@ scene = ExtResource("1_bm6i2")
 rarity = 0
 item_name = "Strawberry"
 texture = ExtResource("3_8vs4t")
-description = "A slow moving projectile that homes in towards the nearest enemy, shooting the next seed in front of it as it moves."
+description = ""
 unlocked = false
