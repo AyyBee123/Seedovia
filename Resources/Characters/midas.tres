@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="character_class" load_steps=7 format=3 uid="uid://dxnpwkve7b0cb"]
+
+[ext_resource type="Texture2D" uid="uid://bbxmog2kyaf4d" path="res://Sprites/Character/Midas/Midas1.png" id="1_15qkh"]
+[ext_resource type="Script" path="res://Scripts/Characters/character_class.gd" id="1_x4m43"]
+[ext_resource type="Script" path="res://Scripts/Items/item_class.gd" id="2_3e4dd"]
+[ext_resource type="Script" path="res://Scripts/Stats/seed_stats.gd" id="3_jer8y"]
+[ext_resource type="PackedScene" uid="uid://dbyve63ktcgbu" path="res://Scenes/Characters/Passives/Midas Touch.tscn" id="4_0d247"]
+[ext_resource type="Script" path="res://Scripts/Items/equipment_item_class.gd" id="4_lp5ec"]
+
+[resource]
+script = ExtResource("1_x4m43")
+character_name = "Midas"
+character_sprite = ExtResource("1_15qkh")
+starting_inventory = Array[ExtResource("2_3e4dd")]([])
+starting_talismans = Array[ExtResource("4_lp5ec")]([])
+starting_seeds = Array[ExtResource("3_jer8y")]([])
+starting_passives = Array[PackedScene]([ExtResource("4_0d247")])
+starting_coins = 20
+unlocked = true

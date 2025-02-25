@@ -1,0 +1,67 @@
+[gd_scene load_steps=12 format=3 uid="uid://fwqhtbsphbk0"]
+
+[ext_resource type="PackedScene" uid="uid://cu63rxmy71bcg" path="res://Scenes/Player/Player.tscn" id="1_ld2f8"]
+[ext_resource type="Texture2D" uid="uid://bbxmog2kyaf4d" path="res://Sprites/Character/Midas/Midas1.png" id="2_v7ely"]
+[ext_resource type="Texture2D" uid="uid://brg0ou663rvmy" path="res://Sprites/Character/Midas/Midas2.png" id="3_lb3w1"]
+[ext_resource type="Texture2D" uid="uid://lxmtxqjes4w8" path="res://Sprites/Character/Midas/Midas3.png" id="4_5s4y0"]
+[ext_resource type="Texture2D" uid="uid://b07604c5meq1c" path="res://Sprites/Character/Midas/Midas4.png" id="5_vphnf"]
+[ext_resource type="Texture2D" uid="uid://d1ofwbqewbpbj" path="res://Sprites/Character/Midas/Midas5.png" id="6_3ig6o"]
+[ext_resource type="Texture2D" uid="uid://ddmwegvmhh7gw" path="res://Sprites/Character/Midas/Hand.png" id="7_ecyii"]
+[ext_resource type="PackedScene" uid="uid://bj5qym58xawy5" path="res://Scenes/Characters/Passives/Midas Stats.tscn" id="8_r2sah"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lk2uk"]
+atlas = ExtResource("2_v7ely")
+region = Rect2(0, 0, 26, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cxsfe"]
+atlas = ExtResource("2_v7ely")
+region = Rect2(0, 0, 26, 41)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ckkwj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lk2uk")
+}],
+"loop": true,
+"name": &"Dash",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cxsfe")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_lb3w1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_5s4y0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_vphnf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_3ig6o")
+}],
+"loop": true,
+"name": &"Move",
+"speed": 9.0
+}]
+
+[node name="Midas" instance=ExtResource("1_ld2f8")]
+
+[node name="Player Sprite" parent="." index="3"]
+sprite_frames = SubResource("SpriteFrames_ckkwj")
+animation = &"Move"
+autoplay = "Idle"
+frame_progress = 0.525945
+
+[node name="Hand" parent="Rotation Point/Marker2D" index="0"]
+texture = ExtResource("7_ecyii")
+
+[node name="MidasStats" parent="." index="15" instance=ExtResource("8_r2sah")]

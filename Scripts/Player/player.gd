@@ -46,11 +46,11 @@ var SIZE = 1
 
 func _ready():
 	if PlayerCharacter._is_starting: # when starting a new run
-		PlayerCharacter._is_starting = false
 		_player_stats.set_leaf_hearts(_player_stats.leaf_hearts)
 		_player_stats.set_health(_player_stats.get_stat("Max_Health"))
 		if PlayerPassives.starting_passives != null: # add starting passives to the player
 			PlayerPassives.add_starting_passives()
+		PlayerCharacter._is_starting = false
 	else:
 		PlayerPassives.set_passives()
 		PlayerPassives.set_item_passives()

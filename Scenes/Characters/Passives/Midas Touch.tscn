@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dbyve63ktcgbu"]
+
+[ext_resource type="Script" path="res://Scripts/Passives/Abilities/midas_touch.gd" id="1_syly7"]
+
+[node name="Midas Touch" type="Node"]
+script = ExtResource("1_syly7")

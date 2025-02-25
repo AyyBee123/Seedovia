@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="passive_class" load_steps=3 format=3 uid="uid://bqbgw6rxmhpbc"]
+
+[ext_resource type="Script" path="res://Scripts/Passives/Classes/passive_class.gd" id="1_s3g3y"]
+[ext_resource type="Texture2D" uid="uid://bp638kd4vt6ud" path="res://Sprites/Passives/Icons/Midas Touch.png" id="2_jhv2n"]
+
+[resource]
+script = ExtResource("1_s3g3y")
+passive_name = "Midas' Touch"
+sprite = ExtResource("2_jhv2n")
+description = "Entering a room causes a random golden produce to spawn."
+unlocked = false
