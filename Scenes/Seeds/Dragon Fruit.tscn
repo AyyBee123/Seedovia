@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://doge0dic2yos3"]
+
+[ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_abris"]
+[ext_resource type="Texture2D" uid="uid://bds0skff6oqil" path="res://Sprites/Seeds/Dragon Fruit.png" id="2_8fhni"]
+[ext_resource type="Script" path="res://Scripts/Seeds/dragon_fruit.gd" id="2_tisd2"]
+[ext_resource type="AudioStream" uid="uid://dg0pem3a76w0s" path="res://Audio/SFX/Dragon Roar Far.mp3" id="4_2e1av"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qjqbc"]
+radius = 9.0
+height = 25.0
+
+[node name="Dragon Fruit" instance=ExtResource("1_abris")]
+scale = Vector2(2, 2)
+texture = ExtResource("2_8fhni")
+script = ExtResource("2_tisd2")
+BASE_DAMAGE = 12.0
+BASE_FIRE_RATE = 0.25
+BASE_RANGE = 200.0
+BASE_SPEED = 400.0
+BASE_SIZE = 1.0
+BASE_BLAST_RADIUS = 1.1
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2(0, 2)
+shape = SubResource("CapsuleShape2D_qjqbc")
+
+[node name="Deceleration" type="Timer" parent="." index="2"]
+one_shot = true
+autostart = true
+
+[node name="Delay" type="Timer" parent="." index="3"]
+wait_time = 0.5
+one_shot = true
+
+[node name="Explosion Rate" type="Timer" parent="." index="4"]
+one_shot = true
+
+[node name="Roar Time" type="Timer" parent="." index="5"]
+wait_time = 2.5
+one_shot = true
+
+[node name="DragonRoarFar" type="AudioStreamPlayer" parent="." index="6"]
+stream = ExtResource("4_2e1av")
+pitch_scale = 0.9
+bus = &"SFX"
+
+[connection signal="timeout" from="Deceleration" to="." method="_on_deceleration_timeout"]
+[connection signal="timeout" from="Delay" to="." method="_on_delay_timeout"]
+[connection signal="timeout" from="Roar Time" to="." method="_on_roar_time_timeout"]

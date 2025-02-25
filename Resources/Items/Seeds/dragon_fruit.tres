@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="seed_class" load_steps=4 format=3 uid="uid://cx8no41hq48g3"]
+
+[ext_resource type="PackedScene" uid="uid://doge0dic2yos3" path="res://Scenes/Seeds/Dragon Fruit.tscn" id="1_dgi1g"]
+[ext_resource type="Script" path="res://Scripts/Stats/seed_stats.gd" id="1_xpcdp"]
+[ext_resource type="Texture2D" uid="uid://bds0skff6oqil" path="res://Sprites/Seeds/Dragon Fruit.png" id="2_8hvpd"]
+
+[resource]
+script = ExtResource("1_xpcdp")
+scene = ExtResource("1_dgi1g")
+rarity = 5
+item_name = "Dragon Fruit"
+texture = ExtResource("2_8hvpd")
+description = ""
+unlocked = true

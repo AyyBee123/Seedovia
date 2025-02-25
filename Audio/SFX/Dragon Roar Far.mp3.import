@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dg0pem3a76w0s"
+path="res://.godot/imported/Dragon Roar Far.mp3-ba9f54493cdec0f42923643c91e68bca.mp3str"
+
+[deps]
+
+source_file="res://Audio/SFX/Dragon Roar Far.mp3"
+dest_files=["res://.godot/imported/Dragon Roar Far.mp3-ba9f54493cdec0f42923643c91e68bca.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
