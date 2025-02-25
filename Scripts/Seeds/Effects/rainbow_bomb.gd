@@ -25,8 +25,6 @@ func _physics_process(delta):
 func transfer(next_weapon):
 	if not next_weapon.is_in_group("Seed"):
 		return
-	print(seed_slot)
-	print(next_weapon.seed_slot_number)
 	if seed_slot == next_weapon.seed_slot_number:
 		next_weapon.BASE_SPEED = 0
 	
