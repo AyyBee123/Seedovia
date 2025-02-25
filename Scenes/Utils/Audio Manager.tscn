@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://usetxd7ii511"]
+[gd_scene load_steps=12 format=3 uid="uid://usetxd7ii511"]
 
 [ext_resource type="Script" path="res://Scripts/Utils/audio_manager.gd" id="1_bpx0j"]
 [ext_resource type="AudioStream" uid="uid://bpk6gao5jcjkq" path="res://Audio/SFX/Hit.mp3" id="1_qnkjs"]
@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://mc66wc8mdc1d" path="res://Audio/SFX/Stomp.mp3" id="8_0yw3u"]
 [ext_resource type="AudioStream" uid="uid://bfcswe4vt2exs" path="res://Audio/SFX/Bubble Pop 2.mp3" id="9_70u3o"]
 [ext_resource type="AudioStream" uid="uid://b5dj37ibsu7ig" path="res://Audio/SFX/Crunch.mp3" id="10_yvn0e"]
+[ext_resource type="AudioStream" uid="uid://ybughw11latf" path="res://Audio/SFX/Sparkle.mp3" id="11_8ps7b"]
 
 [node name="Audio Manager" type="Node"]
 script = ExtResource("1_bpx0j")
@@ -128,4 +129,18 @@ bus = &"SFX"
 stream = ExtResource("9_70u3o")
 volume_db = -5.0
 pitch_scale = 1.2
+bus = &"SFX"
+
+[node name="Sparkle" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_8ps7b")
+bus = &"SFX"
+
+[node name="Sparkle_lower_vol" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_8ps7b")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="Sparkle_higher_pitch" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_8ps7b")
+pitch_scale = 1.1
 bus = &"SFX"

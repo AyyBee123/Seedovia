@@ -22,6 +22,9 @@ extends Node
 @onready var crunch = $Crunch
 @onready var hit_2 = $Hit2
 @onready var spore_pop = $SporePop
+@onready var sparkle = $Sparkle
+@onready var sparkle_higher_pitch = $Sparkle_higher_pitch
+@onready var sparkle_lower_vol = $Sparkle_lower_vol
 
 func _ready():
 	SignalBus.play_audio.connect(play)

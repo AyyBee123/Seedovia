@@ -1,29 +1,48 @@
 extends "res://Scripts/Seeds/seed_template.gd"
 
-@onready var rainbow_effect = $"Rainbow Effect"
-@onready var humming_SFX = $Humming
-@onready var rainbow_particle = $"Rainbow Particle"
+@onready var fire_rate = $"Fire Rate"
 
-var hue = 0.0
-var color
-var shooting_direction = 1
-var MAX_DISTANCE_BEFORE_SHOOTING: int = 8
-var trail_delta = 0.0
+const RAINBOW_BOMB = preload("res://Scenes/Seeds/Effects/Rainbow Bomb.tscn")
+const RAINBOW_TRAIL = preload("res://Scenes/Seeds/Effects/Rainbow Trail.tscn")
+
+var fire_rate_multiplier: float = 1.25
+var radius := 0.0
+var angle := 0.0
+var starting_angle: float
+
+var tween
 
 func _ready():
 	super._ready()
-	SfxDeconflicter.play(humming_SFX)
+	var original_size = scale
+	SfxDeconflicter.play(Game.audio_manager.sparkle)
+	
+	scale.x = 0
+	tween = get_tree().create_tween()
+	tween.tween_property(self, "scale:x", original_size.x, 0.1)
 
 func _physics_process(delta):
 	super._physics_process(delta)
-	color = Color.from_hsv(hue, 1.0, 1.0, 1.0)
-	if hue < 1.0:
-		hue += 0.0025
-	else:
-		hue = 0.0
-	rainbow_effect.modulate = color
-	rainbow_particle.modulate = color
-	rainbow_particle.rotation = rotation
+	
+	if fire_rate.is_stopped():
+		weapon_direction = direction
+		shoot_next_weapon()
+	
+	var trail = RAINBOW_TRAIL.instantiate()
+	trail.scale = scale
+	trail.rotation = rotation
+	trail.z_index = z_index
+	get_tree().current_scene.add_child(trail)
+	trail.global_position = global_position
+
+func travelled_distance():
+	distance_travelled = starting_position.distance_to(global_position)
+	total_distance += distance_travelled
+	starting_position = global_position
+	if total_distance >= RANGE:
+		if tween:
+			tween.kill()
+		queue_free.call_deferred()
 
 func _collide(body):
 	if ignore_first_collision:
@@ -31,22 +50,14 @@ func _collide(body):
 		return
 	has_collided.emit(body) # for on-hit effects (ex: burning an enemy on hit)
 	if body.is_in_group("Enemies"):
+		SfxDeconflicter.play(Game.audio_manager.hit)
+		SfxDeconflicter.play(Game.audio_manager.sparkle_higher_pitch)
 		body.get_parent()._enemy_stats.take_damage(DAMAGE)
-	SfxDeconflicter.play(Game.audio_manager.hit)
-	queue_free.call_deferred()
 
-func travelled_distance():
-	distance_travelled = starting_position.distance_to(global_position)
-	total_distance += distance_travelled
-	starting_position = global_position
-	if total_distance >= RANGE:
-		queue_free.call_deferred()
-
-func shoot_next_weapon():
-	# for passives that require the weapon to not fire a seed (e.g the last seed slot fires itself again)
-	attempted_fire.emit()
-	if get_next_weapon() == null:
-		return
-	weapon_direction = direction.rotated(PI/2 * shooting_direction)
-	shooting_direction = -shooting_direction
-	set_weapon_properties(get_next_weapon().instantiate(), weapon_direction)
+func set_weapon_properties(weapon, _desired_direction, _ignore_first_collision = false, _enemy = null):
+	var bomb = RAINBOW_BOMB.instantiate()
+	bomb.DAMAGE = DAMAGE / 2
+	weapon.BASE_SPEED = 0
+	weapon.add_child(bomb)
+	super.set_weapon_properties(weapon, _desired_direction)
+	fire_rate.start(1.0 / (weapon.FIRE_RATE * fire_rate_multiplier))
