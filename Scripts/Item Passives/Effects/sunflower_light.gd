@@ -20,8 +20,10 @@ var player
 func _ready():
 	visible = false
 	player = Targets.get_player()
-	damage = player.DAMAGE
-	size = player.SIZE
+	damage = 10 * (1 + player._player_stats.stats["Weapon_Damage"]["+"]) \
+			* player._player_stats.stats["Weapon_Damage"]["x"]
+	size = 1.5 * (1 + player._player_stats.stats["Weapon_Size"]["+"]) \
+			* player._player_stats.stats["Weapon_Size"]["x"]
 	has_collided.connect(shoot_seed)
 
 func _physics_process(delta):
@@ -44,9 +46,10 @@ func shoot_seed(enemy):
 	if randf() <= CHANCE_TO_SHOOT_SEED:
 		var seed_instance = second_seed.instantiate()
 		seed_instance.desired_direction = global_position.direction_to(enemy.get_parent().global_position)
+		seed_instance.seed_slot_number = 1
 		seed_instance.previous_weapon = self
 		get_tree().current_scene.add_child(seed_instance)
-		weapon_fired.emit(seed_instance)
+		player.weapon_fired.emit(seed_instance)
 		seed_instance.global_position = global_position + seed_instance.desired_direction * 3
 
 func _on_area_2d_area_entered(area):
