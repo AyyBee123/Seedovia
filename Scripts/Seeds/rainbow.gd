@@ -58,6 +58,7 @@ func set_weapon_properties(weapon, _desired_direction, _ignore_first_collision =
 	var bomb = RAINBOW_BOMB.instantiate()
 	bomb.DAMAGE = DAMAGE / 2
 	weapon.BASE_SPEED = 0
-	weapon.add_child(bomb)
 	super.set_weapon_properties(weapon, _desired_direction)
+	bomb.seed_slot = weapon.seed_slot_number
+	weapon.add_child(bomb)
 	fire_rate.start(1.0 / (weapon.FIRE_RATE * fire_rate_multiplier))
