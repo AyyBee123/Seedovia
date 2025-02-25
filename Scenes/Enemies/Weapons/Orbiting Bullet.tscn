@@ -8,7 +8,6 @@ resource_local_to_scene = true
 radius = 9.0
 
 [node name="Orbiting Bullet" instance=ExtResource("1_65xtx")]
-z_index = 4
 script = ExtResource("2_4t6rf")
 
 [node name="CollisionShape2D" parent="Bullet Hitbox" index="0"]
