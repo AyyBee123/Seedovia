@@ -32,7 +32,7 @@ func _ready():
 		
 		if get_next_weapon():
 			# shoot the next seed alongside the thorns
-			var seed_directions = [-SPREAD * 3/2, -SPREAD * 1/2, SPREAD * 1/2, SPREAD * 3/2]
+			var seed_directions = [-SPREAD * 1/2, SPREAD * 1/2]
 			for dir in seed_directions:
 				weapon_direction = desired_direction.rotated(dir)
 				shoot_next_weapon()
