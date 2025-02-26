@@ -25,6 +25,9 @@ extends Node
 @onready var sparkle = $Sparkle
 @onready var sparkle_higher_pitch = $Sparkle_higher_pitch
 @onready var sparkle_lower_vol = $Sparkle_lower_vol
+@onready var fools_gold = $"Fools Gold"
+@onready var rock_2 = $Rock2
+@onready var rock = $Rock
 
 func _ready():
 	SignalBus.play_audio.connect(play)

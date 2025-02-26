@@ -35,7 +35,7 @@ material = SubResource("ShaderMaterial_esige")
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("3_db4vc")
 
-[node name="Enemy Hitbox" type="Area2D" parent="." groups=["Enemies"]]
+[node name="Enemy Hitbox" type="Area2D" parent="." groups=["Dummy", "Enemies"]]
 collision_layer = 4
 collision_mask = 10
 
