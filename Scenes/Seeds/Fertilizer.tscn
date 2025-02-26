@@ -6,8 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://b68u76upt44mu" path="res://Scenes/Seeds/Effects/Stink.tscn" id="4_coisv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8l5bq"]
-radius = 11.0
-height = 26.0
+radius = 8.0
+height = 24.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n3trt"]
 radius = 46.0
@@ -22,9 +22,6 @@ BASE_RANGE = 12.5
 BASE_SPEED = 500.0
 BASE_SIZE = 1.0
 BASE_BLAST_RADIUS = 1.0
-range_multiplier = 0.05
-damage_multiplier = 0.3
-fire_rate_multiplier = 0.25
 
 [node name="Hitbox" parent="." index="0"]
 collision_mask = 1
