@@ -2,5 +2,5 @@
 
 [ext_resource type="Script" path="res://Scripts/Passives/Abilities/midas_touch.gd" id="1_syly7"]
 
-[node name="Midas Touch" type="Node"]
+[node name="Mida\'s Touch" type="Node"]
 script = ExtResource("1_syly7")
