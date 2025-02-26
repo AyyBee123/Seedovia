@@ -36,7 +36,7 @@ func transfer(next_weapon):
 func explode(body):
 	var explosion = EXPLOSION.instantiate()
 	explosion.damage = DAMAGE
-	explosion.size = 0.5 * weapon.SIZE
+	explosion.size = 0.5 * weapon.BLAST_RADIUS
 	explosion.source = weapon
 	explosion.add_child(RAINBOW_COLOR.instantiate())
 	call_deferred("create_child", explosion)
