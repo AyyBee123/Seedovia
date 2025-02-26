@@ -48,13 +48,14 @@ func _collide(body):
 			body.get_parent()._enemy_stats.take_damage(DAMAGE)
 	weapon_direction = direction.rotated(spread)
 	shoot_next_weapon()
+	explode()
 	queue_free.call_deferred()
 
 func explode():
 	var splash = SPLASH.instantiate()
-	splash.size = 0.2 * SIZE
+	splash.size = 0.1 * SIZE
 	splash.source = self
-	splash.modulate = Color("87b950", 151)
+	splash.modulate = Color("87b950", 151.0/255)
 	call_deferred("create_child", splash)
 
 func create_child(child):
