@@ -7,6 +7,8 @@ class_name overall_data extends Resource
 ## Achievements and their progress
 @export var ach_01_die: bool
 @export var ach_01_progress: float
+@export var ach_02_coins: bool
+@export var ach_02_progress: float
 
 func get_save_selection_data():
 	last_played = SelectionSaveData.last_played
@@ -29,17 +31,20 @@ func reset_stats():
 func get_achievements():
 	ach_01_die = Game.achievement_handler.ach_01_die.completed
 	ach_01_progress = Game.achievement_handler.ach_01_die.get_progress()
-	
+	ach_02_coins = Game.achievement_handler.ach_02_coins.completed
+	ach_02_progress = Game.achievement_handler.ach_02_coins.get_progress()
 
 func set_achievements():
 	Game.achievement_handler.ach_01_die.completed = ach_01_die
 	Game.achievement_handler.ach_01_die.set_progress(ach_01_progress)
-	
+	Game.achievement_handler.ach_02_coins.completed = ach_02_coins
+	Game.achievement_handler.ach_02_coins.set_progress(ach_02_progress)
 
 func reset_achievements():
 	ach_01_die = false
 	ach_01_progress = 0
-	
+	ach_02_coins = false
+	ach_02_progress = 0
 
 func get_achievement(_ach):
 	return _ach

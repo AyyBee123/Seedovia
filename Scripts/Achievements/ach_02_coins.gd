@@ -1,30 +1,29 @@
-class_name Ach01Die extends Achievement
+class_name Ach02Coins extends Achievement
 
-var strawberry = preload("res://Resources/Items/Seeds/strawberry.tres")
-var berry = preload("res://Resources/Characters/berry.tres")
-var ach_image = preload("res://Sprites/Achievements/Die.png")
+var midas = preload("res://Resources/Characters/midas.tres")
+var ach_image = preload("res://Sprites/Achievements/Rich.png")
 
 func _ready():
-	name = "Ach01Die"
+	name = "Ach02Coins"
 	
 	if not completed:
-		SignalBus.player_die.connect(_on_player_death)
+		SignalBus.coin_pickup.connect(_on_coin_pickup)
 
-func _on_player_death():
-	progress += 1
+func _on_coin_pickup(amount):
+	if amount >= 100:
+		progress += 1
 	if get_progress() >= get_progress_goal() and not completed:
 		completed = true
 		SignalBus.achievement.emit(self)
-		SignalBus.unlock.emit(berry)
-		SignalBus.unlock.emit(strawberry)
+		SignalBus.unlock.emit(midas)
 	Global.save_achievements()
 	Global.load_achievements()
 
 func get_title() -> String:
-	return "Death"
+	return "I'm Rich!"
 
 func get_description() -> String:
-	return "Die."
+	return "Accumulate 100 coins."
 
 func get_image() -> Texture:
 	return ach_image
@@ -38,5 +37,4 @@ func get_progress_goal() -> float:
 func set_progress(_progress) -> void:
 	super.set_progress(_progress)
 	if completed:
-		strawberry.unlocked = true
-		berry.unlocked = true
+		midas.unlocked = true

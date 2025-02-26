@@ -50,3 +50,4 @@ func set_health():
 
 func set_coins():
 	%Amount.text = str(PlayerCharacter.coins) # display number of coins player has
+	SignalBus.coin_pickup.emit(PlayerCharacter.coins)
