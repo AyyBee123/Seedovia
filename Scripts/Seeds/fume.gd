@@ -5,6 +5,8 @@ extends "res://Scripts/Seeds/seed_template.gd"
 @onready var bubble_pop_SFX = $BubblePop
 @onready var bubble_fire_SFX = $BubbleFire
 
+const SPLASH = preload("res://Scenes/Misc/Splash.tscn")
+
 var spread: float
 var size: float
 var acceleration: float
@@ -12,10 +14,10 @@ var decel_threshold = 0.05
 
 func _ready():
 	super._ready()
-	spread = deg_to_rad(randf_range(-30,30)) # random 30 degree spread
+	spread = deg_to_rad(randf_range(-20,20)) # random 20 degree spread
 	size = randf_range(0.8, 1) # random sizes to immitate how bubbles work irl
 	scale = Vector2.ONE * size
-	acceleration = randf_range(0.75, 1) * RANGE / 100
+	acceleration = randf_range(0.75, 1) * RANGE / 200
 	SfxDeconflicter.play(bubble_fire_SFX)
 	deceleration.start(acceleration)
 
@@ -47,6 +49,17 @@ func _collide(body):
 	weapon_direction = direction.rotated(spread)
 	shoot_next_weapon()
 	queue_free.call_deferred()
+
+func explode():
+	var splash = SPLASH.instantiate()
+	splash.size = 0.2 * SIZE
+	splash.source = self
+	splash.modulate = Color("87b950", 151)
+	call_deferred("create_child", splash)
+
+func create_child(child):
+	get_tree().current_scene.add_child(child)
+	child.global_position = self.global_position
 
 func shoot_next_weapon():
 	if not randf() < 0.5:

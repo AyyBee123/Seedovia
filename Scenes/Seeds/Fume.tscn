@@ -1,19 +1,23 @@
 [gd_scene load_steps=7 format=3 uid="uid://cenfrfe58cqnl"]
 
-[ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_w02k5"]
-[ext_resource type="Texture2D" uid="uid://dv8vlajtxoaei" path="res://Sprites/Seeds/Bubble.png" id="2_t1fwy"]
-[ext_resource type="Script" path="res://Scripts/Seeds/bubble.gd" id="3_7x2iv"]
-[ext_resource type="AudioStream" uid="uid://dyeuwrt5rj2ac" path="res://Audio/SFX/Bubble Fire.mp3" id="4_js02r"]
-[ext_resource type="AudioStream" uid="uid://chjabrkxsndjf" path="res://Audio/SFX/Bubble Pop.mp3" id="4_n4ux4"]
+[ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_kefo4"]
+[ext_resource type="Texture2D" uid="uid://bdhc84e4ee6w2" path="res://Sprites/Seeds/Fume.png" id="2_rmgjt"]
+[ext_resource type="Script" path="res://Scripts/Seeds/fume.gd" id="3_incdh"]
+[ext_resource type="AudioStream" uid="uid://dyeuwrt5rj2ac" path="res://Audio/SFX/Bubble Fire.mp3" id="4_l7tk8"]
+[ext_resource type="AudioStream" uid="uid://chjabrkxsndjf" path="res://Audio/SFX/Bubble Pop.mp3" id="5_g0km2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0hc64"]
-radius = 11.0
+radius = 8.0
 
-[node name="Bubble" instance=ExtResource("1_w02k5")]
-texture = ExtResource("2_t1fwy")
-script = ExtResource("3_7x2iv")
-damage_multiplier = 0.4
-fire_rate_multiplier = 2.0
+[node name="Fume" instance=ExtResource("1_kefo4")]
+texture = ExtResource("2_rmgjt")
+script = ExtResource("3_incdh")
+BASE_DAMAGE = 2.0
+BASE_FIRE_RATE = 20.0
+BASE_RANGE = 200.0
+BASE_SPEED = 400.0
+BASE_SIZE = 1.0
+BASE_BLAST_RADIUS = 0.5
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 shape = SubResource("CircleShape2D_0hc64")
@@ -27,14 +31,14 @@ wait_time = 0.5
 one_shot = true
 
 [node name="BubbleFire" type="AudioStreamPlayer" parent="." index="4"]
-stream = ExtResource("4_js02r")
+stream = ExtResource("4_l7tk8")
 volume_db = -18.0
 pitch_scale = 0.75
 autoplay = true
 bus = &"SFX"
 
 [node name="BubblePop" type="AudioStreamPlayer" parent="." index="5"]
-stream = ExtResource("4_n4ux4")
+stream = ExtResource("5_g0km2")
 volume_db = -21.0
 pitch_scale = 0.9
 bus = &"SFX"

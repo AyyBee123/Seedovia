@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="seed_class" load_steps=4 format=3 uid="uid://dw0jphxuam13f"]
+
+[ext_resource type="PackedScene" uid="uid://cenfrfe58cqnl" path="res://Scenes/Seeds/Fume.tscn" id="1_7y3k5"]
+[ext_resource type="Script" path="res://Scripts/Stats/seed_stats.gd" id="1_jlmos"]
+[ext_resource type="Texture2D" uid="uid://bdhc84e4ee6w2" path="res://Sprites/Seeds/Fume.png" id="3_8ws0r"]
+
+[resource]
+script = ExtResource("1_jlmos")
+scene = ExtResource("1_7y3k5")
+rarity = 1
+item_name = "Fume"
+texture = ExtResource("3_8ws0r")
+description = ""
+unlocked = true
