@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-
 @export var _enemy_stats: enemy_stats
 @onready var damage_buffer := $"Damage Buffer" # prevents an accidental extra damage call if sitting in enemy hitbox
 

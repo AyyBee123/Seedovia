@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://btwbxb2uoweee"]
+
+[ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_wd74r"]
+[ext_resource type="Texture2D" uid="uid://bigog546iv3tx" path="res://Sprites/Seeds/Needle.png" id="2_73t7b"]
+[ext_resource type="Script" path="res://Scripts/Seeds/needle.gd" id="3_vsd2a"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rrldt"]
+radius = 5.0
+height = 18.0
+
+[node name="Needle" instance=ExtResource("1_wd74r")]
+scale = Vector2(2, 2)
+texture = ExtResource("2_73t7b")
+offset = Vector2(5, 0)
+script = ExtResource("3_vsd2a")
+BASE_DAMAGE = 5.0
+BASE_FIRE_RATE = 3.0
+BASE_RANGE = 500.0
+BASE_SPEED = 700.0
+BASE_SIZE = 0.85
+BASE_BLAST_RADIUS = 0.65
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2(3, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_rrldt")
+
+[node name="Tick Rate" type="Timer" parent="." index="2"]
+one_shot = true
+
+[node name="Lifetime" type="Timer" parent="." index="3"]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]
