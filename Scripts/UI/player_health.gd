@@ -47,6 +47,7 @@ func set_health():
 		var heart_instance = leaf_heart.instantiate()
 		current_health.add_child(heart_instance)
 	current_leaf_hearts = player._player_stats.leaf_hearts
+	SignalBus.max_health_changed.emit(max_health.get_child_count())
 
 func set_coins():
 	%Amount.text = str(PlayerCharacter.coins) # display number of coins player has

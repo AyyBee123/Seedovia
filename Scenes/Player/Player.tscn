@@ -1,8 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://cu63rxmy71bcg"]
+[gd_scene load_steps=14 format=3 uid="uid://cu63rxmy71bcg"]
 
 [ext_resource type="Script" path="res://Scripts/Player/player.gd" id="2_f7nwd"]
 [ext_resource type="Script" path="res://Scripts/Player/StateMachine.gd" id="3_ojktk"]
-[ext_resource type="PackedScene" uid="uid://b51uuhjac0hmd" path="res://Scenes/Inventory/inventory.tscn" id="4_px6lr"]
 [ext_resource type="Texture2D" uid="uid://2o0nxg1xv6xm" path="res://Sprites/UI/Cursor.png" id="6_ddx17"]
 [ext_resource type="Texture2D" uid="uid://xxyym547o3vn" path="res://Sprites/Misc/Shadow.png" id="7_u5ajd"]
 [ext_resource type="PackedScene" uid="uid://civnfvhref4lg" path="res://Scenes/Stats/Player UI.tscn" id="8_sj1lu"]
@@ -93,18 +92,6 @@ one_shot = true
 [node name="Dash Cooldown" type="Timer" parent="."]
 one_shot = true
 
-[node name="Inventory" parent="." instance=ExtResource("4_px6lr")]
-visible = false
-z_as_relative = false
-offset_left = -1620.0
-offset_top = -1022.0
-offset_right = -1620.0
-offset_bottom = -1022.0
-scale = Vector2(3.745, 3.745)
-size_flags_horizontal = 3
-size_flags_vertical = 3
-metadata/_edit_use_anchors_ = true
-
 [node name="Player Health" parent="." instance=ExtResource("8_sj1lu")]
 
 [node name="Invulnerability Animation" type="AnimationPlayer" parent="."]
@@ -167,8 +154,6 @@ position = Vector2(0, 10)
 shape = SubResource("RectangleShape2D_pe6q8")
 
 [connection signal="shoot" from="." to="." method="_on_shoot"]
-[connection signal="mouse_entered" from="Inventory" to="." method="_on_inventory_mouse_entered"]
-[connection signal="mouse_exited" from="Inventory" to="." method="_on_inventory_mouse_exited"]
 [connection signal="area_entered" from="Pickup Radius" to="." method="_on_pickup_radius_area_entered"]
 [connection signal="area_exited" from="Pickup Radius" to="." method="_on_pickup_radius_area_exited"]
 [connection signal="timeout" from="Collision Buffer Time" to="." method="_on_collision_buffer_time_timeout"]

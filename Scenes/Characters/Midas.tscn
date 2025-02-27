@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://fwqhtbsphbk0"]
+[gd_scene load_steps=13 format=3 uid="uid://fwqhtbsphbk0"]
 
 [ext_resource type="PackedScene" uid="uid://cu63rxmy71bcg" path="res://Scenes/Player/Player.tscn" id="1_ld2f8"]
 [ext_resource type="Texture2D" uid="uid://bbxmog2kyaf4d" path="res://Sprites/Character/Midas/Midas1.png" id="2_v7ely"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b07604c5meq1c" path="res://Sprites/Character/Midas/Midas4.png" id="5_vphnf"]
 [ext_resource type="Texture2D" uid="uid://d1ofwbqewbpbj" path="res://Sprites/Character/Midas/Midas5.png" id="6_3ig6o"]
 [ext_resource type="Texture2D" uid="uid://ddmwegvmhh7gw" path="res://Sprites/Character/Midas/Hand.png" id="7_ecyii"]
+[ext_resource type="PackedScene" uid="uid://b51uuhjac0hmd" path="res://Scenes/Inventory/inventory.tscn" id="8_dftie"]
 [ext_resource type="PackedScene" uid="uid://bj5qym58xawy5" path="res://Scenes/Characters/Passives/Midas Stats.tscn" id="8_r2sah"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lk2uk"]
@@ -64,4 +65,12 @@ frame_progress = 0.525945
 [node name="Hand" parent="Rotation Point/Marker2D" index="0"]
 texture = ExtResource("7_ecyii")
 
-[node name="MidasStats" parent="." index="15" instance=ExtResource("8_r2sah")]
+[node name="Inventory" parent="." index="10" instance=ExtResource("8_dftie")]
+visible = false
+offset_left = -1620.0
+offset_top = -1022.0
+offset_right = -1620.0
+offset_bottom = -1022.0
+scale = Vector2(3.745, 3.745)
+
+[node name="MidasStats" parent="." index="16" instance=ExtResource("8_r2sah")]

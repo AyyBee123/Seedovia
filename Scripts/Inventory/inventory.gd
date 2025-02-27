@@ -114,6 +114,7 @@ func slot_gui_input(event: InputEvent, slot: slot_class):
 			slot.item = null
 			PlayerInventory.remove_item(slot)
 			slot.remove_popup()
+	SignalBus.inventory_changed.emit()
 
 func _input(event):
 	initialize_inventory()

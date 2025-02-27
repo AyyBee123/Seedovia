@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://q8f0tcp3j8n"]
+[gd_scene load_steps=11 format=3 uid="uid://q8f0tcp3j8n"]
 
 [ext_resource type="PackedScene" uid="uid://cu63rxmy71bcg" path="res://Scenes/Player/Player.tscn" id="1_adbqg"]
 [ext_resource type="PackedScene" uid="uid://c8dr4s3wyxmkf" path="res://Scenes/Characters/Passives/Sapling Stats.tscn" id="2_ag84k"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dgb26neumbjnf" path="res://Sprites/Character/Sapling/Sapling3.png" id="5_eeohf"]
 [ext_resource type="Texture2D" uid="uid://crrk6ocj77t05" path="res://Sprites/Character/Sapling/Sapling4.png" id="6_0mngw"]
 [ext_resource type="Texture2D" uid="uid://dckqh658a07r7" path="res://Sprites/Character/Sapling/Sapling5.png" id="7_rgraj"]
+[ext_resource type="PackedScene" uid="uid://b51uuhjac0hmd" path="res://Scenes/Inventory/inventory.tscn" id="8_ag58w"]
 [ext_resource type="Texture2D" uid="uid://crl8ol1tmwuh8" path="res://Sprites/Character/Sapling/Hand.png" id="8_r625u"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ckkwj"]
@@ -55,4 +56,12 @@ autoplay = "Idle"
 [node name="Hand" parent="Rotation Point/Marker2D" index="0"]
 texture = ExtResource("8_r625u")
 
-[node name="SaplingStats" parent="." index="15" instance=ExtResource("2_ag84k")]
+[node name="Inventory" parent="." index="10" instance=ExtResource("8_ag58w")]
+visible = false
+offset_left = -1620.0
+offset_top = -1022.0
+offset_right = -1620.0
+offset_bottom = -1022.0
+scale = Vector2(3.745, 3.745)
+
+[node name="SaplingStats" parent="." index="16" instance=ExtResource("2_ag84k")]

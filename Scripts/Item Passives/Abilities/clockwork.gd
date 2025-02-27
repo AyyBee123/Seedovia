@@ -9,4 +9,5 @@ func add_tally(weapon = null):
 	tally_count += 1
 	if tally_count >= 5:
 		tally_count = 0
-		player.dashed.emit()
+		if player == Targets.get_player():
+			player.dashed.emit()

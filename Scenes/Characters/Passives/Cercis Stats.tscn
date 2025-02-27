@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3pnsl2xmthhx"]
+
+[ext_resource type="Script" path="res://Scripts/Characters/Passives/sapling_stats.gd" id="1_nrqlp"]
+
+[node name="CercisStats" type="Node"]
+script = ExtResource("1_nrqlp")

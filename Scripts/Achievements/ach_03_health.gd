@@ -1,28 +1,29 @@
-class_name Ach01Die extends Achievement
+class_name Ach03Health extends Achievement
 
-var cercis = preload("res://Resources/Characters/cercis.tres")
-var ach_image = preload("res://Sprites/Achievements/Die.png")
+var berry = preload("res://Resources/Characters/berry.tres")
+var ach_image = preload("res://Sprites/Achievements/Healthy.png")
 
 func _ready():
-	name = "Ach01Die"
+	name = "Ach03Health"
 	
 	if not completed:
-		SignalBus.player_die.connect(_on_player_death)
+		SignalBus.max_health_changed.connect(_on_player_max_health_increase)
 
-func _on_player_death():
-	progress += 1
+func _on_player_max_health_increase(amount):
+	if amount >= 6:
+		progress += 1
 	if get_progress() >= get_progress_goal() and not completed:
 		completed = true
 		SignalBus.achievement.emit(self)
-		SignalBus.unlock.emit(cercis)
+		SignalBus.unlock.emit(berry)
 	Global.save_achievements()
 	Global.load_achievements()
 
 func get_title() -> String:
-	return "Death"
+	return "Healthy"
 
 func get_description() -> String:
-	return "Die."
+	return "Have 6 max health."
 
 func get_image() -> Texture:
 	return ach_image
@@ -36,4 +37,4 @@ func get_progress_goal() -> float:
 func set_progress(_progress) -> void:
 	super.set_progress(_progress)
 	if completed:
-		cercis.unlocked = true
+		berry.unlocked = true

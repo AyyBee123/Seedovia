@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://njt73d05s8mb"]
+
+[ext_resource type="Script" path="res://Scripts/Passives/Abilities/shadow_summons.gd" id="1_sf8qu"]
+
+[node name="Shadow Summons" type="Node"]
+script = ExtResource("1_sf8qu")

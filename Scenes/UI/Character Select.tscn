@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://8lh64evv6imw"]
+[gd_scene load_steps=15 format=3 uid="uid://8lh64evv6imw"]
 
 [ext_resource type="Script" path="res://Scripts/UI/character_select.gd" id="1_jmjmr"]
 [ext_resource type="Texture2D" uid="uid://2whsjb1rg2lm" path="res://Sprites/Character/Sapling/Sapling1.png" id="2_s2884"]
@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://bjgufl8bibvcq" path="res://Sprites/Achievements/Locked.png" id="9_swufb"]
 [ext_resource type="Resource" uid="uid://bvqprp6nul3d2" path="res://Resources/Characters/white_chaos.tres" id="10_q0efv"]
 [ext_resource type="Resource" uid="uid://dxnpwkve7b0cb" path="res://Resources/Characters/midas.tres" id="11_5k7qt"]
+[ext_resource type="Texture2D" uid="uid://c71jrpxh3cx3a" path="res://Sprites/Character/Cercis/Cercis1.png" id="12_00dn3"]
+[ext_resource type="Resource" uid="uid://dwh0orxt4fsdt" path="res://Resources/Characters/cercis.tres" id="13_prkr1"]
 [ext_resource type="Texture2D" uid="uid://bbxmog2kyaf4d" path="res://Sprites/Character/Midas/Midas1.png" id="13_x2hb7"]
 
 [node name="Character Select" type="Control"]
@@ -95,6 +97,27 @@ starting_character = ExtResource("11_5k7qt")
 character_scene = "res://Scenes/Characters/Midas.tscn"
 
 [node name="Lock" type="TextureRect" parent="Characters/Character 4"]
+visible = false
+layout_mode = 0
+offset_left = 25.0
+offset_top = 70.0
+offset_right = 52.0
+offset_bottom = 104.0
+texture = ExtResource("9_swufb")
+
+[node name="Character 5" type="TextureRect" parent="Characters"]
+layout_mode = 0
+offset_left = 659.0
+offset_top = 299.0
+offset_right = 736.0
+offset_bottom = 435.0
+mouse_default_cursor_shape = 2
+texture = ExtResource("12_00dn3")
+script = ExtResource("3_alya1")
+starting_character = ExtResource("13_prkr1")
+character_scene = "res://Scenes/Characters/Cercis.tscn"
+
+[node name="Lock" type="TextureRect" parent="Characters/Character 5"]
 visible = false
 layout_mode = 0
 offset_left = 25.0

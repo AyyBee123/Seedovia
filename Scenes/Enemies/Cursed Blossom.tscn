@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scripts/Enemies/Cursed Blossom/cursed_blossom.gd" id="2_j28a4"]
 [ext_resource type="Shader" path="res://Shaders/color_tint_shader.gdshader" id="2_r2bbe"]
 [ext_resource type="Resource" uid="uid://dmtkjlyvca7y3" path="res://Resources/Enemies/cursed_blossom.tres" id="3_5echr"]
-[ext_resource type="Texture2D" uid="uid://chdo8id6jmeah" path="res://Sprites/Enemies/Cursed Dandelion.png" id="3_xil1k"]
+[ext_resource type="Texture2D" uid="uid://mw1x12yi15ve" path="res://Sprites/Enemies/Cursed Blossom.png" id="5_jdvsd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_66p4p"]
 radius = 14.0
@@ -16,19 +16,19 @@ shader_parameter/color = Color(1, 0, 0, 1)
 shader_parameter/tint_factor = 0.0
 shader_parameter/fade = 1.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_k8nny"]
-atlas = ExtResource("3_xil1k")
-region = Rect2(0, 0, 24, 24)
+[sub_resource type="AtlasTexture" id="AtlasTexture_t6u0u"]
+atlas = ExtResource("5_jdvsd")
+region = Rect2(0, 0, 26, 28)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ul5gj"]
-atlas = ExtResource("3_xil1k")
-region = Rect2(24, 0, 24, 24)
+[sub_resource type="AtlasTexture" id="AtlasTexture_fml61"]
+atlas = ExtResource("5_jdvsd")
+region = Rect2(26, 0, 26, 28)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ubkww"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_k8nny")
+"texture": SubResource("AtlasTexture_t6u0u")
 }],
 "loop": true,
 "name": &"Idle",
@@ -36,7 +36,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ul5gj")
+"texture": SubResource("AtlasTexture_fml61")
 }],
 "loop": false,
 "name": &"Shoot",
@@ -58,7 +58,7 @@ shape = SubResource("CircleShape2D_66p4p")
 material = SubResource("ShaderMaterial_43awx")
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_ubkww")
-animation = &"Idle"
+animation = &"Shoot"
 offset = Vector2(0, -2)
 
 [node name="CollisionPolygon2D" parent="Enemy Hitbox" index="0"]

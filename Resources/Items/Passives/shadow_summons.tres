@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="passive_class" load_steps=4 format=3 uid="uid://chqfn7nuxjown"]
+
+[ext_resource type="PackedScene" uid="uid://njt73d05s8mb" path="res://Scenes/Passives/Abilities/Shadow Summons.tscn" id="1_cmwp3"]
+[ext_resource type="Script" path="res://Scripts/Passives/Classes/passive_class.gd" id="1_ktrgo"]
+[ext_resource type="Texture2D" uid="uid://d2fjbwvw6cn2b" path="res://Sprites/Passives/Icons/Shadow Summons.png" id="2_76xc6"]
+
+[resource]
+script = ExtResource("1_ktrgo")
+passive_name = "Shadow Summons"
+sprite = ExtResource("2_76xc6")
+description = "Summons 2 shadows by your side that shoot the seed in your 2nd seed slot."
+passive_ability = ExtResource("1_cmwp3")
+unlocked = false
