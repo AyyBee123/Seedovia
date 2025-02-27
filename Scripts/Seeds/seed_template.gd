@@ -5,8 +5,9 @@ signal has_collided(object) # signal for colliding with an enemy or wall
 signal attempted_fire # signal for attempting to fire the next seed (even if the next seed is null)
 
 @onready var player = Targets.get_player()
-@onready var _player_stats = player._player_stats
 @onready var seed_slots = player.find_child("Seed Slots").get_children()
+var _player_stats
+var source # original source of the seed (player or an enemy)
 
 # base stats of the seed
 @export var BASE_DAMAGE: float
@@ -19,6 +20,9 @@ signal attempted_fire # signal for attempting to fire the next seed (even if the
 var weapon_direction: Vector2 # the direction the weapon goes, based on the previous weapon/player
 var desired_direction: Vector2 # the direction the weapon wants the next weapon to go
 var hit_enemy = null # sometimes, the weapon wants information on the enemy it collided with
+var target_group := "Enemies" # check the target group to damage (can be Enemies or Players)
+var collisions = 5 # the collision masks that should be detected by the seed
+var shader # shader for the seed (mainly for enemies)
 
 var starting_position: Vector2 # gets the starting position from where the bullet is fired
 var distance_travelled: float # gets the current range travelled by the bullet
@@ -91,6 +95,7 @@ var seed_pool: Array = [] # pool to add the next seed to
 
 func _ready():
 	visible = false # avoid "jitter" on the very first frame
+	$Hitbox.set_collision_mask(collisions)
 	BASE_SPEED *= transferred_speed_multiplier
 	BASE_RANGE *= transferred_range_multiplier
 	BASE_SIZE *= transferred_size_multiplier
@@ -99,6 +104,15 @@ func _ready():
 	BASE_FIRE_RATE *= transferred_fire_rate_multiplier
 	scale = scale * SIZE
 	direction = desired_direction.normalized()
+	if shader:
+		material = ShaderMaterial.new()
+		material.shader = shader
+		for i in get_children():
+			if i.name == "Shadow":
+				continue
+			if i is Sprite2D or i is AnimatedSprite2D:
+				i.material = ShaderMaterial.new()
+				i.material.shader = shader
 	await get_tree().physics_frame
 	visible = true
 	starting_position = global_position
@@ -130,6 +144,8 @@ func _collide(body):
 	has_collided.emit(body) # for on-hit effects (ex: burning an enemy on hit)
 	if body.is_in_group("Enemies"):
 		body.get_parent()._enemy_stats.take_damage(DAMAGE)
+	elif body.is_in_group("Players"):
+		body._player_stats.take_damage(1)
 	queue_free.call_deferred()
 
 func shoot_next_weapon():
@@ -144,6 +160,7 @@ func set_weapon_properties(weapon, _desired_direction, _ignore_first_collision =
 	weapon.ignore_first_collision = _ignore_first_collision
 	weapon.desired_direction = _desired_direction
 	weapon.previous_weapon = self
+	weapon.source = source
 	weapon.hit_enemy = _enemy
 	weapon.slot_index = slot_index + 1
 	weapon.transferred_speed_multiplier *= transferred_speed_multiplier

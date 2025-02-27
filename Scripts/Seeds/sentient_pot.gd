@@ -17,6 +17,14 @@ func _ready():
 	super._ready()
 	transferred_damage_multiplier *= POT_DAMAGE_MULTIPLIER
 	radius = $"Shoot Range/CollisionShape2D".shape.radius * scale.x
+	if target_group == "Players":
+		var pot = load("res://Scenes/Enemies/Hot Pot.tscn").instantiate()
+		pot.visible = false
+		get_tree().current_scene.add_child(pot)
+		await get_tree().physics_frame
+		pot.global_position = global_position
+		pot.visible = true
+		queue_free()
 
 func _physics_process(delta):
 	has_next_seed = get_next_weapon() != null

@@ -55,6 +55,9 @@ func explode():
 	var splash = SPLASH.instantiate()
 	splash.size = 0.1 * SIZE
 	splash.source = self
+	if shader:
+		splash.get_node("AnimatedSprite2D").material = ShaderMaterial.new()
+		splash.get_node("AnimatedSprite2D").material.shader = shader
 	splash.modulate = Color("87b950", 151.0/255)
 	call_deferred("create_child", splash)
 

@@ -35,8 +35,6 @@ BASE_RANGE = 250.0
 BASE_SPEED = 250.0
 BASE_SIZE = 1.0
 BASE_BLAST_RADIUS = 1.0
-speed_multiplier = 0.5
-fire_rate_multiplier = 0.1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -2)

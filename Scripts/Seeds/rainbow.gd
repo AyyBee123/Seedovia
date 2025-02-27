@@ -29,6 +29,9 @@ func _physics_process(delta):
 		shoot_next_weapon()
 	
 	var trail = RAINBOW_TRAIL.instantiate()
+	if shader:
+		trail.material = ShaderMaterial.new()
+		trail.material.shader = shader
 	trail.scale = scale
 	trail.rotation = rotation
 	trail.z_index = z_index
@@ -53,6 +56,10 @@ func _collide(body):
 		SfxDeconflicter.play(Game.audio_manager.hit)
 		SfxDeconflicter.play(Game.audio_manager.sparkle_higher_pitch)
 		body.get_parent()._enemy_stats.take_damage(DAMAGE)
+	elif body.is_in_group("Players"):
+		SfxDeconflicter.play(Game.audio_manager.hit)
+		SfxDeconflicter.play(Game.audio_manager.sparkle_higher_pitch)
+		body._player_stats.take_damage(1)
 
 func set_weapon_properties(weapon, _desired_direction, _ignore_first_collision = false, _enemy = null):
 	var bomb = RAINBOW_BOMB.instantiate()

@@ -24,7 +24,7 @@ func _physics_process(delta):
 		collision = enemy.move_and_collide(enemy.velocity * delta)
 	if collision:
 		enemy.velocity = enemy.velocity.bounce(collision.get_normal())
-		if not _took_damage:
+		if not _took_damage and damage > 0:
 			enemy._enemy_stats.take_damage(damage)
 			_took_damage = true
 			SfxDeconflicter.play(hit_SFX)

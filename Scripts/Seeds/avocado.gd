@@ -11,6 +11,9 @@ func explode():
 	var splash = SPLASH.instantiate()
 	splash.size = 0.45
 	splash.source = self
+	if shader:
+		splash.get_node("AnimatedSprite2D").material = ShaderMaterial.new()
+		splash.get_node("AnimatedSprite2D").material.shader = shader
 	splash.modulate = Color("a8c445")
 	SfxDeconflicter.play(Game.audio_manager.crunch)
 	SfxDeconflicter.play(Game.audio_manager.hit_2)
@@ -27,6 +30,8 @@ func _collide(body):
 	has_collided.emit(body) # for on-hit effects (ex: burning an enemy on hit)
 	if body.is_in_group("Enemies"):
 		body.get_parent()._enemy_stats.take_damage(DAMAGE)
+	elif body.is_in_group("Players"):
+		body._player_stats.take_damage(1)
 	SfxDeconflicter.play(Game.audio_manager.hit)
 	SfxDeconflicter.play(Game.audio_manager.crunch)
 	queue_free.call_deferred()
@@ -81,6 +86,9 @@ func range_reached_done():
 
 func transfer_properties(seed):
 	seed.scale = scale
+	seed.collisions = collisions
+	seed.source = source
+	seed.target_group = target_group
 	seed.seed_slots = seed_slots
 	seed.slot_index = slot_index
 	seed.seed_slot_number = seed_slot_number

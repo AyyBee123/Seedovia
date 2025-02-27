@@ -32,7 +32,9 @@ func _collide(body):
 	has_collided.emit(body)
 	if body.is_in_group("Enemies"):
 		body.get_parent()._enemy_stats.take_damage(DAMAGE)
-		if not body.is_in_group("Dummy"):
+	elif body.is_in_group("Players"):
+		body._player_stats.take_damage(1)
+		if not body.is_in_group("Dummy") and not body.is_in_group("Players"):
 			if randf() < COIN_CHANCE:
 				var coin = COIN.instantiate()
 				get_tree().current_scene.add_child(coin)
@@ -46,6 +48,9 @@ func explode():
 	var splash = SPLASH.instantiate()
 	splash.size = 0.2
 	splash.source = self
+	if shader:
+		splash.get_node("AnimatedSprite2D").material = ShaderMaterial.new()
+		splash.get_node("AnimatedSprite2D").material.shader = shader
 	splash.modulate = Color("ffdd33")
 	call_deferred("create_child", splash)
 

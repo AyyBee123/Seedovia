@@ -29,6 +29,8 @@ func _collide(body):
 	has_collided.emit(body) # for on-hit effects (ex: burning an enemy on hit)
 	if body.is_in_group("Enemies"):
 		body.get_parent()._enemy_stats.take_damage(DAMAGE)
+	elif body.is_in_group("Players"):
+		body._player_stats.take_damage(1)
 	if tween:
 		tween.kill()
 	SfxDeconflicter.play(Game.audio_manager.hit)
@@ -40,6 +42,9 @@ func explode():
 	var splash = SPLASH.instantiate()
 	splash.size = 0.45
 	splash.source = self
+	if shader:
+		splash.get_node("AnimatedSprite2D").material = ShaderMaterial.new()
+		splash.get_node("AnimatedSprite2D").material.shader = shader
 	splash.modulate = Color("a8c445")
 	call_deferred("create_child", splash)
 

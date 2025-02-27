@@ -28,6 +28,7 @@ extends Node
 @onready var fools_gold = $"Fools Gold"
 @onready var rock_2 = $Rock2
 @onready var rock = $Rock
+@onready var fart = $Fart
 
 func _ready():
 	SignalBus.play_audio.connect(play)

@@ -29,6 +29,10 @@ func _collide(body):
 		is_stuck_to_enemy = true
 		enemy = body.get_parent()
 		distance_to_enemy = enemy.global_position - global_position
+	if body.is_in_group("Players"):
+		body._player_stats.take_damage(1)
+		explode()
+		queue_free.call_deferred()
 	is_stuck = true
 	lifetime.start()
 
@@ -59,6 +63,9 @@ func explode():
 	var splash = SPLASH.instantiate()
 	splash.size = 0.333 * SIZE
 	splash.source = self
+	if shader:
+		splash.get_node("AnimatedSprite2D").material = ShaderMaterial.new()
+		splash.get_node("AnimatedSprite2D").material.shader = shader
 	splash.modulate = Color("951f1f")
 	call_deferred("create_child", splash)
 

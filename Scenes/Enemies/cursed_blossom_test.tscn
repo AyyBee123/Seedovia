@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://vpltaaiispr3"]
+
+[ext_resource type="PackedScene" uid="uid://bx78leai7uqql" path="res://Scenes/Enemies/Cursed Blossom.tscn" id="1_k1bi8"]
+[ext_resource type="Script" path="res://Scripts/Enemies/Cursed Blossom/cursed_blossom_test.gd" id="2_o5ox5"]
+[ext_resource type="Shader" path="res://Shaders/color_tint_shader.gdshader" id="2_o07yf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ba36p"]
+resource_local_to_scene = true
+shader = ExtResource("2_o07yf")
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/tint_factor = 0.0
+shader_parameter/fade = 1.0
+
+[node name="Cursed Blossom Test" instance=ExtResource("1_k1bi8")]
+script = ExtResource("2_o5ox5")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+material = SubResource("ShaderMaterial_ba36p")

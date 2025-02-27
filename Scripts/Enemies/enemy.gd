@@ -65,3 +65,17 @@ func change_color():
 	$AnimatedSprite2D.material.set("shader_parameter/tint_factor", 0.8)
 	await get_tree().create_timer(0.05, false).timeout
 	$AnimatedSprite2D.material.set("shader_parameter/tint_factor", 0.0)
+
+func instance_seed(_seed, _direction, _shader = null):
+	var seed = _seed.instantiate()
+	seed.initial_weapon = true
+	seed.desired_direction = _direction
+	seed.previous_weapon = self
+	seed.source = self
+	seed.slot_index = 3
+	seed.seed_slot_number = 3
+	seed.collisions = 3
+	seed.target_group = "Players"
+	seed.shader = _shader
+	get_tree().current_scene.add_child(seed)
+	seed.global_position = global_position

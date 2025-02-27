@@ -2,15 +2,20 @@ extends "res://Scripts/Seeds/seed_template.gd"
 
 @onready var fire_rate = $"Fire Rate"
 @onready var resource_preloader = $ResourcePreloader
+@onready var homing_time = $"Homing Time"
+
 var targeted_enemy = null
 var strawberry_fire_rate_multiplier: float = 0.6
 var explosion_damage_multiplier: float = 2.5
 var exploded := false
+var is_homing: bool = true
 
 func _ready():
 	super._ready()
 	look_at(global_position + desired_direction)
 	fire_rate.start(0.5)
+	if target_group == "Players":
+		homing_time.start()
 
 func _physics_process(delta):
 	super._physics_process(delta)
@@ -19,7 +24,8 @@ func _physics_process(delta):
 	else:
 		var rotation_angle = global_position.direction_to(targeted_enemy.global_position).angle()
 		var new_rot = lerp_angle(rotation, rotation_angle, 5 * delta)
-		rotation = new_rot
+		if is_homing:
+			rotation = new_rot
 	if fire_rate.is_stopped():
 		shoot_next_weapon()
 
@@ -28,14 +34,18 @@ func explode():
 	explosion.damage = DAMAGE
 	explosion.size = BLAST_RADIUS
 	explosion.source = self
+	explosion.collisions = collisions
+	if shader:
+		explosion.get_node("AnimatedSprite2D").material = ShaderMaterial.new()
+		explosion.get_node("AnimatedSprite2D").material.shader = shader
+	if source != player:
+		explosion.get_node("Area2D").set_collision_layer(16)
 	explosion.modulate = Color("bc1414")
 	call_deferred("create_child", explosion)
 
 func create_child(child):
 	SfxDeconflicter.play(Game.audio_manager.strawberry_mild_explosion)
 	visible = false
-	set_physics_process(false)
-	$Hitbox/CollisionShape2D.set_deferred("disabled", true)
 	get_tree().current_scene.add_child(child)
 	child.global_position = self.global_position
 	queue_free.call_deferred()
@@ -78,7 +88,9 @@ func shoot_next_weapon():
 
 func get_nearest_enemy(object):
 	var enemies = Targets.get_enemy_hitboxes()
-	if object != null and object.is_in_group("Enemies"):
+	if target_group == "Players":
+		enemies = [Targets.get_player()]
+	if object != null and object.is_in_group(target_group):
 		# removes the hit enemy from the array so that the projectile does not target it when "bouncing"
 		for i in range(enemies.size()):
 			if enemies[i] == object:
@@ -97,3 +109,6 @@ func get_nearest_enemy(object):
 					nearest_distance = enemies[i].global_position.distance_squared_to(global_position)
 					nearest_enemy = enemies[i]
 	return nearest_enemy
+
+func _on_homing_time_timeout():
+	is_homing = false

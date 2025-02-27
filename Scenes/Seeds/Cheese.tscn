@@ -21,9 +21,6 @@ BASE_RANGE = 125.0
 BASE_SPEED = 500.0
 BASE_SIZE = 1.15
 BASE_BLAST_RADIUS = 1.0
-range_multiplier = 0.5
-size_multiplier = 1.15
-fire_rate_multiplier = 0.25
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 0

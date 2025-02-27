@@ -12,6 +12,14 @@ var hit_wall := false
 func _ready():
 	super._ready()
 	deceleration.start()
+	if target_group == "Players":
+		var blossom = load("res://Scenes/Enemies/Cursed Blossom.tscn").instantiate()
+		blossom.visible = false
+		get_tree().current_scene.add_child(blossom)
+		await get_tree().physics_frame
+		blossom.global_position = global_position
+		blossom.visible = true
+		queue_free()
 
 func _physics_process(delta):
 	super._physics_process(delta)

@@ -20,6 +20,7 @@ func set_weapon_properties(weapon, _desired_direction, _ignore_first_collision =
 	weapon.ignore_first_collision = _ignore_first_collision
 	weapon.desired_direction = _desired_direction
 	weapon.previous_weapon = self
+	weapon.source = source
 	weapon.hit_enemy = _enemy
 	weapon.slot_index = slot_index
 	weapon.transferred_speed_multiplier = transferred_speed_multiplier

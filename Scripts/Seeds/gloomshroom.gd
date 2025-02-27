@@ -15,6 +15,7 @@ func _ready():
 	super._ready()
 	deceleration.start()
 	fire_rate.start(1.0 / FIRE_RATE)
+	$"Depression Area".set_collision_mask(collisions)
 
 func _physics_process(delta):
 	super._physics_process(delta)
@@ -23,6 +24,10 @@ func _physics_process(delta):
 	for i in enemies_in_area.size():
 		if tick_timers[i].is_stopped():
 			if is_instance_valid(enemies_in_area[i]):
+				if enemies_in_area[i] == player:
+					enemies_in_area[i]._player_stats.take_damage(1)
+					tick_timers[i].start(0.25 / FIRE_RATE)
+					return
 				enemies_in_area[i]._enemy_stats.take_damage(DAMAGE)
 				has_collided.emit(enemies_in_area[i].get_node("Enemy Hitbox"))
 				tick_timers[i].start(0.25 / FIRE_RATE)
@@ -69,5 +74,24 @@ func _on_depression_area_area_entered(area):
 			timer.one_shot = true
 			tick_timers.append(timer)
 
+
+
 func _on_deceleration_timeout():
 	lifetime.start()
+
+func _on_depression_area_body_entered(body):
+	if body.is_in_group("Players"):
+		if is_instance_valid(body):
+			enemies_in_area.append(body)
+			var timer = Timer.new()
+			add_child(timer)
+			timer.wait_time = 0.25 / FIRE_RATE
+			timer.one_shot = true
+			tick_timers.append(timer)
+
+func _on_depression_area_body_exited(body):
+	if body.is_in_group("Players"):
+		if is_instance_valid(body):
+			var index = enemies_in_area.find(body)
+			enemies_in_area.remove_at(index)
+			tick_timers.remove_at(index)

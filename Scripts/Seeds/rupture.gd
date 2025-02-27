@@ -44,6 +44,10 @@ func _physics_process(delta):
 	for i in enemies_in_area.size():
 		if tick_timers[i].is_stopped():
 			if is_instance_valid(enemies_in_area[i]):
+				if enemies_in_area[i] == player:
+					enemies_in_area[i]._player_stats.take_damage(1)
+					tick_timers[i].start(0.2 / FIRE_RATE)
+					return
 				enemies_in_area[i]._enemy_stats.take_damage(DAMAGE)
 				has_collided.emit(enemies_in_area[i].get_node("Enemy Hitbox"))
 				tick_timers[i].start(0.2 / FIRE_RATE)
@@ -83,5 +87,22 @@ func _on_hitbox_area_exited(area):
 	if area.is_in_group("Enemies"):
 		if is_instance_valid(area):
 			var index = enemies_in_area.find(area.get_parent())
+			enemies_in_area.remove_at(index)
+			tick_timers.remove_at(index)
+
+func _on_hitbox_body_entered(body):
+	if body.is_in_group("Players"):
+		if is_instance_valid(body):
+			enemies_in_area.append(body)
+			var timer = Timer.new()
+			add_child(timer)
+			timer.wait_time = 0.2 / FIRE_RATE
+			timer.one_shot = true
+			tick_timers.append(timer)
+
+func _on_hitbox_body_exited(body):
+	if body.is_in_group("Players"):
+		if is_instance_valid(body):
+			var index = enemies_in_area.find(body)
 			enemies_in_area.remove_at(index)
 			tick_timers.remove_at(index)

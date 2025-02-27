@@ -42,6 +42,12 @@ func explode():
 	explosion.source = self
 	explosion.modulate = Color(colors.pick_random())
 	explosion.z_index = z_index + 1
+	explosion.collisions = collisions
+	if shader:
+		explosion.get_node("AnimatedSprite2D").material = ShaderMaterial.new()
+		explosion.get_node("AnimatedSprite2D").material.shader = shader
+	if source != player:
+		explosion.get_node("Area2D").set_collision_layer(16)
 	call_deferred("create_child", explosion)
 
 func create_child(child):

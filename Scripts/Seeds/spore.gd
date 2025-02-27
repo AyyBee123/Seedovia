@@ -3,6 +3,7 @@ extends "res://Scripts/Seeds/seed_template.gd"
 @onready var pointer = %Pointer
 @onready var marker_2d = %Marker2D
 @onready var fire_delay = $"Fire Delay"
+@onready var homing_time = $"Homing Time"
 
 const SPLASH = preload("res://Scenes/Misc/Splash.tscn")
 var SPORE = load("res://Scenes/Seeds/Spore.tscn")
@@ -16,6 +17,7 @@ var _spawn_more_spores: bool = true
 var origin_point
 var first_collision_ignored: bool
 var enemy
+var is_homing: bool = true
 
 func _ready():
 	super._ready()
@@ -27,6 +29,8 @@ func _ready():
 		fire_delay.start()
 	await get_tree().physics_frame
 	origin_point = global_position
+	if target_group == "Players":
+		homing_time.start()
 
 func _physics_process(delta):
 	super._physics_process(delta)
@@ -40,7 +44,7 @@ func update_position(delta):
 	if targeted_enemy == null:
 		targeted_enemy = get_nearest_enemy(null)
 	
-	if targeted_enemy:
+	if targeted_enemy and is_homing:
 		direction = global_position.direction_to(targeted_enemy.global_position).normalized()
 		pointer.rotation = lerp_angle(pointer.rotation, direction.angle(), rotation_speed * delta)
 	
@@ -61,7 +65,7 @@ func _on_hitbox_area_entered(area):
 	pass
 
 func _on_hitbox_body_entered(body):
-	pass
+	_collide(body)
 
 func _collide(body):
 	if ignore_first_collision:
@@ -72,6 +76,8 @@ func _collide(body):
 		body.get_parent()._enemy_stats.take_damage(DAMAGE)
 		enemy = body.get_parent()
 		shoot_next_weapon()
+	elif body.is_in_group("Players"):
+		body._player_stats.take_damage(1)
 	SfxDeconflicter.play(Game.audio_manager.hit)
 	SfxDeconflicter.play(Game.audio_manager.spore_pop)
 	explode()
@@ -87,7 +93,9 @@ func shoot_next_weapon():
 
 func get_nearest_enemy(object):
 	var enemies = Targets.get_enemy_hitboxes()
-	if object != null and object.is_in_group("Enemies"):
+	if target_group == "Players":
+		enemies = [Targets.get_player()]
+	if object != null and object.is_in_group(target_group):
 		# removes the hit enemy from the array so that the projectile does not target it when "bouncing"
 		for i in range(enemies.size()):
 			if enemies[i] == object:
@@ -128,6 +136,10 @@ func _on_fire_delay_timeout():
 		pos = origin_point
 	if spore_amount_spawned < SPORE_AMOUNT:
 		var spore = SPORE.instantiate()
+		spore.shader = shader
+		spore.collisions = collisions
+		spore.source = source
+		spore.target_group = target_group
 		spore._spawn_more_spores = false
 		spore.desired_direction = desired_direction
 		spore.seed_slots = seed_slots
@@ -145,3 +157,6 @@ func _on_fire_delay_timeout():
 		spore_amount_spawned += 1
 		weapon_fired.emit(spore)
 		fire_delay.start()
+
+func _on_homing_time_timeout():
+	is_homing = false

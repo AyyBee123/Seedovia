@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://usetxd7ii511"]
+[gd_scene load_steps=16 format=3 uid="uid://usetxd7ii511"]
 
 [ext_resource type="Script" path="res://Scripts/Utils/audio_manager.gd" id="1_bpx0j"]
 [ext_resource type="AudioStream" uid="uid://bpk6gao5jcjkq" path="res://Audio/SFX/Hit.mp3" id="1_qnkjs"]
@@ -14,6 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://cyxljsvmtu0p0" path="res://Audio/SFX/Mining.mp3" id="12_8glx2"]
 [ext_resource type="AudioStream" uid="uid://b7xm0h684yq5j" path="res://Audio/SFX/Rock2.mp3" id="13_o11or"]
 [ext_resource type="AudioStream" uid="uid://bxyctmw0u4b5" path="res://Audio/SFX/Rock.mp3" id="14_vseo3"]
+[ext_resource type="AudioStream" uid="uid://qcsu4lhts47k" path="res://Audio/SFX/Fart.mp3" id="15_57xsu"]
 
 [node name="Audio Manager" type="Node"]
 script = ExtResource("1_bpx0j")
@@ -160,5 +161,11 @@ bus = &"SFX"
 
 [node name="Rock" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_vseo3")
+pitch_scale = 1.1
+bus = &"SFX"
+
+[node name="Fart" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_57xsu")
+volume_db = -5.0
 pitch_scale = 1.1
 bus = &"SFX"

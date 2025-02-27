@@ -10,13 +10,14 @@ radius = 8.0
 height = 24.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n3trt"]
-radius = 46.0
+radius = 50.0
 
 [node name="Fertilizer" instance=ExtResource("1_iuenw")]
+scale = Vector2(1.2, 1.2)
 texture = ExtResource("2_a3sjy")
 offset = Vector2(0, -4.55)
 script = ExtResource("3_moec4")
-BASE_DAMAGE = 3.0
+BASE_DAMAGE = 2.0
 BASE_FIRE_RATE = 2.0
 BASE_RANGE = 12.5
 BASE_SPEED = 500.0
@@ -55,6 +56,7 @@ shape = SubResource("CircleShape2D_n3trt")
 [node name="ResourcePreloader" type="ResourcePreloader" parent="." index="7"]
 resources = [PackedStringArray("Stink"), [ExtResource("4_coisv")]]
 
+[connection signal="body_exited" from="Hitbox" to="." method="_on_hitbox_body_exited"]
 [connection signal="timeout" from="Deceleration" to="." method="_on_deceleration_timeout"]
 [connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]
 [connection signal="timeout" from="Stink Rate" to="." method="_on_stink_rate_timeout"]

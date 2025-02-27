@@ -17,6 +17,8 @@ func _ready():
 	lifetime.start()
 	if previous_weapon != player:
 		_was_previous_weapon = true
+	if previous_weapon.is_in_group("Enemy"):
+		$"Detect Previous Seed".set_collision_mask(4)
 
 func update_position(delta):
 	if previous_weapon != null:
@@ -51,6 +53,8 @@ func _collide(body):
 	has_collided.emit(body) # for on-hit effects (ex: burning an enemy on hit)
 	if body.is_in_group("Enemies"):
 		body.get_parent()._enemy_stats.take_damage(DAMAGE)
+	elif body.is_in_group("Players"):
+		body._player_stats.take_damage(1)
 	if has_stopped:
 		SfxDeconflicter.play(Game.audio_manager.hit)
 		queue_free.call_deferred()

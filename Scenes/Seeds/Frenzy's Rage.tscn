@@ -122,10 +122,6 @@ BASE_RANGE = 850.0
 BASE_SPEED = 250.0
 BASE_SIZE = 1.0
 BASE_BLAST_RADIUS = 1.0
-speed_multiplier = 0.5
-range_multiplier = 3.5
-damage_multiplier = 3.0
-fire_rate_multiplier = 0.075
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 shape = SubResource("CircleShape2D_562pm")

@@ -28,6 +28,12 @@ func explode():
 	var explosion = resource_preloader.get_resource("Explosion").instantiate()
 	explosion.damage = DAMAGE
 	explosion.size = BLAST_RADIUS
+	explosion.collisions = collisions
+	if shader:
+		explosion.get_node("AnimatedSprite2D").material = ShaderMaterial.new()
+		explosion.get_node("AnimatedSprite2D").material.shader = shader
+	if source != player:
+		explosion.get_node("Area2D").set_collision_layer(16)
 	explosion.get_node("AnimatedSprite2D").self_modulate = Color("c69b30") # match the corn's shaded color
 	SfxDeconflicter.play(Game.audio_manager.corn_mild_explosion)
 	create_explosion.call_deferred(explosion)

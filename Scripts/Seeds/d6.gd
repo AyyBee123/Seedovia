@@ -62,6 +62,8 @@ func _collide(body):
 	has_collided.emit(body)
 	if body.is_in_group("Enemies"):
 		body.get_parent()._enemy_stats.take_damage(DAMAGE * get_dice_damage_multiplier())
+	elif body.is_in_group("Players"):
+		body._player_stats.take_damage(1)
 	var weapon = null if PlayerSeeds.seeds.size() <= 1 + slot_index or slot_index >= 2 \
 			else PlayerSeeds.seeds[slot_index + 1]
 	SfxDeconflicter.play(Game.audio_manager.hit)
@@ -109,6 +111,9 @@ func explode():
 	var splash = SPLASH.instantiate()
 	splash.size = 0.2
 	splash.source = self
+	if shader:
+		splash.get_node("AnimatedSprite2D").material = ShaderMaterial.new()
+		splash.get_node("AnimatedSprite2D").material.shader = shader
 	splash.modulate = Color("611e30")
 	call_deferred("create_child", splash)
 

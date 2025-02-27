@@ -23,7 +23,11 @@ func _ready():
 		var number_of_grapes = randi_range(5, 7)
 		for i in number_of_grapes:
 			var grape = GRAPE.instantiate()
+			grape.shader = shader
 			grape._spawn_more_grapes = false
+			grape.source = source
+			grape.target_group = target_group
+			grape.collisions = collisions
 			grape.desired_direction = desired_direction
 			grape.seed_slots = seed_slots
 			grape.slot_index = slot_index
@@ -46,6 +50,8 @@ func _collide(body):
 	has_collided.emit(body)
 	if body.is_in_group("Enemies"):
 		body.get_parent()._enemy_stats.take_damage(DAMAGE)
+	elif body.is_in_group("Players"):
+		body._player_stats.take_damage(1)
 	shoot_next_weapon()
 	SfxDeconflicter.play(Game.audio_manager.hit)
 	SfxDeconflicter.play(Game.audio_manager.bubble_pop_2)
@@ -76,6 +82,9 @@ func explode():
 	var splash = SPLASH.instantiate()
 	splash.size = 0.2 * SIZE
 	splash.source = self
+	if shader:
+		splash.get_node("AnimatedSprite2D").material = ShaderMaterial.new()
+		splash.get_node("AnimatedSprite2D").material.shader = shader
 	splash.modulate = Color("312877")
 	call_deferred("create_child", splash)
 

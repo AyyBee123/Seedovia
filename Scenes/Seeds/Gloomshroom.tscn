@@ -53,8 +53,6 @@ BASE_RANGE = 250.0
 BASE_SPEED = 500.0
 BASE_SIZE = 1.0
 BASE_BLAST_RADIUS = 1.0
-damage_multiplier = 0.15
-fire_rate_multiplier = 0.15
 
 [node name="Hitbox" parent="." index="0"]
 collision_mask = 513
@@ -73,8 +71,9 @@ wait_time = 0.15
 one_shot = true
 
 [node name="Depression Area" type="Area2D" parent="." index="4"]
-collision_layer = 8
+collision_layer = 0
 collision_mask = 4
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Depression Area" index="0"]
 position = Vector2(-0.5, 0)
@@ -99,4 +98,6 @@ one_shot = true
 [connection signal="timeout" from="Deceleration" to="." method="_on_deceleration_timeout"]
 [connection signal="area_entered" from="Depression Area" to="." method="_on_depression_area_area_entered"]
 [connection signal="area_exited" from="Depression Area" to="." method="_on_depression_area_area_exited"]
+[connection signal="body_entered" from="Depression Area" to="." method="_on_depression_area_body_entered"]
+[connection signal="body_exited" from="Depression Area" to="." method="_on_depression_area_body_exited"]
 [connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]

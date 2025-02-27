@@ -60,6 +60,9 @@ func explode():
 	var splash = SPLASH.instantiate()
 	splash.size = 0.3
 	splash.source = self
+	if shader:
+		splash.get_node("AnimatedSprite2D").material = ShaderMaterial.new()
+		splash.get_node("AnimatedSprite2D").material.shader = shader
 	splash.modulate = Color("333b3f")
 	call_deferred("create_child", splash)
 
@@ -70,6 +73,10 @@ func create_child(child):
 func spawn_gold():
 	weapon_direction = Vector2.RIGHT.rotated(randf_range(0, TAU))
 	var gold = GOLD.instantiate()
+	gold.shader = shader
+	gold.source = source
+	gold.target_group = target_group
+	gold.collisions = collisions
 	gold.desired_direction = weapon_direction
 	gold.seed_slots = seed_slots
 	gold.slot_index = slot_index

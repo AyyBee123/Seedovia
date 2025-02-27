@@ -17,9 +17,6 @@ BASE_RANGE = 1000.0
 BASE_SPEED = 125.0
 BASE_SIZE = 1.0
 BASE_BLAST_RADIUS = 1.0
-speed_multiplier = 0.25
-range_multiplier = 2.5
-fire_rate_multiplier = 0.085
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 shape = SubResource("CircleShape2D_wmur4")
@@ -35,3 +32,4 @@ pitch_scale = 0.6
 bus = &"SFX"
 
 [connection signal="area_exited" from="Hitbox" to="." method="_on_hitbox_area_exited"]
+[connection signal="body_exited" from="Hitbox" to="." method="_on_hitbox_body_exited"]

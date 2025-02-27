@@ -14,7 +14,11 @@ func _ready():
 		var directions = [-SPREAD, SPREAD]
 		for dir in directions:
 			var thorn = WOOD_THORN.instantiate()
+			thorn.shader = shader
 			thorn._spawn_more_thorns = false
+			thorn.collisions = collisions
+			thorn.source = source
+			thorn.target_group = target_group
 			thorn.desired_direction = desired_direction.rotated(dir)
 			thorn.seed_slots = seed_slots
 			thorn.slot_index = slot_index
@@ -44,6 +48,8 @@ func _collide(body):
 	has_collided.emit(body)
 	if body.is_in_group("Enemies"):
 		body.get_parent()._enemy_stats.take_damage(DAMAGE)
+	elif body.is_in_group("Players"):
+		body._player_stats.take_damage(1)
 	SfxDeconflicter.play(Game.audio_manager.walnut_hit)
 	explode()
 	queue_free.call_deferred()

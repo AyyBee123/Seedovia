@@ -22,10 +22,12 @@ func update_position(delta):
 func _on_hitbox_area_entered(area):
 	has_collided.emit(area)
 	if area.is_in_group("Enemies"):
-			area.get_parent()._enemy_stats.take_damage(DAMAGE / 2)
+		area.get_parent()._enemy_stats.take_damage(DAMAGE / 2)
 	explode()
 
 func _on_hitbox_body_entered(body):
+	if body.is_in_group("Players"):
+		body._player_stats.take_damage(1)
 	has_collided.emit(body)
 	explode()
 
@@ -36,6 +38,12 @@ func explode():
 	var explosion = resource_preloader.get_resource("Explosion").instantiate()
 	explosion.damage = DAMAGE
 	explosion.size = BLAST_RADIUS
+	explosion.collisions = collisions
+	if shader:
+		explosion.get_node("AnimatedSprite2D").material = ShaderMaterial.new()
+		explosion.get_node("AnimatedSprite2D").material.shader = shader
+	if source != player:
+		explosion.get_node("Area2D").set_collision_layer(16)
 	explosion.get_node("AnimatedSprite2D").self_modulate = Color.ORANGE_RED
 	SfxDeconflicter.play(Game.audio_manager.pepper_child_mild_explosion)
 	call_deferred("create_child", explosion)

@@ -8,6 +8,10 @@ const SEED_DIST = SUNDER_DIST * 2
 var distance_threshold: float = 0
 var seed_distance_threshold: float = 0
 
+func _ready():
+	super._ready()
+	$Hitbox.set_collision_mask(1)
+
 func travelled_distance():
 	distance_travelled = starting_position.distance_to(global_position)
 	total_distance += distance_travelled
@@ -38,6 +42,12 @@ func explode():
 	explosion.damage = DAMAGE
 	explosion.damage_multiplier = 1
 	explosion.size = BLAST_RADIUS
+	explosion.collisions = collisions
+	if shader:
+		explosion.get_node("AnimatedSprite2D").material = ShaderMaterial.new()
+		explosion.get_node("AnimatedSprite2D").material.shader = shader
+	if source != player:
+		explosion.get_node("Area2D").set_collision_layer(16)
 	explosion.get_node("AnimatedSprite2D").self_modulate = Color.SADDLE_BROWN
 	SfxDeconflicter.play(Game.audio_manager.sunder_explosion)
 	call_deferred("create_child", explosion)

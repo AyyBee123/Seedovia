@@ -18,6 +18,8 @@ func _collide(body):
 		has_collided.emit(body)
 		if body.is_in_group("Enemies"):
 			body.get_parent()._enemy_stats.take_damage(DAMAGE / 2)
+		elif body.is_in_group("Players"):
+			body._player_stats.take_damage(1)
 		explode()
 	else:
 		ignore_first_collision = false
@@ -29,6 +31,12 @@ func explode():
 	var explosion = resource_preloader.get_resource("Explosion").instantiate()
 	explosion.damage = DAMAGE
 	explosion.size = BLAST_RADIUS
+	explosion.collisions = collisions
+	if shader:
+		explosion.get_node("AnimatedSprite2D").material = ShaderMaterial.new()
+		explosion.get_node("AnimatedSprite2D").material.shader = shader
+	if source != player:
+		explosion.get_node("Area2D").set_collision_layer(16)
 	explosion.get_node("AnimatedSprite2D").self_modulate = Color.ORANGE_RED
 	SfxDeconflicter.play(Game.audio_manager.pepper_mild_explosion)
 	call_deferred("create_explosion", explosion)
@@ -44,10 +52,13 @@ func spawn_child_peppers():
 	for direction in directions:
 		var pepper_child = resource_preloader.get_resource("Pepper Child").instantiate()
 		weapon_direction = direction
+		pepper_child.collisions = collisions
 		pepper_child.desired_direction = direction
 		pepper_child.seed_slots = seed_slots
 		pepper_child.slot_index = slot_index
 		pepper_child.seed_slot_number = seed_slot_number
+		pepper_child.source = source
+		pepper_child.target_group = target_group
 		pepper_child.parent = self
 		pepper_child.transferred_speed_multiplier *= transferred_speed_multiplier
 		pepper_child.transferred_range_multiplier *= transferred_range_multiplier

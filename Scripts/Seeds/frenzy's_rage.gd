@@ -22,6 +22,7 @@ var _end_played: bool = true
 
 func _ready():
 	super._ready()
+	$"Laser Area".set_collision_mask(collisions - 1)
 
 func _physics_process(delta):
 	super._physics_process(delta)

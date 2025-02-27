@@ -69,6 +69,8 @@ func _collide(body):
 	has_collided.emit(body) # for on-hit effects (ex: burning an enemy on hit)
 	if body.is_in_group("Enemies"):
 		body.get_parent()._enemy_stats.take_damage(DAMAGE)
+	elif body.is_in_group("Players"):
+		body._player_stats.take_damage(1)
 	SfxDeconflicter.play(Game.audio_manager.hit)
 	SfxDeconflicter.play(Game.audio_manager.bubble_pop_2)
 	explode()
@@ -123,6 +125,12 @@ func explode():
 	explosion.damage = DAMAGE / 10 + 1 / MAX_STACKS * stacks
 	explosion.size = SIZE / 5 + 1 / MAX_STACKS * stacks
 	explosion.source = self
+	explosion.collisions = collisions
+	if shader:
+		explosion.get_node("AnimatedSprite2D").material = ShaderMaterial.new()
+		explosion.get_node("AnimatedSprite2D").material.shader = shader
+	if source != player:
+		explosion.get_node("Area2D").set_collision_layer(16)
 	explosion.modulate = Color("bf214d")
 	call_deferred("create_child", explosion)
 	queue_free.call_deferred()
