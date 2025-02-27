@@ -11,7 +11,7 @@ func travelled_distance():
 	if total_distance >= RANGE:
 		queue_free.call_deferred()
 	if get_next_weapon() != null:
-		if total_distance > 0 and distance_to_shoot >= 70.0 / get_next_weapon().instantiate().FIRE_RATE:
+		if distance_to_shoot >= 500.0 / get_next_weapon().instantiate().FIRE_RATE:
 			shoot_next_weapon()
 			distance_to_shoot = 0
 
