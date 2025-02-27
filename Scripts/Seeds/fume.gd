@@ -63,6 +63,6 @@ func create_child(child):
 	child.global_position = self.global_position
 
 func shoot_next_weapon():
-	if not randf() < 0.5:
+	if not randf() < 0.333:
 		return
 	super.shoot_next_weapon()

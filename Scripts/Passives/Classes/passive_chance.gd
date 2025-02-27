@@ -8,7 +8,7 @@ func _ready():
 	randomize()
 
 func get_chance(base_chance: float) -> float:
-	return player._player_stats.stats["Luck"]["x"] * (base_chance * 100 + player._player_stats.stats["Luck"]["+"])/100
+	return base_chance
 
 func chance_to_trigger(weapon = null):
 	var random_value = randf()

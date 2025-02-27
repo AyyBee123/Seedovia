@@ -58,7 +58,8 @@ shape = SubResource("CircleShape2D_66p4p")
 material = SubResource("ShaderMaterial_43awx")
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_ubkww")
-animation = &"Shoot"
+animation = &"Idle"
+autoplay = "Idle"
 offset = Vector2(0, -2)
 
 [node name="CollisionPolygon2D" parent="Enemy Hitbox" index="0"]

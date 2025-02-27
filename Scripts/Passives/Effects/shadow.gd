@@ -12,6 +12,7 @@ var targeted_enemy
 var direction: Vector2
 var second_seed
 var player
+var weapon_direction: Vector2
 
 var DAMAGE: float = 8
 var BLAST_RADIUS: float = 0.5
@@ -34,6 +35,7 @@ func _physics_process(delta):
 	
 	if targeted_enemy:
 		direction = global_position.direction_to(targeted_enemy.global_position).normalized()
+		weapon_direction = direction
 		marker_2d.look_at(targeted_enemy.global_position)
 		approach(delta)
 	else:
@@ -46,10 +48,10 @@ func _physics_process(delta):
 		$AnimatedSprite2D.flip_h = true
 
 func approach(delta):
-	if global_position.distance_to(get_nearest_enemy().global_position) > RANGE - 5:
+	if global_position.distance_to(get_nearest_enemy().global_position) > RANGE - 10:
 		velocity = velocity.lerp(direction * SPEED, ACCELERATION)
 		$AnimatedSprite2D.play("Move")
-	elif global_position.distance_to(get_nearest_enemy().global_position) < RANGE - 5:
+	elif global_position.distance_to(get_nearest_enemy().global_position) < RANGE - 10:
 		velocity = velocity.lerp(-direction * SPEED, ACCELERATION)
 		$AnimatedSprite2D.play("Move")
 	else:
@@ -60,12 +62,13 @@ func approach(delta):
 		if fire_rate.is_stopped() and second_seed:
 			attempted_fire.emit()
 			shoot(second_seed)
-			fire_rate.start()
+			fire_rate.start(1.0 / FIRE_RATE)
 	
 	move_and_slide()
 
 func stop():
 	direction = global_position.direction_to(player.global_position)
+	weapon_direction = direction
 	
 	if global_position.distance_to(player.global_position) > 100:
 		velocity = velocity.lerp(direction * SPEED, ACCELERATION)
