@@ -28,6 +28,7 @@ func trigger(enemy = null):
 	seed_instance.previous_weapon = source
 	seed_instance.ignore_first_collision = true
 	seed_instance.hit_enemy = enemy
+	seed_instance.seed_slot_number = 2
 	if get_nearest_enemy(enemy) != null:
 		seed_instance.desired_direction = source.global_position.direction_to(get_nearest_enemy(enemy).global_position)
 	else:
