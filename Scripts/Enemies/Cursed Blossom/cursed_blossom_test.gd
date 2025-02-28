@@ -19,19 +19,7 @@ func _physics_process(delta):
 
 func _on_animated_sprite_2d_animation_changed():
 	if animated_sprite_2d.animation == "Shoot":
-		var bullet = BULLET.instantiate()
-		bullet.initial_weapon = true
-		bullet.desired_direction = direction
-		bullet.previous_weapon = self
-		bullet.source = self
-		bullet.slot_index = 3
-		bullet.seed_slot_number = 3
-		bullet.collisions = 3
-		bullet.target_group = "Players"
-		bullet.shader = SEED_ENEMY_BULLET_COLOR
-		get_tree().current_scene.add_child(bullet)
-		bullet.global_position = global_position + direction * 5
-		fire_rate.start(1.0 / bullet.FIRE_RATE * 2)
+		instance_seed(BULLET, direction, fire_rate, global_position + direction * 5, SEED_ENEMY_BULLET_COLOR, 2)
 
 func _on_fire_rate_timeout():
 	animated_sprite_2d.play("Shoot")
