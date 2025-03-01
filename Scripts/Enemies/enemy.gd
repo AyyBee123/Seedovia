@@ -66,9 +66,9 @@ func change_color():
 	await get_tree().create_timer(0.05, false).timeout
 	$AnimatedSprite2D.material.set("shader_parameter/tint_factor", 0.0)
 
-func instance_seed(_seed: PackedScene, _direction: Vector2, _timer: Timer, _pos: Vector2 = global_position, \
+func instance_seed(_seed: Node, _direction: Vector2, _timer: Timer, _pos: Vector2 = global_position, \
 		_shader = null, _time: float = 1):
-	var seed = _seed.instantiate()
+	var seed = _seed
 	seed.initial_weapon = true
 	seed.desired_direction = _direction
 	seed.previous_weapon = self
