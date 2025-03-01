@@ -13,7 +13,6 @@ var is_homing: bool = true
 func _ready():
 	super._ready()
 	look_at(global_position + desired_direction)
-	fire_rate.start(0.5)
 	if target_group == "Players":
 		homing_time.start()
 
