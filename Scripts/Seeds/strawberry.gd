@@ -15,6 +15,8 @@ func _ready():
 	look_at(global_position + desired_direction)
 	if target_group == "Players":
 		homing_time.start()
+	if get_next_weapon():
+		fire_rate.start(get_next_weapon().instantiate().FIRE_RATE)
 
 func _physics_process(delta):
 	super._physics_process(delta)
