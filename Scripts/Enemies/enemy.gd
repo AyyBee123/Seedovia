@@ -78,6 +78,8 @@ func instance_seed(_seed: PackedScene, _direction: Vector2, _timer: Timer, _pos:
 	seed.collisions = 3
 	seed.target_group = "Players"
 	seed.shader = _shader
+	seed.remove_from_group("Seed")
+	seed.add_to_group("Enemy Weapon")
 	get_tree().current_scene.add_child(seed)
 	seed.global_position = global_position
 	_timer.start(1.0 / seed.FIRE_RATE * _time)
