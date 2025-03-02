@@ -3,13 +3,13 @@ extends Node
 @onready var label := %Label
 @onready var label_container := %LabelContainer
 @onready var ap := %AnimationPlayer
-	
+
 func remove():
 	ap.stop()
 	if is_inside_tree():
 		get_parent().remove_child(self)
 	queue_free()
-	
+
 func set_and_animate_damage(value: float, start_pos: Vector2, height: float, spread: float, \
 		color: Color = Color.WHITE) -> void:
 	label.text = add_commas(int(round(value)))
@@ -21,7 +21,7 @@ func set_and_animate_damage(value: float, start_pos: Vector2, height: float, spr
 	var tween_length = ap.get_animation("Rise and Fall").length
 	
 	tween.tween_property(label_container, "position", end_pos, tween_length)
-	
+
 func add_commas(value):
 	var text = ""
 	while value >= 1000:
