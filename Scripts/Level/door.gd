@@ -8,9 +8,9 @@ var text
 
 var reward_weight = {
 	# index 0, 1, 2, 3, and 4 are talisman, consumable, seed, money, and stat up pools respectively
-	0: 0.08,
+	0: 0.05,
 	1: 0.10,
-	2: 0.02,
+	2: 0.05,
 	3: 0.40,
 	4: 0.40
 }
