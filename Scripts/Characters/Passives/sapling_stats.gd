@@ -2,7 +2,7 @@ extends Node
 
 var player
 
-func _ready():
+func set_stats():
 	player = get_parent()
 	
 	player._player_stats.max_health = 3

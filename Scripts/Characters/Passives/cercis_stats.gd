@@ -2,7 +2,7 @@ extends Node
 
 var player
 
-func _ready():
+func set_stats():
 	player = get_parent()
 	
 	player._player_stats.max_health = 2
@@ -17,8 +17,7 @@ func _ready():
 	player._player_stats.friction = 0.5
 	player._player_stats.luck = 0.0
 	
-	if PlayerCharacter._is_starting:
-		player._player_stats.stats["Fire_Rate"]["x"] = 1.15
-		player._player_stats.stats["Weapon_Damage"]["x"] = 0.9
+	player._player_stats.stats["Fire_Rate"]["x"] = 1.15
+	player._player_stats.stats["Weapon_Damage"]["x"] = 0.9
 	
 	player._player_stats.initialize_base_stats()

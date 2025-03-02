@@ -2,8 +2,8 @@ extends Node
 
 var player
 
-func _ready():
-	player = get_parent().get_parent()
+func set_stats():
+	player = get_parent()
 	
 	var max_health_amount = Global.RNG.randi_range(1, 4)
 	var distributed_health = Global.RNG.randi_range(0, max_health_amount)
@@ -19,14 +19,13 @@ func _ready():
 	player._player_stats.invulnerability_time = 1.0
 	player._player_stats.acceleration = 0.2
 	player._player_stats.friction = 0.5
-	
-	if PlayerCharacter._is_starting:
-		player._player_stats.stats["Fire_Rate"]["x"] = Global.RNG.randf_range(0.6, 1.5)
-		player._player_stats.stats["Weapon_Speed"]["x"] = Global.RNG.randf_range(0.8, 1.2)
-		player._player_stats.stats["Weapon_Range"]["x"] = Global.RNG.randf_range(0.6, 1.5)
-		player._player_stats.stats["Weapon_Size"]["x"] = Global.RNG.randf_range(0.8, 1.2)
-		player._player_stats.stats["Weapon_Damage"]["x"] = Global.RNG.randf_range(0.6, 1.5)
-		player._player_stats.stats["Weapon_Blast_Radius"]["x"] = Global.RNG.randf_range(0.8, 1.2)
+
+	player._player_stats.stats["Fire_Rate"]["x"] = Global.RNG.randf_range(0.6, 1.5)
+	player._player_stats.stats["Weapon_Speed"]["x"] = Global.RNG.randf_range(0.8, 1.2)
+	player._player_stats.stats["Weapon_Range"]["x"] = Global.RNG.randf_range(0.6, 1.5)
+	player._player_stats.stats["Weapon_Size"]["x"] = Global.RNG.randf_range(0.8, 1.2)
+	player._player_stats.stats["Weapon_Damage"]["x"] = Global.RNG.randf_range(0.6, 1.5)
+	player._player_stats.stats["Weapon_Blast_Radius"]["x"] = Global.RNG.randf_range(0.8, 1.2)
 	
 	player._player_stats.initialize_base_stats()
 	

@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource("1_tqjjf")
 floor_number = 0
-pool_name = "Floor 1"
-path = "res://Scenes/Levels/Floor1/"
+pool_name = "Floor 2"
+path = "res://Scenes/Levels/Floor2/"

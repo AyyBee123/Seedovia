@@ -47,11 +47,7 @@ func explode():
 	explosion.get_node("AnimatedSprite2D").self_modulate = Color.ORANGE_RED
 	SfxDeconflicter.play(Game.audio_manager.pepper_child_mild_explosion)
 	call_deferred("create_child", explosion)
-	for i in range(seed_slots.size()):
-		var weapon = null if PlayerSeeds.seeds.size() <= 1 + slot_index or \
-				slot_index >= 2 else PlayerSeeds.seeds[slot_index + 1]
-		shoot_next_weapon()
-		break
+	shoot_next_weapon()
 	# call defer twice to allow passives that trigger off of weapon fire to work
 	# Otherwise, the weapon is destroyed before it has a chance to trigger the passives
 	destroy.call_deferred()

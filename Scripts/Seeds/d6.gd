@@ -83,11 +83,7 @@ func travelled_distance():
 	starting_position = global_position
 	if total_distance >= RANGE:
 		attempted_fire.emit()
-		for i in range(seed_slots.size()):
-			var weapon = null if PlayerSeeds.seeds.size() <= 1 + slot_index or slot_index >= 2 \
-					else PlayerSeeds.seeds[slot_index + 1]
-			shoot_next_weapon()
-			break
+		shoot_next_weapon()
 		queue_free.call_deferred()
 
 func get_dice_damage_multiplier() -> float:

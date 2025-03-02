@@ -20,7 +20,6 @@ func _ready():
 			thorn.source = source
 			thorn.target_group = target_group
 			thorn.desired_direction = desired_direction.rotated(dir)
-			thorn.seed_slots = seed_slots
 			thorn.slot_index = slot_index
 			thorn.seed_slot_number = seed_slot_number
 			thorn.ignore_first_collision = ignore_first_collision

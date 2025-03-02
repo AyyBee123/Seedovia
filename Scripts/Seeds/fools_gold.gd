@@ -78,7 +78,6 @@ func spawn_gold():
 	gold.target_group = target_group
 	gold.collisions = collisions
 	gold.desired_direction = weapon_direction
-	gold.seed_slots = seed_slots
 	gold.slot_index = slot_index
 	gold.seed_slot_number = seed_slot_number
 	gold.ignore_first_collision = ignore_first_collision

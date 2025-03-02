@@ -54,7 +54,6 @@ func spawn_child_peppers():
 		weapon_direction = direction
 		pepper_child.collisions = collisions
 		pepper_child.desired_direction = direction
-		pepper_child.seed_slots = seed_slots
 		pepper_child.slot_index = slot_index
 		pepper_child.seed_slot_number = seed_slot_number
 		pepper_child.source = source

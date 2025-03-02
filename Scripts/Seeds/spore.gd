@@ -142,7 +142,6 @@ func _on_fire_delay_timeout():
 		spore.target_group = target_group
 		spore._spawn_more_spores = false
 		spore.desired_direction = desired_direction
-		spore.seed_slots = seed_slots
 		spore.slot_index = slot_index
 		spore.seed_slot_number = seed_slot_number
 		spore.ignore_first_collision = first_collision_ignored

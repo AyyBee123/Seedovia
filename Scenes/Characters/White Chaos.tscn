@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://jmqrc0iy1uob"]
+[gd_scene load_steps=12 format=3 uid="uid://jmqrc0iy1uob"]
 
 [ext_resource type="PackedScene" uid="uid://cu63rxmy71bcg" path="res://Scenes/Player/Player.tscn" id="1_uo5hu"]
 [ext_resource type="Script" path="res://Scripts/Characters/white_chaos.gd" id="2_wbuoh"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cf8tcikiyx6ww" path="res://Sprites/Character/White Shrub/White Chaos5.png" id="7_bxo53"]
 [ext_resource type="Texture2D" uid="uid://bbqw4qoftm2ve" path="res://Sprites/Character/White Shrub/Hand.png" id="8_qnhjt"]
 [ext_resource type="PackedScene" uid="uid://b51uuhjac0hmd" path="res://Scenes/Inventory/inventory.tscn" id="9_jjp27"]
+[ext_resource type="PackedScene" uid="uid://22awcp7gta0f" path="res://Scenes/Characters/Passives/White Chaos Stats.tscn" id="9_l3n00"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6lyiw"]
 animations = [{
@@ -61,7 +62,9 @@ position = Vector2(0, 0.5)
 [node name="Hand" parent="Rotation Point/Marker2D" index="0"]
 texture = ExtResource("8_qnhjt")
 
-[node name="Inventory" parent="." index="10" instance=ExtResource("9_jjp27")]
+[node name="Stats" parent="." index="10" instance=ExtResource("9_l3n00")]
+
+[node name="Inventory" parent="." index="11" instance=ExtResource("9_jjp27")]
 visible = false
 offset_left = -1620.0
 offset_top = -1022.0
@@ -69,7 +72,7 @@ offset_right = -1620.0
 offset_bottom = -1022.0
 scale = Vector2(3.745, 3.745)
 
-[node name="Shadow" parent="." index="13"]
+[node name="Shadow" parent="." index="14"]
 position = Vector2(0, 10.5)
 
 [node name="CollisionShape2D" parent="Slow Detect" index="0"]

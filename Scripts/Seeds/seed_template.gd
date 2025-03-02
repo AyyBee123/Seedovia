@@ -5,7 +5,6 @@ signal has_collided(object) # signal for colliding with an enemy or wall
 signal attempted_fire # signal for attempting to fire the next seed (even if the next seed is null)
 
 @onready var player = Targets.get_player()
-@onready var seed_slots = player.find_child("Seed Slots").get_children()
 var _player_stats
 var source # original source of the seed (player or an enemy)
 
@@ -94,6 +93,7 @@ var transferred_fire_rate_multiplier: float = 1 # fire rate multiplier of the we
 var seed_pool: Array = [] # pool to add the next seed to
 
 func _ready():
+	_player_stats = player._player_stats
 	visible = false # avoid "jitter" on the very first frame
 	$Hitbox.set_collision_mask(collisions)
 	BASE_SPEED *= transferred_speed_multiplier
@@ -119,6 +119,7 @@ func _ready():
 
 func _physics_process(delta):
 	player = Targets.get_player()
+	_player_stats = player._player_stats
 	travelled_distance()
 	update_position(delta)
 	set_ignore_first_collision()

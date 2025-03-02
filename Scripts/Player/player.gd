@@ -7,6 +7,7 @@ signal has_collided(object)
 
 var _player_stats: player_stats = preload("res://Resources/Characters/Stats/base_stats.tres")
 
+@onready var stats = get_node("Stats")
 @onready var bullets_per_second := $"Bullets Per Second"
 @onready var invulnerability_time := $"Invulnerability Time"
 @onready var dash_cooldown := $"Dash Cooldown"
@@ -46,6 +47,14 @@ var SIZE = 1
 
 func _ready():
 	if PlayerCharacter._is_starting: # when starting a new run
+		for stat in _player_stats.stats.keys():
+			if stat == "Max_Health":
+				_player_stats.stats[stat]["x"] = 1
+				_player_stats.stats[stat]["+"] = 0
+				continue
+			_player_stats.stats[stat]["x"] = 1.0
+			_player_stats.stats[stat]["+"] = 0.0
+		stats.set_stats()
 		_player_stats.set_leaf_hearts(_player_stats.leaf_hearts)
 		_player_stats.set_health(_player_stats.get_stat("Max_Health"))
 		if PlayerPassives.starting_passives != null: # add starting passives to the player

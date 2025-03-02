@@ -29,7 +29,6 @@ func _ready():
 			grape.target_group = target_group
 			grape.collisions = collisions
 			grape.desired_direction = desired_direction
-			grape.seed_slots = seed_slots
 			grape.slot_index = slot_index
 			grape.seed_slot_number = seed_slot_number
 			grape.ignore_first_collision = ignore_first_collision

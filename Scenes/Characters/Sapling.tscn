@@ -64,4 +64,4 @@ offset_right = -1620.0
 offset_bottom = -1022.0
 scale = Vector2(3.745, 3.745)
 
-[node name="SaplingStats" parent="." index="16" instance=ExtResource("2_ag84k")]
+[node name="Stats" parent="." index="16" instance=ExtResource("2_ag84k")]

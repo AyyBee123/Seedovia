@@ -89,7 +89,6 @@ func transfer_properties(seed):
 	seed.collisions = collisions
 	seed.source = source
 	seed.target_group = target_group
-	seed.seed_slots = seed_slots
 	seed.slot_index = slot_index
 	seed.seed_slot_number = seed_slot_number
 	seed.transferred_speed_multiplier *= transferred_speed_multiplier
