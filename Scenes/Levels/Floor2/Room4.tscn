@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bwke3as08ek2r"]
+[gd_scene load_steps=7 format=3 uid="uid://bwke3as08ek2r"]
 
 [ext_resource type="PackedScene" uid="uid://b8gxpiw6v8asa" path="res://Scenes/Levels/Floor 2 Base.tscn" id="1_ippbx"]
 [ext_resource type="Shader" path="res://Shaders/circle_transition.gdshader" id="2_22kxg"]
 [ext_resource type="PackedScene" uid="uid://pbqovbr4s205" path="res://Scenes/Enemies/Alfred.tscn" id="3_1cidw"]
 [ext_resource type="PackedScene" uid="uid://36bor5t8tf2w" path="res://Scenes/Enemies/Ethereal Pot.tscn" id="4_mw3vs"]
+[ext_resource type="PackedScene" uid="uid://0clgydaeshno" path="res://Scenes/Enemies/Obstacles/Wall Face.tscn" id="5_1yvwd"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0ecxy"]
 resource_local_to_scene = true
@@ -26,3 +27,17 @@ position = Vector2(0, -320)
 [node name="Ethereal Pot2" parent="." index="13" instance=ExtResource("4_mw3vs")]
 position = Vector2(0, -256)
 starting_angle = 180.0
+
+[node name="Wall Face" parent="." index="14" instance=ExtResource("5_1yvwd")]
+position = Vector2(-512, -448)
+
+[node name="Wall Face2" parent="." index="15" instance=ExtResource("5_1yvwd")]
+position = Vector2(512, -448)
+
+[node name="Wall Face3" parent="." index="16" instance=ExtResource("5_1yvwd")]
+position = Vector2(832, 64)
+rotation = 1.5708
+
+[node name="Wall Face4" parent="." index="17" instance=ExtResource("5_1yvwd")]
+position = Vector2(-832, -64)
+rotation = 4.71239

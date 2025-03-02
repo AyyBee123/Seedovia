@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=4 uid="uid://bvpg8r7ejtyp2"]
+[gd_scene load_steps=55 format=4 uid="uid://bvpg8r7ejtyp2"]
 
 [ext_resource type="PackedScene" uid="uid://cxoiy0x4nvtaa" path="res://Scenes/Levels/Base Level.tscn" id="1_n4hkv"]
 [ext_resource type="Script" path="res://Scripts/Level/test_room.gd" id="2_vy0ks"]
@@ -28,6 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://b162j3mtfuf1v" path="res://Sprites/Wall/Floor 2 Corner.png" id="23_mh3jg"]
 [ext_resource type="Texture2D" uid="uid://dyari6x0dog1v" path="res://Sprites/Ground/Floor 3.png" id="24_oq1w5"]
 [ext_resource type="PackedScene" uid="uid://bagmkum7q0yxi" path="res://Scenes/Enemies/Dummy.tscn" id="28_aw0v0"]
+[ext_resource type="PackedScene" uid="uid://vpltaaiispr3" path="res://Scenes/Enemies/cursed_blossom_test.tscn" id="29_ed3yb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0ecxy"]
 resource_local_to_scene = true
@@ -237,3 +238,6 @@ tile_set = SubResource("TileSet_p5mxo")
 
 [node name="Dummy" parent="." index="12" instance=ExtResource("28_aw0v0")]
 position = Vector2(-640, -256)
+
+[node name="Cursed Blossom Test" parent="." index="13" instance=ExtResource("29_ed3yb")]
+position = Vector2(-1, -110)

@@ -94,6 +94,9 @@ var seed_pool: Array = [] # pool to add the next seed to
 
 func _ready():
 	_player_stats = player._player_stats
+	if is_in_group("Enemy Weapon"):
+		for n in $Passives.get_children():
+			$Passives.remove_child(n)
 	visible = false # avoid "jitter" on the very first frame
 	$Hitbox.set_collision_mask(collisions)
 	BASE_SPEED *= transferred_speed_multiplier

@@ -26,3 +26,6 @@ position = Vector2(608, 288)
 
 [node name="Ice Pot" parent="." index="13" instance=ExtResource("5_eteyh")]
 position = Vector2(-672, 0)
+
+[node name="Ice Pot2" parent="." index="14" instance=ExtResource("5_eteyh")]
+position = Vector2(672, 0)

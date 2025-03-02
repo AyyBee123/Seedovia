@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://b8gxpiw6v8asa" path="res://Scenes/Levels/Floor 2 Base.tscn" id="1_yu8dg"]
 [ext_resource type="Shader" path="res://Shaders/circle_transition.gdshader" id="2_rjw0k"]
 [ext_resource type="PackedScene" uid="uid://bgp0jvhp4e40j" path="res://Scenes/Enemies/Gungo.tscn" id="3_vgyui"]
-[ext_resource type="PackedScene" uid="uid://0clgydaeshno" path="res://Scenes/Enemies/Obstacles/Wall Face.tscn" id="4_3qofa"]
+[ext_resource type="PackedScene" uid="uid://c4iasewjfsbsc" path="res://Scenes/Enemies/Statue of Mykell.tscn" id="4_mft3s"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0ecxy"]
 resource_local_to_scene = true
@@ -18,10 +18,10 @@ shader_parameter/circle_position_y = 0.695
 material = SubResource("ShaderMaterial_0ecxy")
 
 [node name="Gungo" parent="." index="11" instance=ExtResource("3_vgyui")]
-position = Vector2(320, 128)
+position = Vector2(0, -320)
 
-[node name="Wall Face" parent="." index="12" instance=ExtResource("4_3qofa")]
-position = Vector2(-576, -448)
+[node name="Statue of Mykell" parent="." index="12" instance=ExtResource("4_mft3s")]
+position = Vector2(-608, -256)
 
-[node name="Wall Face2" parent="." index="13" instance=ExtResource("4_3qofa")]
-position = Vector2(576, -448)
+[node name="Statue of Mykell2" parent="." index="13" instance=ExtResource("4_mft3s")]
+position = Vector2(608, -256)

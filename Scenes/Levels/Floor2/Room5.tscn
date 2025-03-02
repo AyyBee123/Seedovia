@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://d08w6mej3y00y"]
+[gd_scene load_steps=7 format=3 uid="uid://d08w6mej3y00y"]
 
 [ext_resource type="PackedScene" uid="uid://b8gxpiw6v8asa" path="res://Scenes/Levels/Floor 2 Base.tscn" id="1_lvjyt"]
 [ext_resource type="Shader" path="res://Shaders/circle_transition.gdshader" id="2_r4d7h"]
 [ext_resource type="PackedScene" uid="uid://0clgydaeshno" path="res://Scenes/Enemies/Obstacles/Wall Face.tscn" id="3_p83b8"]
 [ext_resource type="PackedScene" uid="uid://c4iasewjfsbsc" path="res://Scenes/Enemies/Statue of Mykell.tscn" id="4_obdyi"]
+[ext_resource type="PackedScene" uid="uid://b50lirnqd7i1t" path="res://Scenes/Enemies/Ice Pot.tscn" id="5_jntpf"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0ecxy"]
 resource_local_to_scene = true
@@ -27,3 +28,9 @@ rotation = 4.71239
 
 [node name="Statue of Mykell" parent="." index="13" instance=ExtResource("4_obdyi")]
 position = Vector2(0, -256)
+
+[node name="Ice Pot" parent="." index="14" instance=ExtResource("5_jntpf")]
+position = Vector2(-704, -192)
+
+[node name="Ice Pot2" parent="." index="15" instance=ExtResource("5_jntpf")]
+position = Vector2(704, 192)

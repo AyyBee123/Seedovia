@@ -21,3 +21,6 @@ position = Vector2(-544, -192)
 
 [node name="Jellofish2" parent="." index="12" instance=ExtResource("3_g3m38")]
 position = Vector2(544, -192)
+
+[node name="Jellofish3" parent="." index="13" instance=ExtResource("3_g3m38")]
+position = Vector2(0, -320)
