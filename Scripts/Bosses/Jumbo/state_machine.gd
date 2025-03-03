@@ -85,7 +85,7 @@ func _enter_state(new_state, old_state):
 			parent._enemy_stats.damage_taken_multiplier = 0.25
 			parent.enable_wall_collisions()
 			parent.global_position.y += 37
-			Targets.get_camera().add_trauma(0.25)
+			Targets.get_camera().add_trauma(0.075)
 			parent.stomp_2_SFX.play()
 			parent.splat_SFX.play()
 			parent.animated_sprite_2d.play("Wall")

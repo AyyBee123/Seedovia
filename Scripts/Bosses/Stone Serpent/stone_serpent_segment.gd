@@ -153,7 +153,7 @@ func reenable_hitbox():
 
 func _on_animated_sprite_2d_animation_finished():
 	if _state_machine.state == _state_machine.states.jump:
-		Targets.get_camera().add_trauma(0.2)
+		Targets.get_camera().add_trauma(0.05)
 		var angle = 0
 		while angle < TAU:
 			var bullet = BULLET.instantiate()

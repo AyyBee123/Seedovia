@@ -208,7 +208,7 @@ func _on_detect_left_body_entered(body):
 
 func _on_animated_sprite_2d_animation_finished():
 	if animated_sprite_2d.animation == "Jump":
-		Targets.get_camera().add_trauma(0.2)
+		Targets.get_camera().add_trauma(0.05)
 		var angle = 0
 		while angle < TAU:
 			var bullet = BULLET.instantiate()

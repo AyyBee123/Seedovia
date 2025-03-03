@@ -45,7 +45,7 @@ func _enter_state(new_state, old_state):
 		states.launch:
 			parent.launch_SFX.play()
 		states.stun:
-			Targets.get_camera().add_trauma(0.2)
+			Targets.get_camera().add_trauma(0.05)
 			parent.impact_SFX.play()
 			parent.animated_sprite_2d.play("Stun")
 
