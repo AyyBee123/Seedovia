@@ -40,8 +40,7 @@ func _physics_process(delta):
 					return
 				enemies_in_area[i]._enemy_stats.take_damage(DAMAGE)
 				tick_timers[i].start(tick_rate / FIRE_RATE)
-				if target_group == "Enemies":
-					has_collided.emit(enemies_in_area[i].get_node("Enemy Hitbox"))
+				has_collided.emit(enemies_in_area[i].get_node("Enemy Hitbox"))
 	if not is_shrinking:
 		orbit(delta)
 	else:
