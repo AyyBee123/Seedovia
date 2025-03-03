@@ -32,8 +32,8 @@ func _ready():
 	super._ready()
 	player = Targets.get_player()
 	lead_segment.jump_shoot.connect(shoot_after_jump)
-	$Hitbox/Side.set_deferred("disabled", direction.x == 0)
-	$Hitbox/Down.set_deferred("disabled", direction.y == 0)
+	$"Enemy Hitbox/Side".set_deferred("disabled", direction.x == 0)
+	$"Enemy Hitbox/Down".set_deferred("disabled", direction.y == 0)
 	_enemy_stats.spawn_damage_number.connect(transfer_damage)
 	_enemy_stats.spawn_damage_number.connect(spawn_damage_number)
 	_enemy_stats.health_changed.connect(update_health)
@@ -117,8 +117,8 @@ func restore():
 	tween.tween_interval(0.5)
 	tween.tween_property(self, "global_position", launch_pos, 1).set_trans(Tween.TRANS_QUAD)
 	tween.parallel().tween_callback(func(): 
-		$Hitbox/Side.set_deferred("disabled", true)
-		$Hitbox/Down.set_deferred("disabled", true)
+		$"Enemy Hitbox/Side".set_deferred("disabled", true)
+		$"Enemy Hitbox/Down".set_deferred("disabled", true)
 	)
 
 func check_position():
@@ -142,14 +142,14 @@ func check_position():
 func change_direction():
 	global_position = positions.pop_front()
 	direction = new_directions.pop_front()
-	$Hitbox/Side.set_deferred("disabled", direction.x == 0)
-	$Hitbox/Down.set_deferred("disabled", direction.y == 0)
+	$"Enemy Hitbox/Side".set_deferred("disabled", direction.x == 0)
+	$"Enemy Hitbox/Down".set_deferred("disabled", direction.y == 0)
 	$Side.set_deferred("disabled", direction.x == 0)
 	$Down.set_deferred("disabled", direction.y == 0)
 
 func reenable_hitbox():
-	$Hitbox/Side.set_deferred("disabled", direction.x == 0)
-	$Hitbox/Down.set_deferred("disabled", direction.y == 0)
+	$"Enemy Hitbox/Side".set_deferred("disabled", direction.x == 0)
+	$"Enemy Hitbox/Down".set_deferred("disabled", direction.y == 0)
 
 func _on_animated_sprite_2d_animation_finished():
 	if _state_machine.state == _state_machine.states.jump:

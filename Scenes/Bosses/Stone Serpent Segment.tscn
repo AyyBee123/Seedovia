@@ -247,26 +247,28 @@ animation = &"Jump Side"
 autoplay = "Idle Side"
 offset = Vector2(0, 2)
 
-[node name="Hitbox" parent="." index="5" groups=["Enemies"]]
-collision_layer = 4
-
-[node name="Side" type="CollisionShape2D" parent="Hitbox" index="1"]
-visible = false
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_hxgdn")
-
-[node name="Down" type="CollisionShape2D" parent="Hitbox" index="2"]
-visible = false
-shape = SubResource("CapsuleShape2D_38r1d")
-
-[node name="DiceRoll" type="AudioStreamPlayer" parent="." index="7"]
+[node name="DiceRoll" type="AudioStreamPlayer" parent="." index="5"]
 stream = ExtResource("7_etq6j")
 bus = &"SFX"
 
-[node name="Stomp" type="AudioStreamPlayer" parent="." index="8"]
+[node name="Stomp" type="AudioStreamPlayer" parent="." index="6"]
 stream = ExtResource("7_n0ak4")
 volume_db = -5.0
 pitch_scale = 0.75
 bus = &"SFX"
+
+[node name="Enemy Hitbox" parent="." index="7" groups=["Enemies"]]
+collision_layer = 4
+
+[node name="Side" type="CollisionShape2D" parent="Enemy Hitbox" index="1"]
+visible = false
+rotation = 1.5708
+scale = Vector2(1, 1)
+shape = SubResource("CapsuleShape2D_hxgdn")
+
+[node name="Down" type="CollisionShape2D" parent="Enemy Hitbox" index="2"]
+visible = false
+scale = Vector2(1, 1)
+shape = SubResource("CapsuleShape2D_38r1d")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

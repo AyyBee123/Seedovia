@@ -29,8 +29,9 @@ func _physics_process(delta):
 					tick_timers[i].start(0.25 / FIRE_RATE)
 					return
 				enemies_in_area[i]._enemy_stats.take_damage(DAMAGE)
-				has_collided.emit(enemies_in_area[i].get_node("Enemy Hitbox"))
 				tick_timers[i].start(0.25 / FIRE_RATE)
+				if target_group == "Enemies":
+					has_collided.emit(enemies_in_area[i].get_node("Enemy Hitbox"))
 	if fire_rate.is_stopped():
 		shoot_next_weapon()
 

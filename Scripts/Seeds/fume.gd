@@ -32,7 +32,9 @@ func _on_deceleration_timeout():
 	lifetime.start()
 
 func _on_lifetime_timeout():
-	_collide.call_deferred(null)
+	SfxDeconflicter.play(Game.audio_manager.bubble_pop)
+	explode()
+	queue_free.call_deferred()
 
 func travelled_distance():
 	pass

@@ -12,15 +12,15 @@ script = ExtResource("1_hnu15")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="Enemy Hitbox" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 10
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy Hitbox"]
 
 [node name="Damage Buffer" type="Timer" parent="."]
 wait_time = 0.1
 one_shot = true
 
-[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
-[connection signal="body_exited" from="Hitbox" to="." method="_on_hitbox_body_exited"]
+[connection signal="body_entered" from="Enemy Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_exited" from="Enemy Hitbox" to="." method="_on_hitbox_body_exited"]

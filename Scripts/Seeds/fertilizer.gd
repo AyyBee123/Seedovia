@@ -36,8 +36,9 @@ func _physics_process(delta):
 					tick_timers[i].start(tick_rate.wait_time / FIRE_RATE)
 					return
 				enemies_in_area[i]._enemy_stats.take_damage(DAMAGE)
-				has_collided.emit(enemies_in_area[i].get_node("Enemy Hitbox"))
 				tick_timers[i].start(tick_rate.wait_time / FIRE_RATE)
+				if target_group == "Enemies":
+					has_collided.emit(enemies_in_area[i].get_node("Enemy Hitbox"))
 
 func travelled_distance():
 	pass
