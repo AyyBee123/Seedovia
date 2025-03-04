@@ -42,15 +42,19 @@ func trigger(weapon = null):
 		if passive.has_method("chain_lightning"):
 			continue
 		explosion.get_node("Passives").add_child(passive.duplicate())
-	explosion.object = source
-	explosion.damage = source.DAMAGE
-	explosion.damage_multiplier = damage_multiplier
+	explosion.damage = source.DAMAGE / 2
 	explosion.size = source.BLAST_RADIUS * explosion_size_multiplier
 	spawn_explosion.call_deferred(explosion)
 
 func spawn_explosion(explosion):
 	get_tree().current_scene.add_child(explosion)
-	explosion.global_position = source.global_position
+	if collided_object.is_in_group("Enemies") or collided_object.is_in_group("Obstacle"):
+		var line_direction = source.direction.normalized()
+		var enemy_direction = collided_object.global_position - source.global_position
+		var distance = line_direction.dot(enemy_direction)
+		explosion.global_position = distance * line_direction + source.global_position
+	else:
+		explosion.global_position = source.global_position
 	explosion.get_node("AnimatedSprite2D").self_modulate = Color.BURLYWOOD
 
 func hura_crepitans(): # duck typing

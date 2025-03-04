@@ -12,7 +12,7 @@ script = ExtResource("1_hnu15")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 
-[node name="Enemy Hitbox" type="Area2D" parent="."]
+[node name="Enemy Hitbox" type="Area2D" parent="." groups=["Obstacle"]]
 collision_layer = 0
 collision_mask = 10
 
