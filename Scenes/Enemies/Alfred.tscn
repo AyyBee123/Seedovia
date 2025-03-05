@@ -8,6 +8,12 @@
 [ext_resource type="Texture2D" uid="uid://bbmi4ffv5y71t" path="res://Sprites/Enemies/Alfred Eye.png" id="4_gswhn"]
 [ext_resource type="Texture2D" uid="uid://xxyym547o3vn" path="res://Sprites/Misc/Shadow.png" id="7_kaksf"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yqgd2"]
+shader = ExtResource("2_s3vfr")
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/tint_factor = 0.0
+shader_parameter/fade = 1.0
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vcqh0"]
 size = Vector2(28, 35.3333)
 
@@ -47,12 +53,6 @@ animations = [{
 "speed": 12.0
 }]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_yqgd2"]
-shader = ExtResource("2_s3vfr")
-shader_parameter/color = Color(1, 0, 0, 1)
-shader_parameter/tint_factor = 0.0
-shader_parameter/fade = 1.0
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vckuj"]
 size = Vector2(28, 38.6667)
 
@@ -61,20 +61,21 @@ scale = Vector2(2, 2)
 script = ExtResource("2_241fs")
 _enemy_stats = ExtResource("2_5shye")
 
-[node name="CollisionPolygon2D" parent="." index="0"]
+[node name="Iris" type="Sprite2D" parent="." index="0"]
+z_index = 1
+material = SubResource("ShaderMaterial_yqgd2")
+position = Vector2(0, -5)
+texture = ExtResource("4_gswhn")
+
+[node name="CollisionPolygon2D" parent="." index="1"]
 position = Vector2(0, -1.66667)
 shape = SubResource("RectangleShape2D_vcqh0")
 
-[node name="AnimatedSprite2D" parent="." index="1"]
+[node name="AnimatedSprite2D" parent="." index="2"]
 material = SubResource("ShaderMaterial_cxlp7")
 sprite_frames = SubResource("SpriteFrames_1o6qg")
 autoplay = "default"
 frame_progress = 0.730308
-
-[node name="Iris" type="Sprite2D" parent="." index="2"]
-material = SubResource("ShaderMaterial_yqgd2")
-position = Vector2(0, -5)
-texture = ExtResource("4_gswhn")
 
 [node name="CollisionPolygon2D" parent="Enemy Hitbox" index="0"]
 position = Vector2(0, -3.17891e-07)
