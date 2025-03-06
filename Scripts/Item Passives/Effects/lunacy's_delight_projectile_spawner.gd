@@ -15,9 +15,7 @@ func _ready():
 func _physics_process(delta):
 	if fire_rate.is_stopped():
 		var proj = resource_preloader.get_resource("Lunacy's Delight Projectile").instantiate()
-		proj.DAMAGE = player._player_stats.get_seed_stat("Weapon_Damage")
-		proj.RANGE = player._player_stats.get_seed_stat("Weapon_Range")
-		proj.SPEED = player._player_stats.get_seed_stat("Weapon_Speed")
+		proj.DAMAGE = source.DAMAGE
 		proj.direction = Vector2.RIGHT.rotated(randf_range(0, TAU))
 		proj.previous_weapon = source
 		get_tree().current_scene.add_child(proj)

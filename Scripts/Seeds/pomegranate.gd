@@ -139,24 +139,12 @@ func create_child(child):
 	get_tree().current_scene.add_child(child)
 	child.global_position = self.global_position
 
-func set_weapon_properties(weapon, _desired_direction, _ignore_first_collision = false, _enemy = null):
-	weapon.initial_weapon = false
-	weapon.ignore_first_collision = _ignore_first_collision
-	weapon.desired_direction = _desired_direction
-	weapon.previous_weapon = self
-	weapon.hit_enemy = _enemy
-	weapon.slot_index = slot_index + 1
-	weapon.transferred_speed_multiplier = transferred_speed_multiplier
+func initialize_location(weapon):
 	weapon.transferred_range_multiplier = transferred_range_multiplier + 0.5 / MAX_STACKS * stacks
 	weapon.transferred_size_multiplier = transferred_size_multiplier + 1 / MAX_STACKS * stacks
 	weapon.transferred_damage_multiplier = transferred_damage_multiplier * 0.5 + 2.5 / MAX_STACKS * stacks
 	weapon.transferred_blast_radius_multiplier = transferred_blast_radius_multiplier + 0.75 / MAX_STACKS * stacks
-	weapon.transferred_fire_rate_multiplier = transferred_fire_rate_multiplier
-	if seed_slot_number < 2:
-		weapon.seed_slot_number = PlayerSeeds.seed_indices[slot_index + 1]
-	else:
-		weapon.seed_slot_number = 3
-	initialize_location.call_deferred(weapon)
+	super.initialize_location(weapon)
 
 func _on_lifetime_timeout():
 	explode()

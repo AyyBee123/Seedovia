@@ -34,6 +34,7 @@ func _collide(body):
 		body._player_stats.take_damage(1)
 	SfxDeconflicter.play(Game.audio_manager.hit)
 	SfxDeconflicter.play(Game.audio_manager.crunch)
+	explode()
 	queue_free.call_deferred()
 
 func travelled_distance():

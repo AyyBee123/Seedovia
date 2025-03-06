@@ -16,14 +16,16 @@ var total_distance: float
 var DAMAGE: float
 var BLAST_RADIUS: float
 var FIRE_RATE: float
-var RANGE: float
-var SIZE: float
-var SPEED: float
+var RANGE: float = 250
+var SIZE: float = 1
+var SPEED: float = 400
 
 func _ready():
 	previous_weapon.weapon_fired.emit(self)
 	starting_position = global_position
 	rotation = randf_range(0, TAU)
+	await get_tree().physics_frame
+	starting_position = global_position
 
 func _physics_process(delta):
 	update_position(delta)
@@ -34,11 +36,10 @@ func update_position(delta):
 	position += current_velocity * delta
 
 func travelled_distance():
-	distance_travelled = starting_position.distance_squared_to(global_position)
-	if distance_travelled >= 1:
-		total_distance += 1
-		starting_position = global_position
-	if total_distance >= RANGE * range_multiplier:
+	distance_travelled = starting_position.distance_to(global_position)
+	total_distance += distance_travelled
+	starting_position = global_position
+	if total_distance >= RANGE:
 		queue_free.call_deferred()
 
 func _on_hitbox_area_entered(area):

@@ -36,9 +36,12 @@ var next_weapon_pos: Vector2: get = get_next_weapon_pos # get the next weapon's 
 # these are declared in the player script (for the first weapon) and then passed over from weapon to weapon
 var slot_index: int # the index to determine the order the weapon is fired (set to 2 to not fire next seed)
 var seed_slot_number: int # determines which slot the weapon is in, in the inventory
+var set_next_seed_slot_number = null # set the next seed's slot number before firing it
+var set_next_seed_slot_index = null # set the next seed's slot index before firing it
 
 var direction: Vector2 # the current direction the weapon is moving towards
 var current_velocity: Vector2 # the current speed/velocity the weapon is moving at
+var next_weapon = null # setting the next seed from an external source
 
 var DAMAGE: float:
 	get:
@@ -166,17 +169,23 @@ func set_weapon_properties(weapon, _desired_direction, _ignore_first_collision =
 	weapon.previous_weapon = self
 	weapon.source = source
 	weapon.hit_enemy = _enemy
-	weapon.slot_index = slot_index + 1
+	if set_next_seed_slot_index:
+		weapon.slot_index = set_next_seed_slot_index
+	else:
+		weapon.slot_index = slot_index + 1
 	weapon.transferred_speed_multiplier *= transferred_speed_multiplier
 	weapon.transferred_range_multiplier *= transferred_range_multiplier
 	weapon.transferred_size_multiplier *= transferred_size_multiplier
 	weapon.transferred_damage_multiplier *= transferred_damage_multiplier
 	weapon.transferred_blast_radius_multiplier *= transferred_blast_radius_multiplier
 	weapon.transferred_fire_rate_multiplier *= transferred_fire_rate_multiplier
-	if seed_slot_number < 2:
-		weapon.seed_slot_number = PlayerSeeds.seed_indices[slot_index + 1]
+	if set_next_seed_slot_number:
+		weapon.seed_slot_number = set_next_seed_slot_number
 	else:
-		weapon.seed_slot_number = 3
+		if seed_slot_number < 2:
+			weapon.seed_slot_number = PlayerSeeds.seed_indices[slot_index + 1]
+		else:
+			weapon.seed_slot_number = 3
 	initialize_location.call_deferred(weapon)
 
 func initialize_location(weapon):
@@ -190,8 +199,13 @@ func update_position(delta):
 	look_at(global_position + current_velocity)
 
 func get_next_weapon():
+	if next_weapon:
+		return next_weapon
 	return null if PlayerSeeds.seeds.size() <= 1 + slot_index or slot_index >= 2 \
 			else PlayerSeeds.seeds[slot_index + 1]
+
+func set_next_weapon(_weapon):
+	next_weapon = _weapon
 
 func set_ignore_first_collision():
 	await get_tree().create_timer(0.05).timeout

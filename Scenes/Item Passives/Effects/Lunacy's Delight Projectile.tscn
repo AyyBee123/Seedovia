@@ -49,10 +49,11 @@ animations = [{
 radius = 55.0
 
 [node name="Lunacy" type="AnimatedSprite2D" groups=["Weapon"]]
+z_index = 3
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_sw5t4")
 autoplay = "default"
-frame_progress = 0.670724
+frame_progress = 0.254591
 script = ExtResource("2_ds1ej")
 
 [node name="Hitbox" type="Area2D" parent="."]

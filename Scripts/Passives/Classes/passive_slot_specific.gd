@@ -17,9 +17,8 @@ func get_slot_number(weapon = null):
 			for i in slot_numbers:
 				if i == weapon.seed_slot_number:
 					trigger(weapon)
-		if slot_number >= 0 and slot_number <= 2:
-			if slot_number == weapon.seed_slot_number:
-				trigger(weapon)
+		if slot_number == weapon.seed_slot_number:
+			trigger(weapon)
 		weapon.weapon_fired.connect(get_slot_number)
 
 func trigger(weapon):
