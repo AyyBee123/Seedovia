@@ -115,6 +115,8 @@ func start():
 	
 	add_floors()
 	add_boss_floors()
+	
+	print(equipment_pool)
 
 func continue_run():
 	talisman_weights = {
@@ -227,6 +229,8 @@ func get_all_file_paths(path: String) -> Array[String]:
 	var file_name = dir.get_next()
 	while file_name != "":
 		var file_path = path + "/" + file_name
+		if file_name.ends_with(".remap"):
+			file_name = file_name.replace(".remap", "")
 		if dir.current_is_dir():
 			file_paths += get_all_file_paths(file_path)
 		else:

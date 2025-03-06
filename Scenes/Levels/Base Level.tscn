@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://c73y4egv64mas" path="res://Sprites/Ground/Shop.png" id="6_irwv4"]
 [ext_resource type="Texture2D" uid="uid://xarx7vs6twtr" path="res://Sprites/Wall/Floor 4 (1).png" id="6_mf4hx"]
 [ext_resource type="Texture2D" uid="uid://bfowhdxa1dy0y" path="res://Sprites/Wall/Floor 2 Wall.png" id="6_pe0fj"]
-[ext_resource type="PackedScene" uid="uid://b3ibupvqneqor" path="res://Scenes/Items/item.tscn" id="6_xrc8y"]
+[ext_resource type="PackedScene" uid="uid://b3ibupvqneqor" path="res://Scenes/Items/Item.tscn" id="6_xrc8y"]
 [ext_resource type="Texture2D" uid="uid://cx763hvtcrils" path="res://Sprites/Wall/Floor 3 Before Corner.png" id="7_aejph"]
 [ext_resource type="Texture2D" uid="uid://bs6raq2gpx84a" path="res://Sprites/Wall/Shop.png" id="7_cqf8w"]
 [ext_resource type="Texture2D" uid="uid://bcj8k4db6sye0" path="res://Sprites/Wall/Floor 4 (2).png" id="7_pbejk"]

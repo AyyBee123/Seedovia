@@ -30,7 +30,7 @@ func add_item(item, player, inv):
 	Global.save_run_room()
 
 func drop_item(item, player):
-	var current_item = load("res://Scenes/Items/item.tscn").instantiate()
+	var current_item = load("res://Scenes/Items/Item.tscn").instantiate()
 	# set the dropped item's resource values from the holding item or dropped item if inventory is full
 	current_item.set_item(item)
 	get_tree().current_scene.add_child(current_item)

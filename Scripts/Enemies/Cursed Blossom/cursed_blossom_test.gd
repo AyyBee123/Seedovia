@@ -4,7 +4,7 @@ extends "res://Scripts/Enemies/enemy.gd"
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var SEED_ENEMY_BULLET_COLOR = preload("res://Shaders/seed_enemy_bullet_color.gdshader")
 
-const BULLET = preload("res://Scenes/Seeds/Wood Thorn.tscn")
+const BULLET = preload("res://Scenes/Seeds/Avocado.tscn")
 
 var direction: Vector2
 
@@ -19,7 +19,8 @@ func _physics_process(delta):
 
 func _on_animated_sprite_2d_animation_changed():
 	if animated_sprite_2d.animation == "Shoot":
-		instance_seed(BULLET, direction, fire_rate, global_position + direction * 5, SEED_ENEMY_BULLET_COLOR, 2)
+		instance_seed(BULLET.instantiate(), direction, fire_rate, global_position + direction * 5, \
+				SEED_ENEMY_BULLET_COLOR, 2)
 
 func _on_fire_rate_timeout():
 	animated_sprite_2d.play("Shoot")

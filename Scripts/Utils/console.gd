@@ -7,7 +7,7 @@ static var history: Array[String] = []
 static var history_index: int = -1
 var auto_complete_methods := []
 
-var ITEM = preload("res://Scenes/Items/item.tscn")
+var ITEM = preload("res://Scenes/Items/Item.tscn")
 var PICKUP_ITEM = preload("res://Scenes/Items/Pickup Item.tscn")
 var SHOP_ITEM = preload("res://Scenes/Items/Shop Item.tscn")
 

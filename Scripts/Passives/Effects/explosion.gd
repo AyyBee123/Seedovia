@@ -7,6 +7,7 @@ signal attempted_fire
 # these values are declared in the passive script that triggers the explosion
 var object
 var damage: float
+var DAMAGE
 var size: float
 var damage_multiplier = 1
 var source
@@ -15,6 +16,7 @@ var weapon_direction = Vector2.ZERO
 var collisions = 4
 
 func _ready():
+	DAMAGE = damage
 	scale = Vector2.ONE * size
 	$AnimatedSprite2D.play("boom")
 	if object == null:

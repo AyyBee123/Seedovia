@@ -1,6 +1,14 @@
-[gd_scene load_steps=2 format=4 uid="uid://b8gxpiw6v8asa"]
+[gd_scene load_steps=4 format=4 uid="uid://b8gxpiw6v8asa"]
 
 [ext_resource type="PackedScene" uid="uid://cxoiy0x4nvtaa" path="res://Scenes/Levels/Base Level.tscn" id="1_xgp1r"]
+[ext_resource type="Shader" path="res://Shaders/circle_transition.gdshader" id="2_udlr1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0ecxy"]
+resource_local_to_scene = true
+shader = ExtResource("2_udlr1")
+shader_parameter/circle_size = 0.0
+shader_parameter/circle_position_x = 0.5
+shader_parameter/circle_position_y = 0.695
 
 [node name="Level" instance=ExtResource("1_xgp1r")]
 
@@ -12,3 +20,6 @@ offset_left = 905.0
 offset_top = -530.0
 offset_right = 950.0
 offset_bottom = -490.0
+
+[node name="Circle Transition" parent="." index="10"]
+material = SubResource("ShaderMaterial_0ecxy")

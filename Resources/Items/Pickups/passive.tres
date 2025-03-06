@@ -1,12 +1,13 @@
-[gd_resource type="Resource" script_class="passive" load_steps=3 format=3 uid="uid://xi6gn5drpinf"]
+[gd_resource type="Resource" script_class="passive_pickup" load_steps=3 format=3 uid="uid://xi6gn5drpinf"]
 
 [ext_resource type="Script" path="res://Scripts/Pickups/passive.gd" id="1_x14il"]
-[ext_resource type="Texture2D" uid="uid://dri1bsnkc85jv" path="res://Sprites/Seeds (Inventory)/Passive.png" id="2_6lrtx"]
+[ext_resource type="Texture2D" uid="uid://cct2i6rx2pik4" path="res://Sprites/Pickups/Passive.png" id="2_3xte2"]
 
 [resource]
 script = ExtResource("1_x14il")
 weight = 0.5
 shop_price = 30
 item_name = "Passive Item"
-texture = ExtResource("2_6lrtx")
+texture = ExtResource("2_3xte2")
 description = "Grants a random choice of 3 passive upgrade effects."
+unlocked = true
