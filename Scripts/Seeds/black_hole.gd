@@ -24,7 +24,6 @@ func _ready():
 	SfxDeconflicter.play(noise_SFX)
 	super._ready()
 	await get_tree().physics_frame
-	print(next_weapon)
 	shoot_next_weapon()
 
 func _physics_process(delta):
@@ -86,7 +85,6 @@ func _on_hitbox_body_exited(body):
 
 func shoot_next_weapon():
 	attempted_fire.emit()
-	await next_weapon != null
 	if get_next_weapon() == null:
 		return
 	for i in range(NUMBER_OF_ORBITALS):
