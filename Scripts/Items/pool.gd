@@ -99,7 +99,7 @@ func start():
 	7: 0, # N/A
 	}
 	add_pool = true # add the pool array to the room reward pool
-	populate_pool(seed_pool, seed_weights)
+	populate_pool(equipment_pool, talisman_weights)
 	populate_pool(consumable_pool, consumable_weights)
 	populate_pool(seed_pool, seed_weights)
 	populate_pool(coin_pool)
@@ -115,8 +115,6 @@ func start():
 	
 	add_floors()
 	add_boss_floors()
-	
-	print(equipment_pool)
 
 func continue_run():
 	talisman_weights = {
@@ -173,6 +171,7 @@ func repopulate_weighted_pools():
 	}
 	equipment_pool.pool.clear()
 	seed_pool.pool.clear()
+	add_pool = false # just to be sure
 	populate_pool(equipment_pool, talisman_weights)
 	populate_pool(seed_pool, seed_weights)
 
