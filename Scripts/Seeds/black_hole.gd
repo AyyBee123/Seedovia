@@ -6,7 +6,7 @@ var is_in_area := false
 var enemy = null
 var orbitals: Array
 var index: int
-var radius: float = 25
+var radius: float = 45
 var speed: float = 5
 var angle: float = 0
 var pos
@@ -23,8 +23,8 @@ var tick_rate := 0.1
 func _ready():
 	SfxDeconflicter.play(noise_SFX)
 	super._ready()
-	var weapon = null if PlayerSeeds.seeds.size() <= 1 + slot_index or \
-			slot_index >= 2 else PlayerSeeds.seeds[slot_index + 1]
+	await get_tree().physics_frame
+	print(next_weapon)
 	shoot_next_weapon()
 
 func _physics_process(delta):
@@ -86,6 +86,7 @@ func _on_hitbox_body_exited(body):
 
 func shoot_next_weapon():
 	attempted_fire.emit()
+	await next_weapon != null
 	if get_next_weapon() == null:
 		return
 	for i in range(NUMBER_OF_ORBITALS):

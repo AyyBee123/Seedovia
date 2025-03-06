@@ -39,9 +39,8 @@ func explode():
 	var explosion = resource_preloader.get_resource("Non-Weapon Effect Explosion").instantiate()
 	for passive in $Passives.get_children():
 		explosion.get_node("Passives").add_child(passive.duplicate())
-	explosion.damage = DAMAGE
-	explosion.damage_multiplier = 1
-	explosion.size = BLAST_RADIUS
+	explosion.BASE_DAMAGE = BASE_DAMAGE
+	explosion.BASE_SIZE = BASE_BLAST_RADIUS * BASE_SIZE
 	explosion.collisions = collisions
 	if shader:
 		explosion.get_node("AnimatedSprite2D").material = ShaderMaterial.new()

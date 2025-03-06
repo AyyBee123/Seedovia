@@ -67,5 +67,5 @@ func set_weapon_properties(weapon, _desired_direction, _ignore_first_collision =
 	weapon.BASE_SPEED = 0
 	super.set_weapon_properties(weapon, _desired_direction)
 	bomb.seed_slot = weapon.seed_slot_number
-	weapon.add_child(bomb)
+	weapon.get_node("Passives").add_child(bomb)
 	fire_rate.start(1.0 / (weapon.FIRE_RATE * fire_rate_multiplier))

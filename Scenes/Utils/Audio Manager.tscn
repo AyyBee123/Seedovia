@@ -83,7 +83,7 @@ bus = &"SFX"
 
 [node name="SunderExplosion" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_mgngl")
-volume_db = -8.0
+volume_db = -15.0
 pitch_scale = 0.9
 bus = &"SFX"
 

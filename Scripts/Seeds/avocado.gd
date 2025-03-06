@@ -100,4 +100,3 @@ func transfer_properties(seed):
 	seed.transferred_fire_rate_multiplier *= transferred_fire_rate_multiplier
 	seed.shader = shader
 	seed.add_child(get_node("Passives").duplicate())
-	weapon_fired.emit(seed)

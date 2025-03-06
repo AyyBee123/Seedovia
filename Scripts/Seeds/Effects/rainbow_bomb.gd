@@ -6,12 +6,12 @@ var RAINBOW_BOMB = load("res://Scenes/Seeds/Effects/Rainbow Bomb.tscn")
 
 var weapon
 var pos
-var DAMAGE
+var DAMAGE: float
 var _has_lifetime: bool
 var seed_slot: int
 
 func _ready():
-	weapon = get_parent()
+	weapon = get_parent().get_parent()
 	weapon.weapon_fired.connect(transfer)
 	weapon.has_collided.connect(explode)
 	if weapon.get_node_or_null("Lifetime"):
@@ -31,7 +31,7 @@ func transfer(next_weapon):
 	var bomb = RAINBOW_BOMB.instantiate()
 	bomb.seed_slot = weapon.seed_slot_number
 	bomb.DAMAGE = DAMAGE
-	next_weapon.add_child(bomb)
+	next_weapon.get_node("Passives").add_child(bomb)
 
 func explode(body):
 	var explosion = EXPLOSION.instantiate()

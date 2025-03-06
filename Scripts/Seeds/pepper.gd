@@ -67,7 +67,6 @@ func spawn_child_peppers():
 		pepper_child.transferred_fire_rate_multiplier *= transferred_fire_rate_multiplier
 		pepper_child.add_child(get_node("Passives").duplicate())
 		call_deferred("create_child", pepper_child)
-		weapon_fired.emit(pepper_child)
 
 func create_explosion(explosion):
 	get_tree().current_scene.add_child(explosion)

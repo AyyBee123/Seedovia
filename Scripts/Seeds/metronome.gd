@@ -16,6 +16,10 @@ func shoot_seed():
 	queue_free.call_deferred()
 
 func initialize_location(weapon):
+	weapon.remove_child(weapon.get_node("Passives"))
+	weapon.add_child(get_node("Passives").duplicate())
+	weapon.previous_weapon = previous_weapon
+	weapon.seed_slot_number = seed_slot_number
 	weapon.slot_index = slot_index
 	get_tree().current_scene.add_child(weapon)
 	weapon.global_position = global_position

@@ -17,7 +17,7 @@ func get_slot_number(weapon = null):
 func trigger(weapon = null):
 	if not weapon.is_in_group("Seed"):
 		return
-	weapon.add_child(RECURING_SEED.instantiate())
+	weapon.get_node("Passives").add_child(RECURING_SEED.instantiate())
 
 func transfer_passive(weapon = null):
 	if weapon == null:
@@ -27,7 +27,6 @@ func transfer_passive(weapon = null):
 	if not weapon.is_in_group("Seed"):
 		return
 	if weapon.is_in_group("Do Not Recur"):
-		weapon.next_weapon = null
 		return
 	else:
 		weapon.get_node("Passives").add_child(self.duplicate())
