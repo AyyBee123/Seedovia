@@ -31,7 +31,6 @@ func update_position(delta):
 	position += current_velocity * delta
 
 func shoot_next_weapon():
-	attempted_fire.emit()
 	if get_next_weapon() == null:
 		return
 	if get_nearest_enemy(enemy) != null:

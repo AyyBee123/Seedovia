@@ -38,7 +38,6 @@ func _collide(body):
 	pass
 
 func shoot_next_weapon():
-	attempted_fire.emit()
 	if get_next_weapon() == null:
 		return
 	if global_position.distance_to(get_nearest_enemy().global_position) > get_next_weapon().instantiate().RANGE:

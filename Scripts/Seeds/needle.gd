@@ -51,7 +51,6 @@ func update_position(delta):
 
 func shoot_next_weapon():
 	weapon_direction = -direction.rotated(randf_range(-SPREAD, SPREAD))
-	attempted_fire.emit()
 	if get_next_weapon() == null:
 		return
 	set_weapon_properties(get_next_weapon().instantiate(), weapon_direction, true)

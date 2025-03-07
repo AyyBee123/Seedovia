@@ -2,7 +2,6 @@ extends Sprite2D
 
 signal weapon_fired(weapon) # signal for firing the next seed
 signal has_collided(object) # signal for colliding with an enemy or wall
-signal attempted_fire # signal for attempting to fire the next seed (even if the next seed is null)
 
 @onready var player = Targets.get_player()
 var _player_stats
@@ -156,8 +155,6 @@ func _collide(body):
 	queue_free.call_deferred()
 
 func shoot_next_weapon():
-	# for passives that require the weapon to not fire a seed (e.g the last seed slot fires itself again)
-	attempted_fire.emit()
 	if get_next_weapon() == null:
 		return
 	set_weapon_properties(get_next_weapon().instantiate(), weapon_direction)

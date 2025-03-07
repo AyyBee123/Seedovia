@@ -84,8 +84,6 @@ func _collide(body):
 	queue_free.call_deferred()
 
 func shoot_next_weapon():
-	# for passives that require the weapon to not fire a seed (e.g the last seed slot fires itself again)
-	attempted_fire.emit()
 	if get_next_weapon() == null or enemy == null: # enemy == null, just in case
 		return
 	weapon_direction = Vector2.RIGHT.rotated(randf_range(0, TAU))

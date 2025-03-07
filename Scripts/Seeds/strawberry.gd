@@ -79,7 +79,6 @@ func _collide(body):
 		explode()
 
 func shoot_next_weapon():
-	attempted_fire.emit()
 	if get_next_weapon() == null:
 		return
 	fire_rate.wait_time = 1.0 / (strawberry_fire_rate_multiplier \

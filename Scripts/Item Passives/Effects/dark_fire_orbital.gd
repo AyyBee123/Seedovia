@@ -2,7 +2,6 @@ extends Node2D
 
 signal weapon_fired(weapon) # signal for firing the next seed
 signal has_collided(object) # signal for colliding with an enemy or wall
-signal attempted_fire # signal for attempting to fire the next seed (even if the next seed is null)
 
 var angle: float = 0
 var weapon = null

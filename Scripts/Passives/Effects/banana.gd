@@ -18,7 +18,6 @@ var SPEED: float
 
 signal weapon_fired(weapon) # signal for firing the next seed
 signal has_collided(object) # signal for colliding with an enemy or wall
-signal attempted_fire # signal for attempting to fire the next seed (even if the next seed is null)
 
 @onready var player = Targets.get_player()
 @onready var _player_stats = player._player_stats
@@ -94,5 +93,4 @@ func create_child(child):
 	get_tree().current_scene.add_child(child)
 	child.global_position = self.global_position
 	weapon_direction = direction.rotated(spread)
-	attempted_fire.emit()
 	weapon_fired.emit(child)

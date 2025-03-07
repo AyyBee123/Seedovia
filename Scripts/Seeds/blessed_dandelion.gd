@@ -58,7 +58,6 @@ func launch(delta):
 	position += current_velocity * delta
 
 func shoot_next_weapon():
-	attempted_fire.emit()
 	if get_next_weapon() == null:
 		return
 	var weapon_instance = get_next_weapon().instantiate()

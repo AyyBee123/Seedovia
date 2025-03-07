@@ -45,7 +45,6 @@ func collide(body):
 	pass
 
 func shoot_next_weapon():
-	attempted_fire.emit()
 	weapon_direction = Vector2.RIGHT.rotated(randf_range(0, TAU))
 	if get_next_weapon() == null:
 		return

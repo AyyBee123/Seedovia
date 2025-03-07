@@ -82,7 +82,6 @@ func travelled_distance():
 	total_distance += distance_travelled
 	starting_position = global_position
 	if total_distance >= RANGE:
-		attempted_fire.emit()
 		shoot_next_weapon()
 		queue_free.call_deferred()
 

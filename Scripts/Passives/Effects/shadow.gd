@@ -2,7 +2,6 @@ extends CharacterBody2D
 
 signal weapon_fired(weapon) # signal for firing the next seed
 signal has_collided(object) # signal for colliding with an enemy or wall
-signal attempted_fire # signal for attempting to fire the next seed (even if the next seed is null)
 
 @onready var marker_2d = %Marker2D
 @onready var hand = %Hand
@@ -60,7 +59,6 @@ func approach(delta):
 	
 	if global_position.distance_to(get_nearest_enemy().global_position) <= RANGE:
 		if fire_rate.is_stopped() and second_seed:
-			attempted_fire.emit()
 			shoot(second_seed)
 			fire_rate.start(1.0 / FIRE_RATE)
 	

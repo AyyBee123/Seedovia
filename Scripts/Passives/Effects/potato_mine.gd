@@ -6,7 +6,6 @@ extends Sprite2D
 
 signal weapon_fired(weapon) # signal for firing the next seed
 signal has_collided(object) # signal for colliding with an enemy or wall
-signal attempted_fire # signal for attempting to fire the next seed (even if the next seed is null)
 
 var damage_multiplier: float = 1.5
 var first_seed

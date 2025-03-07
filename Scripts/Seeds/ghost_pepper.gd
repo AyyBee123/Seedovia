@@ -31,7 +31,6 @@ func _physics_process(delta):
 func shoot_next_weapon():
 	if _is_dying:
 		return
-	attempted_fire.emit()
 	if get_next_weapon() == null:
 		return
 	var weapon_instance = get_next_weapon().instantiate()

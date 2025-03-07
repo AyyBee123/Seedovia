@@ -52,8 +52,6 @@ func _on_hitbox_body_entered(body):
 		collide(body)
 
 func shoot_next_weapon():
-	# for passives that require the weapon to not fire a seed (e.g the last seed slot fires itself again)
-	attempted_fire.emit()
 	if get_next_weapon() == null:
 		return
 	set_weapon_properties(get_next_weapon().instantiate(), weapon_direction, true)

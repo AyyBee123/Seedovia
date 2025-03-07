@@ -57,7 +57,6 @@ func _physics_process(delta):
 		shoot_next_weapon()
 
 func shoot_next_weapon():
-	attempted_fire.emit()
 	if get_next_weapon() == null:
 		return
 	var next_seed = get_next_weapon().instantiate()

@@ -82,7 +82,6 @@ func _on_hitbox_body_exited(body):
 			tick_timers.remove_at(index)
 
 func shoot_next_weapon():
-	attempted_fire.emit()
 	if get_next_weapon() == null:
 		return
 	var weapon_instance = get_next_weapon().instantiate()

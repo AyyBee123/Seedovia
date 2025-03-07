@@ -84,7 +84,6 @@ func fire_laser():
 
 func shoot_next_weapon():
 	# for passives that require the weapon to not fire a seed (e.g the last seed slot fires itself again)
-	attempted_fire.emit()
 	if get_next_weapon() == null:
 		return
 	weapon_direction = Vector2.RIGHT.rotated(randf_range(0, TAU))

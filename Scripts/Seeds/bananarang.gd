@@ -84,7 +84,6 @@ func _on_deceleration_timeout():
 	acceleration.start(deceleration.wait_time)
 
 func shoot_next_weapon():
-	attempted_fire.emit()
 	if get_next_weapon() == null:
 		return
 	set_weapon_properties(get_next_weapon().instantiate(), weapon_direction, true)
