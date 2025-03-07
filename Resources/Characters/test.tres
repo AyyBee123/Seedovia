@@ -6,8 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://ba7fwokq2k368" path="res://Scenes/Passives/Abilities/Recursion.tscn" id="4_2blxm"]
 [ext_resource type="Script" path="res://Scripts/Stats/seed_stats.gd" id="4_gpsnb"]
 [ext_resource type="Script" path="res://Scripts/Items/equipment_item_class.gd" id="5_2xsda"]
-[ext_resource type="Resource" uid="uid://ckpcv3jj2qnt8" path="res://Resources/Items/Seeds/avocado.tres" id="6_1fk6j"]
-[ext_resource type="Resource" uid="uid://crlt51x4k703m" path="res://Resources/Items/Seeds/black_hole.tres" id="6_rn8ky"]
+[ext_resource type="Resource" uid="uid://ckpcv3jj2qnt8" path="res://Resources/Items/Seeds/avocado.tres" id="6_ojwrf"]
+[ext_resource type="Resource" uid="uid://6r7y2c1r006r" path="res://Resources/Items/Seeds/walnut.tres" id="7_wuatf"]
 
 [resource]
 script = ExtResource("2_c1nbs")
@@ -15,7 +15,7 @@ character_name = "Test"
 character_sprite = ExtResource("1_6x548")
 starting_inventory = Array[ExtResource("3_bxj0g")]([])
 starting_talismans = Array[ExtResource("5_2xsda")]([])
-starting_seeds = Array[ExtResource("4_gpsnb")]([null, ExtResource("6_1fk6j"), ExtResource("6_rn8ky")])
+starting_seeds = Array[ExtResource("4_gpsnb")]([null, ExtResource("6_ojwrf"), ExtResource("7_wuatf")])
 starting_passives = Array[PackedScene]([ExtResource("4_2blxm")])
 starting_coins = 0
 unlocked = true

@@ -24,6 +24,7 @@ func _ready():
 	SfxDeconflicter.play(noise_SFX)
 	super._ready()
 	await get_tree().physics_frame
+	starting_position = global_position
 	shoot_next_weapon()
 
 func _physics_process(delta):

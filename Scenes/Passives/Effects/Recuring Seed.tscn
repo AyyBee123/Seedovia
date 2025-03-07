@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://c6qdhsun4cuwl"]
-
-[ext_resource type="Script" path="res://Scripts/Passives/Effects/recuring_seed.gd" id="1_mtusv"]
-
-[node name="Recuring Seed" type="Node"]
-script = ExtResource("1_mtusv")

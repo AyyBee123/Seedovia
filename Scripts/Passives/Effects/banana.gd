@@ -94,5 +94,5 @@ func create_child(child):
 	get_tree().current_scene.add_child(child)
 	child.global_position = self.global_position
 	weapon_direction = direction.rotated(spread)
-	attempted_fire.emit(child)
+	attempted_fire.emit()
 	weapon_fired.emit(child)

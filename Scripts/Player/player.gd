@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 signal shoot(bullet, direction, location)
 signal weapon_fired(weapon)
+signal attempted_fire
 signal dashed
 signal has_collided(object)
 
