@@ -92,6 +92,8 @@ func transfer_properties(seed):
 	seed.target_group = target_group
 	seed.slot_index = slot_index
 	seed.seed_slot_number = seed_slot_number
+	seed.set_next_seed_slot_number = set_next_seed_slot_number
+	seed.set_next_seed_slot_index = set_next_seed_slot_index
 	seed.transferred_speed_multiplier *= transferred_speed_multiplier
 	seed.transferred_range_multiplier *= transferred_range_multiplier
 	seed.transferred_size_multiplier *= transferred_size_multiplier

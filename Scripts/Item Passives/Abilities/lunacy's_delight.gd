@@ -9,13 +9,15 @@ func _ready():
 	source = get_parent().get_parent()
 	slot_numbers = [1, 2]
 	super._ready()
+	source.weapon_fired.connect(get_slot_number)
+	source.weapon_fired.connect(transfer_passive)
 
 # transfers this passive over from the initial source (the player) to the next weapon
 # and from the next weapon to the following weapon, and so on...
 func transfer_passive(weapon = null):
 	if weapon == null or weapon.is_in_group("Weapon Effect"):
 		return
-	# make a new swarm passive and add it as a child of the next weapon
+	# make a new lunacy's delight passive and add it as a child of the next weapon
 	weapon.get_node("Passives").add_child(self.duplicate())
 
 func trigger(weapon = null):

@@ -31,6 +31,8 @@ func _ready():
 			grape.desired_direction = desired_direction
 			grape.slot_index = slot_index
 			grape.seed_slot_number = seed_slot_number
+			grape.set_next_seed_slot_number = set_next_seed_slot_number
+			grape.set_next_seed_slot_index = set_next_seed_slot_index
 			grape.ignore_first_collision = ignore_first_collision
 			grape.transferred_speed_multiplier *= transferred_speed_multiplier
 			grape.transferred_range_multiplier *= transferred_range_multiplier

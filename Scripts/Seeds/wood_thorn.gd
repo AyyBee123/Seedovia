@@ -22,6 +22,8 @@ func _ready():
 			thorn.desired_direction = desired_direction.rotated(dir)
 			thorn.slot_index = slot_index
 			thorn.seed_slot_number = seed_slot_number
+			thorn.set_next_seed_slot_number = set_next_seed_slot_number
+			thorn.set_next_seed_slot_index = set_next_seed_slot_index
 			thorn.ignore_first_collision = ignore_first_collision
 			thorn.transferred_speed_multiplier *= transferred_speed_multiplier
 			thorn.transferred_range_multiplier *= transferred_range_multiplier

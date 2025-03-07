@@ -47,3 +47,6 @@ func _on_hitbox_area_entered(area):
 	if area.is_in_group("Enemies"):
 		area.get_parent()._enemy_stats.take_damage(DAMAGE * damage_multiplier)
 	queue_free.call_deferred()
+
+func lunacys_delight():
+	pass
