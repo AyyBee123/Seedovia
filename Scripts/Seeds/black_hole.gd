@@ -17,6 +17,7 @@ var is_shrunk := false
 var enemies_in_area: Array
 var tick_timers: Array
 var tick_rate := 0.1
+var range_set: bool
 
 @onready var noise_SFX = $Noise
 
@@ -24,7 +25,6 @@ func _ready():
 	SfxDeconflicter.play(noise_SFX)
 	super._ready()
 	await get_tree().physics_frame
-	starting_position = global_position
 	shoot_next_weapon()
 
 func _physics_process(delta):
@@ -122,6 +122,9 @@ func orbit(delta):
 			orbital.total_distance = 0 # to make the weapons not despawn mid-orbit
 
 func travelled_distance():
+	if not range_set:
+		range_set = true
+		starting_position = global_position
 	distance_travelled = starting_position.distance_squared_to(global_position)
 	total_distance += distance_travelled
 	starting_position = global_position

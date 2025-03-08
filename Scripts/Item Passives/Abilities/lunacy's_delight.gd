@@ -21,5 +21,7 @@ func transfer_passive(weapon = null):
 	weapon.get_node("Passives").add_child(self.duplicate())
 
 func trigger(weapon = null):
+	if weapon.get_node("Passives").get_node_or_null("Lunacy's Delight Projectile Spawner"):
+		return
 	var proj = LUNACY_S_DELIGHT_PROJECTILE.instantiate()
 	weapon.get_node("Passives").add_child(proj)
