@@ -33,6 +33,9 @@ func _on_deceleration_timeout():
 
 func _on_lifetime_timeout():
 	SfxDeconflicter.play(Game.audio_manager.bubble_pop)
+	weapon_direction = direction.rotated(spread)
+	if randf() < 0.15:
+		shoot_next_weapon()
 	explode()
 	queue_free.call_deferred()
 
@@ -49,7 +52,8 @@ func _collide(body):
 		if body.is_in_group("Enemies"):
 			body.get_parent()._enemy_stats.take_damage(DAMAGE)
 	weapon_direction = direction.rotated(spread)
-	shoot_next_weapon()
+	if randf() < 0.3:
+		shoot_next_weapon()
 	explode()
 	queue_free.call_deferred()
 
@@ -66,8 +70,3 @@ func explode():
 func create_child(child):
 	get_tree().current_scene.add_child(child)
 	child.global_position = self.global_position
-
-func shoot_next_weapon():
-	if not randf() < 0.333:
-		return
-	super.shoot_next_weapon()
