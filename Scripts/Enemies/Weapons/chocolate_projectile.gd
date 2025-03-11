@@ -2,6 +2,8 @@ extends "res://Scripts/Enemies/Weapons/bullet.gd"
 
 @onready var animated_sprite_2d = $AnimatedSprite2D
 
+const SPLASH = preload("res://Scenes/Misc/Splash.tscn")
+
 func _ready():
 	super._ready()
 	$Shadow.visible = false
@@ -27,11 +29,15 @@ func _on_animated_sprite_2d_animation_finished():
 	if animated_sprite_2d.animation == "Start":
 		speed = randf_range(200, 500)
 		$AnimationPlayer.play("new_animation")
-	if animated_sprite_2d.animation == "Pop":
-		queue_free()
 
 func pop():
-	set_physics_process(false)
-	$Shadow.visible = false
-	%CollisionShape2D.disabled = true
-	animated_sprite_2d.play("Pop")
+	var splash = SPLASH.instantiate()
+	splash.size = 0.4
+	splash.source = self
+	splash.modulate = Color("461508")
+	call_deferred("create_child", splash)
+	queue_free()
+
+func create_child(child):
+	get_tree().current_scene.add_child(child)
+	child.global_position = self.global_position

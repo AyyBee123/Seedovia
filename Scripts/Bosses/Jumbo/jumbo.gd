@@ -112,7 +112,7 @@ func _on_animated_sprite_2d_frame_changed():
 		if animated_sprite_2d.frame == 2:
 			splat_2_SFX.play()
 		if animated_sprite_2d.frame == 5:
-			Targets.get_camera().add_trauma(0.1)
+			Targets.get_camera().add_trauma(0.2)
 			stomp_SFX.play()
 			splat_SFX.play()
 			for i in AMOUNT_OF_SLIMES:

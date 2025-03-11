@@ -78,6 +78,7 @@ _data = {
 }
 
 [node name="Trail" type="Sprite2D"]
+z_index = 4
 texture = ExtResource("1_yjnly")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

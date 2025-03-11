@@ -1,8 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://dbo6o1wyf3jf6"]
+[gd_scene load_steps=12 format=3 uid="uid://dbo6o1wyf3jf6"]
 
 [ext_resource type="Texture2D" uid="uid://bcjpb3beggyex" path="res://Sprites/Bosses/Jumbo/Chocolate Projectile.png" id="1_1ftb3"]
 [ext_resource type="Script" path="res://Scripts/Enemies/Weapons/chocolate_projectile.gd" id="2_jhkwu"]
-[ext_resource type="Texture2D" uid="uid://doxutqvtnbcvn" path="res://Sprites/Bosses/Jumbo/Chocolate Pop.png" id="2_jwv6m"]
 [ext_resource type="Texture2D" uid="uid://xxyym547o3vn" path="res://Sprites/Misc/Shadow.png" id="3_1lukk"]
 
 [sub_resource type="Animation" id="Animation_hwqdd"]
@@ -122,62 +121,29 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_hcvxp"]
 radius = 15.3333
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_f7wm8"]
-atlas = ExtResource("2_jwv6m")
-region = Rect2(0, 0, 45, 46)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rpb8r"]
-atlas = ExtResource("2_jwv6m")
-region = Rect2(45, 0, 45, 46)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sn4ag"]
-atlas = ExtResource("2_jwv6m")
-region = Rect2(90, 0, 45, 46)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6kkty"]
-atlas = ExtResource("2_jwv6m")
-region = Rect2(135, 0, 45, 46)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ybn0i"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_mdesn"]
 atlas = ExtResource("1_1ftb3")
-region = Rect2(0, 0, 32, 32)
+region = Rect2(0, 0, 34, 34)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ak434"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_8nbis"]
 atlas = ExtResource("1_1ftb3")
-region = Rect2(32, 0, 32, 32)
+region = Rect2(34, 0, 34, 34)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1v7lo"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_v4xc4"]
 atlas = ExtResource("1_1ftb3")
-region = Rect2(64, 0, 32, 32)
+region = Rect2(68, 0, 34, 34)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_iund2"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_f7wm8")
+"texture": SubResource("AtlasTexture_mdesn")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rpb8r")
+"texture": SubResource("AtlasTexture_8nbis")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_sn4ag")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6kkty")
-}],
-"loop": false,
-"name": &"Pop",
-"speed": 25.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ybn0i")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ak434")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1v7lo")
+"texture": SubResource("AtlasTexture_v4xc4")
 }],
 "loop": false,
 "name": &"Start",
@@ -185,7 +151,7 @@ animations = [{
 }]
 
 [node name="Chocolate Projectile" type="Sprite2D"]
-z_index = 4
+z_index = 5
 y_sort_enabled = true
 scale = Vector2(1.5, 1.5)
 script = ExtResource("2_jhkwu")
@@ -209,7 +175,6 @@ shape = SubResource("CircleShape2D_hcvxp")
 sprite_frames = SubResource("SpriteFrames_iund2")
 animation = &"Start"
 autoplay = "Start"
-frame = 2
 
 [node name="Shadow" type="Sprite2D" parent="."]
 visible = false
