@@ -46,43 +46,44 @@ var DAMAGE: float:
 	get:
 		if _player_stats:
 			return BASE_DAMAGE * (1 + _player_stats.stats["Weapon_Damage"]["+"]) \
-					* _player_stats.stats["Weapon_Damage"]["x"]
+					* _player_stats.stats["Weapon_Damage"]["x"] * transferred_damage_multiplier
 		else:
-			return BASE_DAMAGE
+			return BASE_DAMAGE * transferred_damage_multiplier
 var FIRE_RATE: float:
 	get:
 		if _player_stats:
 			return BASE_FIRE_RATE * (1 + _player_stats.stats["Fire_Rate"]["+"]) \
-					* _player_stats.stats["Fire_Rate"]["x"]
+					* _player_stats.stats["Fire_Rate"]["x"] * transferred_fire_rate_multiplier
 		else:
-			return BASE_FIRE_RATE
+			return BASE_FIRE_RATE * transferred_fire_rate_multiplier
 var RANGE: float:
 	get:
 		if _player_stats:
 			return BASE_RANGE * (1 + _player_stats.stats["Weapon_Range"]["+"]) \
-					* _player_stats.stats["Weapon_Range"]["x"]
+					* _player_stats.stats["Weapon_Range"]["x"] * transferred_range_multiplier
 		else:
-			return BASE_RANGE
+			return BASE_RANGE * transferred_range_multiplier
 var SPEED: float:
 	get:
 		if _player_stats:
 			return BASE_SPEED * (1 + _player_stats.stats["Weapon_Speed"]["+"]) \
-					* _player_stats.stats["Weapon_Speed"]["x"]
+					* _player_stats.stats["Weapon_Speed"]["x"] * transferred_speed_multiplier
 		else:
-			return BASE_SPEED
+			return BASE_SPEED * transferred_speed_multiplier
 var SIZE: float:
 	get:
 		if _player_stats:
-			return BASE_SIZE * (1 + _player_stats.stats["Weapon_Size"]["+"]) * _player_stats.stats["Weapon_Size"]["x"]
+			return BASE_SIZE * (1 + _player_stats.stats["Weapon_Size"]["+"]) \
+					* _player_stats.stats["Weapon_Size"]["x"] * transferred_size_multiplier
 		else:
-			return BASE_SIZE
+			return BASE_SIZE * transferred_size_multiplier
 var BLAST_RADIUS: float:
 	get:
 		if _player_stats:
 			return BASE_BLAST_RADIUS * (1 + _player_stats.stats["Weapon_Blast_Radius"]["+"]) \
-					* _player_stats.stats["Weapon_Blast_Radius"]["x"]
+					* _player_stats.stats["Weapon_Blast_Radius"]["x"] * transferred_blast_radius_multiplier
 		else:
-			return BASE_BLAST_RADIUS
+			return BASE_BLAST_RADIUS * transferred_blast_radius_multiplier
 
 # multipliers transferred from an external source, like passive effects that shoot a seed
 var transferred_speed_multiplier: float = 1 # shot speed multiplier of the weapon
@@ -101,12 +102,6 @@ func _ready():
 			$Passives.remove_child(n)
 	visible = false # avoid "jitter" on the very first frame
 	$Hitbox.set_collision_mask(collisions)
-	BASE_SPEED *= transferred_speed_multiplier
-	BASE_RANGE *= transferred_range_multiplier
-	BASE_SIZE *= transferred_size_multiplier
-	BASE_DAMAGE *= transferred_damage_multiplier
-	BASE_BLAST_RADIUS *= transferred_blast_radius_multiplier
-	BASE_FIRE_RATE *= transferred_fire_rate_multiplier
 	scale = scale * SIZE
 	direction = desired_direction.normalized()
 	if shader:
