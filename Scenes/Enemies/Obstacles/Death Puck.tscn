@@ -8,9 +8,9 @@
 [ext_resource type="AudioStream" uid="uid://dvpk5kbugelwb" path="res://Audio/SFX/Metal 1.mp3" id="6_f213a"]
 [ext_resource type="AudioStream" uid="uid://yupd71vkt5kl" path="res://Audio/SFX/Metal 2.mp3" id="7_bwiou"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ior48"]
-radius = 5.33333
-height = 32.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_684um"]
+radius = 6.0
+height = 33.3333
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5atwj"]
 animations = [{
@@ -23,7 +23,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_684um"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6orac"]
 radius = 6.0
 height = 33.3333
 
@@ -36,15 +36,15 @@ _enemy_stats = ExtResource("3_n4i44")
 
 [node name="CollisionShape2D" parent="." index="0"]
 rotation = 1.5708
-shape = SubResource("CapsuleShape2D_ior48")
+shape = SubResource("CapsuleShape2D_684um")
 
 [node name="AnimatedSprite2D" parent="." index="1"]
 sprite_frames = SubResource("SpriteFrames_5atwj")
 autoplay = "default"
 
-[node name="CollisionShape2D" parent="Hitbox" index="0"]
+[node name="CollisionShape2D" parent="Enemy Hitbox" index="0"]
 rotation = 1.5708
-shape = SubResource("CapsuleShape2D_684um")
+shape = SubResource("CapsuleShape2D_6orac")
 
 [node name="Shadow" type="Sprite2D" parent="." index="4"]
 z_index = -3

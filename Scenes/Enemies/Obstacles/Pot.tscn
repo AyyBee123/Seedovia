@@ -7,8 +7,8 @@
 [ext_resource type="Script" path="res://Scripts/Enemies/Log/state_machine.gd" id="4_hxku6"]
 [ext_resource type="PackedScene" uid="uid://ckespv7sxyjn3" path="res://Scenes/Enemies/Weapons/Liquid.tscn" id="4_o1o50"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_yhmui"]
-radius = 26.0432
+[sub_resource type="CircleShape2D" id="CircleShape2D_vtyta"]
+radius = 27.0046
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_puy85"]
 atlas = ExtResource("2_wtvaw")
@@ -53,8 +53,8 @@ animations = [{
 "speed": 12.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_vtyta"]
-radius = 27.0046
+[sub_resource type="CircleShape2D" id="CircleShape2D_eed41"]
+radius = 25.5049
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lu1w4"]
 size = Vector2(54, 104)
@@ -68,14 +68,14 @@ script = ExtResource("2_3ypn4")
 _enemy_stats = ExtResource("3_w4sjd")
 
 [node name="CollisionShape2D" parent="." index="0"]
-shape = SubResource("CircleShape2D_yhmui")
+shape = SubResource("CircleShape2D_vtyta")
 
 [node name="AnimatedSprite2D" parent="." index="1"]
 sprite_frames = SubResource("SpriteFrames_xpfrc")
 autoplay = "default"
 
-[node name="CollisionShape2D" parent="Hitbox" index="0"]
-shape = SubResource("CircleShape2D_vtyta")
+[node name="CollisionShape2D" parent="Enemy Hitbox" index="0"]
+shape = SubResource("CircleShape2D_eed41")
 
 [node name="Right Detect" type="Area2D" parent="." index="4"]
 scale = Vector2(0.5, 0.5)

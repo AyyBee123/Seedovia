@@ -5,7 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://db3dy8ki2107b" path="res://Sprites/Enemies/Sprinkler.png" id="2_isdkg"]
 [ext_resource type="Resource" uid="uid://bjs3fi8dutaga" path="res://Resources/Enemies/Obstacles/sprinkler.tres" id="3_iw5qt"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1a1e6"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_spcjj"]
+radius = 9.0
+height = 28.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uhtv1"]
 atlas = ExtResource("2_isdkg")
@@ -52,14 +54,16 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_spcjj"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u2h3t"]
+radius = 9.0
+height = 28.0
 
 [node name="Sprinkler" instance=ExtResource("1_hf0cm")]
 script = ExtResource("2_2c8ty")
 _enemy_stats = ExtResource("3_iw5qt")
 
 [node name="CollisionShape2D" parent="." index="0"]
-shape = SubResource("CapsuleShape2D_1a1e6")
+shape = SubResource("CapsuleShape2D_spcjj")
 
 [node name="AnimatedSprite2D" parent="." index="1"]
 position = Vector2(0, -14)
@@ -68,11 +72,8 @@ sprite_frames = SubResource("SpriteFrames_r1ei5")
 frame = 6
 frame_progress = 1.0
 
-[node name="Hitbox" parent="." index="2" groups=["Obstacle"]]
-collision_mask = 2
-
-[node name="CollisionShape2D" parent="Hitbox" index="0"]
-shape = SubResource("CapsuleShape2D_spcjj")
+[node name="CollisionShape2D" parent="Enemy Hitbox" index="0"]
+shape = SubResource("CapsuleShape2D_u2h3t")
 
 [node name="Fire Rate" type="Timer" parent="." index="4"]
 one_shot = true

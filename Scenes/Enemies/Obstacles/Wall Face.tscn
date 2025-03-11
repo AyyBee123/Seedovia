@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://0clgydaeshno"]
+[gd_scene load_steps=12 format=3 uid="uid://0clgydaeshno"]
 
 [ext_resource type="PackedScene" uid="uid://b4qv2oi4vbgws" path="res://Scenes/Enemies/Obstacles/Obstacle.tscn" id="1_8k6kr"]
 [ext_resource type="Script" path="res://Scripts/Enemies/Obstacles/wall_face.gd" id="2_vu1t2"]
@@ -6,7 +6,7 @@
 [ext_resource type="Resource" uid="uid://ct22yt0lq7l0s" path="res://Resources/Enemies/Obstacles/wall_face.tres" id="3_ka3ow"]
 [ext_resource type="AudioStream" uid="uid://ldf61nl1wewl" path="res://Audio/SFX/Thud3.mp3" id="5_jpyak"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_pwte2"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_we3nq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0ispy"]
 atlas = ExtResource("2_ymhv2")
@@ -49,26 +49,18 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_we3nq"]
-
 [node name="Wall Face" instance=ExtResource("1_8k6kr")]
 collision_mask = 0
 script = ExtResource("2_vu1t2")
 _enemy_stats = ExtResource("3_ka3ow")
 
 [node name="CollisionShape2D" parent="." index="0"]
-shape = SubResource("CircleShape2D_pwte2")
+shape = SubResource("CircleShape2D_we3nq")
 
 [node name="AnimatedSprite2D" parent="." index="1"]
 sprite_frames = SubResource("SpriteFrames_bh4pl")
 animation = &"Shoot"
 autoplay = "Idle"
-
-[node name="Hitbox" parent="." index="2"]
-collision_mask = 0
-
-[node name="CollisionShape2D" parent="Hitbox" index="0"]
-shape = SubResource("CircleShape2D_we3nq")
 
 [node name="Marker2D" type="Marker2D" parent="." index="4"]
 position = Vector2(0, 37)

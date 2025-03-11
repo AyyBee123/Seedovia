@@ -118,8 +118,8 @@ func start():
 
 func continue_run():
 	talisman_weights = {
-	0: 0.40 - min(LevelList.floor_number * 0.2, 0.4), # common
-	1: 0.35 - min(LevelList.floor_number * 0.5, 0.35), # uncommon
+	0: 0.40 - min(LevelList.floor_number * 0.20, 0.40), # common
+	1: 0.35 - min(LevelList.floor_number * 0.05, 0.35), # uncommon
 	2: 0.15 + LevelList.floor_number * 0.01, # rare
 	3: 0.075 + LevelList.floor_number * 0.015, # epic
 	4: 0.025 + LevelList.floor_number * 0.015, # legendary
@@ -150,8 +150,8 @@ func continue_run():
 
 func repopulate_weighted_pools():
 	talisman_weights = {
-	0: 0.40 - min(LevelList.floor_number * 0.2, 0.4), # common
-	1: 0.35 - min(LevelList.floor_number * 0.5, 0.35), # uncommon
+	0: 0.40 - min(LevelList.floor_number * 0.20, 0.40), # common
+	1: 0.35 - min(LevelList.floor_number * 0.05, 0.35), # uncommon
 	2: 0.15 + LevelList.floor_number * 0.01, # rare
 	3: 0.075 + LevelList.floor_number * 0.015, # epic
 	4: 0.025 + LevelList.floor_number * 0.01, # legendary

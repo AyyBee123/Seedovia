@@ -1,10 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bdw112ftaggea"]
+[gd_scene load_steps=6 format=3 uid="uid://bdw112ftaggea"]
 
 [ext_resource type="PackedScene" uid="uid://b4qv2oi4vbgws" path="res://Scenes/Enemies/Obstacles/Obstacle.tscn" id="1_187e7"]
 [ext_resource type="Resource" uid="uid://brw678qb34kty" path="res://Resources/Enemies/Obstacles/wall.tres" id="2_awayf"]
 [ext_resource type="Texture2D" uid="uid://dlvs1ti4b7xhp" path="res://Sprites/Enemies/Wall.png" id="2_jghbs"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xq6id"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a2xvx"]
 size = Vector2(384, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_itl66"]
@@ -18,21 +18,14 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_a2xvx"]
-size = Vector2(384, 128)
-
 [node name="Wall" instance=ExtResource("1_187e7")]
 _enemy_stats = ExtResource("2_awayf")
 
 [node name="CollisionShape2D" parent="." index="0"]
 position = Vector2(0, -15)
-shape = SubResource("RectangleShape2D_xq6id")
+shape = SubResource("RectangleShape2D_a2xvx")
 
 [node name="AnimatedSprite2D" parent="." index="1"]
 position = Vector2(0, -15)
 sprite_frames = SubResource("SpriteFrames_itl66")
 autoplay = "default"
-
-[node name="CollisionShape2D" parent="Hitbox" index="0"]
-position = Vector2(0, -15)
-shape = SubResource("RectangleShape2D_a2xvx")
