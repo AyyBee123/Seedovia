@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cs4gg4d8pkj6f"
+path="res://.godot/imported/Quiet Thud.mp3-3a28ab4c726052956a32b54edc66275b.mp3str"
+
+[deps]
+
+source_file="res://Audio/SFX/Quiet Thud.mp3"
+dest_files=["res://.godot/imported/Quiet Thud.mp3-3a28ab4c726052956a32b54edc66275b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

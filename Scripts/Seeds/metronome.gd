@@ -15,12 +15,32 @@ func shoot_seed():
 	set_weapon_properties(seed_instance, desired_direction, ignore_first_collision, hit_enemy)
 	queue_free.call_deferred()
 
+func set_weapon_properties(weapon, _desired_direction, _ignore_first_collision = false, _enemy = null):
+	weapon.initial_weapon = false
+	weapon.ignore_first_collision = _ignore_first_collision
+	weapon.desired_direction = _desired_direction
+	weapon.previous_weapon = previous_weapon
+	weapon.source = source
+	weapon.hit_enemy = _enemy
+	if set_next_seed_slot_index:
+		weapon.slot_index = set_next_seed_slot_index
+	else:
+		weapon.slot_index = slot_index
+	weapon.transferred_speed_multiplier *= transferred_speed_multiplier
+	weapon.transferred_range_multiplier *= transferred_range_multiplier
+	weapon.transferred_size_multiplier *= transferred_size_multiplier
+	weapon.transferred_damage_multiplier *= transferred_damage_multiplier
+	weapon.transferred_blast_radius_multiplier *= transferred_blast_radius_multiplier
+	weapon.transferred_fire_rate_multiplier *= transferred_fire_rate_multiplier
+	if set_next_seed_slot_number:
+		weapon.seed_slot_number = set_next_seed_slot_number
+	else:
+		weapon.seed_slot_number = seed_slot_number
+	initialize_location.call_deferred(weapon)
+
 func initialize_location(weapon):
 	weapon.remove_child(weapon.get_node("Passives"))
 	weapon.add_child(get_node("Passives").duplicate())
-	weapon.previous_weapon = previous_weapon
-	weapon.seed_slot_number = seed_slot_number
-	weapon.slot_index = slot_index
 	get_tree().current_scene.add_child(weapon)
 	weapon.global_position = global_position
 

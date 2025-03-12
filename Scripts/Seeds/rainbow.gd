@@ -69,3 +69,9 @@ func set_weapon_properties(weapon, _desired_direction, _ignore_first_collision =
 	bomb.seed_slot = weapon.seed_slot_number
 	weapon.get_node("Passives").add_child(bomb)
 	fire_rate.start(1.0 / (weapon.FIRE_RATE * fire_rate_multiplier))
+
+
+func _on_visible_on_screen_notifier_2d_screen_exited():
+	if tween:
+		tween.kill()
+	queue_free.call_deferred()

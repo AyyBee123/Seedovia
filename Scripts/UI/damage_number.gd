@@ -11,9 +11,10 @@ func remove():
 	queue_free()
 
 func set_and_animate_damage(value: float, start_pos: Vector2, height: float, spread: float, \
-		color: Color = Color.WHITE) -> void:
+		color: Color = Color.WHITE, size_multiplier: float = 1) -> void:
 	label.text = add_commas(int(round(value)))
 	label.modulate = color
+	label.scale = size_multiplier * Vector2.ONE
 	ap.play("Rise and Fall")
 	
 	var tween = get_tree().create_tween()

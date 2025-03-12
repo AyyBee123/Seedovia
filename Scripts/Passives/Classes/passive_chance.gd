@@ -4,7 +4,7 @@ var player
 var chance: float
 
 func _ready():
-	player = get_parent().get_parent()
+	player = Targets.get_player()
 	randomize()
 
 func get_chance(base_chance: float) -> float:

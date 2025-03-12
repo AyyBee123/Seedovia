@@ -10,7 +10,8 @@ var stats
 var player
 var health_bar
 var is_in_area := false
-var _damaged_color_changed := false
+var damage_color = Color.WHITE
+var damage_size = 1
 
 var damage_number = preload("res://Scenes/UI/damage_number.tscn")
 
@@ -56,9 +57,11 @@ func spawn_damage_number(damage: float):
 	var height = 20
 	var spread = 75
 	var damage_text = damage_number.instantiate()
-	get_tree().current_scene.add_child(damage_text, true)
+	get_tree().current_scene.add_child(damage_text)
 	damage_text.global_position = global_position
-	damage_text.set_and_animate_damage(damage, pos, height, spread)
+	damage_text.set_and_animate_damage(damage, pos, height, spread, damage_color, damage_size)
+	damage_color = Color.WHITE
+	damage_size = 1
 
 ## set the enemy color to red for a brief time whne taking damage
 func change_color():
@@ -69,7 +72,6 @@ func change_color():
 func instance_seed(_seed: Node, _direction: Vector2, _pos: Vector2 = global_position, _timer = null, \
 		_shader = null, _time: float = 1):
 	var seed = _seed
-	seed.initial_weapon = true
 	seed.desired_direction = _direction
 	seed.previous_weapon = self
 	seed.source = self
@@ -80,6 +82,7 @@ func instance_seed(_seed: Node, _direction: Vector2, _pos: Vector2 = global_posi
 	seed.shader = _shader
 	seed.remove_from_group("Seed")
 	seed.add_to_group("Enemy Weapon")
+	seed.remove_child(seed.get_node("Passives"))
 	get_tree().current_scene.add_child.call_deferred(seed)
 	seed.global_position = _pos
 	if _timer:

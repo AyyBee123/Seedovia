@@ -4,9 +4,10 @@ extends "res://Scripts/Enemies/enemy.gd"
 
 const SEED_COLOR = preload("res://Shaders/seed_enemy_bullet_color.gdshader")
 
-var seed
 var original_seed
-var seed_pos
+var result
+
+var scene = PackedScene.new()
 
 func _physics_process(delta):
 	super._physics_process(delta)
@@ -19,9 +20,8 @@ func _physics_process(delta):
 func _on_enemy_hitbox_area_entered(area):
 	if area.get_parent().is_in_group("Seed"):
 		# get the seed and its position before hitting the mirror
-		seed = area.get_parent().duplicate()
 		original_seed = area.get_parent()
-		seed_pos = original_seed.global_position
+		result = scene.pack(original_seed)
 
 func spawn_damage_number(damage: float):
 	super.spawn_damage_number(damage)
@@ -31,13 +31,14 @@ func spawn_damage_number(damage: float):
 		if is_instance_valid(original_seed):
 			original_seed.queue_free.call_deferred()
 		original_seed = null
-	if seed: # reflect the seed, if applicable
-		if is_instance_valid(seed):
-			$AnimatedSprite2D.play("Shoot")
-			instance_seed(seed, global_position.direction_to(seed_pos), global_position, null, SEED_COLOR)
-			SfxDeconflicter.play(ding_SFX)
-		seed = null
-		seed_pos = null
+	# check if the scene was packed successfully, and then reflect the shot
+	if result == OK: # reflect the seed, if applicable
+		$AnimatedSprite2D.play("Shoot")
+		instance_seed(scene.instantiate(), global_position.direction_to(player.global_position), \
+				global_position, null, SEED_COLOR)
+		SfxDeconflicter.play(ding_SFX)
+		scene = PackedScene.new()
+		result = null
 
 func _on_animated_sprite_2d_animation_finished():
 	$AnimatedSprite2D.play("Idle")

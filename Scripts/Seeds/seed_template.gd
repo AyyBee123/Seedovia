@@ -42,6 +42,9 @@ var direction: Vector2 # the current direction the weapon is moving towards
 var current_velocity: Vector2 # the current speed/velocity the weapon is moving at
 var next_weapon = null # setting the next seed from an external source
 
+var damage_color # the displayed damage color
+var damage_size # the displayed damage size
+
 var DAMAGE: float:
 	get:
 		if _player_stats:
@@ -97,9 +100,6 @@ var seed_pool: Array = [] # pool to add the next seed to
 
 func _ready():
 	_player_stats = player._player_stats
-	if is_in_group("Enemy Weapon"):
-		for n in $Passives.get_children():
-			$Passives.remove_child(n)
 	visible = false # avoid "jitter" on the very first frame
 	$Hitbox.set_collision_mask(collisions)
 	scale = scale * SIZE

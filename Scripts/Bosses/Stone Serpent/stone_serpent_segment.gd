@@ -23,6 +23,8 @@ var direction: Vector2
 var positions: Array
 var new_directions: Array
 var launch_direction: Vector2
+var damage_color = Color.WHITE
+var damage_size = 1
 
 ## for shooting animation when switching directions mid-animation
 var current_frame = 0
@@ -209,9 +211,11 @@ func spawn_damage_number(damage: float):
 	var height = 20
 	var spread = 75
 	var damage_text = damage_number.instantiate()
-	get_tree().current_scene.add_child(damage_text, true)
+	get_tree().current_scene.add_child(damage_text)
 	damage_text.global_position = global_position
-	damage_text.set_and_animate_damage(damage, pos, height, spread)
+	damage_text.set_and_animate_damage(damage, pos, height, spread, damage_color, damage_size)
+	damage_color = Color.WHITE
+	damage_size = 1
 
 func update_health(new_health):
 	_enemy_stats.set_health(_enemy_stats.max_health)

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkgh0rdbma0yv"]
+
+[ext_resource type="Texture2D" uid="uid://dtbdtof08ujiu" path="res://Sprites/Passives/Effects/Double Up Particle.png" id="1_w8ry8"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ra3jo"]
+particle_flag_disable_z = true
+radial_velocity_min = 100.0
+radial_velocity_max = 150.0
+gravity = Vector3(0, 0, 0)
+scale_max = 1.5
+
+[node name="Double Up Particles" type="GPUParticles2D"]
+process_material = SubResource("ParticleProcessMaterial_ra3jo")
+texture = ExtResource("1_w8ry8")
+lifetime = 0.25
+randomness = 1.0
+fixed_fps = 60

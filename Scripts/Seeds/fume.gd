@@ -51,6 +51,8 @@ func _collide(body):
 		has_collided.emit(body)
 		if body.is_in_group("Enemies"):
 			body.get_parent()._enemy_stats.take_damage(DAMAGE)
+		elif body.is_in_group("Players"):
+			body._player_stats.take_damage(1)
 	weapon_direction = direction.rotated(spread)
 	if randf() < 0.3:
 		shoot_next_weapon()

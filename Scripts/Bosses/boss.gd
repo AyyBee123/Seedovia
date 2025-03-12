@@ -30,14 +30,7 @@ func update_health(new_health):
 	boss_health_bar.health = new_health
 
 func spawn_damage_number(damage: float):
-	var value = str(round(damage))
-	var pos = global_position
-	var height = 20
-	var spread = 75
-	var damage_text = damage_number.instantiate()
-	get_tree().current_scene.add_child(damage_text, true)
-	damage_text.global_position = global_position
-	damage_text.set_and_animate_damage(damage, pos, height, spread)
+	super.spawn_damage_number(damage)
 	
 	accumulated_damage += damage
 	accumulated_damage_text.text = "[right]" + str(round(accumulated_damage))

@@ -29,6 +29,8 @@ extends Node
 @onready var rock_2 = $Rock2
 @onready var rock = $Rock
 @onready var fart = $Fart
+@onready var crit = $Crit
+@onready var ding_2 = $Ding2
 
 func _ready():
 	SignalBus.play_audio.connect(play)

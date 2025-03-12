@@ -209,14 +209,7 @@ func fire_lunacy():
 func spawn_damage_number(damage: float):
 	if _in_lunacy:
 		return
-	var value = str(round(damage))
-	var pos = global_position
-	var height = 20
-	var spread = 75
-	var damage_text = damage_number.instantiate()
-	get_tree().current_scene.add_child(damage_text, true)
-	damage_text.global_position = global_position
-	damage_text.set_and_animate_damage(damage, pos, height, spread)
+	super.spawn_damage_number(damage)
 
 # playing from animation player
 func play_laser_sound():
