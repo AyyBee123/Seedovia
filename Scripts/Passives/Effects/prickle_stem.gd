@@ -8,6 +8,7 @@ var size
 var tick_rate
 var enemies_in_area: Array
 var tick_timers: Array
+var direction: Vector2
 
 var DAMAGE: float
 var BLAST_RADIUS: float

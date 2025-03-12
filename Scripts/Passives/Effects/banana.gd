@@ -1,7 +1,7 @@
 extends Sprite2D
 
 var position_initialized = false
-var direction
+var direction: Vector2
 var spread: float
 var speed: float
 var weapon_direction: Vector2

@@ -1,7 +1,7 @@
 extends AnimatedSprite2D
 
 var position_initialized = false
-var direction
+var direction: Vector2
 var damage_multiplier: float
 var spread: float
 var speed: float

@@ -6,7 +6,7 @@ extends "res://Scripts/Seeds/seed_template.gd"
 @onready var explosion_rate = $"Explosion Rate"
 @onready var roar_SFX = $DragonRoarFar
 
-const EXPLOSION = preload("res://Scenes/Passives/Effects/Explosion.tscn")
+const NON_WEAPON_EFFECT_EXPLOSION = preload("res://Scenes/Passives/Effects/Non-Weapon Effect Explosion.tscn")
 
 const NUMBER_OF_EXPLOSIONS = 20
 
@@ -36,13 +36,14 @@ func _physics_process(delta):
 		queue_free.call_deferred()
 
 func explode():
-	var explosion = EXPLOSION.instantiate()
-	explosion.damage = DAMAGE
-	explosion.size = BLAST_RADIUS
-	explosion.source = self
-	explosion.modulate = Color(colors.pick_random())
+	var explosion = NON_WEAPON_EFFECT_EXPLOSION.instantiate()
+	for passive in $Passives.get_children():
+		explosion.get_node("Passives").add_child(passive.duplicate())
+	explosion.BASE_DAMAGE = BASE_DAMAGE
+	explosion.BASE_SIZE = BASE_BLAST_RADIUS * BASE_SIZE
 	explosion.z_index = z_index + 1
 	explosion.collisions = collisions
+	explosion.get_node("AnimatedSprite2D").self_modulate = colors.pick_random()
 	if shader:
 		explosion.get_node("AnimatedSprite2D").material = ShaderMaterial.new()
 		explosion.get_node("AnimatedSprite2D").material.shader = shader

@@ -24,10 +24,11 @@ func update_position(delta):
 		_set_as_visible = true
 
 func explode():
-	has_collided.emit(null)
-	var explosion = resource_preloader.get_resource("Explosion").instantiate()
-	explosion.damage = DAMAGE
-	explosion.size = BLAST_RADIUS
+	var explosion = resource_preloader.get_resource("Non-Weapon Effect Explosion").instantiate()
+	for passive in $Passives.get_children():
+		explosion.get_node("Passives").add_child(passive.duplicate())
+	explosion.BASE_DAMAGE = BASE_DAMAGE
+	explosion.BASE_SIZE = BASE_BLAST_RADIUS * BASE_SIZE
 	explosion.collisions = collisions
 	if shader:
 		explosion.get_node("AnimatedSprite2D").material = ShaderMaterial.new()

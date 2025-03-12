@@ -13,7 +13,8 @@ var number_of_shots: int = 6
 var player
 var player_passives
 var _has_exploded := false
-var weapon_direction
+var weapon_direction: Vector2
+var direction: Vector2
 
 var DAMAGE: float
 var BLAST_RADIUS: float

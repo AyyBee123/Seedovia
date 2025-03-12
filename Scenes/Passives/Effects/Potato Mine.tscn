@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bqtv7cxby1pdn"]
+[gd_scene load_steps=7 format=3 uid="uid://bqtv7cxby1pdn"]
 
 [ext_resource type="Texture2D" uid="uid://dm8agjr3f3l6a" path="res://Sprites/Passives/Effects/Potato Mine.png" id="1_lkr6a"]
 [ext_resource type="Script" path="res://Scripts/Passives/Effects/potato_mine.gd" id="2_lxy1o"]
 [ext_resource type="PackedScene" uid="uid://cp3hdtxn75uyt" path="res://Scenes/Passives/Effects/Explosion.tscn" id="3_n3u7o"]
 [ext_resource type="AudioStream" uid="uid://dviaq07q34iwy" path="res://Audio/SFX/Mild Explosion.mp3" id="4_xk32o"]
+[ext_resource type="PackedScene" uid="uid://ledtfnmbfqxq" path="res://Scenes/Misc/Visual Effects.tscn" id="5_mw7vh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cg2l5"]
 radius = 60.0
@@ -35,6 +36,8 @@ volume_db = -10.0
 bus = &"SFX"
 
 [node name="Passives" type="Node" parent="."]
+
+[node name="Visual Effects" parent="." instance=ExtResource("5_mw7vh")]
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]

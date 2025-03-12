@@ -18,6 +18,7 @@ shader_parameter/tint_factor = 0.0
 shader_parameter/fade = 1.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hklkb"]
+resource_local_to_scene = true
 radius = 11.0
 height = 56.0
 

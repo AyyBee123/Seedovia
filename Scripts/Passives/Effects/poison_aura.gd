@@ -8,6 +8,7 @@ var damage_multiplier
 var radius: float = scale.x
 var radius_multiplier
 var weapon
+var direction: Vector2
 
 var DAMAGE: float
 var BLAST_RADIUS: float

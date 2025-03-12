@@ -50,8 +50,8 @@ func _physics_process(delta):
 	for i in enemies_in_area.size():
 		if tick_timers[i].is_stopped():
 			if is_instance_valid(enemies_in_area[i]):
-				enemies_in_area[i]._enemy_stats.take_damage(DAMAGE)
 				has_collided.emit(enemies_in_area[i].get_node("Enemy Hitbox"))
+				enemies_in_area[i]._enemy_stats.take_damage(DAMAGE)
 			tick_timers[i].start(tick_rate)
 
 func shrink(delta):

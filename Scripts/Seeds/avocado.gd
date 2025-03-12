@@ -101,4 +101,7 @@ func transfer_properties(seed):
 	seed.transferred_blast_radius_multiplier *= transferred_blast_radius_multiplier
 	seed.transferred_fire_rate_multiplier *= transferred_fire_rate_multiplier
 	seed.shader = shader
-	seed.add_child(get_node("Passives").duplicate())
+	if get_node_or_null("Passives"):
+		seed.add_child(get_node("Passives").duplicate())
+	if get_node_or_null("Visual Effects"):
+		seed.add_child(get_node("Visual Effects").duplicate())

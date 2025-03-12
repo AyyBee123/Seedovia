@@ -30,7 +30,10 @@ func explode():
 
 func create_child(child):
 	get_tree().current_scene.add_child(child)
-	var line_direction = source.direction.normalized()
-	var enemy_direction = enemy.global_position - source.global_position
-	var distance = line_direction.dot(enemy_direction)
-	child.global_position = distance * line_direction + source.global_position
+	if not "direction" in source:
+		child.global_position = source.global_position
+	else:
+		var line_direction = source.direction.normalized()
+		var enemy_direction = enemy.global_position - source.global_position
+		var distance = line_direction.dot(enemy_direction)
+		child.global_position = distance * line_direction + source.global_position

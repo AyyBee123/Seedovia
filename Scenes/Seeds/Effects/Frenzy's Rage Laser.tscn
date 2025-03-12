@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cttd7u6tngfqq"]
+[gd_scene load_steps=7 format=3 uid="uid://cttd7u6tngfqq"]
 
 [ext_resource type="Texture2D" uid="uid://c10dy68epc1jx" path="res://Sprites/Seeds/Effects/Frenzy's Rage Laser 1.png" id="1_3ih03"]
 [ext_resource type="Script" path="res://Scripts/Seeds/Effects/frenzy's_rage_laser.gd" id="2_nfmk8"]
 [ext_resource type="Texture2D" uid="uid://cn85ve1u3ie2u" path="res://Sprites/Seeds/Effects/Frenzy's Rage Laser 2.png" id="3_l8w0c"]
 [ext_resource type="Texture2D" uid="uid://cxgohaqc4opwc" path="res://Sprites/Seeds/Effects/Frenzy's Rage Laser 3.png" id="4_fvwkk"]
 [ext_resource type="AudioStream" uid="uid://d1tn6ymy3b3ti" path="res://Audio/SFX/Space Laser.mp3" id="5_l2t8p"]
+[ext_resource type="PackedScene" uid="uid://ledtfnmbfqxq" path="res://Scenes/Misc/Visual Effects.tscn" id="6_amx1j"]
 
 [node name="Laser" type="Sprite2D"]
 z_index = 5
@@ -22,3 +23,5 @@ resources = [PackedStringArray("Frenzy\'s Rage Laser 1", "Frenzy\'s Rage Laser 2
 stream = ExtResource("5_l2t8p")
 pitch_scale = 1.2
 bus = &"SFX"
+
+[node name="Visual Effects" parent="." instance=ExtResource("6_amx1j")]

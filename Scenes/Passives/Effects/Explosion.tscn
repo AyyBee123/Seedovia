@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://cp3hdtxn75uyt"]
+[gd_scene load_steps=16 format=3 uid="uid://cp3hdtxn75uyt"]
 
 [ext_resource type="Script" path="res://Scripts/Passives/Effects/explosion.gd" id="1_0q7g4"]
 [ext_resource type="Texture2D" uid="uid://cgykm81v6v4hq" path="res://Sprites/Passives/Effects/Explosion.png" id="1_7k8yw"]
+[ext_resource type="PackedScene" uid="uid://ledtfnmbfqxq" path="res://Scenes/Misc/Visual Effects.tscn" id="3_2451c"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w3ufp"]
 atlas = ExtResource("1_7k8yw")
@@ -103,6 +104,8 @@ collision_mask = 4
 shape = SubResource("CircleShape2D_k0311")
 
 [node name="Passives" type="Node" parent="."]
+
+[node name="Visual Effects" parent="." instance=ExtResource("3_2451c")]
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

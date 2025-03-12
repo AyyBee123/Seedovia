@@ -28,7 +28,8 @@ func transfer_passive(weapon = null):
 	weapon.get_node("Passives").add_child(self.duplicate())
 
 func trigger(weapon = null):
-	weapon.add_child(DOUBLE_UP_PARTICLES.instantiate())
+	if not weapon.get_node("Visual Effects").get_node_or_null("Double Up Particles"):
+		weapon.get_node("Visual Effects").add_child(DOUBLE_UP_PARTICLES.instantiate())
 	weapon.get_node("Passives").add_child(DOUBLE_UP_VFX.instantiate())
 	if "BASE_DAMAGE" in weapon:
 		weapon.BASE_DAMAGE *= 2

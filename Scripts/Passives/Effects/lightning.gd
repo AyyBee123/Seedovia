@@ -17,6 +17,7 @@ var SIZE = 0.05
 var FIRE_RATE: float
 var RANGE: float
 var SPEED: float
+var direction: Vector2
 
 func _ready():
 	if nearest_enemy != null:

@@ -11,8 +11,9 @@ var size: float
 var damage_multiplier = 1
 var source
 var is_vanity := false
-var weapon_direction = Vector2.ZERO
+var weapon_direction: Vector2
 var collisions = 4
+var direction: Vector2
 
 func _ready():
 	scale = Vector2.ONE * size

@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://c2bmb024gpggu"]
+[gd_scene load_steps=9 format=3 uid="uid://c2bmb024gpggu"]
 
 [ext_resource type="Texture2D" uid="uid://07mogisnw6m" path="res://Sprites/Passives/Effects/Banana.png" id="1_nvd3o"]
 [ext_resource type="Script" path="res://Scripts/Passives/Effects/banana.gd" id="2_82g1y"]
 [ext_resource type="PackedScene" uid="uid://cm57uqupdkrtw" path="res://Scenes/Passives/Effects/Banana Child.tscn" id="3_5pi4c"]
 [ext_resource type="PackedScene" uid="uid://cp3hdtxn75uyt" path="res://Scenes/Passives/Effects/Explosion.tscn" id="3_e5itn"]
+[ext_resource type="PackedScene" uid="uid://ledtfnmbfqxq" path="res://Scenes/Misc/Visual Effects.tscn" id="5_aq3wj"]
 [ext_resource type="AudioStream" uid="uid://dviaq07q34iwy" path="res://Audio/SFX/Mild Explosion.mp3" id="5_m2ud5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qa7cx"]
@@ -42,6 +43,8 @@ one_shot = true
 autostart = true
 
 [node name="Passives" type="Node" parent="."]
+
+[node name="Visual Effects" parent="." instance=ExtResource("5_aq3wj")]
 
 [node name="MildExplosion" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_m2ud5")

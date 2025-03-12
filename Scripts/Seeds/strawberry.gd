@@ -31,17 +31,18 @@ func _physics_process(delta):
 		shoot_next_weapon()
 
 func explode():
-	var explosion = resource_preloader.get_resource("Explosion").instantiate()
-	explosion.damage = DAMAGE
-	explosion.size = BLAST_RADIUS
-	explosion.source = self
+	var explosion = resource_preloader.get_resource("Non-Weapon Effect Explosion").instantiate()
+	for passive in $Passives.get_children():
+		explosion.get_node("Passives").add_child(passive.duplicate())
+	explosion.BASE_DAMAGE = BASE_DAMAGE
+	explosion.BASE_SIZE = BASE_BLAST_RADIUS * BASE_SIZE
 	explosion.collisions = collisions
 	if shader:
 		explosion.get_node("AnimatedSprite2D").material = ShaderMaterial.new()
 		explosion.get_node("AnimatedSprite2D").material.shader = shader
 	if source != player:
 		explosion.get_node("Area2D").set_collision_layer(16)
-	explosion.modulate = Color("bc1414")
+	explosion.get_node("AnimatedSprite2D").self_modulate = Color("bc1414")
 	call_deferred("create_child", explosion)
 
 func create_child(child):
@@ -73,7 +74,6 @@ func _collide(body):
 	if ignore_first_collision:
 		ignore_first_collision = false
 		return
-	has_collided.emit(body) # for on-hit effects (ex: burning an enemy on hit)
 	if not exploded:
 		exploded = true
 		explode()

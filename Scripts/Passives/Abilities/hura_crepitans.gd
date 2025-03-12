@@ -48,11 +48,16 @@ func trigger(weapon = null):
 
 func spawn_explosion(explosion):
 	get_tree().current_scene.add_child(explosion)
+	if not collided_object:
+		return
 	if collided_object.is_in_group("Enemies") or collided_object.is_in_group("Obstacle"):
-		var line_direction = source.direction.normalized()
-		var enemy_direction = collided_object.global_position - source.global_position
-		var distance = line_direction.dot(enemy_direction)
-		explosion.global_position = distance * line_direction + source.global_position
+		if not "direction" in source:
+			explosion.global_position = source.global_position
+		else:
+			var line_direction = source.direction.normalized()
+			var enemy_direction = collided_object.global_position - source.global_position
+			var distance = line_direction.dot(enemy_direction)
+			explosion.global_position = distance * line_direction + source.global_position
 	else:
 		explosion.global_position = source.global_position
 	explosion.get_node("AnimatedSprite2D").self_modulate = Color.BURLYWOOD

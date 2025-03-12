@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_5xs2v"]
 [ext_resource type="Texture2D" uid="uid://dpv7ru8ple5ht" path="res://Sprites/Seeds/Strawberry.png" id="2_6hqge"]
 [ext_resource type="Script" path="res://Scripts/Seeds/strawberry.gd" id="3_ff0m5"]
-[ext_resource type="PackedScene" uid="uid://cp3hdtxn75uyt" path="res://Scenes/Passives/Effects/Explosion.tscn" id="4_ewini"]
+[ext_resource type="PackedScene" uid="uid://ba1ll7vkpaxef" path="res://Scenes/Passives/Effects/Non-Weapon Effect Explosion.tscn" id="4_m5mg3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6xlna"]
 atlas = ExtResource("2_6hqge")
@@ -63,7 +63,6 @@ autoplay = "default"
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 position = Vector2(0.549998, -3.54032e-06)
 rotation = 1.5708
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_3tspc")
 
 [node name="Fire Rate" type="Timer" parent="." index="3"]
@@ -71,7 +70,7 @@ wait_time = 0.2
 one_shot = true
 
 [node name="ResourcePreloader" type="ResourcePreloader" parent="." index="4"]
-resources = [PackedStringArray("Explosion"), [ExtResource("4_ewini")]]
+resources = [PackedStringArray("Non-Weapon Effect Explosion"), [ExtResource("4_m5mg3")]]
 
 [node name="Homing Time" type="Timer" parent="." index="5"]
 one_shot = true
