@@ -5,9 +5,8 @@
 [ext_resource type="Script" path="res://Scripts/Seeds/jet_stream.gd" id="3_drn27"]
 [ext_resource type="Script" path="res://Scripts/Misc/trail.gd" id="5_8swle"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y2bi6"]
-radius = 3.0
-height = 82.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4bvwi"]
+size = Vector2(5.99999, 60)
 
 [sub_resource type="Curve" id="Curve_jbe1f"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 0.901099), 0.0, 0.0, 0, 0]
@@ -28,9 +27,9 @@ BASE_SIZE = 0.5
 BASE_BLAST_RADIUS = 0.5
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
-position = Vector2(-35, 0)
+position = Vector2(-24.5, -2.26786e-05)
 rotation = 1.5708
-shape = SubResource("CapsuleShape2D_y2bi6")
+shape = SubResource("RectangleShape2D_4bvwi")
 
 [node name="Line2D" type="Line2D" parent="." index="2"]
 width = 6.0

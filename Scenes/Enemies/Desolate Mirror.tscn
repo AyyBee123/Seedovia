@@ -1,0 +1,110 @@
+[gd_scene load_steps=18 format=3 uid="uid://v83k1cr4mxd0"]
+
+[ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_ymjst"]
+[ext_resource type="Resource" uid="uid://xcid1bpjyx4p" path="res://Resources/Enemies/desolate_mirror.tres" id="2_fk67k"]
+[ext_resource type="Script" path="res://Scripts/Enemies/Desolate Mirror/desolate_mirror.gd" id="2_htlsr"]
+[ext_resource type="Shader" path="res://Shaders/color_tint_shader.gdshader" id="2_vk22p"]
+[ext_resource type="Texture2D" uid="uid://dobg2vvsdb4f0" path="res://Sprites/Enemies/Desolate Mirror.png" id="3_owr7w"]
+[ext_resource type="AudioStream" uid="uid://bvvorvktbr0qx" path="res://Audio/SFX/Ding.mp3" id="6_1v3dl"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tvmmc"]
+radius = 11.5
+height = 34.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lgspk"]
+resource_local_to_scene = true
+shader = ExtResource("2_vk22p")
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/tint_factor = 0.0
+shader_parameter/fade = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fwnsf"]
+atlas = ExtResource("3_owr7w")
+region = Rect2(0, 0, 30, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_un6wy"]
+atlas = ExtResource("3_owr7w")
+region = Rect2(30, 0, 30, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cmduc"]
+atlas = ExtResource("3_owr7w")
+region = Rect2(60, 0, 30, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3qc3a"]
+atlas = ExtResource("3_owr7w")
+region = Rect2(90, 0, 30, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_phhfp"]
+atlas = ExtResource("3_owr7w")
+region = Rect2(120, 0, 30, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1e1l2"]
+atlas = ExtResource("3_owr7w")
+region = Rect2(150, 0, 30, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bxbyj"]
+atlas = ExtResource("3_owr7w")
+region = Rect2(180, 0, 30, 42)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xq03r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fwnsf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_un6wy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cmduc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3qc3a")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_phhfp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1e1l2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bxbyj")
+}],
+"loop": false,
+"name": &"Shoot",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cop2y"]
+radius = 11.5
+height = 34.0
+
+[node name="Desolate Mirror" instance=ExtResource("1_ymjst")]
+scale = Vector2(2, 2)
+script = ExtResource("2_htlsr")
+_enemy_stats = ExtResource("2_fk67k")
+
+[node name="CollisionPolygon2D" parent="." index="0"]
+shape = SubResource("CapsuleShape2D_tvmmc")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+material = SubResource("ShaderMaterial_lgspk")
+sprite_frames = SubResource("SpriteFrames_xq03r")
+animation = &"Idle"
+autoplay = "Idle"
+
+[node name="CollisionPolygon2D" parent="Enemy Hitbox" index="0"]
+shape = SubResource("CapsuleShape2D_cop2y")
+
+[node name="Ding" type="AudioStreamPlayer" parent="." index="6"]
+stream = ExtResource("6_1v3dl")
+pitch_scale = 1.1
+bus = &"SFX"
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="area_entered" from="Enemy Hitbox" to="." method="_on_enemy_hitbox_area_entered"]

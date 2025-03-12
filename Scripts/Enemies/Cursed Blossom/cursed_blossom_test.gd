@@ -19,7 +19,7 @@ func _physics_process(delta):
 
 func _on_animated_sprite_2d_animation_changed():
 	if animated_sprite_2d.animation == "Shoot":
-		instance_seed(BULLET.instantiate(), direction, fire_rate, global_position + direction * 5, \
+		instance_seed(BULLET.instantiate(), direction, global_position + direction * 5, fire_rate, \
 				SEED_ENEMY_BULLET_COLOR, 2)
 
 func _on_fire_rate_timeout():
