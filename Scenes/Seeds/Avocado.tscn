@@ -4,9 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://dy31qd1whpohl" path="res://Sprites/Seeds/Avocado.png" id="2_yeu68"]
 [ext_resource type="Script" path="res://Scripts/Seeds/avocado.gd" id="3_5qbfi"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dgghp"]
-radius = 7.27273
-height = 26.2727
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_srh4d"]
+size = Vector2(13.6364, 25.4545)
 
 [node name="Avocado" instance=ExtResource("1_i7cwq")]
 scale = Vector2(2.2, 2.2)
@@ -21,6 +20,6 @@ BASE_SIZE = 1.0
 BASE_BLAST_RADIUS = 1.0
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
-position = Vector2(4.5, 0)
+position = Vector2(4.09091, -2.23951e-06)
 rotation = 1.5708
-shape = SubResource("CapsuleShape2D_dgghp")
+shape = SubResource("RectangleShape2D_srh4d")
