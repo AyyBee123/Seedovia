@@ -51,20 +51,20 @@ func range_reached_done():
 	var avocado_seed = AVOCADO_SEED.instantiate()
 	transfer_properties(avocado_seed)
 	avocado_seed.desired_direction = direction
-	avocado_seed.SPEED = SPEED
-	avocado_seed.RANGE = RANGE * 2
-	avocado_seed.DAMAGE = DAMAGE * 2
-	avocado_seed.FIRE_RATE = FIRE_RATE * 2
+	avocado_seed.BASE_SPEED = BASE_SPEED
+	avocado_seed.BASE_RANGE = BASE_RANGE * 1.5
+	avocado_seed.BASE_DAMAGE = BASE_DAMAGE * 1.5
+	avocado_seed.BASE_FIRE_RATE = BASE_FIRE_RATE * 1.5
 	get_tree().current_scene.add_child(avocado_seed)
 	avocado_seed.global_position = global_position
 	# spawn the left side
 	var avocado_left = AVOCADO_LEFT.instantiate()
 	transfer_properties(avocado_left)
 	avocado_left.desired_direction = direction.rotated(-PI/2)
-	avocado_left.SPEED = SPEED
-	avocado_left.RANGE = RANGE
-	avocado_left.DAMAGE = DAMAGE * 0.5
-	avocado_left.FIRE_RATE = FIRE_RATE
+	avocado_left.BASE_SPEED = BASE_SPEED
+	avocado_left.BASE_RANGE = BASE_RANGE
+	avocado_left.BASE_DAMAGE = BASE_DAMAGE * 0.5
+	avocado_left.BASE_FIRE_RATE = BASE_FIRE_RATE
 	avocado_left.parent_direction = direction
 	avocado_left.angle_sign = -1
 	get_tree().current_scene.add_child(avocado_left)
@@ -73,10 +73,10 @@ func range_reached_done():
 	var avocado_right = AVOCADO_RIGHT.instantiate()
 	transfer_properties(avocado_right)
 	avocado_right.desired_direction = direction.rotated(PI/2)
-	avocado_right.SPEED = SPEED
-	avocado_right.RANGE = RANGE
-	avocado_right.DAMAGE = DAMAGE * 0.5
-	avocado_right.FIRE_RATE = FIRE_RATE
+	avocado_right.BASE_SPEED = BASE_SPEED
+	avocado_right.BASE_RANGE = BASE_RANGE
+	avocado_right.BASE_DAMAGE = BASE_DAMAGE * 0.5
+	avocado_right.BASE_FIRE_RATE = BASE_FIRE_RATE
 	avocado_right.parent_direction = direction
 	avocado_right.angle_sign = 1
 	get_tree().current_scene.add_child(avocado_right)
