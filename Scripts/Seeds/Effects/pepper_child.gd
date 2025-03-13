@@ -26,9 +26,9 @@ func _on_hitbox_area_entered(area):
 	explode()
 
 func _on_hitbox_body_entered(body):
+	has_collided.emit(body)
 	if body.is_in_group("Players"):
 		body._player_stats.take_damage(1)
-	has_collided.emit(body)
 	explode()
 
 func _on_lifetime_timeout():

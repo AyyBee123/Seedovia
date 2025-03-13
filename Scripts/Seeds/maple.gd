@@ -32,9 +32,9 @@ func _physics_process(delta):
 					enemies_in_area[i]._player_stats.take_damage(1)
 					tick_timers[i].start(tick_rate)
 					return
+				has_collided.emit(enemies_in_area[i].get_node("Enemy Hitbox"))
 				enemies_in_area[i]._enemy_stats.take_damage(DAMAGE)
 				tick_timers[i].start()
-				has_collided.emit(enemies_in_area[i].get_node("Enemy Hitbox"))
 	if fire_rate.is_stopped() and rect_width == RANGE and not lifetime.is_stopped():
 		weapon_direction = Vector2.RIGHT.rotated(randf_range(0, TAU))
 		shoot_next_weapon()

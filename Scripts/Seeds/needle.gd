@@ -11,6 +11,7 @@ var is_stuck: bool
 var is_stuck_to_enemy: bool
 var distance_to_enemy: Vector2
 var enemy
+var enemy_hitbox
 
 func _physics_process(delta):
 	player = Targets.get_player()
@@ -28,6 +29,7 @@ func _collide(body):
 	if body.is_in_group("Enemies"):
 		is_stuck_to_enemy = true
 		enemy = body.get_parent()
+		enemy_hitbox = body
 		distance_to_enemy = enemy.global_position - global_position
 	if body.is_in_group("Players"):
 		body._player_stats.take_damage(1)
@@ -44,6 +46,7 @@ func update_position(delta):
 		if is_stuck_to_enemy:
 			global_position = enemy.global_position - distance_to_enemy
 			if tick_rate.is_stopped():
+				has_collided.emit(enemy_hitbox) # for on-hit effects (ex: burning an enemy on hit)
 				enemy._enemy_stats.take_damage(DAMAGE)
 				SfxDeconflicter.play(Game.audio_manager.hit_2)
 				shoot_next_weapon()

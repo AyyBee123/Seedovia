@@ -19,10 +19,6 @@ var RANGE: float
 var SPEED: float
 var direction: Vector2
 
-func _ready():
-	if nearest_enemy != null:
-		nearest_enemy.get_parent()._enemy_stats.take_damage(DAMAGE / 2)
-
 func _on_flip_timer_timeout():
 	flip_v = not flip_v
 	flip_timer.start()
@@ -30,6 +26,7 @@ func _on_flip_timer_timeout():
 func _on_lifetime_timeout():
 	if nearest_enemy != null:
 		has_collided.emit(nearest_enemy)
+		nearest_enemy.get_parent()._enemy_stats.take_damage(DAMAGE / 2)
 	queue_free()
 
 func chain_lightning():

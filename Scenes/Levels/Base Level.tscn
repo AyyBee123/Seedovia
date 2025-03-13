@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=4 uid="uid://cxoiy0x4nvtaa"]
+[gd_scene load_steps=66 format=4 uid="uid://cxoiy0x4nvtaa"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_5cm3y"]
 [ext_resource type="Texture2D" uid="uid://cvgvhjvhndf2x" path="res://Sprites/Wall/Floor 1 Corner.png" id="2_1m20m"]
@@ -235,18 +235,6 @@ sources/2 = SubResource("TileSetAtlasSource_71g08")
 sources/23 = SubResource("TileSetAtlasSource_ko4x2")
 sources/24 = SubResource("TileSetAtlasSource_ik6w4")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3kcit"]
-size = Vector2(1920, 156)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_o7rxh"]
-size = Vector2(1920, 156)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_uloao"]
-size = Vector2(192, 1080)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6q71m"]
-size = Vector2(192, 1080)
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0ecxy"]
 resource_local_to_scene = true
 shader = ExtResource("28_rryfq")
@@ -294,38 +282,6 @@ resources = [PackedStringArray("Coin", "Door", "Item", "Pause Menu", "Pickup Ite
 [node name="Shading" type="Sprite2D" parent="."]
 z_index = -2
 texture = ExtResource("12_5umvb")
-
-[node name="Down" type="Area2D" parent="."]
-visible = false
-collision_mask = 540
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Down"]
-position = Vector2(0, 462)
-shape = SubResource("RectangleShape2D_3kcit")
-
-[node name="Up" type="Area2D" parent="."]
-visible = false
-collision_mask = 540
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Up"]
-position = Vector2(0, -462)
-shape = SubResource("RectangleShape2D_o7rxh")
-
-[node name="Left" type="Area2D" parent="."]
-visible = false
-collision_mask = 540
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Left"]
-position = Vector2(-864, 0)
-shape = SubResource("RectangleShape2D_uloao")
-
-[node name="Right" type="Area2D" parent="."]
-visible = false
-collision_mask = 540
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Right"]
-position = Vector2(864, 0)
-shape = SubResource("RectangleShape2D_6q71m")
 
 [node name="Circle Transition" parent="." instance=ExtResource("27_nhpnk")]
 unique_name_in_owner = true

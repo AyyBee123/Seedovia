@@ -41,10 +41,10 @@ func _on_hitbox_area_entered(area):
 	if ignore_first_collision:
 		ignore_first_collision = false
 		return
-	if area.is_in_group("Enemies"):
-		area.get_parent()._enemy_stats.take_damage(DAMAGE)
 	# shapecasts allow the projectile to bounce after detecting an enemy
 	collide(area)
+	if area.is_in_group("Enemies"):
+		area.get_parent()._enemy_stats.take_damage(DAMAGE)
 
 func _on_hitbox_body_entered(body):
 	if body.is_in_group("Players"):
