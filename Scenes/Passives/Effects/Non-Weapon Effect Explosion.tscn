@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://ba1ll7vkpaxef"]
 
-[ext_resource type="Script" path="res://Scripts/Seeds/Effects/non_weapon_effect_explosion.gd" id="1_3immx"]
+[ext_resource type="Script" uid="uid://cwb2ktulkbldp" path="res://Scripts/Seeds/Effects/non_weapon_effect_explosion.gd" id="1_3immx"]
 [ext_resource type="Texture2D" uid="uid://cgykm81v6v4hq" path="res://Sprites/Passives/Effects/Explosion.png" id="2_ibgff"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w3ufp"]

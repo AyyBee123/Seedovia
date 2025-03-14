@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://di216pisnnku2" path="res://Sprites/UI/Enemy Health Bar.png" id="1_k252n"]
 [ext_resource type="Texture2D" uid="uid://l7w6x0k13ni4" path="res://Sprites/UI/Enemy Filled Health.png" id="2_bby4n"]
 [ext_resource type="Texture2D" uid="uid://tlxuc123h2gf" path="res://Sprites/UI/Enemy Damaged Health.png" id="2_pon5w"]
-[ext_resource type="Script" path="res://Scripts/UI/health_bar.gd" id="3_jdjej"]
+[ext_resource type="Script" uid="uid://cfa0gtlv7ne54" path="res://Scripts/UI/health_bar.gd" id="3_jdjej"]
 
 [node name="Health Bar" type="TextureProgressBar"]
 z_index = -1

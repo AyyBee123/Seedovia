@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://dovc3jnyptwgu"]
 
-[ext_resource type="Script" path="res://Scripts/Passives/Abilities/banana_mine.gd" id="1_jsfwh"]
+[ext_resource type="Script" uid="uid://mcdahfp2038x" path="res://Scripts/Passives/Abilities/banana_mine.gd" id="1_jsfwh"]
 [ext_resource type="PackedScene" uid="uid://c2bmb024gpggu" path="res://Scenes/Passives/Effects/Banana.tscn" id="2_bjywd"]
-[ext_resource type="Script" path="res://Scripts/Passives/Effects/banana_mine_ally.gd" id="3_xj132"]
+[ext_resource type="Script" uid="uid://b71f675e03f0r" path="res://Scripts/Passives/Effects/banana_mine_ally.gd" id="3_xj132"]
 
 [sub_resource type="PackedScene" id="PackedScene_celq4"]
 _bundled = {

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bk3gj8xjob6vd"]
 
-[ext_resource type="Script" path="res://Scripts/Characters/Passives/add_talismans.gd" id="1_aouho"]
+[ext_resource type="Script" uid="uid://8ro7mheco65x" path="res://Scripts/Characters/Passives/add_talismans.gd" id="1_aouho"]
 
 [node name="Add Talismans" type="Node"]
 script = ExtResource("1_aouho")

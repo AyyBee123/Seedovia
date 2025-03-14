@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://crc680oyqt3v4"]
 
-[ext_resource type="Script" path="res://Scripts/Enemies/Weapons/laser.gd" id="1_aejpa"]
+[ext_resource type="Script" uid="uid://ctgdhmnf5k2j" path="res://Scripts/Enemies/Weapons/laser.gd" id="1_aejpa"]
 [ext_resource type="Texture2D" uid="uid://bk4pntypc7mcx" path="res://Sprites/Bosses/Haunted Fortress/Laser/Laser.png" id="1_b0tv3"]
 [ext_resource type="PackedScene" uid="uid://bbc2vnfngjpdx" path="res://Scenes/Enemies/Weapons/Bullet.tscn" id="3_r6sil"]
 [ext_resource type="AudioStream" uid="uid://p5qind8r4vfh" path="res://Audio/SFX/Rumble.mp3" id="5_gm0ja"]
@@ -52,7 +52,7 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0mw3w"]
 _data = {
-"Disappear": SubResource("Animation_xqe75")
+&"Disappear": SubResource("Animation_xqe75")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oo132"]

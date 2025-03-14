@@ -1,9 +1,9 @@
 [gd_scene load_steps=24 format=3 uid="uid://cgo5j3dbg1wau"]
 
 [ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_v2w53"]
-[ext_resource type="Script" path="res://Scripts/Seeds/sentient_pot.gd" id="2_ewhoq"]
+[ext_resource type="Script" uid="uid://d10tiafivw4sy" path="res://Scripts/Seeds/sentient_pot.gd" id="2_ewhoq"]
 [ext_resource type="Texture2D" uid="uid://bh8j4nhokghf6" path="res://Sprites/Seeds/Sentient Pot.png" id="2_w8sfd"]
-[ext_resource type="Script" path="res://Scripts/Seeds/Effects/sentient_pot_state_machine.gd" id="4_gsidp"]
+[ext_resource type="Script" uid="uid://md1c7oo4toel" path="res://Scripts/Seeds/Effects/sentient_pot_state_machine.gd" id="4_gsidp"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ukwm8"]
 radius = 9.0

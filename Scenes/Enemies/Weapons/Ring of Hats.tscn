@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://xtkj2hd0foqb"]
 
-[ext_resource type="Script" path="res://Scripts/Enemies/Weapons/ring_of_hats.gd" id="1_1hubc"]
+[ext_resource type="Script" uid="uid://dhti8fni1eaxy" path="res://Scripts/Enemies/Weapons/ring_of_hats.gd" id="1_1hubc"]
 
 [node name="Ring of Hats" type="Node2D"]
 y_sort_enabled = true

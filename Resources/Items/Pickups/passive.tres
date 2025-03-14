@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="passive_pickup" load_steps=3 format=3 uid="uid://xi6gn5drpinf"]
 
-[ext_resource type="Script" path="res://Scripts/Pickups/passive.gd" id="1_x14il"]
+[ext_resource type="Script" uid="uid://c6hbth7dkuhox" path="res://Scripts/Pickups/passive.gd" id="1_x14il"]
 [ext_resource type="Texture2D" uid="uid://cct2i6rx2pik4" path="res://Sprites/Pickups/Passive.png" id="2_3xte2"]
 
 [resource]

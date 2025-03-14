@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://bhququa50vwpw"]
 
-[ext_resource type="Script" path="res://Scripts/UI/death_screen.gd" id="1_otr7n"]
+[ext_resource type="Script" uid="uid://8pkqukxe52ss" path="res://Scripts/UI/death_screen.gd" id="1_otr7n"]
 [ext_resource type="Texture2D" uid="uid://cspvbpbm2l6hp" path="res://Sprites/Pause UI/Pause Menu Background.png" id="2_wo88b"]
 [ext_resource type="Texture2D" uid="uid://didv5fjskcrdi" path="res://Sprites/Pause UI/Pause Menu Choice.png" id="3_yd31n"]
 [ext_resource type="Texture2D" uid="uid://ciyk64aevmyv" path="res://Sprites/Pause UI/Pause Menu Choice Pressed.png" id="4_tvbew"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b4qv2oi4vbgws"]
 
-[ext_resource type="Script" path="res://Scripts/Enemies/Obstacles/obstacle.gd" id="1_hnu15"]
+[ext_resource type="Script" uid="uid://3wlpmdjr5ke3" path="res://Scripts/Enemies/Obstacles/obstacle.gd" id="1_hnu15"]
 
 [node name="Obstacle" type="CharacterBody2D" groups=["Obstacles"]]
 z_index = 4

@@ -2,10 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://b4qv2oi4vbgws" path="res://Scenes/Enemies/Obstacles/Obstacle.tscn" id="1_1gqqr"]
 [ext_resource type="Resource" uid="uid://d2p6fgnbm515l" path="res://Resources/Bosses/stone_serpent_segment.tres" id="2_caxgy"]
-[ext_resource type="Shader" path="res://Shaders/color_tint_shader.gdshader" id="2_q4ggv"]
-[ext_resource type="Script" path="res://Scripts/Bosses/Stone Serpent/stone_serpent_segment.gd" id="2_w6ycy"]
+[ext_resource type="Shader" uid="uid://dsv0n8bsysyo6" path="res://Shaders/color_tint_shader.gdshader" id="2_q4ggv"]
+[ext_resource type="Script" uid="uid://bdasd0sw1rpyx" path="res://Scripts/Bosses/Stone Serpent/stone_serpent_segment.gd" id="2_w6ycy"]
 [ext_resource type="Texture2D" uid="uid://cbctmbvfjhhov" path="res://Sprites/Bosses/Stone Serpent/Body Segment.png" id="3_ygwwr"]
-[ext_resource type="Script" path="res://Scripts/Bosses/Stone Serpent/segment_state_machine.gd" id="4_55ksp"]
+[ext_resource type="Script" uid="uid://ooi63ohbdmnj" path="res://Scripts/Bosses/Stone Serpent/segment_state_machine.gd" id="4_55ksp"]
 [ext_resource type="AudioStream" uid="uid://dnl3t4q05xv0x" path="res://Audio/SFX/Dice Roll.mp3" id="7_etq6j"]
 [ext_resource type="AudioStream" uid="uid://mc66wc8mdc1d" path="res://Audio/SFX/Stomp.mp3" id="7_n0ak4"]
 

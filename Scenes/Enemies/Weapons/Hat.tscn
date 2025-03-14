@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bunekg1fpwy1v"]
 
 [ext_resource type="Texture2D" uid="uid://y3cew3krvdhl" path="res://Sprites/Bosses/Mad Hat/Hat.png" id="1_umftc"]
-[ext_resource type="Script" path="res://Scripts/Enemies/Weapons/hat.gd" id="2_yowre"]
+[ext_resource type="Script" uid="uid://2f81mr4axs04" path="res://Scripts/Enemies/Weapons/hat.gd" id="2_yowre"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_77iju"]
 size = Vector2(86, 88)

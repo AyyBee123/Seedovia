@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="equipment_item_class" load_steps=4 format=3 uid="uid://dyitjbkgowhft"]
 
-[ext_resource type="Script" path="res://Scripts/Items/equipment_item_class.gd" id="1_y6i36"]
+[ext_resource type="Script" uid="uid://n64xabrw5ic3" path="res://Scripts/Items/equipment_item_class.gd" id="1_y6i36"]
 [ext_resource type="PackedScene" uid="uid://drklq1jytnhq7" path="res://Scenes/Item Passives/Abilities/Bonsai.tscn" id="2_oj4ra"]
 [ext_resource type="Texture2D" uid="uid://idva8kejp4ek" path="res://Sprites/Talismans/Bonsai.png" id="3_faci5"]
 

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c6ab63o7tjjv6" path="res://Sprites/UI/Save File Select Pressed.png" id="2_su74p"]
 [ext_resource type="Texture2D" uid="uid://dnxl2v56fnhp0" path="res://Sprites/UI/Save File Select Hovered.png" id="3_64enp"]
 [ext_resource type="FontFile" uid="uid://wbj0boqv37y6" path="res://Fonts/Description Font.ttf" id="4_hc83d"]
-[ext_resource type="Script" path="res://Scripts/UI/save_file_select.gd" id="5_ej0fd"]
+[ext_resource type="Script" uid="uid://cn6m8jbcqui1j" path="res://Scripts/UI/save_file_select.gd" id="5_ej0fd"]
 [ext_resource type="FontFile" uid="uid://bkn7gmgx1wxgx" path="res://Fonts/Name Font.ttf" id="5_fbc7t"]
 [ext_resource type="Texture2D" uid="uid://koekt8h21hw1" path="res://Sprites/UI/Delete.png" id="6_l137q"]
 [ext_resource type="Texture2D" uid="uid://wjmcs8muvj4n" path="res://Sprites/UI/Delete Pressed.png" id="7_1wumd"]

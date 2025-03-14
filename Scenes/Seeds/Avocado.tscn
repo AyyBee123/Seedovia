@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_i7cwq"]
 [ext_resource type="Texture2D" uid="uid://dy31qd1whpohl" path="res://Sprites/Seeds/Avocado.png" id="2_yeu68"]
-[ext_resource type="Script" path="res://Scripts/Seeds/avocado.gd" id="3_5qbfi"]
+[ext_resource type="Script" uid="uid://dd5tbhgx8pfjk" path="res://Scripts/Seeds/avocado.gd" id="3_5qbfi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_srh4d"]
 size = Vector2(13.6364, 25.4545)

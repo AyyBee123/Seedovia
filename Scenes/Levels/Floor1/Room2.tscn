@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dk8b0v73u1lhp"]
 
 [ext_resource type="PackedScene" uid="uid://bnawmyjsajle3" path="res://Scenes/Levels/Floor 1 Base.tscn" id="1_socov"]
-[ext_resource type="Shader" path="res://Shaders/circle_transition.gdshader" id="2_g58x6"]
+[ext_resource type="Shader" uid="uid://qm3syqtxdolu" path="res://Shaders/circle_transition.gdshader" id="2_g58x6"]
 [ext_resource type="PackedScene" uid="uid://cqg68mxfdsxm4" path="res://Scenes/Enemies/Totem Pot.tscn" id="3_gdvqd"]
 [ext_resource type="PackedScene" uid="uid://f1csqvgtqoj5" path="res://Scenes/Enemies/Malignant Seed.tscn" id="4_sykjd"]
 

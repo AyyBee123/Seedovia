@@ -1,8 +1,8 @@
 [gd_scene load_steps=38 format=3 uid="uid://cqg68mxfdsxm4"]
 
 [ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_dgmgt"]
-[ext_resource type="Script" path="res://Scripts/Enemies/Totem Pot/totem_pot.gd" id="2_aebym"]
-[ext_resource type="Shader" path="res://Shaders/color_tint_shader.gdshader" id="2_sxyqj"]
+[ext_resource type="Script" uid="uid://cc8uhuo3vrrdk" path="res://Scripts/Enemies/Totem Pot/totem_pot.gd" id="2_aebym"]
+[ext_resource type="Shader" uid="uid://dsv0n8bsysyo6" path="res://Shaders/color_tint_shader.gdshader" id="2_sxyqj"]
 [ext_resource type="Texture2D" uid="uid://deflm3qe75875" path="res://Sprites/Enemies/Totem Pot.png" id="3_1jkr1"]
 [ext_resource type="Resource" uid="uid://cb6rlwd3c5wju" path="res://Resources/Enemies/totem_pot.tres" id="3_ij7dq"]
 [ext_resource type="Texture2D" uid="uid://xxyym547o3vn" path="res://Sprites/Misc/Shadow.png" id="5_0njbv"]

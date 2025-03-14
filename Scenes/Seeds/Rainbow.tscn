@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_nxddw"]
 [ext_resource type="Texture2D" uid="uid://hbu58ewp083q" path="res://Sprites/Seeds/Rainbow.png" id="3_devqh"]
-[ext_resource type="Script" path="res://Scripts/Seeds/rainbow.gd" id="3_lgwxb"]
+[ext_resource type="Script" uid="uid://merxgpktcwrx" path="res://Scripts/Seeds/rainbow.gd" id="3_lgwxb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a6uwp"]
 size = Vector2(18, 56)

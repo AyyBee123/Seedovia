@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://d012yndvpiu3c"]
 
 [ext_resource type="Texture2D" uid="uid://hbu58ewp083q" path="res://Sprites/Seeds/Rainbow.png" id="1_7d5sx"]
-[ext_resource type="Script" path="res://Scripts/Seeds/Effects/rainbow_trail.gd" id="2_u1mkt"]
+[ext_resource type="Script" uid="uid://6a30b1hsy353" path="res://Scripts/Seeds/Effects/rainbow_trail.gd" id="2_u1mkt"]
 
 [node name="Rainbow Trail" type="Sprite2D"]
 modulate = Color(1, 1, 1, 0.784314)

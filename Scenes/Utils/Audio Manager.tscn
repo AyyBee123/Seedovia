@@ -1,6 +1,6 @@
 [gd_scene load_steps=18 format=3 uid="uid://usetxd7ii511"]
 
-[ext_resource type="Script" path="res://Scripts/Utils/audio_manager.gd" id="1_bpx0j"]
+[ext_resource type="Script" uid="uid://boo1w2wkkk0xk" path="res://Scripts/Utils/audio_manager.gd" id="1_bpx0j"]
 [ext_resource type="AudioStream" uid="uid://bpk6gao5jcjkq" path="res://Audio/SFX/Hit.mp3" id="1_qnkjs"]
 [ext_resource type="AudioStream" uid="uid://dviaq07q34iwy" path="res://Audio/SFX/Mild Explosion.mp3" id="2_fp62v"]
 [ext_resource type="AudioStream" uid="uid://chjabrkxsndjf" path="res://Audio/SFX/Bubble Pop.mp3" id="3_olhkt"]

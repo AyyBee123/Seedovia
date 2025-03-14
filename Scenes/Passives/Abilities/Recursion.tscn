@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ba7fwokq2k368"]
 
-[ext_resource type="Script" path="res://Scripts/Passives/Abilities/recursion.gd" id="1_q2wcs"]
+[ext_resource type="Script" uid="uid://dbw6xbylvmj0o" path="res://Scripts/Passives/Abilities/recursion.gd" id="1_q2wcs"]
 
 [node name="Recursion" type="Node"]
 script = ExtResource("1_q2wcs")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://mta4uipsttsn"]
 
-[ext_resource type="Script" path="res://Scripts/UI/loading_screen.gd" id="1_lia4c"]
+[ext_resource type="Script" uid="uid://x8ustb6sd8lw" path="res://Scripts/UI/loading_screen.gd" id="1_lia4c"]
 [ext_resource type="FontFile" uid="uid://bkn7gmgx1wxgx" path="res://Fonts/Name Font.ttf" id="1_wkkth"]
 [ext_resource type="Texture2D" uid="uid://dbgltdk3p41hc" path="res://Sprites/Seeds/Walnut.png" id="3_pct4q"]
 

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="seed_class" load_steps=4 format=3 uid="uid://cuy80aorwngdg"]
 
 [ext_resource type="PackedScene" uid="uid://bffy58rjriwmv" path="res://Scenes/Seeds/Pea.tscn" id="1_ucc6y"]
-[ext_resource type="Script" path="res://Scripts/Stats/seed_stats.gd" id="2_wm3gp"]
+[ext_resource type="Script" uid="uid://c6ykhgvfkht5x" path="res://Scripts/Stats/seed_stats.gd" id="2_wm3gp"]
 [ext_resource type="Texture2D" uid="uid://cdr5icuesgybd" path="res://Sprites/Seeds (Inventory)/Pea.png" id="3_yucv4"]
 
 [resource]

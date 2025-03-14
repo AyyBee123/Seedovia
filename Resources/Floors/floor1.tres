@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="room_pool" load_steps=2 format=3 uid="uid://cagejm0aqj6vd"]
 
-[ext_resource type="Script" path="res://Scripts/Pools/room_pool.gd" id="1_6u37u"]
+[ext_resource type="Script" uid="uid://clcc4aquglohj" path="res://Scripts/Pools/room_pool.gd" id="1_6u37u"]
 
 [resource]
 script = ExtResource("1_6u37u")

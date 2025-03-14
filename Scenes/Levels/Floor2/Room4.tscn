@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bwke3as08ek2r"]
 
 [ext_resource type="PackedScene" uid="uid://b8gxpiw6v8asa" path="res://Scenes/Levels/Floor 2 Base.tscn" id="1_ippbx"]
-[ext_resource type="Shader" path="res://Shaders/circle_transition.gdshader" id="2_22kxg"]
+[ext_resource type="Shader" uid="uid://qm3syqtxdolu" path="res://Shaders/circle_transition.gdshader" id="2_22kxg"]
 [ext_resource type="PackedScene" uid="uid://pbqovbr4s205" path="res://Scenes/Enemies/Alfred.tscn" id="3_1cidw"]
 [ext_resource type="PackedScene" uid="uid://36bor5t8tf2w" path="res://Scenes/Enemies/Ethereal Pot.tscn" id="4_mw3vs"]
 [ext_resource type="PackedScene" uid="uid://0clgydaeshno" path="res://Scenes/Enemies/Obstacles/Wall Face.tscn" id="5_1yvwd"]

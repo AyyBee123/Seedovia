@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cvu6ybh7bghfa"]
 
-[ext_resource type="Script" path="res://Scripts/Passives/Abilities/double_up.gd" id="1_t722r"]
+[ext_resource type="Script" uid="uid://crgfvgahqffle" path="res://Scripts/Passives/Abilities/double_up.gd" id="1_t722r"]
 
 [node name="Double Up" type="Node"]
 script = ExtResource("1_t722r")

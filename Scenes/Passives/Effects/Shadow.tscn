@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://br347dleghx33"]
 
 [ext_resource type="Texture2D" uid="uid://delydh7o3v1ow" path="res://Sprites/Passives/Effects/Shadow.png" id="1_ug4ja"]
-[ext_resource type="Script" path="res://Scripts/Passives/Effects/shadow.gd" id="1_wiaio"]
+[ext_resource type="Script" uid="uid://y3uw3o75td2b" path="res://Scripts/Passives/Effects/shadow.gd" id="1_wiaio"]
 [ext_resource type="Texture2D" uid="uid://bdobltvf570ti" path="res://Sprites/Passives/Effects/Shadow Hand.png" id="2_cn3k5"]
 [ext_resource type="Texture2D" uid="uid://xxyym547o3vn" path="res://Sprites/Misc/Shadow.png" id="4_lqeep"]
 

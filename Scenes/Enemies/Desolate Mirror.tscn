@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_ymjst"]
 [ext_resource type="Resource" uid="uid://xcid1bpjyx4p" path="res://Resources/Enemies/desolate_mirror.tres" id="2_fk67k"]
-[ext_resource type="Script" path="res://Scripts/Enemies/Desolate Mirror/desolate_mirror.gd" id="2_htlsr"]
-[ext_resource type="Shader" path="res://Shaders/color_tint_shader.gdshader" id="2_vk22p"]
+[ext_resource type="Script" uid="uid://bu4eif20est2s" path="res://Scripts/Enemies/Desolate Mirror/desolate_mirror.gd" id="2_htlsr"]
+[ext_resource type="Shader" uid="uid://dsv0n8bsysyo6" path="res://Shaders/color_tint_shader.gdshader" id="2_vk22p"]
 [ext_resource type="Texture2D" uid="uid://dobg2vvsdb4f0" path="res://Sprites/Enemies/Desolate Mirror.png" id="3_owr7w"]
 [ext_resource type="AudioStream" uid="uid://bvvorvktbr0qx" path="res://Audio/SFX/Ding.mp3" id="6_1v3dl"]
 

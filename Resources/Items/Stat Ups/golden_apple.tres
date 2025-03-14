@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="golden_apple" load_steps=3 format=3 uid="uid://xi84evpkif1m"]
 
-[ext_resource type="Script" path="res://Scripts/Pickups/golden_apple.gd" id="1_s7d5r"]
+[ext_resource type="Script" uid="uid://3x2ngt1luqph" path="res://Scripts/Pickups/golden_apple.gd" id="1_s7d5r"]
 [ext_resource type="Texture2D" uid="uid://cn0lxkk0gecrc" path="res://Sprites/Stat Ups/Golden Apple.png" id="2_5e8gn"]
 
 [resource]

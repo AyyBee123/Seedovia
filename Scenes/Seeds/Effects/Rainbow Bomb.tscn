@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bhu2vawobwm7i"]
 
-[ext_resource type="Script" path="res://Scripts/Seeds/Effects/rainbow_bomb.gd" id="1_nqoaw"]
+[ext_resource type="Script" uid="uid://cc5wqjnpfa3yq" path="res://Scripts/Seeds/Effects/rainbow_bomb.gd" id="1_nqoaw"]
 
 [node name="Rainbow Bomb" type="Node"]
 script = ExtResource("1_nqoaw")

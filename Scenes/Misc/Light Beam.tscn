@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://j5e2v0usfii5"]
 
 [ext_resource type="Texture2D" uid="uid://v8vbx1wkqcwe" path="res://Sprites/Bosses/Haunted Fortress/Ghosts/Light Bean.png" id="1_6uf6r"]
-[ext_resource type="Script" path="res://Scripts/Bosses/Haunted Fortress/Light Beam.gd" id="2_i5yce"]
+[ext_resource type="Script" uid="uid://bfo1vk5symhs4" path="res://Scripts/Bosses/Haunted Fortress/Light Beam.gd" id="2_i5yce"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3xu7r"]
 atlas = ExtResource("1_6uf6r")

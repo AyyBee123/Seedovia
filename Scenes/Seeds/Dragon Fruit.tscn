@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_abris"]
 [ext_resource type="Texture2D" uid="uid://bds0skff6oqil" path="res://Sprites/Seeds/Dragon Fruit.png" id="2_8fhni"]
-[ext_resource type="Script" path="res://Scripts/Seeds/dragon_fruit.gd" id="2_tisd2"]
+[ext_resource type="Script" uid="uid://bngmchkknvpwa" path="res://Scripts/Seeds/dragon_fruit.gd" id="2_tisd2"]
 [ext_resource type="AudioStream" uid="uid://dg0pem3a76w0s" path="res://Audio/SFX/Dragon Roar Far.mp3" id="4_2e1av"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qjqbc"]

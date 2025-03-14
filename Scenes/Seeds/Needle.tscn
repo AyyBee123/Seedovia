@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_wd74r"]
 [ext_resource type="Texture2D" uid="uid://bigog546iv3tx" path="res://Sprites/Seeds/Needle.png" id="2_73t7b"]
-[ext_resource type="Script" path="res://Scripts/Seeds/needle.gd" id="3_vsd2a"]
+[ext_resource type="Script" uid="uid://xmf5h1e1ktst" path="res://Scripts/Seeds/needle.gd" id="3_vsd2a"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rrldt"]
 radius = 5.0

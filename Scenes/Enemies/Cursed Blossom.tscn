@@ -1,8 +1,8 @@
 [gd_scene load_steps=12 format=3 uid="uid://bx78leai7uqql"]
 
 [ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_jmmwr"]
-[ext_resource type="Script" path="res://Scripts/Enemies/Cursed Blossom/cursed_blossom.gd" id="2_j28a4"]
-[ext_resource type="Shader" path="res://Shaders/color_tint_shader.gdshader" id="2_r2bbe"]
+[ext_resource type="Script" uid="uid://eh0awx78hi4l" path="res://Scripts/Enemies/Cursed Blossom/cursed_blossom.gd" id="2_j28a4"]
+[ext_resource type="Shader" uid="uid://dsv0n8bsysyo6" path="res://Shaders/color_tint_shader.gdshader" id="2_r2bbe"]
 [ext_resource type="Resource" uid="uid://dmtkjlyvca7y3" path="res://Resources/Enemies/cursed_blossom.tres" id="3_5echr"]
 [ext_resource type="Texture2D" uid="uid://mw1x12yi15ve" path="res://Sprites/Enemies/Cursed Blossom.png" id="5_jdvsd"]
 

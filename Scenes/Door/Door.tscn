@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bapvnxcjqbso"]
 
-[ext_resource type="Script" path="res://Scripts/Level/door.gd" id="1_xo7uy"]
+[ext_resource type="Script" uid="uid://didchpo2vlawy" path="res://Scripts/Level/door.gd" id="1_xo7uy"]
 [ext_resource type="Texture2D" uid="uid://d1tgax3suj431" path="res://Sprites/Door/Door.png" id="2_0phtd"]
 [ext_resource type="FontFile" uid="uid://wbj0boqv37y6" path="res://Fonts/Description Font.ttf" id="3_lo11f"]
 

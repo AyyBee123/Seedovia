@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=4 uid="uid://6rlp66mjo1p"]
 
 [ext_resource type="PackedScene" uid="uid://cxoiy0x4nvtaa" path="res://Scenes/Levels/Base Level.tscn" id="1_ai65m"]
-[ext_resource type="Script" path="res://Scripts/Level/shop.gd" id="2_8cf1a"]
-[ext_resource type="Shader" path="res://Shaders/circle_transition.gdshader" id="3_k4mg7"]
+[ext_resource type="Script" uid="uid://chuhtu5cnvosk" path="res://Scripts/Level/shop.gd" id="2_8cf1a"]
+[ext_resource type="Shader" uid="uid://qm3syqtxdolu" path="res://Shaders/circle_transition.gdshader" id="3_k4mg7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0ecxy"]
 resource_local_to_scene = true

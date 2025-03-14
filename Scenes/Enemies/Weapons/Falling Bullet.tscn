@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://0uea8t61onfk"]
 
-[ext_resource type="Script" path="res://Scripts/Enemies/Weapons/falling_bullet.gd" id="2_6que3"]
+[ext_resource type="Script" uid="uid://bw72ahmghek2s" path="res://Scripts/Enemies/Weapons/falling_bullet.gd" id="2_6que3"]
 [ext_resource type="Texture2D" uid="uid://dads5uqf8tb8j" path="res://Sprites/Enemies/Weapons/Hat Bullet.png" id="2_dguvw"]
 [ext_resource type="Texture2D" uid="uid://xxyym547o3vn" path="res://Sprites/Misc/Shadow.png" id="4_qomub"]
 

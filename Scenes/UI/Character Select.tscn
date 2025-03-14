@@ -1,9 +1,9 @@
 [gd_scene load_steps=15 format=3 uid="uid://8lh64evv6imw"]
 
-[ext_resource type="Script" path="res://Scripts/UI/character_select.gd" id="1_jmjmr"]
+[ext_resource type="Script" uid="uid://uybucfv2vxti" path="res://Scripts/UI/character_select.gd" id="1_jmjmr"]
 [ext_resource type="Texture2D" uid="uid://2whsjb1rg2lm" path="res://Sprites/Character/Sapling/Sapling1.png" id="2_s2884"]
 [ext_resource type="FontFile" uid="uid://bkn7gmgx1wxgx" path="res://Fonts/Name Font.ttf" id="2_wxbw4"]
-[ext_resource type="Script" path="res://Scripts/UI/character.gd" id="3_alya1"]
+[ext_resource type="Script" uid="uid://bi85ki8xiitqf" path="res://Scripts/UI/character.gd" id="3_alya1"]
 [ext_resource type="Resource" uid="uid://cj0ugaawbg6a" path="res://Resources/Characters/sapling.tres" id="4_v56qf"]
 [ext_resource type="Texture2D" uid="uid://b7ynn50wtvp24" path="res://Sprites/Character/Berry/Berry1.png" id="6_ubcw7"]
 [ext_resource type="Resource" uid="uid://dxk70g7cem73p" path="res://Resources/Characters/berry.tres" id="7_yw2tk"]

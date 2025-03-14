@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bxx44nihbljiq"]
 
 [ext_resource type="PackedScene" uid="uid://b8gxpiw6v8asa" path="res://Scenes/Levels/Floor 2 Base.tscn" id="1_nse0b"]
-[ext_resource type="Shader" path="res://Shaders/circle_transition.gdshader" id="2_lp25k"]
+[ext_resource type="Shader" uid="uid://qm3syqtxdolu" path="res://Shaders/circle_transition.gdshader" id="2_lp25k"]
 [ext_resource type="PackedScene" uid="uid://beccqsvpy8njs" path="res://Scenes/Enemies/Puncky.tscn" id="3_r6vjl"]
 [ext_resource type="PackedScene" uid="uid://c1a4mvn6opy65" path="res://Scenes/Enemies/Obstacles/Death Puck.tscn" id="4_xcv8n"]
 [ext_resource type="PackedScene" uid="uid://b50lirnqd7i1t" path="res://Scenes/Enemies/Ice Pot.tscn" id="5_eteyh"]

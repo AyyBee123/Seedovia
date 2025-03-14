@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://4ktbndredfgt"]
 
-[ext_resource type="Script" path="res://Scripts/Seeds/Effects/rainbow_color.gd" id="1_go4k4"]
+[ext_resource type="Script" uid="uid://co6r74qq1pwu0" path="res://Scripts/Seeds/Effects/rainbow_color.gd" id="1_go4k4"]
 
 [node name="Rainbow Color" type="Node"]
 script = ExtResource("1_go4k4")

@@ -1,12 +1,12 @@
 [gd_scene load_steps=9 format=4 uid="uid://dxbbmsrbi1qwm"]
 
 [ext_resource type="PackedScene" uid="uid://cxoiy0x4nvtaa" path="res://Scenes/Levels/Base Level.tscn" id="1_8s78t"]
-[ext_resource type="Script" path="res://Scripts/Level/passive_room.gd" id="2_bchgi"]
+[ext_resource type="Script" uid="uid://cy3hhlailwqtd" path="res://Scripts/Level/passive_room.gd" id="2_bchgi"]
 [ext_resource type="PackedScene" uid="uid://bkbjq3dleklpw" path="res://Scenes/Items/Pickup Item.tscn" id="2_e1d5u"]
 [ext_resource type="PackedScene" uid="uid://bapvnxcjqbso" path="res://Scenes/Door/Door.tscn" id="3_mamrx"]
 [ext_resource type="PackedScene" uid="uid://b3ibupvqneqor" path="res://Scenes/Items/Item.tscn" id="4_2o7bb"]
 [ext_resource type="PackedScene" uid="uid://d1x7xscaoh6wq" path="res://Scenes/UI/Pause Menu.tscn" id="6_7lofc"]
-[ext_resource type="Shader" path="res://Shaders/circle_transition.gdshader" id="7_duyrb"]
+[ext_resource type="Shader" uid="uid://qm3syqtxdolu" path="res://Shaders/circle_transition.gdshader" id="7_duyrb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0ecxy"]
 resource_local_to_scene = true

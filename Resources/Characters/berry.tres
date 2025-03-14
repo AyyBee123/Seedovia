@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="character_class" load_steps=7 format=3 uid="uid://dxk70g7cem73p"]
 
-[ext_resource type="Script" path="res://Scripts/Characters/character_class.gd" id="1_620up"]
+[ext_resource type="Script" uid="uid://duh3qswkvpbi5" path="res://Scripts/Characters/character_class.gd" id="1_620up"]
 [ext_resource type="Texture2D" uid="uid://b7ynn50wtvp24" path="res://Sprites/Character/Berry/Berry1.png" id="1_i3se5"]
-[ext_resource type="Script" path="res://Scripts/Items/item_class.gd" id="2_17cxn"]
-[ext_resource type="Script" path="res://Scripts/Stats/seed_stats.gd" id="2_m0vmv"]
-[ext_resource type="Script" path="res://Scripts/Items/equipment_item_class.gd" id="4_jtdbb"]
+[ext_resource type="Script" uid="uid://cgysrio745xbn" path="res://Scripts/Items/item_class.gd" id="2_17cxn"]
+[ext_resource type="Script" uid="uid://c6ykhgvfkht5x" path="res://Scripts/Stats/seed_stats.gd" id="2_m0vmv"]
+[ext_resource type="Script" uid="uid://n64xabrw5ic3" path="res://Scripts/Items/equipment_item_class.gd" id="4_jtdbb"]
 [ext_resource type="Resource" uid="uid://cpavb28jlc2wj" path="res://Resources/Items/Seeds/strawberry.tres" id="8_x4txl"]
 
 [resource]

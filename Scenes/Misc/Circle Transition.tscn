@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://bwnklarbsachr"]
 
-[ext_resource type="Shader" path="res://Shaders/circle_transition.gdshader" id="1_unr83"]
+[ext_resource type="Shader" uid="uid://qm3syqtxdolu" path="res://Shaders/circle_transition.gdshader" id="1_unr83"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_q422n"]
 resource_local_to_scene = true
@@ -73,10 +73,10 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_o2thh"]
 _data = {
-"Close": SubResource("Animation_3nnus"),
-"Instant Open": SubResource("Animation_1tb7l"),
-"Open": SubResource("Animation_k680d"),
-"RESET": SubResource("Animation_57ksn")
+&"Close": SubResource("Animation_3nnus"),
+&"Instant Open": SubResource("Animation_1tb7l"),
+&"Open": SubResource("Animation_k680d"),
+&"RESET": SubResource("Animation_57ksn")
 }
 
 [node name="Circle Transition" type="ColorRect"]

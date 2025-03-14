@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://drhy5pt6svekf"]
 
 [ext_resource type="FontFile" uid="uid://wbj0boqv37y6" path="res://Fonts/Description Font.ttf" id="1_8s4rq"]
-[ext_resource type="Script" path="res://Scripts/Utils/console.gd" id="1_clrka"]
+[ext_resource type="Script" uid="uid://dsqoi6ih65bw3" path="res://Scripts/Utils/console.gd" id="1_clrka"]
 
 [node name="Console" type="CanvasLayer"]
 process_mode = 3

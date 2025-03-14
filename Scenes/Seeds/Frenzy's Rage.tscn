@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=3 uid="uid://caoqkkdddk3k3"]
 
 [ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_1cr17"]
-[ext_resource type="Script" path="res://Scripts/Seeds/frenzy's_rage.gd" id="2_v25mg"]
+[ext_resource type="Script" uid="uid://bsmctqblq8pn6" path="res://Scripts/Seeds/frenzy's_rage.gd" id="2_v25mg"]
 [ext_resource type="Texture2D" uid="uid://dt5icjd8t6jy5" path="res://Sprites/Bosses/Lunacy/Lunacy.png" id="2_y7r0y"]
 [ext_resource type="PackedScene" uid="uid://cttd7u6tngfqq" path="res://Scenes/Seeds/Effects/Frenzy's Rage Laser.tscn" id="3_81x2y"]
 [ext_resource type="AudioStream" uid="uid://bbi2dtrimxt82" path="res://Audio/SFX/Space Laser Noise.mp3" id="4_3gvnb"]

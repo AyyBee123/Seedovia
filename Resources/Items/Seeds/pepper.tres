@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="seed_class" load_steps=4 format=3 uid="uid://duy4e1baf65sc"]
 
-[ext_resource type="Script" path="res://Scripts/Stats/seed_stats.gd" id="1_e6vb5"]
+[ext_resource type="Script" uid="uid://c6ykhgvfkht5x" path="res://Scripts/Stats/seed_stats.gd" id="1_e6vb5"]
 [ext_resource type="PackedScene" uid="uid://dyfgeiipwqnnv" path="res://Scenes/Seeds/Pepper.tscn" id="1_fceuk"]
 [ext_resource type="Texture2D" uid="uid://cvsb5hlama56" path="res://Sprites/Seeds/Explosive Pepper.png" id="2_g8dn8"]
 

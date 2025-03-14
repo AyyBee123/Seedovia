@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b4qv2oi4vbgws" path="res://Scenes/Enemies/Obstacles/Obstacle.tscn" id="1_as8w0"]
 [ext_resource type="Texture2D" uid="uid://cm0auhl0xerwt" path="res://Sprites/Enemies/Death Ball.png" id="2_thihx"]
-[ext_resource type="Script" path="res://Scripts/Enemies/Obstacles/death_ball.gd" id="2_vo41m"]
+[ext_resource type="Script" uid="uid://bmp50hmirvqja" path="res://Scripts/Enemies/Obstacles/death_ball.gd" id="2_vo41m"]
 [ext_resource type="Resource" uid="uid://cidng1lhpshe2" path="res://Resources/Enemies/Obstacles/death_ball.tres" id="3_8oqks"]
 [ext_resource type="Texture2D" uid="uid://xxyym547o3vn" path="res://Sprites/Misc/Shadow.png" id="5_jvyc7"]
 

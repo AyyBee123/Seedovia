@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://0xem0wqlx8we"]
 
 [ext_resource type="Texture2D" uid="uid://dci8gbd6dopki" path="res://Sprites/Misc/Rock.png" id="1_xcly3"]
-[ext_resource type="Script" path="res://Scripts/Bosses/Haunted Fortress/rock.gd" id="2_ngeu6"]
+[ext_resource type="Script" uid="uid://bgr73e2b2ldut" path="res://Scripts/Bosses/Haunted Fortress/rock.gd" id="2_ngeu6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5g3rp"]
 radius = 6.0208

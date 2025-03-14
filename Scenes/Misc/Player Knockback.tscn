@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bp27ydbuenb27"]
 
-[ext_resource type="Script" path="res://Scripts/Misc/player_knockback.gd" id="1_q8wb1"]
+[ext_resource type="Script" uid="uid://cagvign2volnm" path="res://Scripts/Misc/player_knockback.gd" id="1_q8wb1"]
 
 [node name="Player Knockback" type="Node"]
 script = ExtResource("1_q8wb1")

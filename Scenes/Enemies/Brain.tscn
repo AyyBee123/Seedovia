@@ -1,11 +1,11 @@
 [gd_scene load_steps=13 format=3 uid="uid://yjbr0frt6d2y"]
 
 [ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_vkpan"]
-[ext_resource type="Script" path="res://Scripts/Enemies/Brain/brain.gd" id="2_lbarg"]
-[ext_resource type="Script" path="res://Scripts/Enemies/Brain/state_machine.gd" id="3_03vwl"]
+[ext_resource type="Script" uid="uid://dhk41yeai3ghw" path="res://Scripts/Enemies/Brain/brain.gd" id="2_lbarg"]
+[ext_resource type="Script" uid="uid://dgkw11dklq5qb" path="res://Scripts/Enemies/Brain/state_machine.gd" id="3_03vwl"]
 [ext_resource type="Texture2D" uid="uid://qdai8wddasox" path="res://Sprites/Enemies/Brain.png" id="3_812vl"]
 [ext_resource type="Resource" uid="uid://dmkooj7hsw36k" path="res://Resources/Enemies/brain.tres" id="3_frbuf"]
-[ext_resource type="Shader" path="res://Shaders/color_tint_shader.gdshader" id="5_ihct3"]
+[ext_resource type="Shader" uid="uid://dsv0n8bsysyo6" path="res://Shaders/color_tint_shader.gdshader" id="5_ihct3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xvcm1"]
 size = Vector2(28, 19.5)

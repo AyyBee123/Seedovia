@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b68u76upt44mu"]
 
 [ext_resource type="Texture2D" uid="uid://bdsv83mvmuyas" path="res://Sprites/Seeds/Fertilizer Stink.png" id="1_g0hlo"]
-[ext_resource type="Script" path="res://Scripts/Seeds/Effects/stink.gd" id="2_hnrkh"]
+[ext_resource type="Script" uid="uid://bg8hojlaorhnr" path="res://Scripts/Seeds/Effects/stink.gd" id="2_hnrkh"]
 
 [node name="Stink" type="Sprite2D"]
 modulate = Color(1, 1, 1, 0.392157)

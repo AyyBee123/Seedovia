@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://c2bmb024gpggu"]
 
 [ext_resource type="Texture2D" uid="uid://07mogisnw6m" path="res://Sprites/Passives/Effects/Banana.png" id="1_nvd3o"]
-[ext_resource type="Script" path="res://Scripts/Passives/Effects/banana.gd" id="2_82g1y"]
+[ext_resource type="Script" uid="uid://t5m3c4qgnjvw" path="res://Scripts/Passives/Effects/banana.gd" id="2_82g1y"]
 [ext_resource type="PackedScene" uid="uid://cm57uqupdkrtw" path="res://Scenes/Passives/Effects/Banana Child.tscn" id="3_5pi4c"]
 [ext_resource type="PackedScene" uid="uid://cp3hdtxn75uyt" path="res://Scenes/Passives/Effects/Explosion.tscn" id="3_e5itn"]
 [ext_resource type="PackedScene" uid="uid://ledtfnmbfqxq" path="res://Scenes/Misc/Visual Effects.tscn" id="5_aq3wj"]

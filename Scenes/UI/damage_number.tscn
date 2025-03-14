@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://clbrobi55mlf6"]
 
-[ext_resource type="Script" path="res://Scripts/UI/damage_number.gd" id="1_m2wrn"]
+[ext_resource type="Script" uid="uid://ydxuv7b253kf" path="res://Scripts/UI/damage_number.gd" id="1_m2wrn"]
 [ext_resource type="FontFile" uid="uid://wbj0boqv37y6" path="res://Fonts/Description Font.ttf" id="1_q80kb"]
 
 [sub_resource type="Animation" id="Animation_6ek5e"]
@@ -69,8 +69,8 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jf7u4"]
 _data = {
-"RESET": SubResource("Animation_6ek5e"),
-"Rise and Fall": SubResource("Animation_xwcn1")
+&"RESET": SubResource("Animation_6ek5e"),
+&"Rise and Fall": SubResource("Animation_xwcn1")
 }
 
 [node name="DamageNumber" type="Node2D"]

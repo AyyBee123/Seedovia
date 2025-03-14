@@ -1,9 +1,9 @@
 [gd_scene load_steps=46 format=3 uid="uid://bl7yfmhdjfd5l"]
 
 [ext_resource type="PackedScene" uid="uid://bfapejv6ymqws" path="res://Scenes/Bosses/Boss.tscn" id="1_xvga5"]
-[ext_resource type="Shader" path="res://Shaders/color_tint_shader.gdshader" id="2_4g725"]
-[ext_resource type="Script" path="res://Scripts/Bosses/Stone Serpent/stone_serpent.gd" id="2_4niov"]
-[ext_resource type="Script" path="res://Scripts/Bosses/Stone Serpent/state_machine.gd" id="3_0iia1"]
+[ext_resource type="Shader" uid="uid://dsv0n8bsysyo6" path="res://Shaders/color_tint_shader.gdshader" id="2_4g725"]
+[ext_resource type="Script" uid="uid://ihomwb4blrps" path="res://Scripts/Bosses/Stone Serpent/stone_serpent.gd" id="2_4niov"]
+[ext_resource type="Script" uid="uid://bcrm3bp346cya" path="res://Scripts/Bosses/Stone Serpent/state_machine.gd" id="3_0iia1"]
 [ext_resource type="Texture2D" uid="uid://q8l0wp1asbp1" path="res://Sprites/Bosses/Stone Serpent/Head.png" id="3_mqfth"]
 [ext_resource type="Resource" uid="uid://btsfopt47ddxm" path="res://Resources/Bosses/stone_serpent.tres" id="3_xslpg"]
 [ext_resource type="AudioStream" uid="uid://mc66wc8mdc1d" path="res://Audio/SFX/Stomp.mp3" id="7_vnpnh"]

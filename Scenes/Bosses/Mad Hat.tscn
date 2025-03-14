@@ -1,9 +1,9 @@
 [gd_scene load_steps=39 format=3 uid="uid://bibfc5xdf0ygi"]
 
 [ext_resource type="PackedScene" uid="uid://bfapejv6ymqws" path="res://Scenes/Bosses/Boss.tscn" id="1_qnygg"]
-[ext_resource type="Script" path="res://Scripts/Bosses/Mad Hat/mad_hat.gd" id="2_3m7wg"]
-[ext_resource type="Shader" path="res://Shaders/color_tint_shader.gdshader" id="2_8brnf"]
-[ext_resource type="Script" path="res://Scripts/Bosses/Mad Hat/state_machine.gd" id="3_2yk65"]
+[ext_resource type="Script" uid="uid://dqs11apeeuoov" path="res://Scripts/Bosses/Mad Hat/mad_hat.gd" id="2_3m7wg"]
+[ext_resource type="Shader" uid="uid://dsv0n8bsysyo6" path="res://Shaders/color_tint_shader.gdshader" id="2_8brnf"]
+[ext_resource type="Script" uid="uid://t1v32sia8ppf" path="res://Scripts/Bosses/Mad Hat/state_machine.gd" id="3_2yk65"]
 [ext_resource type="Resource" uid="uid://dkmwqtm3yuqyt" path="res://Resources/Bosses/mad_hat.tres" id="3_xjqh5"]
 [ext_resource type="Texture2D" uid="uid://u6j60ygaou5i" path="res://Sprites/Bosses/Mad Hat/Mad Hat.png" id="5_c14x3"]
 [ext_resource type="Texture2D" uid="uid://dc38rl0gq1dtu" path="res://Sprites/Bosses/Mad Hat/Shadow.png" id="7_8805d"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://0clgydaeshno"]
 
 [ext_resource type="PackedScene" uid="uid://b4qv2oi4vbgws" path="res://Scenes/Enemies/Obstacles/Obstacle.tscn" id="1_8k6kr"]
-[ext_resource type="Script" path="res://Scripts/Enemies/Obstacles/wall_face.gd" id="2_vu1t2"]
+[ext_resource type="Script" uid="uid://dvuhqlioaok5d" path="res://Scripts/Enemies/Obstacles/wall_face.gd" id="2_vu1t2"]
 [ext_resource type="Texture2D" uid="uid://gatvhg1ffb2k" path="res://Sprites/Enemies/Wall Face.png" id="2_ymhv2"]
 [ext_resource type="Resource" uid="uid://ct22yt0lq7l0s" path="res://Resources/Enemies/Obstacles/wall_face.tres" id="3_ka3ow"]
 [ext_resource type="AudioStream" uid="uid://ldf61nl1wewl" path="res://Audio/SFX/Thud3.mp3" id="5_jpyak"]

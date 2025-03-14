@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="leaf_heart_pickup" load_steps=3 format=3 uid="uid://qe2im0nxttai"]
 
-[ext_resource type="Script" path="res://Scripts/Pickups/leaf_heart.gd" id="1_y7yui"]
+[ext_resource type="Script" uid="uid://dshmb8u51wqew" path="res://Scripts/Pickups/leaf_heart.gd" id="1_y7yui"]
 [ext_resource type="Texture2D" uid="uid://bohyfecssibgo" path="res://Sprites/Pickups/Leaf Heart.png" id="2_jqwmo"]
 
 [resource]

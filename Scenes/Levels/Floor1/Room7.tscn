@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cyv0j5gd6x4o"]
 
 [ext_resource type="PackedScene" uid="uid://bnawmyjsajle3" path="res://Scenes/Levels/Floor 1 Base.tscn" id="1_563iy"]
-[ext_resource type="Shader" path="res://Shaders/circle_transition.gdshader" id="2_tm3sc"]
+[ext_resource type="Shader" uid="uid://qm3syqtxdolu" path="res://Shaders/circle_transition.gdshader" id="2_tm3sc"]
 [ext_resource type="PackedScene" uid="uid://cwhuabj3fk773" path="res://Scenes/Enemies/Bomb Pot.tscn" id="3_8xxsl"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0ecxy"]

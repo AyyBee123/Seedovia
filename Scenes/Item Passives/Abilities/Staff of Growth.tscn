@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dyfa5m8aslibw"]
 
-[ext_resource type="Script" path="res://Scripts/Item Passives/Abilities/staff_of_growth.gd" id="1_c8d26"]
+[ext_resource type="Script" uid="uid://ddxli6ntb6lro" path="res://Scripts/Item Passives/Abilities/staff_of_growth.gd" id="1_c8d26"]
 
 [node name="Staff of Growth" type="Node"]
 script = ExtResource("1_c8d26")

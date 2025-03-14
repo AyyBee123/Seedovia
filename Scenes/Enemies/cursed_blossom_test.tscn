@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://vpltaaiispr3"]
 
 [ext_resource type="PackedScene" uid="uid://bx78leai7uqql" path="res://Scenes/Enemies/Cursed Blossom.tscn" id="1_k1bi8"]
-[ext_resource type="Script" path="res://Scripts/Enemies/Cursed Blossom/cursed_blossom_test.gd" id="2_o5ox5"]
-[ext_resource type="Shader" path="res://Shaders/color_tint_shader.gdshader" id="2_o07yf"]
+[ext_resource type="Script" uid="uid://1oy40opv0q2y" path="res://Scripts/Enemies/Cursed Blossom/cursed_blossom_test.gd" id="2_o5ox5"]
+[ext_resource type="Shader" uid="uid://dsv0n8bsysyo6" path="res://Shaders/color_tint_shader.gdshader" id="2_o07yf"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ba36p"]
 resource_local_to_scene = true

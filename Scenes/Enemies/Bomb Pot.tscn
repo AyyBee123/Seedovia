@@ -1,8 +1,8 @@
 [gd_scene load_steps=26 format=3 uid="uid://cwhuabj3fk773"]
 
 [ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_3jdd0"]
-[ext_resource type="Script" path="res://Scripts/Enemies/Bomb Pot/bomb_pot.gd" id="2_bas7n"]
-[ext_resource type="Shader" path="res://Shaders/color_tint_shader.gdshader" id="2_bvus4"]
+[ext_resource type="Script" uid="uid://rlavuutbt3bm" path="res://Scripts/Enemies/Bomb Pot/bomb_pot.gd" id="2_bas7n"]
+[ext_resource type="Shader" uid="uid://dsv0n8bsysyo6" path="res://Shaders/color_tint_shader.gdshader" id="2_bvus4"]
 [ext_resource type="Resource" uid="uid://rmdwnamdo50n" path="res://Resources/Enemies/bomb_pot.tres" id="3_f6f3i"]
 [ext_resource type="Texture2D" uid="uid://dbfgcx0ln8nx8" path="res://Sprites/Enemies/Bomb Pot.png" id="3_ymeya"]
 [ext_resource type="Texture2D" uid="uid://xxyym547o3vn" path="res://Sprites/Misc/Shadow.png" id="5_qdswe"]

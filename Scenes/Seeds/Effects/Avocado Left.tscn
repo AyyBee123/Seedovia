@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c47nplw3ikl2g"]
 
 [ext_resource type="Texture2D" uid="uid://d36hnso5paca4" path="res://Sprites/Seeds/Avocado Split Left.png" id="2_dalfg"]
-[ext_resource type="Script" path="res://Scripts/Seeds/Effects/avocado_split.gd" id="2_e6pqx"]
+[ext_resource type="Script" uid="uid://csyxeqlv52mrj" path="res://Scripts/Seeds/Effects/avocado_split.gd" id="2_e6pqx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kukf1"]
 size = Vector2(6, 25)

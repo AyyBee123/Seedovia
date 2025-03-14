@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://rbm0k6df0m03"]
 
-[ext_resource type="Script" path="res://Scripts/Item Passives/Abilities/three_leaf_clover.gd" id="1_03ygb"]
+[ext_resource type="Script" uid="uid://ckuegrexi8iss" path="res://Scripts/Item Passives/Abilities/three_leaf_clover.gd" id="1_03ygb"]
 
 [node name="Three-Leaf Clover" type="Node"]
 script = ExtResource("1_03ygb")

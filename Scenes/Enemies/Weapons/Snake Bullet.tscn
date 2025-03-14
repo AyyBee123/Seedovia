@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bbc2vnfngjpdx" path="res://Scenes/Enemies/Weapons/Bullet.tscn" id="1_rsv1r"]
 [ext_resource type="Texture2D" uid="uid://6bak4gsuheof" path="res://Sprites/Enemies/Weapons/Square Bullet.png" id="2_tkinh"]
-[ext_resource type="Script" path="res://Scripts/Enemies/Weapons/snake_bullet.gd" id="3_gja8y"]
+[ext_resource type="Script" uid="uid://b1mgecmftoryy" path="res://Scripts/Enemies/Weapons/snake_bullet.gd" id="3_gja8y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nh2fj"]
 

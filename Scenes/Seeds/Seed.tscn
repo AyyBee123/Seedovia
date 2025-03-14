@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bg0xjmkfe0uqd"]
 
-[ext_resource type="Script" path="res://Scripts/Seeds/seed_template.gd" id="1_jrnia"]
+[ext_resource type="Script" uid="uid://bbdl5cfweu77e" path="res://Scripts/Seeds/seed_template.gd" id="1_jrnia"]
 [ext_resource type="PackedScene" uid="uid://ledtfnmbfqxq" path="res://Scenes/Misc/Visual Effects.tscn" id="2_ws04t"]
 
 [node name="Seed" type="Sprite2D" groups=["Seed", "Weapon"]]

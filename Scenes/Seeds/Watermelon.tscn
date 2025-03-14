@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://cvq734opn1l1t"]
 
-[ext_resource type="Script" path="res://Scripts/Seeds/watermelon.gd" id="1_rf7tf"]
+[ext_resource type="Script" uid="uid://bk2y05pc5infu" path="res://Scripts/Seeds/watermelon.gd" id="1_rf7tf"]
 [ext_resource type="Texture2D" uid="uid://cm1txwdom4wan" path="res://Sprites/Seeds/Watermelon.png" id="2_uewwp"]
 [ext_resource type="PackedScene" uid="uid://cp3hdtxn75uyt" path="res://Scenes/Passives/Effects/Explosion.tscn" id="3_uyl80"]
 [ext_resource type="AudioStream" uid="uid://dvpk5kbugelwb" path="res://Audio/SFX/Metal 1.mp3" id="4_amymn"]

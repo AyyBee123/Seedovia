@@ -1,14 +1,14 @@
 [gd_scene load_steps=27 format=3 uid="uid://cu4nkraqvyn0v"]
 
 [ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_17wyg"]
-[ext_resource type="Script" path="res://Scripts/Enemies/Jello Sr/jello.gd" id="2_ld6hk"]
+[ext_resource type="Script" uid="uid://cc5kfxc4p3q5w" path="res://Scripts/Enemies/Jello Sr/jello.gd" id="2_ld6hk"]
 [ext_resource type="Resource" uid="uid://diblaijdub2it" path="res://Resources/Enemies/jello.tres" id="3_b8gc0"]
-[ext_resource type="Shader" path="res://Shaders/color_tint_shader.gdshader" id="4_hv6xd"]
+[ext_resource type="Shader" uid="uid://dsv0n8bsysyo6" path="res://Shaders/color_tint_shader.gdshader" id="4_hv6xd"]
 [ext_resource type="Texture2D" uid="uid://clt377wqhks8r" path="res://Sprites/Enemies/Jello.png" id="5_l0ppc"]
 [ext_resource type="AudioStream" uid="uid://caljmag43g88" path="res://Audio/SFX/Splat3.mp3" id="6_psbox"]
 [ext_resource type="AudioStream" uid="uid://bnwgdhdobsrbm" path="res://Audio/SFX/Splat2.mp3" id="7_44h05"]
 [ext_resource type="Texture2D" uid="uid://byxqhvd60jyc1" path="res://Sprites/Misc/Big Shadow.png" id="8_mfd4q"]
-[ext_resource type="Script" path="res://Scripts/Enemies/Slime/state_machine.gd" id="9_j3ty3"]
+[ext_resource type="Script" uid="uid://vsdau7i483ku" path="res://Scripts/Enemies/Slime/state_machine.gd" id="9_j3ty3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mo5ki"]
 radius = 20.6667
@@ -319,8 +319,8 @@ tracks/7/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yd317"]
 _data = {
-"RESET": SubResource("Animation_tuuym"),
-"new_animation": SubResource("Animation_jn043")
+&"RESET": SubResource("Animation_tuuym"),
+&"new_animation": SubResource("Animation_jn043")
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y2118"]

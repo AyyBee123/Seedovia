@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_3ypve"]
 [ext_resource type="Texture2D" uid="uid://bv57vjrffbftc" path="res://Sprites/Seeds/Gloomshroom.png" id="2_4e538"]
-[ext_resource type="Script" path="res://Scripts/Seeds/gloomshroom.gd" id="2_lpnje"]
+[ext_resource type="Script" uid="uid://rc8stvbhhlxm" path="res://Scripts/Seeds/gloomshroom.gd" id="2_lpnje"]
 [ext_resource type="Texture2D" uid="uid://bucggq0vm2lhf" path="res://Sprites/Seeds/Gloomshroom Depression Area.png" id="4_57nhf"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ovcfo"]

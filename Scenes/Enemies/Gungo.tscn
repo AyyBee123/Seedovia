@@ -1,8 +1,8 @@
 [gd_scene load_steps=23 format=3 uid="uid://bgp0jvhp4e40j"]
 
 [ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_qburm"]
-[ext_resource type="Shader" path="res://Shaders/color_tint_shader.gdshader" id="2_6xvxd"]
-[ext_resource type="Script" path="res://Scripts/Enemies/Gungo/gungo.gd" id="2_m4y7e"]
+[ext_resource type="Shader" uid="uid://dsv0n8bsysyo6" path="res://Shaders/color_tint_shader.gdshader" id="2_6xvxd"]
+[ext_resource type="Script" uid="uid://dw066slpte4py" path="res://Scripts/Enemies/Gungo/gungo.gd" id="2_m4y7e"]
 [ext_resource type="Resource" uid="uid://bd3wbhkkm4dqy" path="res://Resources/Enemies/gungo.tres" id="3_0nmnq"]
 [ext_resource type="Texture2D" uid="uid://dn4qof31cbtpb" path="res://Sprites/Enemies/Gungo.png" id="3_j8exa"]
 [ext_resource type="Texture2D" uid="uid://xxyym547o3vn" path="res://Sprites/Misc/Shadow.png" id="6_sohnd"]

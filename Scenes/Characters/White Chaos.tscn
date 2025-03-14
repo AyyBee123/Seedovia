@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://jmqrc0iy1uob"]
 
 [ext_resource type="PackedScene" uid="uid://cu63rxmy71bcg" path="res://Scenes/Player/Player.tscn" id="1_uo5hu"]
-[ext_resource type="Script" path="res://Scripts/Characters/white_chaos.gd" id="2_wbuoh"]
+[ext_resource type="Script" uid="uid://uraamit4avu8" path="res://Scripts/Characters/white_chaos.gd" id="2_wbuoh"]
 [ext_resource type="Texture2D" uid="uid://b53os8trmovki" path="res://Sprites/Character/White Shrub/White Chaos1.png" id="3_344h6"]
 [ext_resource type="Texture2D" uid="uid://6vom2g6kgnh7" path="res://Sprites/Character/White Shrub/White Chaos2.png" id="4_fbg48"]
 [ext_resource type="Texture2D" uid="uid://b3ap2ddmxb1a8" path="res://Sprites/Character/White Shrub/White Chaos3.png" id="5_48ndp"]

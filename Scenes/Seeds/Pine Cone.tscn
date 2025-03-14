@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_urqx3"]
 [ext_resource type="Texture2D" uid="uid://dbk2fxlpkbpe1" path="res://Sprites/Seeds/Pine Cone.png" id="2_c14qg"]
-[ext_resource type="Script" path="res://Scripts/Seeds/pine_cone.gd" id="3_5kxy1"]
+[ext_resource type="Script" uid="uid://cvr7thmenlr5b" path="res://Scripts/Seeds/pine_cone.gd" id="3_5kxy1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_61x12"]
 radius = 7.0

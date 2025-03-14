@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://btj7fce3d0awr"]
 
 [ext_resource type="PackedScene" uid="uid://bbc2vnfngjpdx" path="res://Scenes/Enemies/Weapons/Bullet.tscn" id="1_vapop"]
-[ext_resource type="Script" path="res://Scripts/Enemies/Weapons/stationary_bullet.gd" id="2_ldy0s"]
+[ext_resource type="Script" uid="uid://d0gtpa2hgyndi" path="res://Scripts/Enemies/Weapons/stationary_bullet.gd" id="2_ldy0s"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p64ug"]
 resource_local_to_scene = true

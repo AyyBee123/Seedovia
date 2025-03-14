@@ -1,10 +1,10 @@
 [gd_scene load_steps=17 format=3 uid="uid://nugyieleg8w1"]
 
 [ext_resource type="PackedScene" uid="uid://b4qv2oi4vbgws" path="res://Scenes/Enemies/Obstacles/Obstacle.tscn" id="1_w7bch"]
-[ext_resource type="Script" path="res://Scripts/Enemies/Obstacles/pot.gd" id="2_3ypn4"]
+[ext_resource type="Script" uid="uid://dtxcbuxkywffi" path="res://Scripts/Enemies/Obstacles/pot.gd" id="2_3ypn4"]
 [ext_resource type="Texture2D" uid="uid://cvkbldh1cvjhc" path="res://Sprites/Enemies/Pot.png" id="2_wtvaw"]
 [ext_resource type="Resource" uid="uid://uao1nagap3e1" path="res://Resources/Enemies/Obstacles/pot.tres" id="3_w4sjd"]
-[ext_resource type="Script" path="res://Scripts/Enemies/Log/state_machine.gd" id="4_hxku6"]
+[ext_resource type="Script" uid="uid://duuycqnuak2j4" path="res://Scripts/Enemies/Log/state_machine.gd" id="4_hxku6"]
 [ext_resource type="PackedScene" uid="uid://ckespv7sxyjn3" path="res://Scenes/Enemies/Weapons/Liquid.tscn" id="4_o1o50"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vtyta"]

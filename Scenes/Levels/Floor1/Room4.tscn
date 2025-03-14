@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://1qqfo51e340"]
 
 [ext_resource type="PackedScene" uid="uid://bnawmyjsajle3" path="res://Scenes/Levels/Floor 1 Base.tscn" id="1_whv1c"]
-[ext_resource type="Shader" path="res://Shaders/circle_transition.gdshader" id="2_kwj2d"]
+[ext_resource type="Shader" uid="uid://qm3syqtxdolu" path="res://Shaders/circle_transition.gdshader" id="2_kwj2d"]
 [ext_resource type="PackedScene" uid="uid://d4j1lfex5tqx0" path="res://Scenes/Enemies/Clay Potato.tscn" id="3_tbqdl"]
 [ext_resource type="PackedScene" uid="uid://dooq0rslv0rx2" path="res://Scenes/Enemies/Dancing Mushroom.tscn" id="4_i0r0s"]
 

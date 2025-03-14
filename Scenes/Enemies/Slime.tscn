@@ -1,12 +1,12 @@
 [gd_scene load_steps=29 format=3 uid="uid://bsb35lcd8lwyq"]
 
 [ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_060oy"]
-[ext_resource type="Shader" path="res://Shaders/color_tint_shader.gdshader" id="2_bid1r"]
-[ext_resource type="Script" path="res://Scripts/Enemies/Slime/slime.gd" id="2_do8dp"]
+[ext_resource type="Shader" uid="uid://dsv0n8bsysyo6" path="res://Shaders/color_tint_shader.gdshader" id="2_bid1r"]
+[ext_resource type="Script" uid="uid://c5ktb05cv1llx" path="res://Scripts/Enemies/Slime/slime.gd" id="2_do8dp"]
 [ext_resource type="Resource" uid="uid://2qf3w6jrf0a8" path="res://Resources/Enemies/slime.tres" id="3_7cgcg"]
 [ext_resource type="Texture2D" uid="uid://doydcheo58gjv" path="res://Sprites/Enemies/Slime.png" id="3_gsqyf"]
 [ext_resource type="Texture2D" uid="uid://xxyym547o3vn" path="res://Sprites/Misc/Shadow.png" id="4_0r8v0"]
-[ext_resource type="Script" path="res://Scripts/Enemies/Slime/state_machine.gd" id="6_m40q1"]
+[ext_resource type="Script" uid="uid://vsdau7i483ku" path="res://Scripts/Enemies/Slime/state_machine.gd" id="6_m40q1"]
 [ext_resource type="AudioStream" uid="uid://bnwgdhdobsrbm" path="res://Audio/SFX/Splat2.mp3" id="8_trbp4"]
 [ext_resource type="AudioStream" uid="uid://caljmag43g88" path="res://Audio/SFX/Splat3.mp3" id="9_jysmt"]
 
@@ -327,8 +327,8 @@ tracks/9/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yd317"]
 _data = {
-"RESET": SubResource("Animation_tuuym"),
-"new_animation": SubResource("Animation_jn043")
+&"RESET": SubResource("Animation_tuuym"),
+&"new_animation": SubResource("Animation_jn043")
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y2118"]
@@ -541,8 +541,8 @@ tracks/8/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tfc4t"]
 _data = {
-"RESET": SubResource("Animation_ljsbp"),
-"spawn": SubResource("Animation_a6etk")
+&"RESET": SubResource("Animation_ljsbp"),
+&"spawn": SubResource("Animation_a6etk")
 }
 
 [node name="Slime" groups=["Slime"] instance=ExtResource("1_060oy")]

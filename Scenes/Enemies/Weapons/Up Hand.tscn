@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://d1ubcio3x6ldg"]
 
-[ext_resource type="Script" path="res://Scripts/Enemies/Weapons/up_hand.gd" id="1_6i1ee"]
+[ext_resource type="Script" uid="uid://bxxkhx2do5a2o" path="res://Scripts/Enemies/Weapons/up_hand.gd" id="1_6i1ee"]
 [ext_resource type="Texture2D" uid="uid://be6w60na4lf7v" path="res://Sprites/Bosses/Mad Hat/Up Hand.png" id="1_gl7rd"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hloi2"]

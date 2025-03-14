@@ -1,11 +1,11 @@
 [gd_scene load_steps=54 format=3 uid="uid://cfx83c1w2rerq"]
 
 [ext_resource type="PackedScene" uid="uid://bfapejv6ymqws" path="res://Scenes/Bosses/Boss.tscn" id="1_wvxb2"]
-[ext_resource type="Script" path="res://Scripts/Bosses/Jumbo/jumbo.gd" id="2_n3t3u"]
-[ext_resource type="Shader" path="res://Shaders/color_tint_shader.gdshader" id="2_njeb5"]
+[ext_resource type="Script" uid="uid://cdiqqwqss6pid" path="res://Scripts/Bosses/Jumbo/jumbo.gd" id="2_n3t3u"]
+[ext_resource type="Shader" uid="uid://dsv0n8bsysyo6" path="res://Shaders/color_tint_shader.gdshader" id="2_njeb5"]
 [ext_resource type="Resource" uid="uid://dc2yk2wwikojx" path="res://Resources/Bosses/jumbo.tres" id="3_nh3aw"]
 [ext_resource type="Texture2D" uid="uid://c0ehimn1aq8l7" path="res://Sprites/Bosses/Jumbo/Jumbo.png" id="3_t5nkt"]
-[ext_resource type="Script" path="res://Scripts/Bosses/Jumbo/state_machine.gd" id="5_o4gg0"]
+[ext_resource type="Script" uid="uid://c3idwyvnlkrq6" path="res://Scripts/Bosses/Jumbo/state_machine.gd" id="5_o4gg0"]
 [ext_resource type="AudioStream" uid="uid://caljmag43g88" path="res://Audio/SFX/Splat3.mp3" id="7_mvsl1"]
 [ext_resource type="AudioStream" uid="uid://bnwgdhdobsrbm" path="res://Audio/SFX/Splat2.mp3" id="8_2bn8l"]
 [ext_resource type="AudioStream" uid="uid://mc66wc8mdc1d" path="res://Audio/SFX/Stomp.mp3" id="9_4bi4l"]
@@ -514,8 +514,8 @@ tracks/5/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yqjb4"]
 _data = {
-"Jump": SubResource("Animation_4xajw"),
-"RESET": SubResource("Animation_6xg0d")
+&"Jump": SubResource("Animation_4xajw"),
+&"RESET": SubResource("Animation_6xg0d")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qvfh8"]

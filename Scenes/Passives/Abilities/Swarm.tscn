@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dlv2r6v7no7ex"]
 
-[ext_resource type="Script" path="res://Scripts/Passives/Abilities/swarm.gd" id="1_rr2i4"]
+[ext_resource type="Script" uid="uid://jfxlp711cmpv" path="res://Scripts/Passives/Abilities/swarm.gd" id="1_rr2i4"]
 [ext_resource type="PackedScene" uid="uid://e8cemev7jmp3" path="res://Scenes/Passives/Effects/Bee.tscn" id="2_wal8w"]
 
 [node name="Swarm" type="Node"]

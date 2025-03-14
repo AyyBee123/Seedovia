@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://g3su60jb1mb"]
 
-[ext_resource type="Script" path="res://Scripts/Misc/splash.gd" id="1_a0mnl"]
+[ext_resource type="Script" uid="uid://bqxgpjdw77i5s" path="res://Scripts/Misc/splash.gd" id="1_a0mnl"]
 [ext_resource type="Texture2D" uid="uid://qmvwufg2u3tt" path="res://Sprites/Passives/Effects/Splash.png" id="2_ilihk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cnc6p"]

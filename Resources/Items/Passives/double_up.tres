@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="passive_class" load_steps=3 format=3 uid="uid://d200qysmewgr1"]
 
-[ext_resource type="Script" path="res://Scripts/Passives/Classes/passive_class.gd" id="1_jwr3a"]
+[ext_resource type="Script" uid="uid://yr5gdtdbvmoc" path="res://Scripts/Passives/Classes/passive_class.gd" id="1_jwr3a"]
 [ext_resource type="Texture2D" uid="uid://cmvm7sf6qcivo" path="res://Sprites/Passives/Icons/Double Up.png" id="2_sanol"]
 
 [resource]

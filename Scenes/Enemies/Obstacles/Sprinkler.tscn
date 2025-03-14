@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://b53gwu0jwjurc"]
 
 [ext_resource type="PackedScene" uid="uid://b4qv2oi4vbgws" path="res://Scenes/Enemies/Obstacles/Obstacle.tscn" id="1_hf0cm"]
-[ext_resource type="Script" path="res://Scripts/Enemies/Obstacles/sprinkler.gd" id="2_2c8ty"]
+[ext_resource type="Script" uid="uid://dsa8e426f2cbe" path="res://Scripts/Enemies/Obstacles/sprinkler.gd" id="2_2c8ty"]
 [ext_resource type="Texture2D" uid="uid://db3dy8ki2107b" path="res://Sprites/Enemies/Sprinkler.png" id="2_isdkg"]
 [ext_resource type="Resource" uid="uid://bjs3fi8dutaga" path="res://Resources/Enemies/Obstacles/sprinkler.tres" id="3_iw5qt"]
 

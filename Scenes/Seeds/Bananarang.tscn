@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_rosip"]
 [ext_resource type="Texture2D" uid="uid://07mogisnw6m" path="res://Sprites/Passives/Effects/Banana.png" id="2_nol6y"]
-[ext_resource type="Script" path="res://Scripts/Seeds/bananarang.gd" id="3_s1k5y"]
+[ext_resource type="Script" uid="uid://c7lx6hubhlnsv" path="res://Scripts/Seeds/bananarang.gd" id="3_s1k5y"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1bbr8"]
 radius = 9.0

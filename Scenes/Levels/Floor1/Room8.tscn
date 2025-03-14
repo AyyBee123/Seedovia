@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://ccncc2ss4rdm7"]
 
 [ext_resource type="PackedScene" uid="uid://bnawmyjsajle3" path="res://Scenes/Levels/Floor 1 Base.tscn" id="1_yv12p"]
-[ext_resource type="Shader" path="res://Shaders/circle_transition.gdshader" id="2_cff8g"]
+[ext_resource type="Shader" uid="uid://qm3syqtxdolu" path="res://Shaders/circle_transition.gdshader" id="2_cff8g"]
 [ext_resource type="PackedScene" uid="uid://bx78leai7uqql" path="res://Scenes/Enemies/Cursed Blossom.tscn" id="3_qxmhp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0ecxy"]

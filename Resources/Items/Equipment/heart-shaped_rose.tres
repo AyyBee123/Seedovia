@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="equipment_item_class" load_steps=3 format=3 uid="uid://bbfermhp68kch"]
 
-[ext_resource type="Script" path="res://Scripts/Items/equipment_item_class.gd" id="1_1x3gy"]
+[ext_resource type="Script" uid="uid://n64xabrw5ic3" path="res://Scripts/Items/equipment_item_class.gd" id="1_1x3gy"]
 [ext_resource type="Texture2D" uid="uid://dnlsikhw7kft1" path="res://Sprites/Talismans/Heart-Shaped Rose.png" id="2_dbwj5"]
 
 [resource]

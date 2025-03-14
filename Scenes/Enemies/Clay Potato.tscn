@@ -1,8 +1,8 @@
 [gd_scene load_steps=18 format=3 uid="uid://d4j1lfex5tqx0"]
 
 [ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_lsvdx"]
-[ext_resource type="Script" path="res://Scripts/Enemies/Clay Potato/clay_potato.gd" id="2_7ws2c"]
-[ext_resource type="Shader" path="res://Shaders/color_tint_shader.gdshader" id="2_vmxee"]
+[ext_resource type="Script" uid="uid://dkmwnj6efie0y" path="res://Scripts/Enemies/Clay Potato/clay_potato.gd" id="2_7ws2c"]
+[ext_resource type="Shader" uid="uid://dsv0n8bsysyo6" path="res://Shaders/color_tint_shader.gdshader" id="2_vmxee"]
 [ext_resource type="Texture2D" uid="uid://74a278x3c14b" path="res://Sprites/Enemies/Clay Potato.png" id="3_5omuu"]
 [ext_resource type="Resource" uid="uid://cax00a2vvquaf" path="res://Resources/Enemies/clay_potato.tres" id="3_mgxam"]
 [ext_resource type="AudioStream" uid="uid://mc66wc8mdc1d" path="res://Audio/SFX/Stomp.mp3" id="6_eod3y"]

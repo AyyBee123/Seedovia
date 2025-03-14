@@ -101,8 +101,8 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yrqh5"]
 _data = {
-"RESET": SubResource("Animation_ysqfa"),
-"new_animation": SubResource("Animation_et4w3")
+&"RESET": SubResource("Animation_ysqfa"),
+&"new_animation": SubResource("Animation_et4w3")
 }
 
 [node name="Liquid Ice" type="Sprite2D"]

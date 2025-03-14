@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_r3kmi"]
 [ext_resource type="Resource" uid="uid://cj6j3hb5mk2ly" path="res://Resources/Enemies/alfred.tres" id="2_5shye"]
-[ext_resource type="Script" path="res://Scripts/Enemies/Alfred/alfred.gd" id="2_241fs"]
-[ext_resource type="Shader" path="res://Shaders/color_tint_shader.gdshader" id="2_s3vfr"]
+[ext_resource type="Script" uid="uid://cudw5t54d3ynt" path="res://Scripts/Enemies/Alfred/alfred.gd" id="2_241fs"]
+[ext_resource type="Shader" uid="uid://dsv0n8bsysyo6" path="res://Shaders/color_tint_shader.gdshader" id="2_s3vfr"]
 [ext_resource type="Texture2D" uid="uid://b7jfc2r353mgo" path="res://Sprites/Enemies/Alfred.png" id="3_es1oh"]
 [ext_resource type="Texture2D" uid="uid://bbmi4ffv5y71t" path="res://Sprites/Enemies/Alfred Eye.png" id="4_gswhn"]
 [ext_resource type="Texture2D" uid="uid://xxyym547o3vn" path="res://Sprites/Misc/Shadow.png" id="7_kaksf"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://1c7vkc6rpska"]
 
 [ext_resource type="Texture2D" uid="uid://q34eioqqi1ce" path="res://Sprites/Passives/Effects/Prickle Stem.png" id="1_4lb1r"]
-[ext_resource type="Script" path="res://Scripts/Passives/Effects/prickle_stem.gd" id="2_07f7g"]
+[ext_resource type="Script" uid="uid://bb4y110kkiqia" path="res://Scripts/Passives/Effects/prickle_stem.gd" id="2_07f7g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a6e5b"]
 resource_local_to_scene = true

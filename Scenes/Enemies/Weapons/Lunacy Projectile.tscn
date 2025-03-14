@@ -1,8 +1,8 @@
 [gd_scene load_steps=16 format=3 uid="uid://brqwp72jbo660"]
 
 [ext_resource type="Texture2D" uid="uid://dt5icjd8t6jy5" path="res://Sprites/Bosses/Lunacy/Lunacy.png" id="1_aadnl"]
-[ext_resource type="Shader" path="res://Shaders/color_tint_shader.gdshader" id="1_iiskt"]
-[ext_resource type="Script" path="res://Scripts/Enemies/Weapons/lunacy_projectile.gd" id="2_jhixh"]
+[ext_resource type="Shader" uid="uid://dsv0n8bsysyo6" path="res://Shaders/color_tint_shader.gdshader" id="1_iiskt"]
+[ext_resource type="Script" uid="uid://f1s14j37nqs6" path="res://Scripts/Enemies/Weapons/lunacy_projectile.gd" id="2_jhixh"]
 [ext_resource type="Resource" uid="uid://c3mggil48co0c" path="res://Resources/Bosses/lunacy_projectile.tres" id="3_c34ba"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v8wfy"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cmxec00pg2k3j"]
 
 [ext_resource type="Texture2D" uid="uid://5ernno3aqcwo" path="res://Sprites/Bosses/Mad Hat/Left Hand.png" id="1_8ayj6"]
-[ext_resource type="Script" path="res://Scripts/Enemies/Weapons/up_hand.gd" id="2_ast23"]
+[ext_resource type="Script" uid="uid://bxxkhx2do5a2o" path="res://Scripts/Enemies/Weapons/up_hand.gd" id="2_ast23"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hloi2"]
 radius = 28.0

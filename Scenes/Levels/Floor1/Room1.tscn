@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cqnd2vw7l1311"]
 
 [ext_resource type="PackedScene" uid="uid://bnawmyjsajle3" path="res://Scenes/Levels/Floor 1 Base.tscn" id="1_vyik3"]
-[ext_resource type="Shader" path="res://Shaders/circle_transition.gdshader" id="2_lxkve"]
+[ext_resource type="Shader" uid="uid://qm3syqtxdolu" path="res://Shaders/circle_transition.gdshader" id="2_lxkve"]
 [ext_resource type="PackedScene" uid="uid://b53gwu0jwjurc" path="res://Scenes/Enemies/Obstacles/Sprinkler.tscn" id="3_7ygnj"]
 [ext_resource type="PackedScene" uid="uid://bsb35lcd8lwyq" path="res://Scenes/Enemies/Slime.tscn" id="4_euk8g"]
 

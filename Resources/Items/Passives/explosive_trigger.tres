@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="passive_class" load_steps=4 format=3 uid="uid://bgqhfo4rk4tso"]
 
-[ext_resource type="Script" path="res://Scripts/Passives/Classes/passive_class.gd" id="1_4574b"]
+[ext_resource type="Script" uid="uid://yr5gdtdbvmoc" path="res://Scripts/Passives/Classes/passive_class.gd" id="1_4574b"]
 [ext_resource type="PackedScene" uid="uid://blj4gbudleafp" path="res://Scenes/Passives/Abilities/Explosive Trigger.tscn" id="1_q5r77"]
 [ext_resource type="Texture2D" uid="uid://dc186h5pvg1wi" path="res://Sprites/Passives/Icons/Explosive Trigger.png" id="2_ch2ht"]
 
@@ -10,3 +10,4 @@ passive_name = "Explovise Trigger"
 sprite = ExtResource("2_ch2ht")
 description = "Every 3 attacks, an explosion triggers around you."
 passive_ability = ExtResource("1_q5r77")
+unlocked = true

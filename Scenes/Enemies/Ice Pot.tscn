@@ -1,8 +1,8 @@
 [gd_scene load_steps=15 format=3 uid="uid://b50lirnqd7i1t"]
 
 [ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_khd1o"]
-[ext_resource type="Script" path="res://Scripts/Enemies/Ice Pot/ice_pot.gd" id="2_4irb3"]
-[ext_resource type="Shader" path="res://Shaders/color_tint_shader.gdshader" id="2_qlu3v"]
+[ext_resource type="Script" uid="uid://c247irgmcwy7l" path="res://Scripts/Enemies/Ice Pot/ice_pot.gd" id="2_4irb3"]
+[ext_resource type="Shader" uid="uid://dsv0n8bsysyo6" path="res://Shaders/color_tint_shader.gdshader" id="2_qlu3v"]
 [ext_resource type="Resource" uid="uid://dpaiadl17vko5" path="res://Resources/Enemies/ice_pot.tres" id="3_xyx2c"]
 [ext_resource type="Texture2D" uid="uid://cfmmycyytrdhb" path="res://Sprites/Enemies/Ice Pot.png" id="4_pkxko"]
 [ext_resource type="Texture2D" uid="uid://xxyym547o3vn" path="res://Sprites/Misc/Shadow.png" id="6_43hmw"]

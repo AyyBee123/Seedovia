@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_my4v5"]
 [ext_resource type="Texture2D" uid="uid://c168dsmdwu17m" path="res://Sprites/Seeds/Wood Thorn.png" id="2_ocjhd"]
-[ext_resource type="Script" path="res://Scripts/Seeds/wood_thorn.gd" id="3_de2pr"]
+[ext_resource type="Script" uid="uid://cggj4m2km3cp4" path="res://Scripts/Seeds/wood_thorn.gd" id="3_de2pr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5kly6"]
 size = Vector2(9, 17)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://tddo6760bb8l"]
 
-[ext_resource type="Script" path="res://Scripts/Characters/Passives/random_seed_&_talisman.gd" id="1_3xu7u"]
+[ext_resource type="Script" uid="uid://u8y55fwj4do2" path="res://Scripts/Characters/Passives/random_seed_&_talisman.gd" id="1_3xu7u"]
 
 [node name="Random Seed & Talisman" type="Node"]
 script = ExtResource("1_3xu7u")

@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://e8cemev7jmp3"]
 
 [ext_resource type="Texture2D" uid="uid://clnkqiwrltkpj" path="res://Sprites/Passives/Effects/Bee.png" id="1_w371i"]
-[ext_resource type="Script" path="res://Scripts/Passives/Effects/bee.gd" id="2_pm3r2"]
+[ext_resource type="Script" uid="uid://dh3erbff5xdrd" path="res://Scripts/Passives/Effects/bee.gd" id="2_pm3r2"]
 [ext_resource type="PackedScene" uid="uid://g3su60jb1mb" path="res://Scenes/Misc/Splash.tscn" id="3_x4a3m"]
 [ext_resource type="PackedScene" uid="uid://ledtfnmbfqxq" path="res://Scenes/Misc/Visual Effects.tscn" id="4_1whs2"]
 

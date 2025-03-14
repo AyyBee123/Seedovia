@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="max_health_pickup" load_steps=3 format=3 uid="uid://tj2irgdp4vi0"]
 
-[ext_resource type="Script" path="res://Scripts/Pickups/max_health.gd" id="1_3hxh6"]
+[ext_resource type="Script" uid="uid://dyelxbb0lgk2o" path="res://Scripts/Pickups/max_health.gd" id="1_3hxh6"]
 [ext_resource type="Texture2D" uid="uid://cekwpbqy6a5sk" path="res://Sprites/Pickups/Max Health.png" id="2_qeb6s"]
 
 [resource]

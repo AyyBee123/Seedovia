@@ -1,11 +1,11 @@
 [gd_scene load_steps=35 format=3 uid="uid://bpqtpjmrsgper"]
 
 [ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_jw5rj"]
-[ext_resource type="Shader" path="res://Shaders/color_tint_shader.gdshader" id="2_3sq4q"]
-[ext_resource type="Script" path="res://Scripts/Enemies/Puddling/puddling.gd" id="2_myxmw"]
+[ext_resource type="Shader" uid="uid://dsv0n8bsysyo6" path="res://Shaders/color_tint_shader.gdshader" id="2_3sq4q"]
+[ext_resource type="Script" uid="uid://ducfbq7srm6c6" path="res://Scripts/Enemies/Puddling/puddling.gd" id="2_myxmw"]
 [ext_resource type="Resource" uid="uid://dujdl6gtqskbi" path="res://Resources/Enemies/puddling.tres" id="3_cvjmi"]
 [ext_resource type="Texture2D" uid="uid://dfu7ckyktt75" path="res://Sprites/Enemies/Puddling.png" id="4_5dc53"]
-[ext_resource type="Script" path="res://Scripts/Enemies/Puddling/state_machine.gd" id="5_k1e65"]
+[ext_resource type="Script" uid="uid://bydyflbuddvce" path="res://Scripts/Enemies/Puddling/state_machine.gd" id="5_k1e65"]
 [ext_resource type="AudioStream" uid="uid://caljmag43g88" path="res://Audio/SFX/Splat3.mp3" id="5_vlbyn"]
 [ext_resource type="AudioStream" uid="uid://bnwgdhdobsrbm" path="res://Audio/SFX/Splat2.mp3" id="6_gu276"]
 [ext_resource type="Texture2D" uid="uid://xxyym547o3vn" path="res://Sprites/Misc/Shadow.png" id="6_p6at2"]
@@ -295,8 +295,8 @@ tracks/5/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yd317"]
 _data = {
-"RESET": SubResource("Animation_tuuym"),
-"new_animation": SubResource("Animation_jn043")
+&"RESET": SubResource("Animation_tuuym"),
+&"new_animation": SubResource("Animation_jn043")
 }
 
 [sub_resource type="Animation" id="Animation_ljsbp"]
@@ -496,8 +496,8 @@ tracks/8/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tfc4t"]
 _data = {
-"RESET": SubResource("Animation_ljsbp"),
-"spawn": SubResource("Animation_a6etk")
+&"RESET": SubResource("Animation_ljsbp"),
+&"spawn": SubResource("Animation_a6etk")
 }
 
 [node name="Puddling" groups=["Puddling", "Slime"] instance=ExtResource("1_jw5rj")]

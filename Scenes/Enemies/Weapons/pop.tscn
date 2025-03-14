@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://curmn3ypxaoih"]
 
 [ext_resource type="Texture2D" uid="uid://0o7biv8pusfm" path="res://Sprites/Enemies/Weapons/Pop.png" id="1_ao8tt"]
-[ext_resource type="Script" path="res://Scripts/Enemies/Weapons/liquid_pop.gd" id="1_v0o40"]
+[ext_resource type="Script" uid="uid://p42syfp1adr1" path="res://Scripts/Enemies/Weapons/liquid_pop.gd" id="1_v0o40"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bhc2t"]
 atlas = ExtResource("1_ao8tt")

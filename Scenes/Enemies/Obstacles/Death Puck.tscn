@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b4qv2oi4vbgws" path="res://Scenes/Enemies/Obstacles/Obstacle.tscn" id="1_vjmrl"]
 [ext_resource type="Texture2D" uid="uid://dvokshydt4lmh" path="res://Sprites/Enemies/Death Puck.png" id="2_kksja"]
-[ext_resource type="Script" path="res://Scripts/Enemies/Obstacles/death_puck.gd" id="2_yof68"]
+[ext_resource type="Script" uid="uid://c22qxwvm4hnny" path="res://Scripts/Enemies/Obstacles/death_puck.gd" id="2_yof68"]
 [ext_resource type="Resource" uid="uid://csene8v23fs4u" path="res://Resources/Enemies/Obstacles/death_puck.tres" id="3_n4i44"]
 [ext_resource type="Texture2D" uid="uid://xxyym547o3vn" path="res://Sprites/Misc/Shadow.png" id="3_roh4i"]
 [ext_resource type="AudioStream" uid="uid://dvpk5kbugelwb" path="res://Audio/SFX/Metal 1.mp3" id="6_f213a"]

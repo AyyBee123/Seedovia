@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cfw5fj0ulrcmg"]
 
-[ext_resource type="Script" path="res://Scripts/Item Passives/Effects/three_leaf_clover_spawn.gd" id="1_si57a"]
+[ext_resource type="Script" uid="uid://bq6g1mxlbs0ew" path="res://Scripts/Item Passives/Effects/three_leaf_clover_spawn.gd" id="1_si57a"]
 
 [node name="Three-Leaf Clover Spawn" type="Node"]
 script = ExtResource("1_si57a")

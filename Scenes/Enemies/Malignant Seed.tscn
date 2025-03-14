@@ -1,9 +1,9 @@
 [gd_scene load_steps=14 format=3 uid="uid://f1csqvgtqoj5"]
 
 [ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_hn3r1"]
-[ext_resource type="Script" path="res://Scripts/Enemies/Malignant Seed/malignant_seed.gd" id="2_jty25"]
+[ext_resource type="Script" uid="uid://30d88vnln31o" path="res://Scripts/Enemies/Malignant Seed/malignant_seed.gd" id="2_jty25"]
 [ext_resource type="Resource" uid="uid://mlo3vhxdsjoc" path="res://Resources/Enemies/malignant_seed.tres" id="3_4rius"]
-[ext_resource type="Shader" path="res://Shaders/color_tint_shader.gdshader" id="3_p3g52"]
+[ext_resource type="Shader" uid="uid://dsv0n8bsysyo6" path="res://Shaders/color_tint_shader.gdshader" id="3_p3g52"]
 [ext_resource type="Texture2D" uid="uid://y872hidntbsd" path="res://Sprites/Enemies/Malignant Seed.png" id="4_d887j"]
 [ext_resource type="Texture2D" uid="uid://xxyym547o3vn" path="res://Sprites/Misc/Shadow.png" id="5_pmor8"]
 [ext_resource type="AudioStream" uid="uid://qcsu4lhts47k" path="res://Audio/SFX/Fart.mp3" id="7_i8mw5"]

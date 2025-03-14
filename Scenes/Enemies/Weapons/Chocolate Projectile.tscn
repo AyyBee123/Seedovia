@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://dbo6o1wyf3jf6"]
 
 [ext_resource type="Texture2D" uid="uid://bcjpb3beggyex" path="res://Sprites/Bosses/Jumbo/Chocolate Projectile.png" id="1_1ftb3"]
-[ext_resource type="Script" path="res://Scripts/Enemies/Weapons/chocolate_projectile.gd" id="2_jhkwu"]
+[ext_resource type="Script" uid="uid://cgmfe1byj7gnu" path="res://Scripts/Enemies/Weapons/chocolate_projectile.gd" id="2_jhkwu"]
 [ext_resource type="Texture2D" uid="uid://xxyym547o3vn" path="res://Sprites/Misc/Shadow.png" id="3_1lukk"]
 
 [sub_resource type="Animation" id="Animation_hwqdd"]
@@ -114,8 +114,8 @@ tracks/4/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2i5fe"]
 _data = {
-"RESET": SubResource("Animation_hwqdd"),
-"new_animation": SubResource("Animation_wt8ns")
+&"RESET": SubResource("Animation_hwqdd"),
+&"new_animation": SubResource("Animation_wt8ns")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hcvxp"]

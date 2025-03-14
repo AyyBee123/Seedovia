@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://6qic3lphvydx"]
 
 [ext_resource type="FontFile" uid="uid://wbj0boqv37y6" path="res://Fonts/Description Font.ttf" id="1_8r3wc"]
-[ext_resource type="Script" path="res://Scripts/Items/shop_item.gd" id="1_gjbpq"]
+[ext_resource type="Script" uid="uid://dhkioa55dw6g4" path="res://Scripts/Items/shop_item.gd" id="1_gjbpq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cgbdb"]
 radius = 8.0

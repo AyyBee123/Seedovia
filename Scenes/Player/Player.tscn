@@ -1,13 +1,13 @@
 [gd_scene load_steps=14 format=3 uid="uid://cu63rxmy71bcg"]
 
-[ext_resource type="Script" path="res://Scripts/Player/player.gd" id="2_f7nwd"]
-[ext_resource type="Script" path="res://Scripts/Player/StateMachine.gd" id="3_ojktk"]
+[ext_resource type="Script" uid="uid://baiqylxdh1qdv" path="res://Scripts/Player/player.gd" id="2_f7nwd"]
+[ext_resource type="Script" uid="uid://bwqgewllb2g17" path="res://Scripts/Player/StateMachine.gd" id="3_ojktk"]
 [ext_resource type="Texture2D" uid="uid://2o0nxg1xv6xm" path="res://Sprites/UI/Cursor.png" id="6_ddx17"]
 [ext_resource type="Texture2D" uid="uid://xxyym547o3vn" path="res://Sprites/Misc/Shadow.png" id="7_u5ajd"]
 [ext_resource type="PackedScene" uid="uid://civnfvhref4lg" path="res://Scenes/Stats/Player UI.tscn" id="8_sj1lu"]
-[ext_resource type="Script" path="res://Scripts/Player/slow_detect.gd" id="8_ydoyx"]
-[ext_resource type="Script" path="res://Scripts/Player/ground_damage_detect.gd" id="9_41aww"]
-[ext_resource type="Script" path="res://Scripts/Player/slippery_detect.gd" id="10_qetuo"]
+[ext_resource type="Script" uid="uid://cm08ag8iqh68y" path="res://Scripts/Player/slow_detect.gd" id="8_ydoyx"]
+[ext_resource type="Script" uid="uid://djaypa2j6s2b7" path="res://Scripts/Player/ground_damage_detect.gd" id="9_41aww"]
+[ext_resource type="Script" uid="uid://bnj23ev1isv3p" path="res://Scripts/Player/slippery_detect.gd" id="10_qetuo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iqaxp"]
 size = Vector2(12, 20)
@@ -30,7 +30,7 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3ihlv"]
 _data = {
-"Invulnerable": SubResource("Animation_o3tge")
+&"Invulnerable": SubResource("Animation_o3tge")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5m6np"]

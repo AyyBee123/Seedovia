@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=3 uid="uid://36bor5t8tf2w"]
 
 [ext_resource type="PackedScene" uid="uid://b4qv2oi4vbgws" path="res://Scenes/Enemies/Obstacles/Obstacle.tscn" id="1_knls0"]
-[ext_resource type="Script" path="res://Scripts/Enemies/Ethereal Pot/ethereal_pot.gd" id="2_lvj4t"]
+[ext_resource type="Script" uid="uid://bcmuhbfse7tox" path="res://Scripts/Enemies/Ethereal Pot/ethereal_pot.gd" id="2_lvj4t"]
 [ext_resource type="Texture2D" uid="uid://8orjyxyppnsn" path="res://Sprites/Enemies/Ethereal Pot.png" id="2_x2n6h"]
 [ext_resource type="Resource" uid="uid://23nccodxyw6" path="res://Resources/Enemies/Obstacles/ethereal_pot.tres" id="3_2q7j3"]
 [ext_resource type="Texture2D" uid="uid://xxyym547o3vn" path="res://Sprites/Misc/Shadow.png" id="5_w53jr"]

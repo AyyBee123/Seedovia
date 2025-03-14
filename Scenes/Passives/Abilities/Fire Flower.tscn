@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b1ityh857h0fx"]
 
-[ext_resource type="Script" path="res://Scripts/Passives/Abilities/fire_flower.gd" id="1_pwqck"]
+[ext_resource type="Script" uid="uid://blra3ccsli5pq" path="res://Scripts/Passives/Abilities/fire_flower.gd" id="1_pwqck"]
 [ext_resource type="PackedScene" uid="uid://bdfjfp4piyikm" path="res://Scenes/Passives/Effects/Burning Weapon.tscn" id="2_gx2h6"]
 [ext_resource type="PackedScene" uid="uid://bo6ku1yadjytf" path="res://Scenes/Passives/Effects/Burning.tscn" id="2_ncev4"]
 

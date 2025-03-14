@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dk2y72tev2h30"]
 
 [ext_resource type="Texture2D" uid="uid://c32vn73w6v037" path="res://Sprites/Bosses/Lunacy/Tooth Projectile.png" id="1_vvv5l"]
-[ext_resource type="Script" path="res://Scripts/Enemies/Weapons/tooth.gd" id="2_d7o8p"]
+[ext_resource type="Script" uid="uid://bfvo0tp8vsp2y" path="res://Scripts/Enemies/Weapons/tooth.gd" id="2_d7o8p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u8ltq"]
 size = Vector2(13, 7)

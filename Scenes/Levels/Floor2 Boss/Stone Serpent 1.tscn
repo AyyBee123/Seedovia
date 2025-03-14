@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://b4tiqc3awrnxe"]
 
 [ext_resource type="PackedScene" uid="uid://b8gxpiw6v8asa" path="res://Scenes/Levels/Floor 2 Base.tscn" id="1_2uulj"]
-[ext_resource type="Shader" path="res://Shaders/circle_transition.gdshader" id="2_odfot"]
+[ext_resource type="Shader" uid="uid://qm3syqtxdolu" path="res://Shaders/circle_transition.gdshader" id="2_odfot"]
 [ext_resource type="PackedScene" uid="uid://bl7yfmhdjfd5l" path="res://Scenes/Bosses/Stone Serpent.tscn" id="3_4bf03"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0ecxy"]

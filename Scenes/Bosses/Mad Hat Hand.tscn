@@ -1,10 +1,10 @@
 [gd_scene load_steps=25 format=3 uid="uid://cqgt7hbhaae2b"]
 
 [ext_resource type="PackedScene" uid="uid://b4qv2oi4vbgws" path="res://Scenes/Enemies/Obstacles/Obstacle.tscn" id="1_4aj6p"]
-[ext_resource type="Script" path="res://Scripts/Bosses/Mad Hat/mad_hat_hand.gd" id="2_6g525"]
+[ext_resource type="Script" uid="uid://qc3veg0krw5c" path="res://Scripts/Bosses/Mad Hat/mad_hat_hand.gd" id="2_6g525"]
 [ext_resource type="Texture2D" uid="uid://b2tfuugaaj8a0" path="res://Sprites/Bosses/Mad Hat/Mad Hat Hand.png" id="2_djoc1"]
 [ext_resource type="Resource" uid="uid://bh3bc506gpaqo" path="res://Resources/Enemies/Obstacles/mad_hat_hand.tres" id="3_kjh2v"]
-[ext_resource type="Script" path="res://Scripts/Bosses/Mad Hat/hand_state_machine.gd" id="4_lhes7"]
+[ext_resource type="Script" uid="uid://dh2ikosov6ks2" path="res://Scripts/Bosses/Mad Hat/hand_state_machine.gd" id="4_lhes7"]
 [ext_resource type="Texture2D" uid="uid://dc38rl0gq1dtu" path="res://Sprites/Bosses/Mad Hat/Shadow.png" id="6_ucugf"]
 [ext_resource type="AudioStream" uid="uid://12krr2r6guun" path="res://Audio/SFX/Jump.mp3" id="7_bremr"]
 [ext_resource type="AudioStream" uid="uid://mc66wc8mdc1d" path="res://Audio/SFX/Stomp.mp3" id="8_wjkah"]
@@ -256,8 +256,8 @@ tracks/4/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yp2ec"]
 _data = {
-"RESET": SubResource("Animation_na3t5"),
-"new_animation": SubResource("Animation_d37vi")
+&"RESET": SubResource("Animation_na3t5"),
+&"new_animation": SubResource("Animation_d37vi")
 }
 
 [node name="Mad Hat Hand" groups=["Mad Hat Hand"] instance=ExtResource("1_4aj6p")]

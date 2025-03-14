@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c1jh4pbgs5a35"]
 
-[ext_resource type="Script" path="res://Scripts/Item Passives/Abilities/empty_pot_effect.gd" id="1_td5mw"]
+[ext_resource type="Script" uid="uid://didrnfqhayf21" path="res://Scripts/Item Passives/Abilities/empty_pot_effect.gd" id="1_td5mw"]
 
 [node name="Empty Pot Effect" type="Node"]
 script = ExtResource("1_td5mw")

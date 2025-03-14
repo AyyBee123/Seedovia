@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://dfafxnw5132qr"]
 
-[ext_resource type="Script" path="res://Scripts/UI/passive_choice.gd" id="1_7x1m1"]
+[ext_resource type="Script" uid="uid://bbqwew0hj1m1p" path="res://Scripts/UI/passive_choice.gd" id="1_7x1m1"]
 [ext_resource type="Texture2D" uid="uid://cmhhfcqibnxtw" path="res://Sprites/Passive UI/Passive Background.png" id="1_ayyp6"]
 [ext_resource type="FontFile" uid="uid://bkn7gmgx1wxgx" path="res://Fonts/Name Font.ttf" id="3_4afso"]
 [ext_resource type="Texture2D" uid="uid://cbgu0fp1f5ewh" path="res://Sprites/Passive UI/Passive Choice.png" id="4_3krng"]

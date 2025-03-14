@@ -1,6 +1,6 @@
 [gd_scene load_steps=66 format=4 uid="uid://cxoiy0x4nvtaa"]
 
-[ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_5cm3y"]
+[ext_resource type="Script" uid="uid://dsmnebj4u35lm" path="res://Scripts/Level/Level.gd" id="1_5cm3y"]
 [ext_resource type="Texture2D" uid="uid://cvgvhjvhndf2x" path="res://Sprites/Wall/Floor 1 Corner.png" id="2_1m20m"]
 [ext_resource type="Texture2D" uid="uid://rr3d43hfh1xs" path="res://Sprites/Wall/Tile Placeholder.png" id="2_snary"]
 [ext_resource type="PackedScene" uid="uid://bapvnxcjqbso" path="res://Scenes/Door/Door.tscn" id="4_5a3ht"]
@@ -33,11 +33,11 @@
 [ext_resource type="Texture2D" uid="uid://dgm74bhux424c" path="res://Sprites/Wall/Floor 4 (5).png" id="15_c85hw"]
 [ext_resource type="Texture2D" uid="uid://hrymty8dayju" path="res://Sprites/Wall/Floor 4 Corner.png" id="16_yxl5x"]
 [ext_resource type="Texture2D" uid="uid://03uvmrcdb4p4" path="res://Sprites/Ground/Floor 4.png" id="17_0pvqi"]
-[ext_resource type="Script" path="res://Scripts/Level/camera.gd" id="17_vc7xa"]
+[ext_resource type="Script" uid="uid://cc3umck283x4g" path="res://Scripts/Level/camera.gd" id="17_vc7xa"]
 [ext_resource type="Texture2D" uid="uid://b5lak1uuttbmv" path="res://Sprites/Wall/Dark.png" id="18_jbgar"]
 [ext_resource type="Texture2D" uid="uid://mt3c0bg3xhsu" path="res://Sprites/Ground/Dark.png" id="19_sbyqn"]
 [ext_resource type="PackedScene" uid="uid://bwnklarbsachr" path="res://Scenes/Misc/Circle Transition.tscn" id="27_nhpnk"]
-[ext_resource type="Shader" path="res://Shaders/circle_transition.gdshader" id="28_rryfq"]
+[ext_resource type="Shader" uid="uid://qm3syqtxdolu" path="res://Shaders/circle_transition.gdshader" id="28_rryfq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_otqcg"]
 resource_name = "Floor 1 Wall Corner"

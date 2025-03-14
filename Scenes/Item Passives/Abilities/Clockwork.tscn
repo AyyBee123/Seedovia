@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c3xtehth3yq3u"]
 
-[ext_resource type="Script" path="res://Scripts/Item Passives/Abilities/clockwork.gd" id="1_7jfyi"]
+[ext_resource type="Script" uid="uid://bl4dnf3b2kx1u" path="res://Scripts/Item Passives/Abilities/clockwork.gd" id="1_7jfyi"]
 
 [node name="Clockwork" type="Node"]
 script = ExtResource("1_7jfyi")

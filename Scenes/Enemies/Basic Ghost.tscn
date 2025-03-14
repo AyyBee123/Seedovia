@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://curhfrvk3echs"]
 
 [ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_rcdhx"]
-[ext_resource type="Script" path="res://Scripts/Enemies/Basic Ghost/basic_ghost.gd" id="2_cnmiu"]
+[ext_resource type="Script" uid="uid://dtubvk202kldn" path="res://Scripts/Enemies/Basic Ghost/basic_ghost.gd" id="2_cnmiu"]
 [ext_resource type="Texture2D" uid="uid://c7f7lv67qgg3w" path="res://Sprites/Enemies/Basic Ghost.png" id="3_bbj24"]
 [ext_resource type="Resource" uid="uid://d0d5pkl04gbin" path="res://Resources/Enemies/basic_enemy.tres" id="3_unlog"]
 

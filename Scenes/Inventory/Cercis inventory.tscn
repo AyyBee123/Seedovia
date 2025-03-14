@@ -1,9 +1,9 @@
 [gd_scene load_steps=42 format=4 uid="uid://darl38uluep4r"]
 
-[ext_resource type="Script" path="res://Scripts/Inventory/inventory.gd" id="1_a05ny"]
+[ext_resource type="Script" uid="uid://syqonlcnj50x" path="res://Scripts/Inventory/inventory.gd" id="1_a05ny"]
 [ext_resource type="Texture2D" uid="uid://osvetf3hj5du" path="res://Sprites/Inventory/Inventory Background.png" id="2_uo1hq"]
 [ext_resource type="Texture2D" uid="uid://bn8ohqrnr01ka" path="res://Sprites/Inventory/Seed Slot.png" id="3_0utaa"]
-[ext_resource type="Script" path="res://Scripts/Inventory/inventory_slot.gd" id="4_w1g6j"]
+[ext_resource type="Script" uid="uid://cxcf3pcevyax0" path="res://Scripts/Inventory/inventory_slot.gd" id="4_w1g6j"]
 [ext_resource type="Texture2D" uid="uid://bd11oobrf6yka" path="res://Sprites/Inventory/Seed Slot Link.png" id="5_k6cdb"]
 [ext_resource type="FontFile" uid="uid://wbj0boqv37y6" path="res://Fonts/Description Font.ttf" id="6_51onf"]
 [ext_resource type="Texture2D" uid="uid://clm05g4ys2gja" path="res://Sprites/Inventory/Cercis Slot.png" id="6_hrdna"]

@@ -1,15 +1,15 @@
 [gd_scene load_steps=64 format=3 uid="uid://dwdf1e1fw3t5u"]
 
 [ext_resource type="PackedScene" uid="uid://bfapejv6ymqws" path="res://Scenes/Bosses/Boss.tscn" id="1_ip7gk"]
-[ext_resource type="Script" path="res://Scripts/Bosses/Lunacy/lunacy.gd" id="2_1itmv"]
-[ext_resource type="Shader" path="res://Shaders/color_tint_shader.gdshader" id="2_2ba3b"]
+[ext_resource type="Script" uid="uid://ceksm3ej2mw4e" path="res://Scripts/Bosses/Lunacy/lunacy.gd" id="2_1itmv"]
+[ext_resource type="Shader" uid="uid://dsv0n8bsysyo6" path="res://Shaders/color_tint_shader.gdshader" id="2_2ba3b"]
 [ext_resource type="Texture2D" uid="uid://dt5icjd8t6jy5" path="res://Sprites/Bosses/Lunacy/Lunacy.png" id="3_an2mv"]
-[ext_resource type="Script" path="res://Scripts/Bosses/Lunacy/state_machine.gd" id="3_kcoqw"]
+[ext_resource type="Script" uid="uid://3ex5tsymwxef" path="res://Scripts/Bosses/Lunacy/state_machine.gd" id="3_kcoqw"]
 [ext_resource type="Resource" uid="uid://ba7khgxopgh03" path="res://Resources/Bosses/lunacy.tres" id="3_kgrpg"]
 [ext_resource type="Texture2D" uid="uid://bnci24akyvubs" path="res://Sprites/Bosses/Lunacy/Laser.png" id="7_2gtas"]
 [ext_resource type="AudioStream" uid="uid://d1tn6ymy3b3ti" path="res://Audio/SFX/Space Laser.mp3" id="7_g1j34"]
 [ext_resource type="AudioStream" uid="uid://bbi2dtrimxt82" path="res://Audio/SFX/Space Laser Noise.mp3" id="8_4sufp"]
-[ext_resource type="Script" path="res://Scripts/Bosses/Lunacy/laser.gd" id="8_wi3ux"]
+[ext_resource type="Script" uid="uid://dfahth3wmwgrq" path="res://Scripts/Bosses/Lunacy/laser.gd" id="8_wi3ux"]
 [ext_resource type="AudioStream" uid="uid://chjabrkxsndjf" path="res://Audio/SFX/Bubble Pop.mp3" id="9_pn0gk"]
 [ext_resource type="AudioStream" uid="uid://12krr2r6guun" path="res://Audio/SFX/Jump.mp3" id="10_uh3ed"]
 
@@ -419,8 +419,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jcojs"]
 _data = {
-"RESET": SubResource("Animation_yvcvw"),
-"WTF": SubResource("Animation_72i4m")
+&"RESET": SubResource("Animation_yvcvw"),
+&"WTF": SubResource("Animation_72i4m")
 }
 
 [sub_resource type="Animation" id="Animation_ngjid"]
@@ -551,8 +551,8 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bjxpp"]
 _data = {
-"Lasers": SubResource("Animation_ngjid"),
-"RESET": SubResource("Animation_id67s")
+&"Lasers": SubResource("Animation_ngjid"),
+&"RESET": SubResource("Animation_id67s")
 }
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bggcr"]

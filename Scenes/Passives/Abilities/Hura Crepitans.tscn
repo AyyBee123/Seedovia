@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bnoiir88s2wns"]
 
 [ext_resource type="PackedScene" uid="uid://cp3hdtxn75uyt" path="res://Scenes/Passives/Effects/Explosion.tscn" id="1_h44sf"]
-[ext_resource type="Script" path="res://Scripts/Passives/Abilities/hura_crepitans.gd" id="1_ngak2"]
+[ext_resource type="Script" uid="uid://e6wweyhonh6s" path="res://Scripts/Passives/Abilities/hura_crepitans.gd" id="1_ngak2"]
 
 [node name="HuraCrepitans" type="Node"]
 script = ExtResource("1_ngak2")

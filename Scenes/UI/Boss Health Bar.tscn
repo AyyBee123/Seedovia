@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bf5rdhqce3iki" path="res://Sprites/UI/Boss Health Bar.png" id="1_qter5"]
 [ext_resource type="Texture2D" uid="uid://dieglc86kh7gj" path="res://Sprites/UI/Boss Damaged Health.png" id="2_ce7j2"]
-[ext_resource type="Script" path="res://Scripts/UI/health_bar.gd" id="3_760p2"]
+[ext_resource type="Script" uid="uid://cfa0gtlv7ne54" path="res://Scripts/UI/health_bar.gd" id="3_760p2"]
 [ext_resource type="Texture2D" uid="uid://usr3okdlyneq" path="res://Sprites/UI/Boss Filled Health.png" id="4_y1lnh"]
 [ext_resource type="FontFile" uid="uid://bkn7gmgx1wxgx" path="res://Fonts/Name Font.ttf" id="5_qb5n7"]
 

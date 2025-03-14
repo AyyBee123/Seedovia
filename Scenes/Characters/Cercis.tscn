@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://vwq7f7gn10vh" path="res://Sprites/Character/Cercis/Hand.png" id="7_jnuxc"]
 [ext_resource type="PackedScene" uid="uid://darl38uluep4r" path="res://Scenes/Inventory/Cercis inventory.tscn" id="8_1cxct"]
 [ext_resource type="PackedScene" uid="uid://d3pnsl2xmthhx" path="res://Scenes/Characters/Passives/Cercis Stats.tscn" id="8_helbd"]
-[ext_resource type="Script" path="res://Scripts/Characters/Passives/cercis_stats.gd" id="9_hxi2s"]
+[ext_resource type="Script" uid="uid://sudcuapp78aj" path="res://Scripts/Characters/Passives/cercis_stats.gd" id="9_hxi2s"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ckkwj"]
 animations = [{

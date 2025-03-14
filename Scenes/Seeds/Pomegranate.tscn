@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_nv0tn"]
 [ext_resource type="Texture2D" uid="uid://c00hj6fdbj5rw" path="res://Sprites/Seeds/Pomegranate.png" id="2_jboq2"]
-[ext_resource type="Script" path="res://Scripts/Seeds/pomegranate.gd" id="2_udlhv"]
+[ext_resource type="Script" uid="uid://cwjo237uyssmn" path="res://Scripts/Seeds/pomegranate.gd" id="2_udlhv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bsh3h"]
 radius = 11.0

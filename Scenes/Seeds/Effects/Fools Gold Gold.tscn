@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_hehau"]
 [ext_resource type="Texture2D" uid="uid://crvq8i83862yo" path="res://Sprites/Seeds/Effects/Fool's Gold Gold.png" id="2_3fqv8"]
-[ext_resource type="Script" path="res://Scripts/Seeds/Effects/fools_gold_gold.gd" id="3_ssrnr"]
+[ext_resource type="Script" uid="uid://b0oaqoiu60fin" path="res://Scripts/Seeds/Effects/fools_gold_gold.gd" id="3_ssrnr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1sqca"]
 radius = 7.0

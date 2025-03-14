@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://da8pvpkf3645"]
 
-[ext_resource type="Script" path="res://Scripts/UI/achievement_popup.gd" id="1_s547r"]
+[ext_resource type="Script" uid="uid://b00xar58xsjt0" path="res://Scripts/UI/achievement_popup.gd" id="1_s547r"]
 [ext_resource type="Texture2D" uid="uid://dxs3447ypgnio" path="res://Sprites/UI/Achievement Bar.png" id="1_umodg"]
 [ext_resource type="Texture2D" uid="uid://csjhrpih1bhqa" path="res://Sprites/Achievements/Die.png" id="2_tgmfj"]
 [ext_resource type="FontFile" uid="uid://wbj0boqv37y6" path="res://Fonts/Description Font.ttf" id="3_m4jdo"]
@@ -53,8 +53,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vqv8y"]
 _data = {
-"RESET": SubResource("Animation_3whei"),
-"new_animation": SubResource("Animation_cwmht")
+&"RESET": SubResource("Animation_3whei"),
+&"new_animation": SubResource("Animation_cwmht")
 }
 
 [node name="Achievement Popup" type="Control"]

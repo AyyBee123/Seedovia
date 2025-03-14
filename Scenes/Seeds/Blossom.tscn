@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dc7x0qodxeev4"]
 
-[ext_resource type="Script" path="res://Scripts/Seeds/blossom.gd" id="1_le8gg"]
+[ext_resource type="Script" uid="uid://dkiasn8wiseak" path="res://Scripts/Seeds/blossom.gd" id="1_le8gg"]
 [ext_resource type="Texture2D" uid="uid://444ep807xue0" path="res://Sprites/Seeds/Blossom.png" id="2_a8tb6"]
 [ext_resource type="Texture2D" uid="uid://bknc1ful8pobf" path="res://Sprites/Seeds/Blossom Shoot.png" id="3_6126i"]
 

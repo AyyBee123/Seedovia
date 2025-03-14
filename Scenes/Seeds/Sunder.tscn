@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://tanpx8hh4fms"]
 
 [ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_e8fhm"]
-[ext_resource type="Script" path="res://Scripts/Seeds/sunder.gd" id="2_i74ag"]
+[ext_resource type="Script" uid="uid://dgoqcsy34nvl8" path="res://Scripts/Seeds/sunder.gd" id="2_i74ag"]
 [ext_resource type="PackedScene" uid="uid://ba1ll7vkpaxef" path="res://Scenes/Passives/Effects/Non-Weapon Effect Explosion.tscn" id="3_moi4x"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o1sj4"]

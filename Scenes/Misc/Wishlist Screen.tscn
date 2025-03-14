@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://81p4tcdj3my8"]
 
-[ext_resource type="Script" path="res://Scripts/Misc/wishlist_screen.gd" id="1_juypd"]
+[ext_resource type="Script" uid="uid://ds43rgsxbmi3h" path="res://Scripts/Misc/wishlist_screen.gd" id="1_juypd"]
 [ext_resource type="Texture2D" uid="uid://bngcahxk1y8rj" path="res://Sprites/Logo/Seedovia.png" id="1_wt3wm"]
-[ext_resource type="Shader" path="res://Shaders/color_tint_shader.gdshader" id="2_uax78"]
+[ext_resource type="Shader" uid="uid://dsv0n8bsysyo6" path="res://Shaders/color_tint_shader.gdshader" id="2_uax78"]
 [ext_resource type="Texture2D" uid="uid://c7ap1at20hdjq" path="res://Sprites/Logo/Steam_gray-brown_logo.svg.png" id="3_02dno"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vg2rb"]

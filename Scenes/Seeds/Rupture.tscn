@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://b56c0nehfg5ad"]
 
-[ext_resource type="Script" path="res://Scripts/Seeds/rupture.gd" id="1_y6qnn"]
+[ext_resource type="Script" uid="uid://dor4dp0qynypg" path="res://Scripts/Seeds/rupture.gd" id="1_y6qnn"]
 [ext_resource type="PackedScene" uid="uid://ledtfnmbfqxq" path="res://Scenes/Misc/Visual Effects.tscn" id="2_hq1vl"]
 [ext_resource type="Texture2D" uid="uid://kyw3l7wk0ela" path="res://Sprites/Seeds/Rupture Bottom.png" id="2_prvs3"]
 [ext_resource type="Texture2D" uid="uid://b6djtn5hmg7o1" path="res://Sprites/Seeds/Rupture Middle.png" id="3_jcm6m"]

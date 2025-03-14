@@ -1,8 +1,8 @@
 [gd_scene load_steps=16 format=3 uid="uid://c4iasewjfsbsc"]
 
 [ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_qyuca"]
-[ext_resource type="Script" path="res://Scripts/Enemies/Statue of Mykell/statue_of_mykell.gd" id="2_8xa6b"]
-[ext_resource type="Shader" path="res://Shaders/color_tint_shader.gdshader" id="2_gvlgg"]
+[ext_resource type="Script" uid="uid://chkd3emkcsajw" path="res://Scripts/Enemies/Statue of Mykell/statue_of_mykell.gd" id="2_8xa6b"]
+[ext_resource type="Shader" uid="uid://dsv0n8bsysyo6" path="res://Shaders/color_tint_shader.gdshader" id="2_gvlgg"]
 [ext_resource type="Resource" uid="uid://nbc2ly3igb37" path="res://Resources/Enemies/statue_of_mykell.tres" id="3_0tdnt"]
 [ext_resource type="Texture2D" uid="uid://4jcsq20vhxs0" path="res://Sprites/Enemies/Statue.png" id="3_j4dpk"]
 [ext_resource type="Texture2D" uid="uid://b65qy7rr414ol" path="res://Sprites/Misc/Statue Shadow.png" id="5_siimr"]
@@ -155,8 +155,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wlgn3"]
 _data = {
-"Jump": SubResource("Animation_48w53"),
-"RESET": SubResource("Animation_pbecd")
+&"Jump": SubResource("Animation_48w53"),
+&"RESET": SubResource("Animation_pbecd")
 }
 
 [node name="Statue of Mykell" instance=ExtResource("1_qyuca")]

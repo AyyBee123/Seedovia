@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://uwhxti7b1q4a"]
 
-[ext_resource type="Script" path="res://Scripts/Enemies/Weapons/jellofish_projectile.gd" id="1_g4xdj"]
+[ext_resource type="Script" uid="uid://cmhfamxpn8072" path="res://Scripts/Enemies/Weapons/jellofish_projectile.gd" id="1_g4xdj"]
 [ext_resource type="Texture2D" uid="uid://cp12s1cqtu88w" path="res://Sprites/Enemies/Effects/Jellofish Trail.png" id="2_0jqev"]
 [ext_resource type="Texture2D" uid="uid://xxyym547o3vn" path="res://Sprites/Misc/Shadow.png" id="3_i244e"]
 

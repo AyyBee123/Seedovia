@@ -1,10 +1,10 @@
 [gd_scene load_steps=27 format=3 uid="uid://beccqsvpy8njs"]
 
 [ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_q1s71"]
-[ext_resource type="Script" path="res://Scripts/Enemies/Puncky/puncky.gd" id="2_42lyw"]
+[ext_resource type="Script" uid="uid://ce1ygva71gmnv" path="res://Scripts/Enemies/Puncky/puncky.gd" id="2_42lyw"]
 [ext_resource type="Resource" uid="uid://b4uy3ext0ni6m" path="res://Resources/Enemies/puncky.tres" id="2_ep3v4"]
-[ext_resource type="Shader" path="res://Shaders/color_tint_shader.gdshader" id="2_oqe4u"]
-[ext_resource type="Script" path="res://Scripts/Enemies/Puncky/state_machine.gd" id="4_gm3wa"]
+[ext_resource type="Shader" uid="uid://dsv0n8bsysyo6" path="res://Shaders/color_tint_shader.gdshader" id="2_oqe4u"]
+[ext_resource type="Script" uid="uid://dsdjd38ixg8yx" path="res://Scripts/Enemies/Puncky/state_machine.gd" id="4_gm3wa"]
 [ext_resource type="Texture2D" uid="uid://xgr73dsyn310" path="res://Sprites/Enemies/Puncky.png" id="5_6ri4g"]
 [ext_resource type="Texture2D" uid="uid://xxyym547o3vn" path="res://Sprites/Misc/Shadow.png" id="7_qjqm6"]
 

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="equipment_item_class" load_steps=3 format=3 uid="uid://cnxqxsyj5owls"]
 
-[ext_resource type="Script" path="res://Scripts/Items/equipment_item_class.gd" id="1_ass4s"]
+[ext_resource type="Script" uid="uid://n64xabrw5ic3" path="res://Scripts/Items/equipment_item_class.gd" id="1_ass4s"]
 [ext_resource type="Texture2D" uid="uid://ct7nvank8kxdu" path="res://Sprites/Talismans/Coffee Bean.png" id="2_wnq0q"]
 
 [resource]

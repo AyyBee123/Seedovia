@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://b4ls4xk6r4ubj"]
 
 [ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_s5hmp"]
-[ext_resource type="Script" path="res://Scripts/Seeds/blessed_dandelion.gd" id="2_1bg3v"]
+[ext_resource type="Script" uid="uid://c4y2jlurv0h2k" path="res://Scripts/Seeds/blessed_dandelion.gd" id="2_1bg3v"]
 [ext_resource type="Texture2D" uid="uid://ds6jw3pk1x1n1" path="res://Sprites/Seeds/Blessed Dandelion.png" id="2_5e8kh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6g1dr"]

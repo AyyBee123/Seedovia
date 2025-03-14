@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://cbhhoqt7x76j2"]
 
 [ext_resource type="Texture2D" uid="uid://dt5icjd8t6jy5" path="res://Sprites/Bosses/Lunacy/Lunacy.png" id="1_bw201"]
-[ext_resource type="Script" path="res://Scripts/Item Passives/Effects/lunacy's_delight_projectile.gd" id="2_ds1ej"]
+[ext_resource type="Script" uid="uid://dd7g3grrx2smb" path="res://Scripts/Item Passives/Effects/lunacy's_delight_projectile.gd" id="2_ds1ej"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mj8bh"]
 atlas = ExtResource("1_bw201")

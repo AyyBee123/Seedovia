@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dnjdwsa1miyp1"]
 
-[ext_resource type="Script" path="res://Scripts/Seeds/Effects/knockback.gd" id="1_fovjq"]
+[ext_resource type="Script" uid="uid://cyublhffe336i" path="res://Scripts/Seeds/Effects/knockback.gd" id="1_fovjq"]
 [ext_resource type="AudioStream" uid="uid://bpk6gao5jcjkq" path="res://Audio/SFX/Hit.mp3" id="2_fj7ki"]
 
 [node name="Knockback" type="Node"]

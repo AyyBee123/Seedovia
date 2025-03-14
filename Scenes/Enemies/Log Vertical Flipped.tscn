@@ -1,11 +1,11 @@
 [gd_scene load_steps=17 format=3 uid="uid://26iqs3vqaiqq"]
 
 [ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_5csa2"]
-[ext_resource type="Script" path="res://Scripts/Enemies/Log/log_vertical_flipped.gd" id="2_u5har"]
+[ext_resource type="Script" uid="uid://cexvcrvuqslms" path="res://Scripts/Enemies/Log/log_vertical_flipped.gd" id="2_u5har"]
 [ext_resource type="Resource" uid="uid://b4cou6pw7ljam" path="res://Resources/Enemies/log.tres" id="3_ikgnb"]
-[ext_resource type="Shader" path="res://Shaders/color_tint_shader.gdshader" id="4_0p8sx"]
+[ext_resource type="Shader" uid="uid://dsv0n8bsysyo6" path="res://Shaders/color_tint_shader.gdshader" id="4_0p8sx"]
 [ext_resource type="Texture2D" uid="uid://w8b38p0kcypf" path="res://Sprites/Enemies/Log.png" id="4_k1x63"]
-[ext_resource type="Script" path="res://Scripts/Enemies/Log/state_machine.gd" id="5_iws7b"]
+[ext_resource type="Script" uid="uid://duuycqnuak2j4" path="res://Scripts/Enemies/Log/state_machine.gd" id="5_iws7b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kgcj4"]
 size = Vector2(24, 41.5)

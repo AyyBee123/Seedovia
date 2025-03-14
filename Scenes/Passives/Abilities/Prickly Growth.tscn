@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bmwfva7hl4sow"]
 
-[ext_resource type="Script" path="res://Scripts/Passives/Abilities/prickly_growth.gd" id="1_jeamk"]
+[ext_resource type="Script" uid="uid://jycpi4i0pehs" path="res://Scripts/Passives/Abilities/prickly_growth.gd" id="1_jeamk"]
 [ext_resource type="PackedScene" uid="uid://emqdnmuc32wd" path="res://Scenes/Passives/Effects/Prickle.tscn" id="2_a0b2q"]
 
 [node name="Prickly Growth" type="Node"]

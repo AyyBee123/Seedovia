@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://bt77edt6fjld3"]
 
 [ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_cc56n"]
-[ext_resource type="Script" path="res://Scripts/Seeds/spore.gd" id="2_ggmfa"]
+[ext_resource type="Script" uid="uid://cg1siuarhmbt8" path="res://Scripts/Seeds/spore.gd" id="2_ggmfa"]
 [ext_resource type="Texture2D" uid="uid://ecr03rpk6dux" path="res://Sprites/Seeds/Spore.png" id="3_x0pal"]
 [ext_resource type="Texture2D" uid="uid://xxyym547o3vn" path="res://Sprites/Misc/Shadow.png" id="4_moc8x"]
 

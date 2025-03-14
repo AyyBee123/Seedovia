@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://b2yef1t2humjd"]
 
-[ext_resource type="Script" path="res://Scripts/Enemies/enemy.gd" id="1_fr2sb"]
-[ext_resource type="Shader" path="res://Shaders/color_tint_shader.gdshader" id="2_46gs0"]
+[ext_resource type="Script" uid="uid://435bw8we441b" path="res://Scripts/Enemies/enemy.gd" id="1_fr2sb"]
+[ext_resource type="Shader" uid="uid://dsv0n8bsysyo6" path="res://Shaders/color_tint_shader.gdshader" id="2_46gs0"]
 [ext_resource type="PackedScene" uid="uid://de0gxtit8o3cu" path="res://Scenes/UI/health_bar.tscn" id="2_61l3x"]
 [ext_resource type="PackedScene" uid="uid://bfpmq41k18tdi" path="res://Scenes/Passives/Effects/Burn Stacks.tscn" id="4_fymte"]
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://qo24c3wu6pr1"]
 
 [ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_ocymi"]
-[ext_resource type="Script" path="res://Scripts/Seeds/maple.gd" id="2_dmcic"]
+[ext_resource type="Script" uid="uid://cvpxfd4i8bo0j" path="res://Scripts/Seeds/maple.gd" id="2_dmcic"]
 [ext_resource type="Texture2D" uid="uid://cnwvxhgwfjrw" path="res://Sprites/Seeds/Maple Syrup.png" id="2_laj06"]
 [ext_resource type="Texture2D" uid="uid://bjjmov8hqm320" path="res://Sprites/Seeds/Maple Syrup End.png" id="4_e0byf"]
 
@@ -80,8 +80,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7y6oh"]
 _data = {
-"RESET": SubResource("Animation_rbdgb"),
-"new_animation": SubResource("Animation_mwv3e")
+&"RESET": SubResource("Animation_rbdgb"),
+&"new_animation": SubResource("Animation_mwv3e")
 }
 
 [node name="Maple" instance=ExtResource("1_ocymi")]

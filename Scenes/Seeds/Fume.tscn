@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_kefo4"]
 [ext_resource type="Texture2D" uid="uid://bdhc84e4ee6w2" path="res://Sprites/Seeds/Fume.png" id="2_rmgjt"]
-[ext_resource type="Script" path="res://Scripts/Seeds/fume.gd" id="3_incdh"]
+[ext_resource type="Script" uid="uid://cho81dp7y4wiy" path="res://Scripts/Seeds/fume.gd" id="3_incdh"]
 [ext_resource type="AudioStream" uid="uid://dyeuwrt5rj2ac" path="res://Audio/SFX/Bubble Fire.mp3" id="4_l7tk8"]
 [ext_resource type="AudioStream" uid="uid://chjabrkxsndjf" path="res://Audio/SFX/Bubble Pop.mp3" id="5_g0km2"]
 

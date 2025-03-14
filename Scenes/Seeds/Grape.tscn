@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://kegcsuskikp0"]
 
 [ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_s8jl7"]
-[ext_resource type="Script" path="res://Scripts/Seeds/grape.gd" id="2_cl254"]
+[ext_resource type="Script" uid="uid://hah2kq42eld4" path="res://Scripts/Seeds/grape.gd" id="2_cl254"]
 [ext_resource type="Texture2D" uid="uid://2c2rxeeslovu" path="res://Sprites/Seeds/Grape.png" id="2_tgd4q"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tnb5p"]

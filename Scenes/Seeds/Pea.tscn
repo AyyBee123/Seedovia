@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_edna1"]
 [ext_resource type="Texture2D" uid="uid://catrkahrrg4eo" path="res://Sprites/Seeds/Pea.png" id="2_f4lgv"]
-[ext_resource type="Script" path="res://Scripts/Seeds/pea.gd" id="3_fbuh6"]
+[ext_resource type="Script" uid="uid://drs8abkdy5mxf" path="res://Scripts/Seeds/pea.gd" id="3_fbuh6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7ssd4"]
 radius = 12.0

@@ -1,12 +1,11 @@
 [gd_resource type="Resource" script_class="golden_coffee_bean" load_steps=3 format=3 uid="uid://b5qgc2670f334"]
 
-[ext_resource type="Script" path="res://Scripts/Pickups/golden_coffee_bean.gd" id="1_e2tpw"]
+[ext_resource type="Script" uid="uid://cbeohehyp0w4" path="res://Scripts/Pickups/golden_coffee_bean.gd" id="1_e2tpw"]
 [ext_resource type="Texture2D" uid="uid://b2k2l65sv0av4" path="res://Sprites/Stat Ups/Golden Coffee Bean.png" id="2_elaqm"]
 
 [resource]
 script = ExtResource("1_e2tpw")
 speed_amount = 25.0
-dash_rate_amount = 0.05
 weight = 1.0
 shop_price = 10
 item_name = "Golden Coffee Bean"

@@ -1,9 +1,9 @@
 [gd_scene load_steps=14 format=3 uid="uid://inbvexnx3t21"]
 
 [ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_5uvft"]
-[ext_resource type="Script" path="res://Scripts/Enemies/Hot Pot/hot_pot.gd" id="2_8rtvn"]
+[ext_resource type="Script" uid="uid://notte7h5eg7u" path="res://Scripts/Enemies/Hot Pot/hot_pot.gd" id="2_8rtvn"]
 [ext_resource type="Resource" uid="uid://bed78ubjylnkc" path="res://Resources/Enemies/hot_pot.tres" id="2_20x8r"]
-[ext_resource type="Shader" path="res://Shaders/color_tint_shader.gdshader" id="2_wic8r"]
+[ext_resource type="Shader" uid="uid://dsv0n8bsysyo6" path="res://Shaders/color_tint_shader.gdshader" id="2_wic8r"]
 [ext_resource type="Texture2D" uid="uid://cquyeui68djwp" path="res://Sprites/Enemies/Hot Pot.png" id="4_b0oh0"]
 [ext_resource type="Texture2D" uid="uid://xxyym547o3vn" path="res://Sprites/Misc/Shadow.png" id="5_mj6fr"]
 

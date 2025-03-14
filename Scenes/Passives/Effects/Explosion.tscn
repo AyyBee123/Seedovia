@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://cp3hdtxn75uyt"]
 
-[ext_resource type="Script" path="res://Scripts/Passives/Effects/explosion.gd" id="1_0q7g4"]
+[ext_resource type="Script" uid="uid://cm40pv38xl3lu" path="res://Scripts/Passives/Effects/explosion.gd" id="1_0q7g4"]
 [ext_resource type="Texture2D" uid="uid://cgykm81v6v4hq" path="res://Sprites/Passives/Effects/Explosion.png" id="1_7k8yw"]
 [ext_resource type="PackedScene" uid="uid://ledtfnmbfqxq" path="res://Scenes/Misc/Visual Effects.tscn" id="3_2451c"]
 

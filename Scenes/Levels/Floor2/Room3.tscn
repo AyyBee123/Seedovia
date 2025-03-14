@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cugc3djc2xnxm"]
 
 [ext_resource type="PackedScene" uid="uid://b8gxpiw6v8asa" path="res://Scenes/Levels/Floor 2 Base.tscn" id="1_yu8dg"]
-[ext_resource type="Shader" path="res://Shaders/circle_transition.gdshader" id="2_rjw0k"]
+[ext_resource type="Shader" uid="uid://qm3syqtxdolu" path="res://Shaders/circle_transition.gdshader" id="2_rjw0k"]
 [ext_resource type="PackedScene" uid="uid://bgp0jvhp4e40j" path="res://Scenes/Enemies/Gungo.tscn" id="3_vgyui"]
 [ext_resource type="PackedScene" uid="uid://c4iasewjfsbsc" path="res://Scenes/Enemies/Statue of Mykell.tscn" id="4_mft3s"]
 
