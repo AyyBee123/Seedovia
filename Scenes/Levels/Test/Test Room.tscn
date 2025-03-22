@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=4 uid="uid://bvpg8r7ejtyp2"]
 
 [ext_resource type="PackedScene" uid="uid://cxoiy0x4nvtaa" path="res://Scenes/Levels/Base Level.tscn" id="1_n4hkv"]
-[ext_resource type="Script" path="res://Scripts/Level/test_room.gd" id="2_vy0ks"]
+[ext_resource type="Script" uid="uid://c7p7iikkq6a2d" path="res://Scripts/Level/test_room.gd" id="2_vy0ks"]
 [ext_resource type="Resource" uid="uid://bi3hone1ajb7y" path="res://Resources/Characters/test.tres" id="3_qgfjb"]
-[ext_resource type="Shader" path="res://Shaders/circle_transition.gdshader" id="4_oi577"]
-[ext_resource type="PackedScene" uid="uid://bagmkum7q0yxi" path="res://Scenes/Enemies/Dummy.tscn" id="28_aw0v0"]
+[ext_resource type="Shader" uid="uid://qm3syqtxdolu" path="res://Shaders/circle_transition.gdshader" id="4_oi577"]
+[ext_resource type="PackedScene" uid="uid://bagmkum7q0yxi" path="res://Scenes/Enemies/Dummy.tscn" id="30_rgl75"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0ecxy"]
 resource_local_to_scene = true
@@ -27,8 +27,8 @@ visible = false
 [node name="Run Timer" parent="." index="3"]
 visible = false
 
-[node name="Circle Transition" parent="." index="10"]
+[node name="Circle Transition" parent="." index="6"]
 material = SubResource("ShaderMaterial_0ecxy")
 
-[node name="Dummy" parent="." index="11" instance=ExtResource("28_aw0v0")]
-position = Vector2(-633, -248)
+[node name="Dummy" parent="." index="7" instance=ExtResource("30_rgl75")]
+position = Vector2(-671, -268)

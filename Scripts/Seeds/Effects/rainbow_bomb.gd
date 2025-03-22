@@ -7,6 +7,7 @@ var RAINBOW_BOMB = load("res://Scenes/Seeds/Effects/Rainbow Bomb.tscn")
 var weapon
 var pos
 var DAMAGE: float
+var BLAST_RADIUS: float
 var _has_lifetime: bool
 var seed_slot: int
 

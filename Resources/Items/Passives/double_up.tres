@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="passive_class" load_steps=3 format=3 uid="uid://d200qysmewgr1"]
+[gd_resource type="Resource" script_class="passive_class" load_steps=4 format=3 uid="uid://d200qysmewgr1"]
 
+[ext_resource type="PackedScene" uid="uid://cvu6ybh7bghfa" path="res://Scenes/Passives/Abilities/Double Up.tscn" id="1_4bdv3"]
 [ext_resource type="Script" uid="uid://yr5gdtdbvmoc" path="res://Scripts/Passives/Classes/passive_class.gd" id="1_jwr3a"]
 [ext_resource type="Texture2D" uid="uid://cmvm7sf6qcivo" path="res://Sprites/Passives/Icons/Double Up.png" id="2_sanol"]
 
@@ -8,4 +9,5 @@ script = ExtResource("1_jwr3a")
 passive_name = "Double Up!"
 sprite = ExtResource("2_sanol")
 description = "Seeds have a 30% chance to deal double damage."
+passive_ability = ExtResource("1_4bdv3")
 unlocked = true

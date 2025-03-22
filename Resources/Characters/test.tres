@@ -1,13 +1,11 @@
-[gd_resource type="Resource" script_class="character_class" load_steps=9 format=3 uid="uid://bi3hone1ajb7y"]
+[gd_resource type="Resource" script_class="character_class" load_steps=7 format=3 uid="uid://bi3hone1ajb7y"]
 
 [ext_resource type="Texture2D" uid="uid://b0l2iyl00i8xv" path="res://Sprites/Character/Test/Robot1.png" id="1_6x548"]
-[ext_resource type="Script" path="res://Scripts/Characters/character_class.gd" id="2_c1nbs"]
-[ext_resource type="Script" path="res://Scripts/Items/item_class.gd" id="3_bxj0g"]
-[ext_resource type="PackedScene" uid="uid://ba7fwokq2k368" path="res://Scenes/Passives/Abilities/Recursion.tscn" id="4_2blxm"]
-[ext_resource type="Script" path="res://Scripts/Stats/seed_stats.gd" id="4_gpsnb"]
-[ext_resource type="Script" path="res://Scripts/Items/equipment_item_class.gd" id="5_2xsda"]
-[ext_resource type="Resource" uid="uid://ckpcv3jj2qnt8" path="res://Resources/Items/Seeds/avocado.tres" id="6_ojwrf"]
-[ext_resource type="Resource" uid="uid://6r7y2c1r006r" path="res://Resources/Items/Seeds/walnut.tres" id="7_wuatf"]
+[ext_resource type="Script" uid="uid://duh3qswkvpbi5" path="res://Scripts/Characters/character_class.gd" id="2_c1nbs"]
+[ext_resource type="Script" uid="uid://cgysrio745xbn" path="res://Scripts/Items/item_class.gd" id="3_bxj0g"]
+[ext_resource type="Script" uid="uid://c6ykhgvfkht5x" path="res://Scripts/Stats/seed_stats.gd" id="4_gpsnb"]
+[ext_resource type="Script" uid="uid://n64xabrw5ic3" path="res://Scripts/Items/equipment_item_class.gd" id="5_2xsda"]
+[ext_resource type="Resource" uid="uid://crlt51x4k703m" path="res://Resources/Items/Seeds/black_hole.tres" id="6_brxwi"]
 
 [resource]
 script = ExtResource("2_c1nbs")
@@ -15,7 +13,7 @@ character_name = "Test"
 character_sprite = ExtResource("1_6x548")
 starting_inventory = Array[ExtResource("3_bxj0g")]([])
 starting_talismans = Array[ExtResource("5_2xsda")]([])
-starting_seeds = Array[ExtResource("4_gpsnb")]([null, ExtResource("6_ojwrf"), ExtResource("7_wuatf")])
-starting_passives = Array[PackedScene]([ExtResource("4_2blxm")])
+starting_seeds = Array[ExtResource("4_gpsnb")]([ExtResource("6_brxwi")])
+starting_passives = Array[PackedScene]([])
 starting_coins = 0
-unlocked = true
+unlocked = false

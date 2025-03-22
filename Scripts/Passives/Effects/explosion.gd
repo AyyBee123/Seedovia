@@ -6,7 +6,8 @@ signal has_collided(object)
 # these values are declared in the passive script that triggers the explosion
 var object
 var damage: float
-var DAMAGE
+var DAMAGE: float
+var BLAST_RADIUS: float
 var size: float
 var damage_multiplier = 1
 var source

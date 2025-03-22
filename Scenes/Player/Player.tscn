@@ -96,7 +96,7 @@ one_shot = true
 
 [node name="Invulnerability Animation" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_3ihlv")
+&"": SubResource("AnimationLibrary_3ihlv")
 }
 speed_scale = -1.0
 

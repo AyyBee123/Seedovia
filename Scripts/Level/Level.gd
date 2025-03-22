@@ -3,6 +3,18 @@ extends Node2D
 @onready var resource_preloader := $ResourcePreloader
 @onready var circle_transition = %"Circle Transition"
 
+var CONSOL = preload("res://Scenes/Utils/Console.tscn")
+
+func _input(event):
+	if event is InputEventKey:
+		# 96 is the ` key
+		if event.keycode == 96 and event.pressed:
+			if get_node_or_null("Console"):
+				get_node("Console").queue_free()
+				return
+			var console = CONSOL.instantiate()
+			add_child(console)
+
 var player
 var player_pos = Vector2(0, 330)
 
@@ -44,12 +56,34 @@ func _ready():
 			if LevelList.room_number != 10:
 				Game.music_manager.play(Game.music_manager.GARDEN_THEME)
 			else:
-				Game.music_manager.stop() # add boss music here
+				if not LevelList.loaded_room_is_cleared:
+					Game.music_manager.play(Game.music_manager.BOSS_THEME)
+				else:
+					Game.music_manager.stop()
 		1:
 			if LevelList.room_number != 10:
 				Game.music_manager.play(Game.music_manager.HALL_THEME)
 			else:
-				pass
+				if not LevelList.loaded_room_is_cleared:
+					Game.music_manager.play(Game.music_manager.BOSS_THEME)
+				else:
+					Game.music_manager.stop()
+		2:
+			if LevelList.room_number != 10:
+				Game.music_manager.play(Game.music_manager.KITCHEN_THEME)
+			else:
+				if not LevelList.loaded_room_is_cleared:
+					Game.music_manager.play(Game.music_manager.BOSS_THEME)
+				else:
+					Game.music_manager.stop()
+		3:
+			if LevelList.room_number != 10:
+				Game.music_manager.play(Game.music_manager.LIBRARY_THEME)
+			else:
+				if not LevelList.loaded_room_is_cleared:
+					Game.music_manager.play(Game.music_manager.BOSS_THEME)
+				else:
+					Game.music_manager.stop()
 	Global.RNG.randomize()
 	if LevelList.loaded_room_is_cleared:
 		for enemy in get_tree().get_nodes_in_group("Enemy"):
@@ -105,6 +139,8 @@ func check_for_enemies():
 			spawn_doors()
 			LevelList.doors_spawned = true
 		if not reward_given and not was_cleared:
+			if LevelList.room_number == 10:
+				Game.music_manager.play(Game.music_manager.BOSS_THEME_END)
 			give_reward()
 			LevelList.current_reward_given = true
 			LevelList.loaded_room_is_cleared = cleared

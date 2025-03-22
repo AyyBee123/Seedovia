@@ -12,6 +12,7 @@ static var next_reward: item_pool = null
 var cursor = load("res://Sprites/UI/Cursor.png")
 var RNG: RandomNumberGenerator
 var loaded_room_file: String
+var coins_saving: bool
 
 func save_run_data():
 	data.get_character()
@@ -58,9 +59,12 @@ func load_run_data_exists() -> bool:
 	return ResourceLoader.exists(RUN_SAVE_PATH)
 
 func save_coins():
+	coins_saving = true
 	data.get_coins()
 	ResourceSaver.save(data, RUN_SAVE_PATH)
 	ResourceSaver.save(data, "user://current_run.tres") # for testing purposes, will remove later
+	coins_saving = false
+	SignalBus.coins_saved.emit()
 
 func load_data(_path = null):
 	if _path == null:
