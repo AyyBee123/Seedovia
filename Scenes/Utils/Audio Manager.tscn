@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://usetxd7ii511"]
+[gd_scene load_steps=19 format=3 uid="uid://usetxd7ii511"]
 
 [ext_resource type="Script" uid="uid://boo1w2wkkk0xk" path="res://Scripts/Utils/audio_manager.gd" id="1_bpx0j"]
 [ext_resource type="AudioStream" uid="uid://bpk6gao5jcjkq" path="res://Audio/SFX/Hit.mp3" id="1_qnkjs"]
@@ -17,6 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://qcsu4lhts47k" path="res://Audio/SFX/Fart.mp3" id="15_57xsu"]
 [ext_resource type="AudioStream" uid="uid://dwe77x6x8dlrf" path="res://Audio/SFX/Crit.mp3" id="16_1yjax"]
 [ext_resource type="AudioStream" uid="uid://cbu6t3stftp24" path="res://Audio/SFX/Ding 2.mp3" id="17_v3k3a"]
+[ext_resource type="AudioStream" uid="uid://deybvg5daaryf" path="res://Audio/SFX/Impact.mp3" id="18_048te"]
 
 [node name="Audio Manager" type="Node"]
 script = ExtResource("1_bpx0j")
@@ -179,3 +180,8 @@ pitch_scale = 0.8
 [node name="Ding2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("17_v3k3a")
 pitch_scale = 1.3
+
+[node name="Impact High Pitch" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_048te")
+volume_db = -10.0
+pitch_scale = 1.25

@@ -51,19 +51,22 @@ func _exit_state(old_state, new_state):
 	match old_state:
 		states.laser:
 			random_attack = randi_range(0, states.size() - 2)
-			timer.start(randf_range(3,6))
+			set_random_time()
 		states.ghosts:
 			random_attack = randi_range(0, states.size() - 2)
-			timer.start(randf_range(3,6))
+			set_random_time()
 		states.suck:
 			random_attack = randi_range(0, states.size() - 2)
-			timer.start(randf_range(3,6))
+			set_random_time()
 
 func create_timer():
 	add_child(timer)
 	timer.one_shot = true
-	timer.start(randf_range(3,6))
+	set_random_time()
 
 func animation_finished():
 	random_attack = randi_range(0, states.size() - 2)
+	set_random_time()
+
+func set_random_time():
 	timer.start(randf_range(3,6))

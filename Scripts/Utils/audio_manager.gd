@@ -31,6 +31,7 @@ extends Node
 @onready var fart = $Fart
 @onready var crit = $Crit
 @onready var ding_2 = $Ding2
+@onready var impact_high_pitch = $"Impact High Pitch"
 
 func _ready():
 	SignalBus.play_audio.connect(play)
