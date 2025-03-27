@@ -54,11 +54,8 @@ func create_child(child):
 
 func update_position(delta):
 	var current_velocity: Vector2
-	if not exploded:
-		# move in direction it's rotated
-		current_velocity = transform.x * SPEED
-	else:
-		current_velocity = Vector2.ZERO
+	# move in direction it's rotated
+	current_velocity = transform.x * SPEED
 	position += current_velocity * delta
 
 func travelled_distance():
