@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://djxktiux2ty0y"]
+
+[ext_resource type="Script" uid="uid://uyifsqf35woe" path="res://Scripts/Passives/Abilities/pollen.gd" id="1_ipprw"]
+
+[node name="Pollen" type="Node"]
+script = ExtResource("1_ipprw")

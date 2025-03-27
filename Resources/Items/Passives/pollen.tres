@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="passive_class" load_steps=4 format=3 uid="uid://dovu440pm2njv"]
+
+[ext_resource type="PackedScene" uid="uid://djxktiux2ty0y" path="res://Scenes/Passives/Abilities/Pollen.tscn" id="1_0xn5b"]
+[ext_resource type="Script" uid="uid://yr5gdtdbvmoc" path="res://Scripts/Passives/Classes/passive_class.gd" id="1_o5iod"]
+[ext_resource type="Texture2D" uid="uid://bglvvlvwah1nr" path="res://Sprites/Passives/Icons/Pollen.png" id="3_vu41k"]
+
+[resource]
+script = ExtResource("1_o5iod")
+passive_name = "Pollen"
+sprite = ExtResource("3_vu41k")
+description = "Seeds gradually increase in size and damage."
+passive_ability = ExtResource("1_0xn5b")
+unlocked = true
+metadata/_custom_type_script = "uid://yr5gdtdbvmoc"
