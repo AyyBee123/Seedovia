@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="passive_class" load_steps=4 format=3 uid="uid://d2uwe34mijq1v"]
+
+[ext_resource type="Script" uid="uid://yr5gdtdbvmoc" path="res://Scripts/Passives/Classes/passive_class.gd" id="1_mhu0r"]
+[ext_resource type="PackedScene" uid="uid://cdb17oyvlqoik" path="res://Scenes/Passives/Abilities/Curved Branch.tscn" id="1_sr7ti"]
+[ext_resource type="Texture2D" uid="uid://ony8o3uxd0co" path="res://Sprites/Passives/Icons/Curved Branch.png" id="3_gqfyv"]
+
+[resource]
+script = ExtResource("1_mhu0r")
+passive_name = "Curved Branch"
+sprite = ExtResource("3_gqfyv")
+description = "Grants seeds homing."
+passive_ability = ExtResource("1_sr7ti")
+unlocked = true
+metadata/_custom_type_script = "uid://yr5gdtdbvmoc"

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cdb17oyvlqoik"]
+
+[ext_resource type="Script" uid="uid://cfouhueime82d" path="res://Scripts/Passives/Abilities/curved_branch.gd" id="1_iakl0"]
+
+[node name="Curved Branch" type="Node"]
+script = ExtResource("1_iakl0")

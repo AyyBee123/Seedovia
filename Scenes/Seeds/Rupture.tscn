@@ -12,22 +12,22 @@
 resource_local_to_scene = true
 size = Vector2(32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_urtv4"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_hwtec"]
 atlas = ExtResource("4_wl20k")
-region = Rect2(0, 0, 47, 24)
+region = Rect2(0, 0, 24, 47)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gm3v3"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_haaqp"]
 atlas = ExtResource("4_wl20k")
-region = Rect2(47, 0, 47, 24)
+region = Rect2(24, 0, 24, 47)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_m7fvj"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_urtv4")
+"texture": SubResource("AtlasTexture_hwtec")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gm3v3")
+"texture": SubResource("AtlasTexture_haaqp")
 }],
 "loop": true,
 "name": &"default",
@@ -50,29 +50,29 @@ collision_layer = 8
 collision_mask = 517
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(0, -16)
+position = Vector2(16, -5.68434e-14)
 shape = SubResource("RectangleShape2D_bbrmn")
 
 [node name="Passives" type="Node" parent="."]
 
 [node name="Visual Effects" parent="." instance=ExtResource("2_hq1vl")]
-scale = Vector2(1, 1)
 
 [node name="Bottom" type="Sprite2D" parent="."]
+position = Vector2(4.76837e-07, 4.76837e-07)
 texture = ExtResource("2_prvs3")
-offset = Vector2(0, -6)
+offset = Vector2(6, 0)
 
 [node name="Middle" type="Sprite2D" parent="."]
-position = Vector2(0, -12)
+position = Vector2(12, 0)
 texture = ExtResource("3_jcm6m")
-offset = Vector2(0, -0.5)
+offset = Vector2(0.5, 0)
 
 [node name="Top" type="AnimatedSprite2D" parent="."]
-position = Vector2(-0.5, -13)
+position = Vector2(12.8, 0)
 sprite_frames = SubResource("SpriteFrames_m7fvj")
 autoplay = "default"
-frame_progress = 0.507388
-offset = Vector2(0, -12)
+frame_progress = 0.323755
+offset = Vector2(12, -0.5)
 
 [node name="Tick Rate" type="Timer" parent="."]
 wait_time = 0.1

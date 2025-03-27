@@ -18,14 +18,14 @@ var tick_timers: Array
 func _ready():
 	super._ready()
 	# extends the beam length based on player range
-	middle.scale.y = max(0, RANGE)
-	top.position.y -= middle.scale.y - 1 # places the top portion of the beam above the middle portion
-	collision_shape_2d.shape.extents.y = 20 + middle.scale.y * 0.5
-	collision_shape_2d.position.y = -16 - middle.scale.y * 0.5
+	middle.scale.x = max(0, RANGE)
+	top.position.x += middle.scale.x - 1 # places the top portion of the beam above the middle portion
+	collision_shape_2d.shape.extents.x = 20 + middle.scale.x * 0.5
+	collision_shape_2d.position.x = 16 + middle.scale.x * 0.5
 	collision_shape_2d.disabled = true
 	starting_position = global_position
 	direction = desired_direction.normalized()
-	rotation = desired_direction.angle() + PI/2
+	rotation = desired_direction.angle()
 	collision_shape_2d.disabled = false
 	SfxDeconflicter.play(hit_SFX)
 	SfxDeconflicter.play(laser_SFX)
@@ -33,9 +33,9 @@ func _ready():
 	var tween = get_tree().create_tween()
 	tween.tween_interval(0.175)
 	var shrink_time = 0.175
-	tween.tween_property($Bottom, "scale:x", 0, shrink_time)
-	tween.parallel().tween_property($Middle, "scale:x", 0, shrink_time)
-	tween.parallel().tween_property($Top, "scale:x", 0, shrink_time)
+	tween.tween_property($Bottom, "scale:y", 0, shrink_time)
+	tween.parallel().tween_property($Middle, "scale:y", 0, shrink_time)
+	tween.parallel().tween_property($Top, "scale:y", 0, shrink_time)
 	tween.tween_callback(queue_free)
 
 func _physics_process(delta):
@@ -64,7 +64,6 @@ func shoot_next_weapon():
 	set_weapon_properties(next_seed, weapon_direction)
 
 func update_position(delta):
-	rotation = desired_direction.angle() + PI/2
 	if is_instance_valid(previous_weapon):
 		global_position = previous_weapon.global_position + direction * 4
 
