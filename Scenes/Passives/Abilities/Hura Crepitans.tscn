@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cp3hdtxn75uyt" path="res://Scenes/Passives/Effects/Explosion.tscn" id="1_h44sf"]
 [ext_resource type="Script" uid="uid://e6wweyhonh6s" path="res://Scripts/Passives/Abilities/hura_crepitans.gd" id="1_ngak2"]
 
-[node name="HuraCrepitans" type="Node"]
+[node name="HuraCrepitans" type="Node" groups=["Weapon Effect"]]
 script = ExtResource("1_ngak2")
 
 [node name="ResourcePreloader" type="ResourcePreloader" parent="."]
