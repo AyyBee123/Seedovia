@@ -15,15 +15,15 @@ var tick_timers: Array
 
 func _ready():
 	super._ready()
-	visible = false # to remove jittering when the seed spawns
-	# spawn the poop behind the player or previous seed
-	global_position += Vector2(-desired_direction.x, desired_direction.y).normalized() * 10
-	visible = true
 	starting_position = global_position
 	direction = -desired_direction.normalized()
 	deceleration.start()
 	$Hurtbox.set_collision_mask(collisions)
 	SfxDeconflicter.play(Game.audio_manager.fart)
+	await get_tree().physics_frame
+	# spawn the poop behind the player or previous seed
+	global_position += Vector2(-desired_direction.x, desired_direction.y).normalized() * 20
+	
 
 func _physics_process(delta):
 	super._physics_process(delta)

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="passive_class" load_steps=4 format=3 uid="uid://c60kgraihkchu"]
+
+[ext_resource type="Script" uid="uid://yr5gdtdbvmoc" path="res://Scripts/Passives/Classes/passive_class.gd" id="1_3137j"]
+[ext_resource type="PackedScene" uid="uid://bjwlwmso1a0p5" path="res://Scenes/Passives/Abilities/Buttshot.tscn" id="1_t5oq7"]
+[ext_resource type="Texture2D" uid="uid://2g5epxpef8b3" path="res://Sprites/Passives/Icons/Buttshot.png" id="2_leems"]
+
+[resource]
+script = ExtResource("1_3137j")
+passive_name = "Buttshot"
+sprite = ExtResource("2_leems")
+description = "50% chance to shoot an additional seed from behind you."
+passive_ability = ExtResource("1_t5oq7")
+unlocked = true
+metadata/_custom_type_script = "uid://yr5gdtdbvmoc"

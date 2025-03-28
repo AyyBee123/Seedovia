@@ -20,6 +20,7 @@ var angle_travelled: float = 0.0
 var total_angle: float = 0.0
 var _initial_shot := true # this is to prevent a seed from firing immediately when spawning the cheese
 var starting_rotation: float = 75.0
+var direction_difference: float # the difference between the initial direction and desired direction (as an angle)
 
 func _ready():
 	if previous_weapon != player: # if fired by a non-player
@@ -28,14 +29,14 @@ func _ready():
 		rotation_degrees = rad_to_deg(desired_direction.angle()) - starting_rotation
 		angle_threshold = angle_threshold / (FIRE_RATE * 1.7)
 	else:
-		if name != "Cheese":
-			queue_free()
 		angle_threshold = angle_threshold / FIRE_RATE
 	super._ready()
 	set_variable_sizes()
 	starting_angle = rotation_degrees
 	angle_travelled = 0.0
-	direction = desired_direction.normalized()
+	direction_difference = desired_direction.angle() \
+			- player.global_position.direction_to(player.weapon_direction_marker.global_position).angle()
+	print(direction_difference)
 	if not _was_previous_weapon: # if fired by the player
 		rotation = global_position.angle_to_point(player.weapon_direction_marker.global_position)
 	else:
@@ -46,6 +47,7 @@ func _physics_process(delta):
 	t += delta * 2.5
 	set_variable_sizes()
 	if not _was_previous_weapon: # if fired from the player
+		player.bullets_per_second.start(0.5) # keep starting the timer to prevent another cheese from spawning
 		rect_width = min(RANGE * t, RANGE)
 		if not mouse_left_down:
 			queue_free()
@@ -120,7 +122,8 @@ func _collide(body):
 func update_position(delta):
 	if not _was_previous_weapon:
 		global_position = player.hand.global_position
-		rotation = global_position.angle_to_point(player.weapon_direction_marker.global_position)
+		rotation = global_position.angle_to_point(player.weapon_direction_marker.global_position) \
+				+ direction_difference
 
 func animate():
 	var tween = get_tree().create_tween()

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjwlwmso1a0p5"]
+
+[ext_resource type="Script" uid="uid://17aa32gag8i7" path="res://Scripts/Passives/Abilities/buttshot.gd" id="1_5ng20"]
+
+[node name="Buttshot" type="Node"]
+script = ExtResource("1_5ng20")
