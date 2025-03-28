@@ -36,7 +36,6 @@ func _ready():
 	angle_travelled = 0.0
 	direction_difference = desired_direction.angle() \
 			- player.global_position.direction_to(player.weapon_direction_marker.global_position).angle()
-	print(direction_difference)
 	if not _was_previous_weapon: # if fired by the player
 		rotation = global_position.angle_to_point(player.weapon_direction_marker.global_position)
 	else:
