@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dku4lppud1ur6"]
+
+[ext_resource type="Script" uid="uid://dnbfleyawh6q6" path="res://Scripts/Passives/Abilities/venomous_dose.gd" id="1_hs7y8"]
+
+[node name="Venomous Dose" type="Node"]
+script = ExtResource("1_hs7y8")
