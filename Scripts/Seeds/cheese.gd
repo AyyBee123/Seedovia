@@ -79,8 +79,8 @@ func set_variable_sizes():
 	end.position.x = end.texture.get_width() + middle.get_region_rect().size.x
 
 func _collide(body):
-	has_collided.emit(body) # for on-hit effects (ex: burning an enemy on hit)
 	if body.is_in_group("Enemies"):
+		has_collided.emit(body) # for on-hit effects (ex: burning an enemy on hit)
 		var knockback_angle = rotation + PI/2 * sign(angle_travelled)
 		var knockback_direction = Vector2.RIGHT.rotated(knockback_angle).normalized()
 		var damage = min(DAMAGE * abs(angle_travelled) / 10, DAMAGE * 10)
@@ -123,6 +123,7 @@ func update_position(delta):
 		global_position = player.hand.global_position
 		rotation = global_position.angle_to_point(player.weapon_direction_marker.global_position) \
 				+ direction_difference
+		direction = Vector2.RIGHT.rotated(rotation)
 
 func animate():
 	var tween = get_tree().create_tween()
