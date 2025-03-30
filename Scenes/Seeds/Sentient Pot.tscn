@@ -1,9 +1,10 @@
-[gd_scene load_steps=24 format=3 uid="uid://cgo5j3dbg1wau"]
+[gd_scene load_steps=25 format=3 uid="uid://cgo5j3dbg1wau"]
 
 [ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_v2w53"]
 [ext_resource type="Script" uid="uid://d10tiafivw4sy" path="res://Scripts/Seeds/sentient_pot.gd" id="2_ewhoq"]
 [ext_resource type="Texture2D" uid="uid://bh8j4nhokghf6" path="res://Sprites/Seeds/Sentient Pot.png" id="2_w8sfd"]
 [ext_resource type="Script" uid="uid://md1c7oo4toel" path="res://Scripts/Seeds/Effects/sentient_pot_state_machine.gd" id="4_gsidp"]
+[ext_resource type="Texture2D" uid="uid://xxyym547o3vn" path="res://Sprites/Misc/Shadow.png" id="5_ukkwr"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ukwm8"]
 radius = 9.0
@@ -187,6 +188,13 @@ shape = SubResource("CircleShape2D_4vjvr")
 wait_time = 6.0
 one_shot = true
 autostart = true
+
+[node name="Shadow" type="Sprite2D" parent="." index="8"]
+z_index = -1
+z_as_relative = false
+position = Vector2(0, 16)
+scale = Vector2(0.45, 0.5)
+texture = ExtResource("5_ukkwr")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
