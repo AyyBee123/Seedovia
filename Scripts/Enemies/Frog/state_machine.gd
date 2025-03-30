@@ -1,7 +1,6 @@
 extends state_machine
 
 var timer = Timer.new()
-var random_attack: int
 
 func _ready():
 	randomize()
