@@ -10,6 +10,7 @@ const SPREAD = PI/4
 
 var angles: Array
 var direction: Vector2
+var move_direction: Vector2
 
 func _ready():
 	super._ready()
@@ -34,33 +35,41 @@ func idle():
 	
 	# make the eye look at the player, based on the angle between them
 	if angle >= angles[1] and angle < angles[2]:
+		move_direction = Vector2(1, 1)
 		animated_sprite_2d.play("Down-Right")
 	elif angle >= angles[2] and angle < angles[3]:
+		move_direction = Vector2(0, 1)
 		animated_sprite_2d.play("Down")
 	elif angle >= angles[3] and angle < angles[4]:
+		move_direction = Vector2(-1, 1)
 		animated_sprite_2d.play("Down-Left")
 	elif angle >= angles[4] and angle < angles[5]:
+		move_direction = Vector2(-1, 0)
 		animated_sprite_2d.play("Left")
 	elif angle >= angles[5] and angle < angles[6]:
+		move_direction = Vector2(-1, -1)
 		animated_sprite_2d.play("Up-Left")
 	elif angle >= angles[6] and angle < angles[7]:
+		move_direction = Vector2(0, -1)
 		animated_sprite_2d.play("Up")
 	elif angle >= angles[7] and angle < angles[0]:
+		move_direction = Vector2(1, -1)
 		animated_sprite_2d.play("Up-Right")
 	else:
+		move_direction = Vector2(1, 0)
 		animated_sprite_2d.play("Right")
 	
 	animated_sprite_2d.set_frame_and_progress(current_frame, current_progress)
 	
-	velocity = velocity.lerp(_enemy_stats.speed * direction, _enemy_stats.friction)
+	velocity = velocity.lerp(_enemy_stats.speed * move_direction, _enemy_stats.friction)
 	move_and_slide()
 
 func shoot():
-	velocity = velocity.lerp(_enemy_stats.speed * direction * 15, _enemy_stats.acceleration)
+	velocity = velocity.lerp(_enemy_stats.speed * move_direction * 15, _enemy_stats.acceleration)
 	move_and_slide()
 
 func end_shoot():
-	velocity = velocity.lerp(_enemy_stats.speed * direction, _enemy_stats.friction)
+	velocity = velocity.lerp(_enemy_stats.speed * move_direction, _enemy_stats.friction)
 	move_and_slide()
 
 func _on_animated_sprite_2d_frame_changed():
