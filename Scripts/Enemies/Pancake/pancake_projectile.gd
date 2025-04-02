@@ -21,6 +21,7 @@ func _ready():
 func _physics_process(delta):
 	if not is_instance_valid(source):
 		queue_free()
+		return
 	initialize_position()
 	travelled_distance()
 	update_position(delta)

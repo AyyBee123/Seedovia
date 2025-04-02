@@ -69,6 +69,7 @@ func _exit_state(old_state, new_state):
 		states.return:
 			jump_timer.start(0.75)
 		states.jump:
+			parent.plate_SFX.play()
 			jump_delay_timer.start(0.25)
 			jump_timer.start(0.75)
 		states.float:

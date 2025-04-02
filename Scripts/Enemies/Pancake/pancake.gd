@@ -2,6 +2,7 @@ extends "res://Scripts/Enemies/enemy.gd"
 
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var marker = $Marker2D
+@onready var plate_SFX = $Plate
 
 const PANCAKE_PROJECTILE = preload("res://Scenes/Enemies/Weapons/Pancake Projectile.tscn")
 

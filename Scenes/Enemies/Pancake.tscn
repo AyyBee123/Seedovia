@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dvkx8i8dfkt05"]
+[gd_scene load_steps=30 format=3 uid="uid://dvkx8i8dfkt05"]
 
 [ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_rblch"]
 [ext_resource type="Script" uid="uid://berux05620u76" path="res://Scripts/Enemies/Pancake/pancake.gd" id="2_dshr7"]
@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://cpmeg22db6th4" path="res://Resources/Enemies/pancake.tres" id="3_d7iwf"]
 [ext_resource type="Texture2D" uid="uid://dobxja1rlivhh" path="res://Sprites/Enemies/Pancake.png" id="3_hewcw"]
 [ext_resource type="Script" uid="uid://chwnoqyvfkx8i" path="res://Scripts/Enemies/Pancake/state_machine.gd" id="6_81jre"]
+[ext_resource type="AudioStream" uid="uid://b2ou7evtsjsqq" path="res://Audio/SFX/Plate.mp3" id="7_81jre"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l3806"]
 size = Vector2(32, 22)
@@ -211,3 +212,8 @@ metadata/_custom_type_script = "uid://cxh3rckpecdhs"
 
 [node name="Marker2D" type="Marker2D" parent="." index="7"]
 position = Vector2(0, 10)
+
+[node name="Plate" type="AudioStreamPlayer" parent="." index="8"]
+stream = ExtResource("7_81jre")
+pitch_scale = 1.05
+bus = &"SFX"
