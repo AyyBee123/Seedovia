@@ -1,0 +1,213 @@
+[gd_scene load_steps=29 format=3 uid="uid://dvkx8i8dfkt05"]
+
+[ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_rblch"]
+[ext_resource type="Script" uid="uid://berux05620u76" path="res://Scripts/Enemies/Pancake/pancake.gd" id="2_dshr7"]
+[ext_resource type="Shader" uid="uid://dsv0n8bsysyo6" path="res://Shaders/color_tint_shader.gdshader" id="2_hewcw"]
+[ext_resource type="Resource" uid="uid://cpmeg22db6th4" path="res://Resources/Enemies/pancake.tres" id="3_d7iwf"]
+[ext_resource type="Texture2D" uid="uid://dobxja1rlivhh" path="res://Sprites/Enemies/Pancake.png" id="3_hewcw"]
+[ext_resource type="Script" uid="uid://chwnoqyvfkx8i" path="res://Scripts/Enemies/Pancake/state_machine.gd" id="6_81jre"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l3806"]
+size = Vector2(32, 22)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dshr7"]
+resource_local_to_scene = true
+shader = ExtResource("2_hewcw")
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/tint_factor = 0.0
+shader_parameter/fade = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dshr7"]
+atlas = ExtResource("3_hewcw")
+region = Rect2(200, 0, 50, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oyglv"]
+atlas = ExtResource("3_hewcw")
+region = Rect2(250, 0, 50, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d7iwf"]
+atlas = ExtResource("3_hewcw")
+region = Rect2(300, 0, 50, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_81jre"]
+atlas = ExtResource("3_hewcw")
+region = Rect2(350, 0, 50, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l3806"]
+atlas = ExtResource("3_hewcw")
+region = Rect2(400, 0, 50, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_76e1c"]
+atlas = ExtResource("3_hewcw")
+region = Rect2(450, 0, 50, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1m4ki"]
+atlas = ExtResource("3_hewcw")
+region = Rect2(500, 0, 50, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2q05t"]
+atlas = ExtResource("3_hewcw")
+region = Rect2(550, 0, 50, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w2gwt"]
+atlas = ExtResource("3_hewcw")
+region = Rect2(600, 0, 50, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q8gtn"]
+atlas = ExtResource("3_hewcw")
+region = Rect2(650, 0, 50, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y0b3r"]
+atlas = ExtResource("3_hewcw")
+region = Rect2(700, 0, 50, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o563y"]
+atlas = ExtResource("3_hewcw")
+region = Rect2(750, 0, 50, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y3hd5"]
+atlas = ExtResource("3_hewcw")
+region = Rect2(0, 0, 50, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ymt6f"]
+atlas = ExtResource("3_hewcw")
+region = Rect2(50, 0, 50, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jw23u"]
+atlas = ExtResource("3_hewcw")
+region = Rect2(100, 0, 50, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cptbc"]
+atlas = ExtResource("3_hewcw")
+region = Rect2(150, 0, 50, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_65wja"]
+atlas = ExtResource("3_hewcw")
+region = Rect2(800, 0, 50, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1bt3n"]
+atlas = ExtResource("3_hewcw")
+region = Rect2(850, 0, 50, 56)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y0b3r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dshr7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oyglv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d7iwf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_81jre")
+}],
+"loop": false,
+"name": &"Charge",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l3806")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_76e1c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1m4ki")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2q05t")
+}],
+"loop": true,
+"name": &"Float",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w2gwt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q8gtn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y0b3r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o563y")
+}],
+"loop": true,
+"name": &"Float 1 Pancake",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y3hd5")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y3hd5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ymt6f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jw23u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cptbc")
+}],
+"loop": false,
+"name": &"Jump",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_65wja")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1bt3n")
+}],
+"loop": false,
+"name": &"Return",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_76e1c"]
+size = Vector2(32, 22)
+
+[node name="Pancake" instance=ExtResource("1_rblch")]
+scale = Vector2(2, 2)
+script = ExtResource("2_dshr7")
+_enemy_stats = ExtResource("3_d7iwf")
+
+[node name="CollisionPolygon2D" parent="." index="0"]
+position = Vector2(0, 14)
+shape = SubResource("RectangleShape2D_l3806")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+material = SubResource("ShaderMaterial_dshr7")
+sprite_frames = SubResource("SpriteFrames_y0b3r")
+animation = &"Idle"
+autoplay = "Idle"
+
+[node name="CollisionPolygon2D" parent="Enemy Hitbox" index="0"]
+position = Vector2(0, 14)
+shape = SubResource("RectangleShape2D_76e1c")
+
+[node name="Health Bar" parent="." index="3"]
+offset_top = -30.0
+offset_bottom = -22.0
+
+[node name="state_machine" type="Node" parent="." index="6"]
+script = ExtResource("6_81jre")
+metadata/_custom_type_script = "uid://cxh3rckpecdhs"
+
+[node name="Marker2D" type="Marker2D" parent="." index="7"]
+position = Vector2(0, 10)

@@ -1,0 +1,81 @@
+[gd_scene load_steps=11 format=3 uid="uid://7oeidau5bghl"]
+
+[ext_resource type="Texture2D" uid="uid://ccxv8wo281s5q" path="res://Sprites/Enemies/Weapons/Pancake Projectile.png" id="2_kascm"]
+[ext_resource type="Script" uid="uid://b6y2jh8wafejs" path="res://Scripts/Enemies/Pancake/pancake_projectile.gd" id="2_qtsad"]
+[ext_resource type="Texture2D" uid="uid://xxyym547o3vn" path="res://Sprites/Misc/Shadow.png" id="4_kascm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qtsad"]
+atlas = ExtResource("2_kascm")
+region = Rect2(0, 0, 34, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kascm"]
+atlas = ExtResource("2_kascm")
+region = Rect2(34, 0, 34, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lakr4"]
+atlas = ExtResource("2_kascm")
+region = Rect2(68, 0, 34, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kcn50"]
+atlas = ExtResource("2_kascm")
+region = Rect2(102, 0, 34, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_knser"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qtsad")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kascm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lakr4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kcn50")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qtsad"]
+radius = 4.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lakr4"]
+radius = 7.33333
+height = 29.3333
+
+[node name="Pancake Projectile" type="AnimatedSprite2D" groups=["Enemy Weapon"]]
+z_index = 4
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_knser")
+autoplay = "default"
+script = ExtResource("2_qtsad")
+
+[node name="Pancake Detect" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pancake Detect"]
+shape = SubResource("CircleShape2D_qtsad")
+
+[node name="Bullet Hitbox" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bullet Hitbox"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_lakr4")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+z_index = -1
+z_as_relative = false
+position = Vector2(0, 10)
+scale = Vector2(0.9, 0.999)
+texture = ExtResource("4_kascm")
+
+[connection signal="area_entered" from="Pancake Detect" to="." method="_on_pancake_detect_area_entered"]
+[connection signal="area_entered" from="Bullet Hitbox" to="." method="_on_bullet_hitbox_area_entered"]
+[connection signal="body_entered" from="Bullet Hitbox" to="." method="_on_bullet_hitbox_body_entered"]
