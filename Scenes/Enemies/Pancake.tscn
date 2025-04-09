@@ -9,7 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://b2ou7evtsjsqq" path="res://Audio/SFX/Plate.mp3" id="7_81jre"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l3806"]
-size = Vector2(32, 22)
+size = Vector2(43, 28)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dshr7"]
 resource_local_to_scene = true
