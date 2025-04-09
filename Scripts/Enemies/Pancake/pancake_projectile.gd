@@ -1,5 +1,7 @@
 extends AnimatedSprite2D
 
+@onready var pancake_detect = $"Pancake Detect"
+
 var damage: int = 1
 var range: float = 0
 var speed: float = 0
