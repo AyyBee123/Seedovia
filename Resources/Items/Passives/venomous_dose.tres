@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="passive_class" load_steps=3 format=3 uid="uid://ds67f2rxk6o0k"]
+[gd_resource type="Resource" script_class="passive_class" load_steps=4 format=3 uid="uid://ds67f2rxk6o0k"]
 
 [ext_resource type="Script" uid="uid://yr5gdtdbvmoc" path="res://Scripts/Passives/Classes/passive_class.gd" id="1_rsgk6"]
+[ext_resource type="PackedScene" uid="uid://dku4lppud1ur6" path="res://Scenes/Passives/Abilities/Venomous Dose.tscn" id="1_xhboy"]
 [ext_resource type="Texture2D" uid="uid://d2wulgbk8hxff" path="res://Sprites/Passives/Icons/Venomous Dose.png" id="2_kb2kp"]
 
 [resource]
@@ -8,5 +9,6 @@ script = ExtResource("1_rsgk6")
 passive_name = "Venomous Dose"
 sprite = ExtResource("2_kb2kp")
 description = "33% chance on hit to create a pool of venom that damages enemies standing on it."
+passive_ability = ExtResource("1_xhboy")
 unlocked = true
 metadata/_custom_type_script = "uid://yr5gdtdbvmoc"
