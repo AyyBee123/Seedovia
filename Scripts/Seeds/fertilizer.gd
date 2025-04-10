@@ -37,7 +37,7 @@ func _physics_process(delta):
 					return
 				has_collided.emit(enemies_in_area[i].get_node("Enemy Hitbox"))
 				enemies_in_area[i]._enemy_stats.take_damage(DAMAGE)
-				tick_timers[i].start(tick_rate.wait_time / FIRE_RATE)
+				tick_timers[i].start(tick_rate.wait_time / FIRE_RATE * 2.5)
 
 func travelled_distance():
 	pass
@@ -70,7 +70,7 @@ func _on_hurtbox_area_entered(area):
 			enemies_in_area.append(area.get_parent())
 			var timer = Timer.new()
 			add_child(timer)
-			timer.wait_time = tick_rate.wait_time / FIRE_RATE
+			timer.wait_time = tick_rate.wait_time / FIRE_RATE * 2.5
 			timer.one_shot = true
 			tick_timers.append(timer)
 

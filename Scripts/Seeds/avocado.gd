@@ -48,15 +48,19 @@ func travelled_distance():
 
 func range_reached_done():
 	# spawn the seed
-	var avocado_seed = AVOCADO_SEED.instantiate()
-	transfer_properties(avocado_seed)
-	avocado_seed.desired_direction = direction
-	avocado_seed.BASE_SPEED = BASE_SPEED
-	avocado_seed.BASE_RANGE = BASE_RANGE * 1.5
-	avocado_seed.BASE_DAMAGE = BASE_DAMAGE * 1.5
-	avocado_seed.BASE_FIRE_RATE = BASE_FIRE_RATE * 1.5
-	get_tree().current_scene.add_child(avocado_seed)
-	avocado_seed.global_position = global_position
+	if get_next_weapon():
+		weapon_direction = direction
+		shoot_next_weapon()
+	else:
+		var avocado_seed = AVOCADO_SEED.instantiate()
+		transfer_properties(avocado_seed)
+		avocado_seed.desired_direction = direction
+		avocado_seed.BASE_SPEED = BASE_SPEED
+		avocado_seed.BASE_RANGE = BASE_RANGE * 1.5
+		avocado_seed.BASE_DAMAGE = BASE_DAMAGE * 1.5
+		avocado_seed.BASE_FIRE_RATE = BASE_FIRE_RATE * 1.5
+		get_tree().current_scene.add_child(avocado_seed)
+		avocado_seed.global_position = global_position
 	# spawn the left side
 	var avocado_left = AVOCADO_LEFT.instantiate()
 	transfer_properties(avocado_left)
