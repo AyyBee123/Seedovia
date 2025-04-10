@@ -2,6 +2,7 @@ extends "res://Scripts/Enemies/enemy.gd"
 
 @onready var animation_player = $AnimationPlayer
 @onready var animated_sprite_2d = $AnimatedSprite2D
+@onready var jumbo_spawn_animation = $"Jumbo Spawn Animation"
 @onready var splat_3 = $Splat2
 @onready var splat_2 = $Splat
 @onready var _state_machine = $state_machine

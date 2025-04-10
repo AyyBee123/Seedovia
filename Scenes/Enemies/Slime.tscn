@@ -565,7 +565,7 @@ offset = Vector2(0, -40)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
 root_node = NodePath("../AnimatedSprite2D")
 libraries = {
-"": SubResource("AnimationLibrary_yd317")
+&"": SubResource("AnimationLibrary_yd317")
 }
 speed_scale = 0.9
 
@@ -593,7 +593,7 @@ bus = &"SFX"
 
 [node name="Jumbo Spawn Animation" type="AnimationPlayer" parent="." index="11"]
 libraries = {
-"": SubResource("AnimationLibrary_tfc4t")
+&"": SubResource("AnimationLibrary_tfc4t")
 }
 
 [connection signal="animation_finished" from="Jumbo Spawn Animation" to="." method="_on_jumbo_spawn_animation_animation_finished"]
