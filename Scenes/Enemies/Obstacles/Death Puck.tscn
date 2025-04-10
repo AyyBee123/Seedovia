@@ -24,8 +24,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6orac"]
-radius = 6.0
-height = 33.3333
+radius = 6.66667
+height = 34.6667
 
 [node name="Death Puck" groups=["Puck"] instance=ExtResource("1_vjmrl")]
 z_index = 1
