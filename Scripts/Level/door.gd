@@ -8,11 +8,11 @@ var text
 
 var reward_weight = {
 	# index 0, 1, 2, 3, and 4 are talisman, consumable, seed, money, and stat up pools respectively
-	0: 0.08,
+	0: 0.10,
 	1: 0.10,
-	2: 0.08,
-	3: 0.37,
-	4: 0.37
+	2: 0.10,
+	3: 0.35,
+	4: 0.35
 }
 
 func _ready():
