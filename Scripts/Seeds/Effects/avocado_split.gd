@@ -14,12 +14,12 @@ func _ready():
 	tween.tween_property(self, "direction", Vector2.ZERO, 0.1).set_ease(Tween.EASE_OUT)
 	tween.tween_interval(0.1)
 	tween.tween_callback(func():
-		weapon_direction = parent_direction
+		weapon_direction = Vector2.RIGHT.rotated(rotation - PI/2 * angle_sign)
 		shoot_next_weapon()
 		SfxDeconflicter.play(Game.audio_manager.crunch)
 		SfxDeconflicter.play(Game.audio_manager.hit_2)
 		explode()
-		queue_free()
+		queue_free.call_deferred()
 	)
 
 func _collide(body):
