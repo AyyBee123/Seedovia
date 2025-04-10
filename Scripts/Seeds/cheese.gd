@@ -10,11 +10,11 @@ extends "res://Scripts/Seeds/seed_template.gd"
 @onready var bonk_SFX = $Bonk
 @onready var smack_SFX = $Smack
 
+var angle_threshold: float = 60.0 # angle in degrees
 var _was_previous_weapon
 var t = 0.0
 var rect_width = 0.0
 var mouse_left_down := true
-var angle_threshold: float = 150.0 # angle in degrees
 var starting_angle: float = 0.0
 var angle_travelled: float = 0.0
 var total_angle: float = 0.0
@@ -56,9 +56,9 @@ func _physics_process(delta):
 	rotation_travelled()
 
 func rotation_travelled():
-	angle_travelled = rotation_degrees - starting_angle
+	angle_travelled = rad_to_deg(angle_difference(starting_angle, rotation))
 	total_angle += abs(angle_travelled)
-	starting_angle = rotation_degrees
+	starting_angle = rotation
 	if total_angle >= angle_threshold:
 		total_angle = 0.0
 		if not _initial_shot:
