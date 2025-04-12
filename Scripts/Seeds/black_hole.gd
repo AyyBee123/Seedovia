@@ -36,11 +36,11 @@ func _physics_process(delta):
 			if is_instance_valid(enemies_in_area[i]):
 				if enemies_in_area[i] == player:
 					enemies_in_area[i]._player_stats.take_damage(1)
-					tick_timers[i].start(tick_rate / FIRE_RATE)
+					tick_timers[i].start(tick_rate)
 					return
 				has_collided.emit(enemies_in_area[i].get_node("Enemy Hitbox"))
 				enemies_in_area[i]._enemy_stats.take_damage(DAMAGE)
-				tick_timers[i].start(tick_rate / FIRE_RATE)
+				tick_timers[i].start(tick_rate)
 	if not is_shrinking:
 		orbit(delta)
 	else:
@@ -56,7 +56,7 @@ func _collide(body):
 			enemies_in_area.append(body.get_parent())
 			var timer = Timer.new()
 			add_child(timer)
-			timer.wait_time = tick_rate / FIRE_RATE
+			timer.wait_time = tick_rate
 			timer.one_shot = true
 			tick_timers.append(timer)
 

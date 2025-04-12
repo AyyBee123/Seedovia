@@ -26,11 +26,11 @@ func _physics_process(delta):
 			if is_instance_valid(enemies_in_area[i]):
 				if enemies_in_area[i] == player:
 					enemies_in_area[i]._player_stats.take_damage(1)
-					tick_timers[i].start(0.25 / FIRE_RATE)
+					tick_timers[i].start(0.25)
 					return
 				has_collided.emit(enemies_in_area[i].get_node("Enemy Hitbox"))
 				enemies_in_area[i]._enemy_stats.take_damage(DAMAGE)
-				tick_timers[i].start(0.25 / FIRE_RATE)
+				tick_timers[i].start(0.25)
 	if fire_rate.is_stopped():
 		shoot_next_weapon()
 
@@ -69,7 +69,7 @@ func _on_depression_area_area_entered(area):
 			enemies_in_area.append(area.get_parent())
 			var timer = Timer.new()
 			add_child(timer)
-			timer.wait_time = 0.1 / FIRE_RATE
+			timer.wait_time = 0.1
 			timer.one_shot = true
 			tick_timers.append(timer)
 
