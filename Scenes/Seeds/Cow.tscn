@@ -1,0 +1,101 @@
+[gd_scene load_steps=12 format=3 uid="uid://bdv2101jawx6a"]
+
+[ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_8g5d6"]
+[ext_resource type="Texture2D" uid="uid://bpxrlbi1gbhqy" path="res://Sprites/Seeds/Cow.png" id="2_mbmur"]
+[ext_resource type="Script" uid="uid://bh7c06lmbsqwq" path="res://Scripts/Seeds/cow.gd" id="3_mbmur"]
+[ext_resource type="Script" uid="uid://cn0s64scf6s5y" path="res://Scripts/Seeds/Effects/cow_state_machine.gd" id="4_wwgj5"]
+[ext_resource type="Texture2D" uid="uid://dxsb6y3bbn4fb" path="res://Sprites/Bosses/Jumbo/Shadow.png" id="5_7p8gc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1l53q"]
+atlas = ExtResource("2_mbmur")
+region = Rect2(0, 0, 128, 79)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kgeoe"]
+atlas = ExtResource("2_mbmur")
+region = Rect2(128, 0, 128, 79)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4a3jm"]
+atlas = ExtResource("2_mbmur")
+region = Rect2(256, 0, 128, 79)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0l7a5"]
+atlas = ExtResource("2_mbmur")
+region = Rect2(384, 0, 128, 79)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_65of6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1l53q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kgeoe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4a3jm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4a3jm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0l7a5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kgeoe")
+}],
+"loop": true,
+"name": &"Move",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1l53q")
+}],
+"loop": true,
+"name": &"Stop",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wwgj5"]
+size = Vector2(89, 69)
+
+[node name="Cow" instance=ExtResource("1_8g5d6")]
+script = ExtResource("3_mbmur")
+BASE_DAMAGE = 10.0
+BASE_FIRE_RATE = 0.65
+BASE_RANGE = 200.0
+BASE_SPEED = 50.0
+BASE_SIZE = 1.0
+BASE_BLAST_RADIUS = 1.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_65of6")
+animation = &"Stop"
+frame_progress = 0.344951
+offset = Vector2(12, 6)
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2(1.5, 9.5)
+shape = SubResource("RectangleShape2D_wwgj5")
+
+[node name="Move Time" type="Timer" parent="." index="4"]
+one_shot = true
+autostart = true
+
+[node name="Move Delay" type="Timer" parent="." index="5"]
+wait_time = 2.0
+one_shot = true
+
+[node name="Fire Rate" type="Timer" parent="." index="6"]
+one_shot = true
+
+[node name="state_machine" type="Node" parent="." index="7"]
+script = ExtResource("4_wwgj5")
+metadata/_custom_type_script = "uid://cxh3rckpecdhs"
+
+[node name="Shadow" type="Sprite2D" parent="." index="8"]
+z_index = -1
+z_as_relative = false
+position = Vector2(-1.13687e-13, 44)
+scale = Vector2(0.914286, 1.45454)
+texture = ExtResource("5_7p8gc")
