@@ -37,8 +37,9 @@ func _physics_process(delta):
 
 func explode():
 	var explosion = NON_WEAPON_EFFECT_EXPLOSION.instantiate()
-	for passive in $Passives.get_children():
-		explosion.get_node("Passives").add_child(passive.duplicate())
+	if get_node_or_null("Passives"):
+		for passive in $Passives.get_children():
+			explosion.get_node("Passives").add_child(passive.duplicate())
 	explosion.BASE_DAMAGE = BASE_DAMAGE
 	explosion.BASE_SIZE = BASE_BLAST_RADIUS * BASE_SIZE
 	explosion.z_index = z_index + 1

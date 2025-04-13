@@ -25,8 +25,9 @@ func update_position(delta):
 
 func explode():
 	var explosion = resource_preloader.get_resource("Non-Weapon Effect Explosion").instantiate()
-	for passive in $Passives.get_children():
-		explosion.get_node("Passives").add_child(passive.duplicate())
+	if get_node_or_null("Passives"):
+		for passive in $Passives.get_children():
+			explosion.get_node("Passives").add_child(passive.duplicate())
 	explosion.BASE_DAMAGE = BASE_DAMAGE
 	explosion.BASE_SIZE = BASE_BLAST_RADIUS * BASE_SIZE
 	explosion.collisions = collisions
