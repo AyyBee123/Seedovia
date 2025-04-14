@@ -53,7 +53,7 @@ shape = SubResource("CircleShape2D_8blui")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="3"]
 sprite_frames = SubResource("SpriteFrames_ji123")
 autoplay = "default"
-frame_progress = 0.624096
+frame_progress = 0.70115
 offset = Vector2(-14, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="." index="4"]

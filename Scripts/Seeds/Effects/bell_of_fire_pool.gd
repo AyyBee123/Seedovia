@@ -12,7 +12,7 @@ func _ready():
 	randomize()
 	modulate.a = 0
 	tween = get_tree().create_tween()
-	tween.tween_property(self, "modulate:a", 1, 0.75)
+	tween.tween_property(self, "modulate:a", 1, 0.55)
 
 func _physics_process(delta):
 	# damage multiple enemies at a time
