@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=4 uid="uid://d0ebdajuovrcw"]
+[gd_scene load_steps=6 format=4 uid="uid://d0ebdajuovrcw"]
 
 [ext_resource type="PackedScene" uid="uid://cxoiy0x4nvtaa" path="res://Scenes/Levels/Base Level.tscn" id="1_llb45"]
 [ext_resource type="Shader" uid="uid://qm3syqtxdolu" path="res://Shaders/circle_transition.gdshader" id="2_j3njm"]
 [ext_resource type="PackedScene" uid="uid://bagmkum7q0yxi" path="res://Scenes/Enemies/Dummy.tscn" id="3_td8rt"]
+[ext_resource type="Script" uid="uid://jmpc3r5rh2yw" path="res://Scripts/Misc/foreground_lighting.gd" id="4_7gvyl"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0ecxy"]
 resource_local_to_scene = true
@@ -21,3 +22,12 @@ material = SubResource("ShaderMaterial_0ecxy")
 
 [node name="Dummy" parent="." index="7" instance=ExtResource("3_td8rt")]
 position = Vector2(-550, -200)
+
+[node name="Foreground Lighting" type="ColorRect" parent="." index="8"]
+z_index = 7
+offset_left = -1536.0
+offset_top = -896.0
+offset_right = 1536.0
+offset_bottom = 896.0
+color = Color(0.784314, 0, 0.529412, 0.0588235)
+script = ExtResource("4_7gvyl")

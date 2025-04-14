@@ -13,8 +13,8 @@ shader_parameter/circle_position_y = 0.695
 
 [node name="Level" instance=ExtResource("1_nrtdg")]
 
-[node name="Circle Transition" parent="." index="10"]
+[node name="Circle Transition" parent="." index="6"]
 material = SubResource("ShaderMaterial_5xmff")
 
-[node name="Mad Hat" parent="." index="11" instance=ExtResource("3_1daq8")]
+[node name="Mad Hat" parent="." index="8" instance=ExtResource("3_1daq8")]
 position = Vector2(0, -256)
