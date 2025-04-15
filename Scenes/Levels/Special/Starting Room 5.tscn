@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://bqcc1inrqrx0t"]
+
+[ext_resource type="PackedScene" uid="uid://b22h0nnjdya1p" path="res://Scenes/Levels/Floor 5 Base.tscn" id="1_bkqmi"]
+[ext_resource type="Shader" uid="uid://qm3syqtxdolu" path="res://Shaders/circle_transition.gdshader" id="2_5c44j"]
+[ext_resource type="PackedScene" uid="uid://bagmkum7q0yxi" path="res://Scenes/Enemies/Dummy.tscn" id="3_bkqmi"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_snckb"]
+resource_local_to_scene = true
+shader = ExtResource("2_5c44j")
+shader_parameter/circle_size = 0.0
+shader_parameter/circle_position_x = 0.5
+shader_parameter/circle_position_y = 0.695
+
+[node name="Level" instance=ExtResource("1_bkqmi")]
+
+[node name="Circle Transition" parent="." index="6"]
+material = SubResource("ShaderMaterial_snckb")
+
+[node name="Dummy" parent="." index="8" instance=ExtResource("3_bkqmi")]
+position = Vector2(-550, -200)
