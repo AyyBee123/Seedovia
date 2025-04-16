@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="seed_class" load_steps=4 format=3 uid="uid://bxhyqkhmnwv"]
+
+[ext_resource type="PackedScene" uid="uid://crrpmenr1b7n4" path="res://Scenes/Seeds/Carrot.tscn" id="1_rs5fu"]
+[ext_resource type="Script" uid="uid://c6ykhgvfkht5x" path="res://Scripts/Stats/seed_stats.gd" id="1_udcvj"]
+[ext_resource type="Texture2D" uid="uid://bjk8lhehrmbi3" path="res://Sprites/Seeds (Inventory)/Carrot.png" id="3_esigl"]
+
+[resource]
+script = ExtResource("1_udcvj")
+scene = ExtResource("1_rs5fu")
+rarity = 0
+item_name = "Carrot"
+texture = ExtResource("3_esigl")
+description = ""
+unlocked = true
+metadata/_custom_type_script = "uid://c6ykhgvfkht5x"

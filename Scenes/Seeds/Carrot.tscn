@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://crrpmenr1b7n4"]
+
+[ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_p602c"]
+[ext_resource type="Texture2D" uid="uid://c4ett3l0lpn01" path="res://Sprites/Seeds/Carrot.png" id="2_6ulpt"]
+[ext_resource type="Script" uid="uid://dp1myey2tdut0" path="res://Scripts/Seeds/carrot.gd" id="3_8ku10"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qdkpr"]
+size = Vector2(28, 12)
+
+[node name="Carrot" instance=ExtResource("1_p602c")]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_6ulpt")
+offset = Vector2(2.5, -0.5)
+script = ExtResource("3_8ku10")
+BASE_DAMAGE = 15.0
+BASE_FIRE_RATE = 2.0
+BASE_RANGE = 450.0
+BASE_SPEED = 750.0
+BASE_SIZE = 1.0
+BASE_BLAST_RADIUS = 1.0
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2(8, 0)
+shape = SubResource("RectangleShape2D_qdkpr")

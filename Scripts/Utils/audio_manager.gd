@@ -33,6 +33,7 @@ extends Node
 @onready var ding_2 = $Ding2
 @onready var impact_high_pitch = $"Impact High Pitch"
 @onready var fire_explosion = $"Fire Explosion"
+@onready var hit_3 = $Hit3
 
 func _ready():
 	SignalBus.play_audio.connect(play)
