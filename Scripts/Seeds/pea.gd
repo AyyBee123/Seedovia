@@ -2,7 +2,6 @@ extends "res://Scripts/Seeds/seed_template.gd"
 
 const SPLASH = preload("res://Scenes/Misc/Splash.tscn")
 
-
 var enemy
 
 func _ready():
