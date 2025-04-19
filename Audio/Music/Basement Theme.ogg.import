@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bj1fvy4e0ywjr"
+path="res://.godot/imported/Basement Theme.ogg-0829555ad723de95d7f0e8c57f41ccaa.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Music/Basement Theme.ogg"
+dest_files=["res://.godot/imported/Basement Theme.ogg-0829555ad723de95d7f0e8c57f41ccaa.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

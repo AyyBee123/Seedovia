@@ -84,6 +84,14 @@ func _ready():
 					Game.music_manager.play(Game.music_manager.BOSS_THEME)
 				else:
 					Game.music_manager.stop()
+		4:
+			if LevelList.room_number != 10:
+				Game.music_manager.play(Game.music_manager.BASEMENT_THEME)
+			else:
+				if not LevelList.loaded_room_is_cleared:
+					Game.music_manager.play(Game.music_manager.BOSS_THEME)
+				else:
+					Game.music_manager.stop()
 	Global.RNG.randomize()
 	if LevelList.loaded_room_is_cleared:
 		for enemy in get_tree().get_nodes_in_group("Enemy"):
