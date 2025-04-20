@@ -19,10 +19,10 @@ shader_parameter/circle_position_y = 0.695
 material = SubResource("ShaderMaterial_0ecxy")
 
 [node name="Pot" parent="." index="7" instance=ExtResource("5_fbo8h")]
-position = Vector2(-712, -184)
+position = Vector2(-704, -184)
 
 [node name="Pot2" parent="." index="8" instance=ExtResource("5_fbo8h")]
-position = Vector2(712, 184)
+position = Vector2(704, 184)
 rotation = 3.14159
 
 [node name="Pancake" parent="." index="9" instance=ExtResource("4_37483")]

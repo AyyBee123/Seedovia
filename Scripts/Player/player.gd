@@ -70,6 +70,7 @@ func _ready():
 	_player_stats.damaged.connect(took_damage)
 	_player_stats.health_increased.connect(heal)
 	_player_stats.change_coins.connect(update_coins)
+	SignalBus.pickup_item_recieved.connect(_on_pickup)
 	DAMAGE = _player_stats.get_seed_stat("Weapon_Damage")
 	FIRE_RATE = _player_stats.get_seed_stat("Fire_Rate")
 	SPEED = _player_stats.get_seed_stat("Weapon_Speed")
@@ -266,6 +267,14 @@ func _on_pickup_radius_area_entered(area):
 func _on_pickup_radius_area_exited(area):
 	if area.get_parent().is_in_group("Item") or area.get_parent().is_in_group("Shop Item"):
 		item_in_area = false
+
+func _on_pickup(_item):
+	_item.queue_free()
+	await get_tree().process_frame
+	ItemCheck.check_for_pickup_items()
+	await get_tree().create_timer(0.5).timeout
+	Global.save_run_data()
+	Global.save_run_room()
 
 ## a little buffer to prevent immediate collision with other objects
 func _on_collision_buffer_time_timeout():

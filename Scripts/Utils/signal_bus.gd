@@ -9,3 +9,4 @@ signal coin_pickup(amount)
 signal inventory_changed
 signal max_health_changed(amount)
 signal coins_saved
+signal pickup_item_recieved(item)

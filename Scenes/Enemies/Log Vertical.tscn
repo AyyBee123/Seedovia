@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_73v7o"]
 [ext_resource type="Texture2D" uid="uid://w8b38p0kcypf" path="res://Sprites/Enemies/Log.png" id="2_4uaf8"]
-[ext_resource type="Script" uid="uid://ma37xy5iuerk" path="res://Scripts/Enemies/Log/log_vertical.gd" id="2_jtxup"]
+[ext_resource type="Script" uid="uid://dwcb81kq1x18i" path="res://Scripts/Enemies/Log/log.gd" id="2_beip8"]
 [ext_resource type="Resource" uid="uid://b4cou6pw7ljam" path="res://Resources/Enemies/log.tres" id="3_hsdmr"]
 [ext_resource type="Shader" uid="uid://dsv0n8bsysyo6" path="res://Shaders/color_tint_shader.gdshader" id="4_7op4s"]
 [ext_resource type="Script" uid="uid://duuycqnuak2j4" path="res://Scripts/Enemies/Log/state_machine.gd" id="5_kxjhe"]
@@ -64,7 +64,7 @@ size = Vector2(41.5, 13)
 
 [node name="Log" instance=ExtResource("1_73v7o")]
 scale = Vector2(2, 2)
-script = ExtResource("2_jtxup")
+script = ExtResource("2_beip8")
 _enemy_stats = ExtResource("3_hsdmr")
 
 [node name="CollisionPolygon2D" parent="." index="0"]

@@ -3,9 +3,10 @@ extends "res://Scripts/Enemies/Obstacles/obstacle.gd"
 @onready var resource_preloader = $ResourcePreloader
 @onready var left_detect = $"Left Detect"
 @onready var right_detect = $"Right Detect"
-@onready var right_direction_point = $"Right Direction Point"
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var fire_rate = $"Fire Rate"
+@onready var _state_machine = $StateMachine
+
 
 var forward_direction
 var direction = 1
@@ -13,18 +14,13 @@ var direction_changed := false
 
 func _ready():
 	super._ready()
-	# check the initial x-position of the log to determine horizontal direction
-	if global_position.x > 0:
-		direction = -1
-	else:
-		direction = 1
+	forward_direction = Vector2.RIGHT.rotated(rotation)
 
 func _physics_process(delta):
 	super._physics_process(delta)
 
 func move_forward():
-	forward_direction = global_position.direction_to(right_direction_point.global_position).normalized()
-	velocity = velocity.lerp(forward_direction * _enemy_stats.speed * direction, _enemy_stats.acceleration)
+	velocity = forward_direction * _enemy_stats.speed * direction
 	if direction < 0:
 		animated_sprite_2d.play_backwards("default")
 	else:
@@ -36,6 +32,7 @@ func move_forward():
 		liquid.damage = _enemy_stats.damage
 		liquid.global_position = global_position
 		fire_rate.start()
+	move_and_slide()
 
 func _on_left_detect_body_entered(body):
 	change_direction()
@@ -44,9 +41,11 @@ func _on_right_detect_body_entered(body):
 	change_direction()
 
 func change_direction():
-	direction_changed = true
+	if _state_machine.state != _state_machine.states.forward:
+		return
 	direction = -direction
+	_state_machine.set_state(_state_machine.states.idle)
 
 func idle():
-	velocity = velocity.lerp(Vector2.ZERO, _enemy_stats.friction)
+	velocity = Vector2.ZERO
 	animated_sprite_2d.pause()

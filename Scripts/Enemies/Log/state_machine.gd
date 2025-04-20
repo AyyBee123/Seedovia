@@ -9,8 +9,6 @@ func _ready():
 	create_timer()
 
 func _state_logic(delta):
-	parent.move_and_slide()
-
 	if state == states.idle:
 		parent.idle()
 	if state == states.forward:
@@ -21,14 +19,14 @@ func _get_transition(delta):
 		states.idle:
 			if timer.is_stopped():
 				return states.forward
-		states.forward:
-			if parent.direction_changed:
-				parent.direction_changed = false
-				timer.start(1)
-				return states.idle
 	return null
+
+func _enter_state(new_state, old_state):
+	match new_state:
+		states.idle:
+			timer.start(0.5)
 
 func create_timer():
 	add_child(timer)
-	timer.start(1)
+	timer.start(0.5)
 	timer.one_shot = true

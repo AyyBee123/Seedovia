@@ -14,14 +14,14 @@ shader_parameter/circle_position_y = 0.695
 
 [node name="Level" instance=ExtResource("1_2da8f")]
 
-[node name="Circle Transition" parent="." index="10"]
+[node name="Circle Transition" parent="." index="6"]
 material = SubResource("ShaderMaterial_0ecxy")
 
-[node name="Puddling" parent="." index="11" instance=ExtResource("3_1trfe")]
+[node name="Puddling" parent="." index="7" instance=ExtResource("3_1trfe")]
 position = Vector2(0, -224)
 
-[node name="Jello" parent="." index="12" instance=ExtResource("4_8s52n")]
+[node name="Jello" parent="." index="8" instance=ExtResource("4_8s52n")]
 position = Vector2(-512, -88)
 
-[node name="Jello2" parent="." index="13" instance=ExtResource("4_8s52n")]
+[node name="Jello2" parent="." index="9" instance=ExtResource("4_8s52n")]
 position = Vector2(512, -88)

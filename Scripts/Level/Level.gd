@@ -155,6 +155,7 @@ func check_for_enemies():
 			await get_tree().create_timer(0.5).timeout # buffer to allow the item to register in the level
 			ItemCheck.check_for_items()
 			ItemCheck.check_for_coins()
+			ItemCheck.check_for_pickup_items()
 			Global.save_run_data()
 			Global.save_run_room()
 			Global.save_data()

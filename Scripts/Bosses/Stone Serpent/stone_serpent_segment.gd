@@ -203,6 +203,8 @@ func play_idle():
 		animated_sprite_2d.offset.y = 0
 
 func transfer_damage(amount):
+	if not is_instance_valid(serpent):
+		return
 	serpent._enemy_stats.take_damage_no_red(amount)
 
 func spawn_damage_number(damage: float):
