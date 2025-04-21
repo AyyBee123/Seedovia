@@ -10,8 +10,8 @@ gravity = Vector3(0, 0, 0)
 scale_max = 1.5
 
 [node name="Double Up Particles" type="GPUParticles2D"]
-process_material = SubResource("ParticleProcessMaterial_ra3jo")
 texture = ExtResource("1_w8ry8")
 lifetime = 0.25
 randomness = 1.0
 fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_ra3jo")
