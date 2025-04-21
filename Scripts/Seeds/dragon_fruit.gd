@@ -41,7 +41,7 @@ func explode():
 		for passive in $Passives.get_children():
 			explosion.get_node("Passives").add_child(passive.duplicate())
 	explosion.BASE_DAMAGE = BASE_DAMAGE
-	explosion.BASE_SIZE = BASE_BLAST_RADIUS * BASE_SIZE
+	explosion.BASE_SIZE = BLAST_RADIUS
 	explosion.z_index = z_index + 1
 	explosion.collisions = collisions
 	explosion.get_node("AnimatedSprite2D").self_modulate = colors.pick_random()
