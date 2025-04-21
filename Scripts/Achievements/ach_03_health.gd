@@ -10,7 +10,7 @@ func _ready():
 		SignalBus.max_health_changed.connect(_on_player_max_health_increase)
 
 func _on_player_max_health_increase(amount):
-	if amount >= 6 and not completed:
+	if amount >= 6:
 		progress += 1
 	if get_progress() >= get_progress_goal() and not completed:
 		completed = true

@@ -10,8 +10,7 @@ func _ready():
 		SignalBus.player_die.connect(_on_player_death)
 
 func _on_player_death():
-	if not completed:
-		progress += 1
+	progress += 1
 	if get_progress() >= get_progress_goal() and not completed:
 		completed = true
 		SignalBus.achievement.emit(self)
