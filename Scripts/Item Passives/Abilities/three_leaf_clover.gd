@@ -7,6 +7,8 @@ func _ready():
 	source = get_parent().get_parent()
 	slot_number = 0
 	super._ready()
+	source.weapon_fired.connect(get_slot_number)
+	source.weapon_fired.connect(transfer_passive)
 
 # transfers this passive over from the initial source (the player) to the next weapon
 # and from the next weapon to the following weapon, and so on...
