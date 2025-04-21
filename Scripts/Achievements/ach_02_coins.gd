@@ -10,7 +10,7 @@ func _ready():
 		SignalBus.coin_pickup.connect(_on_coin_pickup)
 
 func _on_coin_pickup(amount):
-	if amount >= 100:
+	if amount >= 100 and not completed:
 		progress += 1
 	if get_progress() >= get_progress_goal() and not completed:
 		completed = true
