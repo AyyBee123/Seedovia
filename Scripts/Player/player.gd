@@ -282,7 +282,3 @@ func _on_collision_buffer_time_timeout():
 
 func update_coins():
 	$"Player Health".set_coins()
-	await get_tree().process_frame
-	ItemCheck.check_for_coins()
-	await get_tree().create_timer(1).timeout
-	Global.save_coins()

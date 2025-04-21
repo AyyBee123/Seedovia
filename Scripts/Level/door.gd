@@ -38,7 +38,7 @@ func _on_enter_radius_body_entered(body):
 			body.get_node("Inventory").holding_item = null
 		transition_scene = true
 
-func change_scene():	
+func change_scene():
 	Global.next_reward = reward
 	LevelList.loaded_room_is_cleared = false
 	LevelList.current_reward_given = false
