@@ -1,10 +1,14 @@
 extends Control
 
 @onready var continue_button = $"Continue Button"
-var character_select_scene = preload("res://Scenes/UI/Character Select.tscn")
-var loading_screen_scene = preload("res://Scenes/UI/Loading Screen.tscn")
+
 const SETTINGS = preload("res://Scenes/UI/Settings.tscn")
+const MENU = preload("res://Scenes/UI/Menu.tscn")
+const character_select_scene = preload("res://Scenes/UI/Character Select.tscn")
+const loading_screen_scene = preload("res://Scenes/UI/Loading Screen.tscn")
+
 var loading_screen_scene_instance
+var settings
 
 func _ready():
 	if ResourceLoader.exists(Global.RUN_SAVE_PATH):
@@ -32,5 +36,14 @@ func _on_continue_button_pressed():
 func _on_settings_button_pressed():
 	if get_tree().current_scene.find_child("Settings"): # if a settings scene already exists
 		return
-	var settings = SETTINGS.instantiate()
+	settings = SETTINGS.instantiate()
 	get_tree().current_scene.add_child(settings)
+
+func _on_back_button_pressed():
+	get_tree().change_scene_to_packed(MENU)
+
+func _input(event):
+	if event.is_action_pressed("ui_cancel"):
+		if is_instance_valid(settings):
+			return
+		get_tree().change_scene_to_packed(MENU)

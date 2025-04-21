@@ -1,21 +1,112 @@
 extends Control
 
+var MAIN_MENU = load("res://Scenes/UI/Main Menu.tscn")
 const character = preload("res://Scripts/UI/character.gd")
 @onready var characters = $Characters.get_children()
+@onready var starting_items = %"Starting Items".get_children()
 @onready var loading_screen_scene = preload("res://Scenes/UI/Loading Screen.tscn")
 var loading_screen_scene_instance
 
-func _ready():
-	for i in range(characters.size()):
-		characters[i].gui_input.connect(select_gui_input.bind(characters[i]))
+@export var starting_character: character_class
+@export var character_scene: String
 
-func select_gui_input(event: InputEvent, char_select: character):
-	if not char_select.starting_character.unlocked:
+func _ready():
+	display_info()
+
+func _press(char_select: character):
+	display_info()
+
+func _on_back_button_pressed():
+	get_tree().change_scene_to_packed(MAIN_MENU)
+
+func _input(event):
+	if event.is_action_pressed("ui_cancel"):
+		get_tree().change_scene_to_packed(MAIN_MENU)
+
+func _on_play_button_pressed():
+	if starting_character == null or character_scene == null:
 		return
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT && event.pressed:
-			loading_screen_scene_instance = loading_screen_scene.instantiate()
-			get_tree().current_scene.add_child.call_deferred(loading_screen_scene_instance)
-			await get_tree().create_timer(0.5).timeout # delay to let the loading screen load in and display on-screen
-			Global.RNG = RandomNumberGenerator.new()
-			char_select.select_character()
+	loading_screen_scene_instance = loading_screen_scene.instantiate()
+	get_tree().current_scene.add_child.call_deferred(loading_screen_scene_instance)
+	await get_tree().create_timer(0.5).timeout # delay to let the loading screen load in and display on-screen
+	Global.RNG = RandomNumberGenerator.new()
+	select_character()
+
+func display_info():
+	%"Character Sprite".texture = starting_character.character_sprite
+	%"Character Name".text = starting_character.character_name
+	
+	# default values
+	for starting_item in starting_items:
+		starting_item.get_node("Info").text = "None"
+	
+	# starting seed
+	var starting_seeds = starting_character.starting_seeds.filter(func(value): return value != null)
+	if starting_character.character_name == "?":
+		starting_items[0].get_node("Info").text = "?"
+	else:
+		if starting_seeds.size() > 0:
+			starting_items[0].get_node("Info").text = starting_seeds[0].item_name
+		if starting_seeds.size() > 1:
+			for i in starting_seeds.size() - 1: # exclude the first element in the array
+				starting_items[0].get_node("Info").text += ", " + starting_seeds[i+1].item_name
+	
+	# starting talisman
+	var starting_talisman = starting_character.starting_talismans.filter(func(value): return value != null)
+	if starting_character.character_name == "?":
+		starting_items[1].get_node("Info").text = "?"
+	else:
+		if starting_talisman.size() > 0:
+			starting_items[1].get_node("Info").text = starting_talisman[0].item_name
+		if starting_talisman.size() > 1:
+			for i in starting_talisman.size() - 1: # exclude the first element in the array
+				starting_items[1].get_node("Info").text += ", " + starting_talisman[i+1].item_name
+	
+	# starting passives
+	var starting_passives = starting_character.starting_passives.filter(func(value): return value != null)
+	if starting_passives.size() > 0:
+		starting_items[2].get_node("Info").text = starting_passives[0].instantiate().name
+	if starting_passives.size() > 1:
+		for i in starting_passives.size() - 1: # exclude the first element in the array
+			starting_items[2].get_node("Info").text += ", " + starting_passives[i+1].instantiate().name
+	
+	# starting inventory
+	var starting_inventory = starting_character.starting_inventory.filter(func(value): return value != null)
+	if starting_inventory.size() > 0:
+		starting_items[3].get_node("Info").text = starting_inventory[0].item_name
+	if starting_inventory.size() > 1:
+		for i in starting_inventory.size() - 1: # exclude the first element in the array
+			starting_items[3].get_node("Info").text += ", " + starting_inventory[i+1].item_name
+
+func select_character():
+	Global.delete_run_data()
+	LevelList.elapsed_time = 0
+	PlayerCharacter._is_starting = true
+	PlayerCharacter.coins = starting_character.starting_coins
+	LevelList.character_scene_file_path = character_scene
+	LevelList.load_char()
+	Global.RNG = RandomNumberGenerator.new()
+	Global.rewards.clear()
+	Global.next_reward = null
+	LevelList.floor.rooms.clear()
+	LevelList.floor_number = 0
+	LevelList.room_number = 0
+	LevelList.current_reward_given = true
+	LevelList.doors.clear()
+	LevelList.doors_spawned = false
+	LevelList.pickup_items_on_ground.clear()
+	LevelList.items_on_ground.clear()
+	LevelList.shop_items_on_ground.clear()
+	LevelList.coins_on_ground.clear()
+	LevelList.shop_items_spawned = false
+	PlayerCharacter.starting_character = starting_character
+	PlayerInventory.inventory.clear()
+	PlayerInventory.talismans.clear()
+	PlayerInventory.seeds.clear()
+	PlayerPassives.passives.clear()
+	PlayerPassives.item_passives.clear()
+	PlayerCharacter.set_inventory()
+	PlayerCharacter.add_passives()
+	Pool.start()
+	Global.save_run_room()
+	get_tree().change_scene_to_file("res://Scenes/Levels/Special/Starting Room 1.tscn")

@@ -1,4 +1,4 @@
-extends TextureRect
+extends TextureButton
 
 var mouse_hovered = false
 var event: InputEvent
@@ -7,27 +7,23 @@ var event: InputEvent
 
 var _player_stats: player_stats = preload("res://Resources/Characters/Stats/base_stats.tres")
 
+var menu
+
 func _ready():
-	mouse_entered.connect(_on_mouse_entered)
-	mouse_exited.connect(_on_mouse_exited)
-	
-	if not starting_character.unlocked:
-		get_node("Lock").visible = true
-		self_modulate = Color.BLACK
-		mouse_default_cursor_shape = 0
+	menu = get_parent().get_parent()
+	#if not starting_character.unlocked:
+		#get_node("Lock").visible = true
+		#self_modulate = Color.BLACK
+		#mouse_default_cursor_shape = 0
+		#disabled = true
 
 func _physics_process(delta):
-	if mouse_hovered == true and starting_character.unlocked:
-	#TODO: [ph]
-		modulate = Color.BLACK
-	else:
-		modulate = Color.WHITE
+	starting_character.unlocked
 
-func _on_mouse_entered():
-	mouse_hovered = true
-
-func _on_mouse_exited():
-	mouse_hovered = false
+func _on_pressed():
+	menu.starting_character = starting_character
+	menu.character_scene = character_scene
+	menu._press(self)
 
 func select_character():
 	Global.delete_run_data()

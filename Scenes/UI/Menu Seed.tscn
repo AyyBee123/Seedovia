@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://btwt2l3et6jj2"]
+
+[ext_resource type="Script" uid="uid://bt6g52enr32tg" path="res://Scripts/UI/menu_seed.gd" id="1_mv172"]
+
+[node name="Menu Seed" type="Sprite2D"]
+z_index = -2
+scale = Vector2(3, 3)
+script = ExtResource("1_mv172")

@@ -1,19 +1,28 @@
-[gd_scene load_steps=15 format=3 uid="uid://8lh64evv6imw"]
+[gd_scene load_steps=24 format=3 uid="uid://8lh64evv6imw"]
 
 [ext_resource type="Script" uid="uid://uybucfv2vxti" path="res://Scripts/UI/character_select.gd" id="1_jmjmr"]
+[ext_resource type="Texture2D" uid="uid://dwwsiyabyqc6l" path="res://Sprites/Menu UI/Soil Background.png" id="2_4vqgb"]
 [ext_resource type="Texture2D" uid="uid://2whsjb1rg2lm" path="res://Sprites/Character/Sapling/Sapling1.png" id="2_s2884"]
 [ext_resource type="FontFile" uid="uid://bkn7gmgx1wxgx" path="res://Fonts/Name Font.ttf" id="2_wxbw4"]
 [ext_resource type="Script" uid="uid://bi85ki8xiitqf" path="res://Scripts/UI/character.gd" id="3_alya1"]
 [ext_resource type="Resource" uid="uid://cj0ugaawbg6a" path="res://Resources/Characters/sapling.tres" id="4_v56qf"]
+[ext_resource type="Texture2D" uid="uid://didv5fjskcrdi" path="res://Sprites/Pause UI/Pause Menu Choice.png" id="6_pbw53"]
 [ext_resource type="Texture2D" uid="uid://b7ynn50wtvp24" path="res://Sprites/Character/Berry/Berry1.png" id="6_ubcw7"]
+[ext_resource type="Texture2D" uid="uid://cho888oosvmug" path="res://Sprites/UI/Character Box.png" id="7_2sg52"]
+[ext_resource type="Texture2D" uid="uid://ciyk64aevmyv" path="res://Sprites/Pause UI/Pause Menu Choice Pressed.png" id="7_pyvfr"]
 [ext_resource type="Resource" uid="uid://dxk70g7cem73p" path="res://Resources/Characters/berry.tres" id="7_yw2tk"]
+[ext_resource type="Texture2D" uid="uid://bvh4pe2yh6awc" path="res://Sprites/UI/Character Box Disabled.png" id="8_dew5b"]
+[ext_resource type="Texture2D" uid="uid://dmb2vfptumg3l" path="res://Sprites/Pause UI/Pause Menu Choice Hover.png" id="8_k5n3r"]
+[ext_resource type="Texture2D" uid="uid://i6bgsd1ph8ln" path="res://Sprites/UI/Character Box Select.png" id="8_snfop"]
+[ext_resource type="Texture2D" uid="uid://cwyg5xo4o644x" path="res://Sprites/UI/Character Box Hover.png" id="9_ewud7"]
 [ext_resource type="Texture2D" uid="uid://b53os8trmovki" path="res://Sprites/Character/White Shrub/White Chaos1.png" id="9_ifkyc"]
-[ext_resource type="Texture2D" uid="uid://bjgufl8bibvcq" path="res://Sprites/Achievements/Locked.png" id="9_swufb"]
 [ext_resource type="Resource" uid="uid://bvqprp6nul3d2" path="res://Resources/Characters/white_chaos.tres" id="10_q0efv"]
 [ext_resource type="Resource" uid="uid://dxnpwkve7b0cb" path="res://Resources/Characters/midas.tres" id="11_5k7qt"]
 [ext_resource type="Texture2D" uid="uid://c71jrpxh3cx3a" path="res://Sprites/Character/Cercis/Cercis1.png" id="12_00dn3"]
 [ext_resource type="Resource" uid="uid://dwh0orxt4fsdt" path="res://Resources/Characters/cercis.tres" id="13_prkr1"]
 [ext_resource type="Texture2D" uid="uid://bbxmog2kyaf4d" path="res://Sprites/Character/Midas/Midas1.png" id="13_x2hb7"]
+[ext_resource type="Texture2D" uid="uid://bw8knd5iqe7am" path="res://Sprites/UI/Character Display.png" id="20_81yuh"]
+[ext_resource type="FontFile" uid="uid://wbj0boqv37y6" path="res://Fonts/Description Font.ttf" id="21_6atci"]
 
 [node name="Character Select" type="Control"]
 layout_mode = 3
@@ -23,116 +32,455 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_jmjmr")
+starting_character = ExtResource("4_v56qf")
+character_scene = "res://Scenes/Characters/Sapling.tscn"
 
-[node name="Characters" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_4vqgb")
 
-[node name="Character 1" type="TextureRect" parent="Characters"]
+[node name="Back Button" type="TextureButton" parent="."]
+z_index = 2
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -380.0
+offset_top = 20.0
+offset_right = -29.0
+offset_bottom = 109.0
+grow_horizontal = 0
+texture_normal = ExtResource("6_pbw53")
+texture_pressed = ExtResource("7_pyvfr")
+texture_hover = ExtResource("8_k5n3r")
+stretch_mode = 4
+
+[node name="Text" type="RichTextLabel" parent="Back Button"]
+modulate = Color(0.905882, 0.8, 0.627451, 1)
 layout_mode = 0
-offset_left = 125.0
-offset_top = 300.0
-offset_right = 202.0
-offset_bottom = 432.0
-mouse_default_cursor_shape = 2
-texture = ExtResource("2_s2884")
-expand_mode = 1
+offset_left = 1.0
+offset_top = 5.0
+offset_right = 351.0
+offset_bottom = 82.0
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/normal_font = ExtResource("2_wxbw4")
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "[center]Back"
+
+[node name="Characters" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 170.0
+offset_right = 1136.0
+offset_bottom = 1010.0
+mouse_filter = 2
+theme_override_constants/h_separation = 12
+theme_override_constants/v_separation = 12
+columns = 5
+
+[node name="Character 1" type="TextureButton" parent="Characters"]
+custom_minimum_size = Vector2(192, 192)
+layout_mode = 2
+texture_normal = ExtResource("7_2sg52")
+texture_pressed = ExtResource("8_snfop")
+texture_hover = ExtResource("9_ewud7")
+texture_disabled = ExtResource("8_dew5b")
+stretch_mode = 0
 script = ExtResource("3_alya1")
 starting_character = ExtResource("4_v56qf")
 character_scene = "res://Scenes/Characters/Sapling.tscn"
 
-[node name="Character 2" type="TextureRect" parent="Characters"]
+[node name="MarginContainer" type="MarginContainer" parent="Characters/Character 1"]
 layout_mode = 0
-offset_left = 275.0
-offset_top = 313.0
-offset_right = 352.0
-offset_bottom = 432.0
-mouse_default_cursor_shape = 2
-texture = ExtResource("6_ubcw7")
+offset_left = 14.0
+offset_top = 14.0
+offset_right = 178.0
+offset_bottom = 178.0
+mouse_filter = 2
+
+[node name="Character" type="TextureRect" parent="Characters/Character 1/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("2_s2884")
+stretch_mode = 5
+
+[node name="Character 2" type="TextureButton" parent="Characters"]
+custom_minimum_size = Vector2(192, 192)
+layout_mode = 2
+texture_normal = ExtResource("7_2sg52")
+texture_pressed = ExtResource("8_snfop")
+texture_hover = ExtResource("9_ewud7")
+texture_disabled = ExtResource("8_dew5b")
+stretch_mode = 0
 script = ExtResource("3_alya1")
 starting_character = ExtResource("7_yw2tk")
 character_scene = "res://Scenes/Characters/Berry.tscn"
 
-[node name="Lock" type="TextureRect" parent="Characters/Character 2"]
-visible = false
+[node name="MarginContainer" type="MarginContainer" parent="Characters/Character 2"]
 layout_mode = 0
-offset_left = 25.0
-offset_top = 53.0
-offset_right = 52.0
-offset_bottom = 87.0
-texture = ExtResource("9_swufb")
+offset_left = 14.0
+offset_top = 24.0
+offset_right = 178.0
+offset_bottom = 178.0
+mouse_filter = 2
 
-[node name="Character 3" type="TextureRect" parent="Characters"]
-layout_mode = 0
-offset_left = 416.0
-offset_top = 297.0
-offset_right = 493.0
-offset_bottom = 433.0
-mouse_default_cursor_shape = 2
-texture = ExtResource("9_ifkyc")
+[node name="Character" type="TextureRect" parent="Characters/Character 2/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("6_ubcw7")
+stretch_mode = 5
+
+[node name="Character 3" type="TextureButton" parent="Characters"]
+custom_minimum_size = Vector2(192, 192)
+layout_mode = 2
+texture_normal = ExtResource("7_2sg52")
+texture_pressed = ExtResource("8_snfop")
+texture_hover = ExtResource("9_ewud7")
+texture_disabled = ExtResource("8_dew5b")
+stretch_mode = 0
 script = ExtResource("3_alya1")
 starting_character = ExtResource("10_q0efv")
 character_scene = "res://Scenes/Characters/White Chaos.tscn"
 
-[node name="Lock" type="TextureRect" parent="Characters/Character 3"]
-visible = false
+[node name="MarginContainer" type="MarginContainer" parent="Characters/Character 3"]
 layout_mode = 0
-offset_left = 25.0
-offset_top = 70.0
-offset_right = 52.0
-offset_bottom = 104.0
-texture = ExtResource("9_swufb")
+offset_left = 14.0
+offset_top = 5.0
+offset_right = 178.0
+offset_bottom = 178.0
+mouse_filter = 2
 
-[node name="Character 4" type="TextureRect" parent="Characters"]
-layout_mode = 0
-offset_left = 545.0
-offset_top = 299.0
-offset_right = 622.0
-offset_bottom = 435.0
-mouse_default_cursor_shape = 2
-texture = ExtResource("13_x2hb7")
-script = ExtResource("3_alya1")
-starting_character = ExtResource("11_5k7qt")
-character_scene = "res://Scenes/Characters/Midas.tscn"
+[node name="Character" type="TextureRect" parent="Characters/Character 3/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("9_ifkyc")
+stretch_mode = 5
 
-[node name="Lock" type="TextureRect" parent="Characters/Character 4"]
-visible = false
-layout_mode = 0
-offset_left = 25.0
-offset_top = 70.0
-offset_right = 52.0
-offset_bottom = 104.0
-texture = ExtResource("9_swufb")
-
-[node name="Character 5" type="TextureRect" parent="Characters"]
-layout_mode = 0
-offset_left = 659.0
-offset_top = 299.0
-offset_right = 736.0
-offset_bottom = 435.0
-mouse_default_cursor_shape = 2
-texture = ExtResource("12_00dn3")
+[node name="Character 4" type="TextureButton" parent="Characters"]
+custom_minimum_size = Vector2(192, 192)
+layout_mode = 2
+texture_normal = ExtResource("7_2sg52")
+texture_pressed = ExtResource("8_snfop")
+texture_hover = ExtResource("9_ewud7")
+texture_disabled = ExtResource("8_dew5b")
+stretch_mode = 0
 script = ExtResource("3_alya1")
 starting_character = ExtResource("13_prkr1")
 character_scene = "res://Scenes/Characters/Cercis.tscn"
 
-[node name="Lock" type="TextureRect" parent="Characters/Character 5"]
-visible = false
+[node name="MarginContainer" type="MarginContainer" parent="Characters/Character 4"]
 layout_mode = 0
-offset_left = 25.0
-offset_top = 70.0
-offset_right = 52.0
-offset_bottom = 104.0
-texture = ExtResource("9_swufb")
+offset_left = 14.0
+offset_top = 8.0
+offset_right = 178.0
+offset_bottom = 178.0
+mouse_filter = 2
+
+[node name="Character" type="TextureRect" parent="Characters/Character 4/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("12_00dn3")
+stretch_mode = 5
+
+[node name="Character 5" type="TextureButton" parent="Characters"]
+custom_minimum_size = Vector2(192, 192)
+layout_mode = 2
+texture_normal = ExtResource("7_2sg52")
+texture_pressed = ExtResource("8_snfop")
+texture_hover = ExtResource("9_ewud7")
+texture_disabled = ExtResource("8_dew5b")
+stretch_mode = 0
+script = ExtResource("3_alya1")
+starting_character = ExtResource("11_5k7qt")
+character_scene = "res://Scenes/Characters/Midas.tscn"
+
+[node name="MarginContainer" type="MarginContainer" parent="Characters/Character 5"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 6.0
+offset_right = 178.0
+offset_bottom = 178.0
+mouse_filter = 2
+
+[node name="Character" type="TextureRect" parent="Characters/Character 5/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("13_x2hb7")
+stretch_mode = 5
+
+[node name="Play Button" type="TextureButton" parent="."]
+z_index = 2
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -605.0
+offset_top = 948.0
+offset_right = -254.0
+offset_bottom = 1037.0
+grow_horizontal = 0
+texture_normal = ExtResource("6_pbw53")
+texture_pressed = ExtResource("7_pyvfr")
+texture_hover = ExtResource("8_k5n3r")
+stretch_mode = 4
+
+[node name="Text" type="RichTextLabel" parent="Play Button"]
+modulate = Color(0.905882, 0.8, 0.627451, 1)
+layout_mode = 0
+offset_left = 1.0
+offset_top = 5.0
+offset_right = 351.0
+offset_bottom = 82.0
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/normal_font = ExtResource("2_wxbw4")
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "[center]Play"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
+modulate = Color(0.905882, 0.8, 0.627451, 1)
 layout_mode = 0
+offset_top = 24.0
 offset_right = 1920.0
-offset_bottom = 191.0
+offset_bottom = 91.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_offset_x = -2
+theme_override_constants/shadow_outline_size = 8
 theme_override_fonts/normal_font = ExtResource("2_wxbw4")
-theme_override_font_sizes/normal_font_size = 128
+theme_override_font_sizes/normal_font_size = 48
 bbcode_enabled = true
 text = "[center]Select your character"
 fit_content = true
 scroll_active = false
+
+[node name="Display" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1184.0
+offset_top = 170.0
+offset_right = 1792.0
+offset_bottom = 910.0
+texture = ExtResource("20_81yuh")
+
+[node name="Character Sprite" type="TextureRect" parent="Display"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(104, 164)
+layout_mode = 0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 136.0
+offset_bottom = 196.0
+texture = ExtResource("2_s2884")
+expand_mode = 5
+
+[node name="Character Name" type="RichTextLabel" parent="Display"]
+unique_name_in_owner = true
+modulate = Color(0.905882, 0.8, 0.627451, 1)
+offset_left = 192.0
+offset_top = 48.0
+offset_right = 597.0
+offset_bottom = 128.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_offset_x = -2
+theme_override_constants/shadow_outline_size = 8
+theme_override_fonts/normal_font = ExtResource("2_wxbw4")
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "Sapling"
+fit_content = true
+scroll_active = false
+
+[node name="Starting Items" type="VBoxContainer" parent="Display"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 32.0
+offset_top = 256.0
+offset_right = 580.0
+offset_bottom = 706.0
+
+[node name="Starting Seed" type="GridContainer" parent="Display/Starting Items"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+columns = 2
+
+[node name="Text" type="RichTextLabel" parent="Display/Starting Items/Starting Seed"]
+modulate = Color(1, 1, 0.431373, 1)
+custom_minimum_size = Vector2(232, 48)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/normal_font = ExtResource("21_6atci")
+theme_override_font_sizes/normal_font_size = 48
+text = "Starting Seed:
+"
+scroll_active = false
+
+[node name="Info" type="RichTextLabel" parent="Display/Starting Items/Starting Seed"]
+modulate = Color(0.905882, 0.8, 0.627451, 1)
+custom_minimum_size = Vector2(312, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/normal_font = ExtResource("21_6atci")
+theme_override_font_sizes/normal_font_size = 48
+text = "None
+"
+fit_content = true
+
+[node name="Starting Talisman" type="GridContainer" parent="Display/Starting Items"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+columns = 2
+
+[node name="Text" type="RichTextLabel" parent="Display/Starting Items/Starting Talisman"]
+modulate = Color(1, 1, 0.431373, 1)
+custom_minimum_size = Vector2(296, 48)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/normal_font = ExtResource("21_6atci")
+theme_override_font_sizes/normal_font_size = 48
+text = "Starting Talisman:
+"
+scroll_active = false
+
+[node name="Info" type="RichTextLabel" parent="Display/Starting Items/Starting Talisman"]
+modulate = Color(0.905882, 0.8, 0.627451, 1)
+custom_minimum_size = Vector2(248, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/normal_font = ExtResource("21_6atci")
+theme_override_font_sizes/normal_font_size = 48
+text = "None
+"
+fit_content = true
+
+[node name="Starting Passives" type="GridContainer" parent="Display/Starting Items"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+columns = 2
+
+[node name="Text" type="RichTextLabel" parent="Display/Starting Items/Starting Passives"]
+modulate = Color(1, 1, 0.431373, 1)
+custom_minimum_size = Vector2(294, 48)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/normal_font = ExtResource("21_6atci")
+theme_override_font_sizes/normal_font_size = 48
+text = "Starting Passives:
+"
+scroll_active = false
+
+[node name="Info" type="RichTextLabel" parent="Display/Starting Items/Starting Passives"]
+modulate = Color(0.905882, 0.8, 0.627451, 1)
+custom_minimum_size = Vector2(250, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/normal_font = ExtResource("21_6atci")
+theme_override_font_sizes/normal_font_size = 48
+text = "None
+"
+fit_content = true
+
+[node name="Starting Inventory" type="GridContainer" parent="Display/Starting Items"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+columns = 2
+
+[node name="Text" type="RichTextLabel" parent="Display/Starting Items/Starting Inventory"]
+modulate = Color(1, 1, 0.431373, 1)
+custom_minimum_size = Vector2(316, 48)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/normal_font = ExtResource("21_6atci")
+theme_override_font_sizes/normal_font_size = 48
+text = "Starting Inventory:
+"
+scroll_active = false
+
+[node name="Info" type="RichTextLabel" parent="Display/Starting Items/Starting Inventory"]
+modulate = Color(0.905882, 0.8, 0.627451, 1)
+custom_minimum_size = Vector2(228, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/normal_font = ExtResource("21_6atci")
+theme_override_font_sizes/normal_font_size = 48
+text = "None
+"
+fit_content = true
+
+[connection signal="pressed" from="Back Button" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="Characters/Character 1" to="Characters/Character 1" method="_on_pressed"]
+[connection signal="pressed" from="Characters/Character 2" to="Characters/Character 2" method="_on_pressed"]
+[connection signal="pressed" from="Characters/Character 3" to="Characters/Character 3" method="_on_pressed"]
+[connection signal="pressed" from="Characters/Character 4" to="Characters/Character 4" method="_on_pressed"]
+[connection signal="pressed" from="Characters/Character 5" to="Characters/Character 5" method="_on_pressed"]
+[connection signal="pressed" from="Play Button" to="." method="_on_play_button_pressed"]

@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://voseluffsvav"]
+[gd_scene load_steps=12 format=3 uid="uid://voseluffsvav"]
 
 [ext_resource type="Texture2D" uid="uid://lggjfuwvynu6" path="res://Sprites/UI/Save File Select.png" id="1_nnmx1"]
+[ext_resource type="Texture2D" uid="uid://dwwsiyabyqc6l" path="res://Sprites/Menu UI/Soil Background.png" id="2_8grkl"]
 [ext_resource type="Texture2D" uid="uid://c6ab63o7tjjv6" path="res://Sprites/UI/Save File Select Pressed.png" id="2_su74p"]
 [ext_resource type="Texture2D" uid="uid://dnxl2v56fnhp0" path="res://Sprites/UI/Save File Select Hovered.png" id="3_64enp"]
 [ext_resource type="FontFile" uid="uid://wbj0boqv37y6" path="res://Fonts/Description Font.ttf" id="4_hc83d"]
@@ -26,12 +27,21 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("5_ej0fd")
 
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_8grkl")
+
 [node name="Save Number Label" type="RichTextLabel" parent="."]
 modulate = Color(0.905882, 0.8, 0.627451, 1)
 layout_mode = 0
-offset_top = 23.0
+offset_top = 24.0
 offset_right = 1920.0
-offset_bottom = 97.0
+offset_bottom = 98.0
 mouse_filter = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
 theme_override_constants/shadow_offset_y = 1
@@ -231,10 +241,11 @@ text = "0%
 [node name="Delete Button" type="TextureButton" parent="GridContainer/Save1"]
 modulate = Color(0.905882, 0.8, 0.627451, 1)
 layout_mode = 0
-offset_left = 122.0
-offset_top = 733.0
-offset_right = 230.0
-offset_bottom = 878.0
+offset_left = 132.0
+offset_top = 712.0
+offset_right = 240.0
+offset_bottom = 857.0
+scale = Vector2(0.8, 0.8)
 texture_normal = ExtResource("6_l137q")
 texture_pressed = ExtResource("7_1wumd")
 texture_hover = ExtResource("8_hgh7x")
@@ -421,10 +432,11 @@ text = "0%
 [node name="Delete Button" type="TextureButton" parent="GridContainer/Save2"]
 modulate = Color(0.905882, 0.8, 0.627451, 1)
 layout_mode = 0
-offset_left = 122.0
-offset_top = 733.0
-offset_right = 230.0
-offset_bottom = 878.0
+offset_left = 132.0
+offset_top = 712.0
+offset_right = 240.0
+offset_bottom = 857.0
+scale = Vector2(0.8, 0.8)
 texture_normal = ExtResource("6_l137q")
 texture_pressed = ExtResource("7_1wumd")
 texture_hover = ExtResource("8_hgh7x")
@@ -611,10 +623,11 @@ text = "0%
 [node name="Delete Button" type="TextureButton" parent="GridContainer/Save3"]
 modulate = Color(0.905882, 0.8, 0.627451, 1)
 layout_mode = 0
-offset_left = 122.0
-offset_top = 733.0
-offset_right = 230.0
-offset_bottom = 878.0
+offset_left = 132.0
+offset_top = 712.0
+offset_right = 240.0
+offset_bottom = 857.0
+scale = Vector2(0.8, 0.8)
 texture_normal = ExtResource("6_l137q")
 texture_pressed = ExtResource("7_1wumd")
 texture_hover = ExtResource("8_hgh7x")
@@ -801,10 +814,11 @@ text = "0%
 [node name="Delete Button" type="TextureButton" parent="GridContainer/Save4"]
 modulate = Color(0.905882, 0.8, 0.627451, 1)
 layout_mode = 0
-offset_left = 122.0
-offset_top = 733.0
-offset_right = 230.0
-offset_bottom = 878.0
+offset_left = 132.0
+offset_top = 712.0
+offset_right = 240.0
+offset_bottom = 857.0
+scale = Vector2(0.8, 0.8)
 texture_normal = ExtResource("6_l137q")
 texture_pressed = ExtResource("7_1wumd")
 texture_hover = ExtResource("8_hgh7x")

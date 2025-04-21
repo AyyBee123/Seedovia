@@ -1,0 +1,246 @@
+[gd_scene load_steps=13 format=3 uid="uid://cah3yq8uvftep"]
+
+[ext_resource type="Texture2D" uid="uid://didv5fjskcrdi" path="res://Sprites/Pause UI/Pause Menu Choice.png" id="1_5cock"]
+[ext_resource type="Script" uid="uid://w2i4e7unyox3" path="res://Scripts/UI/menu.gd" id="1_6487p"]
+[ext_resource type="Texture2D" uid="uid://ciyk64aevmyv" path="res://Sprites/Pause UI/Pause Menu Choice Pressed.png" id="2_t06ot"]
+[ext_resource type="PackedScene" uid="uid://voseluffsvav" path="res://Scenes/UI/Save File Select.tscn" id="2_v3kjt"]
+[ext_resource type="Texture2D" uid="uid://dmb2vfptumg3l" path="res://Sprites/Pause UI/Pause Menu Choice Hover.png" id="3_s6sq0"]
+[ext_resource type="FontFile" uid="uid://bkn7gmgx1wxgx" path="res://Fonts/Name Font.ttf" id="4_6487p"]
+[ext_resource type="Texture2D" uid="uid://chrtmh8xchoct" path="res://Sprites/Pause UI/Pause Menu Choice Disabled.png" id="5_s6sq0"]
+[ext_resource type="Texture2D" uid="uid://4l3tmn6mja2n" path="res://Sprites/Logo/Logo.png" id="6_6487p"]
+[ext_resource type="Texture2D" uid="uid://cc4qox3sejykw" path="res://Sprites/Menu UI/Grass.png" id="9_3hayu"]
+
+[sub_resource type="Animation" id="Animation_6487p"]
+resource_name = "new_animation"
+length = 2.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Starting Menu/Logo:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.2, 2.2, 2.4),
+"transitions": PackedFloat32Array(0.75, 1, 0.75, 1, 1),
+"update": 0,
+"values": [Vector2(372.5, 40), Vector2(372.5, 30), Vector2(372.5, 30), Vector2(372.5, 40), Vector2(372.5, 40)]
+}
+
+[sub_resource type="Animation" id="Animation_v3kjt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Starting Menu/Logo:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(372.5, 36)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3hayu"]
+_data = {
+&"RESET": SubResource("Animation_v3kjt"),
+&"new_animation": SubResource("Animation_6487p")
+}
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6487p")
+
+[node name="Menu Camera" type="Camera2D" parent="."]
+offset = Vector2(960, 540)
+
+[node name="Save File Select" parent="." instance=ExtResource("2_v3kjt")]
+z_index = 2
+layout_mode = 1
+offset_top = 540.0
+offset_bottom = 1620.0
+
+[node name="Back Button" type="TextureButton" parent="."]
+z_index = 2
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -380.0
+offset_top = 1100.0
+offset_right = -29.0
+offset_bottom = 1189.0
+grow_horizontal = 0
+texture_normal = ExtResource("1_5cock")
+texture_pressed = ExtResource("2_t06ot")
+texture_hover = ExtResource("3_s6sq0")
+stretch_mode = 4
+
+[node name="Text" type="RichTextLabel" parent="Back Button"]
+modulate = Color(0.905882, 0.8, 0.627451, 1)
+layout_mode = 0
+offset_left = 1.0
+offset_top = 5.0
+offset_right = 351.0
+offset_bottom = 82.0
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/normal_font = ExtResource("4_6487p")
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "[center]Back"
+
+[node name="Starting Menu" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Starting Menu"]
+z_index = -3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.541176, 0.937255, 0.945098, 1)
+
+[node name="TextureRect" type="TextureRect" parent="Starting Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Play Button" type="TextureButton" parent="Starting Menu/TextureRect"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1319.53
+offset_top = 400.0
+offset_right = -680.47
+offset_bottom = 550.0
+grow_horizontal = 0
+texture_normal = ExtResource("1_5cock")
+texture_pressed = ExtResource("2_t06ot")
+texture_hover = ExtResource("3_s6sq0")
+stretch_mode = 4
+
+[node name="Text" type="RichTextLabel" parent="Starting Menu/TextureRect/Play Button"]
+modulate = Color(0.905882, 0.8, 0.627451, 1)
+layout_mode = 0
+offset_left = 3.0
+offset_top = 25.0
+offset_right = 636.0
+offset_bottom = 110.0
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/normal_font = ExtResource("4_6487p")
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "[center]Start"
+
+[node name="Settings Button" type="TextureButton" parent="Starting Menu/TextureRect"]
+layout_mode = 0
+offset_left = 600.47
+offset_top = 600.0
+offset_right = 1239.53
+offset_bottom = 750.0
+texture_normal = ExtResource("1_5cock")
+texture_pressed = ExtResource("2_t06ot")
+texture_hover = ExtResource("3_s6sq0")
+texture_disabled = ExtResource("5_s6sq0")
+stretch_mode = 4
+
+[node name="Text" type="RichTextLabel" parent="Starting Menu/TextureRect/Settings Button"]
+modulate = Color(0.905882, 0.8, 0.627451, 1)
+layout_mode = 0
+offset_left = 3.0
+offset_top = 25.0
+offset_right = 636.0
+offset_bottom = 110.0
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/normal_font = ExtResource("4_6487p")
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "[center]Settings"
+
+[node name="Quit Button" type="TextureButton" parent="Starting Menu/TextureRect"]
+layout_mode = 0
+offset_left = 600.47
+offset_top = 800.0
+offset_right = 1239.53
+offset_bottom = 950.0
+texture_normal = ExtResource("1_5cock")
+texture_pressed = ExtResource("2_t06ot")
+texture_hover = ExtResource("3_s6sq0")
+texture_disabled = ExtResource("5_s6sq0")
+stretch_mode = 4
+
+[node name="Text" type="RichTextLabel" parent="Starting Menu/TextureRect/Quit Button"]
+modulate = Color(0.905882, 0.8, 0.627451, 1)
+layout_mode = 0
+offset_left = 3.0
+offset_top = 25.0
+offset_right = 636.0
+offset_bottom = 110.0
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/normal_font = ExtResource("4_6487p")
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "[center]Quit to Desktop"
+
+[node name="Logo Animation" type="AnimationPlayer" parent="Starting Menu"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_3hayu")
+}
+autoplay = "new_animation"
+
+[node name="Logo" type="TextureRect" parent="Starting Menu"]
+layout_mode = 0
+offset_left = 372.5
+offset_top = 34.2229
+offset_right = 1467.5
+offset_bottom = 295.223
+texture = ExtResource("6_6487p")
+
+[node name="Seed Spawn Rate" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="Grass" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(960, 540)
+texture = ExtResource("9_3hayu")
+
+[connection signal="pressed" from="Back Button" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="Starting Menu/TextureRect/Play Button" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="Starting Menu/TextureRect/Settings Button" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="Starting Menu/TextureRect/Quit Button" to="." method="_on_quit_button_pressed"]
+[connection signal="timeout" from="Seed Spawn Rate" to="." method="_on_seed_spawn_rate_timeout"]

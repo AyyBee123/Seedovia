@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Seedovia"
-run/main_scene="res://Scenes/UI/Main Menu.tscn"
+run/main_scene="uid://cah3yq8uvftep"
 config/features=PackedStringArray("4.4", "Forward Plus")
 run/max_fps=500
 config/icon="res://icon.svg"
