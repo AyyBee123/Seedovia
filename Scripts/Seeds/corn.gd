@@ -28,7 +28,7 @@ func explode():
 	if get_node_or_null("Passives"):
 		for passive in $Passives.get_children():
 			explosion.get_node("Passives").add_child(passive.duplicate())
-	explosion.BASE_DAMAGE = BASE_DAMAGE
+	explosion.BASE_DAMAGE = DAMAGE
 	explosion.BASE_SIZE = BLAST_RADIUS
 	explosion.collisions = collisions
 	if shader:

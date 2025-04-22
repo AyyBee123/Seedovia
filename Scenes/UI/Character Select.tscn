@@ -290,6 +290,7 @@ expand_mode = 5
 [node name="Character Name" type="RichTextLabel" parent="Display"]
 unique_name_in_owner = true
 modulate = Color(0.905882, 0.8, 0.627451, 1)
+layout_mode = 0
 offset_left = 192.0
 offset_top = 48.0
 offset_right = 597.0

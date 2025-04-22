@@ -10,6 +10,21 @@
 [ext_resource type="Texture2D" uid="uid://4l3tmn6mja2n" path="res://Sprites/Logo/Logo.png" id="6_6487p"]
 [ext_resource type="Texture2D" uid="uid://cc4qox3sejykw" path="res://Sprites/Menu UI/Grass.png" id="9_3hayu"]
 
+[sub_resource type="Animation" id="Animation_v3kjt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Starting Menu/Logo:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(372.5, 36)]
+}
+
 [sub_resource type="Animation" id="Animation_6487p"]
 resource_name = "new_animation"
 length = 2.4
@@ -25,21 +40,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(0.75, 1, 0.75, 1, 1),
 "update": 0,
 "values": [Vector2(372.5, 40), Vector2(372.5, 30), Vector2(372.5, 30), Vector2(372.5, 40), Vector2(372.5, 40)]
-}
-
-[sub_resource type="Animation" id="Animation_v3kjt"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Starting Menu/Logo:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(372.5, 36)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3hayu"]
