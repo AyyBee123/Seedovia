@@ -3,17 +3,15 @@ extends Node2D
 @onready var resource_preloader := $ResourcePreloader
 @onready var circle_transition = %"Circle Transition"
 
-var CONSOL = preload("res://Scenes/Utils/Console.tscn")
-
 func _input(event):
-	if event is InputEventKey:
-		# 96 is the ` key
-		if event.keycode == 96 and event.pressed:
-			if get_node_or_null("Console"):
-				get_node("Console").queue_free()
+	if event.is_action_pressed("ui_cancel"):
+		if player.get_node("Inventory").visible: # or stat sheet is visible (when I add the stat sheet)
+			player.get_node("Inventory").visible = false
+		else:
+			if get_node_or_null("PauseMenu"):
 				return
-			var console = CONSOL.instantiate()
-			add_child(console)
+			var pause_menu = resource_preloader.get_resource("Pause Menu").instantiate()
+			add_child(pause_menu)
 
 var player
 var player_pos = Vector2(0, 330)
@@ -135,9 +133,9 @@ func _ready():
 	Global.save_run_room()
 
 func _physics_process(delta):
+	$"Run Timer".visible = Global.settings.show_timer
 	player = Targets.get_player()
 	count_up(delta)
-	pause()
 	check_for_enemies()
 
 func check_for_enemies():
@@ -159,16 +157,6 @@ func check_for_enemies():
 			Global.save_run_data()
 			Global.save_run_room()
 			Global.save_data()
-
-func pause():
-	if Input.is_action_just_pressed("esc"):
-		if player.get_node("Inventory").visible: # or stat sheet is visible (when I add the stat sheet)
-			player.get_node("Inventory").visible = false
-		else:
-			if get_node_or_null("PauseMenu"):
-				return
-			var pause_menu = resource_preloader.get_resource("Pause Menu").instantiate()
-			add_child(pause_menu)
 
 func spawn_doors(): # -785 to 785 = 1570 (size of level in x-axis) # -400 is the y-position for the door(s)
 	Global.load_run_room()

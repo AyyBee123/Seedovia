@@ -88,7 +88,7 @@ func slot_gui_input(event: InputEvent, slot: slot_class):
 					left_click_swap_item(event, slot)
 			elif slot.item: # left clicking an item while not currently holding an item
 				left_click_select_item(slot)
-		if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
+		if Input.is_action_pressed("use") and event.pressed:
 			if holding_item == null:
 				if slot.item:
 					right_click_use_item(slot)
@@ -102,7 +102,7 @@ func slot_gui_input(event: InputEvent, slot: slot_class):
 					left_click_swap_item(event, slot)
 			elif slot.item: # left clicking an item while not currently holding an item
 				left_click_select_item(slot)
-		if event.button_index == JOY_BUTTON_X and event.pressed:
+		if Input.is_action_pressed("use") and event.pressed:
 			if holding_item == null:
 				if slot.item:
 					right_click_use_item(slot)
@@ -145,37 +145,37 @@ func _input(event):
 	elif event is InputEventJoypadButton:
 		_isMandK = false
 	# setup the controller navigation for the inventory
-	if Input.is_action_just_pressed("inventory left"):
+	if Input.is_action_just_pressed("inventory_left"):
 		selected_slot_index = max(0, selected_slot_index - 1)
 		selected_slot.global_position = all_slots[selected_slot_index].global_position
 		joystick_item_popup(selected_slot_index)
-	if Input.is_action_just_pressed("inventory right"):
+	if Input.is_action_just_pressed("inventory_right"):
 		selected_slot_index = min(all_slots.size() - 1, selected_slot_index + 1)
 		selected_slot.global_position = all_slots[selected_slot_index].global_position
 		joystick_item_popup(selected_slot_index)
-	if Input.is_action_just_pressed("inventory up"):
+	if Input.is_action_just_pressed("inventory_up"):
 		if selected_slot_index - 4 >= 0 or selected_slot_index == 3:
 			selected_slot_index = max(0, selected_slot_index - 4)
 			selected_slot.global_position = all_slots[selected_slot_index].global_position
 			joystick_item_popup(selected_slot_index)
-	if Input.is_action_just_pressed("inventory down"):
+	if Input.is_action_just_pressed("inventory_down"):
 		if selected_slot_index + 4 < all_slots.size():
 			selected_slot_index = min(all_slots.size() - 1, selected_slot_index + 4)
 			selected_slot.global_position = all_slots[selected_slot_index].global_position
 			joystick_item_popup(selected_slot_index)
 	# adding an inventory select button to grab a slot item or slot a holding item
-	if Input.is_action_just_pressed("inventory select"):
+	if Input.is_action_just_pressed("inventory_select"):
 		var ev = InputEventJoypadButton.new()
 		ev.button_index = JOY_BUTTON_A
 		ev.pressed = true
 		slot_gui_input(ev, all_slots[selected_slot_index])
 	# adding a use/equip button
-	if Input.is_action_just_pressed("inventory use"):
+	if Input.is_action_just_pressed("inventory_use"):
 		var ev = InputEventJoypadButton.new()
 		ev.button_index = JOY_BUTTON_X
 		ev.pressed = true
 		slot_gui_input(ev, all_slots[selected_slot_index])
-	if Input.is_action_just_pressed("inventory drop"):
+	if Input.is_action_just_pressed("inventory_drop"):
 		var ev = InputEventJoypadButton.new()
 		ev.button_index = JOY_BUTTON_B
 		ev.pressed = true

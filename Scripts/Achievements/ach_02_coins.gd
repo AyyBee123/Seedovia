@@ -23,7 +23,7 @@ func get_title() -> String:
 	return "I'm Rich!"
 
 func get_description() -> String:
-	return "Accumulate 100 coins."
+	return "Accumulate 100 coins at once."
 
 func get_image() -> Texture:
 	return ach_image

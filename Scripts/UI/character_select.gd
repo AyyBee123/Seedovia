@@ -2,18 +2,21 @@ extends Control
 
 var MAIN_MENU = load("res://Scenes/UI/Main Menu.tscn")
 const character = preload("res://Scripts/UI/character.gd")
-@onready var characters = $Characters.get_children()
+@onready var characters = %Characters.get_children()
 @onready var starting_items = %"Starting Items".get_children()
 @onready var loading_screen_scene = preload("res://Scenes/UI/Loading Screen.tscn")
 var loading_screen_scene_instance
+var char
 
 @export var starting_character: character_class
 @export var character_scene: String
 
 func _ready():
+	char = $"Characters/Character 1"
 	display_info()
 
 func _press(char_select: character):
+	char = char_select
 	display_info()
 
 func _on_back_button_pressed():
@@ -35,6 +38,19 @@ func _on_play_button_pressed():
 func display_info():
 	%"Character Sprite".texture = starting_character.character_sprite
 	%"Character Name".text = starting_character.character_name
+	
+	%"Starting Items".visible = char.starting_character.unlocked
+	
+	if not char.starting_character.unlocked:
+		%"Character Sprite".modulate = Color.BLACK
+		%"Character Name".text = "Locked"
+		$"Play Button/Text".modulate = Color("c8bca0")
+	else:
+		$"Play Button/Text".modulate = Color("e7cca0")
+	%"Unlock Text".visible = not char.starting_character.unlocked
+	%"Unlock Info".visible = not char.starting_character.unlocked
+	%"Play Button".disabled = not char.starting_character.unlocked
+	%"Unlock Info".text = char.unlock_method
 	
 	# default values
 	for starting_item in starting_items:

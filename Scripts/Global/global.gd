@@ -121,7 +121,9 @@ func load_achievements(_path = null):
 	super_data.set_achievements()
 
 func save_settings():
+	settings.get_video_settings()
 	settings.get_audio_volumes()
+	settings.get_ui_settings()
 	ResourceSaver.save(settings, SETTINGS_PATH)
 	ResourceSaver.save(settings, "user://settings.tres") # for testing purposes, will remove later
 
@@ -129,10 +131,27 @@ func load_settings():
 	if not ResourceLoader.exists(SETTINGS_PATH):
 		return
 	settings = ResourceLoader.load(SETTINGS_PATH)
-	settings
+
+func load_video_settings():
+	if not ResourceLoader.exists(SETTINGS_PATH):
+		return
+	settings = ResourceLoader.load(SETTINGS_PATH)
+	settings.set_video_settings()
+
+func load_ui_settings():
+	if not ResourceLoader.exists(SETTINGS_PATH):
+		return
+	settings = ResourceLoader.load(SETTINGS_PATH)
+	settings.set_ui_settings()
 
 func load_audio_volumes():
 	if not ResourceLoader.exists(SETTINGS_PATH):
 		return
 	settings = ResourceLoader.load(SETTINGS_PATH)
 	settings.set_audio_volumes()
+
+func load_keybind_settings():
+	if not ResourceLoader.exists(SETTINGS_PATH):
+		return
+	settings = ResourceLoader.load(SETTINGS_PATH)
+	settings.set_inputs()

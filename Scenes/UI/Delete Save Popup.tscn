@@ -23,6 +23,19 @@ scale = Vector2(2.5, 2.5)
 script = ExtResource("1_hr5nf")
 metadata/_edit_use_anchors_ = true
 
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -384.0
+offset_top = -216.0
+offset_right = 384.0
+offset_bottom = 216.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -52,7 +65,7 @@ theme_override_constants/shadow_outline_size = 1
 theme_override_fonts/normal_font = ExtResource("2_3p32r")
 theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
-text = "[center]Are you sure you want to delete this save file?"
+text = "[center]Are you sure you want to delete save file #?"
 scroll_active = false
 
 [node name="YesButton" type="TextureButton" parent="TextureRect"]

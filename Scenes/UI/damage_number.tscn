@@ -81,13 +81,12 @@ script = ExtResource("1_m2wrn")
 unique_name_in_owner = true
 reset_on_save = false
 libraries = {
-"": SubResource("AnimationLibrary_jf7u4")
+&"": SubResource("AnimationLibrary_jf7u4")
 }
 autoplay = "Rise and Fall"
 
 [node name="LabelContainer" type="Node2D" parent="."]
 unique_name_in_owner = true
-modulate = Color(1, 1, 1, 0)
 scale = Vector2(1e-05, 1e-05)
 
 [node name="Label" type="Label" parent="LabelContainer"]

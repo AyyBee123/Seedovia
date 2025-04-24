@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cuaoitofjb1mo"]
+
+[ext_resource type="Script" uid="uid://cmmpy47i3n3ls" path="res://Scripts/Utils/video_settings.gd" id="1_6kc2v"]
+
+[node name="VideoSettings" type="Node"]
+script = ExtResource("1_6kc2v")

@@ -1,13 +1,32 @@
 extends Control
 
+signal save_button_pressed
+
 var source
+var temp_master
+var temp_sfx
+var temp_music
 
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
-		Global.save_settings()
-		queue_free()
+		get_viewport().set_input_as_handled()
+		_on_cancel_button_pressed()
+	if event.is_action_pressed("ui_accept"):
+		get_viewport().set_input_as_handled()
+		_on_save_button_pressed()
 
 func _ready():
+	#set current tab to the first one
+	%TabContainer.current_tab = 0
+	
+	# video settings
+	%"Fullscreen Button".button_pressed = DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN
+	%"VSync Button".button_pressed = DisplayServer.window_get_vsync_mode() == DisplayServer.VSYNC_ENABLED
+	
+	# ui settings
+	%"Timer Button".button_pressed = Global.settings.show_timer
+	%"Damage Button".button_pressed = Global.settings.show_damage_numbers
+	
 	# audio settings
 	%MasterSlider.value = db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Master")))
 	%SFXSlider.value = db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("SFX")))
@@ -18,6 +37,29 @@ func _ready():
 			db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("SFX"))), 0.01) * 100))
 	%MusicEdit.text = str(int(snapped( \
 			db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Music"))), 0.01) * 100))
+	
+	temp_master = %MasterSlider.value
+	temp_sfx = %SFXSlider.value
+	temp_music = %MusicSlider.value
+	
+
+func _on_fullscreen_button_toggled(toggled_on):
+	if toggled_on:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+
+func _on_v_sync_button_toggled(toggled_on):
+	if toggled_on:
+		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
+	else:
+		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
+
+func _on_timer_button_toggled(toggled_on):
+	pass
+
+func _on_damage_button_toggled(toggled_on):
+	pass
 
 func _on_master_slider_value_changed(value):
 	change_volume(Game.audio_settings.MASTER_BUS_ID, value)
@@ -75,12 +117,25 @@ func change_volume(audio, value):
 	AudioServer.set_bus_mute(audio, value == 0)
 
 func _on_save_button_pressed():
+	# add changes
+	Global.settings.show_timer = %"Timer Button".button_pressed
+	Global.settings.show_damage_numbers = %"Damage Button".button_pressed
+	
 	Global.save_settings()
 	if source: # if the settings menu was instantiated from the pause menu
 		source.priority_popups.pop_front()
+	save_button_pressed.emit()
 	queue_free()
 
 func _on_cancel_button_pressed():
+	#revert settings
+	DisplayServer.window_set_mode(Global.settings.fullscreen)
+	DisplayServer.window_set_vsync_mode(Global.settings.vsync)
+	
+	change_volume(Game.audio_settings.MASTER_BUS_ID, temp_master)
+	change_volume(Game.audio_settings.SFX_BUS_ID, temp_sfx)
+	change_volume(Game.audio_settings.MUSIC_BUS_ID, temp_music)
+	
 	if source: # if the settings menu was instantiated from the pause menu
 		source.priority_popups.pop_front()
 	queue_free()

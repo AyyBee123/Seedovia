@@ -13,6 +13,7 @@ const MENU_SEED = preload("res://Scenes/UI/Menu Seed.tscn")
 var tween
 var current_pos: int = 0
 var settings
+var delete_popup
 var seed_list: Array
 
 func _ready():
@@ -26,7 +27,8 @@ func _on_play_button_pressed():
 	if tween:
 		tween.kill()
 	tween = get_tree().create_tween()
-	tween.tween_property(camera, "position", save_pos, 0.5).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	tween.tween_property(camera, "position", Vector2(0, 1080), 0.5) \
+			.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 
 func _on_back_button_pressed():
 	current_pos = 0 # starting menu position
@@ -47,6 +49,8 @@ func _on_quit_button_pressed():
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
 		if is_instance_valid(settings):
+			return
+		if is_instance_valid(delete_popup):
 			return
 		if current_pos == 0:
 			get_tree().quit()

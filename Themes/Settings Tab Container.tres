@@ -1,0 +1,87 @@
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://b4yd4wnnblgqe"]
+
+[ext_resource type="FontFile" uid="uid://bkn7gmgx1wxgx" path="res://Fonts/Name Font.ttf" id="1_f6ynv"]
+[ext_resource type="Texture2D" uid="uid://b65hvaep5bu1g" path="res://Sprites/UI/Settings Background.png" id="2_yxihs"]
+[ext_resource type="Texture2D" uid="uid://hei1cs6xqk77" path="res://Sprites/UI/Settings Tab Hover.png" id="3_rb7fi"]
+[ext_resource type="Texture2D" uid="uid://dxaeild8arejt" path="res://Sprites/UI/Settings Tab.png" id="3_yxihs"]
+[ext_resource type="Texture2D" uid="uid://dnw0jr0d00ye0" path="res://Sprites/UI/Settings Tab Pressed.png" id="4_uetlb"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vmp45"]
+texture = ExtResource("2_yxihs")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 12.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pjkql"]
+texture = ExtResource("3_rb7fi")
+texture_margin_left = 18.0
+texture_margin_top = 14.0
+texture_margin_right = 16.0
+texture_margin_bottom = 4.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cy76l"]
+texture = ExtResource("4_uetlb")
+texture_margin_left = 18.0
+texture_margin_top = 14.0
+texture_margin_right = 16.0
+texture_margin_bottom = 4.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c5r0k"]
+texture = ExtResource("3_yxihs")
+texture_margin_left = 18.0
+texture_margin_top = 14.0
+texture_margin_right = 16.0
+texture_margin_bottom = 4.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p3imq"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[resource]
+default_font = ExtResource("1_f6ynv")
+default_font_size = 16
+RichTextLabel/colors/font_outline_color = Color(0, 0, 0, 1)
+RichTextLabel/colors/font_selected_color = Color(0, 0, 0, 1)
+RichTextLabel/colors/font_shadow_color = Color(0, 0, 0, 1)
+RichTextLabel/colors/selection_color = Color(0, 0, 0, 1)
+RichTextLabel/colors/table_border = Color(0, 0, 0, 1)
+RichTextLabel/colors/table_even_row_bg = Color(0, 0, 0, 1)
+RichTextLabel/colors/table_odd_row_bg = Color(0, 0, 0, 1)
+RichTextLabel/constants/line_separation = 0
+RichTextLabel/constants/outline_size = 0
+RichTextLabel/constants/shadow_offset_x = 0
+RichTextLabel/constants/shadow_offset_y = 0
+RichTextLabel/constants/shadow_outline_size = 0
+RichTextLabel/constants/table_h_separation = 0
+RichTextLabel/constants/table_v_separation = 0
+RichTextLabel/constants/text_highlight_h_padding = 0
+RichTextLabel/constants/text_highlight_v_padding = 0
+RichTextLabel/font_sizes/bold_font_size = 16
+RichTextLabel/font_sizes/bold_italics_font_size = 16
+RichTextLabel/font_sizes/italics_font_size = 16
+RichTextLabel/font_sizes/mono_font_size = 16
+RichTextLabel/font_sizes/normal_font_size = 16
+RichTextLabel/fonts/bold_font = ExtResource("1_f6ynv")
+RichTextLabel/fonts/bold_italics_font = ExtResource("1_f6ynv")
+RichTextLabel/fonts/italics_font = ExtResource("1_f6ynv")
+RichTextLabel/fonts/mono_font = ExtResource("1_f6ynv")
+RichTextLabel/fonts/normal_font = ExtResource("1_f6ynv")
+RichTextLabel/styles/focus = null
+RichTextLabel/styles/normal = null
+TabContainer/colors/drop_mark_color = Color(0.905882, 0.8, 0.627451, 0)
+TabContainer/colors/font_hovered_color = Color(0.905882, 0.8, 0.627451, 0)
+TabContainer/colors/font_selected_color = Color(0.905882, 0.8, 0.627451, 0)
+TabContainer/colors/font_unselected_color = Color(0.905882, 0.8, 0.627451, 0)
+TabContainer/font_sizes/font_size = 24
+TabContainer/fonts/font = ExtResource("1_f6ynv")
+TabContainer/styles/panel = SubResource("StyleBoxTexture_vmp45")
+TabContainer/styles/tab_hovered = SubResource("StyleBoxTexture_pjkql")
+TabContainer/styles/tab_selected = SubResource("StyleBoxTexture_cy76l")
+TabContainer/styles/tab_unselected = SubResource("StyleBoxTexture_c5r0k")
+TabContainer/styles/tabbar_background = SubResource("StyleBoxFlat_p3imq")

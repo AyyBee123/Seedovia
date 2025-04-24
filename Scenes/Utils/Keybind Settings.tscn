@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dnvytft8ijxhy"]
+
+[ext_resource type="Script" uid="uid://bwvw5ay4koc43" path="res://Scripts/Utils/keybind_settings.gd" id="1_s17ag"]
+
+[node name="KeybindSettings" type="Node"]
+script = ExtResource("1_s17ag")

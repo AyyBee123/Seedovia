@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://dsudspwjw2lvs"]
+
+[ext_resource type="FontFile" uid="uid://bkn7gmgx1wxgx" path="res://Fonts/Name Font.ttf" id="1_4tbnc"]
+
+[node name="Label" type="Label"]
+modulate = Color(0.905882, 0.8, 0.627451, 1)
+size_flags_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("1_4tbnc")
+theme_override_font_sizes/font_size = 32
+text = "Shoot"

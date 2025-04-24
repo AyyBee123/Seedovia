@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://8lh64evv6imw"]
+[gd_scene load_steps=25 format=3 uid="uid://8lh64evv6imw"]
 
 [ext_resource type="Script" uid="uid://uybucfv2vxti" path="res://Scripts/UI/character_select.gd" id="1_jmjmr"]
 [ext_resource type="Texture2D" uid="uid://dwwsiyabyqc6l" path="res://Sprites/Menu UI/Soil Background.png" id="2_4vqgb"]
@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://bbxmog2kyaf4d" path="res://Sprites/Character/Midas/Midas1.png" id="13_x2hb7"]
 [ext_resource type="Texture2D" uid="uid://bw8knd5iqe7am" path="res://Sprites/UI/Character Display.png" id="20_81yuh"]
 [ext_resource type="FontFile" uid="uid://wbj0boqv37y6" path="res://Fonts/Description Font.ttf" id="21_6atci"]
+[ext_resource type="Texture2D" uid="uid://chrtmh8xchoct" path="res://Sprites/Pause UI/Pause Menu Choice Disabled.png" id="22_ewud7"]
 
 [node name="Character Select" type="Control"]
 layout_mode = 3
@@ -78,6 +79,7 @@ bbcode_enabled = true
 text = "[center]Back"
 
 [node name="Characters" type="GridContainer" parent="."]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 128.0
 offset_top = 170.0
@@ -99,6 +101,7 @@ stretch_mode = 0
 script = ExtResource("3_alya1")
 starting_character = ExtResource("4_v56qf")
 character_scene = "res://Scenes/Characters/Sapling.tscn"
+unlock_method = ":)"
 
 [node name="MarginContainer" type="MarginContainer" parent="Characters/Character 1"]
 layout_mode = 0
@@ -125,6 +128,7 @@ stretch_mode = 0
 script = ExtResource("3_alya1")
 starting_character = ExtResource("7_yw2tk")
 character_scene = "res://Scenes/Characters/Berry.tscn"
+unlock_method = "Have 6 max health."
 
 [node name="MarginContainer" type="MarginContainer" parent="Characters/Character 2"]
 layout_mode = 0
@@ -140,6 +144,14 @@ mouse_filter = 2
 texture = ExtResource("6_ubcw7")
 stretch_mode = 5
 
+[node name="TextureRect" type="TextureRect" parent="Characters/Character 2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="Character 3" type="TextureButton" parent="Characters"]
 custom_minimum_size = Vector2(192, 192)
 layout_mode = 2
@@ -151,6 +163,7 @@ stretch_mode = 0
 script = ExtResource("3_alya1")
 starting_character = ExtResource("10_q0efv")
 character_scene = "res://Scenes/Characters/White Chaos.tscn"
+unlock_method = "Defeat the Floor 5 Boss."
 
 [node name="MarginContainer" type="MarginContainer" parent="Characters/Character 3"]
 layout_mode = 0
@@ -177,6 +190,7 @@ stretch_mode = 0
 script = ExtResource("3_alya1")
 starting_character = ExtResource("13_prkr1")
 character_scene = "res://Scenes/Characters/Cercis.tscn"
+unlock_method = "Die."
 
 [node name="MarginContainer" type="MarginContainer" parent="Characters/Character 4"]
 layout_mode = 0
@@ -203,6 +217,7 @@ stretch_mode = 0
 script = ExtResource("3_alya1")
 starting_character = ExtResource("11_5k7qt")
 character_scene = "res://Scenes/Characters/Midas.tscn"
+unlock_method = "Accumulate 100 coins at once."
 
 [node name="MarginContainer" type="MarginContainer" parent="Characters/Character 5"]
 layout_mode = 0
@@ -219,6 +234,7 @@ texture = ExtResource("13_x2hb7")
 stretch_mode = 5
 
 [node name="Play Button" type="TextureButton" parent="."]
+unique_name_in_owner = true
 z_index = 2
 layout_mode = 1
 anchors_preset = 1
@@ -232,10 +248,11 @@ grow_horizontal = 0
 texture_normal = ExtResource("6_pbw53")
 texture_pressed = ExtResource("7_pyvfr")
 texture_hover = ExtResource("8_k5n3r")
+texture_disabled = ExtResource("22_ewud7")
 stretch_mode = 4
 
 [node name="Text" type="RichTextLabel" parent="Play Button"]
-modulate = Color(0.905882, 0.8, 0.627451, 1)
+modulate = Color(0.783865, 0.738784, 0.628739, 1)
 layout_mode = 0
 offset_left = 1.0
 offset_top = 5.0
@@ -257,6 +274,7 @@ layout_mode = 0
 offset_top = 24.0
 offset_right = 1920.0
 offset_bottom = 91.0
+mouse_filter = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
 theme_override_constants/shadow_offset_y = 2
 theme_override_constants/shadow_offset_x = -2
@@ -315,6 +333,7 @@ offset_right = 580.0
 offset_bottom = 706.0
 
 [node name="Starting Seed" type="GridContainer" parent="Display/Starting Items"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -351,11 +370,12 @@ theme_override_constants/shadow_offset_x = 0
 theme_override_constants/shadow_outline_size = 2
 theme_override_fonts/normal_font = ExtResource("21_6atci")
 theme_override_font_sizes/normal_font_size = 48
-text = "None
+text = "Pea
 "
 fit_content = true
 
 [node name="Starting Talisman" type="GridContainer" parent="Display/Starting Items"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -397,6 +417,7 @@ text = "None
 fit_content = true
 
 [node name="Starting Passives" type="GridContainer" parent="Display/Starting Items"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -438,6 +459,7 @@ text = "None
 fit_content = true
 
 [node name="Starting Inventory" type="GridContainer" parent="Display/Starting Items"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -474,9 +496,51 @@ theme_override_constants/shadow_offset_x = 0
 theme_override_constants/shadow_outline_size = 2
 theme_override_fonts/normal_font = ExtResource("21_6atci")
 theme_override_font_sizes/normal_font_size = 48
-text = "None
+text = "Apple
 "
 fit_content = true
+
+[node name="Unlock Text" type="RichTextLabel" parent="Display"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 0.431373, 1)
+custom_minimum_size = Vector2(316, 48)
+offset_left = 32.0
+offset_top = 532.0
+offset_right = 580.0
+offset_bottom = 580.0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/normal_font = ExtResource("21_6atci")
+theme_override_font_sizes/normal_font_size = 48
+text = "Unlock Condition:
+"
+scroll_active = false
+
+[node name="Unlock Info" type="RichTextLabel" parent="Display"]
+unique_name_in_owner = true
+modulate = Color(0.905882, 0.8, 0.627451, 1)
+custom_minimum_size = Vector2(316, 48)
+offset_left = 32.0
+offset_top = 580.0
+offset_right = 580.0
+offset_bottom = 712.0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/normal_font = ExtResource("21_6atci")
+theme_override_font_sizes/normal_font_size = 48
+text = "Yay!
+"
+scroll_active = false
 
 [connection signal="pressed" from="Back Button" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="Characters/Character 1" to="Characters/Character 1" method="_on_pressed"]

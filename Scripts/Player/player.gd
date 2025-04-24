@@ -89,7 +89,7 @@ func _physics_process(delta):
 	
 	# aiming direction (right joystick by default)
 	# TODO: change 0.15 to deadzone value from options menu
-	var aim_direction = Input.get_vector("aim left", "aim right", "aim up", "aim down", 0.15)
+	var aim_direction = Input.get_vector("aim_left", "aim_right", "aim_up", "aim_down", 0.15)
 	
 	if Input.get_last_mouse_velocity() != Vector2.ZERO:
 		# make player's hand look at mouse
@@ -126,7 +126,7 @@ func _physics_process(delta):
 		else:
 			pass # will add pause here, but it's not made yet
 	
-	if Input.is_action_just_pressed("pick up"):
+	if Input.is_action_just_pressed("pick_up"):
 		if item_in_area:
 			pick_up(pickup_item)
 	# invulnerability time when the player takes damage or dashes

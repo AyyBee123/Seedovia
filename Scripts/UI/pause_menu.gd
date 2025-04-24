@@ -4,23 +4,21 @@ const SETTINGS = preload("res://Scenes/UI/Settings.tscn")
 
 var starting_character: character_class
 var starting_stats: player_stats
-
-var priority_popups: Array
+var settings
 
 func _ready():
 	get_tree().paused = true
 
-func _physics_process(delta):
-	if Input.is_action_just_pressed("esc"):
+func _input(event):
+	if event.is_action_pressed("ui_cancel"):
+		if is_instance_valid(settings):
+			return
 		un_pause()
 
 func _on_resume_button_pressed():
 	un_pause()
 
 func un_pause():
-	if priority_popups.size() > 0:
-		priority_popups.pop_front()
-		return
 	get_tree().paused = false
 	queue_free()
 
@@ -60,10 +58,8 @@ func _on_quick_restart_button_pressed():
 func _on_settings_button_pressed():
 	if get_tree().current_scene.find_child("Settings"): # if a settings scene already exists
 		return
-	var settings = SETTINGS.instantiate()
-	settings.source = self
+	settings = SETTINGS.instantiate()
 	get_tree().current_scene.add_child(settings)
-	priority_popups.append(settings)
 
 func _on_quit_to_menu_button_pressed():
 	get_tree().paused = false

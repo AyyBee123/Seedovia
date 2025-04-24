@@ -49,5 +49,8 @@ func _delete_button_pressed(num):
 	delete_popup.SAVE_PATH = "user://save_data%s.res" % num
 	delete_popup.RUN_SAVE_PATH = "user://current_run%s.res" % num
 	delete_popup.save = saves[num - 1]
+	delete_popup.num = num
 	delete_popup.delete_button = saves[num - 1].get_node("Delete Button")
+	get_parent().delete_popup = delete_popup
 	get_tree().current_scene.add_child(delete_popup)
+	delete_popup.global_position = Vector2(960, 1620)

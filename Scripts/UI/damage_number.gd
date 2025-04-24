@@ -4,6 +4,9 @@ extends Node
 @onready var label_container := %LabelContainer
 @onready var ap := %AnimationPlayer
 
+func _ready():
+	%Label.visible = Global.settings.show_damage_numbers # if damage numbers are set to "off"
+
 func remove():
 	ap.stop()
 	if is_inside_tree():

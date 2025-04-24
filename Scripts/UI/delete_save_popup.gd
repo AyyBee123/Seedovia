@@ -4,9 +4,11 @@ var SAVE_PATH: String
 var RUN_SAVE_PATH: String
 var save
 var delete_button
+var num
 
 func _ready():
 	get_tree().paused = true
+	$TextureRect/RichTextLabel.text = "[center]Are you sure you want to delete save file " + str(num) + "?"
 
 func _on_yes_button_pressed():
 	delete()
