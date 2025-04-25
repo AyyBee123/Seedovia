@@ -12,6 +12,8 @@ var char
 @export var character_scene: String
 
 func _ready():
+	for button in characters:
+		button.connect("gui_input", on_input)
 	char = $"Characters/Character 1"
 	display_info()
 
@@ -25,6 +27,11 @@ func _on_back_button_pressed():
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
 		get_tree().change_scene_to_packed(MAIN_MENU)
+
+func on_input(event):
+	if event is InputEventMouseButton and event.is_pressed():
+		if event.double_click and char.starting_character.unlocked:
+			_on_play_button_pressed()
 
 func _on_play_button_pressed():
 	if starting_character == null or character_scene == null:
