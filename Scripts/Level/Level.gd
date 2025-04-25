@@ -133,6 +133,8 @@ func _ready():
 		var item_instance = resource_preloader.get_resource("Coin").instantiate()
 		add_child(item_instance)
 		item_instance.global_position = LevelList.coins_on_ground[i]["position"]
+	await get_tree().physics_frame
+	LevelList.entered_room = true
 	Global.save_run_room()
 
 func _physics_process(delta):

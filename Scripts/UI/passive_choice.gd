@@ -20,7 +20,6 @@ func get_passive():
 
 func give_item(item: PackedScene):
 	player.get_node("Passives").add_child(item.instantiate())
-	LevelList.entered_room = true
 	Global.save_run_data()
 	Global.save_run_room()
 
