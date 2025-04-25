@@ -19,8 +19,17 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_otr7n")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 1
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -35,7 +44,7 @@ grow_vertical = 2
 scale = Vector2(3, 3)
 texture = ExtResource("2_wo88b")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="TextureRect"]
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/TextureRect"]
 modulate = Color(0.905882, 0.8, 0.627451, 1)
 layout_mode = 0
 offset_top = 23.0
@@ -51,21 +60,21 @@ theme_override_font_sizes/normal_font_size = 48
 bbcode_enabled = true
 text = "[center]You Died."
 
-[node name="GridContainer" type="GridContainer" parent="TextureRect"]
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/TextureRect"]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 124.0
 offset_right = 248.0
 offset_bottom = 298.0
 
-[node name="Quick Restart Button" type="TextureButton" parent="TextureRect/GridContainer"]
+[node name="Quick Restart Button" type="TextureButton" parent="CanvasLayer/TextureRect/GridContainer"]
 layout_mode = 2
 texture_normal = ExtResource("3_yd31n")
 texture_pressed = ExtResource("4_tvbew")
 texture_hover = ExtResource("5_1mfc1")
 texture_disabled = ExtResource("6_ujud5")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="TextureRect/GridContainer/Quick Restart Button"]
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/TextureRect/GridContainer/Quick Restart Button"]
 modulate = Color(0.905882, 0.8, 0.627451, 1)
 layout_mode = 0
 offset_top = 10.6667
@@ -81,14 +90,14 @@ theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
 text = "[center]Quick Restart"
 
-[node name="Quit Button" type="TextureButton" parent="TextureRect/GridContainer"]
+[node name="Quit Button" type="TextureButton" parent="CanvasLayer/TextureRect/GridContainer"]
 layout_mode = 2
 texture_normal = ExtResource("3_yd31n")
 texture_pressed = ExtResource("4_tvbew")
 texture_hover = ExtResource("5_1mfc1")
 texture_disabled = ExtResource("6_ujud5")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="TextureRect/GridContainer/Quit Button"]
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/TextureRect/GridContainer/Quit Button"]
 modulate = Color(0.905882, 0.8, 0.627451, 1)
 layout_mode = 0
 offset_top = 10.6667
@@ -104,5 +113,5 @@ theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
 text = "[center]Quit to Menu"
 
-[connection signal="pressed" from="TextureRect/GridContainer/Quick Restart Button" to="." method="_on_quick_restart_button_pressed"]
-[connection signal="pressed" from="TextureRect/GridContainer/Quit Button" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/TextureRect/GridContainer/Quick Restart Button" to="." method="_on_quick_restart_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/TextureRect/GridContainer/Quit Button" to="." method="_on_quit_button_pressed"]

@@ -171,13 +171,12 @@ func stop():
 	velocity = velocity.lerp(Vector2.ZERO, _player_stats.get_stat("Friction"))
 
 func die():
-	SignalBus.player_die.emit()
 	hide() # temporary death effect
 	process_mode = 4 # = Mode: Disabled
 	Global.save_data()
 	Global.delete_run_data()
 	# TODO: add death animation
-	# TODO: pause game and add a menu with options to restart and go back to menu
+	SignalBus.player_die.emit()
 
 func dash():
 	$"Player Sprite".play("Dash")

@@ -3,6 +3,8 @@ extends Node2D
 @onready var resource_preloader := $ResourcePreloader
 @onready var circle_transition = %"Circle Transition"
 
+const DEATH_SCREEN = preload("res://Scenes/UI/Death Screen.tscn")
+
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
 		if player.get_node("Inventory").visible: # or stat sheet is visible (when I add the stat sheet)
@@ -33,6 +35,7 @@ var time_milli_seconds: int:
 		return LevelList.elapsed_time * 100 as int % 100
 
 func _ready():
+	SignalBus.player_die.connect(spawn_death_screen)
 	%"Circle Transition".visible = true # disable it from the editor because it blocks the whole room
 	# very start of the run
 	if LevelList.room_number == 0 and LevelList.floor_number == 0 and PlayerCharacter._is_starting:
@@ -254,6 +257,10 @@ func check_for_possesions(reward_item):
 		if reward_item.item.item_name == possesion.item_name:
 			reward_item.set_item(Pool.get_item(Pool.pools[Pool.pools.find(Global.next_reward)]))
 			check_for_possesions(reward_item)
+
+func spawn_death_screen():
+	var death_screen = DEATH_SCREEN.instantiate()
+	get_tree().current_scene.add_child(death_screen)
 
 func _notification(what: int):
 	if what == NOTIFICATION_APPLICATION_FOCUS_OUT:
