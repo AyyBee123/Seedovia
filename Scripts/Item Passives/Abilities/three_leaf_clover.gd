@@ -8,16 +8,11 @@ func _ready():
 	slot_number = 0
 	super._ready()
 	source.weapon_fired.connect(get_slot_number)
-	source.weapon_fired.connect(transfer_passive)
-
-# transfers this passive over from the initial source (the player) to the next weapon
-# and from the next weapon to the following weapon, and so on...
-func transfer_passive(weapon = null):
-	if weapon == null or weapon.is_in_group("Weapon Effect"):
-		return
-	# make a new swarm passive and add it as a child of the next weapon
-	weapon.get_node("Passives").add_child(self.duplicate())
 
 func trigger(weapon = null):
+	if weapon.is_in_group("Clover Seed"):
+		return
 	var clover = THREE_LEAF_CLOVER_SPAWN.instantiate()
+	clover.source = source
+	clover.weapon = weapon
 	weapon.get_node("Passives").add_child(clover)

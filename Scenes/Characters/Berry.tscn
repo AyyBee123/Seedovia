@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://d3fqvlyjp687e" path="res://Sprites/Character/Berry/Berry3.png" id="5_j3w2e"]
 [ext_resource type="Texture2D" uid="uid://da5ri8qowbkp1" path="res://Sprites/Character/Berry/Berry4.png" id="6_1d7x2"]
 [ext_resource type="Texture2D" uid="uid://durq6vd1lypqr" path="res://Sprites/Character/Berry/Berry5.png" id="7_oqtb8"]
-[ext_resource type="PackedScene" uid="uid://b51uuhjac0hmd" path="res://Scenes/Inventory/inventory.tscn" id="8_52hxp"]
+[ext_resource type="PackedScene" uid="uid://bqelkwce1mdqp" path="res://Scenes/Inventory/inventory.tscn" id="8_52hxp"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6lyiw"]
 animations = [{
@@ -61,11 +61,10 @@ position = Vector2(0, -2)
 texture = ExtResource("4_n1ask")
 
 [node name="Inventory" parent="." index="10" instance=ExtResource("8_52hxp")]
-visible = false
 offset_left = -1620.0
 offset_top = -1022.0
-offset_right = -1620.0
-offset_bottom = -1022.0
+offset_right = -1459.0
+offset_bottom = -766.0
 scale = Vector2(3.745, 3.745)
 
 [node name="Shadow" parent="." index="13"]

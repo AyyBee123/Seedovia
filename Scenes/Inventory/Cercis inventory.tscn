@@ -6308,6 +6308,10 @@ cache/0/16/1/glyphs/22/offset = Vector2(-2, -9)
 cache/0/16/1/glyphs/22/size = Vector2(9, 11)
 cache/0/16/1/glyphs/22/uv_rect = Rect2(21, 1, 9, 11)
 cache/0/16/1/glyphs/22/texture_idx = 0
+cache/0/16/1/glyphs/3/offset = Vector2(0, 0)
+cache/0/16/1/glyphs/3/size = Vector2(0, 0)
+cache/0/16/1/glyphs/3/uv_rect = Rect2(0, 0, 0, 0)
+cache/0/16/1/glyphs/3/texture_idx = -1
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5bdkh"]
 texture = ExtResource("6_hrdna")

@@ -76,7 +76,7 @@ shape = SubResource("RectangleShape2D_o8a53")
 unique_name_in_owner = true
 position = Vector2(0, 3.5)
 
-[node name="Hand" type="Sprite2D" parent="Marker2D"]
+[node name="Hand" type="Sprite2D" parent="Marker2D" groups=["Summon"]]
 unique_name_in_owner = true
 position = Vector2(6, 0)
 texture = ExtResource("2_cn3k5")
