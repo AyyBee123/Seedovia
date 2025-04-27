@@ -150,6 +150,9 @@ func _on_fire_delay_timeout():
 		spore.transferred_blast_radius_multiplier *= transferred_blast_radius_multiplier
 		spore.transferred_fire_rate_multiplier *= transferred_fire_rate_multiplier
 		get_tree().current_scene.add_child.call_deferred(spore)
+		if pos == null:
+			fire_delay.start()
+			return
 		spore.global_position = pos
 		spore_amount_spawned += 1
 		weapon_fired.emit(spore)

@@ -11,6 +11,8 @@ class_name overall_data extends Resource
 @export var ach_02_progress: float
 @export var ach_03_health: bool
 @export var ach_03_progress: float
+@export var ach_04_swift: bool
+@export var ach_04_progress: float
 
 func get_save_selection_data():
 	last_played = SelectionSaveData.last_played
@@ -37,6 +39,8 @@ func get_achievements():
 	ach_02_progress = Game.achievement_handler.ach_02_coins.get_progress()
 	ach_03_health = Game.achievement_handler.ach_03_health.completed
 	ach_03_progress = Game.achievement_handler.ach_03_health.get_progress()
+	ach_04_swift = Game.achievement_handler.ach_04_swift.completed
+	ach_04_progress = Game.achievement_handler.ach_04_swift.get_progress()
 
 func set_achievements():
 	Game.achievement_handler.ach_01_die.completed = ach_01_die
@@ -45,6 +49,8 @@ func set_achievements():
 	Game.achievement_handler.ach_02_coins.set_progress(ach_02_progress)
 	Game.achievement_handler.ach_03_health.completed = ach_03_health
 	Game.achievement_handler.ach_03_health.set_progress(ach_03_progress)
+	Game.achievement_handler.ach_04_swift.completed = ach_04_swift
+	Game.achievement_handler.ach_04_swift.set_progress(ach_04_progress)
 
 func reset_achievements():
 	ach_01_die = false
@@ -53,6 +59,8 @@ func reset_achievements():
 	ach_02_progress = 0
 	ach_03_health = false
 	ach_03_progress = 0
+	ach_04_swift = false
+	ach_04_progress = 0
 
 func get_achievement(_ach):
 	return _ach

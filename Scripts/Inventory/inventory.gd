@@ -7,6 +7,8 @@ const slot_class = preload("res://Scripts/Inventory/inventory_slot.gd")
 @onready var seed_slots = $"Inventory Screen/Seed Slots".get_children()
 @onready var selected_slot = $"Selected Slot"
 
+@onready var inventory_screen = $"Inventory Screen"
+
 var holding_item = null # the item that is currently being held by the cursor in the inventory
 var previous_holding_item
 var holding_item_player_pos

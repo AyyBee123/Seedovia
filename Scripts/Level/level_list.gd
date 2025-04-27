@@ -66,4 +66,5 @@ func change_floor():
 	pickup_items_on_ground.clear()
 	items_on_ground.clear()
 	Pool.repopulate_weighted_pools()
+	SignalBus.entered_new_floor.emit()
 	next_room = ResourceLoader.load("res://Scenes/Levels/Special/Starting Room " + str(floor_number + 1) + ".tscn")

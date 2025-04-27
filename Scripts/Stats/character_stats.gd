@@ -52,3 +52,4 @@ func increase_max_health(amount):
 func take_damage(damage):
 	damaged.emit(damage)
 	health_changed.emit(health)
+	SignalBus.player_damaged.emit()

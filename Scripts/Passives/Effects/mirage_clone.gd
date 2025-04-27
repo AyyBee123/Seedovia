@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 signal weapon_fired(weapon)
+signal has_collided(object)
 
 @onready var hand = $"Rotation Point/Hand"
 @onready var rotation_point = $"Rotation Point"

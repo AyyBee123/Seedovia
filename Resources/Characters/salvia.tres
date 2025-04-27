@@ -16,5 +16,5 @@ starting_inventory = Array[ExtResource("3_xajj6")]([])
 starting_talismans = Array[ExtResource("7_o0irs")]([])
 starting_seeds = Array[ExtResource("5_xha00")]([ExtResource("5_yo4nw")])
 starting_passives = Array[PackedScene]([ExtResource("4_yo4nw")])
-starting_coins = 5
-unlocked = true
+starting_coins = 0
+unlocked = false

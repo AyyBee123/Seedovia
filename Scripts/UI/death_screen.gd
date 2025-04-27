@@ -34,6 +34,7 @@ func _on_quick_restart_button_pressed():
 	PlayerPassives.item_passives.clear()
 	PlayerCharacter.set_inventory()
 	PlayerCharacter.add_passives()
+	SignalBus.entered_new_floor.emit()
 	Pool.start()
 	Global.save_run_room()
 	get_tree().change_scene_to_file("res://Scenes/Levels/Special/Starting Room 1.tscn")
