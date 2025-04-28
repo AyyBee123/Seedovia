@@ -1,5 +1,7 @@
 extends "res://Scripts/Passives/Classes/passive_chance.gd"
 
+const BUTTSHOT_SEED = preload("res://Scenes/Passives/Effects/Buttshot Seed.tscn")
+
 var source
 
 func _ready():
@@ -10,17 +12,9 @@ func _ready():
 	source.weapon_fired.connect(chance_to_trigger)
 
 func trigger(weapon = null):
-	if weapon.is_in_group("Buttshot Weapon"): # prevent duplicates
+	if weapon.is_in_group("Clover Seed"): # prevent duplicates
 		return
-	var seed = PlayerSeeds.load_weapons()[0].instantiate()
-	print(seed.name)
-	seed.desired_direction = -weapon.desired_direction
-	seed.initial_weapon = true
-	seed.slot_index = 0
-	seed.previous_weapon = source
-	seed.seed_slot_number = PlayerSeeds.seed_indices[0]
-	seed.source = source
-	seed.add_to_group("Buttshot Weapon")
-	get_tree().current_scene.add_child(seed)
-	seed.global_position = source.global_position + seed.desired_direction * 15
-	source.weapon_fired.emit(seed)
+	var shot = BUTTSHOT_SEED.instantiate()
+	shot.source = source
+	shot.weapon = weapon
+	weapon.get_node("Passives").add_child(shot)
