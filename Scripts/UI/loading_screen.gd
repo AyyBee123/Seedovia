@@ -1,4 +1,10 @@
 extends Control
 
+@onready var walnut = %Walnut
+
+func _ready():
+	pass
+
 func _process(delta):
-	%Walnut.rotation += PI * delta
+	var progress = []
+	walnut.rotation += PI * delta

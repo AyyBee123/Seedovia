@@ -7,11 +7,13 @@ const character = preload("res://Scripts/UI/character.gd")
 @onready var loading_screen_scene = preload("res://Scenes/UI/Loading Screen.tscn")
 var loading_screen_scene_instance
 var char
+var thread
 
 @export var starting_character: character_class
 @export var character_scene: String
 
 func _ready():
+	thread = Thread.new()
 	for button in characters:
 		button.connect("gui_input", on_input)
 	char = $"Characters/Character 1"
@@ -38,9 +40,7 @@ func _on_play_button_pressed():
 		return
 	loading_screen_scene_instance = loading_screen_scene.instantiate()
 	get_tree().current_scene.add_child.call_deferred(loading_screen_scene_instance)
-	await get_tree().create_timer(0.5).timeout # delay to let the loading screen load in and display on-screen
-	Global.RNG = RandomNumberGenerator.new()
-	select_character()
+	thread.start(select_character)
 
 func display_info():
 	%"Character Sprite".texture = starting_character.character_sprite
@@ -131,7 +131,11 @@ func select_character():
 	PlayerPassives.item_passives.clear()
 	PlayerCharacter.set_inventory()
 	PlayerCharacter.add_passives()
-	SignalBus.entered_new_floor.emit()
 	Pool.start()
 	Global.save_run_room()
+	change_scene.call_deferred()
+
+func change_scene():
+	thread.wait_to_finish()
+	SignalBus.entered_new_floor.emit()
 	get_tree().change_scene_to_file("res://Scenes/Levels/Special/Starting Room 1.tscn")

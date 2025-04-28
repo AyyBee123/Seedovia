@@ -15,8 +15,9 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_lia4c")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 1
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -24,8 +25,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-layout_mode = 0
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
 offset_top = 200.0
 offset_right = 1920.0
 offset_bottom = 375.0
@@ -34,9 +34,8 @@ theme_override_font_sizes/normal_font_size = 128
 bbcode_enabled = true
 text = "[center]Loading"
 
-[node name="Walnut" type="TextureRect" parent="."]
+[node name="Walnut" type="TextureRect" parent="CanvasLayer"]
 unique_name_in_owner = true
-layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0

@@ -9,8 +9,10 @@ const loading_screen_scene = preload("res://Scenes/UI/Loading Screen.tscn")
 
 var loading_screen_scene_instance
 var settings
+var thread
 
 func _ready():
+	thread = Thread.new()
 	if ResourceLoader.exists(Global.RUN_SAVE_PATH):
 		continue_button.disabled = false
 		$"Continue Button/Text".modulate = Color("e7cca0")
@@ -25,12 +27,17 @@ func _on_play_button_pressed():
 func _on_continue_button_pressed():
 	loading_screen_scene_instance = loading_screen_scene.instantiate()
 	get_tree().current_scene.add_child.call_deferred(loading_screen_scene_instance)
-	await get_tree().create_timer(0.5).timeout # delay to let the loading screen load in and display on-screen
-	Global.load_run_room
+	thread.start(continue_run)
+
+func continue_run():
 	Global.load_run_data()
 	Global.load_run_room()
 	LevelList.load_char()
 	Pool.continue_run()
+	change_scene.call_deferred()
+
+func change_scene():
+	thread.wait_to_finish()
 	get_tree().change_scene_to_file(LevelList.loaded_current_room)
 
 func _on_settings_button_pressed():
