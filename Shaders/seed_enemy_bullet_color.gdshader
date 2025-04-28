@@ -17,5 +17,5 @@ void fragment() {
 		COLOR = fore_color;
 		COLOR.a = curr_color.a;
 	}
-	
+
 }

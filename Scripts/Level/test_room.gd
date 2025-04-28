@@ -10,6 +10,7 @@ var starting_stats: player_stats = preload("res://Resources/Characters/Stats/bas
 
 func _ready():
 	Global.RNG = RandomNumberGenerator.new()
+	Pool.start()
 	select_character()
 	# spawn the player character
 	player = LevelList.player.instantiate()

@@ -16,6 +16,7 @@ var ACTIONS = {
 	"pick_up": "Interact",
 	"dash": "Dash",
 	"inventory": "Inventory",
+	"stat_sheet": "Character Sheet",
 	"up": "Move Up",
 	"down": "Move Down",
 	"left": "Move Left",

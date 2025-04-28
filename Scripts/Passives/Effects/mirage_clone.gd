@@ -19,8 +19,8 @@ func _ready():
 	if player.name == "Salvia":
 		damage_multi = 0.5
 	else:
-		damage_multi = 0.2
-	player.weapon_fired.connect(shoot)
+		damage_multi = 0.25
+	player.seed_fired.connect(shoot)
 
 func _physics_process(delta):
 	var frameIndex: int = player.find_child("Player Sprite").get_frame()

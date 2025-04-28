@@ -44,6 +44,9 @@ func update_position(delta):
 	else:
 		BASE_SPEED = 0
 		if is_stuck_to_enemy:
+			if not is_instance_valid(enemy):
+				queue_free()
+				return
 			global_position = enemy.global_position - distance_to_enemy
 			if tick_rate.is_stopped():
 				has_collided.emit(enemy_hitbox) # for on-hit effects (ex: burning an enemy on hit)

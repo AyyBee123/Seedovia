@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://cu63rxmy71bcg"]
+[gd_scene load_steps=15 format=3 uid="uid://cu63rxmy71bcg"]
 
 [ext_resource type="Script" uid="uid://baiqylxdh1qdv" path="res://Scripts/Player/player.gd" id="2_f7nwd"]
 [ext_resource type="Script" uid="uid://bwqgewllb2g17" path="res://Scripts/Player/StateMachine.gd" id="3_ojktk"]
+[ext_resource type="PackedScene" uid="uid://ph85q15fnum4" path="res://Scenes/UI/Stat Sheet.tscn" id="4_825xp"]
 [ext_resource type="Texture2D" uid="uid://2o0nxg1xv6xm" path="res://Sprites/UI/Cursor.png" id="6_ddx17"]
 [ext_resource type="Texture2D" uid="uid://xxyym547o3vn" path="res://Sprites/Misc/Shadow.png" id="7_u5ajd"]
 [ext_resource type="PackedScene" uid="uid://civnfvhref4lg" path="res://Scenes/Stats/Player UI.tscn" id="8_sj1lu"]
@@ -91,6 +92,9 @@ one_shot = true
 
 [node name="Dash Cooldown" type="Timer" parent="."]
 one_shot = true
+
+[node name="Stat Sheet" parent="." instance=ExtResource("4_825xp")]
+visible = false
 
 [node name="Player Health" parent="." instance=ExtResource("8_sj1lu")]
 

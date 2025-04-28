@@ -54,6 +54,7 @@ func display_info():
 		$"Play Button/Text".modulate = Color("c8bca0")
 	else:
 		$"Play Button/Text".modulate = Color("e7cca0")
+		%"Character Sprite".modulate = Color.WHITE
 	%"Unlock Text".visible = not char.starting_character.unlocked
 	%"Unlock Info".visible = not char.starting_character.unlocked
 	%"Play Button".disabled = not char.starting_character.unlocked
@@ -88,10 +89,10 @@ func display_info():
 	# starting passives
 	var starting_passives = starting_character.starting_passives.filter(func(value): return value != null)
 	if starting_passives.size() > 0:
-		starting_items[2].get_node("Info").text = starting_passives[0].instantiate().name
+		starting_items[2].get_node("Info").text = starting_passives[0].passive_name
 	if starting_passives.size() > 1:
 		for i in starting_passives.size() - 1: # exclude the first element in the array
-			starting_items[2].get_node("Info").text += ", " + starting_passives[i+1].instantiate().name
+			starting_items[2].get_node("Info").text += ", " + starting_passives[i+1].instantiate().passive_name
 	
 	# starting inventory
 	var starting_inventory = starting_character.starting_inventory.filter(func(value): return value != null)
@@ -130,6 +131,7 @@ func select_character():
 	PlayerPassives.item_passives.clear()
 	PlayerCharacter.set_inventory()
 	PlayerCharacter.add_passives()
+	SignalBus.entered_new_floor.emit()
 	Pool.start()
 	Global.save_run_room()
 	get_tree().change_scene_to_file("res://Scenes/Levels/Special/Starting Room 1.tscn")

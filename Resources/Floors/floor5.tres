@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="room_pool" load_steps=2 format=3 uid="uid://btewcelj7lw2q"]
+
+[ext_resource type="Script" uid="uid://clcc4aquglohj" path="res://Scripts/Pools/room_pool.gd" id="1_x06o1"]
+
+[resource]
+script = ExtResource("1_x06o1")
+floor_number = 5
+pool_name = "Floor 5"
+path = "res://Scenes/Levels/Floor5/"

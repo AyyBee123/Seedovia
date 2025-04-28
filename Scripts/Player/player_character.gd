@@ -1,6 +1,6 @@
 extends Node
 
-var add_talismans_passive = preload("res://Scenes/Characters/Passives/Add Talismans.tscn")
+var add_talismans_passive = preload("res://Resources/Characters/Passives/add_talisman_passives.tres")
 
 var starting_character: character_class
 var _is_starting := false
@@ -20,4 +20,5 @@ func add_items(category, player_category):
 
 func add_passives():
 	PlayerPassives.starting_passives = starting_character.starting_passives
+	PlayerPassives.passive_list = starting_character.starting_passives
 	PlayerPassives.starting_passives.append(add_talismans_passive)

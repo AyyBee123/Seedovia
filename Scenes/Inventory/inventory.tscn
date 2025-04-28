@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=4 uid="uid://bqelkwce1mdqp"]
+[gd_scene load_steps=40 format=4 uid="uid://bqelkwce1mdqp"]
 
 [ext_resource type="Script" uid="uid://syqonlcnj50x" path="res://Scripts/Inventory/inventory.gd" id="1_p15jk"]
 [ext_resource type="Texture2D" uid="uid://osvetf3hj5du" path="res://Sprites/Inventory/Inventory Background.png" id="2_yu62t"]
@@ -6,12 +6,7 @@
 [ext_resource type="Script" uid="uid://cxcf3pcevyax0" path="res://Scripts/Inventory/inventory_slot.gd" id="4_isqha"]
 [ext_resource type="Texture2D" uid="uid://bd11oobrf6yka" path="res://Sprites/Inventory/Seed Slot Link.png" id="5_cxrpu"]
 [ext_resource type="FontFile" uid="uid://wbj0boqv37y6" path="res://Fonts/Description Font.ttf" id="6_kq8h5"]
-[ext_resource type="FontFile" uid="uid://bkn7gmgx1wxgx" path="res://Fonts/Name Font.ttf" id="7_2gqbg"]
-[ext_resource type="Script" uid="uid://dqxmkipwkdrtg" path="res://Scripts/UI/stat_screen.gd" id="7_cxrpu"]
-[ext_resource type="Texture2D" uid="uid://dan8ovr484x1g" path="res://Sprites/UI/Settings Grabber.png" id="8_isqha"]
 [ext_resource type="Texture2D" uid="uid://6ladnu2bfkv7" path="res://Sprites/Inventory/Selected Slot.png" id="8_x3f3x"]
-[ext_resource type="Texture2D" uid="uid://c24kdky7tmo11" path="res://Sprites/UI/Settings Grabber Hovered.png" id="9_cxrpu"]
-[ext_resource type="Texture2D" uid="uid://c5akdph2vrhda" path="res://Sprites/UI/Settings Grabber Pressed.png" id="10_kq8h5"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7ppds"]
 texture = ExtResource("3_d2640")
@@ -6316,44 +6311,6 @@ cache/0/16/1/glyphs/3/size = Vector2(0, 0)
 cache/0/16/1/glyphs/3/uv_rect = Rect2(0, 0, 0, 0)
 cache/0/16/1/glyphs/3/texture_idx = -1
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m7hwe"]
-bg_color = Color(0, 0, 0, 0.25098)
-border_width_left = 8
-border_width_right = 2
-border_color = Color(0, 0, 0, 0.25098)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6xrf4"]
-texture = ExtResource("8_isqha")
-texture_margin_left = 4.0
-texture_margin_top = 4.0
-texture_margin_right = 4.0
-texture_margin_bottom = 4.0
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4crku"]
-texture = ExtResource("9_cxrpu")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_acibd"]
-texture = ExtResource("10_kq8h5")
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4crku"]
-bg_color = Color(0, 0, 0, 1)
-border_width_top = 2
-border_width_right = 6
-border_width_bottom = 2
-border_color = Color(0, 0, 0, 1)
-expand_margin_left = 2.0
-expand_margin_top = 2.0
-expand_margin_right = 2.0
-expand_margin_bottom = 2.0
-anti_aliasing = false
-
-[sub_resource type="Theme" id="Theme_2gqbg"]
-ScrollContainer/styles/panel = SubResource("StyleBoxFlat_m7hwe")
-VScrollBar/styles/grabber = SubResource("StyleBoxTexture_6xrf4")
-VScrollBar/styles/grabber_highlight = SubResource("StyleBoxTexture_4crku")
-VScrollBar/styles/grabber_pressed = SubResource("StyleBoxTexture_acibd")
-VScrollBar/styles/scroll = SubResource("StyleBoxFlat_4crku")
-
 [node name="Inventory" type="Control" groups=["Persist"]]
 top_level = true
 z_index = 10
@@ -6644,214 +6601,6 @@ offset_right = 148.0
 offset_bottom = 125.0
 color = Color(0.376471, 0.188235, 0.164706, 1)
 
-[node name="Stat Screen" type="TextureRect" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-texture = ExtResource("2_yu62t")
-script = ExtResource("7_cxrpu")
-
-[node name="StatsText" type="RichTextLabel" parent="Stat Screen"]
-modulate = Color(0.905882, 0.8, 0.627451, 1)
-custom_minimum_size = Vector2(0, 16)
-layout_mode = 0
-offset_left = 6.0
-offset_top = 5.0
-offset_right = 155.0
-offset_bottom = 27.0
-size_flags_horizontal = 3
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
-theme_override_constants/shadow_offset_y = 1
-theme_override_constants/shadow_offset_x = 0
-theme_override_constants/shadow_outline_size = 2
-theme_override_fonts/normal_font = ExtResource("7_2gqbg")
-theme_override_font_sizes/normal_font_size = 16
-bbcode_enabled = true
-text = "[center]Stats"
-scroll_active = false
-
-[node name="MarginContainer" type="MarginContainer" parent="Stat Screen"]
-layout_mode = 2
-offset_right = 161.0
-offset_bottom = 256.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 12
-theme_override_constants/margin_top = 32
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 12
-
-[node name="ScrollContainer" type="ScrollContainer" parent="Stat Screen/MarginContainer"]
-layout_mode = 2
-theme = SubResource("Theme_2gqbg")
-
-[node name="MarginContainer" type="MarginContainer" parent="Stat Screen/MarginContainer/ScrollContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 0
-theme_override_constants/margin_top = 2
-theme_override_constants/margin_right = 12
-theme_override_constants/margin_bottom = 2
-
-[node name="GridContainer" type="GridContainer" parent="Stat Screen/MarginContainer/ScrollContainer/MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-columns = 2
-
-[node name="DamageText" type="RichTextLabel" parent="Stat Screen/MarginContainer/ScrollContainer/MarginContainer/GridContainer"]
-modulate = Color(1, 1, 0.431373, 1)
-custom_minimum_size = Vector2(80, 16)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
-theme_override_constants/shadow_offset_y = 1
-theme_override_constants/shadow_offset_x = 0
-theme_override_constants/shadow_outline_size = 1
-theme_override_fonts/normal_font = ExtResource("6_kq8h5")
-theme_override_font_sizes/normal_font_size = 16
-text = "Damage (%):"
-scroll_active = false
-
-[node name="DamageInfo" type="RichTextLabel" parent="Stat Screen/MarginContainer/ScrollContainer/MarginContainer/GridContainer"]
-unique_name_in_owner = true
-modulate = Color(0.905882, 0.8, 0.627451, 1)
-custom_minimum_size = Vector2(0, 16)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
-theme_override_constants/shadow_offset_y = 1
-theme_override_constants/shadow_offset_x = 0
-theme_override_constants/shadow_outline_size = 1
-theme_override_fonts/normal_font = ExtResource("6_kq8h5")
-theme_override_font_sizes/normal_font_size = 16
-bbcode_enabled = true
-text = "[right]0"
-scroll_active = false
-
-[node name="FireRateText" type="RichTextLabel" parent="Stat Screen/MarginContainer/ScrollContainer/MarginContainer/GridContainer"]
-modulate = Color(1, 1, 0.431373, 1)
-custom_minimum_size = Vector2(0, 16)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
-theme_override_constants/shadow_offset_y = 1
-theme_override_constants/shadow_offset_x = 0
-theme_override_constants/shadow_outline_size = 1
-theme_override_fonts/normal_font = ExtResource("6_kq8h5")
-theme_override_font_sizes/normal_font_size = 16
-text = "Fire Rate (%):"
-scroll_active = false
-
-[node name="FireRateInfo" type="RichTextLabel" parent="Stat Screen/MarginContainer/ScrollContainer/MarginContainer/GridContainer"]
-unique_name_in_owner = true
-modulate = Color(0.905882, 0.8, 0.627451, 1)
-custom_minimum_size = Vector2(0, 16)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
-theme_override_constants/shadow_offset_y = 1
-theme_override_constants/shadow_offset_x = 0
-theme_override_constants/shadow_outline_size = 1
-theme_override_fonts/normal_font = ExtResource("6_kq8h5")
-theme_override_font_sizes/normal_font_size = 16
-bbcode_enabled = true
-text = "[right]0"
-scroll_active = false
-
-[node name="RangeText" type="RichTextLabel" parent="Stat Screen/MarginContainer/ScrollContainer/MarginContainer/GridContainer"]
-modulate = Color(1, 1, 0.431373, 1)
-custom_minimum_size = Vector2(0, 16)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
-theme_override_constants/shadow_offset_y = 1
-theme_override_constants/shadow_offset_x = 0
-theme_override_constants/shadow_outline_size = 1
-theme_override_fonts/normal_font = ExtResource("6_kq8h5")
-theme_override_font_sizes/normal_font_size = 16
-text = "Range (%):"
-scroll_active = false
-
-[node name="RangeInfo" type="RichTextLabel" parent="Stat Screen/MarginContainer/ScrollContainer/MarginContainer/GridContainer"]
-unique_name_in_owner = true
-modulate = Color(0.905882, 0.8, 0.627451, 1)
-custom_minimum_size = Vector2(0, 16)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
-theme_override_constants/shadow_offset_y = 1
-theme_override_constants/shadow_offset_x = 0
-theme_override_constants/shadow_outline_size = 1
-theme_override_fonts/normal_font = ExtResource("6_kq8h5")
-theme_override_font_sizes/normal_font_size = 16
-bbcode_enabled = true
-text = "[right]0"
-scroll_active = false
-
-[node name="ProjSpeedText" type="RichTextLabel" parent="Stat Screen/MarginContainer/ScrollContainer/MarginContainer/GridContainer"]
-modulate = Color(1, 1, 0.431373, 1)
-custom_minimum_size = Vector2(0, 16)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
-theme_override_constants/shadow_offset_y = 1
-theme_override_constants/shadow_offset_x = 0
-theme_override_constants/shadow_outline_size = 1
-theme_override_fonts/normal_font = ExtResource("6_kq8h5")
-theme_override_font_sizes/normal_font_size = 16
-text = "Seed Speed (%):"
-scroll_active = false
-
-[node name="ProjSpeedInfo" type="RichTextLabel" parent="Stat Screen/MarginContainer/ScrollContainer/MarginContainer/GridContainer"]
-unique_name_in_owner = true
-modulate = Color(0.905882, 0.8, 0.627451, 1)
-custom_minimum_size = Vector2(0, 16)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
-theme_override_constants/shadow_offset_y = 1
-theme_override_constants/shadow_offset_x = 0
-theme_override_constants/shadow_outline_size = 1
-theme_override_fonts/normal_font = ExtResource("6_kq8h5")
-theme_override_font_sizes/normal_font_size = 16
-bbcode_enabled = true
-text = "[right]0"
-scroll_active = false
-
-[node name="BlastRadiusText" type="RichTextLabel" parent="Stat Screen/MarginContainer/ScrollContainer/MarginContainer/GridContainer"]
-modulate = Color(1, 1, 0.431373, 1)
-custom_minimum_size = Vector2(0, 16)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
-theme_override_constants/shadow_offset_y = 1
-theme_override_constants/shadow_offset_x = 0
-theme_override_constants/shadow_outline_size = 1
-theme_override_fonts/normal_font = ExtResource("6_kq8h5")
-theme_override_font_sizes/normal_font_size = 16
-text = "Blast Radius (%):"
-scroll_active = false
-
-[node name="BlastRadiusInfo" type="RichTextLabel" parent="Stat Screen/MarginContainer/ScrollContainer/MarginContainer/GridContainer"]
-unique_name_in_owner = true
-modulate = Color(0.905882, 0.8, 0.627451, 1)
-custom_minimum_size = Vector2(0, 16)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
-theme_override_constants/shadow_offset_y = 1
-theme_override_constants/shadow_offset_x = 0
-theme_override_constants/shadow_outline_size = 1
-theme_override_fonts/normal_font = ExtResource("6_kq8h5")
-theme_override_font_sizes/normal_font_size = 16
-bbcode_enabled = true
-text = "[right]0"
-scroll_active = false
-
 [node name="Selected Slot" type="TextureRect" parent="."]
 visible = false
 layout_mode = 0
@@ -6863,5 +6612,3 @@ scale = Vector2(0.970588, 0.970588)
 texture = ExtResource("8_x3f3x")
 expand_mode = 1
 stretch_mode = 3
-
-[connection signal="visibility_changed" from="Inventory Screen" to="." method="_on_inventory_screen_visibility_changed"]

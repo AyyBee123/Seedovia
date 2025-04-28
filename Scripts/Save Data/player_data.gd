@@ -8,6 +8,7 @@ class_name player_data extends Resource
 @export var starting_character: character_class
 @export var starting_passives: Array
 @export var passives: Array
+@export var passive_list: Array
 @export var item_passives: Array
 @export var character_scene_file_path: String
 @export var coins: int
@@ -46,10 +47,12 @@ func set_inventory():
 func get_passives():
 	starting_passives = PlayerPassives.starting_passives
 	passives = PlayerPassives.get_passives()
+	passive_list = PlayerPassives.passive_list
 
 func set_passives():
 	PlayerPassives.starting_passives = starting_passives
 	PlayerPassives.passives = passives
+	PlayerPassives.passive_list = passive_list
 
 func get_item_passives():
 	item_passives = PlayerPassives.get_item_passives()

@@ -18,13 +18,14 @@ func get_passive():
 	var item = Pool.get_item(Pool.passive_pool)
 	return item
 
-func give_item(item: PackedScene):
-	player.get_node("Passives").add_child(item.instantiate())
+func give_item(item):
+	player.get_node("Passives").add_child(item.passive_ability.instantiate())
+	PlayerPassives.passive_list.append(item)
 	Global.save_run_data()
 	Global.save_run_room()
 
 func on_press(passive_item):
-	give_item(passive_item.passive_ability)
+	give_item(passive_item)
 	# maybe play some animation here
 	get_tree().paused = false
 	queue_free.call_deferred()

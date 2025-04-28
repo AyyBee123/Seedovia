@@ -57,7 +57,7 @@ func _ready():
 func _process(delta):
 	if Input.is_action_just_pressed("inventory"):
 		# toggle inventory UI to open/close
-		visible = !visible
+		visible = not visible
 	if holding_item == null:
 		if drop_delay.is_stopped():
 			player.has_holding_item = false

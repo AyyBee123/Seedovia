@@ -1,0 +1,659 @@
+[gd_scene load_steps=14 format=3 uid="uid://ph85q15fnum4"]
+
+[ext_resource type="Texture2D" uid="uid://osvetf3hj5du" path="res://Sprites/Inventory/Inventory Background.png" id="1_fddhf"]
+[ext_resource type="Script" uid="uid://dqxmkipwkdrtg" path="res://Scripts/UI/stat_screen.gd" id="1_wk07r"]
+[ext_resource type="FontFile" uid="uid://bkn7gmgx1wxgx" path="res://Fonts/Name Font.ttf" id="2_wk07r"]
+[ext_resource type="Texture2D" uid="uid://dan8ovr484x1g" path="res://Sprites/UI/Settings Grabber.png" id="3_qapxc"]
+[ext_resource type="Texture2D" uid="uid://c24kdky7tmo11" path="res://Sprites/UI/Settings Grabber Hovered.png" id="4_3y7n7"]
+[ext_resource type="Texture2D" uid="uid://c5akdph2vrhda" path="res://Sprites/UI/Settings Grabber Pressed.png" id="5_nsg4g"]
+[ext_resource type="FontFile" uid="uid://wbj0boqv37y6" path="res://Fonts/Description Font.ttf" id="6_jedoy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m7hwe"]
+bg_color = Color(0, 0, 0, 0.25098)
+border_width_left = 8
+border_width_right = 2
+border_color = Color(0, 0, 0, 0.25098)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6xrf4"]
+texture = ExtResource("3_qapxc")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4crku"]
+texture = ExtResource("4_3y7n7")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_acibd"]
+texture = ExtResource("5_nsg4g")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4crku"]
+bg_color = Color(0, 0, 0, 1)
+border_width_top = 2
+border_width_right = 6
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+anti_aliasing = false
+
+[sub_resource type="Theme" id="Theme_lya7s"]
+ScrollContainer/styles/panel = SubResource("StyleBoxFlat_m7hwe")
+VScrollBar/styles/grabber = SubResource("StyleBoxTexture_6xrf4")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxTexture_4crku")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxTexture_acibd")
+VScrollBar/styles/scroll = SubResource("StyleBoxFlat_4crku")
+
+[node name="Stat Sheet" type="CanvasLayer"]
+script = ExtResource("1_wk07r")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+offset_left = 56.0
+offset_top = 210.0
+offset_right = 288.0
+offset_bottom = 474.0
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("1_fddhf")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="CharacterText" type="RichTextLabel" parent="NinePatchRect"]
+modulate = Color(0.905882, 0.8, 0.627451, 1)
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 7.0
+offset_bottom = 27.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/normal_font = ExtResource("2_wk07r")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "[center]Character Sheet"
+scroll_active = false
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 12
+
+[node name="ScrollContainer" type="ScrollContainer" parent="NinePatchRect/MarginContainer"]
+layout_mode = 2
+theme = SubResource("Theme_lya7s")
+scroll_vertical = 100
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/MarginContainer/ScrollContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 12
+
+[node name="CharacterText" type="RichTextLabel" parent="NinePatchRect/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+modulate = Color(0.905882, 0.8, 0.627451, 1)
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/normal_font = ExtResource("2_wk07r")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "Character Stats"
+scroll_active = false
+
+[node name="SpeedContainer2" type="GridContainer" parent="NinePatchRect/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="SpeedText" type="RichTextLabel" parent="NinePatchRect/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/SpeedContainer2"]
+modulate = Color(1, 1, 0.431373, 1)
+custom_minimum_size = Vector2(80, 16)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/normal_font = ExtResource("6_jedoy")
+theme_override_font_sizes/normal_font_size = 16
+text = "Movement Speed:"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="SpeedInfo" type="RichTextLabel" parent="NinePatchRect/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/SpeedContainer2"]
+unique_name_in_owner = true
+modulate = Color(0.905882, 0.8, 0.627451, 1)
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/normal_font = ExtResource("6_jedoy")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "[right]0"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="DashRateContainer3" type="GridContainer" parent="NinePatchRect/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="DashText" type="RichTextLabel" parent="NinePatchRect/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/DashRateContainer3"]
+modulate = Color(1, 1, 0.431373, 1)
+custom_minimum_size = Vector2(80, 16)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/normal_font = ExtResource("6_jedoy")
+theme_override_font_sizes/normal_font_size = 16
+text = "Dash Rate:"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="DashRateInfo" type="RichTextLabel" parent="NinePatchRect/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/DashRateContainer3"]
+unique_name_in_owner = true
+modulate = Color(0.905882, 0.8, 0.627451, 1)
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/normal_font = ExtResource("6_jedoy")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "[right]0"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="DashDistanceContainer5" type="GridContainer" parent="NinePatchRect/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="DashText" type="RichTextLabel" parent="NinePatchRect/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/DashDistanceContainer5"]
+modulate = Color(1, 1, 0.431373, 1)
+custom_minimum_size = Vector2(80, 16)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/normal_font = ExtResource("6_jedoy")
+theme_override_font_sizes/normal_font_size = 16
+text = "Dash Distance:"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="DashDistanceInfo" type="RichTextLabel" parent="NinePatchRect/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/DashDistanceContainer5"]
+unique_name_in_owner = true
+modulate = Color(0.905882, 0.8, 0.627451, 1)
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/normal_font = ExtResource("6_jedoy")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "[right]0"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="DashInvulContainer6" type="GridContainer" parent="NinePatchRect/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="DashText" type="RichTextLabel" parent="NinePatchRect/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/DashInvulContainer6"]
+modulate = Color(1, 1, 0.431373, 1)
+custom_minimum_size = Vector2(80, 24)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/normal_font = ExtResource("6_jedoy")
+theme_override_font_sizes/normal_font_size = 16
+text = "After Dash Immune Time:"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="DashInvulInfo" type="RichTextLabel" parent="NinePatchRect/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/DashInvulContainer6"]
+unique_name_in_owner = true
+modulate = Color(0.905882, 0.8, 0.627451, 1)
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/normal_font = ExtResource("6_jedoy")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "[right]0"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="Seperator" type="ColorRect" parent="NinePatchRect/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+color = Color(0.486275, 0.262745, 0.215686, 1)
+
+[node name="SeedText" type="RichTextLabel" parent="NinePatchRect/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+modulate = Color(0.905882, 0.8, 0.627451, 1)
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/normal_font = ExtResource("2_wk07r")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "Seed Stats"
+scroll_active = false
+
+[node name="DamageContainer" type="GridContainer" parent="NinePatchRect/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="DamageText" type="RichTextLabel" parent="NinePatchRect/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/DamageContainer"]
+modulate = Color(1, 1, 0.431373, 1)
+custom_minimum_size = Vector2(80, 16)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/normal_font = ExtResource("6_jedoy")
+theme_override_font_sizes/normal_font_size = 16
+text = "Damage (%):"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="DamageInfo" type="RichTextLabel" parent="NinePatchRect/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/DamageContainer"]
+unique_name_in_owner = true
+modulate = Color(0.905882, 0.8, 0.627451, 1)
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/normal_font = ExtResource("6_jedoy")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "[right]0"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="DamageText2" type="RichTextLabel" parent="NinePatchRect/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/DamageContainer"]
+modulate = Color(1, 1, 0.431373, 1)
+custom_minimum_size = Vector2(80, 16)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/normal_font = ExtResource("6_jedoy")
+theme_override_font_sizes/normal_font_size = 16
+text = "Damage (x):"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="DamageInfo2" type="RichTextLabel" parent="NinePatchRect/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/DamageContainer"]
+unique_name_in_owner = true
+modulate = Color(0.905882, 0.8, 0.627451, 1)
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/normal_font = ExtResource("6_jedoy")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "[right]0"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="FireRateContainer2" type="GridContainer" parent="NinePatchRect/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="FireRateText" type="RichTextLabel" parent="NinePatchRect/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/FireRateContainer2"]
+modulate = Color(1, 1, 0.431373, 1)
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/normal_font = ExtResource("6_jedoy")
+theme_override_font_sizes/normal_font_size = 16
+text = "Fire Rate (%):"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="FireRateInfo" type="RichTextLabel" parent="NinePatchRect/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/FireRateContainer2"]
+unique_name_in_owner = true
+modulate = Color(0.905882, 0.8, 0.627451, 1)
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/normal_font = ExtResource("6_jedoy")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "[right]0"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="FireRateText2" type="RichTextLabel" parent="NinePatchRect/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/FireRateContainer2"]
+modulate = Color(1, 1, 0.431373, 1)
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/normal_font = ExtResource("6_jedoy")
+theme_override_font_sizes/normal_font_size = 16
+text = "Fire Rate (x):"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="FireRateInfo2" type="RichTextLabel" parent="NinePatchRect/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/FireRateContainer2"]
+unique_name_in_owner = true
+modulate = Color(0.905882, 0.8, 0.627451, 1)
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/normal_font = ExtResource("6_jedoy")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "[right]0"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="RangeContainer3" type="GridContainer" parent="NinePatchRect/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="RangeText" type="RichTextLabel" parent="NinePatchRect/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/RangeContainer3"]
+modulate = Color(1, 1, 0.431373, 1)
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/normal_font = ExtResource("6_jedoy")
+theme_override_font_sizes/normal_font_size = 16
+text = "Range (%):"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="RangeInfo" type="RichTextLabel" parent="NinePatchRect/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/RangeContainer3"]
+unique_name_in_owner = true
+modulate = Color(0.905882, 0.8, 0.627451, 1)
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/normal_font = ExtResource("6_jedoy")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "[right]0"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="RangeText2" type="RichTextLabel" parent="NinePatchRect/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/RangeContainer3"]
+modulate = Color(1, 1, 0.431373, 1)
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/normal_font = ExtResource("6_jedoy")
+theme_override_font_sizes/normal_font_size = 16
+text = "Range (x):"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="RangeInfo2" type="RichTextLabel" parent="NinePatchRect/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/RangeContainer3"]
+unique_name_in_owner = true
+modulate = Color(0.905882, 0.8, 0.627451, 1)
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/normal_font = ExtResource("6_jedoy")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "[right]0"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="SpeedContainer4" type="GridContainer" parent="NinePatchRect/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="ProjSpeedText" type="RichTextLabel" parent="NinePatchRect/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/SpeedContainer4"]
+modulate = Color(1, 1, 0.431373, 1)
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/normal_font = ExtResource("6_jedoy")
+theme_override_font_sizes/normal_font_size = 16
+text = "Seed Speed (%):"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="ProjSpeedInfo" type="RichTextLabel" parent="NinePatchRect/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/SpeedContainer4"]
+unique_name_in_owner = true
+modulate = Color(0.905882, 0.8, 0.627451, 1)
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/normal_font = ExtResource("6_jedoy")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "[right]0"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="ProjSpeedText2" type="RichTextLabel" parent="NinePatchRect/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/SpeedContainer4"]
+modulate = Color(1, 1, 0.431373, 1)
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/normal_font = ExtResource("6_jedoy")
+theme_override_font_sizes/normal_font_size = 16
+text = "Seed Speed (x):"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="ProjSpeedInfo2" type="RichTextLabel" parent="NinePatchRect/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/SpeedContainer4"]
+unique_name_in_owner = true
+modulate = Color(0.905882, 0.8, 0.627451, 1)
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/normal_font = ExtResource("6_jedoy")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "[right]0"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="BlastRadiusContainer5" type="GridContainer" parent="NinePatchRect/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="BlastRadiusText" type="RichTextLabel" parent="NinePatchRect/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/BlastRadiusContainer5"]
+modulate = Color(1, 1, 0.431373, 1)
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/normal_font = ExtResource("6_jedoy")
+theme_override_font_sizes/normal_font_size = 16
+text = "Blast Radius (%):"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="BlastRadiusInfo" type="RichTextLabel" parent="NinePatchRect/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/BlastRadiusContainer5"]
+unique_name_in_owner = true
+modulate = Color(0.905882, 0.8, 0.627451, 1)
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/normal_font = ExtResource("6_jedoy")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "[right]0"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="BlastRadiusText2" type="RichTextLabel" parent="NinePatchRect/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/BlastRadiusContainer5"]
+modulate = Color(1, 1, 0.431373, 1)
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/normal_font = ExtResource("6_jedoy")
+theme_override_font_sizes/normal_font_size = 16
+text = "Blast Radius (x):"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="BlastRadiusInfo2" type="RichTextLabel" parent="NinePatchRect/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/BlastRadiusContainer5"]
+unique_name_in_owner = true
+modulate = Color(0.905882, 0.8, 0.627451, 1)
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/normal_font = ExtResource("6_jedoy")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "[right]0"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="Seperator2" type="ColorRect" parent="NinePatchRect/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+color = Color(0.486275, 0.262745, 0.215686, 1)
+
+[node name="PassiveText" type="RichTextLabel" parent="NinePatchRect/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+modulate = Color(0.905882, 0.8, 0.627451, 1)
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/normal_font = ExtResource("2_wk07r")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "Passives"
+scroll_active = false
+
+[node name="Passives" type="GridContainer" parent="NinePatchRect/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2

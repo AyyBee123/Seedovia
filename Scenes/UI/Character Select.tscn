@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://8lh64evv6imw"]
+[gd_scene load_steps=27 format=3 uid="uid://8lh64evv6imw"]
 
 [ext_resource type="Script" uid="uid://uybucfv2vxti" path="res://Scripts/UI/character_select.gd" id="1_jmjmr"]
 [ext_resource type="Texture2D" uid="uid://dwwsiyabyqc6l" path="res://Sprites/Menu UI/Soil Background.png" id="2_4vqgb"]
@@ -24,6 +24,8 @@
 [ext_resource type="Texture2D" uid="uid://bw8knd5iqe7am" path="res://Sprites/UI/Character Display.png" id="20_81yuh"]
 [ext_resource type="FontFile" uid="uid://wbj0boqv37y6" path="res://Fonts/Description Font.ttf" id="21_6atci"]
 [ext_resource type="Texture2D" uid="uid://chrtmh8xchoct" path="res://Sprites/Pause UI/Pause Menu Choice Disabled.png" id="22_ewud7"]
+[ext_resource type="Resource" uid="uid://dwrfrsw3ypvma" path="res://Resources/Characters/salvia.tres" id="22_hylud"]
+[ext_resource type="Texture2D" uid="uid://dx8dxbrx5ua06" path="res://Sprites/Character/Salvia/Salvia1.png" id="23_nqihi"]
 
 [node name="Character Select" type="Control"]
 layout_mode = 3
@@ -231,6 +233,33 @@ mouse_filter = 2
 layout_mode = 2
 mouse_filter = 2
 texture = ExtResource("13_x2hb7")
+stretch_mode = 5
+
+[node name="Character 6" type="TextureButton" parent="Characters"]
+custom_minimum_size = Vector2(192, 192)
+layout_mode = 2
+texture_normal = ExtResource("7_2sg52")
+texture_pressed = ExtResource("8_snfop")
+texture_hover = ExtResource("9_ewud7")
+texture_disabled = ExtResource("8_dew5b")
+stretch_mode = 0
+script = ExtResource("3_alya1")
+starting_character = ExtResource("22_hylud")
+character_scene = "res://Scenes/Characters/Salvia.tscn"
+unlock_method = "Complete a floor without taking damage."
+
+[node name="MarginContainer" type="MarginContainer" parent="Characters/Character 6"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 6.0
+offset_right = 178.0
+offset_bottom = 178.0
+mouse_filter = 2
+
+[node name="Character" type="TextureRect" parent="Characters/Character 6/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("23_nqihi")
 stretch_mode = 5
 
 [node name="Play Button" type="TextureButton" parent="."]
@@ -550,4 +579,5 @@ scroll_active = false
 [connection signal="pressed" from="Characters/Character 3" to="Characters/Character 3" method="_on_pressed"]
 [connection signal="pressed" from="Characters/Character 4" to="Characters/Character 4" method="_on_pressed"]
 [connection signal="pressed" from="Characters/Character 5" to="Characters/Character 5" method="_on_pressed"]
+[connection signal="pressed" from="Characters/Character 6" to="Characters/Character 6" method="_on_pressed"]
 [connection signal="pressed" from="Play Button" to="." method="_on_play_button_pressed"]

@@ -4,6 +4,7 @@ signal shoot(bullet, direction, location)
 signal weapon_fired(weapon)
 signal dashed
 signal has_collided(object)
+signal seed_fired(seed) # for immediately fired seeds (for the mirage passive)
 
 var _player_stats: player_stats = preload("res://Resources/Characters/Stats/base_stats.tres")
 
@@ -200,6 +201,7 @@ func _on_shoot(weapon, location):
 	weapon_instance.global_position = location
 	bullets_per_second.start()
 	weapon_fired.emit(weapon_instance)
+	seed_fired.emit(weapon_instance)
 
 func update_timers():
 	current_weapon = null if PlayerInventory.seeds.size() == 0 else PlayerSeeds.load_weapons()[0]

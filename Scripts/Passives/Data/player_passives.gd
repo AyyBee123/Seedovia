@@ -4,6 +4,7 @@ extends Node
 var passives: Array
 var item_passives: Array
 var starting_passives: Array
+var passive_list: Array # keeps a list of resources to display in the stat sheet
 
 func get_passives(): # get the passives and save them into the current run save file
 	player = get_tree().get_nodes_in_group("Players")[0]
@@ -36,4 +37,4 @@ func set_item_passives(): # set the item passives and load them from the current
 func add_starting_passives(): # add the starting character's passive(s) into the player node
 	player = get_tree().get_nodes_in_group("Players")[0]
 	for passive in starting_passives:
-		player.get_node("Passives").add_child(passive.instantiate())
+		player.get_node("Passives").add_child(passive.passive_ability.instantiate())

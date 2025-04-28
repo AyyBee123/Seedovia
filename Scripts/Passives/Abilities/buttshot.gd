@@ -13,6 +13,7 @@ func trigger(weapon = null):
 	if weapon.is_in_group("Buttshot Weapon"): # prevent duplicates
 		return
 	var seed = PlayerSeeds.load_weapons()[0].instantiate()
+	print(seed.name)
 	seed.desired_direction = -weapon.desired_direction
 	seed.initial_weapon = true
 	seed.slot_index = 0
@@ -21,5 +22,5 @@ func trigger(weapon = null):
 	seed.source = source
 	seed.add_to_group("Buttshot Weapon")
 	get_tree().current_scene.add_child(seed)
-	seed.global_position = player.hand.global_position + seed.desired_direction * 20
+	seed.global_position = source.global_position + seed.desired_direction * 15
 	source.weapon_fired.emit(seed)

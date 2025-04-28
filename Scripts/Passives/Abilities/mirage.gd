@@ -2,7 +2,7 @@ extends Node
 
 const MIRAGE_CLONE = preload("res://Scenes/Passives/Effects/Mirage Clone.tscn")
 
-const NUMBER_OF_CLONES = 4
+const NUMBER_OF_CLONES = 2
 
 var player
 
@@ -18,6 +18,6 @@ func _ready():
 			var clone = MIRAGE_CLONE.instantiate()
 			clone.add_child(player.get_node("Passives").duplicate())
 			clone.add_child(player.get_node("Item Passives").duplicate())
-			clone.offset = Vector2(75, 0).rotated(spread * i + PI/4)
+			clone.offset = Vector2(150, 0).rotated(spread * i)
 			get_tree().current_scene.add_child(clone)
 			clone.global_position = player.global_position + clone.offset

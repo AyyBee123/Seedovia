@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="character_class" load_steps=8 format=3 uid="uid://dwrfrsw3ypvma"]
+[gd_resource type="Resource" script_class="character_class" load_steps=9 format=3 uid="uid://dwrfrsw3ypvma"]
 
 [ext_resource type="Texture2D" uid="uid://dx8dxbrx5ua06" path="res://Sprites/Character/Salvia/Salvia1.png" id="1_l8s8v"]
 [ext_resource type="Script" uid="uid://duh3qswkvpbi5" path="res://Scripts/Characters/character_class.gd" id="2_o8ynu"]
 [ext_resource type="Script" uid="uid://cgysrio745xbn" path="res://Scripts/Items/item_class.gd" id="3_xajj6"]
-[ext_resource type="PackedScene" uid="uid://bffhaxwlnobvw" path="res://Scenes/Passives/Abilities/Mirage.tscn" id="4_yo4nw"]
+[ext_resource type="Script" uid="uid://yr5gdtdbvmoc" path="res://Scripts/Passives/Classes/passive_class.gd" id="4_o8ynu"]
+[ext_resource type="Resource" uid="uid://455jdkpyecn6" path="res://Resources/Items/Passives/mirage.tres" id="5_xajj6"]
 [ext_resource type="Script" uid="uid://c6ykhgvfkht5x" path="res://Scripts/Stats/seed_stats.gd" id="5_xha00"]
 [ext_resource type="Resource" uid="uid://3eyjqiry61to" path="res://Resources/Items/Seeds/pomegranate.tres" id="5_yo4nw"]
 [ext_resource type="Script" uid="uid://n64xabrw5ic3" path="res://Scripts/Items/equipment_item_class.gd" id="7_o0irs"]
@@ -15,6 +16,6 @@ character_sprite = ExtResource("1_l8s8v")
 starting_inventory = Array[ExtResource("3_xajj6")]([])
 starting_talismans = Array[ExtResource("7_o0irs")]([])
 starting_seeds = Array[ExtResource("5_xha00")]([ExtResource("5_yo4nw")])
-starting_passives = Array[PackedScene]([ExtResource("4_yo4nw")])
+starting_passives = Array[ExtResource("4_o8ynu")]([ExtResource("5_xajj6")])
 starting_coins = 0
 unlocked = false

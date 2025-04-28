@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://n5g6ni5wasec"]
+[gd_scene load_steps=22 format=3 uid="uid://n5g6ni5wasec"]
 
 [ext_resource type="Script" uid="uid://cgp37h2bi8yjw" path="res://Scripts/UI/settings.gd" id="1_lpe4k"]
 [ext_resource type="FontFile" uid="uid://bkn7gmgx1wxgx" path="res://Fonts/Name Font.ttf" id="2_28sra"]
@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://ciyk64aevmyv" path="res://Sprites/Pause UI/Pause Menu Choice Pressed.png" id="9_canqn"]
 [ext_resource type="Script" uid="uid://df6max5wrg3sw" path="res://Scripts/UI/keyboard_tab.gd" id="10_m7hwe"]
 [ext_resource type="Texture2D" uid="uid://dmb2vfptumg3l" path="res://Sprites/Pause UI/Pause Menu Choice Hover.png" id="10_ms066"]
-[ext_resource type="Texture2D" uid="uid://c5akdph2vrhda" path="res://Sprites/UI/Settings Grabber Pressed.png" id="11_m7hwe"]
+[ext_resource type="Theme" uid="uid://dbuu2jwfp18r7" path="res://Themes/Scroll Container.tres" id="11_m7hwe"]
 
 [sub_resource type="Theme" id="Theme_m7hwe"]
 CheckButton/icons/checked = ExtResource("4_r3am3")
@@ -43,45 +43,6 @@ border_color = Color(0.8, 0.8, 0.8, 0)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ikfnr"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c7xgy"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m7hwe"]
-bg_color = Color(0, 0, 0, 0.25098)
-border_width_left = 8
-border_width_right = 8
-border_color = Color(0, 0, 0, 0.25098)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6xrf4"]
-texture = ExtResource("4_7uv2c")
-texture_margin_left = 4.0
-texture_margin_top = 4.0
-texture_margin_right = 4.0
-texture_margin_bottom = 4.0
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4crku"]
-texture = ExtResource("5_vsnd0")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_acibd"]
-texture = ExtResource("11_m7hwe")
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4crku"]
-bg_color = Color(0, 0, 0, 1)
-border_width_left = 8
-border_width_top = 2
-border_width_right = 8
-border_width_bottom = 2
-border_color = Color(0, 0, 0, 1)
-expand_margin_left = 2.0
-expand_margin_top = 2.0
-expand_margin_right = 4.0
-expand_margin_bottom = 2.0
-anti_aliasing = false
-
-[sub_resource type="Theme" id="Theme_acibd"]
-ScrollContainer/styles/panel = SubResource("StyleBoxFlat_m7hwe")
-VScrollBar/styles/grabber = SubResource("StyleBoxTexture_6xrf4")
-VScrollBar/styles/grabber_highlight = SubResource("StyleBoxTexture_4crku")
-VScrollBar/styles/grabber_pressed = SubResource("StyleBoxTexture_acibd")
-VScrollBar/styles/scroll = SubResource("StyleBoxFlat_4crku")
 
 [node name="Settings" type="Control"]
 process_mode = 3
@@ -223,9 +184,9 @@ scroll_active = false
 
 [node name="TabContainer" type="TabContainer" parent="CanvasLayer"]
 unique_name_in_owner = true
-offset_left = 452.0
+offset_left = 394.0
 offset_top = 122.0
-offset_right = 1468.0
+offset_right = 1526.0
 offset_bottom = 918.0
 mouse_filter = 2
 theme = ExtResource("6_6wdx2")
@@ -520,7 +481,7 @@ offset_right = -64.0
 offset_bottom = -210.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = SubResource("Theme_acibd")
+theme = ExtResource("11_m7hwe")
 follow_focus = true
 
 [node name="KeybindContainer" type="GridContainer" parent="CanvasLayer/TabContainer/Tab50001/Control/ScrollContainer"]
