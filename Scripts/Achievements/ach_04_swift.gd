@@ -23,6 +23,7 @@ func _on_entered_new_floor():
 
 func _on_player_damaged(amount):
 	progress = 0
+	Global.save_achievements()
 
 func get_title() -> String:
 	return "Swift"
