@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ssyp5tqyek7e"]
 
-[ext_resource type="Script" uid="uid://beuinluw3qa0u" path="res://Scripts/Characters/Passives/sapling_stats.gd" id="1_une1w"]
+[ext_resource type="Script" uid="uid://cwnftiisofl03" path="res://Scripts/Characters/Passives/salvia_stats.gd" id="1_une1w"]
 
 [node name="SalviaStats" type="Node"]
 script = ExtResource("1_une1w")
