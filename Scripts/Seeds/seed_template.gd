@@ -29,7 +29,7 @@ var total_distance := 0.0 # distance travelled (this is used for the weapon's ra
 var initial_weapon := false # checks if the weapon is the first in slot (was directly fired by the player)
 var ignore_first_collision := false # this lets the projectiles spawn without instantly colliding with an object
 var short_distance_travelled: float # this lets the projectile move a little before enabling collisions again
-var previous_weapon = null # this is used for weapons that persist and move as they're spawning the next weapon
+var previous_weapon # this is used for weapons that persist and move as they're spawning the next weapon
 var next_weapon_pos: Vector2: get = get_next_weapon_pos # get the next weapon's position
 
 # these are declared in the player script (for the first weapon) and then passed over from weapon to weapon

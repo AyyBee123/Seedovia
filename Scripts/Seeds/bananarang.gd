@@ -17,7 +17,7 @@ func _ready():
 	lifetime.start()
 	if previous_weapon != player:
 		_was_previous_weapon = true
-	if previous_weapon.is_in_group("Enemy"):
+	if source.is_in_group("Enemy"):
 		$"Detect Previous Seed".set_collision_mask(4)
 
 func update_position(delta):
@@ -91,9 +91,8 @@ func shoot_next_weapon():
 func _on_detect_previous_seed_body_entered(body): # detects the player
 	if not has_stopped:
 		return
-	if previous_weapon == player:
-		if body.is_in_group("Players"):
-			queue_free()
+	if body == source:
+		queue_free()
 
 func _on_detect_previous_seed_area_entered(area): # detects the previous weapon
 	if not has_stopped:

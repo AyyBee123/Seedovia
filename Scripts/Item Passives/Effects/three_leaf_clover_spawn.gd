@@ -16,6 +16,8 @@ func _ready():
 	for i in range(NUMBER_OF_SEEDS):
 		var duplicate_seed = PlayerSeeds.get_weapon(0).instantiate()
 		duplicate_seed.desired_direction = seed.desired_direction
+		duplicate_seed.source = source
+		duplicate_seed.previous_weapon = source
 		duplicate_seed.transferred_size_multiplier *= MODIFIED_SIZE_MULTI * weapon.transferred_size_multiplier
 		duplicate_seed.transferred_damage_multiplier *= MODIFIED_DAMAGE_MULTI * weapon.transferred_damage_multiplier
 		duplicate_seed.add_to_group("Clover Seed")

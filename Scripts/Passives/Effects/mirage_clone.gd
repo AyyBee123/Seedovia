@@ -42,6 +42,7 @@ func shoot(seed):
 	weapon_instance.initial_weapon = true
 	weapon_instance.slot_index = 0
 	weapon_instance.previous_weapon = self
+	weapon_instance.source = self
 	weapon_instance.seed_slot_number = PlayerSeeds.seed_indices[0]
 	weapon_instance.desired_direction = Vector2.RIGHT.rotated(rotation_point.rotation)
 	weapon_instance.transferred_damage_multiplier *= damage_multi
