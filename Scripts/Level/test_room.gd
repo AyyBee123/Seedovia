@@ -10,7 +10,6 @@ var starting_stats: player_stats = preload("res://Resources/Characters/Stats/bas
 
 func _ready():
 	Global.RNG = RandomNumberGenerator.new()
-	Pool.start()
 	select_character()
 	# spawn the player character
 	player = LevelList.player.instantiate()
@@ -35,8 +34,9 @@ func _input(event):
 
 func pause():
 	if Input.is_action_just_pressed("esc"):
-		if player.get_node("Inventory").visible: # or stat sheet is visible (when I add the stat sheet)
+		if player.get_node("Inventory").visible or player.get_node("Stat Sheet").visible:
 			player.get_node("Inventory").visible = false
+			player.get_node("Stat Sheet").visible = false
 		elif get_node_or_null("Console"):
 			get_node("Console").queue_free()
 		else:
@@ -44,6 +44,9 @@ func pause():
 				return
 			var pause_menu = resource_preloader.get_resource("Pause Menu").instantiate()
 			add_child(pause_menu)
+	if Input.is_action_pressed("close_inv"):
+		player.get_node("Inventory").visible = false
+		player.get_node("Stat Sheet").visible = false
 
 func select_character():
 	LevelList.elapsed_time = 0
