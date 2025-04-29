@@ -123,34 +123,6 @@ mouse_filter = 2
 texture = ExtResource("2_s2884")
 stretch_mode = 5
 
-[node name="Character 7" type="TextureButton" parent="Characters"]
-custom_minimum_size = Vector2(192, 192)
-layout_mode = 2
-texture_normal = ExtResource("7_2sg52")
-texture_pressed = ExtResource("8_snfop")
-texture_hover = ExtResource("9_ewud7")
-texture_disabled = ExtResource("8_dew5b")
-texture_focused = ExtResource("12_nqihi")
-stretch_mode = 0
-script = ExtResource("3_alya1")
-starting_character = ExtResource("4_v56qf")
-character_scene = "res://Scenes/Characters/Sapling.tscn"
-unlock_method = ":)"
-
-[node name="MarginContainer" type="MarginContainer" parent="Characters/Character 7"]
-layout_mode = 0
-offset_left = 14.0
-offset_top = 14.0
-offset_right = 178.0
-offset_bottom = 178.0
-mouse_filter = 2
-
-[node name="Character" type="TextureRect" parent="Characters/Character 7/MarginContainer"]
-layout_mode = 2
-mouse_filter = 2
-texture = ExtResource("2_s2884")
-stretch_mode = 5
-
 [node name="Character 2" type="TextureButton" parent="Characters"]
 custom_minimum_size = Vector2(192, 192)
 layout_mode = 2
@@ -605,7 +577,6 @@ scroll_active = false
 
 [connection signal="pressed" from="Back Button" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="Characters/Character 1" to="Characters/Character 1" method="_on_pressed"]
-[connection signal="pressed" from="Characters/Character 7" to="Characters/Character 7" method="_on_pressed"]
 [connection signal="pressed" from="Characters/Character 2" to="Characters/Character 2" method="_on_pressed"]
 [connection signal="pressed" from="Characters/Character 3" to="Characters/Character 3" method="_on_pressed"]
 [connection signal="pressed" from="Characters/Character 4" to="Characters/Character 4" method="_on_pressed"]
