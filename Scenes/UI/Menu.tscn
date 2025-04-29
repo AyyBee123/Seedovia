@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cah3yq8uvftep"]
+[gd_scene load_steps=15 format=3 uid="uid://cah3yq8uvftep"]
 
 [ext_resource type="Texture2D" uid="uid://didv5fjskcrdi" path="res://Sprites/Pause UI/Pause Menu Choice.png" id="1_5cock"]
 [ext_resource type="Script" uid="uid://w2i4e7unyox3" path="res://Scripts/UI/menu.gd" id="1_6487p"]
@@ -8,6 +8,8 @@
 [ext_resource type="FontFile" uid="uid://bkn7gmgx1wxgx" path="res://Fonts/Name Font.ttf" id="4_6487p"]
 [ext_resource type="Texture2D" uid="uid://chrtmh8xchoct" path="res://Sprites/Pause UI/Pause Menu Choice Disabled.png" id="5_s6sq0"]
 [ext_resource type="Texture2D" uid="uid://4l3tmn6mja2n" path="res://Sprites/Logo/Logo.png" id="6_6487p"]
+[ext_resource type="Texture2D" uid="uid://cn70skisfblp4" path="res://Sprites/Passive UI/Passive Choice Focused.png" id="8_g37sx"]
+[ext_resource type="Script" uid="uid://bsjv7istqmswh" path="res://Scripts/UI/focus_button.gd" id="8_vlcut"]
 [ext_resource type="Texture2D" uid="uid://cc4qox3sejykw" path="res://Sprites/Menu UI/Grass.png" id="9_3hayu"]
 
 [sub_resource type="Animation" id="Animation_v3kjt"]
@@ -144,15 +146,22 @@ grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="Play Button" type="TextureButton" parent="Starting Menu/TextureRect"]
+unique_name_in_owner = true
 layout_mode = 1
 offset_left = 600.0
 offset_top = 400.0
 offset_right = 1239.06
 offset_bottom = 550.0
+focus_neighbor_top = NodePath("../Quit Button")
+focus_neighbor_bottom = NodePath("../Settings Button")
+focus_next = NodePath("../Settings Button")
+focus_previous = NodePath("../Quit Button")
 texture_normal = ExtResource("1_5cock")
 texture_pressed = ExtResource("2_t06ot")
 texture_hover = ExtResource("3_s6sq0")
+texture_focused = ExtResource("8_g37sx")
 stretch_mode = 4
+script = ExtResource("8_vlcut")
 
 [node name="Text" type="RichTextLabel" parent="Starting Menu/TextureRect/Play Button"]
 modulate = Color(0.905882, 0.8, 0.627451, 1)
@@ -172,15 +181,21 @@ bbcode_enabled = true
 text = "[center]Start"
 
 [node name="Settings Button" type="TextureButton" parent="Starting Menu/TextureRect"]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 600.0
 offset_top = 600.0
 offset_right = 1239.06
 offset_bottom = 750.0
+focus_neighbor_top = NodePath("../Play Button")
+focus_neighbor_bottom = NodePath("../Quit Button")
+focus_next = NodePath("../Quit Button")
+focus_previous = NodePath("../Play Button")
 texture_normal = ExtResource("1_5cock")
 texture_pressed = ExtResource("2_t06ot")
 texture_hover = ExtResource("3_s6sq0")
 texture_disabled = ExtResource("5_s6sq0")
+texture_focused = ExtResource("8_g37sx")
 stretch_mode = 4
 metadata/_edit_use_anchors_ = true
 
@@ -202,15 +217,21 @@ bbcode_enabled = true
 text = "[center]Settings"
 
 [node name="Quit Button" type="TextureButton" parent="Starting Menu/TextureRect"]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 600.0
 offset_top = 800.0
 offset_right = 1239.06
 offset_bottom = 950.0
+focus_neighbor_top = NodePath("../Settings Button")
+focus_neighbor_bottom = NodePath("../Play Button")
+focus_next = NodePath("../Play Button")
+focus_previous = NodePath("../Settings Button")
 texture_normal = ExtResource("1_5cock")
 texture_pressed = ExtResource("2_t06ot")
 texture_hover = ExtResource("3_s6sq0")
 texture_disabled = ExtResource("5_s6sq0")
+texture_focused = ExtResource("8_g37sx")
 stretch_mode = 4
 metadata/_edit_use_anchors_ = true
 

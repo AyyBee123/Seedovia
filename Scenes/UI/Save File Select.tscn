@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://voseluffsvav"]
+[gd_scene load_steps=14 format=3 uid="uid://voseluffsvav"]
 
 [ext_resource type="Texture2D" uid="uid://lggjfuwvynu6" path="res://Sprites/UI/Save File Select.png" id="1_nnmx1"]
 [ext_resource type="Texture2D" uid="uid://dwwsiyabyqc6l" path="res://Sprites/Menu UI/Soil Background.png" id="2_8grkl"]
@@ -9,8 +9,10 @@
 [ext_resource type="FontFile" uid="uid://bkn7gmgx1wxgx" path="res://Fonts/Name Font.ttf" id="5_fbc7t"]
 [ext_resource type="Texture2D" uid="uid://koekt8h21hw1" path="res://Sprites/UI/Delete.png" id="6_l137q"]
 [ext_resource type="Texture2D" uid="uid://wjmcs8muvj4n" path="res://Sprites/UI/Delete Pressed.png" id="7_1wumd"]
+[ext_resource type="Texture2D" uid="uid://55ni7o0us020" path="res://Sprites/UI/Save File Select Focused.png" id="7_igj1d"]
 [ext_resource type="Texture2D" uid="uid://c0voa1o2maemk" path="res://Sprites/UI/Delete Hover.png" id="8_hgh7x"]
 [ext_resource type="Texture2D" uid="uid://cqyeerffhki2l" path="res://Sprites/UI/Delete Disabled.png" id="10_k77xw"]
+[ext_resource type="Texture2D" uid="uid://bq2cvjf6lfstl" path="res://Sprites/UI/Delete Focused.png" id="13_f8k5g"]
 
 [node name="Save File Select" type="Control"]
 layout_mode = 3
@@ -64,9 +66,15 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Save1" type="TextureButton" parent="GridContainer"]
 layout_mode = 2
+focus_neighbor_left = NodePath("../Save4")
+focus_neighbor_right = NodePath("../Save2")
+focus_neighbor_bottom = NodePath("Delete Button")
+focus_next = NodePath("../Save2")
+focus_previous = NodePath("../Save4")
 texture_normal = ExtResource("1_nnmx1")
 texture_pressed = ExtResource("2_su74p")
 texture_hover = ExtResource("3_64enp")
+texture_focused = ExtResource("7_igj1d")
 
 [node name="Save Number Label" type="RichTextLabel" parent="GridContainer/Save1"]
 modulate = Color(0.905882, 0.8, 0.627451, 1)
@@ -247,18 +255,26 @@ offset_top = 712.0
 offset_right = 240.0
 offset_bottom = 857.0
 scale = Vector2(0.8, 0.8)
+focus_neighbor_top = NodePath("..")
 texture_normal = ExtResource("6_l137q")
 texture_pressed = ExtResource("7_1wumd")
 texture_hover = ExtResource("8_hgh7x")
 texture_disabled = ExtResource("10_k77xw")
+texture_focused = ExtResource("13_f8k5g")
 stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
 [node name="Save2" type="TextureButton" parent="GridContainer"]
 layout_mode = 2
+focus_neighbor_left = NodePath("../Save1")
+focus_neighbor_right = NodePath("../Save3")
+focus_neighbor_bottom = NodePath("Delete Button")
+focus_next = NodePath("../Save3")
+focus_previous = NodePath("../Save1")
 texture_normal = ExtResource("1_nnmx1")
 texture_pressed = ExtResource("2_su74p")
 texture_hover = ExtResource("3_64enp")
+texture_focused = ExtResource("7_igj1d")
 
 [node name="Save Number Label" type="RichTextLabel" parent="GridContainer/Save2"]
 modulate = Color(0.905882, 0.8, 0.627451, 1)
@@ -439,18 +455,26 @@ offset_top = 712.0
 offset_right = 240.0
 offset_bottom = 857.0
 scale = Vector2(0.8, 0.8)
+focus_neighbor_top = NodePath("..")
 texture_normal = ExtResource("6_l137q")
 texture_pressed = ExtResource("7_1wumd")
 texture_hover = ExtResource("8_hgh7x")
 texture_disabled = ExtResource("10_k77xw")
+texture_focused = ExtResource("13_f8k5g")
 stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
 [node name="Save3" type="TextureButton" parent="GridContainer"]
 layout_mode = 2
+focus_neighbor_left = NodePath("../Save2")
+focus_neighbor_right = NodePath("../Save4")
+focus_neighbor_bottom = NodePath("Delete Button")
+focus_next = NodePath("../Save4")
+focus_previous = NodePath("../Save2")
 texture_normal = ExtResource("1_nnmx1")
 texture_pressed = ExtResource("2_su74p")
 texture_hover = ExtResource("3_64enp")
+texture_focused = ExtResource("7_igj1d")
 
 [node name="Save Number Label" type="RichTextLabel" parent="GridContainer/Save3"]
 modulate = Color(0.905882, 0.8, 0.627451, 1)
@@ -631,18 +655,26 @@ offset_top = 712.0
 offset_right = 240.0
 offset_bottom = 857.0
 scale = Vector2(0.8, 0.8)
+focus_neighbor_top = NodePath("..")
 texture_normal = ExtResource("6_l137q")
 texture_pressed = ExtResource("7_1wumd")
 texture_hover = ExtResource("8_hgh7x")
 texture_disabled = ExtResource("10_k77xw")
+texture_focused = ExtResource("13_f8k5g")
 stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
 [node name="Save4" type="TextureButton" parent="GridContainer"]
 layout_mode = 2
+focus_neighbor_left = NodePath("../Save3")
+focus_neighbor_right = NodePath("../Save1")
+focus_neighbor_bottom = NodePath("Delete Button")
+focus_next = NodePath("../Save1")
+focus_previous = NodePath("../Save3")
 texture_normal = ExtResource("1_nnmx1")
 texture_pressed = ExtResource("2_su74p")
 texture_hover = ExtResource("3_64enp")
+texture_focused = ExtResource("7_igj1d")
 
 [node name="Save Number Label" type="RichTextLabel" parent="GridContainer/Save4"]
 modulate = Color(0.905882, 0.8, 0.627451, 1)
@@ -823,9 +855,11 @@ offset_top = 712.0
 offset_right = 240.0
 offset_bottom = 857.0
 scale = Vector2(0.8, 0.8)
+focus_neighbor_top = NodePath("..")
 texture_normal = ExtResource("6_l137q")
 texture_pressed = ExtResource("7_1wumd")
 texture_hover = ExtResource("8_hgh7x")
 texture_disabled = ExtResource("10_k77xw")
+texture_focused = ExtResource("13_f8k5g")
 stretch_mode = 5
 metadata/_edit_use_anchors_ = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://8lh64evv6imw"]
+[gd_scene load_steps=29 format=3 uid="uid://8lh64evv6imw"]
 
 [ext_resource type="Script" uid="uid://uybucfv2vxti" path="res://Scripts/UI/character_select.gd" id="1_jmjmr"]
 [ext_resource type="Texture2D" uid="uid://dwwsiyabyqc6l" path="res://Sprites/Menu UI/Soil Background.png" id="2_4vqgb"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://didv5fjskcrdi" path="res://Sprites/Pause UI/Pause Menu Choice.png" id="6_pbw53"]
 [ext_resource type="Texture2D" uid="uid://b7ynn50wtvp24" path="res://Sprites/Character/Berry/Berry1.png" id="6_ubcw7"]
 [ext_resource type="Texture2D" uid="uid://cho888oosvmug" path="res://Sprites/UI/Character Box.png" id="7_2sg52"]
+[ext_resource type="Texture2D" uid="uid://2d111phom0jg" path="res://Sprites/Pause UI/Pause Menu Choice Focused.png" id="7_ksj64"]
 [ext_resource type="Texture2D" uid="uid://ciyk64aevmyv" path="res://Sprites/Pause UI/Pause Menu Choice Pressed.png" id="7_pyvfr"]
 [ext_resource type="Resource" uid="uid://dxk70g7cem73p" path="res://Resources/Characters/berry.tres" id="7_yw2tk"]
 [ext_resource type="Texture2D" uid="uid://bvh4pe2yh6awc" path="res://Sprites/UI/Character Box Disabled.png" id="8_dew5b"]
@@ -19,6 +20,7 @@
 [ext_resource type="Resource" uid="uid://bvqprp6nul3d2" path="res://Resources/Characters/white_chaos.tres" id="10_q0efv"]
 [ext_resource type="Resource" uid="uid://dxnpwkve7b0cb" path="res://Resources/Characters/midas.tres" id="11_5k7qt"]
 [ext_resource type="Texture2D" uid="uid://c71jrpxh3cx3a" path="res://Sprites/Character/Cercis/Cercis1.png" id="12_00dn3"]
+[ext_resource type="Texture2D" uid="uid://3wl46ii2cnqd" path="res://Sprites/UI/Character Box Focused.png" id="12_nqihi"]
 [ext_resource type="Resource" uid="uid://dwh0orxt4fsdt" path="res://Resources/Characters/cercis.tres" id="13_prkr1"]
 [ext_resource type="Texture2D" uid="uid://bbxmog2kyaf4d" path="res://Sprites/Character/Midas/Midas1.png" id="13_x2hb7"]
 [ext_resource type="Texture2D" uid="uid://bw8knd5iqe7am" path="res://Sprites/UI/Character Display.png" id="20_81yuh"]
@@ -61,6 +63,7 @@ grow_horizontal = 0
 texture_normal = ExtResource("6_pbw53")
 texture_pressed = ExtResource("7_pyvfr")
 texture_hover = ExtResource("8_k5n3r")
+texture_focused = ExtResource("7_ksj64")
 stretch_mode = 4
 
 [node name="Text" type="RichTextLabel" parent="Back Button"]
@@ -99,6 +102,7 @@ texture_normal = ExtResource("7_2sg52")
 texture_pressed = ExtResource("8_snfop")
 texture_hover = ExtResource("9_ewud7")
 texture_disabled = ExtResource("8_dew5b")
+texture_focused = ExtResource("12_nqihi")
 stretch_mode = 0
 script = ExtResource("3_alya1")
 starting_character = ExtResource("4_v56qf")
@@ -119,6 +123,34 @@ mouse_filter = 2
 texture = ExtResource("2_s2884")
 stretch_mode = 5
 
+[node name="Character 7" type="TextureButton" parent="Characters"]
+custom_minimum_size = Vector2(192, 192)
+layout_mode = 2
+texture_normal = ExtResource("7_2sg52")
+texture_pressed = ExtResource("8_snfop")
+texture_hover = ExtResource("9_ewud7")
+texture_disabled = ExtResource("8_dew5b")
+texture_focused = ExtResource("12_nqihi")
+stretch_mode = 0
+script = ExtResource("3_alya1")
+starting_character = ExtResource("4_v56qf")
+character_scene = "res://Scenes/Characters/Sapling.tscn"
+unlock_method = ":)"
+
+[node name="MarginContainer" type="MarginContainer" parent="Characters/Character 7"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 14.0
+offset_right = 178.0
+offset_bottom = 178.0
+mouse_filter = 2
+
+[node name="Character" type="TextureRect" parent="Characters/Character 7/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("2_s2884")
+stretch_mode = 5
+
 [node name="Character 2" type="TextureButton" parent="Characters"]
 custom_minimum_size = Vector2(192, 192)
 layout_mode = 2
@@ -126,6 +158,7 @@ texture_normal = ExtResource("7_2sg52")
 texture_pressed = ExtResource("8_snfop")
 texture_hover = ExtResource("9_ewud7")
 texture_disabled = ExtResource("8_dew5b")
+texture_focused = ExtResource("12_nqihi")
 stretch_mode = 0
 script = ExtResource("3_alya1")
 starting_character = ExtResource("7_yw2tk")
@@ -146,14 +179,6 @@ mouse_filter = 2
 texture = ExtResource("6_ubcw7")
 stretch_mode = 5
 
-[node name="TextureRect" type="TextureRect" parent="Characters/Character 2"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
 [node name="Character 3" type="TextureButton" parent="Characters"]
 custom_minimum_size = Vector2(192, 192)
 layout_mode = 2
@@ -161,6 +186,7 @@ texture_normal = ExtResource("7_2sg52")
 texture_pressed = ExtResource("8_snfop")
 texture_hover = ExtResource("9_ewud7")
 texture_disabled = ExtResource("8_dew5b")
+texture_focused = ExtResource("12_nqihi")
 stretch_mode = 0
 script = ExtResource("3_alya1")
 starting_character = ExtResource("10_q0efv")
@@ -188,6 +214,7 @@ texture_normal = ExtResource("7_2sg52")
 texture_pressed = ExtResource("8_snfop")
 texture_hover = ExtResource("9_ewud7")
 texture_disabled = ExtResource("8_dew5b")
+texture_focused = ExtResource("12_nqihi")
 stretch_mode = 0
 script = ExtResource("3_alya1")
 starting_character = ExtResource("13_prkr1")
@@ -215,6 +242,7 @@ texture_normal = ExtResource("7_2sg52")
 texture_pressed = ExtResource("8_snfop")
 texture_hover = ExtResource("9_ewud7")
 texture_disabled = ExtResource("8_dew5b")
+texture_focused = ExtResource("12_nqihi")
 stretch_mode = 0
 script = ExtResource("3_alya1")
 starting_character = ExtResource("11_5k7qt")
@@ -242,6 +270,7 @@ texture_normal = ExtResource("7_2sg52")
 texture_pressed = ExtResource("8_snfop")
 texture_hover = ExtResource("9_ewud7")
 texture_disabled = ExtResource("8_dew5b")
+texture_focused = ExtResource("12_nqihi")
 stretch_mode = 0
 script = ExtResource("3_alya1")
 starting_character = ExtResource("22_hylud")
@@ -278,6 +307,7 @@ texture_normal = ExtResource("6_pbw53")
 texture_pressed = ExtResource("7_pyvfr")
 texture_hover = ExtResource("8_k5n3r")
 texture_disabled = ExtResource("22_ewud7")
+texture_focused = ExtResource("7_ksj64")
 stretch_mode = 4
 
 [node name="Text" type="RichTextLabel" parent="Play Button"]
@@ -575,6 +605,7 @@ scroll_active = false
 
 [connection signal="pressed" from="Back Button" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="Characters/Character 1" to="Characters/Character 1" method="_on_pressed"]
+[connection signal="pressed" from="Characters/Character 7" to="Characters/Character 7" method="_on_pressed"]
 [connection signal="pressed" from="Characters/Character 2" to="Characters/Character 2" method="_on_pressed"]
 [connection signal="pressed" from="Characters/Character 3" to="Characters/Character 3" method="_on_pressed"]
 [connection signal="pressed" from="Characters/Character 4" to="Characters/Character 4" method="_on_pressed"]

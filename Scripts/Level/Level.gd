@@ -6,14 +6,18 @@ extends Node2D
 const DEATH_SCREEN = preload("res://Scenes/UI/Death Screen.tscn")
 
 func _input(event):
-	if event.is_action_pressed("ui_cancel"):
-		if player.get_node("Inventory").visible: # or stat sheet is visible (when I add the stat sheet)
+	if event.is_action_pressed("pause"):
+		if player.get_node("Inventory").visible or player.get_node("Stat Sheet").visible:
 			player.get_node("Inventory").visible = false
+			player.get_node("Stat Sheet").visible = false
 		else:
 			if get_node_or_null("PauseMenu"):
 				return
 			var pause_menu = resource_preloader.get_resource("Pause Menu").instantiate()
 			add_child(pause_menu)
+	if event.is_action_pressed("close_inv"):
+		player.get_node("Inventory").visible = false
+		player.get_node("Stat Sheet").visible = false
 
 var player
 var player_pos = Vector2(0, 330)

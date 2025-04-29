@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://r8bdesyc6djq"]
+[gd_scene load_steps=9 format=3 uid="uid://r8bdesyc6djq"]
 
 [ext_resource type="Script" uid="uid://dai7nd5qmn7j7" path="res://Scripts/UI/delete_save_popup.gd" id="1_hr5nf"]
 [ext_resource type="Texture2D" uid="uid://cspvbpbm2l6hp" path="res://Sprites/Pause UI/Pause Menu Background.png" id="1_xkwcg"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://didv5fjskcrdi" path="res://Sprites/Pause UI/Pause Menu Choice.png" id="3_vlads"]
 [ext_resource type="Texture2D" uid="uid://ciyk64aevmyv" path="res://Sprites/Pause UI/Pause Menu Choice Pressed.png" id="4_dmc6u"]
 [ext_resource type="Texture2D" uid="uid://dmb2vfptumg3l" path="res://Sprites/Pause UI/Pause Menu Choice Hover.png" id="5_xnjxu"]
+[ext_resource type="Texture2D" uid="uid://2d111phom0jg" path="res://Sprites/Pause UI/Pause Menu Choice Focused.png" id="7_mj2s6"]
 [ext_resource type="FontFile" uid="uid://bkn7gmgx1wxgx" path="res://Fonts/Name Font.ttf" id="7_xdtgy"]
 
 [node name="Delete Popup" type="Control"]
@@ -69,14 +70,20 @@ text = "[center]Are you sure you want to delete save file #?"
 scroll_active = false
 
 [node name="YesButton" type="TextureButton" parent="TextureRect"]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 8.0
 offset_top = 81.0
 offset_right = 248.0
 offset_bottom = 137.0
+focus_neighbor_top = NodePath("../NoButton")
+focus_neighbor_bottom = NodePath("../NoButton")
+focus_next = NodePath("../NoButton")
+focus_previous = NodePath("../NoButton")
 texture_normal = ExtResource("3_vlads")
 texture_pressed = ExtResource("4_dmc6u")
 texture_hover = ExtResource("5_xnjxu")
+texture_focused = ExtResource("7_mj2s6")
 
 [node name="Text" type="RichTextLabel" parent="TextureRect/YesButton"]
 modulate = Color(0.905882, 0.8, 0.627451, 1)
@@ -96,14 +103,20 @@ text = "[center]Yes"
 scroll_active = false
 
 [node name="NoButton" type="TextureButton" parent="TextureRect"]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 8.0
 offset_top = 167.0
 offset_right = 248.0
 offset_bottom = 223.0
+focus_neighbor_top = NodePath("../YesButton")
+focus_neighbor_bottom = NodePath("../YesButton")
+focus_next = NodePath("../YesButton")
+focus_previous = NodePath("../YesButton")
 texture_normal = ExtResource("3_vlads")
 texture_pressed = ExtResource("4_dmc6u")
 texture_hover = ExtResource("5_xnjxu")
+texture_focused = ExtResource("7_mj2s6")
 
 [node name="Text" type="RichTextLabel" parent="TextureRect/NoButton"]
 modulate = Color(0.905882, 0.8, 0.627451, 1)

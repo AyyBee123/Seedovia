@@ -81,6 +81,8 @@ func _process(delta):
 		
 
 func slot_gui_input(event: InputEvent, slot: slot_class):
+	if not visible: # should not be able to interact with the inventory if its not visible
+		return
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			if holding_item != null:

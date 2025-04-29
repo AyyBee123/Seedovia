@@ -6,12 +6,26 @@ var source
 var temp_master
 var temp_sfx
 var temp_music
+var default_focus
 
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
 		get_viewport().set_input_as_handled()
 		_on_cancel_button_pressed()
-	if event.is_action_pressed("ui_accept"):
+	if event.is_action_pressed("ui_accept") and event is InputEventKey:
+		get_viewport().set_input_as_handled()
+		_on_save_button_pressed()
+	if event.is_action_pressed("ui_next"):
+		if %TabContainer.current_tab >= %TabContainer.get_children().size() - 1:
+			%TabContainer.current_tab = 0
+		else:
+			%TabContainer.current_tab += 1
+	if event.is_action_pressed("ui_previous"):
+		if %TabContainer.current_tab <= 0:
+			%TabContainer.current_tab = %TabContainer.get_children().size() - 1
+		else:
+			%TabContainer.current_tab -= 1
+	if event is InputEventJoypadButton and event.button_index == JOY_BUTTON_START:
 		get_viewport().set_input_as_handled()
 		_on_save_button_pressed()
 
@@ -41,7 +55,6 @@ func _ready():
 	temp_master = %MasterSlider.value
 	temp_sfx = %SFXSlider.value
 	temp_music = %MusicSlider.value
-	
 
 func _on_fullscreen_button_toggled(toggled_on):
 	if toggled_on:
@@ -125,7 +138,7 @@ func _on_save_button_pressed():
 	if source: # if the settings menu was instantiated from the pause menu
 		source.priority_popups.pop_front()
 	save_button_pressed.emit()
-	queue_free()
+	close()
 
 func _on_cancel_button_pressed():
 	#revert settings
@@ -138,4 +151,15 @@ func _on_cancel_button_pressed():
 	
 	if source: # if the settings menu was instantiated from the pause menu
 		source.priority_popups.pop_front()
+	close()
+
+func close():
+	if default_focus:
+		default_focus.grab_focus()
 	queue_free()
+
+func _on_tab_container_tab_changed(tab):
+	%TabContainer.get_tab_bar().grab_focus.call_deferred()
+
+func _on_auto_equip_button_toggled(toggled_on):
+	pass # Replace with function body.

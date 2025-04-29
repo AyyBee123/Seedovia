@@ -6584,7 +6584,5 @@ offset_right = 44.0
 offset_bottom = 177.0
 scale = Vector2(0.970588, 0.970588)
 texture = ExtResource("12_sl6mk")
-expand_mode = 1
-stretch_mode = 3
 
 [connection signal="visibility_changed" from="Inventory Screen" to="." method="_on_inventory_screen_visibility_changed"]

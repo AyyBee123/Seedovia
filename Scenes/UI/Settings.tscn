@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://n5g6ni5wasec"]
+[gd_scene load_steps=27 format=3 uid="uid://n5g6ni5wasec"]
 
 [ext_resource type="Script" uid="uid://cgp37h2bi8yjw" path="res://Scripts/UI/settings.gd" id="1_lpe4k"]
 [ext_resource type="FontFile" uid="uid://bkn7gmgx1wxgx" path="res://Fonts/Name Font.ttf" id="2_28sra"]
@@ -6,18 +6,26 @@
 [ext_resource type="Texture2D" uid="uid://b6i2fq1fohis7" path="res://Sprites/UI/Checkbutton On.png" id="4_r3am3"]
 [ext_resource type="Texture2D" uid="uid://d4jb7glx33wtv" path="res://Sprites/UI/Checkbutton Off.png" id="5_7aci1"]
 [ext_resource type="Texture2D" uid="uid://bwdfrsyq4o4wa" path="res://Sprites/UI/Settings Slider.png" id="5_qqndn"]
-[ext_resource type="Texture2D" uid="uid://c24kdky7tmo11" path="res://Sprites/UI/Settings Grabber Hovered.png" id="5_vsnd0"]
+[ext_resource type="Script" uid="uid://c24svvlb4aq0a" path="res://Scripts/UI/focus_button_not_texture.gd" id="6_4crku"]
 [ext_resource type="Theme" uid="uid://b4yd4wnnblgqe" path="res://Themes/Settings Tab Container.tres" id="6_6wdx2"]
+[ext_resource type="Texture2D" uid="uid://b4h40i15vpgcv" path="res://Sprites/UI/Checkbutton Focus.png" id="6_acibd"]
 [ext_resource type="FontFile" uid="uid://wbj0boqv37y6" path="res://Fonts/Description Font.ttf" id="7_wmebr"]
 [ext_resource type="Texture2D" uid="uid://didv5fjskcrdi" path="res://Sprites/Pause UI/Pause Menu Choice.png" id="8_208d6"]
+[ext_resource type="Texture2D" uid="uid://cirr7y6w7xvf2" path="res://Sprites/UI/Settings Grabber Focused.png" id="9_6xrf4"]
 [ext_resource type="Texture2D" uid="uid://ciyk64aevmyv" path="res://Sprites/Pause UI/Pause Menu Choice Pressed.png" id="9_canqn"]
 [ext_resource type="Script" uid="uid://df6max5wrg3sw" path="res://Scripts/UI/keyboard_tab.gd" id="10_m7hwe"]
 [ext_resource type="Texture2D" uid="uid://dmb2vfptumg3l" path="res://Sprites/Pause UI/Pause Menu Choice Hover.png" id="10_ms066"]
-[ext_resource type="Theme" uid="uid://dbuu2jwfp18r7" path="res://Themes/Scroll Container.tres" id="11_m7hwe"]
+[ext_resource type="Theme" uid="uid://4kqgcnejt4fk" path="res://Themes/Scroll Container.tres" id="11_m7hwe"]
+[ext_resource type="Script" uid="uid://b4io5xmcc46io" path="res://addons/slidergamepad/hslider_gamepad.gd" id="11_uo8ia"]
+[ext_resource type="Texture2D" uid="uid://2d111phom0jg" path="res://Sprites/Pause UI/Pause Menu Choice Focused.png" id="17_cwlmn"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cwlmn"]
+texture = ExtResource("6_acibd")
 
 [sub_resource type="Theme" id="Theme_m7hwe"]
 CheckButton/icons/checked = ExtResource("4_r3am3")
 CheckButton/icons/unchecked = ExtResource("5_7aci1")
+CheckButton/styles/focus = SubResource("StyleBoxTexture_cwlmn")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wqlhe"]
 texture = ExtResource("5_qqndn")
@@ -191,12 +199,42 @@ offset_bottom = 918.0
 mouse_filter = 2
 theme = ExtResource("6_6wdx2")
 tab_alignment = 1
-current_tab = 4
+current_tab = 3
 
 [node name="Tab00001" type="MarginContainer" parent="CanvasLayer/TabContainer"]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 0
+
+[node name="Control" type="Control" parent="CanvasLayer/TabContainer/Tab00001"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/TabContainer/Tab00001/Control"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 928.0
+offset_bottom = 617.0
+columns = 2
+
+[node name="AutoEquipLabel" type="Label" parent="CanvasLayer/TabContainer/Tab00001/Control/GridContainer"]
+modulate = Color(0.905882, 0.8, 0.627451, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("2_28sra")
+theme_override_font_sizes/font_size = 32
+text = "Auto Equip Items:"
+
+[node name="Auto Equip Button" type="CheckButton" parent="CanvasLayer/TabContainer/Tab00001/Control/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = SubResource("Theme_m7hwe")
+button_pressed = true
+script = ExtResource("6_4crku")
 
 [node name="Tab20001" type="MarginContainer" parent="CanvasLayer/TabContainer"]
 visible = false
@@ -229,6 +267,8 @@ text = "Fullscreen:"
 [node name="Fullscreen Button" type="CheckButton" parent="CanvasLayer/TabContainer/Tab20001/Control/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+focus_neighbor_bottom = NodePath("../VSync Button")
+focus_next = NodePath("../VSync Button")
 theme = SubResource("Theme_m7hwe")
 button_pressed = true
 
@@ -247,6 +287,8 @@ text = "V-Sync:"
 [node name="VSync Button" type="CheckButton" parent="CanvasLayer/TabContainer/Tab20001/Control/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+focus_neighbor_top = NodePath("../Fullscreen Button")
+focus_previous = NodePath("../Fullscreen Button")
 theme = SubResource("Theme_m7hwe")
 button_pressed = true
 
@@ -303,7 +345,6 @@ theme = SubResource("Theme_m7hwe")
 button_pressed = true
 
 [node name="Tab40001" type="MarginContainer" parent="CanvasLayer/TabContainer"]
-visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 64
 theme_override_constants/margin_top = 64
@@ -336,15 +377,21 @@ text = "Master:"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 4
+size_flags_vertical = 3
+focus_neighbor_bottom = NodePath("../SFXSlider")
+focus_next = NodePath("../SFXSlider")
 theme_override_icons/grabber = ExtResource("4_7uv2c")
-theme_override_icons/grabber_highlight = ExtResource("5_vsnd0")
+theme_override_icons/grabber_highlight = ExtResource("9_6xrf4")
 theme_override_styles/slider = SubResource("StyleBoxTexture_wqlhe")
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_axrof")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_4ihou")
 max_value = 1.0
 step = 0.01
 value = 1.0
+script = ExtResource("11_uo8ia")
+slider_speed = 2.5
+joystick_smooth_discrete_threshold = 0.0
+metadata/_custom_type_script = "uid://b4io5xmcc46io"
 
 [node name="MasterEdit" type="LineEdit" parent="CanvasLayer/TabContainer/Tab40001/VBoxContainer/GridContainer"]
 unique_name_in_owner = true
@@ -384,14 +431,22 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
+focus_neighbor_top = NodePath("../MasterSlider")
+focus_neighbor_bottom = NodePath("../MusicSlider")
+focus_next = NodePath("../MusicSlider")
+focus_previous = NodePath("../MasterSlider")
 theme_override_icons/grabber = ExtResource("4_7uv2c")
-theme_override_icons/grabber_highlight = ExtResource("5_vsnd0")
+theme_override_icons/grabber_highlight = ExtResource("9_6xrf4")
 theme_override_styles/slider = SubResource("StyleBoxTexture_wqlhe")
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_axrof")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_4ihou")
 max_value = 1.0
 step = 0.01
 value = 1.0
+script = ExtResource("11_uo8ia")
+slider_speed = 2.5
+joystick_smooth_discrete_threshold = 0.0
+metadata/_custom_type_script = "uid://b4io5xmcc46io"
 
 [node name="SFXEdit" type="LineEdit" parent="CanvasLayer/TabContainer/Tab40001/VBoxContainer/GridContainer"]
 unique_name_in_owner = true
@@ -431,14 +486,20 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
+focus_neighbor_top = NodePath("../SFXSlider")
+focus_previous = NodePath("../SFXSlider")
 theme_override_icons/grabber = ExtResource("4_7uv2c")
-theme_override_icons/grabber_highlight = ExtResource("5_vsnd0")
+theme_override_icons/grabber_highlight = ExtResource("9_6xrf4")
 theme_override_styles/slider = SubResource("StyleBoxTexture_wqlhe")
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_axrof")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_4ihou")
 max_value = 1.0
 step = 0.01
 value = 1.0
+script = ExtResource("11_uo8ia")
+slider_speed = 2.5
+joystick_smooth_discrete_threshold = 0.0
+metadata/_custom_type_script = "uid://b4io5xmcc46io"
 
 [node name="MusicEdit" type="LineEdit" parent="CanvasLayer/TabContainer/Tab40001/VBoxContainer/GridContainer"]
 unique_name_in_owner = true
@@ -463,6 +524,7 @@ drag_and_drop_selection_enabled = false
 select_all_on_focus = true
 
 [node name="Tab50001" type="MarginContainer" parent="CanvasLayer/TabContainer"]
+visible = false
 layout_mode = 2
 script = ExtResource("10_m7hwe")
 metadata/_tab_index = 4
@@ -512,9 +574,14 @@ columns = 2
 
 [node name="SaveButton" type="TextureButton" parent="CanvasLayer/MarginContainer2/VBoxContainer/GridContainer"]
 layout_mode = 2
+focus_neighbor_left = NodePath("../CancelButton")
+focus_neighbor_right = NodePath("../CancelButton")
+focus_next = NodePath("../CancelButton")
+focus_previous = NodePath("../CancelButton")
 texture_normal = ExtResource("8_208d6")
 texture_pressed = ExtResource("9_canqn")
 texture_hover = ExtResource("10_ms066")
+texture_focused = ExtResource("17_cwlmn")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/MarginContainer2/VBoxContainer/GridContainer/SaveButton"]
 modulate = Color(0.905882, 0.8, 0.627451, 1)
@@ -538,9 +605,14 @@ scroll_active = false
 
 [node name="CancelButton" type="TextureButton" parent="CanvasLayer/MarginContainer2/VBoxContainer/GridContainer"]
 layout_mode = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_right = NodePath(".")
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
 texture_normal = ExtResource("8_208d6")
 texture_pressed = ExtResource("9_canqn")
 texture_hover = ExtResource("10_ms066")
+texture_focused = ExtResource("17_cwlmn")
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="CanvasLayer/MarginContainer2/VBoxContainer/GridContainer/CancelButton"]
 modulate = Color(0.905882, 0.8, 0.627451, 1)
@@ -562,6 +634,8 @@ bbcode_enabled = true
 text = "[center]Cancel"
 scroll_active = false
 
+[connection signal="tab_changed" from="CanvasLayer/TabContainer" to="." method="_on_tab_container_tab_changed"]
+[connection signal="toggled" from="CanvasLayer/TabContainer/Tab00001/Control/GridContainer/Auto Equip Button" to="." method="_on_auto_equip_button_toggled"]
 [connection signal="toggled" from="CanvasLayer/TabContainer/Tab20001/Control/GridContainer/Fullscreen Button" to="." method="_on_fullscreen_button_toggled"]
 [connection signal="toggled" from="CanvasLayer/TabContainer/Tab20001/Control/GridContainer/VSync Button" to="." method="_on_v_sync_button_toggled"]
 [connection signal="toggled" from="CanvasLayer/TabContainer/Tab30001/Control/GridContainer/Timer Button" to="." method="_on_timer_button_toggled"]

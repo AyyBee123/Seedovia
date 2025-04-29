@@ -23,6 +23,7 @@ func _physics_process(delta):
 	pass
 
 func _on_play_button_pressed():
+	$"Save File Select".find_child("Save1").grab_focus()
 	current_pos = 1 # save file select position
 	if tween:
 		tween.kill()
@@ -31,6 +32,7 @@ func _on_play_button_pressed():
 			.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 
 func _on_back_button_pressed():
+	%"Play Button".grab_focus()
 	current_pos = 0 # starting menu position
 	if tween:
 		tween.kill()
@@ -41,6 +43,7 @@ func _on_settings_button_pressed():
 	if get_tree().current_scene.find_child("Settings"): # if a settings scene already exists
 		return
 	settings = SETTINGS.instantiate()
+	settings.default_focus = %"Settings Button"
 	get_tree().current_scene.add_child(settings)
 
 func _on_quit_button_pressed():

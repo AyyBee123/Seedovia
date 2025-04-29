@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bhququa50vwpw"]
+[gd_scene load_steps=10 format=3 uid="uid://bhququa50vwpw"]
 
 [ext_resource type="Script" uid="uid://8pkqukxe52ss" path="res://Scripts/UI/death_screen.gd" id="1_otr7n"]
 [ext_resource type="Texture2D" uid="uid://cspvbpbm2l6hp" path="res://Sprites/Pause UI/Pause Menu Background.png" id="2_wo88b"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://dmb2vfptumg3l" path="res://Sprites/Pause UI/Pause Menu Choice Hover.png" id="5_1mfc1"]
 [ext_resource type="Texture2D" uid="uid://chrtmh8xchoct" path="res://Sprites/Pause UI/Pause Menu Choice Disabled.png" id="6_ujud5"]
 [ext_resource type="FontFile" uid="uid://bkn7gmgx1wxgx" path="res://Fonts/Name Font.ttf" id="8_qjhdr"]
+[ext_resource type="Texture2D" uid="uid://2d111phom0jg" path="res://Sprites/Pause UI/Pause Menu Choice Focused.png" id="8_vhknm"]
+[ext_resource type="Script" uid="uid://bsjv7istqmswh" path="res://Scripts/UI/focus_button.gd" id="9_texau"]
 
 [node name="Death Screen" type="Control"]
 process_mode = 3
@@ -69,10 +71,16 @@ offset_bottom = 298.0
 
 [node name="Quick Restart Button" type="TextureButton" parent="CanvasLayer/TextureRect/GridContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../Quit Button")
+focus_neighbor_bottom = NodePath("../Quit Button")
+focus_next = NodePath("../Quit Button")
+focus_previous = NodePath("../Quit Button")
 texture_normal = ExtResource("3_yd31n")
 texture_pressed = ExtResource("4_tvbew")
 texture_hover = ExtResource("5_1mfc1")
 texture_disabled = ExtResource("6_ujud5")
+texture_focused = ExtResource("8_vhknm")
+script = ExtResource("9_texau")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/TextureRect/GridContainer/Quick Restart Button"]
 modulate = Color(0.905882, 0.8, 0.627451, 1)
@@ -92,10 +100,15 @@ text = "[center]Quick Restart"
 
 [node name="Quit Button" type="TextureButton" parent="CanvasLayer/TextureRect/GridContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../Quick Restart Button")
+focus_neighbor_bottom = NodePath("../Quick Restart Button")
+focus_next = NodePath("../Quick Restart Button")
+focus_previous = NodePath("../Quick Restart Button")
 texture_normal = ExtResource("3_yd31n")
 texture_pressed = ExtResource("4_tvbew")
 texture_hover = ExtResource("5_1mfc1")
 texture_disabled = ExtResource("6_ujud5")
+texture_focused = ExtResource("8_vhknm")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/TextureRect/GridContainer/Quit Button"]
 modulate = Color(0.905882, 0.8, 0.627451, 1)

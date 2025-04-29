@@ -6603,6 +6603,7 @@ color = Color(0.376471, 0.188235, 0.164706, 1)
 
 [node name="Selected Slot" type="TextureRect" parent="."]
 visible = false
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 0
 offset_left = 11.0
 offset_top = 144.0
@@ -6610,5 +6611,3 @@ offset_right = 44.0
 offset_bottom = 177.0
 scale = Vector2(0.970588, 0.970588)
 texture = ExtResource("8_x3f3x")
-expand_mode = 1
-stretch_mode = 3

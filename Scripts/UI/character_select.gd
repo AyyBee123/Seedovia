@@ -13,6 +13,7 @@ var thread
 @export var character_scene: String
 
 func _ready():
+	characters[0].grab_focus()
 	thread = Thread.new()
 	for button in characters:
 		button.connect("gui_input", on_input)

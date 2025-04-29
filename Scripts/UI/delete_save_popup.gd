@@ -7,6 +7,7 @@ var delete_button
 var num
 
 func _ready():
+	%NoButton.grab_focus()
 	get_tree().paused = true
 	$TextureRect/RichTextLabel.text = "[center]Are you sure you want to delete save file " + str(num) + "?"
 
@@ -17,6 +18,7 @@ func _on_no_button_pressed():
 	close()
 
 func close():
+	save.grab_focus()
 	get_tree().paused = false
 	queue_free()
 
@@ -27,8 +29,7 @@ func delete():
 	delete_button.disabled = true
 	delete_button.visible = false
 	
-	get_tree().paused = false
-	queue_free()
+	close()
 
 func _input(event):
 	if event is InputEventKey and event.pressed:
@@ -37,5 +38,5 @@ func _input(event):
 		if event.keycode == KEY_ENTER:
 			delete()
 	if event is InputEventJoypadButton and event.pressed:
-		if event.keycode == JOY_BUTTON_B:
+		if event.button_index == JOY_BUTTON_B:
 			close()

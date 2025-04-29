@@ -1,50 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://ph85q15fnum4"]
+[gd_scene load_steps=6 format=3 uid="uid://ph85q15fnum4"]
 
 [ext_resource type="Texture2D" uid="uid://osvetf3hj5du" path="res://Sprites/Inventory/Inventory Background.png" id="1_fddhf"]
 [ext_resource type="Script" uid="uid://dqxmkipwkdrtg" path="res://Scripts/UI/stat_screen.gd" id="1_wk07r"]
 [ext_resource type="FontFile" uid="uid://bkn7gmgx1wxgx" path="res://Fonts/Name Font.ttf" id="2_wk07r"]
-[ext_resource type="Texture2D" uid="uid://dan8ovr484x1g" path="res://Sprites/UI/Settings Grabber.png" id="3_qapxc"]
-[ext_resource type="Texture2D" uid="uid://c24kdky7tmo11" path="res://Sprites/UI/Settings Grabber Hovered.png" id="4_3y7n7"]
-[ext_resource type="Texture2D" uid="uid://c5akdph2vrhda" path="res://Sprites/UI/Settings Grabber Pressed.png" id="5_nsg4g"]
+[ext_resource type="Theme" uid="uid://4kqgcnejt4fk" path="res://Themes/Scroll Container.tres" id="4_0jcmy"]
 [ext_resource type="FontFile" uid="uid://wbj0boqv37y6" path="res://Fonts/Description Font.ttf" id="6_jedoy"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m7hwe"]
-bg_color = Color(0, 0, 0, 0.25098)
-border_width_left = 8
-border_width_right = 2
-border_color = Color(0, 0, 0, 0.25098)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6xrf4"]
-texture = ExtResource("3_qapxc")
-texture_margin_left = 4.0
-texture_margin_top = 4.0
-texture_margin_right = 4.0
-texture_margin_bottom = 4.0
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4crku"]
-texture = ExtResource("4_3y7n7")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_acibd"]
-texture = ExtResource("5_nsg4g")
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4crku"]
-bg_color = Color(0, 0, 0, 1)
-border_width_top = 2
-border_width_right = 6
-border_width_bottom = 2
-border_color = Color(0, 0, 0, 1)
-expand_margin_left = 2.0
-expand_margin_top = 2.0
-expand_margin_right = 2.0
-expand_margin_bottom = 2.0
-anti_aliasing = false
-
-[sub_resource type="Theme" id="Theme_lya7s"]
-ScrollContainer/styles/panel = SubResource("StyleBoxFlat_m7hwe")
-VScrollBar/styles/grabber = SubResource("StyleBoxTexture_6xrf4")
-VScrollBar/styles/grabber_highlight = SubResource("StyleBoxTexture_4crku")
-VScrollBar/styles/grabber_pressed = SubResource("StyleBoxTexture_acibd")
-VScrollBar/styles/scroll = SubResource("StyleBoxFlat_4crku")
 
 [node name="Stat Sheet" type="CanvasLayer"]
 script = ExtResource("1_wk07r")
@@ -96,9 +56,9 @@ theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 12
 
 [node name="ScrollContainer" type="ScrollContainer" parent="NinePatchRect/MarginContainer"]
+unique_name_in_owner = true
 layout_mode = 2
-theme = SubResource("Theme_lya7s")
-scroll_vertical = 100
+theme = ExtResource("4_0jcmy")
 
 [node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/MarginContainer/ScrollContainer"]
 layout_mode = 2

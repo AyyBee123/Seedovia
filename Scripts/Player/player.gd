@@ -253,7 +253,7 @@ func _input(event) -> void:
 	# detect mouse and (right) joystick movement to determine if the input is from a mouse or controller
 	if event is InputEventJoypadMotion:
 		# TODO: add deadzone value from options menu
-		if Input.get_vector("aim left", "aim right", "aim up", "aim down").length() > .15:
+		if Input.get_vector("aim_left", "aim_right", "aim_up", "aim_down").length() > 0.15:
 			# detect only the right joystick (2 = x_axis, 3 = y_axis)
 			if event.get_axis() == 2 or event.get_axis() == 3:
 				_isMouse = false

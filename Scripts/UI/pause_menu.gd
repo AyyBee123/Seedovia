@@ -60,6 +60,7 @@ func _on_settings_button_pressed():
 	if get_tree().current_scene.find_child("Settings"): # if a settings scene already exists
 		return
 	settings = SETTINGS.instantiate()
+	settings.default_focus = %"Settings Button"
 	get_tree().current_scene.add_child(settings)
 
 func _on_quit_to_menu_button_pressed():
