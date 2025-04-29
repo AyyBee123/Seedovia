@@ -6,6 +6,8 @@ signal dashed
 signal has_collided(object)
 signal seed_fired(seed) # for immediately fired seeds (for the mirage passive)
 
+const POPUP = preload("res://Scenes/UI/Item Popup.tscn")
+
 var _player_stats: player_stats = preload("res://Resources/Characters/Stats/base_stats.tres")
 
 @onready var stats = get_node("Stats")
@@ -32,7 +34,9 @@ var has_holding_item := false # this is set in the inventory script to true if t
 var damage_multiplier
 var weapon_direction
 var pickup_item = null
-var item_in_area = false
+var items_in_area: Array
+var popup = null
+var highlight_color = Color("ffff6e")
 
 # check if the input is from a keyboard or joystick
 var _isMouse := true
@@ -88,6 +92,11 @@ func _physics_process(delta):
 	mouse_in_inventory = inventory_screen.get_global_rect().has_point(inventory.get_global_mouse_position()) \
 			and inventory.is_visible_in_tree()
 	
+	if items_in_area.size() > 0:
+		add_popup(get_nearest_item())
+	elif items_in_area.size() == 0 and popup:
+		popup.queue_free()
+	
 	# aiming direction (right joystick by default)
 	# TODO: change 0.15 to deadzone value from options menu
 	var aim_direction = Input.get_vector("aim_left", "aim_right", "aim_up", "aim_down", 0.15)
@@ -127,9 +136,12 @@ func _physics_process(delta):
 		else:
 			pass # will add pause here, but it's not made yet
 	
+	# pick up the nearest item from the player
 	if Input.is_action_just_pressed("pick_up"):
-		if item_in_area:
-			pick_up(pickup_item)
+		if items_in_area.size() > 0:
+			var item = get_nearest_item()
+			pick_up(item)
+	
 	# invulnerability time when the player takes damage or dashes
 	if invulnerability_time.is_stopped() and dash_invulnerability_time.is_stopped():
 		can_be_damaged = true
@@ -158,6 +170,26 @@ func pick_up(item):
 		item.remove_from_group("Shop Item")
 	PlayerInventory.add_item(item.item, self, inventory)
 	item.queue_free.call_deferred()
+
+func get_nearest_item():
+	var nearest_item = null
+	var nearest_distance = null
+	for item in items_in_area:
+		# remove highlight from all items to only add it to the nearest item at the end
+		item.get_node("Sprite").material.set("shader_parameter/color", Color(highlight_color, 0))
+		if nearest_item == null:
+			nearest_item = item
+			nearest_distance = item.global_position.distance_squared_to(global_position)
+			# add highlight to the nearest item
+			nearest_item.get_node("Sprite").material.set("shader_parameter/color", Color(highlight_color, 1))
+		else:
+			if nearest_distance > item.global_position.distance_squared_to(global_position):
+				# remove highlight from the old nearest item and add it to the new one
+				nearest_item.get_node("Sprite").material.set("shader_parameter/color", Color(highlight_color, 0))
+				nearest_item = item
+				nearest_distance = item.global_position.distance_squared_to(global_position)
+				nearest_item.get_node("Sprite").material.set("shader_parameter/color", Color(highlight_color, 1))
+	return nearest_item
 
 func move():
 	$"Player Sprite".play("Move")
@@ -263,11 +295,29 @@ func _input(event) -> void:
 func _on_pickup_radius_area_entered(area):
 	if area.get_parent().is_in_group("Item") or area.get_parent().is_in_group("Shop Item"):
 		pickup_item = area.get_parent()
-		item_in_area = true
+		items_in_area.append(pickup_item)
 
 func _on_pickup_radius_area_exited(area):
 	if area.get_parent().is_in_group("Item") or area.get_parent().is_in_group("Shop Item"):
-		item_in_area = false
+		pickup_item = area.get_parent()
+		pickup_item.get_node("Sprite").material.set("shader_parameter/color", Color(highlight_color, 0))
+		var index = items_in_area.find(pickup_item)
+		items_in_area.remove_at(index)
+
+func add_popup(item):
+	if is_instance_valid(popup):
+		popup.queue_free() # remove the old item popup, if one exists
+	# create a new item popup
+	popup = POPUP.instantiate()
+	if item.item.category == "SEED":
+		popup.item = item.item.scene.instantiate()
+	popup.item_name = item.item.item_name
+	popup.type = item.item.category
+	popup.description = item.item.description
+	popup.rarity = item.item.rarity
+	popup.inventory = inventory
+	popup.modulate.a = 0.65
+	add_child.call_deferred(popup)
 
 func _on_pickup(_item):
 	_item.queue_free()

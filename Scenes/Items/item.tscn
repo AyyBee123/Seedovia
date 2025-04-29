@@ -1,6 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://b3ibupvqneqor"]
+[gd_scene load_steps=5 format=3 uid="uid://b3ibupvqneqor"]
 
 [ext_resource type="Script" uid="uid://csqcwrrrnqe3" path="res://Scripts/Items/item.gd" id="1_vdq0v"]
+[ext_resource type="Shader" uid="uid://uoear02pabui" path="res://Shaders/outline.gdshader" id="2_mqxk5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_82o1l"]
+resource_local_to_scene = true
+shader = ExtResource("2_mqxk5")
+shader_parameter/color = Color(1, 1, 0.431373, 0)
+shader_parameter/width = 1.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+shader_parameter/number_of_images = Vector2(1, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_36yma"]
 radius = 8.0
@@ -9,6 +20,7 @@ radius = 8.0
 script = ExtResource("1_vdq0v")
 
 [node name="Sprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_82o1l")
 
 [node name="Pickable Area" type="Area2D" parent="."]
 collision_layer = 32
