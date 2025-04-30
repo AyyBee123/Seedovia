@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="item_pool" load_steps=3 format=3 uid="uid://frmf0uet7crg"]
+
+[ext_resource type="Script" uid="uid://ufjtmba68sp0" path="res://Scripts/Pools/item_pool.gd" id="1_ut35v"]
+[ext_resource type="Texture2D" uid="uid://c8tn516q0tlrn" path="res://Sprites/Consumables/Apple.png" id="2_wwaaw"]
+
+[resource]
+script = ExtResource("1_ut35v")
+texture = ExtResource("2_wwaaw")
+pool_name = "Heal"
+path = "res://Resources/Heal/"
+metadata/_custom_type_script = "uid://ufjtmba68sp0"

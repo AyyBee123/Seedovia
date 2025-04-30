@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="max_health_pickup" load_steps=3 format=3 uid="uid://dklioq5i4xw4u"]
+
+[ext_resource type="Script" uid="uid://dyelxbb0lgk2o" path="res://Scripts/Pickups/max_health.gd" id="1_xba8n"]
+[ext_resource type="Texture2D" uid="uid://cekwpbqy6a5sk" path="res://Sprites/Pickups/Max Health.png" id="2_sujoa"]
+
+[resource]
+script = ExtResource("1_xba8n")
+weight = 0.1
+shop_price = 35
+item_name = "Max Health"
+texture = ExtResource("2_sujoa")
+description = "+1 Max Health"
+unlocked = true

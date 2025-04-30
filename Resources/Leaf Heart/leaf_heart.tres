@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="leaf_heart_pickup" load_steps=3 format=3 uid="uid://bh4tc6c6bmo76"]
+
+[ext_resource type="Script" uid="uid://dshmb8u51wqew" path="res://Scripts/Pickups/leaf_heart.gd" id="1_v3p2x"]
+[ext_resource type="Texture2D" uid="uid://bohyfecssibgo" path="res://Sprites/Pickups/Leaf Heart.png" id="2_xxb5b"]
+
+[resource]
+script = ExtResource("1_v3p2x")
+weight = 0.25
+shop_price = 20
+item_name = "Leaf Heart"
+texture = ExtResource("2_xxb5b")
+description = "+1 Leaf Heart"
+unlocked = true

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="item_pool" load_steps=3 format=3 uid="uid://na13cigwmaj6"]
+
+[ext_resource type="Script" uid="uid://ufjtmba68sp0" path="res://Scripts/Pools/item_pool.gd" id="1_j70mw"]
+[ext_resource type="Texture2D" uid="uid://cekwpbqy6a5sk" path="res://Sprites/Pickups/Max Health.png" id="2_vt56a"]
+
+[resource]
+script = ExtResource("1_j70mw")
+texture = ExtResource("2_vt56a")
+pool_name = "Health Up"
+path = "res://Resources/Health Up/"
+metadata/_custom_type_script = "uid://ufjtmba68sp0"

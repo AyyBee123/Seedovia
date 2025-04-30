@@ -1,8 +1,10 @@
-[gd_resource type="Resource" script_class="item_pool" load_steps=2 format=3 uid="uid://bivkln6fh6kp0"]
+[gd_resource type="Resource" script_class="item_pool" load_steps=3 format=3 uid="uid://bivkln6fh6kp0"]
 
 [ext_resource type="Script" uid="uid://ufjtmba68sp0" path="res://Scripts/Pools/item_pool.gd" id="1_g6160"]
+[ext_resource type="Texture2D" uid="uid://yoja84d1148m" path="res://Sprites/Reward Images/Seed.png" id="2_7pj4y"]
 
 [resource]
 script = ExtResource("1_g6160")
+texture = ExtResource("2_7pj4y")
 pool_name = "Seed"
 path = "res://Resources/Items/Seeds/"

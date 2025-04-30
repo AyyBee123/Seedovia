@@ -1,5 +1,6 @@
 class_name item_pool extends Resource
 
+@export var texture: Texture
 @export var pool_name: String
 @export var path: String
 var pool: Array

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="item_pool" load_steps=3 format=3 uid="uid://bpnfinajdptch"]
+
+[ext_resource type="Script" uid="uid://ufjtmba68sp0" path="res://Scripts/Pools/item_pool.gd" id="1_vhgsg"]
+[ext_resource type="Texture2D" uid="uid://bohyfecssibgo" path="res://Sprites/Pickups/Leaf Heart.png" id="2_ndwya"]
+
+[resource]
+script = ExtResource("1_vhgsg")
+texture = ExtResource("2_ndwya")
+pool_name = "Leaf Heart"
+path = "res://Resources/Leaf Heart/"
+metadata/_custom_type_script = "uid://ufjtmba68sp0"

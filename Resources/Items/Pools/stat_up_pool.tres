@@ -1,8 +1,10 @@
-[gd_resource type="Resource" script_class="item_pool" load_steps=2 format=3 uid="uid://cnmsnpv3eqefd"]
+[gd_resource type="Resource" script_class="item_pool" load_steps=3 format=3 uid="uid://cnmsnpv3eqefd"]
 
 [ext_resource type="Script" uid="uid://ufjtmba68sp0" path="res://Scripts/Pools/item_pool.gd" id="1_wwpkl"]
+[ext_resource type="Texture2D" uid="uid://cn0lxkk0gecrc" path="res://Sprites/Stat Ups/Golden Apple.png" id="2_48517"]
 
 [resource]
 script = ExtResource("1_wwpkl")
+texture = ExtResource("2_48517")
 pool_name = "Stat Up"
 path = "res://Resources/Items/Stat Ups/"

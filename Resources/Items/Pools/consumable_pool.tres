@@ -1,8 +1,10 @@
-[gd_resource type="Resource" script_class="item_pool" load_steps=2 format=3 uid="uid://c4islwxil6gek"]
+[gd_resource type="Resource" script_class="item_pool" load_steps=3 format=3 uid="uid://c4islwxil6gek"]
 
 [ext_resource type="Script" uid="uid://ufjtmba68sp0" path="res://Scripts/Pools/item_pool.gd" id="1_7fbj5"]
+[ext_resource type="Texture2D" uid="uid://b5m4drmxauh5w" path="res://Sprites/Reward Images/Die.png" id="2_gwu5m"]
 
 [resource]
 script = ExtResource("1_7fbj5")
+texture = ExtResource("2_gwu5m")
 pool_name = "Consumable"
 path = "res://Resources/Items/Consumables/"

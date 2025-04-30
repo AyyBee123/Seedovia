@@ -1,8 +1,10 @@
-[gd_resource type="Resource" script_class="item_pool" load_steps=2 format=3 uid="uid://c4a3ifx7y2nyl"]
+[gd_resource type="Resource" script_class="item_pool" load_steps=3 format=3 uid="uid://c4a3ifx7y2nyl"]
 
 [ext_resource type="Script" uid="uid://ufjtmba68sp0" path="res://Scripts/Pools/item_pool.gd" id="1_g3vjw"]
+[ext_resource type="Texture2D" uid="uid://begwjy2urge70" path="res://Sprites/Misc/Coin.png" id="2_eqja5"]
 
 [resource]
 script = ExtResource("1_g3vjw")
+texture = ExtResource("2_eqja5")
 pool_name = "Coins"
 path = "res://Resources/Coin/"

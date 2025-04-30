@@ -6,13 +6,28 @@ var transition_scene := false
 var reward
 var text
 
+# all reward images
+const TALISMAN = preload("res://Sprites/Reward Images/Talisman.png")
+const DIE = preload("res://Sprites/Reward Images/Die.png")
+const SEED = preload("res://Sprites/Inventory/Seed.png")
+const GOLDEN_APPLE = preload("res://Sprites/Stat Ups/Golden Apple.png")
+const COIN = preload("res://Sprites/Misc/Coin.png")
+const MAX_HEALTH = preload("res://Sprites/Pickups/Max Health.png")
+const LEAF_HEART = preload("res://Sprites/Pickups/Leaf Heart.png")
+const APPLE = preload("res://Sprites/Consumables/Apple.png")
+
 var reward_weight = {
-	# index 0, 1, 2, 3, and 4 are talisman, consumable, seed, money, and stat up pools respectively
-	0: 0.10,
+	# index 0, 1, 2, 3, 4, 5, 6, and 7 are talisman, consumable, seed, money, stat up, 
+	# health up, leaf heart, and heal pools respectively
+	# all of these added up together must equal 1
+	0: 0.08,
 	1: 0.10,
-	2: 0.10,
-	3: 0.35,
-	4: 0.35
+	2: 0.08,
+	3: 0.30,
+	4: 0.30,
+	5: 0.03,
+	6: 0.04,
+	7: 0.07
 }
 
 func _ready():
@@ -51,42 +66,67 @@ func change_scene():
 	Global.save_run_room()
 	LevelList.change_room.call_deferred(self)
 
-func set_reward(reward_text: String = ""):
+func set_reward(reward_text: String = "", texture: Texture = null):
 	match reward_text:
 		"Talisman":
 			reward = Pool.pools[0]
 			text = reward.pool_name
-			$"Background/Reward Text".text = "[center]Reward\n" + reward.pool_name
+			%Image.texture = reward.texture
+			%"Reward Text".text = "[center]" + reward.pool_name
 			return
 		"Consumable":
 			reward = Pool.pools[1]
 			text = reward.pool_name
-			$"Background/Reward Text".text = "[center]Reward\n" + reward.pool_name
+			%Image.texture = reward.texture
+			%"Reward Text".text = "[center]" + reward.pool_name
 			return
 		"Seed":
 			reward = Pool.pools[2]
 			text = reward.pool_name
-			$"Background/Reward Text".text = "[center]Reward\n" + reward.pool_name
+			%Image.texture = reward.texture
+			%"Reward Text".text = "[center]" + reward.pool_name
 			return
 		"Coins":
 			reward = Pool.pools[3]
 			text = reward.pool_name
-			$"Background/Reward Text".text = "[center]Reward\n" + reward.pool_name
+			%Image.texture = reward.texture
+			%"Reward Text".text = "[center]" + reward.pool_name
 			return
 		"Stat Up":
 			reward = Pool.pools[4]
 			text = reward.pool_name
-			$"Background/Reward Text".text = "[center]Reward\n" + reward.pool_name
+			%Image.texture = reward.texture
+			%"Reward Text".text = "[center]" + reward.pool_name
 			return
-	if reward_text != "": # if the reward is set (i.e. passive room, boss room, etc.)
-		$"Background/Reward Text".text = "[center]Reward\n" + reward_text
+		"Health Up":
+			reward = Pool.pools[5]
+			text = reward.pool_name
+			%Image.texture = reward.texture
+			%"Reward Text".text = "[center]" + reward.pool_name
+			return
+		"Leaf Heart":
+			reward = Pool.pools[6]
+			text = reward.pool_name
+			%Image.texture = reward.texture
+			%"Reward Text".text = "[center]" + reward.pool_name
+			return
+		"Heal":
+			reward = Pool.pools[7]
+			text = reward.pool_name
+			%Image.texture = reward.texture
+			%"Reward Text".text = "[center]" + reward.pool_name
+			return
+	# if the reward is set (i.e. passive room, boss room, etc.)
+	# these specific rewards are set in the Level.gd script
+	if reward_text != "":
+		%Image.texture = texture
+		%"Reward Text".text = "[center]" + reward_text
 		text = reward_text
 		return
 	var roll: float = Global.RNG.randf_range(0.0, 1.0) # probability roll
 	var reward_pool
 	var index
 	var acc_chance = 0.0 # accumulated chance
-	# index 0, 1, and 2 are talisman, consumable, seed pools, and money respectively
 	for i in reward_weight.size():
 		acc_chance += reward_weight[i]
 		if roll <= acc_chance:
@@ -99,4 +139,7 @@ func set_reward(reward_text: String = ""):
 	Global.rewards.append(Pool.pools[index])
 	reward = Pool.pools[index]
 	text = reward.pool_name
-	$"Background/Reward Text".text = "[center]Reward\n" + reward.pool_name
+	%Image.texture = reward.texture
+	if texture:
+		%Image.texture = texture
+	%"Reward Text".text = "[center]" + reward.pool_name

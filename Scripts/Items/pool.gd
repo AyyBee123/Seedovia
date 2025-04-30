@@ -5,9 +5,12 @@ var consumable_pool = ResourceLoader.load("res://Resources/Items/Pools/consumabl
 var equipment_pool = ResourceLoader.load("res://Resources/Items/Pools/equipment_pool.tres")
 var passive_pool = ResourceLoader.load("res://Resources/Items/Pools/passive_pool.tres")
 var seed_pool = ResourceLoader.load("res://Resources/Items/Pools/seed_pool.tres")
-var pickup_pool = ResourceLoader.load("res://Resources/Items/Pools/pickup_pool.tres")
+var pickup_pool = ResourceLoader.load("res://Resources/Items/Pools/pickup_pool.tres") # used in shops
 var coin_pool = ResourceLoader.load("res://Resources/Items/Pools/coin_pool.tres")
 var stat_up_pool = ResourceLoader.load("res://Resources/Items/Pools/stat_up_pool.tres")
+var health_up_pool = ResourceLoader.load("res://Resources/Items/Pools/health_up_pool.tres")
+var leaf_heart_pool = ResourceLoader.load("res://Resources/Items/Pools/leaf_heart_pool.tres")
+var heal_pool = ResourceLoader.load("res://Resources/Items/Pools/heal_pool.tres")
 
 # for metronome to get a random seed from
 @onready var seed_list = get_all_file_paths("res://Resources/Items/Seeds/")
@@ -104,6 +107,9 @@ func start():
 	populate_pool(seed_pool, seed_weights)
 	populate_pool(coin_pool)
 	populate_pool(stat_up_pool)
+	populate_pool(health_up_pool)
+	populate_pool(leaf_heart_pool)
+	populate_pool(heal_pool)
 	add_pool = false
 	populate_pool(pickup_pool)
 	populate_pool(white_shrub_seed_pool, white_shrub_seed_weights)
@@ -143,6 +149,9 @@ func continue_run():
 	populate_pool(seed_pool, seed_weights)
 	populate_pool(coin_pool)
 	populate_pool(stat_up_pool)
+	populate_pool(health_up_pool)
+	populate_pool(leaf_heart_pool)
+	populate_pool(heal_pool)
 	add_pool = false
 	populate_pool(pickup_pool)
 	add_floors()

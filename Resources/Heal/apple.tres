@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="apple_consumable" load_steps=3 format=3 uid="uid://bdpo07c1o2hgg"]
+[gd_resource type="Resource" script_class="apple_consumable" load_steps=3 format=3 uid="uid://c4uomd0l52hvy"]
 
 [ext_resource type="Script" uid="uid://crfatv6snma33" path="res://Scripts/Consumables/apple.gd" id="1_vwq7n"]
 [ext_resource type="Texture2D" uid="uid://c8tn516q0tlrn" path="res://Sprites/Consumables/Apple.png" id="2_hi3yk"]

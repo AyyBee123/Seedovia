@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://duh3qswkvpbi5" path="res://Scripts/Characters/character_class.gd" id="1_1twko"]
 [ext_resource type="Texture2D" uid="uid://2whsjb1rg2lm" path="res://Sprites/Character/Sapling/Sapling1.png" id="1_unb1q"]
 [ext_resource type="Script" uid="uid://cgysrio745xbn" path="res://Scripts/Items/item_class.gd" id="2_t6kep"]
-[ext_resource type="Resource" uid="uid://c4uomd0l52hvy" path="res://Resources/Items/Consumables/apple.tres" id="3_dqta1"]
+[ext_resource type="Resource" uid="uid://c4uomd0l52hvy" path="res://Resources/Heal/apple.tres" id="3_dqta1"]
 [ext_resource type="Script" uid="uid://c6ykhgvfkht5x" path="res://Scripts/Stats/seed_stats.gd" id="4_rkp74"]
 [ext_resource type="Script" uid="uid://yr5gdtdbvmoc" path="res://Scripts/Passives/Classes/passive_class.gd" id="5_frnsw"]
 [ext_resource type="Script" uid="uid://n64xabrw5ic3" path="res://Scripts/Items/equipment_item_class.gd" id="6_ocpfj"]

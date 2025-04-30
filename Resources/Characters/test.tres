@@ -1,15 +1,14 @@
-[gd_resource type="Resource" script_class="character_class" load_steps=12 format=3 uid="uid://bi3hone1ajb7y"]
+[gd_resource type="Resource" script_class="character_class" load_steps=11 format=3 uid="uid://bi3hone1ajb7y"]
 
 [ext_resource type="Texture2D" uid="uid://b0l2iyl00i8xv" path="res://Sprites/Character/Test/Robot1.png" id="1_6x548"]
 [ext_resource type="Script" uid="uid://duh3qswkvpbi5" path="res://Scripts/Characters/character_class.gd" id="2_c1nbs"]
 [ext_resource type="Script" uid="uid://cgysrio745xbn" path="res://Scripts/Items/item_class.gd" id="3_bxj0g"]
+[ext_resource type="Script" uid="uid://yr5gdtdbvmoc" path="res://Scripts/Passives/Classes/passive_class.gd" id="4_0b6p8"]
 [ext_resource type="Script" uid="uid://c6ykhgvfkht5x" path="res://Scripts/Stats/seed_stats.gd" id="4_gpsnb"]
-[ext_resource type="Script" uid="uid://yr5gdtdbvmoc" path="res://Scripts/Passives/Classes/passive_class.gd" id="4_ukfth"]
-[ext_resource type="Resource" uid="uid://455jdkpyecn6" path="res://Resources/Items/Passives/mirage.tres" id="5_0b6p8"]
 [ext_resource type="Script" uid="uid://n64xabrw5ic3" path="res://Scripts/Items/equipment_item_class.gd" id="5_2xsda"]
-[ext_resource type="Resource" uid="uid://c60kgraihkchu" path="res://Resources/Items/Passives/buttshot.tres" id="6_pixb7"]
 [ext_resource type="Resource" uid="uid://bxhyqkhmnwv" path="res://Resources/Items/Seeds/carrot.tres" id="6_ukfth"]
 [ext_resource type="Resource" uid="uid://chqfn7nuxjown" path="res://Resources/Items/Passives/shadow_summons.tres" id="7_pixb7"]
+[ext_resource type="Resource" uid="uid://d200qysmewgr1" path="res://Resources/Items/Passives/double_up.tres" id="8_6v1hp"]
 [ext_resource type="Resource" uid="uid://ckxioe3l8oft5" path="res://Resources/Items/Equipment/threeleaf_clover.tres" id="8_ukfth"]
 
 [resource]
@@ -19,6 +18,6 @@ character_sprite = ExtResource("1_6x548")
 starting_inventory = Array[ExtResource("3_bxj0g")]([])
 starting_talismans = Array[ExtResource("5_2xsda")]([ExtResource("8_ukfth")])
 starting_seeds = Array[ExtResource("4_gpsnb")]([ExtResource("6_ukfth")])
-starting_passives = Array[ExtResource("4_ukfth")]([ExtResource("5_0b6p8"), ExtResource("6_pixb7"), ExtResource("7_pixb7")])
+starting_passives = Array[ExtResource("4_0b6p8")]([ExtResource("7_pixb7"), ExtResource("8_6v1hp")])
 starting_coins = 0
 unlocked = false

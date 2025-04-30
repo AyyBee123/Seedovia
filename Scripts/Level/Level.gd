@@ -184,11 +184,11 @@ func spawn_doors(): # -785 to 785 = 1570 (size of level in x-axis) # -400 is the
 		var door = resource_preloader.get_resource("Door").instantiate()
 		add_child(door)
 		if LevelList.room_number == 4:
-			door.set_reward("Passive")
+			door.set_reward("Passive", ResourceLoader.load("res://Sprites/Reward Images/Passive.png"))
 		elif LevelList.room_number == 9:
-			door.set_reward("Boss")
+			door.set_reward("Boss", ResourceLoader.load("res://Sprites/Reward Images/Boss.png"))
 		elif LevelList.room_number == 10:
-			door.set_reward("Next Floor")
+			door.set_reward("Next Floor", ResourceLoader.load("res://Sprites/Reward Images/Next Floor.png"))
 		door.position = Vector2(0, -384)
 		return
 	var door_pos = [-1, 0, 1]
@@ -197,7 +197,7 @@ func spawn_doors(): # -785 to 785 = 1570 (size of level in x-axis) # -400 is the
 			continue
 		var door = resource_preloader.get_resource("Door").instantiate()
 		if i == 1 and LevelList.room_number == 7:
-			door.set_reward("Shop")
+			door.set_reward("Shop", ResourceLoader.load("res://Sprites/Reward Images/Shop.png"))
 		else:
 			door.set_reward()
 		add_child(door)
@@ -240,6 +240,24 @@ func give_reward():
 				coin.global_position = Vector2(randf_range(-25, 25), randf_range(-25, 25))
 		elif Global.next_reward.pool_name == "Stat Up":
 			var item = resource_preloader.get_resource("Pickup Item").instantiate()
+			item.set_item(Pool.get_item(Pool.pools[Pool.pools.find(Global.next_reward)]))
+			add_child(item)
+			# spawn item in the middle of the screen
+			item.global_position = $Camera2D.global_position
+		elif Global.next_reward.pool_name == "Health Up":
+			var item = resource_preloader.get_resource("Pickup Item").instantiate()
+			item.set_item(Pool.get_item(Pool.pools[Pool.pools.find(Global.next_reward)]))
+			add_child(item)
+			# spawn item in the middle of the screen
+			item.global_position = $Camera2D.global_position
+		elif Global.next_reward.pool_name == "Leaf Heart":
+			var item = resource_preloader.get_resource("Pickup Item").instantiate()
+			item.set_item(Pool.get_item(Pool.pools[Pool.pools.find(Global.next_reward)]))
+			add_child(item)
+			# spawn item in the middle of the screen
+			item.global_position = $Camera2D.global_position
+		elif Global.next_reward.pool_name == "Heal":
+			var item = resource_preloader.get_resource("Item").instantiate()
 			item.set_item(Pool.get_item(Pool.pools[Pool.pools.find(Global.next_reward)]))
 			add_child(item)
 			# spawn item in the middle of the screen
