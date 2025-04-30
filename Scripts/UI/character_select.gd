@@ -139,4 +139,4 @@ func select_character():
 func change_scene():
 	thread.wait_to_finish()
 	SignalBus.entered_new_floor.emit()
-	get_tree().change_scene_to_file("res://Scenes/Levels/Special/Shop.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Levels/Special/Starting Room 1.tscn")

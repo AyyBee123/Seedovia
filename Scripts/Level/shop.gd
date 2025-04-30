@@ -15,7 +15,7 @@ func set_shop_items():
 	var shop_item_categories = []
 	shop_item_categories.append("Pickup" if randf() < 0.4 else "Stat")
 	shop_item_categories.append("Pickup" if randf() < 0.4 else "Stat")
-	shop_item_categories.append("Consumable")
+	shop_item_categories.append("Consumable" if randf() < 0.5 else "Heal")
 	shop_item_categories.append("Consumable")
 	# for sort order in the shop (right-to-left, bottom-to-top)
 	if shop_size == 6:
@@ -44,6 +44,8 @@ func set_shop_items():
 				pool = Pool.pickup_pool
 			"Stat":
 				pool = Pool.stat_up_pool
+			"Heal":
+				pool = Pool.heal_pool
 		item.set_item(Pool.get_item(pool))
 		# prevents seeds and talismans in the player's inventory from being chosen
 		# also prevents shop items from selling the same item twice
