@@ -5,6 +5,7 @@ const character = preload("res://Scripts/UI/character.gd")
 @onready var characters = %Characters.get_children()
 @onready var starting_items = %"Starting Items".get_children()
 @onready var loading_screen_scene = preload("res://Scenes/UI/Loading Screen.tscn")
+@onready var buffer = $Buffer
 var loading_screen_scene_instance
 var char
 var thread
@@ -37,6 +38,8 @@ func on_input(event):
 			_on_play_button_pressed()
 
 func _on_play_button_pressed():
+	if not buffer.is_stopped(): # prevent accidentally starting immediately if the previous menu was double clicked
+		return
 	if starting_character == null or character_scene == null:
 		return
 	loading_screen_scene_instance = loading_screen_scene.instantiate()

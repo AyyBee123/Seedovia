@@ -575,6 +575,11 @@ text = "Yay!
 "
 scroll_active = false
 
+[node name="Buffer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+autostart = true
+
 [connection signal="pressed" from="Back Button" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="Characters/Character 1" to="Characters/Character 1" method="_on_pressed"]
 [connection signal="pressed" from="Characters/Character 2" to="Characters/Character 2" method="_on_pressed"]
