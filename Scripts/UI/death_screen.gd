@@ -4,6 +4,7 @@ var starting_character: character_class
 var starting_stats: player_stats
 
 func _ready():
+	Game.music_manager.stop()
 	get_tree().paused = true
 
 func _on_quick_restart_button_pressed():
