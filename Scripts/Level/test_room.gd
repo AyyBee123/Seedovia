@@ -20,7 +20,6 @@ func _ready():
 func _physics_process(delta):
 	player = Targets.get_player()
 	count_up(delta)
-	pause()
 
 func _input(event):
 	if event is InputEventKey:
@@ -31,8 +30,7 @@ func _input(event):
 				return
 			var console = CONSOLE.instantiate()
 			add_child(console)
-
-func pause():
+	
 	if Input.is_action_just_pressed("esc"):
 		if player.get_node("Inventory").visible or player.get_node("Stat Sheet").visible:
 			player.get_node("Inventory").visible = false

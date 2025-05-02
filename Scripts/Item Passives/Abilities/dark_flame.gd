@@ -2,12 +2,15 @@ extends "res://Scripts/Passives/Classes/passive_slot_specific.gd"
 
 var damage_multiplier: float = 0.3
 var number_of_orbitals = 2
+var source
 
 @onready var resource_preloader = $ResourcePreloader
 
 func _ready():
 	super._ready()
 	slot_number = 1
+	source = get_parent().get_parent()
+	source.weapon_fired.connect(get_slot_number)
 
 func trigger(weapon):
 	# spawns three orbs around the projectile
