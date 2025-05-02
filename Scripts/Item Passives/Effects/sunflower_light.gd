@@ -48,7 +48,7 @@ func shoot_seed(enemy):
 			seed_instance.slot_index = 1
 		else:
 			seed_instance.slot_index = 0
-		seed_instance.source = self
+		seed_instance.source = get_parent().get_parent()
 		seed_instance.previous_weapon = self
 		get_tree().current_scene.add_child(seed_instance)
 		player.weapon_fired.emit(seed_instance)
