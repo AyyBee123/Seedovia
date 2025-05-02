@@ -80,10 +80,13 @@ func stop():
 func shoot(seed):
 	var weapon_instance = seed.instantiate()
 	weapon_instance.initial_weapon = true
-	weapon_instance.slot_index = 0
 	weapon_instance.previous_weapon = self
 	weapon_instance.source = self
 	weapon_instance.seed_slot_number = 1
+	if PlayerInventory.seeds.has(0):
+		weapon_instance.slot_index = 1
+	else:
+		weapon_instance.slot_index = 0
 	weapon_instance.desired_direction = hand.global_position.direction_to(targeted_enemy.global_position)
 	weapon_instance.transferred_damage_multiplier *= 0.5
 	weapon_instance.transferred_size_multiplier *= 0.5

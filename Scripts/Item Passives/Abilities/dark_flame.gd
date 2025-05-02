@@ -18,5 +18,4 @@ func trigger(weapon):
 		dark_orbital.index = i
 		dark_orbital.number_of_orbitals = number_of_orbitals
 		# spawn the oribital outside the screen to prevent 1 frame of it spawning at the center
-		dark_orbital.position = Vector2(10000, 10000)
 		get_tree().current_scene.add_child(dark_orbital)

@@ -44,6 +44,11 @@ func shoot_seed(enemy):
 		var seed_instance = second_seed.instantiate()
 		seed_instance.desired_direction = global_position.direction_to(enemy.get_parent().global_position)
 		seed_instance.seed_slot_number = 1
+		if PlayerInventory.seeds.has(0):
+			seed_instance.slot_index = 1
+		else:
+			seed_instance.slot_index = 0
+		seed_instance.source = self
 		seed_instance.previous_weapon = self
 		get_tree().current_scene.add_child(seed_instance)
 		player.weapon_fired.emit(seed_instance)
