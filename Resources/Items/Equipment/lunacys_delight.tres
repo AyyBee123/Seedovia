@@ -6,7 +6,7 @@
 
 [resource]
 script = ExtResource("1_7yi5j")
-rarity = 6
+rarity = 5
 properties = Array[String]([])
 special_properties = Array[PackedScene]([ExtResource("2_bterq")])
 item_name = "Lunacy's Delight"

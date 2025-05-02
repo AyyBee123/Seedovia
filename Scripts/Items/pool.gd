@@ -14,6 +14,7 @@ var heal_pool = ResourceLoader.load("res://Resources/Items/Pools/heal_pool.tres"
 
 # for metronome to get a random seed from
 @onready var seed_list = get_all_file_paths("res://Resources/Items/Seeds/")
+@onready var talisman_list = get_all_file_paths("res://Resources/Items/Equipment/")
 
 # for the White Shrub character when they start a run
 var white_shrub_seed_pool = ResourceLoader.load("res://Resources/Items/Pools/white_chaos_seed_pool.tres")

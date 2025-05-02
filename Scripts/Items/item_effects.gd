@@ -20,3 +20,29 @@ func dupe_items():
 	ItemCheck.check_for_coins()
 	await get_tree().create_timer(0.5).timeout
 	Global.save_run_room()
+
+func increase_rarity():
+	var items = Targets.get_all_items()
+	for item in items:
+		var new_rarity = item.item.rarity + 1 # increase rarity by 1
+		if item.item.category == "SEED" and new_rarity > 6:
+			new_rarity = 0
+		if item.item.category == "TALISMAN" and new_rarity > 5: # there are no mystic rarity talismans
+			new_rarity = 0
+		item.set_item(select_new_rarity_item(item.item, new_rarity))
+	ItemCheck.check_for_items()
+	await get_tree().create_timer(0.5).timeout
+	Global.save_run_room()
+
+func select_new_rarity_item(_item, _rarity):
+	Global.RNG.randomize()
+	var pool
+	if _item.category == "SEED":
+		pool = Pool.seed_list
+	elif _item.category == "TALISMAN":
+		pool = Pool.talisman_list
+	if pool == null:
+		return _item
+	while _item.rarity != _rarity:
+		_item = ResourceLoader.load(pool.pick_random())
+	return _item

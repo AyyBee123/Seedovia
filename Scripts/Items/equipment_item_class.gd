@@ -1,7 +1,7 @@
 class_name equipment_item_class extends item_class
 
 var category := "TALISMAN"
-@export_enum("COMMON", "UNCOMMON", "RARE", "EPIC", "LEGENDARY", "MYSTIC", "UNIQUE", "N/A") var rarity: int
+@export_enum("COMMON", "UNCOMMON", "RARE", "EPIC", "LEGENDARY", "UNIQUE", "MYSTIC", "N/A") var rarity: int
 @export var properties: Array[String]
 @export var special_properties: Array[PackedScene]
 var was_already_equipped := false # this is to not abuse getting healed each time the item is equipped

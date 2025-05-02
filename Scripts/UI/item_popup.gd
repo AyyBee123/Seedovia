@@ -50,13 +50,13 @@ func _ready():
 			set_values(Color.BLUE_VIOLET, "Epic")
 		4: # Legendary
 			set_values(Color.DARK_ORANGE, "Legendary")
-		6: # Unique
+		5: # Unique
 			set_values(Color.CRIMSON, "Unique")
 		7: # N/A
 			set_values(Color.WHITE, "")
 
 func _process(delta):
-	if rarity == 5: # Mystic
+	if rarity == 6: # Mystic
 		mystic_color = Color.from_hsv(hue, 1.0, 1.0, 1.0)
 		if hue < 1.0:
 			hue += 0.0005

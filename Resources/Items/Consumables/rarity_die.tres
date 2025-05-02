@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="rarity_die_consumable" load_steps=3 format=3 uid="uid://dykla7envc0ga"]
+
+[ext_resource type="Script" uid="uid://scjkc7h53g4" path="res://Scripts/Consumables/rarity_die.gd" id="1_e2yeu"]
+[ext_resource type="Texture2D" uid="uid://drh4xwegc4eco" path="res://Sprites/Consumables/Golden D6.png" id="2_kcd43"]
+
+[resource]
+script = ExtResource("1_e2yeu")
+weight = 0.25
+shop_price = 40
+item_name = "Golden D6"
+texture = ExtResource("2_kcd43")
+description = "Increases the rarity of an item by 1 tier, rerolling it to a new item of the same category."
+unlocked = true
+metadata/_custom_type_script = "uid://dp8qdf854o3ob"
