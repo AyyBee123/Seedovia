@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="red_d6_consumable" load_steps=3 format=3 uid="uid://dgaqrqiqvn8jf"]
+
+[ext_resource type="Script" uid="uid://bwbdtwitcpayd" path="res://Scripts/Consumables/cursed_d6.gd" id="1_l45ib"]
+[ext_resource type="Texture2D" uid="uid://c5rw7k65p4d4a" path="res://Sprites/Consumables/Cursed D6.png" id="2_peade"]
+
+[resource]
+script = ExtResource("1_l45ib")
+weight = 0.075
+shop_price = 125
+item_name = "Cursed D6"
+texture = ExtResource("2_peade")
+description = "Decreases the rarity of an item by 1 tier, rerolling it to a new item of the same type."
+unlocked = true
+metadata/_custom_type_script = "uid://dp8qdf854o3ob"
