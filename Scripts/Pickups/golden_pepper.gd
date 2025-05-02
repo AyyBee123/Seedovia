@@ -3,6 +3,7 @@ class_name golden_pepper extends pickup_item_class
 @export var amount: float = 5
 
 func _ready():
+	category = "STAT UP"
 	description = "+" + str(amount) + "% Seed Size"
 
 func on_pickup() -> void:

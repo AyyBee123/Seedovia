@@ -5,10 +5,10 @@
 
 [resource]
 script = ExtResource("1_e2yeu")
-weight = 0.25
-shop_price = 40
+weight = 0.1
+shop_price = 80
 item_name = "Golden D6"
 texture = ExtResource("2_kcd43")
-description = "Increases the rarity of an item by 1 tier, rerolling it to a new item of the same category."
+description = "Increases the rarity of an item by 1 tier, rerolling it to a new item of the same type."
 unlocked = true
 metadata/_custom_type_script = "uid://dp8qdf854o3ob"

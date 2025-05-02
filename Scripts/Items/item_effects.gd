@@ -9,6 +9,8 @@ func dupe_items():
 	var items = Targets.get_all_items()
 	var coins = Targets.get_coins()
 	for item in items:
+		if item.item.item_name == "Rainbow D6":
+			continue
 		var duped_item = item.duplicate()
 		get_tree().current_scene.add_child(duped_item)
 		duped_item.global_position = item.global_position + Vector2.RIGHT * 32
@@ -44,6 +46,31 @@ func select_new_rarity_item(_item, _rarity):
 	if pool == null:
 		return _item
 	while _item.rarity != _rarity:
+		_item = ResourceLoader.load(pool.pick_random())
+	return _item
+
+func reroll_same_rarity():
+	var items = Targets.get_all_items()
+	for item in items:
+		item.set_item(select_new_same_rarity(item.item))
+	ItemCheck.check_for_items()
+	await get_tree().create_timer(0.5).timeout
+	Global.save_run_room()
+
+func select_new_same_rarity(_item):
+	Global.RNG.randomize()
+	var pool
+	var rarity = _item.rarity
+	if _item.category == "SEED":
+		pool = Pool.seed_list
+	elif _item.category == "TALISMAN":
+		pool = Pool.talisman_list
+	elif _item.category == "CONSUMABLE":
+		pool = Pool.consumable_list
+	if pool == null:
+		return _item
+	_item = ResourceLoader.load(pool.pick_random())
+	while _item.rarity != rarity:
 		_item = ResourceLoader.load(pool.pick_random())
 	return _item
 

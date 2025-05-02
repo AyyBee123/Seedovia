@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="red_d6_consumable" load_steps=3 format=3 uid="uid://bjaunn1im60qq"]
+
+[ext_resource type="Script" uid="uid://cegdkci2b5yqu" path="res://Scripts/Consumables/red_d6.gd" id="1_16jy7"]
+[ext_resource type="Texture2D" uid="uid://cl540o75v5hkf" path="res://Sprites/Consumables/Red D6.png" id="2_16jy7"]
+
+[resource]
+script = ExtResource("1_16jy7")
+weight = 0.5
+shop_price = 30
+item_name = "Red D6"
+texture = ExtResource("2_16jy7")
+description = "Rerolls an item to a new one of the same type and rarity."
+unlocked = true
+metadata/_custom_type_script = "uid://dp8qdf854o3ob"
