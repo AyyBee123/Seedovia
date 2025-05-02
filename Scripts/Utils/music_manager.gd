@@ -9,6 +9,7 @@ const LIBRARY_THEME = preload("res://Audio/Music/Library Theme.ogg")
 const BASEMENT_THEME = preload("res://Audio/Music/Basement Theme.ogg")
 const BOSS_THEME = preload("res://Audio/Music/Boss Theme.ogg")
 const BOSS_THEME_END = preload("res://Audio/Music/Boss Theme End.ogg")
+const MENU_THEME = preload("res://Audio/Music/Menu Theme.ogg")
 
 func play(soundtrack):
 	# do nothing if the same soundtrack is already being played

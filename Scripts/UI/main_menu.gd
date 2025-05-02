@@ -12,6 +12,7 @@ var settings
 var thread
 
 func _ready():
+	Game.music_manager.play(Game.music_manager.MENU_THEME)
 	thread = Thread.new()
 	if ResourceLoader.exists(Global.RUN_SAVE_PATH):
 		continue_button.disabled = false

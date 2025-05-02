@@ -3,7 +3,7 @@ extends Control
 @onready var walnut = %Walnut
 
 func _ready():
-	pass
+	Game.music_manager.stop()
 
 func _process(delta):
 	var progress = []

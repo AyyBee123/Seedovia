@@ -17,6 +17,7 @@ var delete_popup
 var seed_list: Array
 
 func _ready():
+	Game.music_manager.play(Game.music_manager.MENU_THEME)
 	seed_list = get_all_file_paths("res://Resources/Items/Seeds/")
 
 func _physics_process(delta):
