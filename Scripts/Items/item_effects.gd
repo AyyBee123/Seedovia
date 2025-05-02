@@ -46,3 +46,11 @@ func select_new_rarity_item(_item, _rarity):
 	while _item.rarity != _rarity:
 		_item = ResourceLoader.load(pool.pick_random())
 	return _item
+
+func reroll_doors():
+	var doors = Targets.get_doors()
+	Global.rewards.clear()
+	for door in doors:
+		if door.text == "Boss":
+			continue
+		door.set_reward()

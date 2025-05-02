@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="black_d6_consumable" load_steps=3 format=3 uid="uid://0s5vidorpjkm"]
+
+[ext_resource type="Script" uid="uid://dw6qr6c8qtl5r" path="res://Scripts/Consumables/black_d6.gd" id="1_7u2t6"]
+[ext_resource type="Texture2D" uid="uid://c6s4jrdh4shuj" path="res://Sprites/Consumables/Black D6.png" id="2_rciyc"]
+
+[resource]
+script = ExtResource("1_7u2t6")
+weight = 0.5
+shop_price = 25
+item_name = "Black D6"
+texture = ExtResource("2_rciyc")
+description = "Rerolls room rewards at entrances."
+unlocked = true
+metadata/_custom_type_script = "uid://dp8qdf854o3ob"

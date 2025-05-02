@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://duqrbvok8emks"
-path="res://.godot/imported/Mysterious Rock.png-565354ac92ec9d105d763ea652869980.ctex"
+uid="uid://bfnqvg0n0ndwd"
+path="res://.godot/imported/Rainbow D6.png-e12999f8f1f088f9bc0ebb781efebd34.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Consumables/Mysterious Rock.png"
-dest_files=["res://.godot/imported/Mysterious Rock.png-565354ac92ec9d105d763ea652869980.ctex"]
+source_file="res://Sprites/Consumables/Rainbow D6.png"
+dest_files=["res://.godot/imported/Rainbow D6.png-e12999f8f1f088f9bc0ebb781efebd34.ctex"]
 
 [params]
 
