@@ -1,10 +1,8 @@
-[gd_scene load_steps=7 format=4 uid="uid://bo2oq75pfugsl"]
+[gd_scene load_steps=5 format=4 uid="uid://bo2oq75pfugsl"]
 
 [ext_resource type="PackedScene" uid="uid://cxoiy0x4nvtaa" path="res://Scenes/Levels/Base Level.tscn" id="1_ao5jt"]
 [ext_resource type="PackedScene" uid="uid://bagmkum7q0yxi" path="res://Scenes/Enemies/Dummy.tscn" id="2_o43ij"]
 [ext_resource type="Shader" uid="uid://qm3syqtxdolu" path="res://Shaders/circle_transition.gdshader" id="3_aubkd"]
-[ext_resource type="PackedScene" uid="uid://bkbjq3dleklpw" path="res://Scenes/Items/Pickup Item.tscn" id="4_d2abt"]
-[ext_resource type="Resource" uid="uid://xi6gn5drpinf" path="res://Resources/Items/Pickups/passive.tres" id="5_dti3o"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0ecxy"]
 resource_local_to_scene = true
@@ -23,7 +21,3 @@ position = Vector2(-550, -200)
 
 [node name="Circle Transition" parent="." index="7"]
 material = SubResource("ShaderMaterial_0ecxy")
-
-[node name="Pickup" parent="." index="8" instance=ExtResource("4_d2abt")]
-position = Vector2(-1, -2)
-item = ExtResource("5_dti3o")
