@@ -315,6 +315,7 @@ scroll_active = false
 
 [node name="Reroll" type="NinePatchRect" parent="PassiveBackground"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 0
 offset_left = 211.2
 offset_top = 300.4
