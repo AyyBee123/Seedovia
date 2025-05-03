@@ -16,6 +16,7 @@ var _player_stats: player_stats = preload("res://Resources/Characters/Stats/base
 @onready var dash_cooldown := $"Dash Cooldown"
 @onready var dash_invulnerability_time := $"Dash Invulnerability Time"
 @onready var inventory := $"Inventory"
+@onready var stat_sheet = $"Stat Sheet"
 @onready var inventory_screen := $"Inventory/Inventory Screen"
 @onready var initial_collision_layer := get_collision_layer()
 @onready var player_passives := $Passives

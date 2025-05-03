@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dfafxnw5132qr"]
+[gd_scene load_steps=24 format=3 uid="uid://dfafxnw5132qr"]
 
 [ext_resource type="Script" uid="uid://bbqwew0hj1m1p" path="res://Scripts/UI/passive_choice.gd" id="1_7x1m1"]
 [ext_resource type="Texture2D" uid="uid://cmhhfcqibnxtw" path="res://Sprites/Passive UI/Passive Background.png" id="1_ayyp6"]
@@ -11,6 +11,54 @@
 [ext_resource type="Texture2D" uid="uid://dqiw78ps81daw" path="res://Sprites/Passives/Icons/Hura Crepitans.png" id="8_xdwvq"]
 [ext_resource type="Texture2D" uid="uid://dissosonsok68" path="res://Sprites/Passives/Icons/Fire Flower.png" id="9_ga1yx"]
 [ext_resource type="Texture2D" uid="uid://cnjqnk6pf8hov" path="res://Sprites/Passives/Icons/Prickly Growth.png" id="10_25pok"]
+[ext_resource type="Texture2D" uid="uid://dxaeild8arejt" path="res://Sprites/UI/Settings Tab.png" id="12_e7rdi"]
+[ext_resource type="Texture2D" uid="uid://chrtmh8xchoct" path="res://Sprites/Pause UI/Pause Menu Choice Disabled.png" id="13_pu5r7"]
+[ext_resource type="Texture2D" uid="uid://2d111phom0jg" path="res://Sprites/Pause UI/Pause Menu Choice Focused.png" id="14_ncj06"]
+[ext_resource type="Texture2D" uid="uid://dmb2vfptumg3l" path="res://Sprites/Pause UI/Pause Menu Choice Hover.png" id="15_kyfo4"]
+[ext_resource type="Texture2D" uid="uid://didv5fjskcrdi" path="res://Sprites/Pause UI/Pause Menu Choice.png" id="16_uopyx"]
+[ext_resource type="Texture2D" uid="uid://ciyk64aevmyv" path="res://Sprites/Pause UI/Pause Menu Choice Pressed.png" id="17_xojew"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_avxa3"]
+texture = ExtResource("13_pu5r7")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ekq5l"]
+texture = ExtResource("14_ncj06")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4pqfv"]
+texture = ExtResource("15_kyfo4")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jiki8"]
+texture = ExtResource("16_uopyx")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s44yh"]
+texture = ExtResource("17_xojew")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+
+[sub_resource type="Theme" id="Theme_jk1d8"]
+Button/styles/disabled = SubResource("StyleBoxTexture_avxa3")
+Button/styles/focus = SubResource("StyleBoxTexture_ekq5l")
+Button/styles/hover = SubResource("StyleBoxTexture_4pqfv")
+Button/styles/normal = SubResource("StyleBoxTexture_jiki8")
+Button/styles/pressed = SubResource("StyleBoxTexture_s44yh")
 
 [node name="PassiveChoice" type="Control"]
 process_mode = 3
@@ -264,3 +312,86 @@ bbcode_enabled = true
 text = "Name"
 fit_content = true
 scroll_active = false
+
+[node name="Reroll" type="NinePatchRect" parent="PassiveBackground"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 211.2
+offset_top = 300.4
+offset_right = 545.2
+offset_bottom = 389.4
+rotation = 3.14159
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("12_e7rdi")
+patch_margin_left = 15
+patch_margin_top = 15
+patch_margin_right = 15
+patch_margin_bottom = 15
+
+[node name="Reroll Button" type="Button" parent="PassiveBackground/Reroll"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -74.2
+offset_top = -24.5
+offset_right = 35.8
+offset_bottom = 6.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+theme = SubResource("Theme_jk1d8")
+
+[node name="Text" type="RichTextLabel" parent="PassiveBackground/Reroll/Reroll Button"]
+modulate = Color(0.905882, 0.8, 0.627451, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 108.8
+offset_top = 27.2
+offset_right = 108.8
+offset_bottom = 27.2
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 3.14159
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/normal_font = ExtResource("3_4afso")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "[center]Reroll"
+scroll_active = false
+
+[node name="Amount" type="RichTextLabel" parent="PassiveBackground/Reroll"]
+unique_name_in_owner = true
+modulate = Color(0.905882, 0.8, 0.627451, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 93.0
+offset_top = 72.0
+offset_right = -202.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 3.14159
+scale = Vector2(2, 2)
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/normal_font = ExtResource("3_4afso")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "[center]x2"
+scroll_active = false
+
+[connection signal="pressed" from="PassiveBackground/Reroll/Reroll Button" to="." method="_on_reroll_button_pressed"]

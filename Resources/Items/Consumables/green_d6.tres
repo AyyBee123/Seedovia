@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="red_d6_consumable" load_steps=3 format=3 uid="uid://ybppght5j1d8"]
+
+[ext_resource type="Script" uid="uid://cegdkci2b5yqu" path="res://Scripts/Consumables/red_d6.gd" id="1_jrt0g"]
+[ext_resource type="Texture2D" uid="uid://ckahhfcmajix0" path="res://Sprites/Consumables/Green D6.png" id="2_jrt0g"]
+
+[resource]
+script = ExtResource("1_jrt0g")
+weight = 0.333
+shop_price = 40
+item_name = "Green D6"
+texture = ExtResource("2_jrt0g")
+description = "Provides an option to reroll passives when collecting a passive choice pickup (consumed on use)."
+unlocked = true
+metadata/_custom_type_script = "uid://dp8qdf854o3ob"

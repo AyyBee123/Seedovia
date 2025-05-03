@@ -6,5 +6,5 @@
 [resource]
 script = ExtResource("1_7fbj5")
 texture = ExtResource("2_gwu5m")
-pool_name = "Consumable"
+pool_name = "Die"
 path = "res://Resources/Items/Consumables/"
