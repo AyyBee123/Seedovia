@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="die6_consumable" load_steps=3 format=3 uid="uid://btbaa1gw0ncrr"]
+
+[ext_resource type="Script" uid="uid://ch5elinvckpv5" path="res://Scripts/Consumables/die6.gd" id="1_h8fip"]
+[ext_resource type="Texture2D" uid="uid://d1g7ny8j88pvr" path="res://Sprites/Consumables/Die6.png" id="2_k5q52"]
+
+[resource]
+script = ExtResource("1_h8fip")
+weight = 0.5
+shop_price = 20
+item_name = "Die6"
+texture = ExtResource("2_k5q52")
+description = "Deals 600 damage to all enemies in the room."
+unlocked = true
+metadata/_custom_type_script = "uid://dp8qdf854o3ob"

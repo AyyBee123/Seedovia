@@ -94,3 +94,8 @@ func reroll_doors():
 		if door.text == "Boss":
 			continue
 		door.set_reward()
+
+func damage_enemies(_damage):
+	var enemies = Targets.get_enemy_hitboxes()
+	for enemy in enemies:
+		enemy.get_parent()._enemy_stats.take_damage(_damage)
