@@ -1,0 +1,153 @@
+[gd_scene load_steps=20 format=3 uid="uid://cefvv27w2mcbq"]
+
+[ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_tmaii"]
+[ext_resource type="Script" uid="uid://dj068u4if2btr" path="res://Scripts/Enemies/Spike Pot/spike_pot.gd" id="2_gnslk"]
+[ext_resource type="Shader" uid="uid://dsv0n8bsysyo6" path="res://Shaders/color_tint_shader.gdshader" id="2_s62jy"]
+[ext_resource type="Resource" uid="uid://p8djonub208c" path="res://Resources/Enemies/spike_pot.tres" id="3_kvx2q"]
+[ext_resource type="Texture2D" uid="uid://b7fptf1rcifno" path="res://Sprites/Enemies/Spike Pot.png" id="3_u2cre"]
+[ext_resource type="Texture2D" uid="uid://6mlp4f15ntn1" path="res://Sprites/Enemies/Effects/Spike Pot Head.png" id="5_wq7ro"]
+[ext_resource type="Texture2D" uid="uid://xxyym547o3vn" path="res://Sprites/Misc/Shadow.png" id="6_2a0kc"]
+[ext_resource type="Texture2D" uid="uid://bdedaps5vfuhh" path="res://Sprites/Enemies/Effects/Spike Stem.png" id="7_2a0kc"]
+[ext_resource type="Script" uid="uid://cgr4u4fk2ny1o" path="res://Scripts/Enemies/Spike Pot/spike_stem.gd" id="7_kvx2q"]
+[ext_resource type="Script" uid="uid://8ksribciafb1" path="res://Scripts/Enemies/Spike Pot/spike.gd" id="9_6vpxc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_aj1rq"]
+radius = 8.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b3uyw"]
+resource_local_to_scene = true
+shader = ExtResource("2_s62jy")
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/tint_factor = 0.0
+shader_parameter/fade = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yjixa"]
+atlas = ExtResource("3_u2cre")
+region = Rect2(0, 0, 25, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y4ipm"]
+atlas = ExtResource("3_u2cre")
+region = Rect2(25, 0, 25, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_20bwi"]
+atlas = ExtResource("3_u2cre")
+region = Rect2(50, 0, 25, 36)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wb672"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yjixa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y4ipm")
+}, {
+"duration": 1.2,
+"texture": SubResource("AtlasTexture_20bwi")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_y4ipm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kvx2q"]
+radius = 8.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6vpxc"]
+resource_local_to_scene = true
+size = Vector2(85, 6)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tui1u"]
+radius = 11.0
+
+[node name="Spike Pot" instance=ExtResource("1_tmaii")]
+scale = Vector2(2, 2)
+script = ExtResource("2_gnslk")
+_enemy_stats = ExtResource("3_kvx2q")
+
+[node name="CollisionPolygon2D" parent="." index="0"]
+shape = SubResource("CircleShape2D_aj1rq")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+material = SubResource("ShaderMaterial_b3uyw")
+sprite_frames = SubResource("SpriteFrames_wb672")
+autoplay = "default"
+frame_progress = 0.450276
+offset = Vector2(0, -8)
+
+[node name="CollisionPolygon2D" parent="Enemy Hitbox" index="0"]
+shape = SubResource("CircleShape2D_kvx2q")
+
+[node name="Health Bar" parent="." index="3"]
+offset_top = -36.0
+offset_bottom = -28.0
+
+[node name="Pointer" type="Node2D" parent="." index="6"]
+
+[node name="Marker2D" type="Marker2D" parent="Pointer" index="0"]
+position = Vector2(28.5714, 0)
+
+[node name="Spike Stem" type="Sprite2D" parent="." index="7"]
+z_index = 2
+z_as_relative = false
+texture = ExtResource("7_2a0kc")
+centered = false
+offset = Vector2(0, -5)
+region_enabled = true
+region_rect = Rect2(0, 0, 100, 10)
+script = ExtResource("7_kvx2q")
+
+[node name="Stem Hitbox" type="Area2D" parent="Spike Stem" index="0"]
+collision_layer = 513
+collision_mask = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spike Stem/Stem Hitbox" index="0"]
+position = Vector2(46.5, 0)
+shape = SubResource("RectangleShape2D_6vpxc")
+
+[node name="Damage Buffer" type="Timer" parent="Spike Stem" index="1"]
+wait_time = 0.1
+one_shot = true
+
+[node name="Spike" type="Sprite2D" parent="Spike Stem" index="2"]
+z_index = 4
+z_as_relative = false
+position = Vector2(100, 0)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5_wq7ro")
+offset = Vector2(-1, -1)
+script = ExtResource("9_6vpxc")
+
+[node name="Spike Hitbox" type="Area2D" parent="Spike Stem/Spike" index="0"]
+collision_layer = 513
+collision_mask = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spike Stem/Spike/Spike Hitbox" index="0"]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("CircleShape2D_tui1u")
+
+[node name="Damage Buffer" type="Timer" parent="Spike Stem/Spike" index="1"]
+wait_time = 0.1
+one_shot = true
+
+[node name="Shadow" type="Sprite2D" parent="Spike Stem/Spike" index="2"]
+z_index = -1
+z_as_relative = false
+position = Vector2(0, 11.2)
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("6_2a0kc")
+
+[node name="Shadow" type="Sprite2D" parent="." index="8"]
+z_index = -1
+z_as_relative = false
+position = Vector2(0, 11.2)
+scale = Vector2(0.45, 0.5)
+texture = ExtResource("6_2a0kc")
+
+[connection signal="body_entered" from="Spike Stem/Stem Hitbox" to="Spike Stem" method="_on_stem_hitbox_body_entered"]
+[connection signal="body_exited" from="Spike Stem/Stem Hitbox" to="Spike Stem" method="_on_stem_hitbox_body_exited"]
+[connection signal="body_entered" from="Spike Stem/Spike/Spike Hitbox" to="Spike Stem/Spike" method="_on_spike_hitbox_body_entered"]
+[connection signal="body_exited" from="Spike Stem/Spike/Spike Hitbox" to="Spike Stem/Spike" method="_on_spike_hitbox_body_exited"]

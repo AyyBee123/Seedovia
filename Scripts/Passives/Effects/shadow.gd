@@ -47,10 +47,10 @@ func _physics_process(delta):
 		$AnimatedSprite2D.flip_h = true
 
 func approach(delta):
-	if global_position.distance_to(get_nearest_enemy().global_position) > RANGE - 10:
+	if global_position.distance_to(get_nearest_enemy().global_position) > RANGE * 0.75:
 		velocity = velocity.lerp(direction * SPEED, ACCELERATION)
 		$AnimatedSprite2D.play("Move")
-	elif global_position.distance_to(get_nearest_enemy().global_position) < RANGE - 10:
+	elif global_position.distance_to(get_nearest_enemy().global_position) < RANGE * 0.75:
 		velocity = velocity.lerp(-direction * SPEED, ACCELERATION)
 		$AnimatedSprite2D.play("Move")
 	else:
