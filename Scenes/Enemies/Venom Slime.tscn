@@ -1,0 +1,160 @@
+[gd_scene load_steps=24 format=3 uid="uid://bl66xh2ffy6o8"]
+
+[ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_sqscw"]
+[ext_resource type="Script" uid="uid://6iyjlnnlh4xf" path="res://Scripts/Enemies/Venom Slime/venom_slime.gd" id="2_d5mbk"]
+[ext_resource type="Shader" uid="uid://dsv0n8bsysyo6" path="res://Shaders/color_tint_shader.gdshader" id="2_v8evq"]
+[ext_resource type="Texture2D" uid="uid://bbdbgev55hj3s" path="res://Sprites/Enemies/Vemon Slime.png" id="3_d5mbk"]
+[ext_resource type="Resource" uid="uid://ddlmjip722y4q" path="res://Resources/Enemies/venom_slime.tres" id="3_r27x1"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_r27x1"]
+radius = 10.5
+height = 34.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mop20"]
+resource_local_to_scene = true
+shader = ExtResource("2_v8evq")
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/tint_factor = 0.0
+shader_parameter/fade = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wk5df"]
+atlas = ExtResource("3_d5mbk")
+region = Rect2(0, 0, 44, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eq4ep"]
+atlas = ExtResource("3_d5mbk")
+region = Rect2(44, 0, 44, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8w53g"]
+atlas = ExtResource("3_d5mbk")
+region = Rect2(88, 0, 44, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xei7i"]
+atlas = ExtResource("3_d5mbk")
+region = Rect2(132, 0, 44, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4wqli"]
+atlas = ExtResource("3_d5mbk")
+region = Rect2(176, 0, 44, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ehg8h"]
+atlas = ExtResource("3_d5mbk")
+region = Rect2(220, 0, 44, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3dprj"]
+atlas = ExtResource("3_d5mbk")
+region = Rect2(264, 0, 44, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aopu8"]
+atlas = ExtResource("3_d5mbk")
+region = Rect2(308, 0, 44, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1rauj"]
+atlas = ExtResource("3_d5mbk")
+region = Rect2(352, 0, 44, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ract3"]
+atlas = ExtResource("3_d5mbk")
+region = Rect2(396, 0, 44, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ax8gr"]
+atlas = ExtResource("3_d5mbk")
+region = Rect2(440, 0, 44, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_48rjg"]
+atlas = ExtResource("3_d5mbk")
+region = Rect2(484, 0, 44, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_51a1d"]
+atlas = ExtResource("3_d5mbk")
+region = Rect2(528, 0, 44, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vntcb"]
+atlas = ExtResource("3_d5mbk")
+region = Rect2(572, 0, 44, 33)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x10q0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wk5df")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eq4ep")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8w53g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xei7i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4wqli")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ehg8h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3dprj")
+}],
+"loop": true,
+"name": &"Front",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aopu8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1rauj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ract3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ax8gr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_48rjg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_51a1d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vntcb")
+}],
+"loop": true,
+"name": &"Left",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bnre1"]
+radius = 10.5
+height = 34.0
+
+[node name="Venom Slime" instance=ExtResource("1_sqscw")]
+scale = Vector2(2, 2)
+script = ExtResource("2_d5mbk")
+_enemy_stats = ExtResource("3_r27x1")
+
+[node name="CollisionPolygon2D" parent="." index="0"]
+position = Vector2(0, 2.5)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_r27x1")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+material = SubResource("ShaderMaterial_mop20")
+sprite_frames = SubResource("SpriteFrames_x10q0")
+animation = &"Front"
+autoplay = "Front"
+frame_progress = 0.660796
+
+[node name="CollisionPolygon2D" parent="Enemy Hitbox" index="0"]
+position = Vector2(0, 2.5)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_bnre1")
+
+[node name="Pointer" type="Node2D" parent="." index="6"]
+
+[node name="Marker2D" type="Marker2D" parent="Pointer" index="0"]
+position = Vector2(28.5714, 0)

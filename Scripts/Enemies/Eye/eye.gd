@@ -14,7 +14,7 @@ var move_direction: Vector2
 
 func _ready():
 	super._ready()
-	for i in 8:
+	for i in TAU / SPREAD:
 		var angle = SPREAD * i - SPREAD / 2
 		if angle < 0:
 			angle += TAU
