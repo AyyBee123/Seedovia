@@ -15,8 +15,8 @@ func _physics_process(delta):
 
 func trigger():
 	_is_slowed = true
-	player._player_stats.set_stat("Speed", "x", SLOW_MULTIPLIER)
+	player._player_stats.set_temp_stat("Speed", "x", SLOW_MULTIPLIER)
 
 func untrigger():
 	_is_slowed = false
-	player._player_stats.set_stat("Speed", "x", 1.0 / SLOW_MULTIPLIER)
+	player._player_stats.set_temp_stat("Speed", "x", 1.0 / SLOW_MULTIPLIER)

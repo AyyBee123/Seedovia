@@ -199,6 +199,12 @@ func set_stat(stat: String, operation: String, amount):
 	elif operation == "x":
 		stats[stat][operation] *= amount
 
+func set_temp_stat(stat: String, operation: String, amount):
+	if operation == "+":
+		temp_stats[stat][operation] += amount
+	elif operation == "x":
+		temp_stats[stat][operation] *= amount
+
 func update_stat(stat: String, was_equipped: bool, old_stat_value):
 	if stat == "Max_Health":
 		var previous_max_health = get_stat("Max_Health")
@@ -212,6 +218,11 @@ func update_stat(stat: String, was_equipped: bool, old_stat_value):
 		else:
 			health = current_health
 	change_stat.emit()
+
+func reset_temp_stats():
+	for stat in temp_stats.keys():
+		temp_stats[stat]["+"] = 0
+		temp_stats[stat]["x"] = 1
 
 func heal(amount):
 	health += amount

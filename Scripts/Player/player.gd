@@ -71,6 +71,7 @@ func _ready():
 		PlayerPassives.set_item_passives()
 		PlayerStatStorage.set_stats()
 		Global.load_run_data()
+	_player_stats.reset_temp_stats()
 	_player_stats.set_health(PlayerStatStorage.current_health)
 	controller_cursor.visible = false
 	_player_stats.damaged.connect(took_damage)
