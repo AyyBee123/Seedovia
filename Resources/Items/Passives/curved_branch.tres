@@ -8,7 +8,8 @@
 script = ExtResource("1_mhu0r")
 passive_name = "Curved Branch"
 sprite = ExtResource("3_gqfyv")
-description = "Grants seeds homing."
+description = "Grants seeds homing.
++20% Range"
 passive_ability = ExtResource("1_sr7ti")
 unlocked = true
 metadata/_custom_type_script = "uid://yr5gdtdbvmoc"

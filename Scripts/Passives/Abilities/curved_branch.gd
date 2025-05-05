@@ -1,13 +1,24 @@
 extends Node
 
+const RANGE_INCREASE = 0.3
+const HOMING_STRENGTH = 5
+
+var player
 var source
 var new_rot
 
 func _ready():
+	player = Targets.get_player()
 	source = get_parent().get_parent()
+	if source == player:
+		player._player_stats.set_stat("Weapon_Range", "+", RANGE_INCREASE)
 	if source.is_in_group("Weapon") and "direction" in source:
 		source.rotation = source.direction.angle()
 	source.weapon_fired.connect(transfer_passive)
+
+func _exit_tree():
+	if source == player:
+		player._player_stats.set_stat("Weapon_Range", "+", -RANGE_INCREASE)
 
 func _physics_process(delta):
 	if source == Targets.get_player():
@@ -15,7 +26,7 @@ func _physics_process(delta):
 	if source.is_in_group("Weapon"):
 		if get_nearest_enemy():
 			var rotation_angle = source.global_position.direction_to(get_nearest_enemy().global_position).angle()
-			new_rot = lerp_angle(source.rotation, rotation_angle, 2 * delta)
+			new_rot = lerp_angle(source.rotation, rotation_angle, HOMING_STRENGTH * delta)
 			source.rotation = new_rot
 			source.direction = Vector2.RIGHT.rotated(new_rot)
 
