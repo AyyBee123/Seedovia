@@ -75,6 +75,6 @@ func _on_wall_detect_body_entered(body):
 	# knock the player back if they are hit
 	var knockback_scene = KNOCKBACK.instantiate()
 	knockback_scene.knockback_direction = Vector2.UP.rotated(launch_rotation).normalized()
-	knockback_scene.knockback_speed = 250
+	knockback_scene.knockback_speed = 750
 	# add node to the player that gives velocity/position change
 	body.add_child(knockback_scene)

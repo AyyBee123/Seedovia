@@ -13,12 +13,11 @@ func _ready():
 func _physics_process(delta):
 	var collision
 	if deceleration_time.is_stopped():
-		player.velocity += knockback_direction * knockback_speed
+		player.velocity = knockback_direction * knockback_speed
 	else:
-		player.velocity += knockback_direction * knockback_speed * deceleration_time.time_left \
+		player.velocity = knockback_direction * knockback_speed * deceleration_time.time_left \
 		/ deceleration_time.wait_time
 	if collision:
-		player.remove_child(self)
 		queue_free.call_deferred()
 
 func _on_impulse_time_timeout():
@@ -26,5 +25,4 @@ func _on_impulse_time_timeout():
 		deceleration_time.start()
 
 func _on_deceleration_time_timeout():
-	player.remove_child(self)
 	queue_free.call_deferred()
