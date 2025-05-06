@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://42i61i0wr3sk"]
+
+[ext_resource type="PackedScene" uid="uid://bnawmyjsajle3" path="res://Scenes/Levels/Floor 1 Base.tscn" id="1_x84qp"]
+[ext_resource type="Shader" uid="uid://qm3syqtxdolu" path="res://Shaders/circle_transition.gdshader" id="2_2jk6n"]
+[ext_resource type="PackedScene" uid="uid://yu7uvatddfo7" path="res://Scenes/Enemies/Obstacles/Taiko.tscn" id="3_vjgfh"]
+[ext_resource type="PackedScene" uid="uid://inbvexnx3t21" path="res://Scenes/Enemies/Hot Pot.tscn" id="4_x84qp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0ecxy"]
+resource_local_to_scene = true
+shader = ExtResource("2_2jk6n")
+shader_parameter/circle_size = 0.0
+shader_parameter/circle_position_x = 0.5
+shader_parameter/circle_position_y = 0.695
+
+[node name="Level" instance=ExtResource("1_x84qp")]
+
+[node name="Circle Transition" parent="." index="6"]
+material = SubResource("ShaderMaterial_0ecxy")
+
+[node name="Taiko" parent="." index="7" instance=ExtResource("3_vjgfh")]
+position = Vector2(384, -320)
+
+[node name="Taiko2" parent="." index="8" instance=ExtResource("3_vjgfh")]
+position = Vector2(-384, 320)
+direction = Vector2(0, -1)
+
+[node name="Hot Pot" parent="." index="9" instance=ExtResource("4_x84qp")]
+position = Vector2(-704, 0)
+
+[node name="Hot Pot2" parent="." index="10" instance=ExtResource("4_x84qp")]
+position = Vector2(704, 0)
+
+[node name="Hot Pot3" parent="." index="11" instance=ExtResource("4_x84qp")]
+position = Vector2(0, -192)

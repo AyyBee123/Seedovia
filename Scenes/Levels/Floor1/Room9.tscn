@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://cc1s7x07tblln"]
+
+[ext_resource type="PackedScene" uid="uid://bnawmyjsajle3" path="res://Scenes/Levels/Floor 1 Base.tscn" id="1_h71mt"]
+[ext_resource type="Shader" uid="uid://qm3syqtxdolu" path="res://Shaders/circle_transition.gdshader" id="2_sdsw4"]
+[ext_resource type="PackedScene" uid="uid://yu7uvatddfo7" path="res://Scenes/Enemies/Obstacles/Taiko.tscn" id="3_sdsw4"]
+[ext_resource type="PackedScene" uid="uid://bl66xh2ffy6o8" path="res://Scenes/Enemies/Venom Slime.tscn" id="4_5hcko"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0ecxy"]
+resource_local_to_scene = true
+shader = ExtResource("2_sdsw4")
+shader_parameter/circle_size = 0.0
+shader_parameter/circle_position_x = 0.5
+shader_parameter/circle_position_y = 0.695
+
+[node name="Level" instance=ExtResource("1_h71mt")]
+
+[node name="Circle Transition" parent="." index="6"]
+material = SubResource("ShaderMaterial_0ecxy")
+
+[node name="Taiko" parent="." index="7" instance=ExtResource("3_sdsw4")]
+position = Vector2(712, -2.38419e-07)
+direction = Vector2(-1, 0)
+
+[node name="Taiko2" parent="." index="8" instance=ExtResource("3_sdsw4")]
+position = Vector2(-712, 0)
+direction = Vector2(1, 0)
+
+[node name="Venom Slime" parent="." index="9" instance=ExtResource("4_5hcko")]
+position = Vector2(-640, -256)
+
+[node name="Venom Slime2" parent="." index="10" instance=ExtResource("4_5hcko")]
+position = Vector2(640, -256)

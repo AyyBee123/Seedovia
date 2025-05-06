@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bnawmyjsajle3" path="res://Scenes/Levels/Floor 1 Base.tscn" id="1_socov"]
 [ext_resource type="Shader" uid="uid://qm3syqtxdolu" path="res://Shaders/circle_transition.gdshader" id="2_g58x6"]
 [ext_resource type="PackedScene" uid="uid://cqg68mxfdsxm4" path="res://Scenes/Enemies/Totem Pot.tscn" id="3_gdvqd"]
-[ext_resource type="PackedScene" uid="uid://f1csqvgtqoj5" path="res://Scenes/Enemies/Malignant Seed.tscn" id="4_sykjd"]
+[ext_resource type="PackedScene" uid="uid://inbvexnx3t21" path="res://Scenes/Enemies/Hot Pot.tscn" id="4_lpfbc"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0ecxy"]
 resource_local_to_scene = true
@@ -14,39 +14,13 @@ shader_parameter/circle_position_y = 0.695
 
 [node name="Level" instance=ExtResource("1_socov")]
 
-[node name="Down" parent="." index="6"]
-z_index = -2
-
-[node name="CollisionShape2D" parent="Down" index="0"]
-z_index = -2
-
-[node name="Up" parent="." index="7"]
-z_index = -2
-
-[node name="CollisionShape2D" parent="Up" index="0"]
-z_index = -2
-
-[node name="Left" parent="." index="8"]
-z_index = -2
-
-[node name="CollisionShape2D" parent="Left" index="0"]
-z_index = -2
-
-[node name="Right" parent="." index="9"]
-z_index = -2
-
-[node name="CollisionShape2D" parent="Right" index="0"]
-z_index = -2
-
-[node name="Circle Transition" parent="." index="10"]
+[node name="Circle Transition" parent="." index="6"]
 material = SubResource("ShaderMaterial_0ecxy")
 
-[node name="Totem Pot" parent="." index="11" instance=ExtResource("3_gdvqd")]
+[node name="Totem Pot" parent="." index="7" instance=ExtResource("3_gdvqd")]
 
-[node name="Malignant Seed" parent="." index="12" instance=ExtResource("4_sykjd")]
-position = Vector2(288, 160)
-y_direction = -1
+[node name="Hot Pot" parent="." index="8" instance=ExtResource("4_lpfbc")]
+position = Vector2(-320, -128)
 
-[node name="Malignant Seed2" parent="." index="13" instance=ExtResource("4_sykjd")]
-position = Vector2(-288, -160)
-x_direction = -1
+[node name="Hot Pot2" parent="." index="9" instance=ExtResource("4_lpfbc")]
+position = Vector2(320, 128)

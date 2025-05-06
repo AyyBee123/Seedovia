@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://p6e4i5gdomm5"]
+
+[ext_resource type="PackedScene" uid="uid://bnawmyjsajle3" path="res://Scenes/Levels/Floor 1 Base.tscn" id="1_g8vpp"]
+[ext_resource type="Shader" uid="uid://qm3syqtxdolu" path="res://Shaders/circle_transition.gdshader" id="2_f1kym"]
+[ext_resource type="PackedScene" uid="uid://bsb35lcd8lwyq" path="res://Scenes/Enemies/Slime.tscn" id="3_nki57"]
+[ext_resource type="PackedScene" uid="uid://cqg68mxfdsxm4" path="res://Scenes/Enemies/Totem Pot.tscn" id="4_g8vpp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0ecxy"]
+resource_local_to_scene = true
+shader = ExtResource("2_f1kym")
+shader_parameter/circle_size = 0.0
+shader_parameter/circle_position_x = 0.5
+shader_parameter/circle_position_y = 0.695
+
+[node name="Level" instance=ExtResource("1_g8vpp")]
+
+[node name="Circle Transition" parent="." index="6"]
+material = SubResource("ShaderMaterial_0ecxy")
+
+[node name="Slime" parent="." index="7" instance=ExtResource("3_nki57")]
+position = Vector2(-576, 0)
+
+[node name="Slime2" parent="." index="8" instance=ExtResource("3_nki57")]
+position = Vector2(512, 0)
+
+[node name="Slime3" parent="." index="9" instance=ExtResource("3_nki57")]
+
+[node name="Totem Pot" parent="." index="10" instance=ExtResource("4_g8vpp")]
+position = Vector2(-320, -64)
+
+[node name="Totem Pot2" parent="." index="11" instance=ExtResource("4_g8vpp")]
+position = Vector2(320, -64)

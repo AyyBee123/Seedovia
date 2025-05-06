@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://5v8l620awrh0"]
+
+[ext_resource type="PackedScene" uid="uid://bnawmyjsajle3" path="res://Scenes/Levels/Floor 1 Base.tscn" id="1_7p4y7"]
+[ext_resource type="Shader" uid="uid://qm3syqtxdolu" path="res://Shaders/circle_transition.gdshader" id="2_1dywd"]
+[ext_resource type="PackedScene" uid="uid://bl66xh2ffy6o8" path="res://Scenes/Enemies/Venom Slime.tscn" id="3_7p4y7"]
+[ext_resource type="PackedScene" uid="uid://inbvexnx3t21" path="res://Scenes/Enemies/Hot Pot.tscn" id="4_tcyo0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0ecxy"]
+resource_local_to_scene = true
+shader = ExtResource("2_1dywd")
+shader_parameter/circle_size = 0.0
+shader_parameter/circle_position_x = 0.5
+shader_parameter/circle_position_y = 0.695
+
+[node name="Level" instance=ExtResource("1_7p4y7")]
+
+[node name="Circle Transition" parent="." index="6"]
+material = SubResource("ShaderMaterial_0ecxy")
+
+[node name="Venom Slime" parent="." index="7" instance=ExtResource("3_7p4y7")]
+position = Vector2(0, -128)
+
+[node name="Hot Pot" parent="." index="8" instance=ExtResource("4_tcyo0")]
+position = Vector2(-704, -192)
+
+[node name="Hot Pot2" parent="." index="9" instance=ExtResource("4_tcyo0")]
+position = Vector2(704, 256)

@@ -1,0 +1,35 @@
+[gd_scene load_steps=8 format=3 uid="uid://bserwhvj2oxv2"]
+
+[ext_resource type="PackedScene" uid="uid://bnawmyjsajle3" path="res://Scenes/Levels/Floor 1 Base.tscn" id="1_upkrv"]
+[ext_resource type="Shader" uid="uid://qm3syqtxdolu" path="res://Shaders/circle_transition.gdshader" id="2_8b1m0"]
+[ext_resource type="PackedScene" uid="uid://chovoyax176wv" path="res://Scenes/Enemies/Log.tscn" id="3_620k8"]
+[ext_resource type="PackedScene" uid="uid://dro5juqd1bdju" path="res://Scenes/Enemies/Log Vertical.tscn" id="4_dmlbv"]
+[ext_resource type="PackedScene" uid="uid://26iqs3vqaiqq" path="res://Scenes/Enemies/Log Vertical Flipped.tscn" id="5_u21cf"]
+[ext_resource type="PackedScene" uid="uid://bl66xh2ffy6o8" path="res://Scenes/Enemies/Venom Slime.tscn" id="6_1l8bp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0ecxy"]
+resource_local_to_scene = true
+shader = ExtResource("2_8b1m0")
+shader_parameter/circle_size = 0.0
+shader_parameter/circle_position_x = 0.5
+shader_parameter/circle_position_y = 0.695
+
+[node name="Level" instance=ExtResource("1_upkrv")]
+
+[node name="Circle Transition" parent="." index="6"]
+material = SubResource("ShaderMaterial_0ecxy")
+
+[node name="Log" parent="." index="7" instance=ExtResource("3_620k8")]
+position = Vector2(704, 128)
+
+[node name="Log2" parent="." index="8" instance=ExtResource("3_620k8")]
+position = Vector2(-704, -128)
+
+[node name="Log3" parent="." index="9" instance=ExtResource("4_dmlbv")]
+position = Vector2(-384, -320)
+
+[node name="Log4" parent="." index="10" instance=ExtResource("5_u21cf")]
+position = Vector2(384, 320)
+
+[node name="Venom Slime" parent="." index="11" instance=ExtResource("6_1l8bp")]
+position = Vector2(0, -128)
