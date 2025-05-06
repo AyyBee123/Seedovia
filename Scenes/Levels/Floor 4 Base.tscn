@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=4 uid="uid://chj80f72y8sfx"]
+[gd_scene load_steps=4 format=4 uid="uid://chj80f72y8sfx"]
 
 [ext_resource type="PackedScene" uid="uid://cxoiy0x4nvtaa" path="res://Scenes/Levels/Base Level.tscn" id="1_argqs"]
 [ext_resource type="Shader" uid="uid://qm3syqtxdolu" path="res://Shaders/circle_transition.gdshader" id="2_rtbrq"]
-[ext_resource type="Script" uid="uid://jmpc3r5rh2yw" path="res://Scripts/Misc/foreground_lighting.gd" id="3_2w5lw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0ecxy"]
 resource_local_to_scene = true
@@ -19,11 +18,6 @@ tile_map_data = PackedByteArray("AAD5//z/FQAAAAAAAAD4//z/AQAAAAAAAAD4//3/AQAAAAA
 [node name="Circle Transition" parent="." index="6"]
 material = SubResource("ShaderMaterial_0ecxy")
 
-[node name="Foreground Lighting" type="ColorRect" parent="." index="7"]
-z_index = 7
-offset_left = -1536.0
-offset_top = -896.0
-offset_right = 1536.0
-offset_bottom = 896.0
-color = Color(0.784314, 0, 0.529412, 0.0588235)
-script = ExtResource("3_2w5lw")
+[node name="CanvasModulate" type="CanvasModulate" parent="." index="7"]
+position = Vector2(-1536, -896)
+color = Color(0.999999, 0.923947, 0.957796, 1)
