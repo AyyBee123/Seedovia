@@ -14,7 +14,7 @@ var collision
 func _physics_process(delta):
 	super._physics_process(delta)
 	
-	velocity = direction * _enemy_stats.speed
+	velocity = direction.normalized() * _enemy_stats.speed
 	collision = move_and_collide(velocity * delta)
 	
 	if collision:
