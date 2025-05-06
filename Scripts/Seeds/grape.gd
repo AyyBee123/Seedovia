@@ -26,6 +26,7 @@ func _ready():
 			grape.shader = shader
 			grape._spawn_more_grapes = false
 			grape.source = source
+			grape.previous_weapon = previous_weapon
 			grape.target_group = target_group
 			grape.collisions = collisions
 			grape.desired_direction = desired_direction

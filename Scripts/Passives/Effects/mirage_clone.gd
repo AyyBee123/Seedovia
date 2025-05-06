@@ -8,6 +8,8 @@ signal has_collided(object)
 @onready var sprite = $Sprite2D
 @onready var weapon_direction_marker = $"Rotation Point/Weapon Direction"
 
+const PLAYER_HAND = preload("res://Scenes/Seeds/Player Hand.tscn")
+
 var player
 var offset
 var DAMAGE = 10
@@ -40,6 +42,8 @@ func _physics_process(delta):
 
 func shoot(seed):
 	var weapon_instance = null if PlayerInventory.seeds.size() == 0 else PlayerSeeds.load_weapons()[0].instantiate()
+	if weapon_instance == null:
+		weapon_instance = PLAYER_HAND.instantiate()
 	weapon_instance.initial_weapon = true
 	weapon_instance.slot_index = 0
 	weapon_instance.previous_weapon = self

@@ -23,8 +23,9 @@ func _ready():
 	super._ready()
 	randomize()
 	# if fired directly by the player or a summon
-	if previous_weapon == player or source.is_in_group("Player Summon"):
-		SPORE_AMOUNT = 5
+	if is_instance_valid(previous_weapon):
+		if previous_weapon == player or previous_weapon.is_in_group("Player Summon"):
+			SPORE_AMOUNT = 5
 	rotation_speed = randf_range(5, 6)
 	pointer.rotation = desired_direction.angle() + randf_range(-PI/2, PI/2)
 	first_collision_ignored = ignore_first_collision
@@ -140,6 +141,7 @@ func _on_fire_delay_timeout():
 		spore.shader = shader
 		spore.collisions = collisions
 		spore.source = source
+		spore.previous_weapon = previous_weapon
 		spore.target_group = target_group
 		spore._spawn_more_spores = false
 		spore.desired_direction = desired_direction

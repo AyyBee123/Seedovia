@@ -18,6 +18,7 @@ func _ready():
 			thorn._spawn_more_thorns = false
 			thorn.collisions = collisions
 			thorn.source = source
+			thorn.previous_weapon = previous_weapon
 			thorn.target_group = target_group
 			thorn.desired_direction = desired_direction.rotated(dir)
 			thorn.slot_index = slot_index

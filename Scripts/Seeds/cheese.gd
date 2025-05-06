@@ -23,7 +23,7 @@ var starting_rotation: float = 75.0
 var direction_difference: float # the difference between the initial direction and desired direction (as an angle)
 
 func _ready():
-	if previous_weapon == player or source.is_in_group("Direct Fire"): # if fired by a player
+	if previous_weapon == player or previous_weapon.is_in_group("Direct Fire"): # if fired by a player
 		angle_threshold = angle_threshold / FIRE_RATE
 	else:
 		_was_previous_weapon = true

@@ -75,6 +75,7 @@ func spawn_gold():
 	var gold = GOLD.instantiate()
 	gold.shader = shader
 	gold.source = source
+	gold.previous_weapon = previous_weapon
 	gold.target_group = target_group
 	gold.collisions = collisions
 	gold.desired_direction = weapon_direction

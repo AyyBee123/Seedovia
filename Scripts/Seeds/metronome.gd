@@ -19,8 +19,8 @@ func set_weapon_properties(weapon, _desired_direction, _ignore_first_collision =
 	weapon.initial_weapon = false
 	weapon.ignore_first_collision = _ignore_first_collision
 	weapon.desired_direction = _desired_direction
-	weapon.previous_weapon = previous_weapon
 	weapon.source = source
+	weapon.previous_weapon = previous_weapon
 	weapon.hit_enemy = _enemy
 	if set_next_seed_slot_index:
 		weapon.slot_index = set_next_seed_slot_index

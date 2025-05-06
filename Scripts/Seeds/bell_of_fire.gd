@@ -36,6 +36,7 @@ func explode():
 		pool.slot_index = slot_index
 		pool.seed_slot_number = seed_slot_number
 		pool.source = source
+		pool.previous_weapon = previous_weapon
 		pool.target_group = target_group
 		pool.transferred_speed_multiplier *= transferred_speed_multiplier
 		pool.transferred_range_multiplier *= transferred_range_multiplier

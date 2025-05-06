@@ -93,6 +93,7 @@ func transfer_properties(seed):
 	seed.scale = scale
 	seed.collisions = collisions
 	seed.source = source
+	seed.previous_weapon = previous_weapon
 	seed.target_group = target_group
 	seed.slot_index = slot_index
 	seed.seed_slot_number = seed_slot_number
