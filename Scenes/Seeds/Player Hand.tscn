@@ -1,0 +1,38 @@
+[gd_scene load_steps=8 format=3 uid="uid://b3cyjdyj5wua4"]
+
+[ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_8gyh0"]
+[ext_resource type="Script" uid="uid://bqx6nexii0271" path="res://Scripts/Seeds/player_hand.gd" id="2_rsyv4"]
+[ext_resource type="Texture2D" uid="uid://6t77wjo7b6ts" path="res://Sprites/Character/Sapling/Hand.png" id="2_vrlhf"]
+[ext_resource type="AudioStream" uid="uid://cs4gg4d8pkj6f" path="res://Audio/SFX/Quiet Thud.mp3" id="4_7oot2"]
+[ext_resource type="Shader" uid="uid://dsv0n8bsysyo6" path="res://Shaders/color_tint_shader.gdshader" id="5_05c5j"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7oot2"]
+radius = 4.52769
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_811mr"]
+shader = ExtResource("5_05c5j")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/tint_factor = 1.0
+shader_parameter/fade = 0.25
+
+[node name="Player Hand" instance=ExtResource("1_8gyh0")]
+scale = Vector2(2, 2)
+texture = ExtResource("2_vrlhf")
+script = ExtResource("2_rsyv4")
+BASE_DAMAGE = 5.0
+BASE_FIRE_RATE = 3.333
+BASE_RANGE = 100.0
+BASE_SPEED = 600.0
+BASE_SIZE = 1.0
+BASE_BLAST_RADIUS = 1.0
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource("CircleShape2D_7oot2")
+
+[node name="QuietThud" type="AudioStreamPlayer" parent="." index="3"]
+stream = ExtResource("4_7oot2")
+volume_db = -5.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="4"]
+material = SubResource("ShaderMaterial_811mr")
+texture = ExtResource("2_vrlhf")

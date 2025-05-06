@@ -7,6 +7,7 @@ signal has_collided(object)
 signal seed_fired(seed) # for immediately fired seeds (for the mirage passive)
 
 const POPUP = preload("res://Scenes/UI/Item Popup.tscn")
+const PLAYER_HAND = preload("res://Scenes/Seeds/Player Hand.tscn")
 
 var _player_stats: player_stats = preload("res://Resources/Characters/Stats/base_stats.tres")
 
@@ -130,6 +131,8 @@ func _physics_process(delta):
 		current_weapon = null if PlayerInventory.seeds.size() == 0 else PlayerSeeds.load_weapons()[0]
 		if current_weapon != null:
 			shoot.emit(current_weapon, hand.global_position)
+		else:
+			shoot.emit(PLAYER_HAND, hand.global_position)
 			
 	# pause game or close inventory, or close stat sheet
 	if Input.is_action_just_pressed("esc"):
@@ -244,7 +247,9 @@ func update_timers():
 		bullets_per_second.wait_time = 1.0 / (weapon.BASE_FIRE_RATE * (1 + _player_stats.stats["Fire_Rate"]["+"]) \
 				* _player_stats.stats["Fire_Rate"]["x"])
 	else:
-		bullets_per_second.stop()
+		# default hand fire rate
+		bullets_per_second.wait_time = 1.0 / (2 * (1 + _player_stats.stats["Fire_Rate"]["+"]) \
+				* _player_stats.stats["Fire_Rate"]["x"])
 	invulnerability_time.wait_time = _player_stats.get_stat("Invulnerability_Time")
 	dash_cooldown.wait_time = _player_stats.get_stat("Dash_Rate")
 	dash_invulnerability_time.wait_time = _player_stats.get_stat("Dash_Invulnerability")
