@@ -43,6 +43,7 @@ func explode():
 		pool.transferred_damage_multiplier *= transferred_damage_multiplier
 		pool.transferred_blast_radius_multiplier *= transferred_blast_radius_multiplier
 		pool.transferred_fire_rate_multiplier *= transferred_fire_rate_multiplier
+		pool.modulate = modulate
 		pool.add_child(get_node("Passives").duplicate())
 		call_deferred("create_child", pool)
 	queue_free.call_deferred()

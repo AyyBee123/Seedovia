@@ -8,7 +8,7 @@ extends "res://Scripts/Seeds/seed_template.gd"
 const SPLASH = preload("res://Scenes/Misc/Splash.tscn")
 var SPORE = load("res://Scenes/Seeds/Spore.tscn")
 
-const SPORE_AMOUNT = 5
+var SPORE_AMOUNT = 2
 var spore_amount_spawned: int
 
 var rotation_speed: float
@@ -22,6 +22,9 @@ var is_homing: bool = true
 func _ready():
 	super._ready()
 	randomize()
+	# if fired directly by the player or a summon
+	if previous_weapon == player or source.is_in_group("Player Summon"):
+		SPORE_AMOUNT = 5
 	rotation_speed = randf_range(5, 6)
 	pointer.rotation = desired_direction.angle() + randf_range(-PI/2, PI/2)
 	first_collision_ignored = ignore_first_collision
@@ -149,6 +152,7 @@ func _on_fire_delay_timeout():
 		spore.transferred_damage_multiplier *= transferred_damage_multiplier
 		spore.transferred_blast_radius_multiplier *= transferred_blast_radius_multiplier
 		spore.transferred_fire_rate_multiplier *= transferred_fire_rate_multiplier
+		spore.modulate = modulate
 		get_tree().current_scene.add_child.call_deferred(spore)
 		if pos == null:
 			fire_delay.start()

@@ -87,6 +87,7 @@ func spawn_gold():
 	gold.transferred_damage_multiplier *= transferred_damage_multiplier
 	gold.transferred_blast_radius_multiplier *= transferred_blast_radius_multiplier
 	gold.transferred_fire_rate_multiplier *= transferred_fire_rate_multiplier
+	gold.modulate = modulate
 	get_tree().current_scene.add_child.call_deferred(gold)
 	gold.global_position = global_position
 	weapon_fired.emit(gold)

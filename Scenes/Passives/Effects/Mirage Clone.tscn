@@ -8,7 +8,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_81ffo"]
 size = Vector2(12, 20)
 
-[node name="Mirage Clone" type="CharacterBody2D"]
+[node name="Mirage Clone" type="CharacterBody2D" groups=["Player Summon"]]
 modulate = Color(1, 1, 1, 0.392157)
 z_index = 3
 collision_layer = 32768
@@ -28,6 +28,9 @@ shape = SubResource("RectangleShape2D_81ffo")
 [node name="Hand" type="Sprite2D" parent="Rotation Point"]
 position = Vector2(8, 0)
 texture = ExtResource("3_81ffo")
+
+[node name="Weapon Direction" type="Marker2D" parent="Rotation Point" groups=["Direct Fire", "Player Summon"]]
+position = Vector2(150, 0)
 
 [node name="Shadow" type="Sprite2D" parent="."]
 z_index = -1

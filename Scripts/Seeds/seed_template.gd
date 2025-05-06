@@ -171,6 +171,7 @@ func set_weapon_properties(weapon, _desired_direction, _ignore_first_collision =
 	weapon.transferred_damage_multiplier *= transferred_damage_multiplier
 	weapon.transferred_blast_radius_multiplier *= transferred_blast_radius_multiplier
 	weapon.transferred_fire_rate_multiplier *= transferred_fire_rate_multiplier
+	weapon.modulate = modulate
 	if set_next_seed_slot_number:
 		weapon.seed_slot_number = set_next_seed_slot_number
 	else:

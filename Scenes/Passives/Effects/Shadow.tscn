@@ -56,7 +56,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o8a53"]
 size = Vector2(9, 13)
 
-[node name="Shadow" type="CharacterBody2D"]
+[node name="Shadow" type="CharacterBody2D" groups=["Player Summon"]]
 z_index = 3
 scale = Vector2(2, 2)
 collision_layer = 16384
@@ -80,6 +80,9 @@ position = Vector2(0, 3.5)
 unique_name_in_owner = true
 position = Vector2(6, 0)
 texture = ExtResource("2_cn3k5")
+
+[node name="Weapon Direction" type="Marker2D" parent="Marker2D"]
+position = Vector2(150, 0)
 
 [node name="Fire Rate" type="Timer" parent="."]
 one_shot = true

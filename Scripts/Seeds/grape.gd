@@ -40,6 +40,7 @@ func _ready():
 			grape.transferred_damage_multiplier *= transferred_damage_multiplier
 			grape.transferred_blast_radius_multiplier *= transferred_blast_radius_multiplier
 			grape.transferred_fire_rate_multiplier *= transferred_fire_rate_multiplier
+			grape.modulate = modulate
 			get_tree().current_scene.add_child.call_deferred(grape)
 			grape.global_position = global_position
 			weapon_fired.emit(grape)

@@ -65,6 +65,7 @@ func spawn_child_peppers():
 		pepper_child.transferred_damage_multiplier *= transferred_damage_multiplier
 		pepper_child.transferred_blast_radius_multiplier *= transferred_blast_radius_multiplier
 		pepper_child.transferred_fire_rate_multiplier *= transferred_fire_rate_multiplier
+		pepper_child.modulate = modulate
 		pepper_child.add_child(get_node("Passives").duplicate())
 		call_deferred("create_child", pepper_child)
 

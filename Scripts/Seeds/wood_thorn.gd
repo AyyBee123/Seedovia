@@ -31,6 +31,7 @@ func _ready():
 			thorn.transferred_damage_multiplier *= transferred_damage_multiplier
 			thorn.transferred_blast_radius_multiplier *= transferred_blast_radius_multiplier
 			thorn.transferred_fire_rate_multiplier *= transferred_fire_rate_multiplier
+			thorn.modulate = modulate
 			get_tree().current_scene.add_child.call_deferred(thorn)
 			thorn.global_position = global_position
 			weapon_fired.emit(thorn)

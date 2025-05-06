@@ -6,6 +6,7 @@ signal has_collided(object) # signal for colliding with an enemy or wall
 @onready var marker_2d = %Marker2D
 @onready var hand = %Hand
 @onready var fire_rate = $"Fire Rate"
+@onready var weapon_direction_marker = $"Marker2D/Weapon Direction"
 
 var targeted_enemy
 var direction: Vector2

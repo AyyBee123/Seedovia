@@ -6,6 +6,7 @@ signal has_collided(object)
 @onready var hand = $"Rotation Point/Hand"
 @onready var rotation_point = $"Rotation Point"
 @onready var sprite = $Sprite2D
+@onready var weapon_direction_marker = $"Rotation Point/Weapon Direction"
 
 var player
 var offset

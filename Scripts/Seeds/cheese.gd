@@ -23,21 +23,21 @@ var starting_rotation: float = 75.0
 var direction_difference: float # the difference between the initial direction and desired direction (as an angle)
 
 func _ready():
-	if previous_weapon != player: # if fired by a non-player
+	if previous_weapon == player or source.is_in_group("Direct Fire"): # if fired by a player
+		angle_threshold = angle_threshold / FIRE_RATE
+	else:
 		_was_previous_weapon = true
 		_initial_shot = false
 		rotation_degrees = rad_to_deg(desired_direction.angle()) - starting_rotation
 		angle_threshold = angle_threshold / (FIRE_RATE * 1.7)
-	else:
-		angle_threshold = angle_threshold / FIRE_RATE
 	super._ready()
 	set_variable_sizes()
 	starting_angle = rotation_degrees
 	angle_travelled = 0.0
 	direction_difference = desired_direction.angle() \
-			- player.global_position.direction_to(player.weapon_direction_marker.global_position).angle()
+			- source.global_position.direction_to(source.weapon_direction_marker.global_position).angle()
 	if not _was_previous_weapon: # if fired by the player
-		rotation = global_position.angle_to_point(player.weapon_direction_marker.global_position)
+		rotation = global_position.angle_to_point(source.weapon_direction_marker.global_position)
 	else:
 		rotation_degrees = rad_to_deg(desired_direction.angle()) - starting_rotation
 
@@ -120,8 +120,8 @@ func _collide(body):
 
 func update_position(delta):
 	if not _was_previous_weapon:
-		global_position = player.hand.global_position
-		rotation = global_position.angle_to_point(player.weapon_direction_marker.global_position) \
+		global_position = source.hand.global_position
+		rotation = global_position.angle_to_point(source.weapon_direction_marker.global_position) \
 				+ direction_difference
 		direction = Vector2.RIGHT.rotated(rotation)
 

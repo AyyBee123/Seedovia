@@ -104,6 +104,7 @@ func transfer_properties(seed):
 	seed.transferred_damage_multiplier *= transferred_damage_multiplier
 	seed.transferred_blast_radius_multiplier *= transferred_blast_radius_multiplier
 	seed.transferred_fire_rate_multiplier *= transferred_fire_rate_multiplier
+	seed.modulate = modulate
 	seed.shader = shader
 	if get_node_or_null("Passives"):
 		seed.add_child(get_node("Passives").duplicate())
