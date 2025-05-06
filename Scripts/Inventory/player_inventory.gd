@@ -47,11 +47,20 @@ func equip_item(item, player, inv):
 			if not seeds.has(i): # checks for space in inventory (if the slot is empty)
 				picked_up_item = item
 				seeds[i] = item
+				PlayerSeeds.load_weapons()
+				player.update_timers()
+				break
 	elif item.category == "TALISMAN":
 		for i in range(NUM_TALISMAN_SLOTS):
 			if not talismans.has(i): # checks for space in inventory (if the slot is empty)
 				picked_up_item = item
 				talismans[i] = item
+				PlayerEquipment.add_stats(item, player, item.was_already_equipped)
+				for passive in item.special_properties:
+					var p = passive.instantiate()
+					PlayerEquipment.add_passive(player, p)
+				item.was_already_equipped = true
+				break
 	else:
 		add_item(item, player, inv)
 		return
