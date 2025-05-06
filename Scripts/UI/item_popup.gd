@@ -10,7 +10,7 @@ var detailed_description
 var rarity
 var inventory
 var source
-var hue = 0.0
+static var hue = 0.0
 var mystic_color
 
 func _ready():
@@ -76,5 +76,6 @@ func set_pos():
 		global_position.y = inventory_y_pos + inventory_height - %Box.size.y * inventory.scale.y / 2 + OFFSET
 
 func set_values(color: Color, text: String):
+	material.set("shader_parameter/new_color", color)
 	%Rarity.self_modulate = color
 	%Rarity.text = "[right]" + text

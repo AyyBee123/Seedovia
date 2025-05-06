@@ -181,19 +181,20 @@ func get_nearest_item():
 	var nearest_distance = null
 	for item in items_in_area:
 		# remove highlight from all items to only add it to the nearest item at the end
-		item.get_node("Sprite").material.set("shader_parameter/color", Color(highlight_color, 0))
+		item.nearest_item = false
 		if nearest_item == null:
 			nearest_item = item
 			nearest_distance = item.global_position.distance_squared_to(global_position)
 			# add highlight to the nearest item
-			nearest_item.get_node("Sprite").material.set("shader_parameter/color", Color(highlight_color, 1))
+			nearest_item.nearest_item = true
 		else:
 			if nearest_distance > item.global_position.distance_squared_to(global_position):
 				# remove highlight from the old nearest item and add it to the new one
-				nearest_item.get_node("Sprite").material.set("shader_parameter/color", Color(highlight_color, 0))
+				nearest_item.nearest_item = false
 				nearest_item = item
 				nearest_distance = item.global_position.distance_squared_to(global_position)
-				nearest_item.get_node("Sprite").material.set("shader_parameter/color", Color(highlight_color, 1))
+				nearest_item.nearest_item = true
+				
 	return nearest_item
 
 func move():
@@ -307,7 +308,7 @@ func _on_pickup_radius_area_entered(area):
 func _on_pickup_radius_area_exited(area):
 	if area.get_parent().is_in_group("Item") or area.get_parent().is_in_group("Shop Item"):
 		pickup_item = area.get_parent()
-		pickup_item.get_node("Sprite").material.set("shader_parameter/color", Color(highlight_color, 0))
+		pickup_item.nearest_item = false
 		var index = items_in_area.find(pickup_item)
 		items_in_area.remove_at(index)
 

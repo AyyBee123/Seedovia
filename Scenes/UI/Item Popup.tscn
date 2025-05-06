@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://di5qsn3q64j3p"]
+[gd_scene load_steps=11 format=3 uid="uid://di5qsn3q64j3p"]
 
+[ext_resource type="Shader" uid="uid://bpc6ul5ohvhrn" path="res://Shaders/color_replace.gdshader" id="1_4thg4"]
 [ext_resource type="Script" uid="uid://7ub5r2cwkkms" path="res://Scripts/UI/item_popup.gd" id="1_yb4gf"]
 [ext_resource type="Texture2D" uid="uid://ck27ld4c7lduc" path="res://Sprites/Item Popup/Top.png" id="2_mlbto"]
 [ext_resource type="FontFile" uid="uid://bkn7gmgx1wxgx" path="res://Fonts/Name Font.ttf" id="2_vk73d"]
@@ -8,6 +9,11 @@
 [ext_resource type="Texture2D" uid="uid://b2dkeiugujig2" path="res://Sprites/Item Popup/Rarity & Type portion.png" id="5_ynuig"]
 [ext_resource type="Texture2D" uid="uid://ca6wnsfotkfae" path="res://Sprites/Item Popup/Bottom.png" id="6_6tcmu"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l4fg8"]
+shader = ExtResource("1_4thg4")
+shader_parameter/og_color = Color(0.290196, 0.12549, 0.12549, 1)
+shader_parameter/new_color = Color(1, 1, 1, 1)
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_olhi0"]
 texture = ExtResource("4_aygkx")
 texture_margin_left = 8.0
@@ -15,6 +21,7 @@ texture_margin_right = 8.0
 
 [node name="Item Popup" type="Control"]
 z_index = 10
+material = SubResource("ShaderMaterial_l4fg8")
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -28,6 +35,7 @@ script = ExtResource("1_yb4gf")
 
 [node name="Box" type="VBoxContainer" parent="."]
 unique_name_in_owner = true
+use_parent_material = true
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -45,12 +53,14 @@ theme_override_constants/separation = 0
 
 [node name="Top" type="TextureRect" parent="Box"]
 unique_name_in_owner = true
+use_parent_material = true
 layout_mode = 2
 mouse_filter = 2
 texture = ExtResource("2_mlbto")
 
 [node name="Name Portion" type="PanelContainer" parent="Box"]
 unique_name_in_owner = true
+use_parent_material = true
 layout_mode = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_olhi0")
@@ -75,6 +85,7 @@ scroll_active = false
 
 [node name="Type & Rarity" type="TextureRect" parent="Box"]
 unique_name_in_owner = true
+use_parent_material = true
 layout_mode = 2
 mouse_filter = 2
 texture = ExtResource("5_ynuig")
@@ -126,6 +137,7 @@ scroll_active = false
 
 [node name="Description Portion" type="PanelContainer" parent="Box"]
 unique_name_in_owner = true
+use_parent_material = true
 layout_mode = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_olhi0")
@@ -149,6 +161,7 @@ scroll_active = false
 
 [node name="Bottom" type="TextureRect" parent="Box"]
 unique_name_in_owner = true
+use_parent_material = true
 layout_mode = 2
 mouse_filter = 2
 texture = ExtResource("6_6tcmu")
