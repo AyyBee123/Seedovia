@@ -170,7 +170,7 @@ func pick_up(item):
 			return
 		item.add_to_group("Item")
 		item.remove_from_group("Shop Item")
-	PlayerInventory.add_item(item.item, self, inventory)
+	PlayerInventory.equip_item(item.item, self, inventory)
 	item.queue_free.call_deferred()
 
 func get_nearest_item():

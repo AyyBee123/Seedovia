@@ -5,9 +5,9 @@ const slot_class = preload("res://Scripts/Inventory/inventory_slot.gd")
 
 var picked_up_item = null
 
-const NUM_INVENTORY_SLOTS = 12
-const NUM_TALISMAN_SLOTS = 4
-const NUM_SEED_SLOTS = 3
+var NUM_INVENTORY_SLOTS = 12
+var NUM_TALISMAN_SLOTS = 4
+var NUM_SEED_SLOTS = 3
 
 var inventory = {}
 var talismans = {}
@@ -37,6 +37,27 @@ func drop_item(item, player):
 	current_item.global_position = player.global_position
 	await get_tree().process_frame
 	ItemCheck.check_for_items()
+	Global.save_run_data()
+	Global.save_run_room()
+
+func equip_item(item, player, inv):
+	var capacity: int
+	if item.category == "SEED":
+		for i in range(NUM_SEED_SLOTS):
+			if not seeds.has(i): # checks for space in inventory (if the slot is empty)
+				picked_up_item = item
+				seeds[i] = item
+	elif item.category == "TALISMAN":
+		for i in range(NUM_TALISMAN_SLOTS):
+			if not talismans.has(i): # checks for space in inventory (if the slot is empty)
+				picked_up_item = item
+				talismans[i] = item
+	else:
+		add_item(item, player, inv)
+		return
+	await get_tree().process_frame
+	ItemCheck.check_for_items()
+	ItemCheck.check_for_shop_items()
 	Global.save_run_data()
 	Global.save_run_room()
 
