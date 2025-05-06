@@ -74,4 +74,3 @@ one_shot = true
 
 [connection signal="animation_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_changed"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
-[connection signal="timeout" from="Fire Rate" to="." method="_on_fire_rate_timeout"]

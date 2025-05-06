@@ -1,0 +1,102 @@
+[gd_scene load_steps=16 format=3 uid="uid://c1hq4h46vtdyp"]
+
+[ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_8neb2"]
+[ext_resource type="Shader" uid="uid://dsv0n8bsysyo6" path="res://Shaders/color_tint_shader.gdshader" id="2_tb0u5"]
+[ext_resource type="Script" uid="uid://dpihtynkxgnwd" path="res://Scripts/Enemies/Spinney Flower/spinney_flower.gd" id="2_uwbjc"]
+[ext_resource type="Texture2D" uid="uid://cjnhpn460u0mp" path="res://Sprites/Enemies/Spinny Flower.png" id="3_uwbjc"]
+[ext_resource type="Resource" uid="uid://cmr7ficeqpeyy" path="res://Resources/Enemies/spinney_flower.tres" id="3_yhv0b"]
+[ext_resource type="Script" uid="uid://cstoo0tq0srg2" path="res://Scripts/Enemies/Spinney Flower/state_machine.gd" id="5_yhv0b"]
+[ext_resource type="AudioStream" uid="uid://bfcswe4vt2exs" path="res://Audio/SFX/Bubble Pop 2.mp3" id="7_7wd55"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7wd55"]
+radius = 8.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yhv0b"]
+resource_local_to_scene = true
+shader = ExtResource("2_tb0u5")
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/tint_factor = 0.0
+shader_parameter/fade = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7wd55"]
+atlas = ExtResource("3_uwbjc")
+region = Rect2(0, 0, 45, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_547vi"]
+atlas = ExtResource("3_uwbjc")
+region = Rect2(90, 0, 45, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_crt50"]
+atlas = ExtResource("3_uwbjc")
+region = Rect2(135, 0, 45, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sqb00"]
+atlas = ExtResource("3_uwbjc")
+region = Rect2(45, 0, 45, 44)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8evib"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7wd55")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_547vi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_crt50")
+}],
+"loop": true,
+"name": &"Spin",
+"speed": 22.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sqb00")
+}],
+"loop": false,
+"name": &"Spin Beginning",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hbadg"]
+radius = 18.0
+
+[node name="Spinny Flower" instance=ExtResource("1_8neb2")]
+scale = Vector2(2, 2)
+script = ExtResource("2_uwbjc")
+_enemy_stats = ExtResource("3_yhv0b")
+
+[node name="CollisionPolygon2D" parent="." index="0"]
+shape = SubResource("CircleShape2D_7wd55")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+material = SubResource("ShaderMaterial_yhv0b")
+sprite_frames = SubResource("SpriteFrames_8evib")
+animation = &"Idle"
+autoplay = "Idle"
+offset = Vector2(0, 1)
+
+[node name="CollisionPolygon2D" parent="Enemy Hitbox" index="0"]
+shape = SubResource("CircleShape2D_hbadg")
+
+[node name="state_machine" type="Node" parent="." index="6"]
+script = ExtResource("5_yhv0b")
+metadata/_custom_type_script = "uid://cxh3rckpecdhs"
+
+[node name="Fire Rate" type="Timer" parent="." index="7"]
+wait_time = 0.05
+one_shot = true
+
+[node name="Pop" type="AudioStreamPlayer" parent="." index="8"]
+stream = ExtResource("7_7wd55")
+volume_db = -2.0
+pitch_scale = 0.8
+bus = &"SFX"
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

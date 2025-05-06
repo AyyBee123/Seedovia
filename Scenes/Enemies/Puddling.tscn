@@ -532,7 +532,7 @@ texture = ExtResource("6_p6at2")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="8"]
 root_node = NodePath("../AnimatedSprite2D")
 libraries = {
-"": SubResource("AnimationLibrary_yd317")
+&"": SubResource("AnimationLibrary_yd317")
 }
 speed_scale = 0.9
 
@@ -552,7 +552,7 @@ bus = &"SFX"
 
 [node name="Jumbo Spawn Animation" type="AnimationPlayer" parent="." index="12"]
 libraries = {
-"": SubResource("AnimationLibrary_tfc4t")
+&"": SubResource("AnimationLibrary_tfc4t")
 }
 
 [node name="Spin Time" type="Timer" parent="." index="13"]
