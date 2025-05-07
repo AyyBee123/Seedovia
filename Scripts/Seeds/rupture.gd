@@ -64,6 +64,7 @@ func shoot_next_weapon():
 	set_weapon_properties(next_seed, weapon_direction)
 
 func update_position(delta):
+	rotation = direction.angle()
 	if is_instance_valid(previous_weapon):
 		global_position = previous_weapon.global_position + direction * 4
 

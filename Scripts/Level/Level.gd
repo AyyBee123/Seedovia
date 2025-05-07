@@ -5,6 +5,8 @@ extends Node2D
 
 const DEATH_SCREEN = preload("res://Scenes/UI/Death Screen.tscn")
 
+var thread
+
 func _input(event):
 	if event.is_action_pressed("pause"):
 		if player.get_node("Inventory").visible or player.get_node("Stat Sheet").visible:
@@ -39,6 +41,7 @@ var time_milli_seconds: int:
 		return LevelList.elapsed_time * 100 as int % 100
 
 func _ready():
+	thread = Thread.new()
 	SignalBus.player_die.connect(spawn_death_screen)
 	%"Circle Transition".visible = true # disable it from the editor because it blocks the whole room
 	# very start of the run
@@ -156,7 +159,7 @@ func check_for_enemies():
 		if not reward_given and not was_cleared:
 			if LevelList.room_number == 10:
 				Game.music_manager.play(Game.music_manager.BOSS_THEME_END)
-			give_reward()
+			thread.start(give_reward)
 			LevelList.current_reward_given = true
 			LevelList.loaded_room_is_cleared = cleared
 			await get_tree().create_timer(0.5).timeout # buffer to allow the item to register in the level
@@ -210,7 +213,7 @@ func give_reward():
 	await get_tree().create_timer(0.5, false).timeout
 	if Global.next_reward == null: # just in case
 		return
-	if Global.next_reward.pool_name == "Talisman" or Global.next_reward.pool_name == "Consumable" \
+	if Global.next_reward.pool_name == "Talisman" or Global.next_reward.pool_name == "Die" \
 			or Global.next_reward.pool_name == "Seed":
 		var item = resource_preloader.get_resource("Item").instantiate()
 		item.set_item(Pool.get_item(Pool.pools[Pool.pools.find(Global.next_reward)]))
@@ -263,6 +266,10 @@ func give_reward():
 			# spawn item in the middle of the screen
 			item.global_position = $Camera2D.global_position
 	Global.next_reward = null
+	finish.call_deferred()
+
+func finish():
+	thread.wait_to_finish()
 
 func check_for_possesions(reward_item):
 	# don't care if there are duplicate consumables

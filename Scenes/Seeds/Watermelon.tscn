@@ -1,10 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://cvq734opn1l1t"]
+[gd_scene load_steps=10 format=3 uid="uid://cvq734opn1l1t"]
 
 [ext_resource type="Script" uid="uid://bk2y05pc5infu" path="res://Scripts/Seeds/watermelon.gd" id="1_rf7tf"]
 [ext_resource type="Texture2D" uid="uid://cm1txwdom4wan" path="res://Sprites/Seeds/Watermelon.png" id="2_uewwp"]
 [ext_resource type="PackedScene" uid="uid://cp3hdtxn75uyt" path="res://Scenes/Passives/Effects/Explosion.tscn" id="3_uyl80"]
-[ext_resource type="AudioStream" uid="uid://dvpk5kbugelwb" path="res://Audio/SFX/Metal 1.mp3" id="4_amymn"]
-[ext_resource type="AudioStream" uid="uid://yupd71vkt5kl" path="res://Audio/SFX/Metal 2.mp3" id="5_1c0ml"]
+[ext_resource type="AudioStream" uid="uid://mtikid74nnhi" path="res://Audio/SFX/UI Button.mp3" id="4_yxv81"]
+[ext_resource type="AudioStream" uid="uid://cs4gg4d8pkj6f" path="res://Audio/SFX/Quiet Thud.mp3" id="5_u252e"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x7c61"]
 radius = 16.0
@@ -31,10 +31,9 @@ animations = [{
 "speed": 17.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_y1p5x"]
-
 [node name="Watermelon" type="Sprite2D" groups=["Seed", "Weapon"]]
 z_index = 4
+scale = Vector2(1.5, 1.5)
 script = ExtResource("1_rf7tf")
 BASE_DAMAGE = 30.0
 BASE_FIRE_RATE = 1.5
@@ -44,9 +43,8 @@ BASE_SIZE = 1.0
 BASE_BLAST_RADIUS = 1.0
 
 [node name="Hitbox" type="Area2D" parent="."]
-collision_layer = 0
+collision_layer = 8
 collision_mask = 5
-monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CircleShape2D_x7c61")
@@ -57,60 +55,59 @@ shape = SubResource("CircleShape2D_x7c61")
 sprite_frames = SubResource("SpriteFrames_3biqj")
 autoplay = "default"
 
-[node name="Down" type="ShapeCast2D" parent="."]
-scale = Vector2(0.5, 0.5)
-shape = SubResource("RectangleShape2D_y1p5x")
+[node name="Down" type="RayCast2D" parent="."]
+unique_name_in_owner = true
+top_level = true
+scale = Vector2(1.5, 1.5)
 exclude_parent = false
-target_position = Vector2(0, 30)
-collision_mask = 5
+target_position = Vector2(0, 24)
+collision_mask = 517
 collide_with_areas = true
-collide_with_bodies = false
 
-[node name="Up" type="ShapeCast2D" parent="."]
+[node name="Up" type="RayCast2D" parent="."]
+unique_name_in_owner = true
+top_level = true
 rotation = -3.14159
-scale = Vector2(0.5, 0.5)
-shape = SubResource("RectangleShape2D_y1p5x")
+scale = Vector2(1.5, 1.5)
 exclude_parent = false
-target_position = Vector2(0, 30)
-collision_mask = 5
+target_position = Vector2(0, 24)
+collision_mask = 517
 collide_with_areas = true
-collide_with_bodies = false
 
-[node name="Left" type="ShapeCast2D" parent="."]
+[node name="Left" type="RayCast2D" parent="."]
+unique_name_in_owner = true
+top_level = true
 rotation = 1.5708
-scale = Vector2(0.5, 0.5)
-shape = SubResource("RectangleShape2D_y1p5x")
+scale = Vector2(1.5, 1.5)
 exclude_parent = false
-target_position = Vector2(0, 30)
-collision_mask = 5
+target_position = Vector2(0, 24)
+collision_mask = 517
 collide_with_areas = true
-collide_with_bodies = false
 
-[node name="Right" type="ShapeCast2D" parent="."]
+[node name="Right" type="RayCast2D" parent="."]
+unique_name_in_owner = true
+top_level = true
 rotation = -1.5708
-scale = Vector2(0.5, 0.5)
-shape = SubResource("RectangleShape2D_y1p5x")
+scale = Vector2(1.5, 1.5)
 exclude_parent = false
-target_position = Vector2(0, 30)
-collision_mask = 5
+target_position = Vector2(0, 24)
+collision_mask = 517
 collide_with_areas = true
-collide_with_bodies = false
 
 [node name="ResourcePreloader" type="ResourcePreloader" parent="."]
 resources = [PackedStringArray("Explosion"), [ExtResource("3_uyl80")]]
 
-[node name="Metal1" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_amymn")
-volume_db = -5.0
-bus = &"SFX"
-
-[node name="Metal2" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_1c0ml")
-volume_db = -5.0
-bus = &"SFX"
-
 [node name="Frame Change Timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="Bounce" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_yxv81")
+pitch_scale = 1.25
+bus = &"SFX"
+
+[node name="QuietThud" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_u252e")
+bus = &"SFX"
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

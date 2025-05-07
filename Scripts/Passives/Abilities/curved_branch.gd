@@ -25,10 +25,8 @@ func _physics_process(delta):
 		return
 	if source.is_in_group("Weapon"):
 		if get_nearest_enemy():
-			var rotation_angle = source.global_position.direction_to(get_nearest_enemy().global_position).angle()
-			new_rot = lerp_angle(source.rotation, rotation_angle, HOMING_STRENGTH * delta)
-			source.rotation = new_rot
-			source.direction = Vector2.RIGHT.rotated(new_rot)
+			var rotation_angle = source.global_position.direction_to(get_nearest_enemy().global_position)
+			source.direction = source.direction.lerp(rotation_angle,HOMING_STRENGTH * delta)
 
 func transfer_passive(weapon = null):
 	if weapon == null:

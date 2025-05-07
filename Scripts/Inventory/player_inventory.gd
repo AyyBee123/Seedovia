@@ -52,7 +52,13 @@ func equip_item(item, player, inv):
 				Game.audio_manager.play(Game.audio_manager.pickup)
 				PlayerSeeds.load_weapons()
 				player.update_timers()
-				break
+				await get_tree().process_frame
+				ItemCheck.check_for_items()
+				ItemCheck.check_for_shop_items()
+				Global.save_run_data()
+				Global.save_run_room()
+				return
+		add_item(item, player, inv)
 	elif item.category == "TALISMAN":
 		for i in range(NUM_TALISMAN_SLOTS):
 			if not talismans.has(i): # checks for space in inventory (if the slot is empty)
@@ -64,15 +70,16 @@ func equip_item(item, player, inv):
 					var p = passive.instantiate()
 					PlayerEquipment.add_passive(player, p)
 				item.was_already_equipped = true
-				break
+				await get_tree().process_frame
+				ItemCheck.check_for_items()
+				ItemCheck.check_for_shop_items()
+				Global.save_run_data()
+				Global.save_run_room()
+				return
+		add_item(item, player, inv)
 	else:
 		add_item(item, player, inv)
 		return
-	await get_tree().process_frame
-	ItemCheck.check_for_items()
-	ItemCheck.check_for_shop_items()
-	Global.save_run_data()
-	Global.save_run_room()
 
 func add_item_to_empty_slot(item: item_instance, slot: slot_class):
 	if slot.slot_type == slot_class.slot_types.INVENTORY:

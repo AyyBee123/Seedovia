@@ -70,7 +70,7 @@ func initialize_item(slot_item):
 				item.item.add_stats = false
 				Global.save_run_data()
 		add_child(item)
-		item.scale = Vector2.ONE * 0.8
+		item.scale = Vector2.ONE * 0.75
 		item.position = Vector2(size.x / 2, size.y / 2)
 		item.radius.disabled = true
 		item.shadow.visible = false

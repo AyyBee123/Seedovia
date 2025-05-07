@@ -59,7 +59,7 @@ func _process(delta):
 				hue = 0.0
 			set_values(mystic_color)
 		7: # N/A
-			set_values(Color(0, 0, 0, 0))
+			set_values(Color(Color.WHITE, 0))
 
 func set_values(color):
 	%GPUParticles.modulate = color
