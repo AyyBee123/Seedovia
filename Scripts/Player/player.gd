@@ -8,6 +8,7 @@ signal seed_fired(seed) # for immediately fired seeds (for the mirage passive)
 
 const POPUP = preload("res://Scenes/UI/Item Popup.tscn")
 const PLAYER_HAND = preload("res://Scenes/Seeds/Player Hand.tscn")
+const DASH_TRAIL = preload("res://Scenes/Player/Dash Trail.tscn")
 
 var _player_stats: player_stats = preload("res://Resources/Characters/Stats/base_stats.tres")
 
@@ -16,6 +17,8 @@ var _player_stats: player_stats = preload("res://Resources/Characters/Stats/base
 @onready var invulnerability_time := $"Invulnerability Time"
 @onready var dash_cooldown := $"Dash Cooldown"
 @onready var dash_invulnerability_time := $"Dash Invulnerability Time"
+@onready var dash_trail_time = $"Dash Trail Time"
+@onready var dash_trail_rate = $"Dash Trail Rate"
 @onready var inventory := $"Inventory"
 @onready var stat_sheet = $"Stat Sheet"
 @onready var inventory_screen := $"Inventory/Inventory Screen"
@@ -158,6 +161,23 @@ func _physics_process(delta):
 	# die if health is 0 (or less)
 	if _player_stats.health <= 0 and _player_stats.leaf_hearts <= 0:
 		die()
+	
+	if $"Player Sprite".animation == "Dash":
+		dash_trail_time.start()
+	
+	if not dash_trail_time.is_stopped():
+		if dash_trail_rate.is_stopped():
+			var trail = DASH_TRAIL.instantiate()
+			# get the current texture in the animation
+			var frame_index: int = $"Player Sprite".get_frame()
+			var animation_name: String = $"Player Sprite".animation
+			var sprite_frames: SpriteFrames = $"Player Sprite".get_sprite_frames()
+			var current_texture: Texture2D = sprite_frames.get_frame_texture(animation_name, frame_index)
+			trail.texture = current_texture
+			trail.scale = scale
+			get_tree().current_scene.add_child(trail)
+			trail.global_position = global_position + $"Player Sprite".position
+			dash_trail_rate.start()
 
 func pick_up(item):
 	if item.is_in_group("Shop Item"):
@@ -223,6 +243,7 @@ func dash():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	velocity = velocity.lerp((input_direction.normalized() if input_direction else Vector2(0,1)) \
 			* _player_stats.get_stat("Dash_Distance"), 1)
+	Game.audio_manager.play(Game.audio_manager.dash)
 	dashed.emit()
 	dash_cooldown.start()
 	dash_invulnerability_time.start()
@@ -265,11 +286,17 @@ func took_damage(amount):
 		_player_stats.overcapped_health -= amount
 		_player_stats.health = max(0, _player_stats.health)
 		_player_stats.overcapped_health = max(0, _player_stats.health)
+	change_color()
 	$"Player Health".set_health()
 	Game.audio_manager.play(Game.audio_manager.player_hit)
 	Global.save_run_data()
 	can_be_damaged = false
 	invulnerability_time.start()
+
+func change_color():
+	material.set("shader_parameter/tint_factor", 1.0)
+	await get_tree().create_timer(0.1, false).timeout
+	material.set("shader_parameter/tint_factor", 0.0)
 
 func heal():
 	Global.save_run_data()

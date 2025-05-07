@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://usetxd7ii511"]
+[gd_scene load_steps=31 format=3 uid="uid://usetxd7ii511"]
 
 [ext_resource type="Script" uid="uid://boo1w2wkkk0xk" path="res://Scripts/Utils/audio_manager.gd" id="1_bpx0j"]
 [ext_resource type="AudioStream" uid="uid://bpk6gao5jcjkq" path="res://Audio/SFX/Hit.mp3" id="1_qnkjs"]
@@ -29,6 +29,7 @@
 [ext_resource type="AudioStream" uid="uid://b7m0dlae7pmqe" path="res://Audio/SFX/Coin.mp3" id="27_k68o5"]
 [ext_resource type="AudioStream" uid="uid://b8himrjp8nc2j" path="res://Audio/SFX/Player Hit.mp3" id="28_3qjhc"]
 [ext_resource type="AudioStream" uid="uid://cs4gg4d8pkj6f" path="res://Audio/SFX/Quiet Thud.mp3" id="29_w4v6f"]
+[ext_resource type="AudioStream" uid="uid://b5lsh3mo8h8a" path="res://Audio/SFX/Dash.mp3" id="30_je18x"]
 
 [node name="Audio Manager" type="Node"]
 script = ExtResource("1_bpx0j")
@@ -296,4 +297,9 @@ bus = &"SFX"
 
 [node name="QuietThud" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("29_w4v6f")
+bus = &"SFX"
+
+[node name="Dash" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("30_je18x")
+pitch_scale = 1.5
 bus = &"SFX"

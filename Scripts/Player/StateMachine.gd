@@ -33,7 +33,6 @@ func _get_transition(delta):
 				return states.idle
 	return null
 
-# this is mainly for animations. I don't have animations, so it will do nothing for now
 func _enter_state(new_state, old_state):
 	pass
 

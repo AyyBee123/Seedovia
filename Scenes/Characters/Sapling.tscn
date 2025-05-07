@@ -52,6 +52,7 @@ animations = [{
 sprite_frames = SubResource("SpriteFrames_ckkwj")
 animation = &"Move"
 autoplay = "Idle"
+frame_progress = 0.803471
 
 [node name="Hand" parent="Rotation Point/Marker2D" index="0"]
 texture = ExtResource("7_cs58s")
