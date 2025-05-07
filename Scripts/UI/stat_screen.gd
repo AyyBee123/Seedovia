@@ -32,6 +32,7 @@ var down_held: bool
 
 func _ready():
 	visible = false
+	visibility_changed.connect(_on_visibility_changed)
 	player = Targets.get_player()
 
 func _physics_process(delta):
@@ -90,3 +91,9 @@ func _input(event):
 		down_held = true
 	if Input.is_action_just_released("stat_sheet_down"):
 		down_held = false
+
+func _on_visibility_changed():
+	if visible:
+		Game.audio_manager.play(Game.audio_manager.popup)
+	else:
+		Game.audio_manager.play(Game.audio_manager.popup_close)

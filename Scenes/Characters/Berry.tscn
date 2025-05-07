@@ -61,13 +61,14 @@ position = Vector2(0, -2)
 texture = ExtResource("4_n1ask")
 
 [node name="Inventory" parent="." index="10" instance=ExtResource("8_52hxp")]
+visible = false
 offset_left = -1620.0
 offset_top = -1022.0
 offset_right = -1459.0
 offset_bottom = -766.0
 scale = Vector2(3.745, 3.745)
 
-[node name="Shadow" parent="." index="13"]
+[node name="Shadow" parent="." index="14"]
 position = Vector2(0, 8)
 
 [node name="Stats" parent="." index="16" instance=ExtResource("2_vgwbe")]

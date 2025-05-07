@@ -1,7 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://qe8rn06yqd17"]
+[gd_scene load_steps=11 format=3 uid="uid://qe8rn06yqd17"]
 
 [ext_resource type="PackedScene" uid="uid://cu63rxmy71bcg" path="res://Scenes/Player/Player.tscn" id="1_30vyc"]
-[ext_resource type="Script" uid="uid://jn6aj3txkrdo" path="res://Scripts/Characters/salvia.gd" id="2_5m7av"]
 [ext_resource type="Texture2D" uid="uid://dx8dxbrx5ua06" path="res://Sprites/Character/Salvia/Salvia1.png" id="2_30vyc"]
 [ext_resource type="Texture2D" uid="uid://bkgaeykpobk7g" path="res://Sprites/Character/Salvia/Salvia2.png" id="3_5m7av"]
 [ext_resource type="Texture2D" uid="uid://wx0861hewc0" path="res://Sprites/Character/Salvia/Salvia3.png" id="4_300x4"]
@@ -48,7 +47,6 @@ animations = [{
 }]
 
 [node name="Salvia" instance=ExtResource("1_30vyc")]
-script = ExtResource("2_5m7av")
 
 [node name="Player Sprite" parent="." index="3"]
 sprite_frames = SubResource("SpriteFrames_ckkwj")
@@ -62,6 +60,7 @@ texture = ExtResource("7_j0hq7")
 position = Vector2(155.5, 0.5)
 
 [node name="Inventory" parent="." index="10" instance=ExtResource("8_30vyc")]
+visible = false
 offset_left = -1620.0
 offset_top = -1022.0
 offset_right = -1459.0

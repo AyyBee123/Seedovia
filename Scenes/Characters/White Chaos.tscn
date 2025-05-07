@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cfh0c3t4hpweh" path="res://Sprites/Character/White Shrub/White Chaos4.png" id="6_4kq0c"]
 [ext_resource type="Texture2D" uid="uid://cf8tcikiyx6ww" path="res://Sprites/Character/White Shrub/White Chaos5.png" id="7_bxo53"]
 [ext_resource type="Texture2D" uid="uid://bbqw4qoftm2ve" path="res://Sprites/Character/White Shrub/Hand.png" id="8_qnhjt"]
-[ext_resource type="PackedScene" uid="uid://20g5uy53gt5s" path="res://Scenes/Inventory/inventory.tscn" id="9_jjp27"]
+[ext_resource type="PackedScene" uid="uid://bqelkwce1mdqp" path="res://Scenes/Inventory/inventory.tscn" id="9_jjp27"]
 [ext_resource type="PackedScene" uid="uid://22awcp7gta0f" path="res://Scenes/Characters/Passives/White Chaos Stats.tscn" id="9_l3n00"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6lyiw"]
@@ -72,7 +72,7 @@ offset_right = -1620.0
 offset_bottom = -1022.0
 scale = Vector2(3.745, 3.745)
 
-[node name="Shadow" parent="." index="14"]
+[node name="Shadow" parent="." index="15"]
 position = Vector2(0, 10.5)
 
 [node name="CollisionShape2D" parent="Slow Detect" index="0"]

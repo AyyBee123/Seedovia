@@ -18,6 +18,7 @@ func add_item(item, player, inv):
 		if not inventory.has(i): # checks for space in inventory (if the slot is empty)
 			picked_up_item = item
 			inventory[i] = item
+			Game.audio_manager.play(Game.audio_manager.pickup)
 			await get_tree().process_frame
 			ItemCheck.check_for_items()
 			ItemCheck.check_for_shop_items()
@@ -35,6 +36,7 @@ func drop_item(item, player):
 	current_item.set_item(item)
 	get_tree().current_scene.add_child(current_item)
 	current_item.global_position = player.global_position
+	Game.audio_manager.play(Game.audio_manager.drop)
 	await get_tree().process_frame
 	ItemCheck.check_for_items()
 	Global.save_run_data()
@@ -47,6 +49,7 @@ func equip_item(item, player, inv):
 			if not seeds.has(i): # checks for space in inventory (if the slot is empty)
 				picked_up_item = item
 				seeds[i] = item
+				Game.audio_manager.play(Game.audio_manager.pickup)
 				PlayerSeeds.load_weapons()
 				player.update_timers()
 				break
@@ -55,6 +58,7 @@ func equip_item(item, player, inv):
 			if not talismans.has(i): # checks for space in inventory (if the slot is empty)
 				picked_up_item = item
 				talismans[i] = item
+				Game.audio_manager.play(Game.audio_manager.pickup)
 				PlayerEquipment.add_stats(item, player, item.was_already_equipped)
 				for passive in item.special_properties:
 					var p = passive.instantiate()

@@ -32,12 +32,15 @@ func give_item(item):
 	Global.save_run_room()
 
 func on_press(passive_item):
+	Game.audio_manager.play(Game.audio_manager.ui_button)
 	give_item(passive_item)
 	# maybe play some animation here
 	get_tree().paused = false
 	queue_free.call_deferred()
 
 func _on_reroll_button_pressed():
+	Game.audio_manager.play(Game.audio_manager.ui_button)
+	Game.audio_manager.play(Game.audio_manager.use)
 	for button in buttons:
 		var passive = get_passive()
 		button.pressed.disconnect(on_press)

@@ -266,6 +266,7 @@ func took_damage(amount):
 		_player_stats.health = max(0, _player_stats.health)
 		_player_stats.overcapped_health = max(0, _player_stats.health)
 	$"Player Health".set_health()
+	Game.audio_manager.play(Game.audio_manager.player_hit)
 	Global.save_run_data()
 	can_be_damaged = false
 	invulnerability_time.start()

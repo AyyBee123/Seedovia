@@ -57,22 +57,24 @@ func _ready():
 	temp_music = %MusicSlider.value
 
 func _on_fullscreen_button_toggled(toggled_on):
+	Game.audio_manager.play(Game.audio_manager.ui_button)
 	if toggled_on:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 
 func _on_v_sync_button_toggled(toggled_on):
+	Game.audio_manager.play(Game.audio_manager.ui_button)
 	if toggled_on:
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
 	else:
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
 
 func _on_timer_button_toggled(toggled_on):
-	pass
+	Game.audio_manager.play(Game.audio_manager.ui_button)
 
 func _on_damage_button_toggled(toggled_on):
-	pass
+	Game.audio_manager.play(Game.audio_manager.ui_button)
 
 func _on_master_slider_value_changed(value):
 	change_volume(Game.audio_settings.MASTER_BUS_ID, value)
@@ -130,6 +132,7 @@ func change_volume(audio, value):
 	AudioServer.set_bus_mute(audio, value == 0)
 
 func _on_save_button_pressed():
+	Game.audio_manager.play(Game.audio_manager.ui_button)
 	# add changes
 	Global.settings.show_timer = %"Timer Button".button_pressed
 	Global.settings.show_damage_numbers = %"Damage Button".button_pressed
@@ -141,6 +144,7 @@ func _on_save_button_pressed():
 	close()
 
 func _on_cancel_button_pressed():
+	Game.audio_manager.play(Game.audio_manager.popup_close_2)
 	#revert settings
 	DisplayServer.window_set_mode(Global.settings.fullscreen)
 	DisplayServer.window_set_vsync_mode(Global.settings.vsync)
@@ -159,7 +163,8 @@ func close():
 	queue_free()
 
 func _on_tab_container_tab_changed(tab):
+	Game.audio_manager.play(Game.audio_manager.use_2)
 	%TabContainer.get_tab_bar().grab_focus.call_deferred()
 
 func _on_auto_equip_button_toggled(toggled_on):
-	pass # Replace with function body.
+	Game.audio_manager.play(Game.audio_manager.ui_button)

@@ -22,10 +22,12 @@ func _ready():
 	display_info()
 
 func _press(char_select: character):
+	Game.audio_manager.play(Game.audio_manager.ui_button)
 	char = char_select
 	display_info()
 
 func _on_back_button_pressed():
+	Game.audio_manager.play(Game.audio_manager.ui_button)
 	get_tree().change_scene_to_packed(MAIN_MENU)
 
 func _input(event):
@@ -42,6 +44,7 @@ func _on_play_button_pressed():
 		return
 	if starting_character == null or character_scene == null:
 		return
+	Game.audio_manager.play(Game.audio_manager.ui_button)
 	loading_screen_scene_instance = loading_screen_scene.instantiate()
 	get_tree().current_scene.add_child.call_deferred(loading_screen_scene_instance)
 	thread.start(select_character)

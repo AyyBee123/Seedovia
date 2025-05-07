@@ -20,4 +20,6 @@ func set_stats():
 	player._player_stats.stats["Fire_Rate"]["x"] = 0.75
 	player._player_stats.stats["Weapon_Damage"]["x"] = 0.75
 	
+	PlayerInventory.NUM_SEED_SLOTS = 2
+	
 	player._player_stats.initialize_base_stats()

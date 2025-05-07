@@ -30,6 +30,7 @@ func _ready():
 		delete.pressed.connect(_delete_button_pressed.bind(save_num))
 
 func _save_button_pressed(num):
+	Game.audio_manager.play(Game.audio_manager.ui_button)
 	Global.SAVE_PATH = "user://save_data%s.res" % num
 	Global.RUN_SAVE_PATH = "user://current_run%s.res" % num
 	if not Global.load_data_exists(Global.SAVE_PATH):

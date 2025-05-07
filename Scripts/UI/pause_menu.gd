@@ -8,6 +8,7 @@ var settings
 
 func _ready():
 	get_tree().paused = true
+	Game.audio_manager.play(Game.audio_manager.popup_2)
 
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
@@ -20,9 +21,11 @@ func _on_resume_button_pressed():
 
 func un_pause():
 	get_tree().paused = false
+	Game.audio_manager.play(Game.audio_manager.popup_close_2)
 	queue_free()
 
 func _on_quick_restart_button_pressed():
+	Game.audio_manager.play(Game.audio_manager.ui_button)
 	Global.delete_run_data()
 	LevelList.elapsed_time = 0
 	PlayerCharacter._is_starting = true
@@ -64,5 +67,6 @@ func _on_settings_button_pressed():
 	get_tree().current_scene.add_child(settings)
 
 func _on_quit_to_menu_button_pressed():
+	Game.audio_manager.play(Game.audio_manager.ui_button)
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://Scenes/UI/Main Menu.tscn")

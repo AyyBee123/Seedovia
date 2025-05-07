@@ -8,6 +8,7 @@ func _ready():
 	get_tree().paused = true
 
 func _on_quick_restart_button_pressed():
+	Game.audio_manager.play(Game.audio_manager.ui_button)
 	LevelList.elapsed_time = 0
 	Global.RNG = RandomNumberGenerator.new()
 	PlayerCharacter._is_starting = true
@@ -41,5 +42,6 @@ func _on_quick_restart_button_pressed():
 	get_tree().change_scene_to_file("res://Scenes/Levels/Special/Starting Room 1.tscn")
 
 func _on_quit_button_pressed():
+	Game.audio_manager.play(Game.audio_manager.ui_button)
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://Scenes/UI/Main Menu.tscn")

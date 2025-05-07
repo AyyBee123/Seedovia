@@ -34,6 +34,19 @@ extends Node
 @onready var impact_high_pitch = $"Impact High Pitch"
 @onready var fire_explosion = $"Fire Explosion"
 @onready var hit_3 = $Hit3
+@onready var place_item = $PlaceItem
+@onready var inventory_select = $InventorySelect
+@onready var ui_button = $UIButton
+@onready var popup = $Popup
+@onready var popup_close = $PopupClose
+@onready var popup_2 = $Popup2
+@onready var popup_close_2 = $PopupClose2
+@onready var pickup = $Pickup
+@onready var drop = $Drop
+@onready var use = $Use
+@onready var use_2 = $Use2
+@onready var coin = $Coin
+@onready var player_hit = $PlayerHit
 
 func _ready():
 	SignalBus.play_audio.connect(play)

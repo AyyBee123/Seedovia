@@ -21,6 +21,7 @@ func _on_attract_area_body_entered(body):
 		player = body
 
 func pick_up():
+	Game.audio_manager.play(Game.audio_manager.use)
 	item.on_pickup()
 	visible = false
 	SignalBus.pickup_item_recieved.emit(self)

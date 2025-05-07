@@ -26,6 +26,7 @@ func _physics_process(delta):
 func _on_play_button_pressed():
 	$"Save File Select".find_child("Save1").grab_focus()
 	current_pos = 1 # save file select position
+	Game.audio_manager.play(Game.audio_manager.ui_button)
 	if tween:
 		tween.kill()
 	tween = get_tree().create_tween()
@@ -35,6 +36,7 @@ func _on_play_button_pressed():
 func _on_back_button_pressed():
 	%"Play Button".grab_focus()
 	current_pos = 0 # starting menu position
+	Game.audio_manager.play(Game.audio_manager.ui_button)
 	if tween:
 		tween.kill()
 	tween = get_tree().create_tween()
@@ -48,6 +50,7 @@ func _on_settings_button_pressed():
 	get_tree().current_scene.add_child(settings)
 
 func _on_quit_button_pressed():
+	Game.audio_manager.play(Game.audio_manager.ui_button)
 	get_tree().quit()
 
 func _input(event):

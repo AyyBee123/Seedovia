@@ -68,6 +68,7 @@ texture = ExtResource("7_ecyii")
 [node name="Stats" parent="." index="10" instance=ExtResource("8_r2sah")]
 
 [node name="Inventory" parent="." index="11" instance=ExtResource("9_4nl8q")]
+visible = false
 offset_left = -1620.0
 offset_top = -1022.0
 offset_right = -1459.0

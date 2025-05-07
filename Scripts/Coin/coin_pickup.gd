@@ -18,4 +18,5 @@ func _on_pickup_area_body_entered(body):
 func pick_up():
 	player._player_stats.set_coins(1)
 	player.get_node("Player Health").set_coins()
+	Game.audio_manager.play(Game.audio_manager.coin)
 	queue_free()

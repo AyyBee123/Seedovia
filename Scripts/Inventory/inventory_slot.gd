@@ -34,6 +34,7 @@ func pick_from_slot():
 	if slot_type == slot_types.SEED:
 		PlayerSeeds.load_weapons()
 		player.update_timers()
+	Game.audio_manager.play(Game.audio_manager.inventory_select)
 
 func put_into_slot(new_item):
 	item = new_item
@@ -50,6 +51,7 @@ func put_into_slot(new_item):
 	if slot_type == slot_types.SEED:
 			PlayerSeeds.load_weapons()
 			player.update_timers()
+	Game.audio_manager.play(Game.audio_manager.place_item)
 
 func initialize_item(slot_item):
 	item_instance = load("res://Scenes/Items/Item.tscn")

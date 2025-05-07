@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dnvytft8ijxhy" path="res://Scenes/Utils/Keybind Settings.tscn" id="10_gqfqg"]
 
 [node name="Game" type="Node"]
+process_mode = 3
 script = ExtResource("1_w0svr")
 
 [node name="Handlers" type="Node" parent="."]

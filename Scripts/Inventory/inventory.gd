@@ -25,6 +25,7 @@ func _ready():
 	drop_delay.one_shot = true
 	drop_delay.wait_time = 0.1
 	visible = false # make inventory not visible on starting the game
+	visibility_changed.connect(_on_visibility_changed)
 	# connect each inventory slot with the slot_gui_input function, binding the slot as the unique identifier
 	# gui_input is a built-in signal that is emitted when an input is pressed in the gui
 	# initialize all the seed slots and their categories
@@ -253,6 +254,7 @@ func right_click_use_item(slot: slot_class):
 	if slot.slot_type == slot_class.slot_types.INVENTORY:
 		match slot.item.item.category:
 			"CONSUMABLE":
+				Game.audio_manager.play(Game.audio_manager.use)
 				slot.item.item.on_use() # activate the use effect of the consumable item
 				PlayerInventory.remove_item(slot) # then remove the item from the player inventory dictionary
 				slot.item.queue_free.call_deferred() # then delete the item
@@ -307,3 +309,9 @@ func joystick_item_popup(slot_index: int):
 		if all_slots[slot_index].item and holding_item == null:
 			all_slots[slot_index].add_popup(all_slots[slot_index].item, "Joystick")
 	current_index_popup = slot_index
+
+func _on_visibility_changed():
+	if visible:
+		Game.audio_manager.play(Game.audio_manager.popup)
+	else:
+		Game.audio_manager.play(Game.audio_manager.popup_close)

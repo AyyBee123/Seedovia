@@ -23,9 +23,11 @@ func _ready():
 	Global.load_achievements()
 
 func _on_play_button_pressed():
+	Game.audio_manager.play(Game.audio_manager.ui_button)
 	get_tree().change_scene_to_packed(character_select_scene)
 
 func _on_continue_button_pressed():
+	Game.audio_manager.play(Game.audio_manager.ui_button)
 	loading_screen_scene_instance = loading_screen_scene.instantiate()
 	get_tree().current_scene.add_child.call_deferred(loading_screen_scene_instance)
 	thread.start(continue_run)
@@ -49,10 +51,12 @@ func _on_settings_button_pressed():
 	get_tree().current_scene.add_child(settings)
 
 func _on_back_button_pressed():
+	Game.audio_manager.play(Game.audio_manager.ui_button)
 	get_tree().change_scene_to_packed(MENU)
 
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
 		if is_instance_valid(settings):
 			return
+		Game.audio_manager.play(Game.audio_manager.ui_button)
 		get_tree().change_scene_to_packed(MENU)

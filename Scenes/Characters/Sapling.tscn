@@ -57,6 +57,7 @@ autoplay = "Idle"
 texture = ExtResource("7_cs58s")
 
 [node name="Inventory" parent="." index="10" instance=ExtResource("8_ag58w")]
+visible = false
 offset_left = -1620.0
 offset_top = -1022.0
 offset_right = -1459.0
