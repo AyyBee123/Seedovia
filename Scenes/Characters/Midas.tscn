@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://fwqhtbsphbk0"]
+[gd_scene load_steps=21 format=3 uid="uid://fwqhtbsphbk0"]
 
 [ext_resource type="PackedScene" uid="uid://cu63rxmy71bcg" path="res://Scenes/Player/Player.tscn" id="1_ld2f8"]
 [ext_resource type="Texture2D" uid="uid://bbxmog2kyaf4d" path="res://Sprites/Character/Midas/Midas1.png" id="2_v7ely"]
+[ext_resource type="Texture2D" uid="uid://c686nyyt1e4ph" path="res://Sprites/Character/Death.png" id="3_h5qsa"]
 [ext_resource type="Texture2D" uid="uid://brg0ou663rvmy" path="res://Sprites/Character/Midas/Midas2.png" id="3_lb3w1"]
 [ext_resource type="Texture2D" uid="uid://lxmtxqjes4w8" path="res://Sprites/Character/Midas/Midas3.png" id="4_5s4y0"]
 [ext_resource type="Texture2D" uid="uid://b07604c5meq1c" path="res://Sprites/Character/Midas/Midas4.png" id="5_vphnf"]
@@ -13,6 +14,34 @@
 [sub_resource type="AtlasTexture" id="AtlasTexture_lk2uk"]
 atlas = ExtResource("2_v7ely")
 region = Rect2(0, 0, 26, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f2rnc"]
+atlas = ExtResource("3_h5qsa")
+region = Rect2(0, 0, 26, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dju8f"]
+atlas = ExtResource("3_h5qsa")
+region = Rect2(26, 0, 26, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0qce4"]
+atlas = ExtResource("3_h5qsa")
+region = Rect2(52, 0, 26, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oei87"]
+atlas = ExtResource("3_h5qsa")
+region = Rect2(78, 0, 26, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gpa6j"]
+atlas = ExtResource("3_h5qsa")
+region = Rect2(104, 0, 26, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jqudv"]
+atlas = ExtResource("3_h5qsa")
+region = Rect2(130, 0, 26, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_se2jw"]
+atlas = ExtResource("3_h5qsa")
+region = Rect2(156, 0, 26, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cxsfe"]
 atlas = ExtResource("2_v7ely")
@@ -27,6 +56,32 @@ animations = [{
 "loop": true,
 "name": &"Dash",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f2rnc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dju8f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0qce4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oei87")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gpa6j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jqudv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_se2jw")
+}],
+"loop": true,
+"name": &"Die",
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -58,9 +113,8 @@ animations = [{
 
 [node name="Player Sprite" parent="." index="3"]
 sprite_frames = SubResource("SpriteFrames_ckkwj")
-animation = &"Move"
+animation = &"Die"
 autoplay = "Idle"
-frame_progress = 0.525945
 
 [node name="Hand" parent="Rotation Point/Marker2D" index="0"]
 texture = ExtResource("7_ecyii")

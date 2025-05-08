@@ -4,6 +4,7 @@ func _ready():
 	add_state("idle")
 	add_state("move")
 	add_state("dash")
+	add_state("die")
 	call_deferred("set_state", states.idle)
 
 func _state_logic(delta):

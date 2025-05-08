@@ -53,3 +53,5 @@ func take_damage(damage):
 	damaged.emit(damage)
 	health_changed.emit(health)
 	SignalBus.player_damaged.emit(damage)
+	if leaf_hearts == 0 and health == 0:
+		health_depleted.emit()

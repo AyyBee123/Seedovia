@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://jmqrc0iy1uob"]
+[gd_scene load_steps=20 format=3 uid="uid://jmqrc0iy1uob"]
 
 [ext_resource type="PackedScene" uid="uid://cu63rxmy71bcg" path="res://Scenes/Player/Player.tscn" id="1_uo5hu"]
 [ext_resource type="Script" uid="uid://uraamit4avu8" path="res://Scripts/Characters/white_chaos.gd" id="2_wbuoh"]
 [ext_resource type="Texture2D" uid="uid://b53os8trmovki" path="res://Sprites/Character/White Shrub/White Chaos1.png" id="3_344h6"]
+[ext_resource type="Texture2D" uid="uid://c686nyyt1e4ph" path="res://Sprites/Character/Death.png" id="4_37gm2"]
 [ext_resource type="Texture2D" uid="uid://6vom2g6kgnh7" path="res://Sprites/Character/White Shrub/White Chaos2.png" id="4_fbg48"]
 [ext_resource type="Texture2D" uid="uid://b3ap2ddmxb1a8" path="res://Sprites/Character/White Shrub/White Chaos3.png" id="5_48ndp"]
 [ext_resource type="Texture2D" uid="uid://cfh0c3t4hpweh" path="res://Sprites/Character/White Shrub/White Chaos4.png" id="6_4kq0c"]
@@ -10,6 +11,34 @@
 [ext_resource type="Texture2D" uid="uid://bbqw4qoftm2ve" path="res://Sprites/Character/White Shrub/Hand.png" id="8_qnhjt"]
 [ext_resource type="PackedScene" uid="uid://bqelkwce1mdqp" path="res://Scenes/Inventory/inventory.tscn" id="9_jjp27"]
 [ext_resource type="PackedScene" uid="uid://22awcp7gta0f" path="res://Scenes/Characters/Passives/White Chaos Stats.tscn" id="9_l3n00"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_66yhp"]
+atlas = ExtResource("4_37gm2")
+region = Rect2(0, 0, 26, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vycu0"]
+atlas = ExtResource("4_37gm2")
+region = Rect2(26, 0, 26, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h5hut"]
+atlas = ExtResource("4_37gm2")
+region = Rect2(52, 0, 26, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_frsdr"]
+atlas = ExtResource("4_37gm2")
+region = Rect2(78, 0, 26, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6063w"]
+atlas = ExtResource("4_37gm2")
+region = Rect2(104, 0, 26, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tsj0h"]
+atlas = ExtResource("4_37gm2")
+region = Rect2(130, 0, 26, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kn2y1"]
+atlas = ExtResource("4_37gm2")
+region = Rect2(156, 0, 26, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6lyiw"]
 animations = [{
@@ -20,6 +49,32 @@ animations = [{
 "loop": true,
 "name": &"Dash",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_66yhp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vycu0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h5hut")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_frsdr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6063w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tsj0h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kn2y1")
+}],
+"loop": true,
+"name": &"Die",
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -52,9 +107,8 @@ script = ExtResource("2_wbuoh")
 
 [node name="Player Sprite" parent="." index="3"]
 sprite_frames = SubResource("SpriteFrames_6lyiw")
-animation = &"Move"
+animation = &"Die"
 autoplay = "Idle"
-frame_progress = 0.814048
 
 [node name="Hitbox" parent="." index="4"]
 position = Vector2(0, 0.5)
@@ -72,7 +126,7 @@ offset_right = -1620.0
 offset_bottom = -1022.0
 scale = Vector2(3.745, 3.745)
 
-[node name="Shadow" parent="." index="15"]
+[node name="Shadow" parent="." index="17"]
 position = Vector2(0, 10.5)
 
 [node name="CollisionShape2D" parent="Slow Detect" index="0"]

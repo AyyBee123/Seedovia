@@ -50,6 +50,7 @@ extends Node
 @onready var bounce = $Bounce
 @onready var quiet_thud = $QuietThud
 @onready var dash = $Dash
+@onready var death = $Death
 
 func _ready():
 	SignalBus.play_audio.connect(play)

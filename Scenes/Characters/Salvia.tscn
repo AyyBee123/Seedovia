@@ -1,14 +1,43 @@
-[gd_scene load_steps=11 format=3 uid="uid://qe8rn06yqd17"]
+[gd_scene load_steps=19 format=3 uid="uid://qe8rn06yqd17"]
 
 [ext_resource type="PackedScene" uid="uid://cu63rxmy71bcg" path="res://Scenes/Player/Player.tscn" id="1_30vyc"]
 [ext_resource type="Texture2D" uid="uid://dx8dxbrx5ua06" path="res://Sprites/Character/Salvia/Salvia1.png" id="2_30vyc"]
 [ext_resource type="Texture2D" uid="uid://bkgaeykpobk7g" path="res://Sprites/Character/Salvia/Salvia2.png" id="3_5m7av"]
+[ext_resource type="Texture2D" uid="uid://c686nyyt1e4ph" path="res://Sprites/Character/Death.png" id="3_300x4"]
 [ext_resource type="Texture2D" uid="uid://wx0861hewc0" path="res://Sprites/Character/Salvia/Salvia3.png" id="4_300x4"]
 [ext_resource type="Texture2D" uid="uid://uixndgp04jfr" path="res://Sprites/Character/Salvia/Salvia4.png" id="5_yg0yo"]
 [ext_resource type="Texture2D" uid="uid://4hsvokgeuh0c" path="res://Sprites/Character/Salvia/Salvia5.png" id="6_fq8st"]
 [ext_resource type="Texture2D" uid="uid://bg20s73j5r346" path="res://Sprites/Character/Salvia/Hand.png" id="7_j0hq7"]
 [ext_resource type="PackedScene" uid="uid://bbvk74let7eks" path="res://Scenes/Inventory/Salvia inventory.tscn" id="8_30vyc"]
 [ext_resource type="PackedScene" uid="uid://ssyp5tqyek7e" path="res://Scenes/Characters/Passives/Salvia Stats.tscn" id="9_30vyc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yg0yo"]
+atlas = ExtResource("3_300x4")
+region = Rect2(0, 0, 26, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fq8st"]
+atlas = ExtResource("3_300x4")
+region = Rect2(26, 0, 26, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j0hq7"]
+atlas = ExtResource("3_300x4")
+region = Rect2(52, 0, 26, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nki7l"]
+atlas = ExtResource("3_300x4")
+region = Rect2(78, 0, 26, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_115d6"]
+atlas = ExtResource("3_300x4")
+region = Rect2(104, 0, 26, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3w60s"]
+atlas = ExtResource("3_300x4")
+region = Rect2(130, 0, 26, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d3lte"]
+atlas = ExtResource("3_300x4")
+region = Rect2(156, 0, 26, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ckkwj"]
 animations = [{
@@ -19,6 +48,32 @@ animations = [{
 "loop": true,
 "name": &"Dash",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yg0yo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fq8st")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j0hq7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nki7l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_115d6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3w60s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d3lte")
+}],
+"loop": true,
+"name": &"Die",
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -50,7 +105,7 @@ animations = [{
 
 [node name="Player Sprite" parent="." index="3"]
 sprite_frames = SubResource("SpriteFrames_ckkwj")
-animation = &"Dash"
+animation = &"Die"
 autoplay = "Idle"
 
 [node name="Hand" parent="Rotation Point/Marker2D" index="0"]

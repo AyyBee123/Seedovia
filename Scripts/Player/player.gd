@@ -12,6 +12,7 @@ const DASH_TRAIL = preload("res://Scenes/Player/Dash Trail.tscn")
 
 var _player_stats: player_stats = preload("res://Resources/Characters/Stats/base_stats.tres")
 
+@onready var _state_machine = $StateMachine
 @onready var stats = get_node("Stats")
 @onready var bullets_per_second := $"Bullets Per Second"
 @onready var invulnerability_time := $"Invulnerability Time"
@@ -42,6 +43,7 @@ var pickup_item = null
 var items_in_area: Array
 var popup = null
 var highlight_color = Color("ffff6e")
+var is_dead: bool
 
 # check if the input is from a keyboard or joystick
 var _isMouse := true
@@ -81,6 +83,7 @@ func _ready():
 	_player_stats.damaged.connect(took_damage)
 	_player_stats.health_increased.connect(heal)
 	_player_stats.change_coins.connect(update_coins)
+	_player_stats.health_depleted.connect(die)
 	SignalBus.pickup_item_recieved.connect(_on_pickup)
 	DAMAGE = _player_stats.get_seed_stat("Weapon_Damage")
 	FIRE_RATE = _player_stats.get_seed_stat("Fire_Rate")
@@ -91,6 +94,8 @@ func _ready():
 	Global.save_run_data()
 
 func _physics_process(delta):
+	if is_dead:
+		return
 	update_timers()
 	PlayerStatStorage.set_stats()
 	weapon_direction = hand.global_position.direction_to(weapon_direction_marker.global_position)
@@ -157,10 +162,6 @@ func _physics_process(delta):
 		inv_anim.play("Invulnerable")
 	else:
 		inv_anim.stop()
-		
-	# die if health is 0 (or less)
-	if _player_stats.health <= 0 and _player_stats.leaf_hearts <= 0:
-		die()
 	
 	if $"Player Sprite".animation == "Dash":
 		dash_trail_time.start()
@@ -174,6 +175,7 @@ func _physics_process(delta):
 			var sprite_frames: SpriteFrames = $"Player Sprite".get_sprite_frames()
 			var current_texture: Texture2D = sprite_frames.get_frame_texture(animation_name, frame_index)
 			trail.texture = current_texture
+			trail.flip_h = $"Player Sprite".flip_h
 			trail.scale = scale
 			get_tree().current_scene.add_child(trail)
 			trail.global_position = global_position + $"Player Sprite".position
@@ -230,12 +232,16 @@ func stop():
 	velocity = velocity.lerp(Vector2.ZERO, _player_stats.get_stat("Friction"))
 
 func die():
-	hide() # temporary death effect
-	process_mode = 4 # = Mode: Disabled
+	if is_dead:
+		return
+	velocity = Vector2.ZERO
+	is_dead = true
+	hand.visible = false
+	_state_machine.set_state(_state_machine.states.die)
+	$"Player Sprite".play("Die")
+	Game.audio_manager.play(Game.audio_manager.death)
 	Global.save_data()
 	Global.delete_run_data()
-	# TODO: add death animation
-	SignalBus.player_die.emit()
 
 func dash():
 	$"Player Sprite".play("Dash")
@@ -369,3 +375,9 @@ func _on_collision_buffer_time_timeout():
 
 func update_coins():
 	$"Player Health".set_coins()
+
+func _on_player_sprite_animation_finished():
+	if $"Player Sprite".animation == "Die":
+		hide()
+		await get_tree().create_timer(0.5).timeout
+		SignalBus.player_die.emit()

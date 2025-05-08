@@ -1,14 +1,43 @@
-[gd_scene load_steps=11 format=3 uid="uid://m1j34tlvalwr"]
+[gd_scene load_steps=19 format=3 uid="uid://m1j34tlvalwr"]
 
 [ext_resource type="PackedScene" uid="uid://cu63rxmy71bcg" path="res://Scenes/Player/Player.tscn" id="1_dhg8r"]
 [ext_resource type="PackedScene" uid="uid://dg7y5b86ajmig" path="res://Scenes/Characters/Passives/Berry Stats.tscn" id="2_vgwbe"]
 [ext_resource type="Texture2D" uid="uid://b7ynn50wtvp24" path="res://Sprites/Character/Berry/Berry1.png" id="3_afc0e"]
+[ext_resource type="Texture2D" uid="uid://c686nyyt1e4ph" path="res://Sprites/Character/Death.png" id="3_p3rgh"]
 [ext_resource type="Texture2D" uid="uid://b56ybys41hcn8" path="res://Sprites/Character/Berry/Berry2.png" id="4_lahev"]
 [ext_resource type="Texture2D" uid="uid://6wk832crfh30" path="res://Sprites/Character/Berry/Hand.png" id="4_n1ask"]
 [ext_resource type="Texture2D" uid="uid://d3fqvlyjp687e" path="res://Sprites/Character/Berry/Berry3.png" id="5_j3w2e"]
 [ext_resource type="Texture2D" uid="uid://da5ri8qowbkp1" path="res://Sprites/Character/Berry/Berry4.png" id="6_1d7x2"]
 [ext_resource type="Texture2D" uid="uid://durq6vd1lypqr" path="res://Sprites/Character/Berry/Berry5.png" id="7_oqtb8"]
 [ext_resource type="PackedScene" uid="uid://bqelkwce1mdqp" path="res://Scenes/Inventory/inventory.tscn" id="8_52hxp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ylasc"]
+atlas = ExtResource("3_p3rgh")
+region = Rect2(0, 0, 26, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gju1u"]
+atlas = ExtResource("3_p3rgh")
+region = Rect2(26, 0, 26, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cekqu"]
+atlas = ExtResource("3_p3rgh")
+region = Rect2(52, 0, 26, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uusyn"]
+atlas = ExtResource("3_p3rgh")
+region = Rect2(78, 0, 26, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_11311"]
+atlas = ExtResource("3_p3rgh")
+region = Rect2(104, 0, 26, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ek14c"]
+atlas = ExtResource("3_p3rgh")
+region = Rect2(130, 0, 26, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j5p5t"]
+atlas = ExtResource("3_p3rgh")
+region = Rect2(156, 0, 26, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6lyiw"]
 animations = [{
@@ -19,6 +48,32 @@ animations = [{
 "loop": true,
 "name": &"Dash",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ylasc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gju1u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cekqu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uusyn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_11311")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ek14c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j5p5t")
+}],
+"loop": true,
+"name": &"Die",
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -51,7 +106,7 @@ animations = [{
 [node name="Player Sprite" parent="." index="3"]
 position = Vector2(0, -10)
 sprite_frames = SubResource("SpriteFrames_6lyiw")
-animation = &"Move"
+animation = &"Die"
 autoplay = "Idle"
 
 [node name="Hitbox" parent="." index="4"]
@@ -68,10 +123,10 @@ offset_right = -1459.0
 offset_bottom = -766.0
 scale = Vector2(3.745, 3.745)
 
-[node name="Shadow" parent="." index="14"]
-position = Vector2(0, 8)
-
 [node name="Stats" parent="." index="16" instance=ExtResource("2_vgwbe")]
+
+[node name="Shadow" parent="." index="17"]
+position = Vector2(0, 8)
 
 [node name="CollisionShape2D" parent="Slow Detect" index="0"]
 position = Vector2(0, 8)
