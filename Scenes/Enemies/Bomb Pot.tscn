@@ -150,7 +150,7 @@ material = SubResource("ShaderMaterial_okg71")
 sprite_frames = SubResource("SpriteFrames_4xpmq")
 animation = &"Calm"
 autoplay = "Calm"
-frame_progress = 0.248426
+frame_progress = 0.667046
 offset = Vector2(0, -8)
 
 [node name="CollisionPolygon2D" parent="Enemy Hitbox" index="0"]
