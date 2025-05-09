@@ -8,7 +8,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_81ffo"]
 size = Vector2(12, 20)
 
-[node name="Mirage Clone" type="CharacterBody2D" groups=["Player Summon"]]
+[node name="Mirage Clone" type="CharacterBody2D" groups=["Direct Fire", "Player Summon"]]
 modulate = Color(1, 1, 1, 0.392157)
 z_index = 3
 collision_layer = 32768
