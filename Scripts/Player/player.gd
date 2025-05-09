@@ -21,7 +21,6 @@ var _player_stats: player_stats = preload("res://Resources/Characters/Stats/base
 @onready var dash_cooldown := $"Dash Cooldown"
 @onready var dash_invulnerability_time := $"Dash Invulnerability Time"
 @onready var dash_trail_time = $"Dash Trail Time"
-@onready var dash_trail_rate = $"Dash Trail Rate"
 @onready var inventory := $"Inventory"
 @onready var stat_sheet = $"Stat Sheet"
 @onready var inventory_screen := $"Inventory/Inventory Screen"
@@ -46,6 +45,9 @@ var items_in_area: Array
 var popup = null
 var highlight_color = Color("ffff6e")
 var is_dead: bool
+var starting_dash_pos: Vector2
+var total_dash_distance: float
+var dash_distance_travelled: float
 
 # check if the input is from a keyboard or joystick
 var _isMouse := true
@@ -167,21 +169,27 @@ func _physics_process(delta):
 	
 	if $"Player Sprite".animation == "Dash":
 		dash_trail_time.start()
+		starting_dash_pos = global_position
 	
 	if not dash_trail_time.is_stopped():
-		if dash_trail_rate.is_stopped():
+		dash_distance_travelled = starting_dash_pos.distance_to(global_position)
+		total_dash_distance += dash_distance_travelled
+		starting_dash_pos = global_position
+		if total_dash_distance >= 40:
 			var trail = DASH_TRAIL.instantiate()
+			
 			# get the current texture in the animation
 			var frame_index: int = $"Player Sprite".get_frame()
 			var animation_name: String = $"Player Sprite".animation
 			var sprite_frames: SpriteFrames = $"Player Sprite".get_sprite_frames()
 			var current_texture: Texture2D = sprite_frames.get_frame_texture(animation_name, frame_index)
 			trail.texture = current_texture
+			
 			trail.flip_h = $"Player Sprite".flip_h
 			trail.scale = scale
 			get_tree().current_scene.add_child(trail)
 			trail.global_position = global_position + $"Player Sprite".position
-			dash_trail_rate.start()
+			total_dash_distance = 0
 
 func pick_up(item):
 	if item.is_in_group("Shop Item"):

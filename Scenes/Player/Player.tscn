@@ -106,11 +106,7 @@ one_shot = true
 one_shot = true
 
 [node name="Dash Trail Time" type="Timer" parent="."]
-wait_time = 0.25
-one_shot = true
-
-[node name="Dash Trail Rate" type="Timer" parent="."]
-wait_time = 0.05
+wait_time = 0.2
 one_shot = true
 
 [node name="Stat Sheet" parent="." instance=ExtResource("4_825xp")]
