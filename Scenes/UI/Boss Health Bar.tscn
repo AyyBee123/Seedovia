@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://usr3okdlyneq" path="res://Sprites/UI/Boss Filled Health.png" id="4_y1lnh"]
 [ext_resource type="FontFile" uid="uid://bkn7gmgx1wxgx" path="res://Fonts/Name Font.ttf" id="5_qb5n7"]
 
-[node name="Boss Health" type="CanvasLayer"]
+[node name="Health Bar" type="CanvasLayer"]
 
 [node name="Health Bar" type="TextureProgressBar" parent="."]
 z_index = -1
@@ -75,7 +75,7 @@ offset_bottom = -36.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 8
+theme_override_constants/outline_size = 12
 theme_override_fonts/normal_font = ExtResource("5_qb5n7")
 theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true

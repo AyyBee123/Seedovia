@@ -2,9 +2,12 @@ extends CharacterBody2D
 
 @export var _enemy_stats: enemy_stats
 @onready var damage_buffer := $"Damage Buffer" # prevents an accidental extra damage call if sitting in enemy hitbox
+@onready var accumulated_damage_text = $"Health Bar/Accumulated Damage"
+@onready var accumulated_timer_delay = $"Health Bar/Accumulated Timer Delay"
 
 const DAMAGE_COLOR = Color(0.5, 0, 0)
 var original_color
+var accumulated_damage = 0
 
 var stats
 var player
@@ -33,6 +36,12 @@ func _physics_process(delta):
 	if is_in_area and damage_buffer.is_stopped() and _enemy_stats.damage > 0:
 		player._player_stats.take_damage(_enemy_stats.damage)
 		damage_buffer.start()
+	
+	if accumulated_timer_delay.is_stopped():
+		accumulated_damage_text.visible = false
+		accumulated_damage = 0
+	else:
+		accumulated_damage_text.visible = true
 
 func _on_enemy_hitbox_body_exited(body):
 	if body.is_in_group("Players"):
@@ -52,16 +61,9 @@ func update_health(new_health):
 	health_bar.health = new_health
 	
 func spawn_damage_number(damage: float):
-	var value = str(round(damage))
-	var pos = global_position
-	var height = 20
-	var spread = 75
-	var damage_text = damage_number.instantiate()
-	get_tree().current_scene.add_child(damage_text)
-	damage_text.global_position = global_position
-	damage_text.set_and_animate_damage(damage, pos, height, spread, damage_color, damage_size)
-	damage_color = Color.WHITE
-	damage_size = 1
+	accumulated_damage += damage
+	accumulated_damage_text.text = str(int(round(accumulated_damage)))
+	accumulated_timer_delay.start()
 
 ## set the enemy color to red for a brief time whne taking damage
 func change_color():

@@ -456,7 +456,7 @@ shape = SubResource("RectangleShape2D_4dvlt")
 wait_time = 0.1
 one_shot = true
 
-[node name="Boss Health" parent="." instance=ExtResource("4_kk65q")]
+[node name="Health Bar" parent="." instance=ExtResource("4_kk65q")]
 
 [node name="ResourcePreloader" type="ResourcePreloader" parent="."]
 resources = [PackedStringArray("Laser", "Light Attack", "Light Beam", "Rock"), [ExtResource("8_t4oi6"), ExtResource("11_731rk"), ExtResource("11_301wr"), ExtResource("13_u42pe")]]

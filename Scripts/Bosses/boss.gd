@@ -1,10 +1,7 @@
 extends "res://Scripts/Enemies/enemy.gd"
 
-@onready var boss_health_bar = $"Boss Health/Health Bar"
-@onready var boss_name = $"Boss Health/Boss Name"
-@onready var accumulated_damage_text = $"Boss Health/Accumulated Damage"
-@onready var accumulated_timer_delay = $"Boss Health/Accumulated Timer Delay"
-var accumulated_damage = 0
+@onready var boss_health_bar = $"Health Bar/Health Bar"
+@onready var boss_name = $"Health Bar/Boss Name"
 
 func _ready():
 	# no super._ready() call because the enemy script calls a health bar, which the boss scene doesn't have
@@ -30,8 +27,6 @@ func update_health(new_health):
 	boss_health_bar.health = new_health
 
 func spawn_damage_number(damage: float):
-	super.spawn_damage_number(damage)
-	
 	accumulated_damage += damage
-	accumulated_damage_text.text = "[right]" + str(round(accumulated_damage))
+	accumulated_damage_text.text = "[right]" + str(int(round(accumulated_damage)))
 	accumulated_timer_delay.start()

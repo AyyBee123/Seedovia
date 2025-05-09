@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://de0gxtit8o3cu"]
+[gd_scene load_steps=6 format=3 uid="uid://de0gxtit8o3cu"]
 
 [ext_resource type="Texture2D" uid="uid://di216pisnnku2" path="res://Sprites/UI/Enemy Health Bar.png" id="1_k252n"]
 [ext_resource type="Texture2D" uid="uid://l7w6x0k13ni4" path="res://Sprites/UI/Enemy Filled Health.png" id="2_bby4n"]
 [ext_resource type="Texture2D" uid="uid://tlxuc123h2gf" path="res://Sprites/UI/Enemy Damaged Health.png" id="2_pon5w"]
 [ext_resource type="Script" uid="uid://cfa0gtlv7ne54" path="res://Scripts/UI/health_bar.gd" id="3_jdjej"]
+[ext_resource type="FontFile" uid="uid://wbj0boqv37y6" path="res://Fonts/Description Font.ttf" id="5_ah7g7"]
 
 [node name="Health Bar" type="TextureProgressBar"]
 z_index = -1
@@ -28,6 +29,22 @@ value = 60.0
 texture_progress = ExtResource("2_bby4n")
 
 [node name="White Bar Delay" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="Accumulated Damage" type="Label" parent="."]
+layout_mode = 0
+offset_left = 46.0
+offset_top = -3.0
+offset_right = 62.0
+offset_bottom = 9.0
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("5_ah7g7")
+theme_override_font_sizes/font_size = 16
+text = "123"
+vertical_alignment = 1
+
+[node name="Accumulated Timer Delay" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
 

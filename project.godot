@@ -80,10 +80,6 @@ folder_colors={
 "res://Sprites/": "yellow"
 }
 
-[global_group]
-
-"Weapon to be Destroyed"=""
-
 [input]
 
 ui_accept={
