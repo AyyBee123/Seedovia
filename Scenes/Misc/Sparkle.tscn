@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://biy47fbt4n75y"]
+
+[ext_resource type="Texture2D" uid="uid://crs1dlfkdi36i" path="res://Sprites/Misc/Sparkle.png" id="1_r36yk"]
+[ext_resource type="Script" uid="uid://4chhj3rvu4ff" path="res://Scripts/Misc/sparkle.gd" id="2_siro5"]
+
+[node name="Sparkle" type="Sprite2D"]
+z_index = 2
+scale = Vector2(2, 2)
+texture = ExtResource("1_r36yk")
+script = ExtResource("2_siro5")
+
+[node name="Lifetime" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]

@@ -41,6 +41,7 @@ ItemCheck="*res://Scripts/Level/item_check.gd"
 SelectionSaveData="*res://Scripts/Save Data/selection_save_data.gd"
 SignalBus="*res://Scripts/Utils/signal_bus.gd"
 Game="*res://Scenes/Utils/Game.tscn"
+GlobalValues="*res://Scripts/Global/global_values.gd"
 
 [debug]
 

@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://cbol58hx65sra"]
+
+[ext_resource type="Texture2D" uid="uid://b0hyj4w5og03p" path="res://Sprites/Misc/Sell Rug.png" id="1_j4cuy"]
+[ext_resource type="Script" uid="uid://bmaxqowcy7r0a" path="res://Scripts/Misc/sell_rug.gd" id="2_i3j08"]
+[ext_resource type="Texture2D" uid="uid://c8stlxxywetja" path="res://Sprites/Misc/Sell Sign.png" id="3_i3j08"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_drwu4"]
+size = Vector2(58, 31)
+
+[node name="Sell Rug" type="Sprite2D"]
+z_index = -2
+y_sort_enabled = true
+scale = Vector2(2, 2)
+texture = ExtResource("1_j4cuy")
+offset = Vector2(0, 0.5)
+script = ExtResource("2_i3j08")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_drwu4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 3
+z_as_relative = false
+y_sort_enabled = true
+position = Vector2(-23.5, -36)
+texture = ExtResource("3_i3j08")
+offset = Vector2(0, -10)
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

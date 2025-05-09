@@ -9,6 +9,8 @@ signal seed_fired(seed) # for immediately fired seeds (for the mirage passive)
 const POPUP = preload("res://Scenes/UI/Item Popup.tscn")
 const PLAYER_HAND = preload("res://Scenes/Seeds/Player Hand.tscn")
 const DASH_TRAIL = preload("res://Scenes/Player/Dash Trail.tscn")
+const STAT_INCREASE = preload("res://Scenes/UI/Stat Increase.tscn")
+const SPARKLE = preload("res://Scenes/Misc/Sparkle.tscn")
 
 var _player_stats: player_stats = preload("res://Resources/Characters/Stats/base_stats.tres")
 
@@ -368,6 +370,22 @@ func _on_pickup(_item):
 	await get_tree().create_timer(0.5).timeout
 	Global.save_run_data()
 	Global.save_run_room()
+
+func spawn_stat_increase(amount, type):
+	var stat = STAT_INCREASE.instantiate()
+	get_tree().current_scene.add_child(stat)
+	stat.global_position = global_position
+	stat.set_and_animate_stat(amount, type)
+	
+	for i in 8:
+		spawn_sparkle(Color("73fb85"))
+
+func spawn_sparkle(color: Color):
+	var sparkle = SPARKLE.instantiate()
+	sparkle.modulate = color
+	sparkle.direction = Vector2.RIGHT.rotated(randf_range(0, TAU))
+	add_child(sparkle)
+	sparkle.global_position = global_position + sparkle.direction * 20
 
 ## a little buffer to prevent immediate collision with other objects
 func _on_collision_buffer_time_timeout():

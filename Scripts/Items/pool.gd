@@ -166,8 +166,8 @@ func repopulate_weighted_pools():
 	2: 0.15 + LevelList.floor_number * 0.01, # rare
 	3: 0.075 + LevelList.floor_number * 0.015, # epic
 	4: 0.025 + LevelList.floor_number * 0.01, # legendary
-	5: 0.0001, # mystic
-	6: 0, # unique
+	5: 0.0001, # unique
+	6: 0, # mystic
 	7: 0, # N/A
 	}
 	seed_weights = {
@@ -176,8 +176,8 @@ func repopulate_weighted_pools():
 	2: 0.15 + LevelList.floor_number * 0.025, # rare
 	3: 0.075 + LevelList.floor_number * 0.015, # epic
 	4: 0.025 + LevelList.floor_number * 0.01, # legendary
-	5: 0.0001, # mystic
-	6: 0, # unique
+	5: 0, # unique
+	6: 0.0001, # mystic
 	7: 0, # N/A
 	}
 	equipment_pool.pool.clear()

@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_w6xv8")
-amount = 1.0
+amount = 10.0
 weight = 1.0
 shop_price = 10
 item_name = "Golden Cherry"

@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=4 uid="uid://6rlp66mjo1p"]
+[gd_scene load_steps=6 format=4 uid="uid://6rlp66mjo1p"]
 
 [ext_resource type="PackedScene" uid="uid://cxoiy0x4nvtaa" path="res://Scenes/Levels/Base Level.tscn" id="1_ai65m"]
 [ext_resource type="Script" uid="uid://chuhtu5cnvosk" path="res://Scripts/Level/shop.gd" id="2_8cf1a"]
 [ext_resource type="Shader" uid="uid://qm3syqtxdolu" path="res://Shaders/circle_transition.gdshader" id="3_k4mg7"]
+[ext_resource type="PackedScene" uid="uid://cbol58hx65sra" path="res://Scenes/Misc/Sell Rug.tscn" id="4_til5q"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0ecxy"]
 resource_local_to_scene = true
@@ -19,3 +20,6 @@ tile_map_data = PackedByteArray("AAD5//z/BwAAAAAAAGD4//z/AQAAAAAAAAD4//3/AQAAAAA
 
 [node name="Circle Transition" parent="." index="6"]
 material = SubResource("ShaderMaterial_0ecxy")
+
+[node name="Sell Rug" parent="." index="7" instance=ExtResource("4_til5q")]
+position = Vector2(0, -162)
