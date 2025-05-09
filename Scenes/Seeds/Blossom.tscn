@@ -26,7 +26,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_mbp6p"]
 radius = 7.0
 
-[node name="Blossom" type="Sprite2D" groups=["Seed", "Weapon"]]
+[node name="Blossom" type="Sprite2D" groups=["Seed", "Weapon", "Weapon to be Destroyed"]]
 scale = Vector2(2.5, 2.5)
 script = ExtResource("1_le8gg")
 BASE_DAMAGE = 10.0

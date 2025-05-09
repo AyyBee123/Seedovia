@@ -7,7 +7,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5kly6"]
 size = Vector2(9, 17)
 
-[node name="Wood Thorn" instance=ExtResource("1_my4v5")]
+[node name="Wood Thorn" groups=["Weapon to be Destroyed"] instance=ExtResource("1_my4v5")]
 scale = Vector2(2, 2)
 texture = ExtResource("2_ocjhd")
 offset = Vector2(1, 0)

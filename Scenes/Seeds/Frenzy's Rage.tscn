@@ -114,7 +114,7 @@ animations = [{
 "speed": 15.0
 }]
 
-[node name="Frenzy\'s Rage" instance=ExtResource("1_1cr17")]
+[node name="Frenzy\'s Rage" groups=["Weapon to be Destroyed"] instance=ExtResource("1_1cr17")]
 script = ExtResource("2_v25mg")
 BASE_DAMAGE = 30.0
 BASE_FIRE_RATE = 0.75

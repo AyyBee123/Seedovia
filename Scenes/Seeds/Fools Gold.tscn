@@ -7,7 +7,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_67ht4"]
 radius = 9.0
 
-[node name="Fool\'s Gold" instance=ExtResource("1_gcaed")]
+[node name="Fool\'s Gold" groups=["Weapon to be Destroyed"] instance=ExtResource("1_gcaed")]
 scale = Vector2(2, 2)
 texture = ExtResource("2_0v8oq")
 script = ExtResource("3_epx6a")

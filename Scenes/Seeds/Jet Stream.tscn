@@ -15,7 +15,7 @@ point_count = 2
 [sub_resource type="Gradient" id="Gradient_0lwm5"]
 colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
 
-[node name="Jet Stream" instance=ExtResource("1_7qeku")]
+[node name="Jet Stream" groups=["Weapon to be Destroyed"] instance=ExtResource("1_7qeku")]
 scale = Vector2(2, 2)
 texture = ExtResource("2_at4xh")
 script = ExtResource("3_drn27")

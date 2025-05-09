@@ -94,7 +94,7 @@ _data = {
 &"new_animation": SubResource("Animation_4bg0l")
 }
 
-[node name="Corn" instance=ExtResource("1_qcu64")]
+[node name="Corn" groups=["Weapon to be Destroyed"] instance=ExtResource("1_qcu64")]
 scale = Vector2(2, 2)
 script = ExtResource("2_2xfam")
 BASE_DAMAGE = 30.0
@@ -125,7 +125,7 @@ resources = [PackedStringArray("Non-Weapon Effect Explosion"), [ExtResource("5_t
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="5"]
 root_node = NodePath("../ResourcePreloader")
 libraries = {
-"": SubResource("AnimationLibrary_of4mj")
+&"": SubResource("AnimationLibrary_of4mj")
 }
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

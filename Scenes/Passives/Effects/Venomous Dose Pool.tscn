@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_facii"]
 radius = 31.0363
 
-[node name="Venomous Dose Pool" type="Sprite2D" groups=["Weapon Effect"]]
+[node name="Venomous Dose Pool" type="Sprite2D" groups=["Weapon Effect", "Weapon to be Destroyed"]]
 scale = Vector2(2, 2)
 texture = ExtResource("1_87vuv")
 script = ExtResource("2_1v66b")

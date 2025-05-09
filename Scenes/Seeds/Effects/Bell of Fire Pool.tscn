@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_facii"]
 radius = 31.0363
 
-[node name="Bell of Fire Pool" type="Sprite2D" groups=["Weapon Effect"]]
+[node name="Bell of Fire Pool" type="Sprite2D" groups=["Weapon Effect", "Weapon to be Destroyed"]]
 scale = Vector2(3, 3)
 texture = ExtResource("1_iuwvu")
 script = ExtResource("2_iuwvu")

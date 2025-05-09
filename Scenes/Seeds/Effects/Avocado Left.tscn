@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kukf1"]
 size = Vector2(6, 25)
 
-[node name="Avocado Left" type="Sprite2D" groups=["Seed", "Weapon"]]
+[node name="Avocado Left" type="Sprite2D" groups=["Seed", "Weapon", "Weapon to be Destroyed"]]
 z_index = 4
 y_sort_enabled = true
 texture = ExtResource("2_dalfg")

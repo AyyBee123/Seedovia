@@ -8,7 +8,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_wmur4"]
 radius = 25.0
 
-[node name="Black Hole" groups=["Projectile"] instance=ExtResource("1_nmxc7")]
+[node name="Black Hole" groups=["Projectile", "Weapon to be Destroyed"] instance=ExtResource("1_nmxc7")]
 texture = ExtResource("2_mgpa6")
 script = ExtResource("3_pd5y3")
 BASE_DAMAGE = 10.0

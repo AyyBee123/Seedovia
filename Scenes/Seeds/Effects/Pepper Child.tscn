@@ -8,7 +8,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_fu6k5"]
 radius = 9.33333
 
-[node name="PepperChild" type="Sprite2D" groups=["Child", "Pepper Child", "Projectile", "Seed", "Weapon"]]
+[node name="PepperChild" type="Sprite2D" groups=["Child", "Pepper Child", "Projectile", "Seed", "Weapon", "Weapon to be Destroyed"]]
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("1_t0alk")
 script = ExtResource("2_gmm82")

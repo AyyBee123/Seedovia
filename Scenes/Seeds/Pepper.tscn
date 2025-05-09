@@ -9,7 +9,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_rsbvv"]
 radius = 7.0
 
-[node name="Pepper" groups=["Projectile"] instance=ExtResource("1_44bna")]
+[node name="Pepper" groups=["Projectile", "Weapon to be Destroyed"] instance=ExtResource("1_44bna")]
 position = Vector2(0, -2)
 texture = ExtResource("2_c1ca2")
 script = ExtResource("3_15ils")

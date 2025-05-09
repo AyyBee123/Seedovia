@@ -84,7 +84,7 @@ _data = {
 &"new_animation": SubResource("Animation_mwv3e")
 }
 
-[node name="Maple" instance=ExtResource("1_ocymi")]
+[node name="Maple" groups=["Weapon to be Destroyed"] instance=ExtResource("1_ocymi")]
 z_index = -2
 scale = Vector2(2, 2)
 texture = ExtResource("2_laj06")
@@ -118,7 +118,7 @@ autostart = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
 libraries = {
-"": SubResource("AnimationLibrary_7y6oh")
+&"": SubResource("AnimationLibrary_7y6oh")
 }
 
 [node name="End" type="Sprite2D" parent="." index="5"]

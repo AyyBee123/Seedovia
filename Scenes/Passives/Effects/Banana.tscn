@@ -13,7 +13,7 @@ radius = 51.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_r7qac"]
 radius = 12.0
 
-[node name="Banana" type="Sprite2D" groups=["Weapon"]]
+[node name="Banana" type="Sprite2D" groups=["Weapon", "Weapon to be Destroyed"]]
 texture = ExtResource("1_nvd3o")
 script = ExtResource("2_82g1y")
 

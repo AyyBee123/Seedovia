@@ -12,7 +12,7 @@ radius = 14.7271
 [sub_resource type="CircleShape2D" id="CircleShape2D_ysyss"]
 radius = 12.0
 
-[node name="BananaChild" type="Sprite2D" groups=["Weapon"]]
+[node name="BananaChild" type="Sprite2D" groups=["Weapon", "Weapon to be Destroyed"]]
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("1_j1sfa")
 script = ExtResource("2_o4nsl")

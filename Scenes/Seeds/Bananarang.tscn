@@ -10,7 +10,7 @@ radius = 9.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_c3iv6"]
 radius = 17.0294
 
-[node name="Bananarang" instance=ExtResource("1_rosip")]
+[node name="Bananarang" groups=["Weapon to be Destroyed"] instance=ExtResource("1_rosip")]
 texture = ExtResource("2_nol6y")
 offset = Vector2(-4, -4.5)
 script = ExtResource("3_s1k5y")

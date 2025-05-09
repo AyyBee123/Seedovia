@@ -141,7 +141,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_4vjvr"]
 radius = 50.0
 
-[node name="Sentient Pot" instance=ExtResource("1_v2w53")]
+[node name="Sentient Pot" groups=["Weapon to be Destroyed"] instance=ExtResource("1_v2w53")]
 scale = Vector2(1.5, 1.5)
 script = ExtResource("2_ewhoq")
 BASE_DAMAGE = 8.0

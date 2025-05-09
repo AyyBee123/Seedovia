@@ -8,7 +8,7 @@
 radius = 5.0
 height = 18.0
 
-[node name="Needle" instance=ExtResource("1_wd74r")]
+[node name="Needle" groups=["Weapon to be Destroyed"] instance=ExtResource("1_wd74r")]
 scale = Vector2(2, 2)
 texture = ExtResource("2_73t7b")
 offset = Vector2(5, 0)

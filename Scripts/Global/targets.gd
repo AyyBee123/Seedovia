@@ -45,5 +45,5 @@ func get_coins():
 func get_shop_items():
 	return get_tree().get_nodes_in_group("Shop Item")
 
-func get_seeds():
-	return get_tree().get_nodes_in_group("Seed")
+func get_weapons_to_be_destroyed():
+	return get_tree().get_nodes_in_group("Weapon to be Destroyed")

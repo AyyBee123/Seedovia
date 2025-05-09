@@ -9,7 +9,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_0hc64"]
 radius = 8.0
 
-[node name="Fume" instance=ExtResource("1_kefo4")]
+[node name="Fume" groups=["Weapon to be Destroyed"] instance=ExtResource("1_kefo4")]
 texture = ExtResource("2_rmgjt")
 script = ExtResource("3_incdh")
 BASE_DAMAGE = 2.0

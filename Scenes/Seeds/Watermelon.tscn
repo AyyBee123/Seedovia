@@ -31,7 +31,7 @@ animations = [{
 "speed": 17.0
 }]
 
-[node name="Watermelon" type="Sprite2D" groups=["Seed", "Weapon"]]
+[node name="Watermelon" type="Sprite2D" groups=["Seed", "Weapon", "Weapon to be Destroyed"]]
 z_index = 4
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_rf7tf")

@@ -7,7 +7,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_7ssd4"]
 radius = 9.6
 
-[node name="Pea" groups=["Projectile"] instance=ExtResource("1_edna1")]
+[node name="Pea" groups=["Projectile", "Weapon to be Destroyed"] instance=ExtResource("1_edna1")]
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_f4lgv")
 script = ExtResource("3_fbuh6")

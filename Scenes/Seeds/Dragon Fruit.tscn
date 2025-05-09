@@ -9,7 +9,7 @@
 radius = 9.0
 height = 25.0
 
-[node name="Dragon Fruit" instance=ExtResource("1_abris")]
+[node name="Dragon Fruit" groups=["Weapon to be Destroyed"] instance=ExtResource("1_abris")]
 scale = Vector2(2, 2)
 texture = ExtResource("2_8fhni")
 script = ExtResource("2_tisd2")

@@ -44,7 +44,7 @@ animations = [{
 "speed": 8.0
 }]
 
-[node name="Spore" instance=ExtResource("1_cc56n")]
+[node name="Spore" groups=["Weapon to be Destroyed"] instance=ExtResource("1_cc56n")]
 scale = Vector2(2, 2)
 script = ExtResource("2_ggmfa")
 BASE_DAMAGE = 4.0
