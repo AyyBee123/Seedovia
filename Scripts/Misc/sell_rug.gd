@@ -18,13 +18,13 @@ func sell_item(item):
 	var price: int
 	match item.item.category:
 		"CONSUMABLE":
-			price = item.shop_price
+			price = item.item.shop_price
 		"TALISMAN":
 			price = GlobalValues.talisman_prices[item.item.rarity]
 		"SEED":
 			price = GlobalValues.seed_prices[item.item.rarity]
 		"PICKUP":
-			price = item.shop_price
+			price = item.item.shop_price
 	player._player_stats.set_coins(price * SELL_VALUE_MULTIPLIER)
 	item.queue_free()
 	Game.audio_manager.play(Game.audio_manager.cash)

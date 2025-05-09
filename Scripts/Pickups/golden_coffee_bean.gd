@@ -2,7 +2,7 @@ class_name golden_coffee_bean extends pickup_item_class
 
 @export var amount: float = 25
 
-func _ready():
+func _init():
 	category = "STAT UP"
 	description = "+" + str(amount) + " Movement Speed"
 

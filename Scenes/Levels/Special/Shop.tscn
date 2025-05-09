@@ -22,4 +22,4 @@ tile_map_data = PackedByteArray("AAD5//z/BwAAAAAAAGD4//z/AQAAAAAAAAD4//3/AQAAAAA
 material = SubResource("ShaderMaterial_0ecxy")
 
 [node name="Sell Rug" parent="." index="7" instance=ExtResource("4_til5q")]
-position = Vector2(0, -162)
+position = Vector2(0, -197)

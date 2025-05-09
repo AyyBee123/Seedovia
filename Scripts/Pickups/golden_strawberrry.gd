@@ -2,7 +2,7 @@ class_name golden_strawberry extends pickup_item_class
 
 @export var amount: float = 10
 
-func _ready():
+func _init():
 	category = "STAT UP"
 	description = "+" + str(amount) + "% Range"
 
