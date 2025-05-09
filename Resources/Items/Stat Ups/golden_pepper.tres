@@ -10,5 +10,5 @@ weight = 1.0
 shop_price = 10
 item_name = "Golden Pepper"
 texture = ExtResource("2_o7lml")
-description = ""
+description = "+5% Seed Size"
 unlocked = true

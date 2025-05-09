@@ -10,5 +10,5 @@ weight = 1.0
 shop_price = 10
 item_name = "Golden Cherry"
 texture = ExtResource("2_w5v87")
-description = ""
+description = "+10% Fire Rate"
 unlocked = true

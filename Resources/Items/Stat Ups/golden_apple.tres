@@ -10,5 +10,5 @@ weight = 1.0
 shop_price = 10
 item_name = "Golden Apple"
 texture = ExtResource("2_5e8gn")
-description = ""
+description = "+10% Damage"
 unlocked = true
