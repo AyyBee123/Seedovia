@@ -14,13 +14,16 @@ func _ready():
 	enemy = get_parent()
 
 func _physics_process(delta):
+	if not enemy is CharacterBody2D:
+		queue_free()
+		return
 	var collision
 	if deceleration_time.is_stopped():
 		enemy.velocity = knockback_direction * knockback_speed
 		collision = enemy.move_and_collide(enemy.velocity * delta)
 	else:
 		enemy.velocity = knockback_direction * knockback_speed * deceleration_time.time_left \
-		/ deceleration_time.wait_time
+				/ deceleration_time.wait_time
 		collision = enemy.move_and_collide(enemy.velocity * delta)
 	if collision:
 		enemy.velocity = enemy.velocity.bounce(collision.get_normal())
