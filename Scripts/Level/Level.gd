@@ -17,9 +17,6 @@ func _input(event):
 				return
 			var pause_menu = resource_preloader.get_resource("Pause Menu").instantiate()
 			add_child(pause_menu)
-	if event.is_action_pressed("close_inv"):
-		player.get_node("Inventory").visible = false
-		player.get_node("Stat Sheet").visible = false
 
 var player
 var player_pos = Vector2(0, 330)

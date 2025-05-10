@@ -80,6 +80,9 @@ func _physics_process(delta):
 				container.get_node("%Name").text = p.passive_name
 				%Passives.add_child(container)
 			%ScrollContainer.set_v_scroll(0)
+	
+	elif Input.is_action_just_pressed("close_inv") and visible:
+		visible = false
 
 func _input(event):
 	if Input.is_action_just_pressed("stat_sheet_up"):

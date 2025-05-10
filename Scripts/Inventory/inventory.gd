@@ -13,6 +13,7 @@ var holding_item = null # the item that is currently being held by the cursor in
 var previous_holding_item
 var holding_item_player_pos
 var drop_delay = Timer.new()
+var current_mouse_slot # get the current slot the mouse is hovering over
 var _isMandK := true
 # set the default selected slot (for controller inventory navigation)
 var selected_slot_index: int
@@ -56,9 +57,6 @@ func _ready():
 	initialize_seeds()
 
 func _process(delta):
-	if Input.is_action_just_pressed("inventory"):
-		# toggle inventory UI to open/close
-		visible = not visible
 	if holding_item == null:
 		if drop_delay.is_stopped():
 			player.has_holding_item = false
@@ -79,11 +77,12 @@ func _process(delta):
 	elif all_slots[selected_slot_index].item and all_slots[selected_slot_index].popup != null and _isMandK and \
 			all_slots[selected_slot_index].popup.source != "Mouse":
 		all_slots[selected_slot_index].remove_popup()
-		
 
 func slot_gui_input(event: InputEvent, slot: slot_class):
 	if not visible: # should not be able to interact with the inventory if its not visible
 		return
+	if event is InputEventMouseMotion:
+		current_mouse_slot = slot
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			if holding_item != null:
@@ -93,7 +92,7 @@ func slot_gui_input(event: InputEvent, slot: slot_class):
 					left_click_swap_item(event, slot)
 			elif slot.item: # left clicking an item while not currently holding an item
 				left_click_select_item(slot)
-		if Input.is_action_pressed("use") and event.pressed:
+		if Input.is_action_pressed("inventory_use"):
 			if holding_item == null:
 				if slot.item:
 					right_click_use_item(slot)
@@ -107,24 +106,31 @@ func slot_gui_input(event: InputEvent, slot: slot_class):
 					left_click_swap_item(event, slot)
 			elif slot.item: # left clicking an item while not currently holding an item
 				left_click_select_item(slot)
-		if Input.is_action_pressed("use") and event.pressed:
-			if holding_item == null:
-				if slot.item:
-					right_click_use_item(slot)
-		if event.button_index == JOY_BUTTON_B and event.pressed:
-			if slot.item == null:
-				return
-			PlayerInventory.drop_item(slot.item.item, player)
-			slot.item.queue_free()
-			slot.item = null
-			PlayerInventory.remove_item(slot)
-			slot.remove_popup()
+	if Input.is_action_just_pressed("inventory_use"):
+		if holding_item == null:
+			if slot.item:
+				right_click_use_item(slot)
+	if Input.is_action_just_pressed("inventory_drop"):
+		if slot.item == null:
+			return
+		PlayerInventory.drop_item(slot.item.item, player)
+		slot.item.queue_free()
+		slot.item = null
+		PlayerInventory.remove_item(slot)
+		slot.remove_popup()
 	SignalBus.inventory_changed.emit()
 
 func _input(event):
 	initialize_inventory()
 	initialize_talisman()
 	initialize_seeds()
+	
+	if Input.is_action_just_pressed("inventory"):
+		# toggle inventory UI to open/close
+		visible = not visible
+	elif Input.is_action_just_pressed("close_inv") and visible:
+		visible = false
+	
 	if holding_item:
 		if _isMandK:
 			holding_item.global_position = get_global_mouse_position()
@@ -168,23 +174,27 @@ func _input(event):
 			selected_slot_index = min(all_slots.size() - 1, selected_slot_index + 4)
 			selected_slot.global_position = all_slots[selected_slot_index].global_position
 			joystick_item_popup(selected_slot_index)
-	# adding an inventory select button to grab a slot item or slot a holding item
-	if Input.is_action_just_pressed("inventory_select"):
-		var ev = InputEventJoypadButton.new()
-		ev.button_index = JOY_BUTTON_A
-		ev.pressed = true
-		slot_gui_input(ev, all_slots[selected_slot_index])
-	# adding a use/equip button
-	if Input.is_action_just_pressed("inventory_use"):
-		var ev = InputEventJoypadButton.new()
-		ev.button_index = JOY_BUTTON_X
-		ev.pressed = true
-		slot_gui_input(ev, all_slots[selected_slot_index])
-	if Input.is_action_just_pressed("inventory_drop"):
-		var ev = InputEventJoypadButton.new()
-		ev.button_index = JOY_BUTTON_B
-		ev.pressed = true
-		slot_gui_input(ev, all_slots[selected_slot_index])
+	if not _isMandK:
+		# adding an inventory select button to grab a slot item or slot a holding item
+		if Input.is_action_just_pressed("inventory_select"):
+			slot_gui_input(event, all_slots[selected_slot_index])
+		# adding a use/equip button
+		if Input.is_action_just_pressed("inventory_use"):
+			slot_gui_input(event, all_slots[selected_slot_index])
+		# adding a drop button
+		if Input.is_action_just_pressed("inventory_drop"):
+			slot_gui_input(event, all_slots[selected_slot_index])
+	
+	if _isMandK and current_mouse_slot:
+		# adding an inventory select button to grab a slot item or slot a holding item
+		if Input.is_action_just_pressed("inventory_select"):
+			slot_gui_input(event, current_mouse_slot)
+		# adding a use/equip button
+		if Input.is_action_just_pressed("inventory_use"):
+			slot_gui_input(event, current_mouse_slot)
+		# adding a drop button
+		if Input.is_action_just_pressed("inventory_drop"):
+			slot_gui_input(event, current_mouse_slot)
 
 func initialize_inventory():
 	for i in range(inventory_slots.size()):

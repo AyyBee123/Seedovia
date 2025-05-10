@@ -42,9 +42,6 @@ func _input(event):
 				return
 			var pause_menu = resource_preloader.get_resource("Pause Menu").instantiate()
 			add_child(pause_menu)
-	if Input.is_action_pressed("close_inv"):
-		player.get_node("Inventory").visible = false
-		player.get_node("Stat Sheet").visible = false
 
 func select_character():
 	LevelList.elapsed_time = 0

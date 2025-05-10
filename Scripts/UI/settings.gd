@@ -158,8 +158,6 @@ func _on_cancel_button_pressed():
 	close()
 
 func close():
-	if default_focus:
-		default_focus.grab_focus()
 	queue_free()
 
 func _on_tab_container_tab_changed(tab):
@@ -168,3 +166,7 @@ func _on_tab_container_tab_changed(tab):
 
 func _on_auto_equip_button_toggled(toggled_on):
 	Game.audio_manager.play(Game.audio_manager.ui_button)
+
+func _exit_tree():
+	if default_focus:
+		default_focus.grab_focus()

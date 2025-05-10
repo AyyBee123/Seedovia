@@ -209,7 +209,7 @@ offset_bottom = 918.0
 mouse_filter = 2
 theme = ExtResource("6_6wdx2")
 tab_alignment = 1
-current_tab = 3
+current_tab = 4
 
 [node name="Tab00001" type="MarginContainer" parent="CanvasLayer/TabContainer"]
 visible = false
@@ -355,6 +355,7 @@ theme = SubResource("Theme_m7hwe")
 button_pressed = true
 
 [node name="Tab40001" type="MarginContainer" parent="CanvasLayer/TabContainer"]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 64
 theme_override_constants/margin_top = 64
@@ -534,7 +535,6 @@ drag_and_drop_selection_enabled = false
 select_all_on_focus = true
 
 [node name="Tab50001" type="MarginContainer" parent="CanvasLayer/TabContainer"]
-visible = false
 layout_mode = 2
 script = ExtResource("10_m7hwe")
 metadata/_tab_index = 4

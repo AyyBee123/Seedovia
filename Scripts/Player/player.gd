@@ -61,6 +61,8 @@ var FIRE_RATE = 10
 var BLAST_RADIUS = 1
 var SIZE = 1
 
+var input_direction = Input.get_vector("left", "right", "up", "down", 0.5)
+
 func _ready():
 	if PlayerCharacter._is_starting: # when starting a new run
 		for stat in _player_stats.stats.keys():
@@ -100,6 +102,7 @@ func _ready():
 func _physics_process(delta):
 	if is_dead:
 		return
+	input_direction = Vector2(Input.get_axis("left", "right"), Input.get_axis("up", "down")).normalized()
 	update_timers()
 	PlayerStatStorage.set_stats()
 	weapon_direction = hand.global_position.direction_to(weapon_direction_marker.global_position)
@@ -231,8 +234,6 @@ func get_nearest_item():
 
 func move():
 	$"Player Sprite".play("Move")
-	# TODO: add a deadzone value taken from the one in options menu (currently 0.15)
-	var input_direction = Input.get_vector("left", "right", "up", "down", 0.15)
 	if input_direction.length() > 0:
 		velocity = velocity.lerp(input_direction * _player_stats.get_stat("Speed"), \
 				_player_stats.get_stat("Acceleration"))
@@ -256,7 +257,6 @@ func die():
 func dash():
 	$"Player Sprite".play("Dash")
 	can_be_damaged = false
-	var input_direction = Input.get_vector("left", "right", "up", "down")
 	velocity = velocity.lerp((input_direction.normalized() if input_direction else Vector2(0,1)) \
 			* _player_stats.get_stat("Dash_Distance"), 1)
 	Game.audio_manager.play(Game.audio_manager.dash)
@@ -318,11 +318,9 @@ func heal():
 	Global.save_run_data()
 
 func _should_move() -> bool:
-	var input_direction = Input.get_vector("left", "right", "up", "down")
 	return input_direction.length() > 0
 
 func _should_stop() -> bool:
-	var input_direction = Input.get_vector("left", "right", "up", "down")
 	return is_zero_approx(input_direction.length())
 
 func _should_dash() -> bool:
