@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bagmkum7q0yxi"]
+[gd_scene load_steps=11 format=3 uid="uid://bagmkum7q0yxi"]
 
 [ext_resource type="Script" uid="uid://435bw8we441b" path="res://Scripts/Enemies/enemy.gd" id="1_i8axt"]
 [ext_resource type="Resource" uid="uid://bc1p8m0xc01dk" path="res://Resources/Enemies/dummy.tres" id="2_3p7vb"]
@@ -6,6 +6,7 @@
 [ext_resource type="Shader" uid="uid://dsv0n8bsysyo6" path="res://Shaders/color_tint_shader.gdshader" id="3_uguyq"]
 [ext_resource type="PackedScene" uid="uid://de0gxtit8o3cu" path="res://Scenes/UI/health_bar.tscn" id="4_0p02j"]
 [ext_resource type="PackedScene" uid="uid://bfpmq41k18tdi" path="res://Scenes/Passives/Effects/Burn Stacks.tscn" id="5_la8sp"]
+[ext_resource type="Texture2D" uid="uid://xxyym547o3vn" path="res://Sprites/Misc/Shadow.png" id="7_vt1k1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4n8gi"]
 radius = 11.0
@@ -60,6 +61,13 @@ columns = 1024
 [node name="Damage Buffer" type="Timer" parent="."]
 wait_time = 0.1
 one_shot = true
+
+[node name="Shadow" type="Sprite2D" parent="."]
+z_index = -1
+z_as_relative = false
+position = Vector2(7.10543e-15, 29)
+scale = Vector2(0.75, 0.6875)
+texture = ExtResource("7_vt1k1")
 
 [connection signal="body_entered" from="Enemy Hitbox" to="." method="_on_enemy_hitbox_body_entered"]
 [connection signal="body_exited" from="Enemy Hitbox" to="." method="_on_enemy_hitbox_body_exited"]
