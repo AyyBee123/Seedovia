@@ -511,9 +511,9 @@ stretch_mode = 3
 [node name="Pick Up Hint" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 279.0
+offset_left = 289.0
 offset_top = 505.0
-offset_right = 492.0
+offset_right = 502.0
 offset_bottom = 531.0
 script = ExtResource("50_2c1dj")
 metadata/_edit_use_anchors_ = true
