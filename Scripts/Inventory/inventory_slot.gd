@@ -97,6 +97,7 @@ func add_popup(item, source = "Mouse"):
 	popup.rarity = item.item.rarity
 	popup.inventory = inventory
 	popup.source = source
+	popup.slot = self
 	add_child.call_deferred(popup)
 
 func remove_popup():

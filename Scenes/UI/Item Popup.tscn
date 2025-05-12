@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://di5qsn3q64j3p"]
+[gd_scene load_steps=16 format=3 uid="uid://di5qsn3q64j3p"]
 
 [ext_resource type="Shader" uid="uid://bpc6ul5ohvhrn" path="res://Shaders/color_replace.gdshader" id="1_4thg4"]
 [ext_resource type="Script" uid="uid://7ub5r2cwkkms" path="res://Scripts/UI/item_popup.gd" id="1_yb4gf"]
@@ -8,6 +8,11 @@
 [ext_resource type="Texture2D" uid="uid://bk4qatjkbxvsc" path="res://Sprites/Item Popup/Description portion.png" id="4_aygkx"]
 [ext_resource type="Texture2D" uid="uid://b2dkeiugujig2" path="res://Sprites/Item Popup/Rarity & Type portion.png" id="5_ynuig"]
 [ext_resource type="Texture2D" uid="uid://ca6wnsfotkfae" path="res://Sprites/Item Popup/Bottom.png" id="6_6tcmu"]
+[ext_resource type="Script" uid="uid://uwf7yhhkdjyg" path="res://Scripts/UI/inventory_use_hint.gd" id="8_adn64"]
+[ext_resource type="Script" uid="uid://bi0e4s4xgffql" path="res://Scripts/UI/inventory_select_hint.gd" id="8_vs14p"]
+[ext_resource type="Texture2D" uid="uid://dqth0r0sswpdo" path="res://Sprites/Keybinds/Left Mouse Button.png" id="9_4cnat"]
+[ext_resource type="Texture2D" uid="uid://34jm6ti12y25" path="res://Sprites/Keybinds/Bottom Button.png" id="10_saul2"]
+[ext_resource type="Script" uid="uid://bedogn2xdrcw5" path="res://Scripts/UI/inventory_drop_hint.gd" id="12_4cnat"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_l4fg8"]
 shader = ExtResource("1_4thg4")
@@ -158,6 +163,205 @@ theme_override_font_sizes/normal_font_size = 16
 text = "Description"
 fit_content = true
 scroll_active = false
+
+[node name="Hints Portion" type="PanelContainer" parent="Box"]
+unique_name_in_owner = true
+use_parent_material = true
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_olhi0")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Box/Hints Portion"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="Box/Hints Portion/VBoxContainer"]
+layout_mode = 2
+
+[node name="ColorRect2" type="ColorRect" parent="Box/Hints Portion/VBoxContainer"]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+color = Color(0.376471, 0.188235, 0.164706, 1)
+
+[node name="Slot Hints" type="MarginContainer" parent="Box/Hints Portion/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/margin_right = 80
+
+[node name="GridContainer" type="GridContainer" parent="Box/Hints Portion/VBoxContainer/Slot Hints"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 2
+
+[node name="Select" type="Label" parent="Box/Hints Portion/VBoxContainer/Slot Hints/GridContainer"]
+self_modulate = Color(0.905882, 0.8, 0.627451, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.188235)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("2_vk73d")
+theme_override_font_sizes/font_size = 8
+text = "Select:"
+vertical_alignment = 1
+
+[node name="Inventory Select" type="Control" parent="Box/Hints Portion/VBoxContainer/Slot Hints/GridContainer"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("8_vs14p")
+
+[node name="Key" type="TextureRect" parent="Box/Hints Portion/VBoxContainer/Slot Hints/GridContainer/Inventory Select"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -32.0
+offset_bottom = 32.0
+grow_horizontal = 0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_4cnat")
+
+[node name="Icon" type="TextureRect" parent="Box/Hints Portion/VBoxContainer/Slot Hints/GridContainer/Inventory Select"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -32.0
+offset_bottom = 32.0
+grow_horizontal = 0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_saul2")
+stretch_mode = 3
+
+[node name="Use" type="Label" parent="Box/Hints Portion/VBoxContainer/Slot Hints/GridContainer"]
+self_modulate = Color(0.905882, 0.8, 0.627451, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.188235)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("2_vk73d")
+theme_override_font_sizes/font_size = 8
+text = "Use:"
+vertical_alignment = 1
+
+[node name="Inventory Use" type="Control" parent="Box/Hints Portion/VBoxContainer/Slot Hints/GridContainer"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("8_adn64")
+
+[node name="Key" type="Label" parent="Box/Hints Portion/VBoxContainer/Slot Hints/GridContainer/Inventory Use"]
+modulate = Color(0.905882, 0.8, 0.627451, 1)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -32.0
+offset_bottom = 32.0
+grow_horizontal = 0
+scale = Vector2(0.5, 0.5)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.188235)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 0
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("2_vk73d")
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Icon" type="TextureRect" parent="Box/Hints Portion/VBoxContainer/Slot Hints/GridContainer/Inventory Use"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -32.0
+offset_bottom = 32.0
+grow_horizontal = 0
+scale = Vector2(0.5, 0.5)
+stretch_mode = 3
+
+[node name="Icon Mouse" type="TextureRect" parent="Box/Hints Portion/VBoxContainer/Slot Hints/GridContainer/Inventory Use"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -32.0
+offset_bottom = 32.0
+grow_horizontal = 0
+scale = Vector2(0.5, 0.5)
+stretch_mode = 3
+
+[node name="Drop" type="Label" parent="Box/Hints Portion/VBoxContainer/Slot Hints/GridContainer"]
+self_modulate = Color(0.905882, 0.8, 0.627451, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.188235)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("2_vk73d")
+theme_override_font_sizes/font_size = 8
+text = "Drop:"
+vertical_alignment = 1
+
+[node name="Inventory Drop" type="Control" parent="Box/Hints Portion/VBoxContainer/Slot Hints/GridContainer"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("12_4cnat")
+
+[node name="Key" type="Label" parent="Box/Hints Portion/VBoxContainer/Slot Hints/GridContainer/Inventory Drop"]
+modulate = Color(0.905882, 0.8, 0.627451, 1)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -32.0
+offset_bottom = 32.0
+grow_horizontal = 0
+scale = Vector2(0.5, 0.5)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.188235)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 0
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("2_vk73d")
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Icon" type="TextureRect" parent="Box/Hints Portion/VBoxContainer/Slot Hints/GridContainer/Inventory Drop"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -32.0
+offset_bottom = 32.0
+grow_horizontal = 0
+scale = Vector2(0.5, 0.5)
+stretch_mode = 3
+
+[node name="Icon Mouse" type="TextureRect" parent="Box/Hints Portion/VBoxContainer/Slot Hints/GridContainer/Inventory Drop"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -32.0
+offset_bottom = 32.0
+grow_horizontal = 0
+scale = Vector2(0.5, 0.5)
+stretch_mode = 3
 
 [node name="Bottom" type="TextureRect" parent="Box"]
 unique_name_in_owner = true

@@ -9,11 +9,14 @@ var description
 var detailed_description
 var rarity
 var inventory
-var source
+var source # check if the popup was created by the mouse hover or a controller
+var slot # check if the popup is from a slot in the inventory (null if not)
 static var hue = 0.0
 var mystic_color
 
 func _ready():
+	%"Hints Portion".visible = slot != null
+	
 	%Name.text = item_name
 	%Type.text = type
 	%Description.text = ""

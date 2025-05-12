@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=4 uid="uid://cxoiy0x4nvtaa"]
+[gd_scene load_steps=86 format=4 uid="uid://cxoiy0x4nvtaa"]
 
 [ext_resource type="Script" uid="uid://dsmnebj4u35lm" path="res://Scripts/Level/Level.gd" id="1_5cm3y"]
 [ext_resource type="Texture2D" uid="uid://cvgvhjvhndf2x" path="res://Sprites/Wall/Floor 1 Corner.png" id="2_1m20m"]
@@ -46,6 +46,10 @@
 [ext_resource type="PackedScene" uid="uid://bwnklarbsachr" path="res://Scenes/Misc/Circle Transition.tscn" id="27_nhpnk"]
 [ext_resource type="Texture2D" uid="uid://cqvpi7r7176kr" path="res://Sprites/Wall/Passive Room Corner.png" id="28_h7lhd"]
 [ext_resource type="Shader" uid="uid://qm3syqtxdolu" path="res://Shaders/circle_transition.gdshader" id="28_rryfq"]
+[ext_resource type="Script" uid="uid://cq4dv8de250gl" path="res://Scripts/UI/inventory_hint.gd" id="47_41ptx"]
+[ext_resource type="Texture2D" uid="uid://cgvt4k1o0rxbn" path="res://Sprites/Keybinds/Top Button.png" id="47_qf61r"]
+[ext_resource type="Script" uid="uid://bt3rlscfau0jm" path="res://Scripts/UI/char_sheet_hint.gd" id="49_cbqbi"]
+[ext_resource type="Script" uid="uid://dtvpei6ryxuu0" path="res://Scripts/UI/inventory_pickup_hint.gd" id="50_2c1dj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h7lhd"]
 resource_name = "Floor 1 Wall Corner"
@@ -355,3 +359,226 @@ offset_left = -960.0
 offset_top = -540.0
 offset_right = 960.0
 offset_bottom = 540.0
+
+[node name="Inventory Hint" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 797.0
+offset_top = 505.0
+offset_right = 944.0
+offset_bottom = 531.0
+script = ExtResource("47_41ptx")
+metadata/_edit_use_anchors_ = true
+
+[node name="Inventory Text" type="Label" parent="Inventory Hint"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -12.0
+offset_right = 106.0
+offset_bottom = 12.0
+grow_vertical = 2
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("14_atqiy")
+theme_override_font_sizes/font_size = 32
+text = "Inventory:"
+horizontal_alignment = 2
+
+[node name="Key" type="Label" parent="Inventory Hint"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("14_atqiy")
+theme_override_font_sizes/font_size = 32
+text = "Q"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Icon" type="TextureRect" parent="Inventory Hint"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("47_qf61r")
+stretch_mode = 3
+
+[node name="Icon Mouse" type="TextureRect" parent="Inventory Hint"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("47_qf61r")
+stretch_mode = 3
+
+[node name="Char Sheet Hint" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 546.0
+offset_top = 505.0
+offset_right = 759.0
+offset_bottom = 531.0
+script = ExtResource("49_cbqbi")
+metadata/_edit_use_anchors_ = true
+
+[node name="Char Sheet Text" type="Label" parent="Char Sheet Hint"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -12.0
+offset_right = 106.0
+offset_bottom = 12.0
+grow_vertical = 2
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("14_atqiy")
+theme_override_font_sizes/font_size = 32
+text = "Character Sheet:"
+horizontal_alignment = 2
+
+[node name="Key" type="Label" parent="Char Sheet Hint"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("14_atqiy")
+theme_override_font_sizes/font_size = 32
+text = "Q"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Icon" type="TextureRect" parent="Char Sheet Hint"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("47_qf61r")
+stretch_mode = 3
+
+[node name="Icon Mouse" type="TextureRect" parent="Char Sheet Hint"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("47_qf61r")
+stretch_mode = 3
+
+[node name="Pick Up Hint" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 279.0
+offset_top = 505.0
+offset_right = 492.0
+offset_bottom = 531.0
+script = ExtResource("50_2c1dj")
+metadata/_edit_use_anchors_ = true
+
+[node name="Char Sheet Text" type="Label" parent="Pick Up Hint"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 32.0
+offset_top = -12.0
+offset_right = 169.0
+offset_bottom = 12.0
+grow_vertical = 2
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("14_atqiy")
+theme_override_font_sizes/font_size = 32
+text = "Pick Up:"
+horizontal_alignment = 2
+
+[node name="Key" type="Label" parent="Pick Up Hint"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("14_atqiy")
+theme_override_font_sizes/font_size = 32
+text = "Q"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Icon" type="TextureRect" parent="Pick Up Hint"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("47_qf61r")
+stretch_mode = 3
+
+[node name="Icon Mouse" type="TextureRect" parent="Pick Up Hint"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("47_qf61r")
+stretch_mode = 3
