@@ -12,6 +12,11 @@ const ControllerIconMapping = preload("res://Scripts/UI/controller_icon_mapping.
 var player
 var inventory
 
+func _ready():
+	icon.visible = false
+	icon_mouse.visible = false
+	key.visible = false
+
 func _physics_process(delta):
 	player = Targets.get_player()
 	inventory = player.inventory

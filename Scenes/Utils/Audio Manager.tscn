@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://usetxd7ii511"]
+[gd_scene load_steps=35 format=3 uid="uid://usetxd7ii511"]
 
 [ext_resource type="Script" uid="uid://boo1w2wkkk0xk" path="res://Scripts/Utils/audio_manager.gd" id="1_bpx0j"]
 [ext_resource type="AudioStream" uid="uid://bpk6gao5jcjkq" path="res://Audio/SFX/Hit.mp3" id="1_qnkjs"]
@@ -32,6 +32,8 @@
 [ext_resource type="AudioStream" uid="uid://b5lsh3mo8h8a" path="res://Audio/SFX/Dash.mp3" id="30_je18x"]
 [ext_resource type="AudioStream" uid="uid://bl18c1ust67ot" path="res://Audio/SFX/Death.mp3" id="31_m2r2p"]
 [ext_resource type="AudioStream" uid="uid://dp7mt5y1btlna" path="res://Audio/SFX/Cash.mp3" id="32_wf7yf"]
+[ext_resource type="AudioStream" uid="uid://bwfipmrsutcdf" path="res://Audio/SFX/Light Impact.mp3" id="33_762au"]
+[ext_resource type="AudioStream" uid="uid://cgu8joieuypla" path="res://Audio/SFX/Ping.mp3" id="34_ntjct"]
 
 [node name="Audio Manager" type="Node"]
 script = ExtResource("1_bpx0j")
@@ -313,4 +315,14 @@ pitch_scale = 1.05
 [node name="Cash" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("32_wf7yf")
 volume_db = 10.0
+bus = &"SFX"
+
+[node name="LightImpact" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("33_762au")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="Ping" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("34_ntjct")
+pitch_scale = 0.95
 bus = &"SFX"

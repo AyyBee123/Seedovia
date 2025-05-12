@@ -172,6 +172,8 @@ func spawn_doors(): # -785 to 785 = 1570 (size of level in x-axis) # -400 is the
 	doors_spawned = true
 	if not was_cleared:
 		await get_tree().create_timer(0.5, false).timeout
+		Game.audio_manager.play(Game.audio_manager.bounce)
+		Game.audio_manager.play(Game.audio_manager.ping)
 	if LevelList.doors.size() > 0:
 		for loaded_reward in LevelList.doors:
 			var door = resource_preloader.get_resource("Door").instantiate()

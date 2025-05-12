@@ -16,6 +16,10 @@ var inventory
 func _ready():
 	if popup.type == "SEED" or popup.type == "TALISMAN":
 		use.text = "Equip:"
+	
+	icon.visible = false
+	icon_mouse.visible = false
+	key.visible = false
 
 func _physics_process(delta):
 	player = Targets.get_player()
