@@ -1,6 +1,12 @@
 extends Node2D
 
+const SPARKLE = preload("res://Scenes/Misc/Sparkle.tscn")
+
 var player
+
+func _ready():
+	for i in 4:
+		spawn_sparkle(Color.WHITE)
 
 func _physics_process(delta):
 	if player != null:
@@ -20,3 +26,10 @@ func pick_up():
 	player.get_node("Player Health").set_coins()
 	Game.audio_manager.play(Game.audio_manager.coin)
 	queue_free()
+
+func spawn_sparkle(color: Color):
+	var sparkle = SPARKLE.instantiate()
+	sparkle.modulate = color
+	sparkle.direction = Vector2.RIGHT.rotated(randf_range(0, TAU))
+	add_child(sparkle)
+	sparkle.global_position = global_position + sparkle.direction * 20

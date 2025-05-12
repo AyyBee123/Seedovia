@@ -3,6 +3,12 @@ extends Node2D
 var player
 @export var item: pickup_item_class: set = set_item
 
+const SPARKLE = preload("res://Scenes/Misc/Sparkle.tscn")
+
+func _ready():
+	for i in 8:
+		spawn_sparkle(Color.WHITE)
+
 func _physics_process(delta):
 	if player != null:
 		position += global_position.direction_to(player.global_position) * delta * 600
@@ -24,3 +30,10 @@ func pick_up():
 	item.on_pickup()
 	visible = false
 	SignalBus.pickup_item_recieved.emit(self)
+
+func spawn_sparkle(color: Color):
+	var sparkle = SPARKLE.instantiate()
+	sparkle.modulate = color
+	sparkle.direction = Vector2.RIGHT.rotated(randf_range(0, TAU))
+	add_child(sparkle)
+	sparkle.global_position = global_position + sparkle.direction * 20

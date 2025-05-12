@@ -7,6 +7,7 @@ extends Node2D
 @onready var gpu_particles = %GPUParticles
 
 const inventory = preload("res://Scripts/Inventory/inventory.gd")
+const SPARKLE = preload("res://Scenes/Misc/Sparkle.tscn")
 
 var player_in_area = false
 var player = null
@@ -19,6 +20,32 @@ func _ready():
 	radius.disabled = false
 	%Shadow.visible = true
 	%GPUParticles.visible = true
+	
+	for i in 8:
+		match item.rarity:
+			0: # Common
+				spawn_sparkle(Color.DARK_GRAY)
+			1: # Uncommon
+				spawn_sparkle(Color.LIGHT_SKY_BLUE)
+			2: # Rare
+				spawn_sparkle(Color("ffea81"))
+			3: # Epic
+				spawn_sparkle(Color.BLUE_VIOLET)
+			4: # Legendary
+				spawn_sparkle(Color.DARK_ORANGE)
+			5: # Unique
+				spawn_sparkle(Color.CRIMSON)
+			7: # N/A
+				spawn_sparkle(Color.WHITE)
+	
+	if item.rarity == 6: # Mystic
+		spawn_sparkle(Color("c80000"))
+		spawn_sparkle(Color("c54500"))
+		spawn_sparkle(Color("ccc100"))
+		spawn_sparkle(Color("3cb400"))
+		spawn_sparkle(Color("00bcbc"))
+		spawn_sparkle(Color("000ab8"))
+		spawn_sparkle(Color("6600b8"))
 	
 	match item.rarity:
 		0: # Common
@@ -82,3 +109,10 @@ func _on_pickable_area_body_entered(body):
 func _on_pickable_area_body_exited(body):
 	if body.is_in_group("Players"):
 		player_in_area = false
+
+func spawn_sparkle(color: Color):
+	var sparkle = SPARKLE.instantiate()
+	sparkle.modulate = color
+	sparkle.direction = Vector2.RIGHT.rotated(randf_range(0, TAU))
+	add_child(sparkle)
+	sparkle.global_position = global_position + sparkle.direction * 20
