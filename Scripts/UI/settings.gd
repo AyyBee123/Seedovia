@@ -46,6 +46,8 @@ func _ready():
 	%"Damage Button".button_pressed = Global.settings.show_damage_numbers
 	%"Damage Button2".button_pressed = Global.settings.show_damage_numbers_2
 	%ShowControlsButton.button_pressed = Global.settings.show_hints
+	%InvOpacitySlider.value = Global.settings.inventory_opacity
+	%PopupOpacitySlider.value = Global.settings.popup_opacity
 	
 	# audio settings
 	%MasterSlider.value = db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Master")))
@@ -98,6 +100,24 @@ func _on_input_icons_button_item_selected(index: int):
 func _on_show_controls_button_toggled(toggled_on):
 	Game.audio_manager.play(Game.audio_manager.ui_button)
 
+func _on_inv_opacity_slider_value_changed(value):
+	%InvOpacityEdit.text = str(int(snapped(value, 0.01) * 100))
+
+func _on_popup_opacity_slider_value_changed(value):
+	%PopupOpacityEdit.text = str(int(snapped(value, 0.01) * 100))
+
+func _on_inv_opacity_edit_text_submitted(new_text):
+	var value = int(new_text)
+	value = clampi(0, value, 100)
+	%InvOpacitySlider.value = value / 100.0
+	%InvOpacityEdit.release_focus()
+
+func _on_popup_opacity_edit_text_submitted(new_text):
+	var value = int(new_text)
+	value = clampi(0, value, 100)
+	%PopupOpacitySlider.value = value / 100.0
+	%PopupOpacityEdit.release_focus()
+
 func _on_master_slider_value_changed(value):
 	change_volume(Game.audio_settings.MASTER_BUS_ID, value)
 	# snapped basically rounds the value to the nearest hundredth in this case (the 0.01 value)
@@ -137,6 +157,7 @@ func _on_sfx_edit_text_submitted(new_text):
 	change_volume(Game.audio_settings.SFX_BUS_ID, value / 100.0)
 	%SFXSlider.value = value / 100.0
 	%SFXEdit.release_focus()
+	accept_event()
 
 func _on_music_edit_text_submitted(new_text):
 	if new_text == "":
@@ -163,6 +184,8 @@ func _on_save_button_pressed():
 	Global.settings.mute_in_background = %"Mute Background Button".button_pressed
 	Global.settings.input_icons = %InputIconsButton.get_selected()
 	Global.settings.show_hints = %ShowControlsButton.button_pressed
+	Global.settings.inventory_opacity = %InvOpacitySlider.value
+	Global.settings.popup_opacity = %PopupOpacitySlider.value
 	
 	Global.save_settings()
 	if source: # if the settings menu was instantiated from the pause menu

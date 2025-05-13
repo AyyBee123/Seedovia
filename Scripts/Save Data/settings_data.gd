@@ -13,6 +13,8 @@ class_name settings_data extends Resource
 @export var show_damage_numbers: bool
 @export var show_damage_numbers_2: bool
 @export var show_hints: bool
+@export var inventory_opacity: float
+@export var popup_opacity: float
 
 # audio
 @export var master_volume: float

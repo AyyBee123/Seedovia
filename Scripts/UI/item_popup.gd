@@ -16,6 +16,7 @@ var mystic_color
 
 func _ready():
 	%"Hints Portion".visible = slot != null and Global.settings.show_hints
+	modulate.a = Global.settings.popup_opacity
 	
 	%Name.text = item_name
 	%Type.text = type

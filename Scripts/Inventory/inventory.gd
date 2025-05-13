@@ -57,7 +57,7 @@ func _ready():
 	initialize_seeds()
 
 func _process(delta):
-	
+	modulate.a = Global.settings.inventory_opacity
 	
 	if holding_item == null:
 		if drop_delay.is_stopped():
