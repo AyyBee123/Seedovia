@@ -68,6 +68,8 @@ func shoot_next_weapon():
 
 func collide(area):
 	area_normal = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized() # just in case
+	if area.is_in_group("Enemies"):
+		area_normal = -global_position.direction_to(area.get_parent().global_position).normalized()
 	if down.is_colliding():
 		area_normal = Vector2(0, -1)
 	elif up.is_colliding():
