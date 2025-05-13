@@ -18,6 +18,8 @@ func _ready():
 	key.visible = false
 
 func _physics_process(delta):
+	visible = Global.settings.show_hints
+	
 	player = Targets.get_player()
 	inventory = player.inventory
 	if player == null:

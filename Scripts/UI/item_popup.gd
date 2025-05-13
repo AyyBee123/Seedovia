@@ -15,7 +15,7 @@ static var hue = 0.0
 var mystic_color
 
 func _ready():
-	%"Hints Portion".visible = slot != null
+	%"Hints Portion".visible = slot != null and Global.settings.show_hints
 	
 	%Name.text = item_name
 	%Type.text = type

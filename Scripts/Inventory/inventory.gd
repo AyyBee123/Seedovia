@@ -57,6 +57,8 @@ func _ready():
 	initialize_seeds()
 
 func _process(delta):
+	
+	
 	if holding_item == null:
 		if drop_delay.is_stopped():
 			player.has_holding_item = false
