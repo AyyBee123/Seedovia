@@ -121,6 +121,7 @@ func load_achievements(_path = null):
 	super_data.set_achievements()
 
 func save_settings():
+	settings.get_game_settings()
 	settings.get_video_settings()
 	settings.get_audio_volumes()
 	settings.get_ui_settings()
@@ -131,6 +132,12 @@ func load_settings():
 	if not ResourceLoader.exists(SETTINGS_PATH):
 		return
 	settings = ResourceLoader.load(SETTINGS_PATH)
+
+func load_game_settings():
+	if not ResourceLoader.exists(SETTINGS_PATH):
+		return
+	settings = ResourceLoader.load(SETTINGS_PATH)
+	settings.set_game_settings()
 
 func load_video_settings():
 	if not ResourceLoader.exists(SETTINGS_PATH):

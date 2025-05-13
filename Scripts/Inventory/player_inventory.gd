@@ -43,6 +43,9 @@ func drop_item(item, player):
 	Global.save_run_room()
 
 func equip_item(item, player, inv):
+	if not Global.settings.auto_equip:
+		add_item(item, player, inv)
+		return
 	var capacity: int
 	if item.category == "SEED":
 		for i in range(NUM_SEED_SLOTS):

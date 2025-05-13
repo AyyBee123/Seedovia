@@ -33,6 +33,9 @@ func _ready():
 	#set current tab to the first one
 	%TabContainer.current_tab = 0
 	
+	#game settings
+	%"Auto Equip Button".button_pressed = Global.settings.auto_equip
+	
 	# video settings
 	%"Fullscreen Button".button_pressed = DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN
 	%"VSync Button".button_pressed = DisplayServer.window_get_vsync_mode() == DisplayServer.VSYNC_ENABLED
@@ -74,6 +77,9 @@ func _on_timer_button_toggled(toggled_on):
 	Game.audio_manager.play(Game.audio_manager.ui_button)
 
 func _on_damage_button_toggled(toggled_on):
+	Game.audio_manager.play(Game.audio_manager.ui_button)
+
+func _on_auto_equip_button_toggled(toggled_on):
 	Game.audio_manager.play(Game.audio_manager.ui_button)
 
 func _on_master_slider_value_changed(value):
@@ -136,6 +142,7 @@ func _on_save_button_pressed():
 	# add changes
 	Global.settings.show_timer = %"Timer Button".button_pressed
 	Global.settings.show_damage_numbers = %"Damage Button".button_pressed
+	Global.settings.auto_equip = %"Auto Equip Button".button_pressed
 	
 	Global.save_settings()
 	if source: # if the settings menu was instantiated from the pause menu
@@ -163,9 +170,6 @@ func close():
 func _on_tab_container_tab_changed(tab):
 	Game.audio_manager.play(Game.audio_manager.use_2)
 	%TabContainer.get_tab_bar().grab_focus.call_deferred()
-
-func _on_auto_equip_button_toggled(toggled_on):
-	Game.audio_manager.play(Game.audio_manager.ui_button)
 
 func _exit_tree():
 	if default_focus:

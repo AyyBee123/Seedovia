@@ -209,10 +209,9 @@ offset_bottom = 918.0
 mouse_filter = 2
 theme = ExtResource("6_6wdx2")
 tab_alignment = 1
-current_tab = 4
+current_tab = 0
 
 [node name="Tab00001" type="MarginContainer" parent="CanvasLayer/TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -535,6 +534,7 @@ drag_and_drop_selection_enabled = false
 select_all_on_focus = true
 
 [node name="Tab50001" type="MarginContainer" parent="CanvasLayer/TabContainer"]
+visible = false
 layout_mode = 2
 script = ExtResource("10_m7hwe")
 metadata/_tab_index = 4
