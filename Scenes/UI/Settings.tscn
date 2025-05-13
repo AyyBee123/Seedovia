@@ -209,9 +209,10 @@ offset_bottom = 918.0
 mouse_filter = 2
 theme = ExtResource("6_6wdx2")
 tab_alignment = 1
-current_tab = 0
+current_tab = 2
 
 [node name="Tab00001" type="MarginContainer" parent="CanvasLayer/TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -302,7 +303,6 @@ theme = SubResource("Theme_m7hwe")
 button_pressed = true
 
 [node name="Tab30001" type="MarginContainer" parent="CanvasLayer/TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
@@ -345,9 +345,27 @@ theme_override_constants/shadow_offset_y = 1
 theme_override_constants/shadow_outline_size = 2
 theme_override_fonts/font = ExtResource("2_28sra")
 theme_override_font_sizes/font_size = 32
-text = "Show Damage Numbers:"
+text = "Show Enemy Health Bar:"
 
 [node name="Damage Button" type="CheckButton" parent="CanvasLayer/TabContainer/Tab30001/Control/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = SubResource("Theme_m7hwe")
+button_pressed = true
+
+[node name="DamageLabel2" type="Label" parent="CanvasLayer/TabContainer/Tab30001/Control/GridContainer"]
+modulate = Color(0.905882, 0.8, 0.627451, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("2_28sra")
+theme_override_font_sizes/font_size = 32
+text = "Show Boss Health Bar:"
+
+[node name="Damage Button2" type="CheckButton" parent="CanvasLayer/TabContainer/Tab30001/Control/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme = SubResource("Theme_m7hwe")
@@ -650,6 +668,7 @@ scroll_active = false
 [connection signal="toggled" from="CanvasLayer/TabContainer/Tab20001/Control/GridContainer/VSync Button" to="." method="_on_v_sync_button_toggled"]
 [connection signal="toggled" from="CanvasLayer/TabContainer/Tab30001/Control/GridContainer/Timer Button" to="." method="_on_timer_button_toggled"]
 [connection signal="toggled" from="CanvasLayer/TabContainer/Tab30001/Control/GridContainer/Damage Button" to="." method="_on_damage_button_toggled"]
+[connection signal="toggled" from="CanvasLayer/TabContainer/Tab30001/Control/GridContainer/Damage Button2" to="." method="_on_damage_button_2_toggled"]
 [connection signal="value_changed" from="CanvasLayer/TabContainer/Tab40001/VBoxContainer/GridContainer/MasterSlider" to="." method="_on_master_slider_value_changed"]
 [connection signal="text_submitted" from="CanvasLayer/TabContainer/Tab40001/VBoxContainer/GridContainer/MasterEdit" to="." method="_on_master_edit_text_submitted"]
 [connection signal="value_changed" from="CanvasLayer/TabContainer/Tab40001/VBoxContainer/GridContainer/SFXSlider" to="." method="_on_sfx_slider_value_changed"]

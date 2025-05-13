@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bf5rdhqce3iki" path="res://Sprites/UI/Boss Health Bar.png" id="1_qter5"]
 [ext_resource type="Texture2D" uid="uid://dieglc86kh7gj" path="res://Sprites/UI/Boss Damaged Health.png" id="2_ce7j2"]
-[ext_resource type="Script" uid="uid://cfa0gtlv7ne54" path="res://Scripts/UI/health_bar.gd" id="3_760p2"]
+[ext_resource type="Script" uid="uid://d1s57b5s26ogh" path="res://Scripts/UI/boss_health_bar.gd" id="3_510b7"]
 [ext_resource type="Texture2D" uid="uid://usr3okdlyneq" path="res://Sprites/UI/Boss Filled Health.png" id="4_y1lnh"]
 [ext_resource type="FontFile" uid="uid://bkn7gmgx1wxgx" path="res://Fonts/Name Font.ttf" id="5_qb5n7"]
 
@@ -25,7 +25,7 @@ value = 90.0
 texture_under = ExtResource("1_qter5")
 texture_progress = ExtResource("2_ce7j2")
 texture_progress_offset = Vector2(4, 4)
-script = ExtResource("3_760p2")
+script = ExtResource("3_510b7")
 rate = 0.2
 
 [node name="Enemy Health" type="TextureProgressBar" parent="Health Bar"]

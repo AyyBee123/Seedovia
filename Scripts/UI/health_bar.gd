@@ -8,6 +8,12 @@ extends TextureProgressBar
 
 var health: float = 0 : set = set_health
 
+func _process(delta):
+	show_bar()
+
+func show_bar():
+	visible = Global.settings.show_damage_numbers # toggle visibility based on the health bar setting
+
 func set_health(new_health):
 	var previous_health = health
 	health = min(damage_bar.max_value, new_health)

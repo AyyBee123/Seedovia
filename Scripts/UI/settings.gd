@@ -43,6 +43,7 @@ func _ready():
 	# ui settings
 	%"Timer Button".button_pressed = Global.settings.show_timer
 	%"Damage Button".button_pressed = Global.settings.show_damage_numbers
+	%"Damage Button2".button_pressed = Global.settings.show_damage_numbers_2
 	
 	# audio settings
 	%MasterSlider.value = db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Master")))
@@ -80,6 +81,9 @@ func _on_damage_button_toggled(toggled_on):
 	Game.audio_manager.play(Game.audio_manager.ui_button)
 
 func _on_auto_equip_button_toggled(toggled_on):
+	Game.audio_manager.play(Game.audio_manager.ui_button)
+
+func _on_damage_button_2_toggled(toggled_on):
 	Game.audio_manager.play(Game.audio_manager.ui_button)
 
 func _on_master_slider_value_changed(value):
@@ -139,10 +143,11 @@ func change_volume(audio, value):
 
 func _on_save_button_pressed():
 	Game.audio_manager.play(Game.audio_manager.ui_button)
-	# add changes
+	# save changes
+	Global.settings.auto_equip = %"Auto Equip Button".button_pressed
 	Global.settings.show_timer = %"Timer Button".button_pressed
 	Global.settings.show_damage_numbers = %"Damage Button".button_pressed
-	Global.settings.auto_equip = %"Auto Equip Button".button_pressed
+	Global.settings.show_damage_numbers_2 = %"Damage Button2".button_pressed
 	
 	Global.save_settings()
 	if source: # if the settings menu was instantiated from the pause menu

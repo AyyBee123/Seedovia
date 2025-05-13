@@ -10,6 +10,7 @@ class_name settings_data extends Resource
 # ui
 @export var show_timer: bool
 @export var show_damage_numbers: bool
+@export var show_damage_numbers_2: bool
 
 # audio
 @export var master_volume: float
