@@ -6,7 +6,7 @@ signal dashed
 signal has_collided(object)
 signal seed_fired(seed) # for immediately fired seeds (for the mirage passive)
 
-const POPUP = preload("res://Scenes/UI/Item Popup.tscn")
+var POPUP = load("res://Scenes/UI/Item Popup.tscn") # retarded-ass engine breaks when putting preload here
 const PLAYER_HAND = preload("res://Scenes/Seeds/Player Hand.tscn")
 const DASH_TRAIL = preload("res://Scenes/Player/Dash Trail.tscn")
 const STAT_INCREASE = preload("res://Scenes/UI/Stat Increase.tscn")
