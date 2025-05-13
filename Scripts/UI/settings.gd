@@ -8,7 +8,7 @@ var temp_sfx
 var temp_music
 var default_focus
 
-func _input(event):
+func _unhandled_input(event):
 	if event.is_action_pressed("ui_cancel"):
 		get_viewport().set_input_as_handled()
 		_on_cancel_button_pressed()
@@ -107,12 +107,20 @@ func _on_popup_opacity_slider_value_changed(value):
 	%PopupOpacityEdit.text = str(int(snapped(value, 0.01) * 100))
 
 func _on_inv_opacity_edit_text_submitted(new_text):
+	if new_text == "":
+		%InvOpacityEdit.text = str(int(%InvOpacitySlider.value * 100))
+		%MasterEdit.release_focus()
+		return
 	var value = int(new_text)
 	value = clampi(0, value, 100)
 	%InvOpacitySlider.value = value / 100.0
 	%InvOpacityEdit.release_focus()
 
 func _on_popup_opacity_edit_text_submitted(new_text):
+	if new_text == "":
+		%PopupOpacityEdit.text = str(int(%PopupOpacitySlider.value * 100))
+		%MasterEdit.release_focus()
+		return
 	var value = int(new_text)
 	value = clampi(0, value, 100)
 	%PopupOpacitySlider.value = value / 100.0
@@ -157,7 +165,6 @@ func _on_sfx_edit_text_submitted(new_text):
 	change_volume(Game.audio_settings.SFX_BUS_ID, value / 100.0)
 	%SFXSlider.value = value / 100.0
 	%SFXEdit.release_focus()
-	accept_event()
 
 func _on_music_edit_text_submitted(new_text):
 	if new_text == "":
