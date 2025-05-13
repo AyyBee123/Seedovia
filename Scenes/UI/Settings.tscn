@@ -209,7 +209,7 @@ offset_bottom = 918.0
 mouse_filter = 2
 theme = ExtResource("6_6wdx2")
 tab_alignment = 1
-current_tab = 2
+current_tab = 3
 
 [node name="Tab00001" type="MarginContainer" parent="CanvasLayer/TabContainer"]
 visible = false
@@ -303,6 +303,7 @@ theme = SubResource("Theme_m7hwe")
 button_pressed = true
 
 [node name="Tab30001" type="MarginContainer" parent="CanvasLayer/TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
@@ -372,7 +373,6 @@ theme = SubResource("Theme_m7hwe")
 button_pressed = true
 
 [node name="Tab40001" type="MarginContainer" parent="CanvasLayer/TabContainer"]
-visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 64
 theme_override_constants/margin_top = 64
@@ -551,6 +551,36 @@ middle_mouse_paste_enabled = false
 drag_and_drop_selection_enabled = false
 select_all_on_focus = true
 
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/TabContainer/Tab40001/VBoxContainer"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="GridContainer2" type="GridContainer" parent="CanvasLayer/TabContainer/Tab40001/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+columns = 2
+
+[node name="MuteBackgroundLabel" type="Label" parent="CanvasLayer/TabContainer/Tab40001/VBoxContainer/GridContainer2"]
+modulate = Color(0.905882, 0.8, 0.627451, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("2_28sra")
+theme_override_font_sizes/font_size = 32
+text = "Mute in Background:"
+
+[node name="Mute Background Button" type="CheckButton" parent="CanvasLayer/TabContainer/Tab40001/VBoxContainer/GridContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = SubResource("Theme_m7hwe")
+button_pressed = true
+
 [node name="Tab50001" type="MarginContainer" parent="CanvasLayer/TabContainer"]
 visible = false
 layout_mode = 2
@@ -675,5 +705,6 @@ scroll_active = false
 [connection signal="text_submitted" from="CanvasLayer/TabContainer/Tab40001/VBoxContainer/GridContainer/SFXEdit" to="." method="_on_sfx_edit_text_submitted"]
 [connection signal="value_changed" from="CanvasLayer/TabContainer/Tab40001/VBoxContainer/GridContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
 [connection signal="text_submitted" from="CanvasLayer/TabContainer/Tab40001/VBoxContainer/GridContainer/MusicEdit" to="." method="_on_music_edit_text_submitted"]
+[connection signal="toggled" from="CanvasLayer/TabContainer/Tab40001/VBoxContainer/GridContainer2/Mute Background Button" to="." method="_on_mute_background_button_2_toggled"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer2/VBoxContainer/GridContainer/SaveButton" to="." method="_on_save_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer2/VBoxContainer/GridContainer/CancelButton" to="." method="_on_cancel_button_pressed"]

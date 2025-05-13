@@ -55,6 +55,7 @@ func _ready():
 			db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("SFX"))), 0.01) * 100))
 	%MusicEdit.text = str(int(snapped( \
 			db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Music"))), 0.01) * 100))
+	%"Mute Background Button".button_pressed = Global.settings.mute_in_background
 	
 	temp_master = %MasterSlider.value
 	temp_sfx = %SFXSlider.value
@@ -84,6 +85,9 @@ func _on_auto_equip_button_toggled(toggled_on):
 	Game.audio_manager.play(Game.audio_manager.ui_button)
 
 func _on_damage_button_2_toggled(toggled_on):
+	Game.audio_manager.play(Game.audio_manager.ui_button)
+
+func _on_mute_background_button_2_toggled(toggled_on):
 	Game.audio_manager.play(Game.audio_manager.ui_button)
 
 func _on_master_slider_value_changed(value):
@@ -148,6 +152,7 @@ func _on_save_button_pressed():
 	Global.settings.show_timer = %"Timer Button".button_pressed
 	Global.settings.show_damage_numbers = %"Damage Button".button_pressed
 	Global.settings.show_damage_numbers_2 = %"Damage Button2".button_pressed
+	Global.settings.mute_in_background = %"Mute Background Button".button_pressed
 	
 	Global.save_settings()
 	if source: # if the settings menu was instantiated from the pause menu

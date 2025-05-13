@@ -16,6 +16,7 @@ class_name settings_data extends Resource
 @export var master_volume: float
 @export var SFX_volume: float
 @export var music_volume: float
+@export var mute_in_background: bool
 
 # controls
 @export var keybinds: Dictionary
