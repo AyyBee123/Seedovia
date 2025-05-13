@@ -18,5 +18,11 @@ func _ready():
 	icon.visible = false
 
 func _physics_process(delta):
-	key.visible = inventory._isMandK
-	icon.visible = not key.visible
+	match Global.settings.input_icons:
+		0:
+			key.visible = inventory._isMandK
+			icon.visible = not key.visible
+		1:
+			key.visible = true
+		2:
+			icon.visible = true

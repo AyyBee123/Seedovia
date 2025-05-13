@@ -35,6 +35,7 @@ func _ready():
 	
 	#game settings
 	%"Auto Equip Button".button_pressed = Global.settings.auto_equip
+	%InputIconsButton.select(Global.settings.input_icons)
 	
 	# video settings
 	%"Fullscreen Button".button_pressed = DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN
@@ -88,6 +89,9 @@ func _on_damage_button_2_toggled(toggled_on):
 	Game.audio_manager.play(Game.audio_manager.ui_button)
 
 func _on_mute_background_button_2_toggled(toggled_on):
+	Game.audio_manager.play(Game.audio_manager.ui_button)
+
+func _on_input_icons_button_item_selected(index: int):
 	Game.audio_manager.play(Game.audio_manager.ui_button)
 
 func _on_master_slider_value_changed(value):
@@ -153,6 +157,7 @@ func _on_save_button_pressed():
 	Global.settings.show_damage_numbers = %"Damage Button".button_pressed
 	Global.settings.show_damage_numbers_2 = %"Damage Button2".button_pressed
 	Global.settings.mute_in_background = %"Mute Background Button".button_pressed
+	Global.settings.input_icons = %InputIconsButton.get_selected()
 	
 	Global.save_settings()
 	if source: # if the settings menu was instantiated from the pause menu

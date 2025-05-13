@@ -89,8 +89,15 @@ func _physics_process(delta):
 					JOY_AXIS_TRIGGER_RIGHT:
 						icon.texture = controller_mapping.get_icon("JOY_AXIS_TRIGGER_RIGHT")
 	
-	if player._isKeyboard:
-		key.visible = key.text != ""
-		icon_mouse.visible = icon_mouse.texture != null
-	else:
-		icon.visible = true
+	match Global.settings.input_icons:
+		0:
+			if player._isKeyboard:
+				key.visible = key.text != ""
+				icon_mouse.visible = icon_mouse.texture != null
+			else:
+				icon.visible = true
+		1:
+			key.visible = key.text != ""
+			icon_mouse.visible = icon_mouse.texture != null
+		2:
+			icon.visible = true

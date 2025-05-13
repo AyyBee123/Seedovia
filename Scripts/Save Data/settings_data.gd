@@ -2,6 +2,7 @@ class_name settings_data extends Resource
 
 # game
 @export var auto_equip: bool
+@export var input_icons: int
 
 # video
 @export var fullscreen: int

@@ -1,0 +1,74 @@
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://c536v4lily3n0"]
+
+[ext_resource type="Texture2D" uid="uid://x1d8hhhxd7pe" path="res://Sprites/UI/Checkbutton Focus Button.png" id="1_vxk8a"]
+[ext_resource type="Texture2D" uid="uid://cwi63pqaimigr" path="res://Sprites/UI/Checkbutton Hover.png" id="2_wdi22"]
+[ext_resource type="Texture2D" uid="uid://d4jb7glx33wtv" path="res://Sprites/UI/Checkbutton Off.png" id="3_uxm5u"]
+[ext_resource type="Texture2D" uid="uid://s5pbd7262x2y" path="res://Sprites/UI/Checkbutton Press.png" id="4_fg72e"]
+[ext_resource type="FontFile" uid="uid://wbj0boqv37y6" path="res://Fonts/Description Font.ttf" id="7_bpgqn"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ht02g"]
+texture = ExtResource("1_vxk8a")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 9.0
+texture_margin_bottom = 16.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_52hxj"]
+texture = ExtResource("2_wdi22")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 9.0
+texture_margin_bottom = 16.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1jbpo"]
+texture = ExtResource("3_uxm5u")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 9.0
+texture_margin_bottom = 16.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g1vjn"]
+texture = ExtResource("4_fg72e")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 9.0
+texture_margin_bottom = 16.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u0wuk"]
+content_margin_left = 16.0
+content_margin_right = 16.0
+
+[resource]
+Button/colors/font_color = Color(0.905882, 0.8, 0.627451, 1)
+Button/colors/font_focus_color = Color(0.905882, 0.8, 0.627451, 1)
+Button/colors/font_hover_color = Color(0.905882, 0.8, 0.627451, 1)
+Button/colors/font_pressed_color = Color(0.905882, 0.8, 0.627451, 1)
+Button/colors/icon_focus_color = Color(0.905882, 0.8, 0.627451, 1)
+Button/styles/focus = SubResource("StyleBoxTexture_ht02g")
+Button/styles/hover = SubResource("StyleBoxTexture_52hxj")
+Button/styles/normal = SubResource("StyleBoxTexture_1jbpo")
+Button/styles/pressed = SubResource("StyleBoxTexture_g1vjn")
+SBDesc/base_type = &"RichTextLabel"
+SBDesc/colors/default_color = Color(0.905882, 0.8, 0.627451, 1)
+SBDesc/colors/font_focus_color = Color(0.905882, 0.8, 0.627451, 1)
+SBDesc/colors/font_hover_color = Color(0.905882, 0.8, 0.627451, 1)
+SBDesc/font_sizes/normal_font_size = 12
+SBDesc/fonts/normal_font = ExtResource("7_bpgqn")
+SBLeftIcon/base_type = &"Button"
+SBLeftIcon/styles/normal = SubResource("StyleBoxEmpty_u0wuk")
+SBSliderValue/base_type = &"RichTextLabel"
+SBSliderValue/colors/default_color = Color(0.905882, 0.8, 0.627451, 1)
+SBSliderValue/colors/font_focus_color = Color(0.905882, 0.8, 0.627451, 1)
+SBSliderValue/colors/font_hover_color = Color(0.905882, 0.8, 0.627451, 1)
+SBTitle/base_type = &"RichTextLabel"
+SBTitle/font_sizes/normal_font_size = 14
+SBValue/colors/default_color = Color(0.905882, 0.8, 0.627451, 1)
+SBValue/colors/font_focus_color = Color(0.905882, 0.8, 0.627451, 1)
+SBValue/colors/font_hover_color = Color(0.905882, 0.8, 0.627451, 1)
+SBValue/colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+SBValue/constants/shadow_offset_x = 0
+SBValue/constants/shadow_offset_y = 1
+SBValue/constants/shadow_outline_size = 2
+SBValue/font_sizes/normal_font_size = 32
+SBWrapper/base_type = &"MarginContainer"
+SBWrapper/constants/margin_right = 16
