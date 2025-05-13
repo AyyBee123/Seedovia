@@ -4,7 +4,7 @@ extends "res://Scripts/Enemies/enemy.gd"
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var SEED_ENEMY_BULLET_COLOR = preload("res://Shaders/seed_enemy_bullet_color.gdshader")
 
-const BULLET = preload("res://Scenes/Seeds/Avocado.tscn")
+const BULLET = preload("res://Scenes/Seeds/Lemon.tscn")
 
 var direction: Vector2
 

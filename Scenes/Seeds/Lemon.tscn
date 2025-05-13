@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://54ju2j8kea14"]
+
+[ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_m2gyn"]
+[ext_resource type="Texture2D" uid="uid://fqbn4c15x7o5" path="res://Sprites/Seeds/Lemon.png" id="2_ixxst"]
+[ext_resource type="Script" uid="uid://d3vkxo1b455d1" path="res://Scripts/Seeds/lemon.gd" id="3_ixxst"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wwwno"]
+radius = 10.6875
+
+[node name="Lemon" instance=ExtResource("1_m2gyn")]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_ixxst")
+script = ExtResource("3_ixxst")
+BASE_DAMAGE = 6.0
+BASE_FIRE_RATE = 3.333
+BASE_RANGE = 200.0
+BASE_SPEED = 450.0
+BASE_SIZE = 1.0
+BASE_BLAST_RADIUS = 1.0
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource("CircleShape2D_wwwno")
+
+[node name="Point1" type="Marker2D" parent="." index="3"]
+position = Vector2(8, -8)
+
+[node name="Point2" type="Marker2D" parent="." index="4"]
+position = Vector2(-8, 8)

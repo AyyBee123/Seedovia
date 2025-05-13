@@ -59,6 +59,10 @@ func spawn_child_peppers():
 		pepper_child.source = source
 		pepper_child.previous_weapon = previous_weapon
 		pepper_child.target_group = target_group
+		pepper_child.slot_index = slot_index
+		pepper_child.seed_slot_number = seed_slot_number
+		pepper_child.set_next_seed_slot_number = set_next_seed_slot_number
+		pepper_child.set_next_seed_slot_index = set_next_seed_slot_index
 		pepper_child.parent = self
 		pepper_child.transferred_speed_multiplier *= transferred_speed_multiplier
 		pepper_child.transferred_range_multiplier *= transferred_range_multiplier

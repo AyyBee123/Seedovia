@@ -83,8 +83,12 @@ func instance_seed(_seed: Node, _direction: Vector2, _pos: Vector2 = global_posi
 	seed.target_group = "Players"
 	seed.shader = _shader
 	seed.remove_from_group("Seed")
+	seed.remove_from_group("Weapon to be Destroyed")
+	seed.remove_from_group("Weapon")
 	seed.add_to_group("Enemy Weapon")
-	seed.remove_child(seed.get_node("Passives"))
+	if seed.get_node_or_null("Passives"):
+		for n in seed.get_node("Passives").get_children():
+			n.queue_free()
 	get_tree().current_scene.add_child.call_deferred(seed)
 	seed.global_position = _pos
 	if _timer:
