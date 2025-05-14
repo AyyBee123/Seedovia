@@ -2,6 +2,7 @@ extends Control
 
 const SETTINGS = preload("res://Scenes/UI/Settings.tscn")
 const MENU_SEED = preload("res://Scenes/UI/Menu Seed.tscn")
+const LICENCE_POPUP = preload("res://Scenes/UI/Licence Popup.tscn")
 
 @onready var camera = $"Menu Camera"
 @onready var save_file_select = $"Save File Select"
@@ -14,9 +15,11 @@ var tween
 var current_pos: int = 0
 var settings
 var delete_popup
+var licence_popup
 var seed_list: Array
 
 func _ready():
+	print(Engine.get_license_text())
 	Game.music_manager.play(Game.music_manager.MENU_THEME)
 	seed_list = get_all_file_paths("res://Resources/Items/Seeds/")
 
@@ -59,6 +62,8 @@ func _input(event):
 			return
 		if is_instance_valid(delete_popup):
 			return
+		if is_instance_valid(licence_popup):
+			return
 		if current_pos == 0:
 			get_tree().quit()
 		elif current_pos == 1:
@@ -93,3 +98,10 @@ func get_all_file_paths(path: String) -> Array[String]:
 func _on_seed_spawn_rate_timeout():
 	spawn_seed()
 	$"Seed Spawn Rate".start()
+
+func _on_licence_button_pressed():
+	if get_tree().current_scene.find_child("Licence Popup"): # if a settings scene already exists
+		return
+	licence_popup = LICENCE_POPUP.instantiate()
+	licence_popup.default_focus = %"Licence Button"
+	get_tree().current_scene.add_child(licence_popup)

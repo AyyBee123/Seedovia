@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cah3yq8uvftep"]
+[gd_scene load_steps=16 format=3 uid="uid://cah3yq8uvftep"]
 
 [ext_resource type="Texture2D" uid="uid://didv5fjskcrdi" path="res://Sprites/Pause UI/Pause Menu Choice.png" id="1_5cock"]
 [ext_resource type="Script" uid="uid://w2i4e7unyox3" path="res://Scripts/UI/menu.gd" id="1_6487p"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://cn70skisfblp4" path="res://Sprites/Passive UI/Passive Choice Focused.png" id="8_g37sx"]
 [ext_resource type="Script" uid="uid://bsjv7istqmswh" path="res://Scripts/UI/focus_button.gd" id="8_vlcut"]
 [ext_resource type="Texture2D" uid="uid://cc4qox3sejykw" path="res://Sprites/Menu UI/Grass.png" id="9_3hayu"]
+[ext_resource type="Script" uid="uid://dnu6sks28160q" path="res://Scripts/UI/licence_button.gd" id="12_0oyh4"]
 
 [sub_resource type="Animation" id="Animation_v3kjt"]
 length = 0.001
@@ -153,6 +154,7 @@ offset_top = 400.0
 offset_right = 1239.06
 offset_bottom = 550.0
 focus_neighbor_top = NodePath("../Quit Button")
+focus_neighbor_right = NodePath("../../../Licence Button")
 focus_neighbor_bottom = NodePath("../Settings Button")
 focus_next = NodePath("../Settings Button")
 focus_previous = NodePath("../Quit Button")
@@ -188,6 +190,7 @@ offset_top = 600.0
 offset_right = 1239.06
 offset_bottom = 750.0
 focus_neighbor_top = NodePath("../Play Button")
+focus_neighbor_right = NodePath("../../../Licence Button")
 focus_neighbor_bottom = NodePath("../Quit Button")
 focus_next = NodePath("../Quit Button")
 focus_previous = NodePath("../Play Button")
@@ -224,6 +227,7 @@ offset_top = 800.0
 offset_right = 1239.06
 offset_bottom = 950.0
 focus_neighbor_top = NodePath("../Settings Button")
+focus_neighbor_right = NodePath("../../../Licence Button")
 focus_neighbor_bottom = NodePath("../Play Button")
 focus_next = NodePath("../Play Button")
 focus_previous = NodePath("../Settings Button")
@@ -272,8 +276,44 @@ metadata/_edit_use_anchors_ = true
 one_shot = true
 autostart = true
 
+[node name="Licence Button" type="TextureButton" parent="."]
+unique_name_in_owner = true
+offset_left = 1572.0
+offset_top = 10.0
+offset_right = 1908.0
+offset_bottom = 89.0
+focus_neighbor_left = NodePath("../Starting Menu/TextureRect/Play Button")
+focus_neighbor_bottom = NodePath("../Starting Menu/TextureRect/Play Button")
+focus_next = NodePath("../Starting Menu/TextureRect/Play Button")
+texture_normal = ExtResource("1_5cock")
+texture_pressed = ExtResource("2_t06ot")
+texture_hover = ExtResource("3_s6sq0")
+texture_focused = ExtResource("8_g37sx")
+stretch_mode = 4
+script = ExtResource("12_0oyh4")
+
+[node name="Text" type="RichTextLabel" parent="Licence Button"]
+modulate = Color(0.905882, 0.8, 0.627451, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/normal_font = ExtResource("4_6487p")
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "[center]License"
+
 [connection signal="pressed" from="Back Button" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="Starting Menu/TextureRect/Play Button" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="Starting Menu/TextureRect/Settings Button" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="Starting Menu/TextureRect/Quit Button" to="." method="_on_quit_button_pressed"]
 [connection signal="timeout" from="Seed Spawn Rate" to="." method="_on_seed_spawn_rate_timeout"]
+[connection signal="pressed" from="Licence Button" to="." method="_on_licence_button_pressed"]

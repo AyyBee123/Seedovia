@@ -213,9 +213,10 @@ offset_bottom = 918.0
 mouse_filter = 2
 theme = ExtResource("6_6wdx2")
 tab_alignment = 1
-current_tab = 0
+current_tab = 4
 
 [node name="Tab00001" type="MarginContainer" parent="CanvasLayer/TabContainer"]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 64
 theme_override_constants/margin_top = 64
@@ -597,7 +598,7 @@ text = "Target FPS:"
 
 [node name="TargetFPSButton" type="Button" parent="CanvasLayer/TabContainer/Tab20001/VBoxContainer/GridContainer2"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 288)
+custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 size_flags_horizontal = 3
 focus_neighbor_top = NodePath("../../GridContainer/Screenshake Button")
@@ -1290,7 +1291,6 @@ text = "[center]Cancel"
 scroll_active = false
 
 [node name="Tab50001" type="MarginContainer" parent="CanvasLayer/TabContainer"]
-visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 64
 theme_override_constants/margin_top = 64
