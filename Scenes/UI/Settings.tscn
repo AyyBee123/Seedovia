@@ -213,10 +213,9 @@ offset_bottom = 918.0
 mouse_filter = 2
 theme = ExtResource("6_6wdx2")
 tab_alignment = 1
-current_tab = 1
+current_tab = 0
 
 [node name="Tab00001" type="MarginContainer" parent="CanvasLayer/TabContainer"]
-visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 64
 theme_override_constants/margin_top = 64
@@ -275,6 +274,8 @@ custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 size_flags_horizontal = 3
 focus_neighbor_top = NodePath("../../GridContainer/Auto Equip Button")
+focus_neighbor_bottom = NodePath("../../GridContainer3/LeftDeadzoneSlider")
+focus_next = NodePath("../../GridContainer3/LeftDeadzoneSlider")
 focus_previous = NodePath("../../GridContainer/Auto Equip Button")
 theme = ExtResource("8_bnt53")
 theme_override_font_sizes/font_size = 32
@@ -283,10 +284,13 @@ items = Array[String](["Auto", "Keyboard & Mouse", "Gamepad"])
 selected = 1
 item_count = 3
 loop = true
+is_show_popup = true
+open_popup_button = true
 next_icon = ExtResource("10_pkwtg")
 prev_icon = ExtResource("9_bnt53")
 title_block_visibility = 0
 description_alignment = 4
+value_mouse_filter = 1
 metadata/_custom_type_script = "uid://hu2d2xmgvce3"
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/TabContainer/Tab00001/VBoxContainer"]
@@ -318,8 +322,10 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-focus_neighbor_top = NodePath("../../GridContainer/ShowControlsButton")
-focus_previous = NodePath("../../GridContainer/ShowControlsButton")
+focus_neighbor_top = NodePath("../../GridContainer2/InputIconsButton")
+focus_neighbor_bottom = NodePath("../RightDeadzoneSlider")
+focus_next = NodePath("../RightDeadzoneSlider")
+focus_previous = NodePath("../../GridContainer2/InputIconsButton")
 theme_override_icons/grabber = ExtResource("4_7uv2c")
 theme_override_icons/grabber_highlight = ExtResource("9_6xrf4")
 theme_override_styles/slider = SubResource("StyleBoxTexture_wqlhe")
@@ -372,8 +378,10 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-focus_neighbor_top = NodePath("../../GridContainer/ShowControlsButton")
-focus_previous = NodePath("../../GridContainer/ShowControlsButton")
+focus_neighbor_top = NodePath("../LeftDeadzoneSlider")
+focus_neighbor_bottom = NodePath("../../../MarginContainer2/VBoxContainer/GridContainer/SaveButton")
+focus_next = NodePath("../../../MarginContainer2/VBoxContainer/GridContainer/SaveButton")
+focus_previous = NodePath("../LeftDeadzoneSlider")
 theme_override_icons/grabber = ExtResource("4_7uv2c")
 theme_override_icons/grabber_highlight = ExtResource("9_6xrf4")
 theme_override_styles/slider = SubResource("StyleBoxTexture_wqlhe")
@@ -410,7 +418,91 @@ middle_mouse_paste_enabled = false
 drag_and_drop_selection_enabled = false
 select_all_on_focus = true
 
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/TabContainer/Tab00001"]
+z_index = 1
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_right = 64
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/TabContainer/Tab00001/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/TabContainer/Tab00001/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 32
+theme_override_constants/v_separation = 0
+columns = 2
+
+[node name="SaveButton" type="TextureButton" parent="CanvasLayer/TabContainer/Tab00001/MarginContainer2/VBoxContainer/GridContainer"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../CancelButton")
+focus_neighbor_top = NodePath("../../../../VBoxContainer/GridContainer3/RightDeadzoneSlider")
+focus_neighbor_right = NodePath("../CancelButton")
+focus_next = NodePath("../CancelButton")
+focus_previous = NodePath("../CancelButton")
+texture_normal = ExtResource("8_208d6")
+texture_pressed = ExtResource("9_canqn")
+texture_hover = ExtResource("10_ms066")
+texture_focused = ExtResource("17_cwlmn")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/TabContainer/Tab00001/MarginContainer2/VBoxContainer/GridContainer/SaveButton"]
+modulate = Color(0.905882, 0.8, 0.627451, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/normal_font = ExtResource("2_28sra")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[center]Save"
+scroll_active = false
+
+[node name="CancelButton" type="TextureButton" parent="CanvasLayer/TabContainer/Tab00001/MarginContainer2/VBoxContainer/GridContainer"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../SaveButton")
+focus_neighbor_top = NodePath("../../../../VBoxContainer/GridContainer3/RightDeadzoneSlider")
+focus_neighbor_right = NodePath("../SaveButton")
+focus_next = NodePath("../SaveButton")
+focus_previous = NodePath("../SaveButton")
+texture_normal = ExtResource("8_208d6")
+texture_pressed = ExtResource("9_canqn")
+texture_hover = ExtResource("10_ms066")
+texture_focused = ExtResource("17_cwlmn")
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="CanvasLayer/TabContainer/Tab00001/MarginContainer2/VBoxContainer/GridContainer/CancelButton"]
+modulate = Color(0.905882, 0.8, 0.627451, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/normal_font = ExtResource("2_28sra")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[center]Cancel"
+scroll_active = false
+
 [node name="Tab20001" type="MarginContainer" parent="CanvasLayer/TabContainer"]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 64
 theme_override_constants/margin_top = 64
@@ -482,10 +574,134 @@ text = "Enable Screen Shake:"
 [node name="Screenshake Button" type="CheckButton" parent="CanvasLayer/TabContainer/Tab20001/VBoxContainer/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-focus_neighbor_top = NodePath("../Fullscreen Button")
-focus_previous = NodePath("../Fullscreen Button")
+focus_neighbor_bottom = NodePath("../../GridContainer2/TargetFPSButton")
+focus_previous = NodePath("../../GridContainer2/TargetFPSButton")
 theme = SubResource("Theme_m7hwe")
 button_pressed = true
+
+[node name="GridContainer2" type="GridContainer" parent="CanvasLayer/TabContainer/Tab20001/VBoxContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="TargetFPSLabel" type="Label" parent="CanvasLayer/TabContainer/Tab20001/VBoxContainer/GridContainer2"]
+modulate = Color(0.905882, 0.8, 0.627451, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("2_28sra")
+theme_override_font_sizes/font_size = 32
+text = "Target FPS:"
+
+[node name="TargetFPSButton" type="Button" parent="CanvasLayer/TabContainer/Tab20001/VBoxContainer/GridContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 288)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_neighbor_top = NodePath("../../GridContainer/Screenshake Button")
+focus_neighbor_bottom = NodePath("../../../MarginContainer2/VBoxContainer/GridContainer/SaveButton")
+focus_next = NodePath("../../../MarginContainer2/VBoxContainer/GridContainer/SaveButton")
+focus_previous = NodePath("../../GridContainer/Screenshake Button")
+theme = ExtResource("8_bnt53")
+theme_override_font_sizes/font_size = 32
+script = ExtResource("8_m6su3")
+items = Array[String](["30", "45", "60", "75", "90", "120", "144", "240", "265", "Uncapped"])
+selected = 0
+item_count = 10
+loop = true
+is_show_popup = true
+open_popup_button = true
+next_icon = ExtResource("10_pkwtg")
+prev_icon = ExtResource("9_bnt53")
+title_block_visibility = 0
+description_alignment = 4
+value_mouse_filter = 1
+metadata/_custom_type_script = "uid://hu2d2xmgvce3"
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/TabContainer/Tab20001"]
+z_index = 1
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_right = 64
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/TabContainer/Tab20001/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/TabContainer/Tab20001/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 32
+theme_override_constants/v_separation = 0
+columns = 2
+
+[node name="SaveButton" type="TextureButton" parent="CanvasLayer/TabContainer/Tab20001/MarginContainer2/VBoxContainer/GridContainer"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../CancelButton")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath("../CancelButton")
+focus_next = NodePath("../CancelButton")
+focus_previous = NodePath("../CancelButton")
+texture_normal = ExtResource("8_208d6")
+texture_pressed = ExtResource("9_canqn")
+texture_hover = ExtResource("10_ms066")
+texture_focused = ExtResource("17_cwlmn")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/TabContainer/Tab20001/MarginContainer2/VBoxContainer/GridContainer/SaveButton"]
+modulate = Color(0.905882, 0.8, 0.627451, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/normal_font = ExtResource("2_28sra")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[center]Save"
+scroll_active = false
+
+[node name="CancelButton" type="TextureButton" parent="CanvasLayer/TabContainer/Tab20001/MarginContainer2/VBoxContainer/GridContainer"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../SaveButton")
+focus_neighbor_top = NodePath("../../../../VBoxContainer/GridContainer2/TargetFPSButton")
+focus_neighbor_right = NodePath("../SaveButton")
+focus_next = NodePath("../SaveButton")
+focus_previous = NodePath("../SaveButton")
+texture_normal = ExtResource("8_208d6")
+texture_pressed = ExtResource("9_canqn")
+texture_hover = ExtResource("10_ms066")
+texture_focused = ExtResource("17_cwlmn")
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="CanvasLayer/TabContainer/Tab20001/MarginContainer2/VBoxContainer/GridContainer/CancelButton"]
+modulate = Color(0.905882, 0.8, 0.627451, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/normal_font = ExtResource("2_28sra")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[center]Cancel"
+scroll_active = false
 
 [node name="Tab30001" type="MarginContainer" parent="CanvasLayer/TabContainer"]
 visible = false
@@ -657,6 +873,8 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 focus_neighbor_top = NodePath("../InvOpacitySlider")
+focus_neighbor_bottom = NodePath("../../../MarginContainer2/VBoxContainer/GridContainer/SaveButton")
+focus_next = NodePath("../../../MarginContainer2/VBoxContainer/GridContainer/SaveButton")
 focus_previous = NodePath("../InvOpacitySlider")
 theme_override_icons/grabber = ExtResource("4_7uv2c")
 theme_override_icons/grabber_highlight = ExtResource("9_6xrf4")
@@ -692,6 +910,89 @@ shortcut_keys_enabled = false
 middle_mouse_paste_enabled = false
 drag_and_drop_selection_enabled = false
 select_all_on_focus = true
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/TabContainer/Tab30001"]
+z_index = 1
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_right = 64
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/TabContainer/Tab30001/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/TabContainer/Tab30001/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 32
+theme_override_constants/v_separation = 0
+columns = 2
+
+[node name="SaveButton" type="TextureButton" parent="CanvasLayer/TabContainer/Tab30001/MarginContainer2/VBoxContainer/GridContainer"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../CancelButton")
+focus_neighbor_top = NodePath("../../../../VBoxContainer/GridContainer2/PopupOpacitySlider")
+focus_neighbor_right = NodePath("../CancelButton")
+focus_next = NodePath("../CancelButton")
+focus_previous = NodePath("../CancelButton")
+texture_normal = ExtResource("8_208d6")
+texture_pressed = ExtResource("9_canqn")
+texture_hover = ExtResource("10_ms066")
+texture_focused = ExtResource("17_cwlmn")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/TabContainer/Tab30001/MarginContainer2/VBoxContainer/GridContainer/SaveButton"]
+modulate = Color(0.905882, 0.8, 0.627451, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/normal_font = ExtResource("2_28sra")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[center]Save"
+scroll_active = false
+
+[node name="CancelButton" type="TextureButton" parent="CanvasLayer/TabContainer/Tab30001/MarginContainer2/VBoxContainer/GridContainer"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../SaveButton")
+focus_neighbor_top = NodePath("../../../../VBoxContainer/GridContainer2/PopupOpacitySlider")
+focus_neighbor_right = NodePath("../SaveButton")
+focus_next = NodePath("../SaveButton")
+focus_previous = NodePath("../SaveButton")
+texture_normal = ExtResource("8_208d6")
+texture_pressed = ExtResource("9_canqn")
+texture_hover = ExtResource("10_ms066")
+texture_focused = ExtResource("17_cwlmn")
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="CanvasLayer/TabContainer/Tab30001/MarginContainer2/VBoxContainer/GridContainer/CancelButton"]
+modulate = Color(0.905882, 0.8, 0.627451, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/normal_font = ExtResource("2_28sra")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[center]Cancel"
+scroll_active = false
 
 [node name="Tab40001" type="MarginContainer" parent="CanvasLayer/TabContainer"]
 visible = false
@@ -899,9 +1200,94 @@ text = "Mute in Background:"
 unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_top = NodePath("../../GridContainer/MusicSlider")
+focus_neighbor_bottom = NodePath("../../../MarginContainer2/VBoxContainer/GridContainer/SaveButton")
+focus_next = NodePath("../../../MarginContainer2/VBoxContainer/GridContainer/SaveButton")
 focus_previous = NodePath("../../GridContainer/MusicSlider")
 theme = SubResource("Theme_m7hwe")
 button_pressed = true
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/TabContainer/Tab40001"]
+z_index = 1
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_right = 64
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/TabContainer/Tab40001/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/TabContainer/Tab40001/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 32
+theme_override_constants/v_separation = 0
+columns = 2
+
+[node name="SaveButton" type="TextureButton" parent="CanvasLayer/TabContainer/Tab40001/MarginContainer2/VBoxContainer/GridContainer"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../CancelButton")
+focus_neighbor_top = NodePath("../../../../VBoxContainer/GridContainer2/Mute Background Button")
+focus_neighbor_right = NodePath("../CancelButton")
+focus_next = NodePath("../CancelButton")
+focus_previous = NodePath("../CancelButton")
+texture_normal = ExtResource("8_208d6")
+texture_pressed = ExtResource("9_canqn")
+texture_hover = ExtResource("10_ms066")
+texture_focused = ExtResource("17_cwlmn")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/TabContainer/Tab40001/MarginContainer2/VBoxContainer/GridContainer/SaveButton"]
+modulate = Color(0.905882, 0.8, 0.627451, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/normal_font = ExtResource("2_28sra")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[center]Save"
+scroll_active = false
+
+[node name="CancelButton" type="TextureButton" parent="CanvasLayer/TabContainer/Tab40001/MarginContainer2/VBoxContainer/GridContainer"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../SaveButton")
+focus_neighbor_top = NodePath("../../../../VBoxContainer/GridContainer2/Mute Background Button")
+focus_neighbor_right = NodePath("../SaveButton")
+focus_next = NodePath("../SaveButton")
+focus_previous = NodePath("../SaveButton")
+texture_normal = ExtResource("8_208d6")
+texture_pressed = ExtResource("9_canqn")
+texture_hover = ExtResource("10_ms066")
+texture_focused = ExtResource("17_cwlmn")
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="CanvasLayer/TabContainer/Tab40001/MarginContainer2/VBoxContainer/GridContainer/CancelButton"]
+modulate = Color(0.905882, 0.8, 0.627451, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/normal_font = ExtResource("2_28sra")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[center]Cancel"
+scroll_active = false
 
 [node name="Tab50001" type="MarginContainer" parent="CanvasLayer/TabContainer"]
 visible = false
@@ -932,28 +1318,26 @@ unique_name_in_owner = true
 layout_mode = 2
 columns = 3
 
-[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer"]
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/TabContainer/Tab50001"]
 z_index = 1
-offset_left = 512.0
-offset_top = 827.0
-offset_right = 1408.0
-offset_bottom = 883.0
+layout_mode = 2
+size_flags_vertical = 8
 theme_override_constants/margin_left = 64
 theme_override_constants/margin_right = 64
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/TabContainer/Tab50001/MarginContainer2"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 0
 alignment = 1
 
-[node name="GridContainer" type="GridContainer" parent="CanvasLayer/MarginContainer2/VBoxContainer"]
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/TabContainer/Tab50001/MarginContainer2/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/h_separation = 32
 theme_override_constants/v_separation = 0
 columns = 2
 
-[node name="SaveButton" type="TextureButton" parent="CanvasLayer/MarginContainer2/VBoxContainer/GridContainer"]
+[node name="SaveButton" type="TextureButton" parent="CanvasLayer/TabContainer/Tab50001/MarginContainer2/VBoxContainer/GridContainer"]
 layout_mode = 2
 focus_neighbor_left = NodePath("../CancelButton")
 focus_neighbor_right = NodePath("../CancelButton")
@@ -964,7 +1348,7 @@ texture_pressed = ExtResource("9_canqn")
 texture_hover = ExtResource("10_ms066")
 texture_focused = ExtResource("17_cwlmn")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/MarginContainer2/VBoxContainer/GridContainer/SaveButton"]
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/TabContainer/Tab50001/MarginContainer2/VBoxContainer/GridContainer/SaveButton"]
 modulate = Color(0.905882, 0.8, 0.627451, 1)
 layout_mode = 1
 anchors_preset = 15
@@ -984,18 +1368,18 @@ bbcode_enabled = true
 text = "[center]Save"
 scroll_active = false
 
-[node name="CancelButton" type="TextureButton" parent="CanvasLayer/MarginContainer2/VBoxContainer/GridContainer"]
+[node name="CancelButton" type="TextureButton" parent="CanvasLayer/TabContainer/Tab50001/MarginContainer2/VBoxContainer/GridContainer"]
 layout_mode = 2
-focus_neighbor_left = NodePath(".")
-focus_neighbor_right = NodePath(".")
-focus_next = NodePath(".")
-focus_previous = NodePath(".")
+focus_neighbor_left = NodePath("../SaveButton")
+focus_neighbor_right = NodePath("../SaveButton")
+focus_next = NodePath("../SaveButton")
+focus_previous = NodePath("../SaveButton")
 texture_normal = ExtResource("8_208d6")
 texture_pressed = ExtResource("9_canqn")
 texture_hover = ExtResource("10_ms066")
 texture_focused = ExtResource("17_cwlmn")
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="CanvasLayer/MarginContainer2/VBoxContainer/GridContainer/CancelButton"]
+[node name="RichTextLabel2" type="RichTextLabel" parent="CanvasLayer/TabContainer/Tab50001/MarginContainer2/VBoxContainer/GridContainer/CancelButton"]
 modulate = Color(0.905882, 0.8, 0.627451, 1)
 layout_mode = 1
 anchors_preset = 15
@@ -1022,9 +1406,14 @@ scroll_active = false
 [connection signal="text_submitted" from="CanvasLayer/TabContainer/Tab00001/VBoxContainer/GridContainer3/LeftDeadzoneEdit" to="." method="_on_left_deadzone_edit_text_submitted"]
 [connection signal="value_changed" from="CanvasLayer/TabContainer/Tab00001/VBoxContainer/GridContainer3/RightDeadzoneSlider" to="." method="_on_right_deadzone_slider_value_changed"]
 [connection signal="text_submitted" from="CanvasLayer/TabContainer/Tab00001/VBoxContainer/GridContainer3/RightDeadzoneEdit" to="." method="_on_right_deadzone_edit_text_submitted"]
+[connection signal="pressed" from="CanvasLayer/TabContainer/Tab00001/MarginContainer2/VBoxContainer/GridContainer/SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/TabContainer/Tab00001/MarginContainer2/VBoxContainer/GridContainer/CancelButton" to="." method="_on_cancel_button_pressed"]
 [connection signal="toggled" from="CanvasLayer/TabContainer/Tab20001/VBoxContainer/GridContainer/Fullscreen Button" to="." method="_on_fullscreen_button_toggled"]
 [connection signal="toggled" from="CanvasLayer/TabContainer/Tab20001/VBoxContainer/GridContainer/VSync Button" to="." method="_on_v_sync_button_toggled"]
 [connection signal="toggled" from="CanvasLayer/TabContainer/Tab20001/VBoxContainer/GridContainer/Screenshake Button" to="." method="_on_screenshake_button_toggled"]
+[connection signal="item_selected" from="CanvasLayer/TabContainer/Tab20001/VBoxContainer/GridContainer2/TargetFPSButton" to="." method="_on_target_fps_button_item_selected"]
+[connection signal="pressed" from="CanvasLayer/TabContainer/Tab20001/MarginContainer2/VBoxContainer/GridContainer/SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/TabContainer/Tab20001/MarginContainer2/VBoxContainer/GridContainer/CancelButton" to="." method="_on_cancel_button_pressed"]
 [connection signal="toggled" from="CanvasLayer/TabContainer/Tab30001/VBoxContainer/GridContainer/Timer Button" to="." method="_on_timer_button_toggled"]
 [connection signal="toggled" from="CanvasLayer/TabContainer/Tab30001/VBoxContainer/GridContainer/Damage Button" to="." method="_on_damage_button_toggled"]
 [connection signal="toggled" from="CanvasLayer/TabContainer/Tab30001/VBoxContainer/GridContainer/Damage Button2" to="." method="_on_damage_button_2_toggled"]
@@ -1033,6 +1422,8 @@ scroll_active = false
 [connection signal="text_submitted" from="CanvasLayer/TabContainer/Tab30001/VBoxContainer/GridContainer2/InvOpacityEdit" to="." method="_on_inv_opacity_edit_text_submitted"]
 [connection signal="value_changed" from="CanvasLayer/TabContainer/Tab30001/VBoxContainer/GridContainer2/PopupOpacitySlider" to="." method="_on_popup_opacity_slider_value_changed"]
 [connection signal="text_submitted" from="CanvasLayer/TabContainer/Tab30001/VBoxContainer/GridContainer2/PopupOpacityEdit" to="." method="_on_popup_opacity_edit_text_submitted"]
+[connection signal="pressed" from="CanvasLayer/TabContainer/Tab30001/MarginContainer2/VBoxContainer/GridContainer/SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/TabContainer/Tab30001/MarginContainer2/VBoxContainer/GridContainer/CancelButton" to="." method="_on_cancel_button_pressed"]
 [connection signal="value_changed" from="CanvasLayer/TabContainer/Tab40001/VBoxContainer/GridContainer/MasterSlider" to="." method="_on_master_slider_value_changed"]
 [connection signal="text_submitted" from="CanvasLayer/TabContainer/Tab40001/VBoxContainer/GridContainer/MasterEdit" to="." method="_on_master_edit_text_submitted"]
 [connection signal="value_changed" from="CanvasLayer/TabContainer/Tab40001/VBoxContainer/GridContainer/SFXSlider" to="." method="_on_sfx_slider_value_changed"]
@@ -1040,5 +1431,7 @@ scroll_active = false
 [connection signal="value_changed" from="CanvasLayer/TabContainer/Tab40001/VBoxContainer/GridContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
 [connection signal="text_submitted" from="CanvasLayer/TabContainer/Tab40001/VBoxContainer/GridContainer/MusicEdit" to="." method="_on_music_edit_text_submitted"]
 [connection signal="toggled" from="CanvasLayer/TabContainer/Tab40001/VBoxContainer/GridContainer2/Mute Background Button" to="." method="_on_mute_background_button_2_toggled"]
-[connection signal="pressed" from="CanvasLayer/MarginContainer2/VBoxContainer/GridContainer/SaveButton" to="." method="_on_save_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/MarginContainer2/VBoxContainer/GridContainer/CancelButton" to="." method="_on_cancel_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/TabContainer/Tab40001/MarginContainer2/VBoxContainer/GridContainer/SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/TabContainer/Tab40001/MarginContainer2/VBoxContainer/GridContainer/CancelButton" to="." method="_on_cancel_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/TabContainer/Tab50001/MarginContainer2/VBoxContainer/GridContainer/SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/TabContainer/Tab50001/MarginContainer2/VBoxContainer/GridContainer/CancelButton" to="." method="_on_cancel_button_pressed"]

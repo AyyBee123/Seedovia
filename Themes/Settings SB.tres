@@ -1,9 +1,11 @@
-[gd_resource type="Theme" load_steps=11 format=3 uid="uid://c536v4lily3n0"]
+[gd_resource type="Theme" load_steps=17 format=3 uid="uid://c536v4lily3n0"]
 
 [ext_resource type="Texture2D" uid="uid://x1d8hhhxd7pe" path="res://Sprites/UI/Checkbutton Focus Button.png" id="1_vxk8a"]
 [ext_resource type="Texture2D" uid="uid://cwi63pqaimigr" path="res://Sprites/UI/Checkbutton Hover.png" id="2_wdi22"]
 [ext_resource type="Texture2D" uid="uid://d4jb7glx33wtv" path="res://Sprites/UI/Checkbutton Off.png" id="3_uxm5u"]
 [ext_resource type="Texture2D" uid="uid://s5pbd7262x2y" path="res://Sprites/UI/Checkbutton Press.png" id="4_fg72e"]
+[ext_resource type="Texture2D" uid="uid://d25ekslfaf2oc" path="res://Sprites/UI/Popup Checked.png" id="5_vxk8a"]
+[ext_resource type="Texture2D" uid="uid://6nd2nst03uq6" path="res://Sprites/UI/Popup Unchecked.png" id="6_wdi22"]
 [ext_resource type="FontFile" uid="uid://wbj0boqv37y6" path="res://Fonts/Description Font.ttf" id="7_bpgqn"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ht02g"]
@@ -34,6 +36,22 @@ texture_margin_top = 16.0
 texture_margin_right = 9.0
 texture_margin_bottom = 16.0
 
+[sub_resource type="ImageTexture" id="ImageTexture_uxm5u"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fg72e"]
+bg_color = Color(0.6, 0.6, 0.6, 0.188235)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bpgqn"]
+texture = ExtResource("3_uxm5u")
+texture_margin_left = 9.0
+texture_margin_top = 9.0
+texture_margin_right = 9.0
+texture_margin_bottom = 9.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ht02g"]
+bg_color = Color(0.376471, 0.188235, 0.164706, 1)
+expand_margin_top = 1.0
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u0wuk"]
 content_margin_left = 16.0
 content_margin_right = 16.0
@@ -48,6 +66,17 @@ Button/styles/focus = SubResource("StyleBoxTexture_ht02g")
 Button/styles/hover = SubResource("StyleBoxTexture_52hxj")
 Button/styles/normal = SubResource("StyleBoxTexture_1jbpo")
 Button/styles/pressed = SubResource("StyleBoxTexture_g1vjn")
+OptionButton/icons/arrow = SubResource("ImageTexture_uxm5u")
+PopupMenu/colors/font_color = Color(0.905882, 0.8, 0.627451, 1)
+PopupMenu/colors/font_hover_color = Color(0.905882, 0.8, 0.627451, 1)
+PopupMenu/colors/font_separator_color = Color(0.905882, 0.8, 0.627451, 1)
+PopupMenu/font_sizes/font_size = 32
+PopupMenu/fonts/font = ExtResource("7_bpgqn")
+PopupMenu/icons/radio_checked = ExtResource("5_vxk8a")
+PopupMenu/icons/radio_unchecked = ExtResource("6_wdi22")
+PopupMenu/styles/hover = SubResource("StyleBoxFlat_fg72e")
+PopupMenu/styles/panel = SubResource("StyleBoxTexture_bpgqn")
+PopupMenu/styles/separator = SubResource("StyleBoxFlat_ht02g")
 SBDesc/base_type = &"RichTextLabel"
 SBDesc/colors/default_color = Color(0.905882, 0.8, 0.627451, 1)
 SBDesc/colors/font_focus_color = Color(0.905882, 0.8, 0.627451, 1)

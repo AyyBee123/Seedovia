@@ -43,6 +43,7 @@ func _ready():
 	%"Fullscreen Button".button_pressed = DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN
 	%"VSync Button".button_pressed = DisplayServer.window_get_vsync_mode() == DisplayServer.VSYNC_ENABLED
 	%"Screenshake Button".button_pressed = Global.settings.screen_shake
+	%TargetFPSButton.select(Global.settings.target_FPS_index)
 	
 	# ui settings
 	%"Timer Button".button_pressed = Global.settings.show_timer
@@ -228,6 +229,12 @@ func _on_save_button_pressed():
 	Global.settings.left_deadzone = %LeftDeadzoneSlider.value
 	Global.settings.right_deadzone = %RightDeadzoneSlider.value
 	Global.settings.screen_shake = %"Screenshake Button".button_pressed
+	if %TargetFPSButton.get_selected_item() == "Uncapped":
+		Global.settings.target_FPS = 300
+	else:
+		Global.settings.target_FPS = %TargetFPSButton.get_selected_item()
+	Global.settings.target_FPS_index = %TargetFPSButton.get_selected()
+	Engine.max_fps = Global.settings.target_FPS
 	
 	Global.save_settings()
 	if source: # if the settings menu was instantiated from the pause menu
@@ -259,3 +266,6 @@ func _on_tab_container_tab_changed(tab):
 func _exit_tree():
 	if default_focus:
 		default_focus.grab_focus()
+
+func _on_target_fps_button_item_selected(index):
+	pass # Replace with function body.
