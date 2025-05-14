@@ -271,6 +271,7 @@ close_inv={
 2d_physics/layer_14="Slippery Liquid"
 2d_physics/layer_15="Shadow"
 2d_physics/layer_16="Mirage Clone"
+2d_physics/layer_17="Pit"
 2d_physics/canvas_textures/default_texture_filter=1
 
 [physics]

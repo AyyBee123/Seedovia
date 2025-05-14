@@ -53,7 +53,7 @@ y_sort_enabled = true
 material = SubResource("ShaderMaterial_0kmp4")
 scale = Vector2(2, 2)
 collision_layer = 130
-collision_mask = 629
+collision_mask = 66165
 script = ExtResource("2_f7nwd")
 
 [node name="StateMachine" type="Node" parent="."]

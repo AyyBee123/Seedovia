@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=4 uid="uid://cxoiy0x4nvtaa"]
+[gd_scene load_steps=92 format=4 uid="uid://cxoiy0x4nvtaa"]
 
 [ext_resource type="Script" uid="uid://dsmnebj4u35lm" path="res://Scripts/Level/Level.gd" id="1_5cm3y"]
 [ext_resource type="Texture2D" uid="uid://cvgvhjvhndf2x" path="res://Sprites/Wall/Floor 1 Corner.png" id="2_1m20m"]
@@ -46,12 +46,15 @@
 [ext_resource type="PackedScene" uid="uid://bwnklarbsachr" path="res://Scenes/Misc/Circle Transition.tscn" id="27_nhpnk"]
 [ext_resource type="Texture2D" uid="uid://cqvpi7r7176kr" path="res://Sprites/Wall/Passive Room Corner.png" id="28_h7lhd"]
 [ext_resource type="Shader" uid="uid://qm3syqtxdolu" path="res://Shaders/circle_transition.gdshader" id="28_rryfq"]
+[ext_resource type="Texture2D" uid="uid://baffxcxsip47m" path="res://Sprites/Ground/Water1.png" id="29_7w0bv"]
+[ext_resource type="Texture2D" uid="uid://xfiq23uej6yq" path="res://Sprites/Ground/Water2.png" id="30_2fnd8"]
+[ext_resource type="Texture2D" uid="uid://swytll0nj3o4" path="res://Sprites/Ground/Water3.png" id="31_2ve8s"]
 [ext_resource type="Script" uid="uid://cq4dv8de250gl" path="res://Scripts/UI/inventory_hint.gd" id="47_41ptx"]
 [ext_resource type="Texture2D" uid="uid://cgvt4k1o0rxbn" path="res://Sprites/Keybinds/Top Button.png" id="47_qf61r"]
 [ext_resource type="Script" uid="uid://bt3rlscfau0jm" path="res://Scripts/UI/char_sheet_hint.gd" id="49_cbqbi"]
 [ext_resource type="Script" uid="uid://dtvpei6ryxuu0" path="res://Scripts/UI/inventory_pickup_hint.gd" id="50_2c1dj"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h7lhd"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2ve8s"]
 resource_name = "Floor 1 Wall Corner"
 texture = ExtResource("2_1m20m")
 texture_region_size = Vector2i(128, 128)
@@ -59,148 +62,148 @@ texture_region_size = Vector2i(128, 128)
 0:0/0/z_index = 3
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qf61r"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_efi16"]
 texture = ExtResource("2_snary")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
 0:0/0/z_index = 3
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_41ptx"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7gyix"]
 texture = ExtResource("4_wff2p")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
 0:0/0/z_index = 3
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cbqbi"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vgiu4"]
 texture = ExtResource("5_u8eyv")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2c1dj"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ahepr"]
 texture = ExtResource("6_mf4hx")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
 0:0/0/z_index = 3
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7w0bv"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7v1ex"]
 texture = ExtResource("7_pbejk")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
 0:0/0/z_index = 3
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2fnd8"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7v1ag"]
 texture = ExtResource("6_agoj1")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
 0:0/0/z_index = 3
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2ve8s"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6kbai"]
 texture = ExtResource("7_aejph")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
 0:0/0/z_index = 3
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_efi16"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2uf1w"]
 texture = ExtResource("8_jo1av")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
 0:0/0/z_index = 3
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7gyix"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qly7f"]
 texture = ExtResource("11_ir1k7")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
 0:0/0/z_index = 3
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vgiu4"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0jm2h"]
 texture = ExtResource("12_c3cey")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
 0:0/0/z_index = 3
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ahepr"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kjphd"]
 texture = ExtResource("13_ufs3r")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
 0:0/0/z_index = 3
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7v1ex"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dlu2g"]
 resource_name = "Floor 1 Ground"
 texture = ExtResource("4_r6c21")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7v1ag"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4uufk"]
 texture = ExtResource("15_c85hw")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
 0:0/0/z_index = 3
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6kbai"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1wtav"]
 texture = ExtResource("16_yxl5x")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
 0:0/0/z_index = 3
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2uf1w"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d4bhf"]
 texture = ExtResource("17_0pvqi")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qly7f"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6dgrj"]
 texture = ExtResource("18_jbgar")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
 0:0/0/z_index = 3
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0jm2h"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_43si8"]
 texture = ExtResource("19_sbyqn")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kjphd"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3766v"]
 texture = ExtResource("20_mtqbm")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dlu2g"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_47sk1"]
 texture = ExtResource("21_bncyr")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
 0:0/0/z_index = 3
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4uufk"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2ibsn"]
 texture = ExtResource("22_bncyr")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
 0:0/0/z_index = 3
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1wtav"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n6nfj"]
 texture = ExtResource("23_baccr")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d4bhf"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_te0yu"]
 texture = ExtResource("24_5opk5")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6dgrj"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pwx3c"]
 resource_name = "Floor 1 Wall"
 texture = ExtResource("4_ni8iv")
 texture_region_size = Vector2i(128, 128)
@@ -208,59 +211,77 @@ texture_region_size = Vector2i(128, 128)
 0:0/0/z_index = 3
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_43si8"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vqr2i"]
 texture = ExtResource("26_tmvpe")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3766v"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1txd8"]
 texture = ExtResource("27_h7lhd")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
 0:0/0/z_index = 3
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_47sk1"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6wjeu"]
 texture = ExtResource("28_h7lhd")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
 0:0/0/z_index = 3
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2ibsn"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pdl2w"]
+texture = ExtResource("29_7w0bv")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+0:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v78sq"]
+texture = ExtResource("30_2fnd8")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+0:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s0pwd"]
+texture = ExtResource("31_2ve8s")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+0:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w7kfw"]
 texture = ExtResource("6_pe0fj")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
 0:0/0/z_index = 3
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n6nfj"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a8vuj"]
 texture = ExtResource("6_irwv4")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_te0yu"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_65cac"]
 texture = ExtResource("7_cqf8w")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
 0:0/0/z_index = 3
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pwx3c"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_al23f"]
 texture = ExtResource("8_ejksg")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
 0:0/0/z_index = 3
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vqr2i"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_036mo"]
 texture = ExtResource("10_mlkea")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
 0:0/0/z_index = 3
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1txd8"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lpxwt"]
 texture = ExtResource("13_ufkqs")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
@@ -269,39 +290,44 @@ texture_region_size = Vector2i(128, 128)
 tile_size = Vector2i(128, 128)
 physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 542
-sources/0 = SubResource("TileSetAtlasSource_h7lhd")
-sources/3 = SubResource("TileSetAtlasSource_6dgrj")
-sources/5 = SubResource("TileSetAtlasSource_n6nfj")
-sources/6 = SubResource("TileSetAtlasSource_te0yu")
-sources/7 = SubResource("TileSetAtlasSource_pwx3c")
-sources/4 = SubResource("TileSetAtlasSource_2ibsn")
-sources/8 = SubResource("TileSetAtlasSource_vqr2i")
-sources/10 = SubResource("TileSetAtlasSource_41ptx")
-sources/11 = SubResource("TileSetAtlasSource_cbqbi")
-sources/9 = SubResource("TileSetAtlasSource_1txd8")
-sources/14 = SubResource("TileSetAtlasSource_2fnd8")
-sources/15 = SubResource("TileSetAtlasSource_2ve8s")
-sources/16 = SubResource("TileSetAtlasSource_efi16")
-sources/12 = SubResource("TileSetAtlasSource_2c1dj")
-sources/13 = SubResource("TileSetAtlasSource_7w0bv")
-sources/17 = SubResource("TileSetAtlasSource_7gyix")
-sources/18 = SubResource("TileSetAtlasSource_vgiu4")
-sources/19 = SubResource("TileSetAtlasSource_ahepr")
-sources/20 = SubResource("TileSetAtlasSource_7v1ag")
-sources/21 = SubResource("TileSetAtlasSource_6kbai")
-sources/22 = SubResource("TileSetAtlasSource_2uf1w")
-sources/2 = SubResource("TileSetAtlasSource_7v1ex")
-sources/23 = SubResource("TileSetAtlasSource_qly7f")
-sources/24 = SubResource("TileSetAtlasSource_0jm2h")
-sources/1 = SubResource("TileSetAtlasSource_qf61r")
-sources/25 = SubResource("TileSetAtlasSource_kjphd")
-sources/26 = SubResource("TileSetAtlasSource_dlu2g")
-sources/27 = SubResource("TileSetAtlasSource_4uufk")
-sources/28 = SubResource("TileSetAtlasSource_1wtav")
-sources/29 = SubResource("TileSetAtlasSource_d4bhf")
-sources/30 = SubResource("TileSetAtlasSource_43si8")
-sources/31 = SubResource("TileSetAtlasSource_3766v")
-sources/32 = SubResource("TileSetAtlasSource_47sk1")
+physics_layer_1/collision_layer = 65536
+physics_layer_1/collision_mask = 6
+sources/0 = SubResource("TileSetAtlasSource_2ve8s")
+sources/3 = SubResource("TileSetAtlasSource_pwx3c")
+sources/5 = SubResource("TileSetAtlasSource_a8vuj")
+sources/6 = SubResource("TileSetAtlasSource_65cac")
+sources/7 = SubResource("TileSetAtlasSource_al23f")
+sources/4 = SubResource("TileSetAtlasSource_w7kfw")
+sources/8 = SubResource("TileSetAtlasSource_036mo")
+sources/10 = SubResource("TileSetAtlasSource_7gyix")
+sources/11 = SubResource("TileSetAtlasSource_vgiu4")
+sources/9 = SubResource("TileSetAtlasSource_lpxwt")
+sources/14 = SubResource("TileSetAtlasSource_7v1ag")
+sources/15 = SubResource("TileSetAtlasSource_6kbai")
+sources/16 = SubResource("TileSetAtlasSource_2uf1w")
+sources/12 = SubResource("TileSetAtlasSource_ahepr")
+sources/13 = SubResource("TileSetAtlasSource_7v1ex")
+sources/17 = SubResource("TileSetAtlasSource_qly7f")
+sources/18 = SubResource("TileSetAtlasSource_0jm2h")
+sources/19 = SubResource("TileSetAtlasSource_kjphd")
+sources/20 = SubResource("TileSetAtlasSource_4uufk")
+sources/21 = SubResource("TileSetAtlasSource_1wtav")
+sources/22 = SubResource("TileSetAtlasSource_d4bhf")
+sources/2 = SubResource("TileSetAtlasSource_dlu2g")
+sources/23 = SubResource("TileSetAtlasSource_6dgrj")
+sources/24 = SubResource("TileSetAtlasSource_43si8")
+sources/1 = SubResource("TileSetAtlasSource_efi16")
+sources/25 = SubResource("TileSetAtlasSource_3766v")
+sources/26 = SubResource("TileSetAtlasSource_47sk1")
+sources/27 = SubResource("TileSetAtlasSource_2ibsn")
+sources/28 = SubResource("TileSetAtlasSource_n6nfj")
+sources/29 = SubResource("TileSetAtlasSource_te0yu")
+sources/30 = SubResource("TileSetAtlasSource_vqr2i")
+sources/31 = SubResource("TileSetAtlasSource_1txd8")
+sources/32 = SubResource("TileSetAtlasSource_6wjeu")
+sources/33 = SubResource("TileSetAtlasSource_pdl2w")
+sources/34 = SubResource("TileSetAtlasSource_v78sq")
+sources/35 = SubResource("TileSetAtlasSource_s0pwd")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0ecxy"]
 resource_local_to_scene = true
