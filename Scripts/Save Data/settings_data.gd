@@ -3,6 +3,8 @@ class_name settings_data extends Resource
 # game
 @export var auto_equip: bool
 @export var input_icons: int
+@export var left_deadzone: float
+@export var right_deadzone: float
 
 # video
 @export var fullscreen: int

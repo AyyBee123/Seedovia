@@ -61,7 +61,7 @@ var FIRE_RATE = 10
 var BLAST_RADIUS = 1
 var SIZE = 1
 
-var input_direction = Input.get_vector("left", "right", "up", "down", 0.5)
+var input_direction = Input.get_vector("left", "right", "up", "down", 0.5) # placeholder value
 
 func _ready():
 	if PlayerCharacter._is_starting: # when starting a new run
@@ -102,6 +102,14 @@ func _ready():
 func _physics_process(delta):
 	if is_dead:
 		return
+	
+	# set up the left stick deadzone
+	var left_deadzone = Global.settings.left_deadzone
+	InputMap.action_set_deadzone("left", left_deadzone)
+	InputMap.action_set_deadzone("right", left_deadzone)
+	InputMap.action_set_deadzone("up", left_deadzone)
+	InputMap.action_set_deadzone("down", left_deadzone)
+	
 	input_direction = Vector2(Input.get_axis("left", "right"), Input.get_axis("up", "down")).normalized()
 	update_timers()
 	PlayerStatStorage.set_stats()
@@ -116,8 +124,13 @@ func _physics_process(delta):
 		popup.queue_free()
 	
 	# aiming direction (right joystick by default)
-	# TODO: change 0.15 to deadzone value from options menu
-	var aim_direction = Input.get_vector("aim_left", "aim_right", "aim_up", "aim_down", 0.15)
+	var right_deadzone = Global.settings.left_deadzone
+	InputMap.action_set_deadzone("aim_left", right_deadzone)
+	InputMap.action_set_deadzone("aim_right", right_deadzone)
+	InputMap.action_set_deadzone("aim_up", right_deadzone)
+	InputMap.action_set_deadzone("aim_down", right_deadzone)
+	var aim_direction = Vector2(Input.get_axis("aim_left", "aim_right"), \
+			Input.get_axis("aim_up", "aim_down")).normalized()
 	
 	if Input.get_last_mouse_velocity() != Vector2.ZERO:
 		# make player's hand look at mouse
@@ -334,8 +347,8 @@ func _input(event) -> void:
 		_isKeyboard = true
 	# detect mouse and (right) joystick movement to determine if the input is from a mouse or controller
 	if event is InputEventJoypadMotion:
-		# TODO: add deadzone value from options menu
-		if Input.get_vector("aim_left", "aim_right", "aim_up", "aim_down").length() > 0.15:
+		var right_deadzone = Global.settings.right_deadzone
+		if Input.get_vector("aim_left", "aim_right", "aim_up", "aim_down").length() > right_deadzone:
 			# detect only the right joystick (2 = x_axis, 3 = y_axis)
 			if event.get_axis() == 2 or event.get_axis() == 3:
 				_isMouse = false

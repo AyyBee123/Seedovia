@@ -36,6 +36,8 @@ func _ready():
 	#game settings
 	%"Auto Equip Button".button_pressed = Global.settings.auto_equip
 	%InputIconsButton.select(Global.settings.input_icons)
+	%LeftDeadzoneSlider.value = Global.settings.left_deadzone
+	%RightDeadzoneSlider.value = Global.settings.right_deadzone
 	
 	# video settings
 	%"Fullscreen Button".button_pressed = DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN
@@ -105,6 +107,32 @@ func _on_inv_opacity_slider_value_changed(value):
 
 func _on_popup_opacity_slider_value_changed(value):
 	%PopupOpacityEdit.text = str(int(snapped(value, 0.01) * 100))
+
+func _on_left_deadzone_slider_value_changed(value):
+	%LeftDeadzoneEdit.text = str(snapped(value, 0.01))
+
+func _on_right_deadzone_slider_value_changed(value):
+	%RightDeadzoneEdit.text = str(snapped(value, 0.01))
+
+func _on_left_deadzone_edit_text_submitted(new_text):
+	if new_text == "":
+		%LeftDeadzoneEdit.text = str(int(%LeftDeadzoneSlider.value))
+		%LeftDeadzoneEdit.release_focus()
+		return
+	var value = float(snapped(new_text, 0.01))
+	value = clamp(0, value, 0.9)
+	%LeftDeadzoneSlider.value = value
+	%LeftDeadzoneEdit.release_focus()
+
+func _on_right_deadzone_edit_text_submitted(new_text):
+	if new_text == "":
+		%RightDeadzoneEdit.text = str(int(%RightDeadzoneSlider.value))
+		%RightDeadzoneEdit.release_focus()
+		return
+	var value = float(snapped(new_text, 0.01))
+	value = clamp(0, value, 0.9)
+	%RightDeadzoneSlider.value = value
+	%RightDeadzoneEdit.release_focus()
 
 func _on_inv_opacity_edit_text_submitted(new_text):
 	if new_text == "":
@@ -193,6 +221,8 @@ func _on_save_button_pressed():
 	Global.settings.show_hints = %ShowControlsButton.button_pressed
 	Global.settings.inventory_opacity = %InvOpacitySlider.value
 	Global.settings.popup_opacity = %PopupOpacitySlider.value
+	Global.settings.left_deadzone = %LeftDeadzoneSlider.value
+	Global.settings.right_deadzone = %RightDeadzoneSlider.value
 	
 	Global.save_settings()
 	if source: # if the settings menu was instantiated from the pause menu
