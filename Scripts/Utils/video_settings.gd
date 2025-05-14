@@ -17,5 +17,6 @@ func set_video_settings():
 	if not ResourceLoader.exists(Global.SETTINGS_PATH): # default values if there is no save file
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
+		Global.settings.screen_shake = true
 		return
 	Global.load_video_settings()

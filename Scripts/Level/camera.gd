@@ -11,7 +11,7 @@ func _ready() -> void:
 	randomize()
 
 func _physics_process(delta):
-	if trauma:
+	if trauma and Global.settings.screen_shake:
 		trauma = max(trauma - decay * delta, 0)
 		shake()
 

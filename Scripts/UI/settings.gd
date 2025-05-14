@@ -42,6 +42,7 @@ func _ready():
 	# video settings
 	%"Fullscreen Button".button_pressed = DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN
 	%"VSync Button".button_pressed = DisplayServer.window_get_vsync_mode() == DisplayServer.VSYNC_ENABLED
+	%"Screenshake Button".button_pressed = Global.settings.screen_shake
 	
 	# ui settings
 	%"Timer Button".button_pressed = Global.settings.show_timer
@@ -100,6 +101,9 @@ func _on_input_icons_button_item_selected(index: int):
 	Game.audio_manager.play(Game.audio_manager.ui_button)
 
 func _on_show_controls_button_toggled(toggled_on):
+	Game.audio_manager.play(Game.audio_manager.ui_button)
+
+func _on_screenshake_button_toggled(toggled_on):
 	Game.audio_manager.play(Game.audio_manager.ui_button)
 
 func _on_inv_opacity_slider_value_changed(value):
@@ -223,6 +227,7 @@ func _on_save_button_pressed():
 	Global.settings.popup_opacity = %PopupOpacitySlider.value
 	Global.settings.left_deadzone = %LeftDeadzoneSlider.value
 	Global.settings.right_deadzone = %RightDeadzoneSlider.value
+	Global.settings.screen_shake = %"Screenshake Button".button_pressed
 	
 	Global.save_settings()
 	if source: # if the settings menu was instantiated from the pause menu

@@ -47,3 +47,4 @@ func _on_animated_sprite_2d_animation_finished():
 	
 	fire_rate.start()
 	stomp_SFX.play()
+	Targets.get_camera().add_trauma(0.25)

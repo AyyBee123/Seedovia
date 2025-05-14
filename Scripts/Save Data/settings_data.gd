@@ -9,6 +9,7 @@ class_name settings_data extends Resource
 # video
 @export var fullscreen: int
 @export var vsync: int
+@export var screen_shake: bool
 
 # ui
 @export var show_timer: bool
