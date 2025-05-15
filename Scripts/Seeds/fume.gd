@@ -34,7 +34,7 @@ func _on_deceleration_timeout():
 func _on_lifetime_timeout():
 	SfxDeconflicter.play(Game.audio_manager.bubble_pop)
 	weapon_direction = direction.rotated(spread)
-	if randf() < 0.15:
+	if randf() < 0.175:
 		shoot_next_weapon()
 	explode()
 	queue_free.call_deferred()
