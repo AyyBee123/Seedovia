@@ -1,11 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://bagmkum7q0yxi"]
+[gd_scene load_steps=12 format=3 uid="uid://bagmkum7q0yxi"]
 
 [ext_resource type="Script" uid="uid://435bw8we441b" path="res://Scripts/Enemies/enemy.gd" id="1_i8axt"]
 [ext_resource type="Resource" uid="uid://bc1p8m0xc01dk" path="res://Resources/Enemies/dummy.tres" id="2_3p7vb"]
 [ext_resource type="Texture2D" uid="uid://c3h0lpk7sn7ex" path="res://Sprites/Enemies/Dummy.png" id="3_db4vc"]
 [ext_resource type="Shader" uid="uid://dsv0n8bsysyo6" path="res://Shaders/color_tint_shader.gdshader" id="3_uguyq"]
 [ext_resource type="PackedScene" uid="uid://de0gxtit8o3cu" path="res://Scenes/UI/health_bar.tscn" id="4_0p02j"]
-[ext_resource type="PackedScene" uid="uid://bfpmq41k18tdi" path="res://Scenes/Passives/Effects/Burn Stacks.tscn" id="5_la8sp"]
 [ext_resource type="Texture2D" uid="uid://xxyym547o3vn" path="res://Sprites/Misc/Shadow.png" id="7_vt1k1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4n8gi"]
@@ -13,10 +12,26 @@ radius = 11.0
 height = 56.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_esige"]
+resource_local_to_scene = true
 shader = ExtResource("3_uguyq")
 shader_parameter/color = Color(1, 0, 0, 1)
 shader_parameter/tint_factor = 0.0
 shader_parameter/fade = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x643r"]
+atlas = ExtResource("3_db4vc")
+region = Rect2(0, 0, 28, 39)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vt1k1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x643r")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hklkb"]
 resource_local_to_scene = true
@@ -32,10 +47,11 @@ _enemy_stats = ExtResource("2_3p7vb")
 [node name="CollisionPolygon2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_4n8gi")
 
-[node name="AnimatedSprite2D" type="Sprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_esige")
 scale = Vector2(1.5, 1.5)
-texture = ExtResource("3_db4vc")
+sprite_frames = SubResource("SpriteFrames_vt1k1")
+autoplay = "default"
 
 [node name="Enemy Hitbox" type="Area2D" parent="." groups=["Dummy", "Enemies"]]
 collision_layer = 4
@@ -55,8 +71,6 @@ offset_right = 22.0
 offset_bottom = -35.0
 theme_override_constants/h_separation = 12
 columns = 1024
-
-[node name="Burn Stacks" parent="." instance=ExtResource("5_la8sp")]
 
 [node name="Damage Buffer" type="Timer" parent="."]
 wait_time = 0.1

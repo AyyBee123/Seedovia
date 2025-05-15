@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://dcbchvrd8ok5p"]
+[gd_scene load_steps=56 format=3 uid="uid://dcbchvrd8ok5p"]
 
 [ext_resource type="Texture2D" uid="uid://ckwbd5pe618xx" path="res://Sprites/Bosses/Haunted Fortress/Idle/Haunted Fortress Idle.png" id="1_o3eeo"]
 [ext_resource type="Script" uid="uid://dleajky7wjhou" path="res://Scripts/Bosses/Haunted Fortress/haunted_fortress.gd" id="1_spxu2"]
@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://cynyfayhsees2" path="res://Sprites/Bosses/Haunted Fortress/Ghosts/Haunted Fortress Ghosts.png" id="4_gaobp"]
 [ext_resource type="PackedScene" uid="uid://bvxrqp86pvpry" path="res://Scenes/UI/Boss Health Bar.tscn" id="4_kk65q"]
 [ext_resource type="Script" uid="uid://bp8pwdgsdj2ym" path="res://Scripts/Bosses/Haunted Fortress/StateMachine.gd" id="4_qxp1d"]
-[ext_resource type="PackedScene" uid="uid://bfpmq41k18tdi" path="res://Scenes/Passives/Effects/Burn Stacks.tscn" id="6_lyhmy"]
 [ext_resource type="Texture2D" uid="uid://dek1vxyiid78k" path="res://Sprites/Bosses/Haunted Fortress/Suck/Haunted Fortress Suck.png" id="7_0qoby"]
 [ext_resource type="PackedScene" uid="uid://crc680oyqt3v4" path="res://Scenes/Enemies/Weapons/Laser.tscn" id="8_t4oi6"]
 [ext_resource type="PackedScene" uid="uid://j5e2v0usfii5" path="res://Scenes/Misc/Light Beam.tscn" id="11_301wr"]
@@ -449,8 +448,6 @@ collision_mask = 10
 [node name="CollisionPolygon2D" type="CollisionShape2D" parent="Enemy Hitbox"]
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_4dvlt")
-
-[node name="Burn Stacks" parent="." instance=ExtResource("6_lyhmy")]
 
 [node name="Damage Buffer" type="Timer" parent="."]
 wait_time = 0.1

@@ -1,11 +1,11 @@
 extends Node
 
-@onready var weapon := get_parent()
+@onready var weapon := get_parent().get_parent()
 @onready var resource_preloader := $ResourcePreloader
 
+var damage_multiplier := 0.2
 var duration: float = 4 # duration of the burn, in seconds
 var tick: float = 1 # tick rate, in seconds
-var damage: float # damage of each burn tick
 
 var burning
 
@@ -17,5 +17,5 @@ func trigger(object):
 		burning = resource_preloader.get_resource("Burning").instantiate()
 		burning.duration = duration
 		burning.tick = tick
-		burning.damage = damage
-		object.get_parent().get_node("Burn Stacks").add_child(burning)
+		burning.damage = weapon.DAMAGE * damage_multiplier
+		object.get_parent().add_child(burning)

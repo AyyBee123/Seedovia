@@ -8,6 +8,6 @@
 script = ExtResource("1_vqkb6")
 passive_name = "Fire Flower"
 sprite = ExtResource("3_emmnv")
-description = "Your seeds have a 30% chance to ignite enemies on fire, dealing 50% of the damage dealt per second."
+description = "Your seeds have a 30% chance to ignite enemies, dealing 20% of the damage dealt per second for each stack."
 passive_ability = ExtResource("1_skwhq")
 unlocked = true

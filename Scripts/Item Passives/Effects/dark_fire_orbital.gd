@@ -26,6 +26,7 @@ var SIZE: float
 var SPEED: float
 
 func _ready():
+	visible = false
 	if weapon.texture == null:
 		radius = 20
 	else:
@@ -34,6 +35,7 @@ func _ready():
 	current_velocity = weapon.current_velocity
 
 func _physics_process(delta):
+	visible = true
 	if is_instance_valid(weapon):
 		weapon_position = weapon.global_position
 		current_velocity = weapon.current_velocity * delta

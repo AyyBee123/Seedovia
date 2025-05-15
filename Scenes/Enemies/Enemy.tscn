@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://b2yef1t2humjd"]
+[gd_scene load_steps=5 format=3 uid="uid://b2yef1t2humjd"]
 
 [ext_resource type="Script" uid="uid://435bw8we441b" path="res://Scripts/Enemies/enemy.gd" id="1_fr2sb"]
 [ext_resource type="Shader" uid="uid://dsv0n8bsysyo6" path="res://Shaders/color_tint_shader.gdshader" id="2_46gs0"]
 [ext_resource type="PackedScene" uid="uid://de0gxtit8o3cu" path="res://Scenes/UI/health_bar.tscn" id="2_61l3x"]
-[ext_resource type="PackedScene" uid="uid://bfpmq41k18tdi" path="res://Scenes/Passives/Effects/Burn Stacks.tscn" id="4_fymte"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2s7df"]
 resource_local_to_scene = true
@@ -30,8 +29,6 @@ collision_mask = 10
 [node name="CollisionPolygon2D" type="CollisionShape2D" parent="Enemy Hitbox"]
 
 [node name="Health Bar" parent="." instance=ExtResource("2_61l3x")]
-
-[node name="Burn Stacks" parent="." instance=ExtResource("4_fymte")]
 
 [node name="Damage Buffer" type="Timer" parent="."]
 wait_time = 0.1

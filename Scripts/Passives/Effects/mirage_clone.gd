@@ -26,14 +26,16 @@ func _ready():
 	player.seed_fired.connect(shoot)
 
 func _physics_process(delta):
+	# get the player's sprite
 	var frameIndex: int = player.find_child("Player Sprite").get_frame()
 	var animationName: String = player.find_child("Player Sprite").animation
 	var spriteFrames: SpriteFrames = player.find_child("Player Sprite").get_sprite_frames()
 	var currentTexture: Texture2D = spriteFrames.get_frame_texture(animationName, frameIndex)
-
+	
+	# set texture as player's texture
+	sprite.texture = currentTexture
 	scale = player.scale
 	sprite.flip_h = player.find_child("Player Sprite").flip_h
-	sprite.texture = currentTexture
 	sprite.position = player.find_child("Player Sprite").position
 	hand.texture = player.find_child("Hand").texture
 	rotation_point.rotation = player.find_child("Rotation Point").rotation
