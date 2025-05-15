@@ -2,6 +2,8 @@ extends "res://Scripts/Passives/Classes/passive_chance.gd"
 
 @onready var resource_preloader = $ResourcePreloader
 
+const range = pow(400, 2)
+
 var source
 var source_passives
 var chained_enemies
@@ -40,22 +42,28 @@ func trigger(weapon = null):
 		lightning.get_node("Passives").add_child(passive.duplicate())
 	var nearest_enemy = get_nearest_enemy(collided_object)
 	if nearest_enemy != null:
-		lightning.region_rect = Rect2(0, 0, pos.distance_to(nearest_enemy.global_position), 17)
-		if not weapon.has_method("chain_lightning"):
-			lightning.nearest_enemy = nearest_enemy
+		if pos.distance_squared_to(nearest_enemy.global_position) <= range:
+			if not weapon.has_method("chain_lightning"):
+				lightning.nearest_enemy = nearest_enemy
+			else:
+				lightning.nearest_enemy = get_random_enemy(collided_object)
+			lightning.region_rect = Rect2(0, 0, pos.distance_to(lightning.nearest_enemy.global_position), 17)
+			lightning.DAMAGE = weapon.DAMAGE
+			get_tree().current_scene.add_child.call_deferred(lightning)
+			lightning.global_position = pos
+			lightning.pos = lightning.nearest_enemy.global_position
+			lightning.look_at(lightning.nearest_enemy.global_position)
 		else:
-			lightning.nearest_enemy = get_random_enemy(collided_object)
-		lightning.DAMAGE = weapon.DAMAGE
-		get_tree().current_scene.add_child.call_deferred(lightning)
-		lightning.global_position = pos
-		lightning.pos = nearest_enemy.global_position
-		lightning.look_at(nearest_enemy.global_position)
+			visual_chain(lightning, weapon)
 	elif nearest_enemy == null and not weapon.has_method("chain_lightning"):
-		lightning.region_rect = Rect2(0, 0, randf_range(50, 150), 17)
-		lightning.DAMAGE = weapon.DAMAGE
-		get_tree().current_scene.add_child.call_deferred(lightning)
-		lightning.global_position = pos
-		lightning.rotation = randf_range(0, TAU)
+		visual_chain(lightning, weapon)
+
+func visual_chain(lightning, weapon):
+	lightning.region_rect = Rect2(0, 0, randf_range(50, 150), 17)
+	lightning.DAMAGE = weapon.DAMAGE
+	get_tree().current_scene.add_child.call_deferred(lightning)
+	lightning.global_position = pos
+	lightning.rotation = randf_range(0, TAU)
 
 func get_nearest_enemy(object):
 	if object != null and object.is_in_group("Enemies"):

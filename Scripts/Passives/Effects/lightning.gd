@@ -19,6 +19,9 @@ var RANGE: float
 var SPEED: float
 var direction: Vector2
 
+func _ready():
+	Game.audio_manager.play(Game.audio_manager.shock)
+
 func _on_flip_timer_timeout():
 	flip_v = not flip_v
 	flip_timer.start()

@@ -7,7 +7,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_6g1dr"]
 radius = 9.5
 
-[node name="Blessed Dandelion" groups=["Weapon to be Destroyed"] instance=ExtResource("1_s5hmp")]
+[node name="Blessed Dandelion" instance=ExtResource("1_s5hmp")]
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_5e8kh")
 offset = Vector2(0, 10)
