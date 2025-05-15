@@ -14,8 +14,10 @@ func trigger(weapon = null):
 	var location = player.hand.global_position
 	weapon_instance.initial_weapon = true
 	weapon_instance.slot_index = 0
+	weapon_instance.source = player
 	weapon_instance.seed_slot_number = PlayerSeeds.seed_indices[0]
 	weapon_instance.desired_direction = location.direction_to(player.weapon_direction_marker.global_position)
 	get_tree().current_scene.add_child(weapon_instance)
 	weapon_instance.global_position = location
 	player.weapon_fired.emit(weapon_instance)
+	player.seed_fired.emit(weapon_instance)

@@ -11,7 +11,7 @@ shader_parameter/circle_size = 0.0
 shader_parameter/circle_position_x = 0.5
 shader_parameter/circle_position_y = 0.695
 
-[node name="Level" instance=ExtResource("1_nrtdg")]
+[node name="Boss Room" instance=ExtResource("1_nrtdg")]
 
 [node name="Circle Transition" parent="." index="6"]
 material = SubResource("ShaderMaterial_5xmff")

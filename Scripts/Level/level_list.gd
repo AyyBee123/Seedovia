@@ -36,7 +36,7 @@ func change_room(door):
 		next_room = ResourceLoader.load("res://Scenes/Levels/Special/Shop.tscn")
 	elif door.text == "Boss": # room before the boss room (10th room)
 		next_room = Pool.get_item(Pool.boss_floors[floor_number])
-	elif room_number >= 10: # next floor after the boss room
+	elif room_number >= 12: # next floor after the boss room
 		change_floor()
 	else:
 		next_room = Pool.get_item(Pool.floors[floor_number])
@@ -49,7 +49,7 @@ func change_room(door):
 	pickup_items_on_ground.clear()
 	items_on_ground.clear()
 	doors.clear()
-	room_number = min(room_number + 1, 10)
+	room_number = min(room_number + 1, 12)
 	Global.save_run_room()
 
 func change_floor():

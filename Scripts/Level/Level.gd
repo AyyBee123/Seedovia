@@ -124,7 +124,7 @@ func check_for_enemies():
 			spawn_doors()
 			LevelList.doors_spawned = true
 		if not reward_given and not was_cleared:
-			if LevelList.room_number == 10:
+			if get_tree().current_scene.name == "Boss Room":
 				Game.music_manager.play(Game.music_manager.BOSS_THEME_END)
 			thread.start(give_reward)
 			LevelList.current_reward_given = true
@@ -152,14 +152,14 @@ func spawn_doors(): # -785 to 785 = 1570 (size of level in x-axis) # -400 is the
 			add_child(door)
 		return
 	# room before the passive room, boss room, and the next floor (so it only spawns one door)
-	if LevelList.room_number == 4 or LevelList.room_number == 9 or LevelList.room_number == 10:
+	if LevelList.room_number == 5 or LevelList.room_number == 11 or LevelList.room_number == 12:
 		var door = resource_preloader.get_resource("Door").instantiate()
 		add_child(door)
-		if LevelList.room_number == 4:
+		if LevelList.room_number == 5:
 			door.set_reward("Passive", ResourceLoader.load("res://Sprites/Reward Images/Passive.png"))
-		elif LevelList.room_number == 9:
+		elif LevelList.room_number == 11:
 			door.set_reward("Boss", ResourceLoader.load("res://Sprites/Reward Images/Boss.png"))
-		elif LevelList.room_number == 10:
+		elif LevelList.room_number == 12:
 			door.set_reward("Next Floor", ResourceLoader.load("res://Sprites/Reward Images/Next Floor.png"))
 		door.position = Vector2(0, -384)
 		return
@@ -168,7 +168,7 @@ func spawn_doors(): # -785 to 785 = 1570 (size of level in x-axis) # -400 is the
 		if i == 0 and true: # true for now, this condition is for an item that adds an extra door choice
 			continue
 		var door = resource_preloader.get_resource("Door").instantiate()
-		if i == 1 and LevelList.room_number == 7:
+		if i == 1 and LevelList.room_number == 10:
 			door.set_reward("Shop", ResourceLoader.load("res://Sprites/Reward Images/Shop.png"))
 		else:
 			door.set_reward()
@@ -241,7 +241,7 @@ func finish():
 	thread.wait_to_finish()
 
 func play_music(soundtrack):
-	if LevelList.room_number == 10:
+	if get_tree().current_scene.name == "Boss Room":
 		if not LevelList.loaded_room_is_cleared:
 			Game.music_manager.play(Game.music_manager.BOSS_THEME)
 		else:

@@ -36,7 +36,7 @@ func _ready():
 
 func _physics_process(delta):
 	if transition_scene:
-		if LevelList.room_number == 10 and not _transitioned:
+		if LevelList.room_number == 12 and not _transitioned:
 			circle_transition.material.set("shader_parameter/circle_position_y", 0.305)
 			circle_transition.get_node("AnimationPlayer").play("Close")
 			Targets.get_player().process_mode = Node.PROCESS_MODE_DISABLED

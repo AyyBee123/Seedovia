@@ -1,13 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://c8is0y3xbjm3r"]
+[gd_scene load_steps=6 format=3 uid="uid://c8is0y3xbjm3r"]
 
 [ext_resource type="PackedScene" uid="uid://bnawmyjsajle3" path="res://Scenes/Levels/Floor 1 Base.tscn" id="1_5d21m"]
 [ext_resource type="PackedScene" uid="uid://b0bjggnev87e7" path="res://Scenes/Bosses/The Baron.tscn" id="2_2dlec"]
 [ext_resource type="PackedScene" uid="uid://dooq0rslv0rx2" path="res://Scenes/Enemies/Dancing Mushroom.tscn" id="3_iqj1e"]
+[ext_resource type="Shader" uid="uid://qm3syqtxdolu" path="res://Shaders/circle_transition.gdshader" id="4_sooso"]
 
-[node name="Level" instance=ExtResource("1_5d21m")]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0nx3o"]
+resource_local_to_scene = true
+shader = ExtResource("4_sooso")
+shader_parameter/circle_size = 0.0
+shader_parameter/circle_position_x = 0.5
+shader_parameter/circle_position_y = 0.695
 
-[node name="Down" parent="." index="5"]
-visible = false
+[node name="Boss Room" instance=ExtResource("1_5d21m")]
 
 [node name="The Baron" parent="." index="6" instance=ExtResource("2_2dlec")]
 
@@ -17,11 +22,5 @@ position = Vector2(-384, 0)
 [node name="Dancing Mushroom2" parent="." index="8" instance=ExtResource("3_iqj1e")]
 position = Vector2(384, 0)
 
-[node name="Up" parent="." index="9"]
-visible = false
-
-[node name="Left" parent="." index="10"]
-visible = false
-
-[node name="Right" parent="." index="11"]
-visible = false
+[node name="Circle Transition" parent="." index="9"]
+material = SubResource("ShaderMaterial_0nx3o")
