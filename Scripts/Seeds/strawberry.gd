@@ -9,6 +9,7 @@ var strawberry_fire_rate_multiplier: float = 0.6
 var explosion_damage_multiplier: float = 2.5
 var exploded := false
 var is_homing: bool = true
+var enemy_targeted: bool
 
 func _ready():
 	super._ready()
@@ -20,9 +21,10 @@ func _ready():
 
 func _physics_process(delta):
 	super._physics_process(delta)
-	if targeted_enemy == null:
+	if targeted_enemy == null and not enemy_targeted: # only home-in on one enemy
 		targeted_enemy = get_nearest_enemy(null)
-	else:
+		enemy_targeted = true
+	elif targeted_enemy:
 		var rotation_angle = global_position.direction_to(targeted_enemy.global_position).angle()
 		var new_rot = lerp_angle(rotation, rotation_angle, 5 * delta)
 		if is_homing:
