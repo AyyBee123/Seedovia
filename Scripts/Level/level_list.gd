@@ -21,6 +21,7 @@ var doors: Dictionary
 var character_scene_file_path: String
 var shop_items_spawned: bool
 var elapsed_time: float
+var room_type: String
 # TODO: add character variable that gets the character scene add preloads it when choosing a character
 
 func load_char():

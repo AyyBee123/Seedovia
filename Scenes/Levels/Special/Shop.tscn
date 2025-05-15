@@ -12,7 +12,7 @@ shader_parameter/circle_size = 0.0
 shader_parameter/circle_position_x = 0.5
 shader_parameter/circle_position_y = 0.695
 
-[node name="Level" instance=ExtResource("1_ai65m")]
+[node name="Shop" instance=ExtResource("1_ai65m")]
 script = ExtResource("2_8cf1a")
 
 [node name="TileMap" parent="." index="0"]

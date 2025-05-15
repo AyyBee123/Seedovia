@@ -58,45 +58,15 @@ func _ready():
 	# play floor theme music
 	match LevelList.floor_number:
 		0:
-			if LevelList.room_number != 10:
-				Game.music_manager.play(Game.music_manager.GARDEN_THEME)
-			else:
-				if not LevelList.loaded_room_is_cleared:
-					Game.music_manager.play(Game.music_manager.BOSS_THEME)
-				else:
-					Game.music_manager.stop()
+			play_music(Game.music_manager.GARDEN_THEME)
 		1:
-			if LevelList.room_number != 10:
-				Game.music_manager.play(Game.music_manager.HALL_THEME)
-			else:
-				if not LevelList.loaded_room_is_cleared:
-					Game.music_manager.play(Game.music_manager.BOSS_THEME)
-				else:
-					Game.music_manager.stop()
+			play_music(Game.music_manager.HALL_THEME)
 		2:
-			if LevelList.room_number != 10:
-				Game.music_manager.play(Game.music_manager.KITCHEN_THEME)
-			else:
-				if not LevelList.loaded_room_is_cleared:
-					Game.music_manager.play(Game.music_manager.BOSS_THEME)
-				else:
-					Game.music_manager.stop()
+			play_music(Game.music_manager.KITCHEN_THEME)
 		3:
-			if LevelList.room_number != 10:
-				Game.music_manager.play(Game.music_manager.LIBRARY_THEME)
-			else:
-				if not LevelList.loaded_room_is_cleared:
-					Game.music_manager.play(Game.music_manager.BOSS_THEME)
-				else:
-					Game.music_manager.stop()
+			play_music(Game.music_manager.LIBRARY_THEME)
 		4:
-			if LevelList.room_number != 10:
-				Game.music_manager.play(Game.music_manager.BASEMENT_THEME)
-			else:
-				if not LevelList.loaded_room_is_cleared:
-					Game.music_manager.play(Game.music_manager.BOSS_THEME)
-				else:
-					Game.music_manager.stop()
+			play_music(Game.music_manager.BASEMENT_THEME)
 	Global.RNG.randomize()
 	if LevelList.loaded_room_is_cleared:
 		for enemy in get_tree().get_nodes_in_group("Enemy"):
@@ -269,6 +239,17 @@ func give_reward():
 
 func finish():
 	thread.wait_to_finish()
+
+func play_music(soundtrack):
+	if LevelList.room_number == 10:
+		if not LevelList.loaded_room_is_cleared:
+			Game.music_manager.play(Game.music_manager.BOSS_THEME)
+		else:
+			Game.music_manager.stop()
+	elif get_tree().current_scene.name == "Shop":
+		Game.music_manager.play(Game.music_manager.SHOP_THEME)
+	else:
+		Game.music_manager.play(soundtrack)
 
 func check_for_possesions(reward_item):
 	# don't care if there are duplicate consumables
