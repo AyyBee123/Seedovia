@@ -24,9 +24,6 @@ func _ready():
 	Game.music_manager.play(Game.music_manager.MENU_THEME)
 	seed_list = get_all_file_paths("res://Resources/Items/Seeds/")
 
-func _physics_process(delta):
-	pass
-
 func _on_play_button_pressed():
 	$"Save File Select".find_child("Save1").grab_focus()
 	current_pos = 1 # save file select position

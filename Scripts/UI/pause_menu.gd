@@ -69,4 +69,7 @@ func _on_settings_button_pressed():
 func _on_quit_to_menu_button_pressed():
 	Game.audio_manager.play(Game.audio_manager.ui_button)
 	get_tree().paused = false
+	if OS.has_feature("demo"):
+		get_tree().change_scene_to_file("res://Scenes/UI/Demo Menu.tscn")
+		return
 	get_tree().change_scene_to_file("res://Scenes/UI/Main Menu.tscn")

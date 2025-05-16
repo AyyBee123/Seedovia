@@ -1,0 +1,497 @@
+[gd_scene load_steps=23 format=3 uid="uid://28wvndq6xn5u"]
+
+[ext_resource type="Script" uid="uid://dwq75v7p6ljho" path="res://Scripts/UI/character_select_demo.gd" id="1_fbt67"]
+[ext_resource type="Resource" uid="uid://cj0ugaawbg6a" path="res://Resources/Characters/sapling.tres" id="2_is5xu"]
+[ext_resource type="Texture2D" uid="uid://dwwsiyabyqc6l" path="res://Sprites/Menu UI/Soil Background.png" id="3_xuj73"]
+[ext_resource type="Texture2D" uid="uid://didv5fjskcrdi" path="res://Sprites/Pause UI/Pause Menu Choice.png" id="4_hg0bm"]
+[ext_resource type="Texture2D" uid="uid://ciyk64aevmyv" path="res://Sprites/Pause UI/Pause Menu Choice Pressed.png" id="5_j7b7y"]
+[ext_resource type="Texture2D" uid="uid://dmb2vfptumg3l" path="res://Sprites/Pause UI/Pause Menu Choice Hover.png" id="6_7ohd8"]
+[ext_resource type="Texture2D" uid="uid://2d111phom0jg" path="res://Sprites/Pause UI/Pause Menu Choice Focused.png" id="7_bwd56"]
+[ext_resource type="FontFile" uid="uid://bkn7gmgx1wxgx" path="res://Fonts/Name Font.ttf" id="8_w8q2r"]
+[ext_resource type="Texture2D" uid="uid://cho888oosvmug" path="res://Sprites/UI/Character Box.png" id="9_yavdl"]
+[ext_resource type="Texture2D" uid="uid://i6bgsd1ph8ln" path="res://Sprites/UI/Character Box Select.png" id="10_r886i"]
+[ext_resource type="Texture2D" uid="uid://cwyg5xo4o644x" path="res://Sprites/UI/Character Box Hover.png" id="11_47q83"]
+[ext_resource type="Texture2D" uid="uid://bvh4pe2yh6awc" path="res://Sprites/UI/Character Box Disabled.png" id="12_55uin"]
+[ext_resource type="Texture2D" uid="uid://3wl46ii2cnqd" path="res://Sprites/UI/Character Box Focused.png" id="13_q24ec"]
+[ext_resource type="Script" uid="uid://bi85ki8xiitqf" path="res://Scripts/UI/character.gd" id="14_7v4i6"]
+[ext_resource type="Texture2D" uid="uid://2whsjb1rg2lm" path="res://Sprites/Character/Sapling/Sapling1.png" id="15_nxi4g"]
+[ext_resource type="Resource" uid="uid://dxk70g7cem73p" path="res://Resources/Characters/berry.tres" id="16_pfyx1"]
+[ext_resource type="Texture2D" uid="uid://b7ynn50wtvp24" path="res://Sprites/Character/Berry/Berry1.png" id="17_euuxp"]
+[ext_resource type="Resource" uid="uid://dwh0orxt4fsdt" path="res://Resources/Characters/cercis.tres" id="20_1rt0h"]
+[ext_resource type="Texture2D" uid="uid://c71jrpxh3cx3a" path="res://Sprites/Character/Cercis/Cercis1.png" id="21_v65i7"]
+[ext_resource type="Texture2D" uid="uid://chrtmh8xchoct" path="res://Sprites/Pause UI/Pause Menu Choice Disabled.png" id="26_wjxia"]
+[ext_resource type="Texture2D" uid="uid://bw8knd5iqe7am" path="res://Sprites/UI/Character Display.png" id="27_lq37k"]
+[ext_resource type="FontFile" uid="uid://wbj0boqv37y6" path="res://Fonts/Description Font.ttf" id="28_jm1ca"]
+
+[node name="Character Select" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fbt67")
+starting_character = ExtResource("2_is5xu")
+character_scene = "res://Scenes/Characters/Sapling.tscn"
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_xuj73")
+
+[node name="Back Button" type="TextureButton" parent="."]
+z_index = 2
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -380.0
+offset_top = 20.0
+offset_right = -29.0
+offset_bottom = 109.0
+grow_horizontal = 0
+texture_normal = ExtResource("4_hg0bm")
+texture_pressed = ExtResource("5_j7b7y")
+texture_hover = ExtResource("6_7ohd8")
+texture_focused = ExtResource("7_bwd56")
+stretch_mode = 4
+
+[node name="Text" type="RichTextLabel" parent="Back Button"]
+modulate = Color(0.905882, 0.8, 0.627451, 1)
+layout_mode = 0
+offset_left = 1.0
+offset_top = 5.0
+offset_right = 351.0
+offset_bottom = 82.0
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/normal_font = ExtResource("8_w8q2r")
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "[center]Back"
+
+[node name="Characters" type="GridContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 128.0
+offset_top = 170.0
+offset_right = 1136.0
+offset_bottom = 1010.0
+mouse_filter = 2
+theme_override_constants/h_separation = 12
+theme_override_constants/v_separation = 12
+columns = 5
+
+[node name="Character 1" type="TextureButton" parent="Characters"]
+custom_minimum_size = Vector2(192, 192)
+layout_mode = 2
+texture_normal = ExtResource("9_yavdl")
+texture_pressed = ExtResource("10_r886i")
+texture_hover = ExtResource("11_47q83")
+texture_disabled = ExtResource("12_55uin")
+texture_focused = ExtResource("13_q24ec")
+stretch_mode = 0
+script = ExtResource("14_7v4i6")
+starting_character = ExtResource("2_is5xu")
+character_scene = "res://Scenes/Characters/Sapling.tscn"
+unlock_method = ":)"
+
+[node name="MarginContainer" type="MarginContainer" parent="Characters/Character 1"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 14.0
+offset_right = 178.0
+offset_bottom = 178.0
+mouse_filter = 2
+
+[node name="Character" type="TextureRect" parent="Characters/Character 1/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("15_nxi4g")
+stretch_mode = 5
+
+[node name="Character 2" type="TextureButton" parent="Characters"]
+custom_minimum_size = Vector2(192, 192)
+layout_mode = 2
+texture_normal = ExtResource("9_yavdl")
+texture_pressed = ExtResource("10_r886i")
+texture_hover = ExtResource("11_47q83")
+texture_disabled = ExtResource("12_55uin")
+texture_focused = ExtResource("13_q24ec")
+stretch_mode = 0
+script = ExtResource("14_7v4i6")
+starting_character = ExtResource("16_pfyx1")
+character_scene = "res://Scenes/Characters/Berry.tscn"
+unlock_method = "Have 6 max health."
+
+[node name="MarginContainer" type="MarginContainer" parent="Characters/Character 2"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 24.0
+offset_right = 178.0
+offset_bottom = 178.0
+mouse_filter = 2
+
+[node name="Character" type="TextureRect" parent="Characters/Character 2/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("17_euuxp")
+stretch_mode = 5
+
+[node name="Character 4" type="TextureButton" parent="Characters"]
+custom_minimum_size = Vector2(192, 192)
+layout_mode = 2
+texture_normal = ExtResource("9_yavdl")
+texture_pressed = ExtResource("10_r886i")
+texture_hover = ExtResource("11_47q83")
+texture_disabled = ExtResource("12_55uin")
+texture_focused = ExtResource("13_q24ec")
+stretch_mode = 0
+script = ExtResource("14_7v4i6")
+starting_character = ExtResource("20_1rt0h")
+character_scene = "res://Scenes/Characters/Cercis.tscn"
+unlock_method = "Die."
+
+[node name="MarginContainer" type="MarginContainer" parent="Characters/Character 4"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 8.0
+offset_right = 178.0
+offset_bottom = 178.0
+mouse_filter = 2
+
+[node name="Character" type="TextureRect" parent="Characters/Character 4/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("21_v65i7")
+stretch_mode = 5
+
+[node name="Play Button" type="TextureButton" parent="."]
+unique_name_in_owner = true
+z_index = 2
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -605.0
+offset_top = 948.0
+offset_right = -254.0
+offset_bottom = 1037.0
+grow_horizontal = 0
+texture_normal = ExtResource("4_hg0bm")
+texture_pressed = ExtResource("5_j7b7y")
+texture_hover = ExtResource("6_7ohd8")
+texture_disabled = ExtResource("26_wjxia")
+texture_focused = ExtResource("7_bwd56")
+stretch_mode = 4
+
+[node name="Text" type="RichTextLabel" parent="Play Button"]
+modulate = Color(0.783865, 0.738784, 0.628739, 1)
+layout_mode = 0
+offset_left = 1.0
+offset_top = 5.0
+offset_right = 351.0
+offset_bottom = 82.0
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/normal_font = ExtResource("8_w8q2r")
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "[center]Play"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+modulate = Color(0.905882, 0.8, 0.627451, 1)
+layout_mode = 0
+offset_top = 24.0
+offset_right = 1920.0
+offset_bottom = 91.0
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_offset_x = -2
+theme_override_constants/shadow_outline_size = 8
+theme_override_fonts/normal_font = ExtResource("8_w8q2r")
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "[center]Select your character"
+fit_content = true
+scroll_active = false
+
+[node name="Display" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1184.0
+offset_top = 170.0
+offset_right = 1792.0
+offset_bottom = 910.0
+texture = ExtResource("27_lq37k")
+
+[node name="Character Sprite" type="TextureRect" parent="Display"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(104, 164)
+layout_mode = 0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 136.0
+offset_bottom = 196.0
+texture = ExtResource("15_nxi4g")
+expand_mode = 5
+
+[node name="Character Name" type="RichTextLabel" parent="Display"]
+unique_name_in_owner = true
+modulate = Color(0.905882, 0.8, 0.627451, 1)
+layout_mode = 0
+offset_left = 192.0
+offset_top = 48.0
+offset_right = 597.0
+offset_bottom = 128.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_offset_x = -2
+theme_override_constants/shadow_outline_size = 8
+theme_override_fonts/normal_font = ExtResource("8_w8q2r")
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "Sapling"
+fit_content = true
+scroll_active = false
+
+[node name="Starting Items" type="VBoxContainer" parent="Display"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 32.0
+offset_top = 256.0
+offset_right = 580.0
+offset_bottom = 706.0
+
+[node name="Starting Seed" type="GridContainer" parent="Display/Starting Items"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+columns = 2
+
+[node name="Text" type="RichTextLabel" parent="Display/Starting Items/Starting Seed"]
+modulate = Color(1, 1, 0.431373, 1)
+custom_minimum_size = Vector2(232, 48)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/normal_font = ExtResource("28_jm1ca")
+theme_override_font_sizes/normal_font_size = 48
+text = "Starting Seed:
+"
+scroll_active = false
+
+[node name="Info" type="RichTextLabel" parent="Display/Starting Items/Starting Seed"]
+modulate = Color(0.905882, 0.8, 0.627451, 1)
+custom_minimum_size = Vector2(312, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/normal_font = ExtResource("28_jm1ca")
+theme_override_font_sizes/normal_font_size = 48
+text = "Pea
+"
+fit_content = true
+
+[node name="Starting Talisman" type="GridContainer" parent="Display/Starting Items"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+columns = 2
+
+[node name="Text" type="RichTextLabel" parent="Display/Starting Items/Starting Talisman"]
+modulate = Color(1, 1, 0.431373, 1)
+custom_minimum_size = Vector2(296, 48)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/normal_font = ExtResource("28_jm1ca")
+theme_override_font_sizes/normal_font_size = 48
+text = "Starting Talisman:
+"
+scroll_active = false
+
+[node name="Info" type="RichTextLabel" parent="Display/Starting Items/Starting Talisman"]
+modulate = Color(0.905882, 0.8, 0.627451, 1)
+custom_minimum_size = Vector2(248, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/normal_font = ExtResource("28_jm1ca")
+theme_override_font_sizes/normal_font_size = 48
+text = "None
+"
+fit_content = true
+
+[node name="Starting Passives" type="GridContainer" parent="Display/Starting Items"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+columns = 2
+
+[node name="Text" type="RichTextLabel" parent="Display/Starting Items/Starting Passives"]
+modulate = Color(1, 1, 0.431373, 1)
+custom_minimum_size = Vector2(294, 48)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/normal_font = ExtResource("28_jm1ca")
+theme_override_font_sizes/normal_font_size = 48
+text = "Starting Passives:
+"
+scroll_active = false
+
+[node name="Info" type="RichTextLabel" parent="Display/Starting Items/Starting Passives"]
+modulate = Color(0.905882, 0.8, 0.627451, 1)
+custom_minimum_size = Vector2(250, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/normal_font = ExtResource("28_jm1ca")
+theme_override_font_sizes/normal_font_size = 48
+text = "None
+"
+fit_content = true
+
+[node name="Starting Inventory" type="GridContainer" parent="Display/Starting Items"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+columns = 2
+
+[node name="Text" type="RichTextLabel" parent="Display/Starting Items/Starting Inventory"]
+modulate = Color(1, 1, 0.431373, 1)
+custom_minimum_size = Vector2(316, 48)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/normal_font = ExtResource("28_jm1ca")
+theme_override_font_sizes/normal_font_size = 48
+text = "Starting Inventory:
+"
+scroll_active = false
+
+[node name="Info" type="RichTextLabel" parent="Display/Starting Items/Starting Inventory"]
+modulate = Color(0.905882, 0.8, 0.627451, 1)
+custom_minimum_size = Vector2(228, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/normal_font = ExtResource("28_jm1ca")
+theme_override_font_sizes/normal_font_size = 48
+text = "Apple
+"
+fit_content = true
+
+[node name="Unlock Text" type="RichTextLabel" parent="Display"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 0.431373, 1)
+custom_minimum_size = Vector2(316, 48)
+layout_mode = 0
+offset_left = 32.0
+offset_top = 532.0
+offset_right = 580.0
+offset_bottom = 580.0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/normal_font = ExtResource("28_jm1ca")
+theme_override_font_sizes/normal_font_size = 48
+text = "Unlock Condition:
+"
+scroll_active = false
+
+[node name="Unlock Info" type="RichTextLabel" parent="Display"]
+unique_name_in_owner = true
+modulate = Color(0.905882, 0.8, 0.627451, 1)
+custom_minimum_size = Vector2(316, 48)
+layout_mode = 0
+offset_left = 32.0
+offset_top = 580.0
+offset_right = 580.0
+offset_bottom = 712.0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/normal_font = ExtResource("28_jm1ca")
+theme_override_font_sizes/normal_font_size = 48
+text = "Yay!
+"
+scroll_active = false
+
+[node name="Buffer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+autostart = true
+
+[connection signal="pressed" from="Back Button" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="Characters/Character 1" to="Characters/Character 1" method="_on_pressed"]
+[connection signal="pressed" from="Characters/Character 2" to="Characters/Character 2" method="_on_pressed"]
+[connection signal="pressed" from="Characters/Character 4" to="Characters/Character 4" method="_on_pressed"]
+[connection signal="pressed" from="Play Button" to="." method="_on_play_button_pressed"]

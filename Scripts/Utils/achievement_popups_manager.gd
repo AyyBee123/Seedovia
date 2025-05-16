@@ -26,6 +26,8 @@ func new_achievement(_ach):
 	popup_queue.push_back(popup)
 
 func new_unlock(_unlock):
+	if OS.has_feature("demo"): # don't show achievements in the demo
+		return
 	var popup = achievement_popup.instantiate()
 	if _unlock is character_class:
 		popup.get_node("%Sprite").texture = _unlock.get_texture()

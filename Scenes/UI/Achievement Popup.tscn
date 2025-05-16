@@ -79,10 +79,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -420.0
-offset_top = -354.0
-offset_right = -184.0
-offset_bottom = -308.0
+offset_left = -408.0
+offset_top = -350.0
+offset_right = -172.0
+offset_bottom = -304.0
 grow_horizontal = 2
 scale = Vector2(2.5, 2.5)
 pivot_offset = Vector2(114, -10)
@@ -140,6 +140,6 @@ scroll_active = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_vqv8y")
+&"": SubResource("AnimationLibrary_vqv8y")
 }
 autoplay = "new_animation"

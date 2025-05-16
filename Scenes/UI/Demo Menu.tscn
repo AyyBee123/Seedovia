@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://blflmf5mxjxwy"]
+[gd_scene load_steps=17 format=3 uid="uid://blflmf5mxjxwy"]
 
 [ext_resource type="Script" uid="uid://dmawao5x60y2s" path="res://Scripts/UI/demo_menu.gd" id="1_ehj1f"]
 [ext_resource type="Texture2D" uid="uid://cc4qox3sejykw" path="res://Sprites/Menu UI/Grass.png" id="2_7rdtu"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://chrtmh8xchoct" path="res://Sprites/Pause UI/Pause Menu Choice Disabled.png" id="10_228u4"]
 [ext_resource type="Script" uid="uid://dnu6sks28160q" path="res://Scripts/UI/licence_button.gd" id="11_jvpt7"]
 [ext_resource type="Texture2D" uid="uid://4l3tmn6mja2n" path="res://Sprites/Logo/Logo.png" id="12_umfyq"]
+[ext_resource type="Texture2D" uid="uid://dbtya0ttnkwnh" path="res://Sprites/Logo/Demo Logo.png" id="13_7rdtu"]
 
 [sub_resource type="Animation" id="Animation_v3kjt"]
 length = 0.001
@@ -345,6 +346,21 @@ offset_right = 1467.5
 offset_bottom = 297.0
 texture = ExtResource("12_umfyq")
 metadata/_edit_use_anchors_ = true
+
+[node name="Demo" type="TextureRect" parent="Starting Menu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.401771
+anchor_top = 0.269593
+anchor_right = 0.539771
+anchor_bottom = 0.347593
+offset_left = 4.59998
+offset_top = 5.83997
+offset_right = 3.63989
+offset_bottom = 5.60001
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("13_7rdtu")
 
 [node name="Seed Spawn Rate" type="Timer" parent="."]
 one_shot = true

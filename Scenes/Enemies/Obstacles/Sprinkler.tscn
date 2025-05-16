@@ -72,6 +72,9 @@ sprite_frames = SubResource("SpriteFrames_r1ei5")
 frame = 6
 frame_progress = 1.0
 
+[node name="Enemy Hitbox" parent="." index="2"]
+collision_layer = 512
+
 [node name="CollisionShape2D" parent="Enemy Hitbox" index="0"]
 shape = SubResource("CapsuleShape2D_u2h3t")
 

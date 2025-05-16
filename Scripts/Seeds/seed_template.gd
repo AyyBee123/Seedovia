@@ -133,6 +133,7 @@ func travelled_distance():
 		queue_free.call_deferred()
 
 func _on_hitbox_area_entered(area):
+	print(area.get_parent())
 	_collide.call_deferred(area)
 
 func _on_hitbox_body_entered(body):
