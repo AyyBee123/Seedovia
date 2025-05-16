@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="equipment_item_class" load_steps=3 format=3 uid="uid://can1fr0wvy71o"]
+
+[ext_resource type="Script" uid="uid://n64xabrw5ic3" path="res://Scripts/Items/equipment_item_class.gd" id="1_tygbw"]
+[ext_resource type="Texture2D" uid="uid://ct7nvank8kxdu" path="res://Sprites/Talismans/Coffee Bean.png" id="2_e030r"]
+
+[resource]
+script = ExtResource("1_tygbw")
+rarity = 3
+properties = Array[String](["0.1x Dash_Rate", "0.02x Dash_Invulnerability"])
+special_properties = Array[PackedScene]([])
+item_name = "Coffee Bean"
+texture = ExtResource("2_e030r")
+description = "0.1x dash cooldown
+0.02x dash immunity time"
+unlocked = true

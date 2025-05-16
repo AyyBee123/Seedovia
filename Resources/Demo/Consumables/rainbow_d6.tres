@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="rainbow_d6_consumable" load_steps=3 format=3 uid="uid://u4nj6ytxb8q5"]
+
+[ext_resource type="Script" uid="uid://de56vebiqeb5k" path="res://Scripts/Consumables/rainbow_d6.gd" id="1_rsn52"]
+[ext_resource type="Texture2D" uid="uid://bfnqvg0n0ndwd" path="res://Sprites/Consumables/Rainbow D6.png" id="2_3r8ml"]
+
+[resource]
+script = ExtResource("1_rsn52")
+weight = 0.01
+shop_price = 150
+item_name = "Rainbow D6"
+texture = ExtResource("2_3r8ml")
+description = "Duplicates all items on the ground."
+unlocked = true

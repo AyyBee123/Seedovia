@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="equipment_item_class" load_steps=4 format=3 uid="uid://bchjjaqaasfi8"]
+
+[ext_resource type="Script" uid="uid://n64xabrw5ic3" path="res://Scripts/Items/equipment_item_class.gd" id="1_2bq0h"]
+[ext_resource type="PackedScene" uid="uid://cinjq67qcagjb" path="res://Scenes/Item Passives/Abilities/Dark Flame.tscn" id="2_2ttfh"]
+[ext_resource type="Texture2D" uid="uid://c8en1irw6p0p4" path="res://Sprites/Talismans/Cursed Dandelion.png" id="3_k76l7"]
+
+[resource]
+script = ExtResource("1_2bq0h")
+rarity = 3
+properties = Array[String]([])
+special_properties = Array[PackedScene]([ExtResource("2_2ttfh")])
+item_name = "Cursed Dandelion"
+texture = ExtResource("3_k76l7")
+description = "The weapon in your second seed slot gains 2 dark flame orbitals."
+unlocked = true

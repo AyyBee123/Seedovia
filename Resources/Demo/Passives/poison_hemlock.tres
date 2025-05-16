@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="passive_class" load_steps=4 format=3 uid="uid://dxhsmlc8lhe20"]
+
+[ext_resource type="PackedScene" uid="uid://56ls8uk2uxkb" path="res://Scenes/Passives/Abilities/Poison Hemlock.tscn" id="1_4261l"]
+[ext_resource type="Script" uid="uid://yr5gdtdbvmoc" path="res://Scripts/Passives/Classes/passive_class.gd" id="2_nr4rh"]
+[ext_resource type="Texture2D" uid="uid://bbppnb4kuwxqr" path="res://Sprites/Passives/Icons/Poison Hemlock.png" id="3_cf1nb"]
+
+[resource]
+script = ExtResource("2_nr4rh")
+passive_name = "Poison Hemlock"
+sprite = ExtResource("3_cf1nb")
+description = "Your seeds now have a toxic aura around them."
+passive_ability = ExtResource("1_4261l")
+unlocked = true

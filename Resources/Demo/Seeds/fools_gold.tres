@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="seed_class" load_steps=4 format=3 uid="uid://dlutoxqr66gg0"]
+
+[ext_resource type="PackedScene" uid="uid://byim4c2g4klp6" path="res://Scenes/Seeds/Fools Gold.tscn" id="1_2v6nc"]
+[ext_resource type="Script" uid="uid://c6ykhgvfkht5x" path="res://Scripts/Stats/seed_stats.gd" id="2_j8dt3"]
+[ext_resource type="Texture2D" uid="uid://ff0spx5l2oh6" path="res://Sprites/Seeds/Fools Gold.png" id="3_jb0u5"]
+
+[resource]
+script = ExtResource("2_j8dt3")
+scene = ExtResource("1_2v6nc")
+rarity = 4
+item_name = "Fool's Gold"
+texture = ExtResource("3_jb0u5")
+description = ""
+unlocked = true

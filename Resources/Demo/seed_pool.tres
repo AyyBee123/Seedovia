@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="item_pool" load_steps=3 format=3 uid="uid://cvhl7wpxtft70"]
+
+[ext_resource type="Script" uid="uid://ufjtmba68sp0" path="res://Scripts/Pools/item_pool.gd" id="1_kbl6q"]
+[ext_resource type="Texture2D" uid="uid://yoja84d1148m" path="res://Sprites/Reward Images/Seed.png" id="2_hn87g"]
+
+[resource]
+script = ExtResource("1_kbl6q")
+texture = ExtResource("2_hn87g")
+pool_name = "Seed"
+path = "res://Resources/Items/Seeds/"

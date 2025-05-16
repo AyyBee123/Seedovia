@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="equipment_item_class" load_steps=3 format=3 uid="uid://ck1qg58e88w2i"]
+
+[ext_resource type="Script" uid="uid://n64xabrw5ic3" path="res://Scripts/Items/equipment_item_class.gd" id="1_y8166"]
+[ext_resource type="Texture2D" uid="uid://bdj6yabamxxf6" path="res://Sprites/Talismans/Leather Gloves.png" id="2_4fqm7"]
+
+[resource]
+script = ExtResource("1_y8166")
+rarity = 0
+properties = Array[String](["+15% Fire_Rate"])
+special_properties = Array[PackedScene]([])
+item_name = "Leather Glove"
+texture = ExtResource("2_4fqm7")
+description = "+15% Fire Rate"
+unlocked = true

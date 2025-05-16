@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="item_pool" load_steps=3 format=3 uid="uid://cijyo6j0nsb5a"]
+
+[ext_resource type="Script" uid="uid://ufjtmba68sp0" path="res://Scripts/Pools/item_pool.gd" id="1_at33v"]
+[ext_resource type="Texture2D" uid="uid://cct2i6rx2pik4" path="res://Sprites/Pickups/Passive.png" id="2_ipdon"]
+
+[resource]
+script = ExtResource("1_at33v")
+texture = ExtResource("2_ipdon")
+pool_name = "Passive"
+path = "res://Resources/Items/Passives/"

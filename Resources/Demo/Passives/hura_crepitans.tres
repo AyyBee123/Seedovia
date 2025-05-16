@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="passive_class" load_steps=4 format=3 uid="uid://bgoaj44ksikou"]
+
+[ext_resource type="PackedScene" uid="uid://bnoiir88s2wns" path="res://Scenes/Passives/Abilities/Hura Crepitans.tscn" id="1_82ot0"]
+[ext_resource type="Script" uid="uid://yr5gdtdbvmoc" path="res://Scripts/Passives/Classes/passive_class.gd" id="2_v46ib"]
+[ext_resource type="Texture2D" uid="uid://dqiw78ps81daw" path="res://Sprites/Passives/Icons/Hura Crepitans.png" id="3_2tbpn"]
+
+[resource]
+script = ExtResource("2_v46ib")
+passive_name = "Hura Crepitans"
+sprite = ExtResource("3_2tbpn")
+description = "Your seeds explode on contact, dealing 33% of their original damage in a small area."
+passive_ability = ExtResource("1_82ot0")
+unlocked = true

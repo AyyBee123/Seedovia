@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="seed_class" load_steps=4 format=3 uid="uid://f6ujbbll41ms"]
+
+[ext_resource type="PackedScene" uid="uid://dyfgeiipwqnnv" path="res://Scenes/Seeds/Pepper.tscn" id="1_1gx3p"]
+[ext_resource type="Script" uid="uid://c6ykhgvfkht5x" path="res://Scripts/Stats/seed_stats.gd" id="2_bslht"]
+[ext_resource type="Texture2D" uid="uid://cvsb5hlama56" path="res://Sprites/Seeds/Explosive Pepper.png" id="3_qhpw2"]
+
+[resource]
+script = ExtResource("2_bslht")
+scene = ExtResource("1_1gx3p")
+rarity = 3
+item_name = "Pepper"
+texture = ExtResource("3_qhpw2")
+description = ""
+unlocked = true

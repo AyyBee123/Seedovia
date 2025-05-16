@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="seed_class" load_steps=4 format=3 uid="uid://crf7muxnthvhc"]
+
+[ext_resource type="PackedScene" uid="uid://b56c0nehfg5ad" path="res://Scenes/Seeds/Rupture.tscn" id="1_jmbe6"]
+[ext_resource type="Script" uid="uid://c6ykhgvfkht5x" path="res://Scripts/Stats/seed_stats.gd" id="2_px2jo"]
+[ext_resource type="Texture2D" uid="uid://dbk6nlo238st" path="res://Sprites/Seeds (Inventory)/Rupture.png" id="3_lbp2o"]
+
+[resource]
+script = ExtResource("2_px2jo")
+scene = ExtResource("1_jmbe6")
+rarity = 2
+item_name = "Rupture"
+texture = ExtResource("3_lbp2o")
+description = ""
+unlocked = true

@@ -103,6 +103,7 @@ func start():
 	6: 0, # unique
 	7: 0, # N/A
 	}
+	
 	add_pool = true # add the pool array to the room reward pool
 	populate_pool(equipment_pool, talisman_weights)
 	populate_pool(consumable_pool, consumable_weights)

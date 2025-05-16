@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="equipment_item_class" load_steps=4 format=3 uid="uid://cquvk8ebv6or6"]
+
+[ext_resource type="Script" uid="uid://n64xabrw5ic3" path="res://Scripts/Items/equipment_item_class.gd" id="1_edbvy"]
+[ext_resource type="PackedScene" uid="uid://c3xtehth3yq3u" path="res://Scenes/Item Passives/Abilities/Clockwork.tscn" id="2_jbubl"]
+[ext_resource type="Texture2D" uid="uid://qda5pqsvw8uh" path="res://Sprites/Talismans/Clockwork.png" id="3_37g2a"]
+
+[resource]
+script = ExtResource("1_edbvy")
+rarity = 2
+properties = Array[String](["+10% Dash_Rate"])
+special_properties = Array[PackedScene]([ExtResource("2_jbubl")])
+item_name = "Clockwork"
+texture = ExtResource("3_37g2a")
+description = "+10% Dash Rate
+
+Trigger on-dash effect every 5th shot from directly fired seeds."
+unlocked = true

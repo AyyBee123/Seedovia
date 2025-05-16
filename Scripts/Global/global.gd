@@ -24,7 +24,8 @@ func save_run_data():
 	data.get_pools()
 	data.get_run_time()
 	ResourceSaver.save(data, RUN_SAVE_PATH)
-	ResourceSaver.save(data, "user://current_run.tres") # for testing purposes, will remove later
+	if OS.has_feature("editor"):
+		ResourceSaver.save(data, "user://current_run.tres") # for testing purposes
 
 func load_run_data():
 	if not ResourceLoader.exists(RUN_SAVE_PATH):
@@ -42,7 +43,8 @@ func load_run_data():
 func save_run_room():
 	data.get_current_room()
 	ResourceSaver.save(data, RUN_SAVE_PATH)
-	ResourceSaver.save(data, "user://current_run.tres") # for testing purposes, will remove later
+	if OS.has_feature("editor"):
+		ResourceSaver.save(data, "user://current_run.tres") # for testing purposes
 
 func load_run_room():
 	if not ResourceLoader.exists(RUN_SAVE_PATH):
@@ -62,7 +64,8 @@ func save_coins():
 	coins_saving = true
 	data.get_coins()
 	ResourceSaver.save(data, RUN_SAVE_PATH)
-	ResourceSaver.save(data, "user://current_run.tres") # for testing purposes, will remove later
+	if OS.has_feature("editor"):
+		ResourceSaver.save(data, "user://current_run.tres") # for testing purposes
 	coins_saving = false
 	SignalBus.coins_saved.emit()
 
@@ -79,13 +82,15 @@ func save_save_selection():
 	super_data.get_save_selection_data()
 	super_data.get_time_played()
 	ResourceSaver.save(super_data, SAVE_PATH)
-	ResourceSaver.save(super_data, "user://save_data.tres") # for testing purposes, will remove later
+	if OS.has_feature("editor"):
+		ResourceSaver.save(super_data, "user://save_data.tres") # for testing purposes
 
 func save_data():
 	super_data.get_achievements()
 	super_data.get_time_played()
 	ResourceSaver.save(super_data, SAVE_PATH)
-	ResourceSaver.save(super_data, "user://save_data.tres") # for testing purposes, will remove later
+	if OS.has_feature("editor"):
+		ResourceSaver.save(super_data, "user://save_data.tres") # for testing purposes
 
 func load_data_exists(_data) -> bool:
 	return ResourceLoader.exists(_data)
@@ -105,12 +110,14 @@ func delete_data(_path = null, _run_path = null):
 func save_time_played():
 	super_data.get_time_played()
 	ResourceSaver.save(super_data, SAVE_PATH)
-	ResourceSaver.save(super_data, "user://save_data.tres") # for testing purposes, will remove later
+	if OS.has_feature("editor"):
+		ResourceSaver.save(super_data, "user://save_data.tres") # for testing purposes
 
 func save_achievements():
 	super_data.get_achievements()
 	ResourceSaver.save(super_data, SAVE_PATH)
-	ResourceSaver.save(super_data, "user://save_data.tres") # for testing purposes, will remove later
+	if OS.has_feature("editor"):
+		ResourceSaver.save(super_data, "user://save_data.tres") # for testing purposes
 
 func load_achievements(_path = null):
 	if _path == null:
@@ -126,7 +133,8 @@ func save_settings():
 	settings.get_audio_volumes()
 	settings.get_ui_settings()
 	ResourceSaver.save(settings, SETTINGS_PATH)
-	ResourceSaver.save(settings, "user://settings.tres") # for testing purposes, will remove later
+	if OS.has_feature("editor"):
+		ResourceSaver.save(settings, "user://settings.tres") # for testing purposes
 
 func load_settings():
 	if not ResourceLoader.exists(SETTINGS_PATH):

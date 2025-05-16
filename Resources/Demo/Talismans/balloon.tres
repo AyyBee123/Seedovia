@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="equipment_item_class" load_steps=3 format=3 uid="uid://bdhjl3hx0jxwa"]
+
+[ext_resource type="Script" uid="uid://n64xabrw5ic3" path="res://Scripts/Items/equipment_item_class.gd" id="1_0enek"]
+[ext_resource type="Texture2D" uid="uid://jvyki1lpyfap" path="res://Sprites/Talismans/Balloon.png" id="2_m0r40"]
+
+[resource]
+script = ExtResource("1_0enek")
+rarity = 0
+properties = Array[String](["+20% Weapon_Damage", "+10% Weapon_Size"])
+special_properties = Array[PackedScene]([])
+item_name = "Balloon"
+texture = ExtResource("2_m0r40")
+description = "+20% Damage
++10% Seed Size"
+unlocked = true
+metadata/_custom_type_script = "uid://n64xabrw5ic3"

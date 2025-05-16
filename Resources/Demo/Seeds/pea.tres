@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="seed_class" load_steps=4 format=3 uid="uid://b3ljcenbyb0ib"]
+
+[ext_resource type="PackedScene" uid="uid://bffy58rjriwmv" path="res://Scenes/Seeds/Pea.tscn" id="1_exvty"]
+[ext_resource type="Script" uid="uid://c6ykhgvfkht5x" path="res://Scripts/Stats/seed_stats.gd" id="2_kdbka"]
+[ext_resource type="Texture2D" uid="uid://cdr5icuesgybd" path="res://Sprites/Seeds (Inventory)/Pea.png" id="3_3d64c"]
+
+[resource]
+script = ExtResource("2_kdbka")
+scene = ExtResource("1_exvty")
+rarity = 0
+item_name = "Pea"
+texture = ExtResource("3_3d64c")
+description = ""
+unlocked = true

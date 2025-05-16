@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="seed_class" load_steps=4 format=3 uid="uid://bmabsb8go6q1k"]
+
+[ext_resource type="PackedScene" uid="uid://btwbxb2uoweee" path="res://Scenes/Seeds/Needle.tscn" id="1_adwvh"]
+[ext_resource type="Script" uid="uid://c6ykhgvfkht5x" path="res://Scripts/Stats/seed_stats.gd" id="2_drpfo"]
+[ext_resource type="Texture2D" uid="uid://bddl6opudw5px" path="res://Sprites/Seeds (Inventory)/Needle.png" id="3_yp564"]
+
+[resource]
+script = ExtResource("2_drpfo")
+scene = ExtResource("1_adwvh")
+rarity = 1
+item_name = "Needle"
+texture = ExtResource("3_yp564")
+description = ""
+unlocked = true
