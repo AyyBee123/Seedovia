@@ -7,4 +7,4 @@
 script = ExtResource("1_at33v")
 texture = ExtResource("2_ipdon")
 pool_name = "Passive"
-path = "res://Resources/Items/Passives/"
+path = "res://Resources/Demo/Passives/"

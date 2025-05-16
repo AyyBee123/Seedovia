@@ -104,6 +104,12 @@ func start():
 	7: 0, # N/A
 	}
 	
+	if OS.has_feature("demo"):
+		var consumable_pool = ResourceLoader.load("res://Resources/Demo/consumable_pool.tres")
+		var equipment_pool = ResourceLoader.load("res://Resources/Demo/equipment_pool.tres")
+		var passive_pool = ResourceLoader.load("res://Resources/Demo/passive_pool.tres")
+		var seed_pool = ResourceLoader.load("res://Resources/Demo/seed_pool.tres")
+	
 	add_pool = true # add the pool array to the room reward pool
 	populate_pool(equipment_pool, talisman_weights)
 	populate_pool(consumable_pool, consumable_weights)
@@ -146,6 +152,13 @@ func continue_run():
 	6: 0, # unique
 	7: 0, # N/A
 	}
+	
+	if OS.has_feature("demo"):
+		var consumable_pool = ResourceLoader.load("res://Resources/Demo/consumable_pool.tres")
+		var equipment_pool = ResourceLoader.load("res://Resources/Demo/equipment_pool.tres")
+		var passive_pool = ResourceLoader.load("res://Resources/Demo/passive_pool.tres")
+		var seed_pool = ResourceLoader.load("res://Resources/Demo/seed_pool.tres")
+	
 	add_pool = true # add the pool array to the room reward pool
 	populate_pool(equipment_pool, talisman_weights)
 	populate_pool(consumable_pool, consumable_weights)

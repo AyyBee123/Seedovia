@@ -7,4 +7,4 @@
 script = ExtResource("1_kbl6q")
 texture = ExtResource("2_hn87g")
 pool_name = "Seed"
-path = "res://Resources/Items/Seeds/"
+path = "res://Resources/Demo/Seeds/"
