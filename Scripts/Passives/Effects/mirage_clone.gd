@@ -16,6 +16,7 @@ var DAMAGE = 10
 var SIZE = 1
 var BLAST_RADIUS = 1
 var damage_multi
+var weapon_direction
 
 func _ready():
 	player = Targets.get_player()
@@ -52,6 +53,7 @@ func shoot(seed):
 	weapon_instance.source = self
 	weapon_instance.seed_slot_number = PlayerSeeds.seed_indices[0]
 	weapon_instance.desired_direction = Vector2.RIGHT.rotated(rotation_point.rotation)
+	weapon_direction = weapon_instance.desired_direction
 	weapon_instance.transferred_damage_multiplier *= damage_multi
 	weapon_instance.transferred_size_multiplier *= 0.75
 	weapon_instance.modulate.a = 155.0 / 255.0
