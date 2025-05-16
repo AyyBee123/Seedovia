@@ -12,11 +12,6 @@ var health_up_pool = ResourceLoader.load("res://Resources/Items/Pools/health_up_
 var leaf_heart_pool = ResourceLoader.load("res://Resources/Items/Pools/leaf_heart_pool.tres")
 var heal_pool = ResourceLoader.load("res://Resources/Items/Pools/heal_pool.tres")
 
-# get list of items
-@onready var seed_list = get_all_file_paths("res://Resources/Items/Seeds/")
-@onready var talisman_list = get_all_file_paths("res://Resources/Items/Equipment/")
-@onready var consumable_list = get_all_file_paths("res://Resources/Items/Consumables/")
-
 # for the White Shrub character when they start a run
 var white_shrub_seed_pool = ResourceLoader.load("res://Resources/Items/Pools/white_chaos_seed_pool.tres")
 var white_shrub_talisman_pool = ResourceLoader.load("res://Resources/Items/Pools/white_chaos_equipment_pool.tres")
@@ -80,6 +75,17 @@ var pools: Array
 
 # condition to add specific pools to the array
 var add_pool := true
+
+func _ready():
+	# get list of items
+	if OS.has_feature("demo"):
+		var seed_list = get_all_file_paths("res://Resources/Demo/Seeds/")
+		var talisman_list = get_all_file_paths("res://Resources/Demo/Talismans/")
+		var consumable_list = get_all_file_paths("res://Resources/Demo/Consumables/")
+	else:
+		var seed_list = get_all_file_paths("res://Resources/Items/Seeds/")
+		var talisman_list = get_all_file_paths("res://Resources/Items/Equipment/")
+		var consumable_list = get_all_file_paths("res://Resources/Items/Consumables/")
 
 func start():
 	Global.RNG.randomize()
