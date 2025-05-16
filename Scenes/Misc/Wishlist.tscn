@@ -1,0 +1,164 @@
+[gd_scene load_steps=14 format=3 uid="uid://by3dsc25ebuhj"]
+
+[ext_resource type="Script" uid="uid://7x1aufon5tug" path="res://Scripts/Misc/wishlist.gd" id="1_2d8xc"]
+[ext_resource type="Texture2D" uid="uid://dwwsiyabyqc6l" path="res://Sprites/Menu UI/Soil Background.png" id="2_1ryiw"]
+[ext_resource type="Texture2D" uid="uid://cspvbpbm2l6hp" path="res://Sprites/Pause UI/Pause Menu Background.png" id="3_wmdhi"]
+[ext_resource type="FontFile" uid="uid://bkn7gmgx1wxgx" path="res://Fonts/Name Font.ttf" id="4_enghv"]
+[ext_resource type="Texture2D" uid="uid://didv5fjskcrdi" path="res://Sprites/Pause UI/Pause Menu Choice.png" id="5_s1wcc"]
+[ext_resource type="Texture2D" uid="uid://ciyk64aevmyv" path="res://Sprites/Pause UI/Pause Menu Choice Pressed.png" id="6_32u1d"]
+[ext_resource type="Texture2D" uid="uid://dmb2vfptumg3l" path="res://Sprites/Pause UI/Pause Menu Choice Hover.png" id="7_n16wl"]
+[ext_resource type="Texture2D" uid="uid://chrtmh8xchoct" path="res://Sprites/Pause UI/Pause Menu Choice Disabled.png" id="8_cbcb3"]
+[ext_resource type="Texture2D" uid="uid://2d111phom0jg" path="res://Sprites/Pause UI/Pause Menu Choice Focused.png" id="9_hpn8e"]
+[ext_resource type="Script" uid="uid://bsjv7istqmswh" path="res://Scripts/UI/focus_button.gd" id="10_1wyo0"]
+[ext_resource type="PackedScene" uid="uid://bwnklarbsachr" path="res://Scenes/Misc/Circle Transition.tscn" id="11_wmdhi"]
+[ext_resource type="Shader" uid="uid://qm3syqtxdolu" path="res://Shaders/circle_transition.gdshader" id="12_enghv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s1wcc"]
+resource_local_to_scene = true
+shader = ExtResource("12_enghv")
+shader_parameter/circle_size = 0.0
+shader_parameter/circle_position_x = 0.5
+shader_parameter/circle_position_y = 0.5
+
+[node name="Wishlist" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2d8xc")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_1ryiw")
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.501961)
+
+[node name="TextureRect" type="NinePatchRect" parent="Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -380.0
+offset_top = -380.0
+offset_right = -124.0
+offset_bottom = -124.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+texture = ExtResource("3_wmdhi")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Background/TextureRect"]
+modulate = Color(0.905882, 0.8, 0.627451, 1)
+layout_mode = 0
+offset_top = 23.0
+offset_right = 256.0
+offset_bottom = 90.0
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/normal_font = ExtResource("4_enghv")
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[center]Thanks for playing!"
+
+[node name="GridContainer" type="GridContainer" parent="Background/TextureRect"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 104.0
+offset_right = 248.0
+offset_bottom = 240.0
+theme_override_constants/v_separation = 16
+
+[node name="Wishlist Button" type="TextureButton" parent="Background/TextureRect/GridContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Quit Button")
+focus_neighbor_bottom = NodePath("../Quit Button")
+focus_next = NodePath("../Quit Button")
+focus_previous = NodePath("../Quit Button")
+texture_normal = ExtResource("5_s1wcc")
+texture_pressed = ExtResource("6_32u1d")
+texture_hover = ExtResource("7_n16wl")
+texture_disabled = ExtResource("8_cbcb3")
+texture_focused = ExtResource("9_hpn8e")
+script = ExtResource("10_1wyo0")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Background/TextureRect/GridContainer/Wishlist Button"]
+modulate = Color(1, 1, 0.431373, 1)
+layout_mode = 0
+offset_top = 10.6667
+offset_right = 240.0
+offset_bottom = 57.6667
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/normal_font = ExtResource("4_enghv")
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[center]Wishlist Now!"
+
+[node name="Quit Button" type="TextureButton" parent="Background/TextureRect/GridContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Wishlist Button")
+focus_neighbor_bottom = NodePath("../Wishlist Button")
+focus_next = NodePath("../Wishlist Button")
+focus_previous = NodePath("../Wishlist Button")
+texture_normal = ExtResource("5_s1wcc")
+texture_pressed = ExtResource("6_32u1d")
+texture_hover = ExtResource("7_n16wl")
+texture_disabled = ExtResource("8_cbcb3")
+texture_focused = ExtResource("9_hpn8e")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Background/TextureRect/GridContainer/Quit Button"]
+modulate = Color(0.905882, 0.8, 0.627451, 1)
+layout_mode = 0
+offset_top = 10.6667
+offset_right = 240.0
+offset_bottom = 57.6667
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/normal_font = ExtResource("4_enghv")
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[center]Return to Menu"
+
+[node name="Circle Transition" parent="." instance=ExtResource("11_wmdhi")]
+unique_name_in_owner = true
+visible = false
+material = SubResource("ShaderMaterial_s1wcc")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="pressed" from="Background/TextureRect/GridContainer/Wishlist Button" to="." method="_on_wishlist_button_pressed"]
+[connection signal="pressed" from="Background/TextureRect/GridContainer/Quit Button" to="." method="_on_quit_button_pressed"]

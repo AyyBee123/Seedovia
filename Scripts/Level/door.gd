@@ -54,6 +54,9 @@ func _on_enter_radius_body_entered(body):
 		transition_scene = true
 
 func change_scene():
+	if OS.has_feature("demo"):
+		get_tree().change_scene_to_file("res://Scenes/Misc/Wishlist.tscn")
+	
 	Global.next_reward = reward
 	LevelList.loaded_room_is_cleared = false
 	LevelList.current_reward_given = false

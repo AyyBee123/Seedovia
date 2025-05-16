@@ -32,7 +32,7 @@ func transfer_passive(weapon = null):
 
 func trigger(weapon = null):
 	var banana = resource_preloader.get_resource("Banana").instantiate()
-	banana.DAMAGE = 10 * (1 + player._player_stats.stats["Weapon_Damage"]["+"]) \
+	banana.DAMAGE = 5 * (1 + player._player_stats.stats["Weapon_Damage"]["+"]) \
 			* player._player_stats.stats["Weapon_Damage"]["x"]
 	banana.speed = 250 * (1 + player._player_stats.stats["Weapon_Speed"]["+"]) \
 			* player._player_stats.stats["Weapon_Speed"]["x"]
