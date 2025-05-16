@@ -19,7 +19,7 @@ var weapon_direction: Vector2 # the direction the weapon goes, based on the prev
 var desired_direction: Vector2 # the direction the weapon wants the next weapon to go
 var hit_enemy = null # sometimes, the weapon wants information on the enemy it collided with
 var target_group := "Enemies" # check the target group to damage (can be Enemies or Players)
-var collisions = 5 # the collision masks that should be detected by the seed
+var collisions = 1 + 4 + 512 # the collision masks that should be detected by the seed
 var shader # shader for the seed (mainly for enemies)
 
 var starting_position: Vector2 # gets the starting position from where the bullet is fired
@@ -133,7 +133,6 @@ func travelled_distance():
 		queue_free.call_deferred()
 
 func _on_hitbox_area_entered(area):
-	print(area.get_parent())
 	_collide.call_deferred(area)
 
 func _on_hitbox_body_entered(body):
