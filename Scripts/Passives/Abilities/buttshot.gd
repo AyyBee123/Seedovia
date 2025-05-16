@@ -12,9 +12,8 @@ func _ready():
 	source.weapon_fired.connect(chance_to_trigger)
 
 func trigger(weapon = null):
-	if weapon.is_in_group("Clover Seed"): # prevent duplicates
+	if weapon.is_in_group("Buttshot Weapon"): # prevent duplicates
 		return
 	var shot = BUTTSHOT_SEED.instantiate()
 	shot.source = source
-	shot.weapon = weapon
 	weapon.get_node("Passives").add_child(shot)
