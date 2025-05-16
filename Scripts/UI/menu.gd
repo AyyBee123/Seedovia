@@ -19,7 +19,8 @@ var licence_popup
 var seed_list: Array
 
 func _ready():
-	print(Engine.get_license_text())
+	if OS.has_feature("demo"):
+		get_tree().change_scene_to_file.call_deferred("res://Scenes/UI/Demo Menu.tscn")
 	Game.music_manager.play(Game.music_manager.MENU_THEME)
 	seed_list = get_all_file_paths("res://Resources/Items/Seeds/")
 
@@ -105,3 +106,6 @@ func _on_licence_button_pressed():
 	licence_popup = LICENCE_POPUP.instantiate()
 	licence_popup.default_focus = %"Licence Button"
 	get_tree().current_scene.add_child(licence_popup)
+
+func _on_wishlist_button_pressed():
+	OS.shell_open("steam://store/3636730")
