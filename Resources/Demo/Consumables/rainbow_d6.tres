@@ -9,5 +9,5 @@ weight = 0.01
 shop_price = 150
 item_name = "Rainbow D6"
 texture = ExtResource("2_3r8ml")
-description = "Duplicates all items on the ground."
+description = "Duplicates all items on the ground (cannot duplicate itself)."
 unlocked = true
