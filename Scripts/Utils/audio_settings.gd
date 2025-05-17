@@ -9,7 +9,7 @@ func _ready():
 
 func set_audio_volumes():
 	if not ResourceLoader.exists(Global.SETTINGS_PATH): # default values if there is no save file
-		AudioServer.set_bus_volume_db(MASTER_BUS_ID, linear_to_db(1))
+		AudioServer.set_bus_volume_db(MASTER_BUS_ID, linear_to_db(0.5))
 		AudioServer.set_bus_volume_db(SFX_BUS_ID, linear_to_db(1))
 		AudioServer.set_bus_volume_db(MUSIC_BUS_ID, linear_to_db(1))
 		Global.settings.mute_in_background = true

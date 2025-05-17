@@ -3,6 +3,7 @@ extends Control
 @onready var circle_transition = %"Circle Transition"
 
 func _ready():
+	get_tree().paused = false
 	circle_transition.visible = true
 	circle_transition.get_node("AnimationPlayer").play("Open")
 	Game.music_manager.play(Game.music_manager.MENU_THEME)
