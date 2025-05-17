@@ -46,7 +46,7 @@ func _physics_process(delta):
 	t += delta * 2.5
 	set_variable_sizes()
 	if not _was_previous_weapon: # if fired from the player
-		player.bullets_per_second.start(0.5) # keep starting the timer to prevent another cheese from spawning
+		player.fire_rate.start(0.5) # keep starting the timer to prevent another cheese from spawning
 		rect_width = min(RANGE * t, RANGE)
 		if not mouse_left_down:
 			queue_free()

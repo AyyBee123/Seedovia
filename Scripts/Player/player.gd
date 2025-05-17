@@ -16,7 +16,7 @@ var _player_stats: player_stats = preload("res://Resources/Characters/Stats/base
 
 @onready var _state_machine = $StateMachine
 @onready var stats = get_node("Stats")
-@onready var bullets_per_second := $"Bullets Per Second"
+@onready var fire_rate := $"Bullets Per Second"
 @onready var invulnerability_time := $"Invulnerability Time"
 @onready var dash_cooldown := $"Dash Cooldown"
 @onready var dash_invulnerability_time := $"Dash Invulnerability Time"
@@ -154,7 +154,7 @@ func _physics_process(delta):
 	$"Player Sprite".flip_h = true if cos($"Rotation Point".rotation) < 0 else false
 	
 	# shoot bullet
-	if Input.is_action_pressed("shoot") and bullets_per_second.is_stopped() and not mouse_in_inventory \
+	if Input.is_action_pressed("shoot") and fire_rate.is_stopped() and not mouse_in_inventory \
 			and not has_holding_item:
 		current_weapon = null if PlayerInventory.seeds.size() == 0 else PlayerSeeds.load_weapons()[0]
 		if current_weapon != null:
@@ -287,7 +287,7 @@ func _on_shoot(weapon, location):
 	weapon_instance.source = self
 	get_tree().current_scene.add_child(weapon_instance)
 	weapon_instance.global_position = location
-	bullets_per_second.start()
+	fire_rate.start()
 	weapon_fired.emit(weapon_instance)
 	seed_fired.emit(weapon_instance)
 
@@ -295,11 +295,11 @@ func update_timers():
 	current_weapon = null if PlayerInventory.seeds.size() == 0 else PlayerSeeds.load_weapons()[0]
 	if current_weapon != null:
 		var weapon = current_weapon.instantiate()
-		bullets_per_second.wait_time = 1.0 / (weapon.BASE_FIRE_RATE * (1 + _player_stats.stats["Fire_Rate"]["+"]) \
+		fire_rate.wait_time = 1.0 / (weapon.BASE_FIRE_RATE * (1 + _player_stats.stats["Fire_Rate"]["+"]) \
 				* _player_stats.stats["Fire_Rate"]["x"])
 	else:
 		# default hand fire rate
-		bullets_per_second.wait_time = 1.0 / (2 * (1 + _player_stats.stats["Fire_Rate"]["+"]) \
+		fire_rate.wait_time = 1.0 / (2 * (1 + _player_stats.stats["Fire_Rate"]["+"]) \
 				* _player_stats.stats["Fire_Rate"]["x"])
 	invulnerability_time.wait_time = _player_stats.get_stat("Invulnerability_Time")
 	dash_cooldown.wait_time = _player_stats.get_stat("Dash_Rate")

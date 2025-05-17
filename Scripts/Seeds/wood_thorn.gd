@@ -43,6 +43,9 @@ func _ready():
 			for dir in seed_directions:
 				weapon_direction = desired_direction.rotated(dir)
 				shoot_next_weapon()
+			BASE_FIRE_RATE = 1.0 / (get_next_weapon().instantiate().BASE_FIRE_RATE * 1.25)
+			if previous_weapon and "fire_rate" in previous_weapon:
+				previous_weapon.fire_rate.start(FIRE_RATE)
 
 func _collide(body):
 	if ignore_first_collision:
