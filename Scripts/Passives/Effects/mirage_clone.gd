@@ -17,6 +17,7 @@ var SIZE = 1
 var BLAST_RADIUS = 1
 var damage_multi
 var weapon_direction
+var direction
 
 func _ready():
 	player = Targets.get_player()
@@ -27,6 +28,8 @@ func _ready():
 	player.seed_fired.connect(shoot)
 
 func _physics_process(delta):
+	direction = Vector2.RIGHT.rotated(rotation_point.rotation)
+	
 	# get the player's sprite
 	var frameIndex: int = player.find_child("Player Sprite").get_frame()
 	var animationName: String = player.find_child("Player Sprite").animation
