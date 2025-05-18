@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://b67beryjcmw7k"]
+
+[ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_8087g"]
+[ext_resource type="Texture2D" uid="uid://bxeyy7mom82an" path="res://Sprites/Seeds/d.png" id="2_8087g"]
+[ext_resource type="Script" uid="uid://cleuab8yoxegd" path="res://Scripts/Seeds/Effects/d.gd" id="3_gh1xx"]
+[ext_resource type="Texture2D" uid="uid://xxyym547o3vn" path="res://Sprites/Misc/Shadow.png" id="4_qyt0p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_snxvd"]
+resource_local_to_scene = true
+size = Vector2(20, 18.3333)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k2t3j"]
+size = Vector2(8.33333, 15.8333)
+
+[node name="d" instance=ExtResource("1_8087g")]
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("2_8087g")
+offset = Vector2(0, -8)
+script = ExtResource("3_gh1xx")
+BASE_DAMAGE = 3.0
+BASE_FIRE_RATE = 1.0
+BASE_RANGE = 300.0
+BASE_SPEED = 400.0
+BASE_SIZE = 1.0
+BASE_BLAST_RADIUS = 1.0
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource("RectangleShape2D_snxvd")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hitbox" index="1"]
+position = Vector2(5.83333, -17.0833)
+shape = SubResource("RectangleShape2D_k2t3j")
+
+[node name="Shadow" type="Sprite2D" parent="." index="3"]
+z_index = -1
+z_as_relative = false
+position = Vector2(0, 10.8333)
+scale = Vector2(0.625, 0.729167)
+texture = ExtResource("4_qyt0p")
+
+[node name="Fire Delay" type="Timer" parent="." index="4"]
+wait_time = 0.15
+one_shot = true
+
+[connection signal="timeout" from="Fire Delay" to="." method="_on_fire_delay_timeout"]

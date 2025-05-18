@@ -48,6 +48,7 @@ var is_dead: bool
 var starting_dash_pos: Vector2
 var total_dash_distance: float
 var dash_distance_travelled: float
+var direction
 
 # check if the input is from a keyboard or joystick
 var _isMouse := true
@@ -102,6 +103,8 @@ func _ready():
 func _physics_process(delta):
 	if is_dead:
 		return
+	
+	direction = Vector2.RIGHT.rotated($"Rotation Point".rotation)
 	
 	# set up the left stick deadzone
 	var left_deadzone = Global.settings.left_deadzone

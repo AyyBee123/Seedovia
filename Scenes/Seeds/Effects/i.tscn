@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://b2q5lhcf8yggx"]
+
+[ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_xttpy"]
+[ext_resource type="Texture2D" uid="uid://8klcota5jd4h" path="res://Sprites/Seeds/i.png" id="2_xttpy"]
+[ext_resource type="Script" uid="uid://6qa6rjasw18v" path="res://Scripts/Seeds/s.gd" id="3_lt4k0"]
+[ext_resource type="Texture2D" uid="uid://xxyym547o3vn" path="res://Sprites/Misc/Shadow.png" id="4_up0nl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_snxvd"]
+size = Vector2(8.33333, 22)
+
+[node name="i" instance=ExtResource("1_xttpy")]
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("2_xttpy")
+script = ExtResource("3_lt4k0")
+BASE_DAMAGE = 3.0
+BASE_FIRE_RATE = 1.0
+BASE_RANGE = 300.0
+BASE_SPEED = 400.0
+BASE_SIZE = 1.0
+BASE_BLAST_RADIUS = 1.0
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2(3.97364e-07, 0)
+shape = SubResource("RectangleShape2D_snxvd")
+
+[node name="Shadow" type="Sprite2D" parent="." index="3"]
+z_index = -1
+z_as_relative = false
+position = Vector2(0, 12.5)
+scale = Vector2(0.3125, 0.46875)
+texture = ExtResource("4_up0nl")
+
+[node name="Fire Delay" type="Timer" parent="." index="4"]
+wait_time = 0.15
+one_shot = true
+
+[connection signal="timeout" from="Fire Delay" to="." method="_on_fire_delay_timeout"]
