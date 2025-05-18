@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4phejtpdijv"]
+
+[ext_resource type="Script" uid="uid://myu1uwvfj6fx" path="res://Scripts/Misc/shader_compile.gd" id="1_3jmii"]
+[ext_resource type="FontFile" uid="uid://bkn7gmgx1wxgx" path="res://Fonts/Name Font.ttf" id="2_k2prr"]
+[ext_resource type="Texture2D" uid="uid://dbgltdk3p41hc" path="res://Sprites/Seeds/Walnut.png" id="3_tuwjo"]
+
+[node name="Shader Compile" type="CanvasLayer"]
+script = ExtResource("1_3jmii")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_top = 200.0
+offset_right = 1920.0
+offset_bottom = 375.0
+theme_override_fonts/normal_font = ExtResource("2_k2prr")
+theme_override_font_sizes/normal_font_size = 128
+bbcode_enabled = true
+text = "[center]Compiling Shaders"
+
+[node name="Walnut" type="TextureRect" parent="."]
+unique_name_in_owner = true
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -259.0
+offset_top = -259.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(128.5, 128.5)
+texture = ExtResource("3_tuwjo")
+expand_mode = 2
