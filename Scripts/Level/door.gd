@@ -74,7 +74,7 @@ func set_reward(reward_text: String = "", texture: Texture = null):
 			%Image.texture = reward.texture
 			%"Reward Text".text = "[center]" + reward.pool_name
 			return
-		"Consumable":
+		"Die":
 			reward = Pool.pools[1]
 			text = reward.pool_name
 			%Image.texture = reward.texture
