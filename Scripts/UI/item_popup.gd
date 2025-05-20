@@ -39,7 +39,7 @@ func _ready():
 				%Description.text += text + ":  " + str(stat)
 				make_new_line = true
 		if description != "" and %Description.text != "":
-			%Description.text += "\n"
+			%Description.text += "\n\n"
 		%Description.text += description
 	else:
 		%Description.text = description

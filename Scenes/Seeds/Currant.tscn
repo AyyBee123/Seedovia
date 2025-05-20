@@ -1,0 +1,73 @@
+[gd_scene load_steps=11 format=3 uid="uid://dy8u1mf1qsbb5"]
+
+[ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_xhr0c"]
+[ext_resource type="Texture2D" uid="uid://dv5p7fsbgnvrc" path="res://Sprites/Seeds/Currant.png" id="2_cdlbp"]
+[ext_resource type="Script" uid="uid://cbfpm18mx4gx" path="res://Scripts/Seeds/currant.gd" id="3_6ejq5"]
+[ext_resource type="Texture2D" uid="uid://xxyym547o3vn" path="res://Sprites/Misc/Shadow.png" id="4_0jeof"]
+[ext_resource type="Shader" uid="uid://uoear02pabui" path="res://Shaders/outline.gdshader" id="4_i1474"]
+[ext_resource type="Texture2D" uid="uid://d3x63lpaudi6p" path="res://Sprites/Misc/Currant Line.png" id="5_0lwc1"]
+[ext_resource type="Script" uid="uid://bnanub3nonyxi" path="res://Scripts/Misc/trail.gd" id="5_6ejq5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6ejq5"]
+radius = 7.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0lwc1"]
+shader = ExtResource("4_i1474")
+shader_parameter/color = Color(1, 0, 0.192157, 0.392157)
+shader_parameter/width = 1.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+shader_parameter/number_of_images = Vector2(1, 1)
+
+[sub_resource type="Curve" id="Curve_0jeof"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="Currant" instance=ExtResource("1_xhr0c")]
+texture = ExtResource("2_cdlbp")
+script = ExtResource("3_6ejq5")
+BASE_DAMAGE = 4.0
+BASE_FIRE_RATE = 5.0
+BASE_RANGE = 1000.0
+BASE_SPEED = 700.0
+BASE_SIZE = 0.75
+BASE_BLAST_RADIUS = 0.75
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource("CircleShape2D_6ejq5")
+
+[node name="Shadow" type="Sprite2D" parent="." index="3"]
+z_index = -1
+z_as_relative = false
+position = Vector2(2.98023e-08, 9.625)
+scale = Vector2(0.375, 0.34375)
+texture = ExtResource("4_0jeof")
+
+[node name="Homing Time" type="Timer" parent="." index="4"]
+wait_time = 0.5
+one_shot = true
+
+[node name="Pointer" type="Node2D" parent="." index="5"]
+unique_name_in_owner = true
+
+[node name="Marker2D" type="Marker2D" parent="Pointer" index="0"]
+unique_name_in_owner = true
+position = Vector2(3, 0)
+
+[node name="Trail" type="Line2D" parent="." index="6"]
+material = SubResource("ShaderMaterial_0lwc1")
+points = PackedVector2Array(-117, 0, -89, 0, -52, 0, 0, 0)
+width_curve = SubResource("Curve_0jeof")
+texture = ExtResource("5_0lwc1")
+texture_mode = 2
+joint_mode = 2
+script = ExtResource("5_6ejq5")
+MAX_LENGTH = 6
+
+[node name="Bounce Homing Delay" type="Timer" parent="." index="7"]
+wait_time = 0.15
+one_shot = true
+
+[connection signal="timeout" from="Homing Time" to="." method="_on_homing_time_timeout"]
+[connection signal="timeout" from="Bounce Homing Delay" to="." method="_on_bounce_homing_delay_timeout"]

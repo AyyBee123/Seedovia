@@ -8,6 +8,7 @@ extends "res://Scripts/Seeds/seed_template.gd"
 const SPLASH = preload("res://Scenes/Misc/Splash.tscn")
 var SPORE = load("res://Scenes/Seeds/Spore.tscn")
 
+const ROTATION_SPEED = 2
 var SPORE_AMOUNT = 2
 var spore_amount_spawned: int
 
@@ -54,7 +55,7 @@ func update_position(delta):
 	
 	current_velocity = global_position.direction_to(marker_2d.global_position) * SPEED
 	position += current_velocity * delta
-	rotation_speed += 2 * delta
+	rotation_speed += ROTATION_SPEED * delta
 
 func travelled_distance():
 	distance_travelled = starting_position.distance_to(global_position)
