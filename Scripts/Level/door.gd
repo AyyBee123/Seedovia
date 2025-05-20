@@ -67,6 +67,7 @@ func change_scene():
 	LevelList.change_room.call_deferred(self)
 
 func set_reward(reward_text: String = "", texture: Texture = null):
+	# getting existing doors (from quitting and then continuing
 	match reward_text:
 		"Talisman":
 			reward = Pool.pools[0]
