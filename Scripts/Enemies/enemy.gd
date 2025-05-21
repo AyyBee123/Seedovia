@@ -79,7 +79,8 @@ func instance_seed(_seed: Node, _direction: Vector2, _pos: Vector2 = global_posi
 	seed.source = self
 	seed.slot_index = 3
 	seed.seed_slot_number = 3
-	seed.collisions = 3
+	seed.collisions |= 2 # add the player collision
+	seed.collisions &= 3 # player & wall (if the seed had a wall collision)
 	seed.target_group = "Players"
 	seed.shader = _shader
 	seed.remove_from_group("Seed")
