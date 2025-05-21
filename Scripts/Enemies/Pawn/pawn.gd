@@ -17,6 +17,7 @@ var next_pos
 
 func _ready():
 	super._ready()
+	$"Enemy Hitbox/CollisionPolygon2D".disabled = false
 	
 	for i in TAU / SPREAD:
 		var angle = SPREAD * i - SPREAD / 2

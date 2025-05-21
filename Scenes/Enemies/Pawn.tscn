@@ -35,7 +35,7 @@ animations = [{
 size = Vector2(32, 18)
 
 [node name="Pawn" groups=["Chess Piece"] instance=ExtResource("1_uica7")]
-scale = Vector2(3, 3)
+scale = Vector2(4, 4)
 script = ExtResource("2_esetj")
 _enemy_stats = ExtResource("2_a17um")
 
