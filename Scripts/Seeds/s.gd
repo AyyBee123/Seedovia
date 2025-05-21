@@ -68,7 +68,7 @@ func _on_fire_delay_timeout():
 	if current_letter >= letter_list.size():
 		return
 	if is_instance_valid(previous_weapon):
-		dir = previous_weapon.direction
+		dir = previous_weapon.weapon_direction
 		origin_point = previous_weapon.global_position
 	var letter = letters[letter_list[current_letter]].instantiate()
 	letter.shader = shader

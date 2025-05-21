@@ -1,0 +1,108 @@
+[gd_scene load_steps=9 format=3 uid="uid://bdplg5l2g6qrh"]
+
+[ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_kc5vh"]
+[ext_resource type="Script" uid="uid://30w2sg1aj7x0" path="res://Scripts/Seeds/potato.gd" id="2_a4puj"]
+[ext_resource type="Texture2D" uid="uid://3segmo1mb2il" path="res://Sprites/Seeds/Corn Shadow.png" id="3_f3hye"]
+[ext_resource type="Texture2D" uid="uid://bh6f7ow4qm0gu" path="res://Sprites/Seeds/Potato.png" id="4_vo4cj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gt7up"]
+
+[sub_resource type="Animation" id="Animation_v4t5h"]
+resource_name = "new_animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.6, 1),
+"transitions": PackedFloat32Array(0.5, 1, 2, 1),
+"update": 0,
+"values": [Vector2(0, -4), Vector2(0, -10), Vector2(0, -10), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Shadow:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.6, 1),
+"transitions": PackedFloat32Array(0.5, 1, 2, 1),
+"update": 0,
+"values": [Vector2(1.14286, 1.1), Vector2(1, 0.962), Vector2(1, 0.963), Vector2(1.14286, 1.1)]
+}
+
+[sub_resource type="Animation" id="Animation_3d20k"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Shadow:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.14286, 1.1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_40kfe"]
+_data = {
+&"RESET": SubResource("Animation_3d20k"),
+&"new_animation": SubResource("Animation_v4t5h")
+}
+
+[node name="Potato" instance=ExtResource("1_kc5vh")]
+scale = Vector2(2, 2)
+script = ExtResource("2_a4puj")
+BASE_DAMAGE = 15.0
+BASE_FIRE_RATE = 0.75
+BASE_RANGE = 300.0
+BASE_SPEED = 400.0
+BASE_SIZE = 1.0
+BASE_BLAST_RADIUS = 1.1
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource("CircleShape2D_gt7up")
+
+[node name="Shadow" type="Sprite2D" parent="." index="3"]
+z_index = -1
+z_as_relative = false
+position = Vector2(-2.38419e-07, 9.25)
+scale = Vector2(1.14286, 1.1)
+texture = ExtResource("3_f3hye")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
+libraries = {
+&"": SubResource("AnimationLibrary_40kfe")
+}
+autoplay = "new_animation"
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="5"]
+texture = ExtResource("4_vo4cj")
+
+[node name="Fire Rate" type="Timer" parent="." index="6"]
+wait_time = 0.1
+one_shot = true
+
+[node name="Firing Time" type="Timer" parent="." index="7"]
+wait_time = 0.6
+one_shot = true
+autostart = true
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
