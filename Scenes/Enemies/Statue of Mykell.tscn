@@ -51,8 +51,11 @@ offset = Vector2(0, -28.5)
 shape = SubResource("RectangleShape2D_y5hri")
 
 [node name="Health Bar" parent="." index="3"]
-offset_top = -82.0
-offset_bottom = -74.0
+offset_left = -11.0
+offset_top = -80.0
+offset_right = 33.0
+offset_bottom = -72.0
+scale = Vector2(0.5, 0.5)
 
 [node name="Shadow" type="Sprite2D" parent="." index="5"]
 z_index = -1

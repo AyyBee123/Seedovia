@@ -66,3 +66,4 @@ func _on_animation_player_animation_started(anim_name):
 	var anim_speed = animation_player.get_animation(anim_name).get_length() / animation_player.speed_scale
 	tween = get_tree().create_tween()
 	tween.tween_property(self, "position", new_pos, anim_speed).as_relative()
+	tween.tween_callback(func(): global_position = snapped(global_position, Vector2(64, 64)))

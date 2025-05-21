@@ -14,6 +14,7 @@ var direction: Vector2
 
 func _ready():
 	super._ready()
+	$"Enemy Hitbox/CollisionPolygon2D".disabled = false
 	randomize()
 	shadow.visible = false
 	idle_time.start(randf_range(1, 2))
