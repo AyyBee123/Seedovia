@@ -10,11 +10,11 @@ func _ready():
 	super._ready()
 	look_at(parent_direction)
 	tween = get_tree().create_tween()
-	tween.tween_property(self, "rotation", rotation + PI/2 * angle_sign, 0.3)
+	tween.tween_property(self, "rotation", PI/2 * angle_sign, 0.3).as_relative()
 	tween.tween_property(self, "direction", Vector2.ZERO, 0.1).set_ease(Tween.EASE_OUT)
 	tween.tween_interval(0.1)
 	tween.tween_callback(func():
-		weapon_direction = Vector2.RIGHT.rotated(rotation - PI/2 * angle_sign)
+		weapon_direction = parent_direction
 		shoot_next_weapon()
 		SfxDeconflicter.play(Game.audio_manager.crunch)
 		SfxDeconflicter.play(Game.audio_manager.hit_2)

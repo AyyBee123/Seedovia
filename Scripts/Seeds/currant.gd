@@ -55,6 +55,8 @@ func _collide(body):
 
 func get_nearest_enemy(enemy):
 	var enemies = get_tree().get_nodes_in_group("Enemies")
+	if target_group == "Players":
+		enemies = [Targets.get_player()]
 	if enemy != null:
 		# removes the hit enemy from the array so that the projectile does not target it when "bouncing"
 		for i in range(enemies.size()): 

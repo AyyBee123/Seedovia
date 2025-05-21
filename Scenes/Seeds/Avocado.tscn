@@ -7,7 +7,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_srh4d"]
 size = Vector2(13.6364, 25.4545)
 
-[node name="Avocado" groups=["Weapon to be Destroyed"] instance=ExtResource("1_i7cwq")]
+[node name="Avocado" instance=ExtResource("1_i7cwq")]
 scale = Vector2(2.2, 2.2)
 texture = ExtResource("2_yeu68")
 offset = Vector2(5, 0)

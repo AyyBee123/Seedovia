@@ -103,12 +103,12 @@ frame_progress = 0.380398
 [node name="CollisionPolygon2D" parent="Enemy Hitbox" index="0"]
 shape = SubResource("CapsuleShape2D_cop2y")
 
-[node name="Ding" type="AudioStreamPlayer" parent="." index="6"]
+[node name="Ding" type="AudioStreamPlayer" parent="." index="5"]
 stream = ExtResource("6_1v3dl")
 pitch_scale = 1.1
 bus = &"SFX"
 
-[node name="Shadow" type="Sprite2D" parent="." index="7"]
+[node name="Shadow" type="Sprite2D" parent="." index="6"]
 z_index = -2
 position = Vector2(-9.38773e-07, 24.625)
 scale = Vector2(0.6875, 0.65625)

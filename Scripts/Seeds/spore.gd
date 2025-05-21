@@ -138,32 +138,16 @@ func _on_fire_delay_timeout():
 	else:
 		pos = origin_point
 	if spore_amount_spawned < SPORE_AMOUNT:
-		var spore = SPORE.instantiate()
-		spore.shader = shader
-		spore.collisions = collisions
-		spore.source = source
-		spore.previous_weapon = previous_weapon
-		spore.target_group = target_group
-		spore._spawn_more_spores = false
-		spore.desired_direction = desired_direction
-		spore.slot_index = slot_index
-		spore.seed_slot_number = seed_slot_number
-		spore.ignore_first_collision = first_collision_ignored
-		spore.transferred_speed_multiplier *= transferred_speed_multiplier
-		spore.transferred_range_multiplier *= transferred_range_multiplier
-		spore.transferred_size_multiplier *= transferred_size_multiplier
-		spore.transferred_damage_multiplier *= transferred_damage_multiplier
-		spore.transferred_blast_radius_multiplier *= transferred_blast_radius_multiplier
-		spore.transferred_fire_rate_multiplier *= transferred_fire_rate_multiplier
-		spore.modulate = modulate
-		get_tree().current_scene.add_child.call_deferred(spore)
-		if pos == null:
-			fire_delay.start()
-			return
-		spore.global_position = pos
-		spore_amount_spawned += 1
-		weapon_fired.emit(spore)
-		fire_delay.start()
+		shoot_current_seed(SPORE.instantiate(), desired_direction, pos)
 
 func _on_homing_time_timeout():
 	is_homing = false
+
+func shoot_current_seed(instantiated_weapon, _desired_direction = desired_direction, pos = global_position):
+	if pos == null:
+		fire_delay.start()
+		return
+	instantiated_weapon._spawn_more_spores = false
+	super.shoot_current_seed(instantiated_weapon, _desired_direction, pos)
+	spore_amount_spawned += 1
+	fire_delay.start()

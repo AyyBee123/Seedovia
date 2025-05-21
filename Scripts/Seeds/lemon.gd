@@ -88,24 +88,9 @@ func create_child(child):
 	child.global_position = self.global_position
 
 func create_pool():
+	shoot_current_seed(LEMON_POOL.instantiate())
 	var pool = LEMON_POOL.instantiate()
-	pool.shader = shader
-	pool.source = source
-	pool.previous_weapon = previous_weapon
-	pool.target_group = target_group
-	pool.collisions = collisions
-	pool.desired_direction = desired_direction
-	pool.slot_index = slot_index
-	pool.seed_slot_number = seed_slot_number
-	pool.set_next_seed_slot_number = set_next_seed_slot_number
-	pool.set_next_seed_slot_index = set_next_seed_slot_index
-	pool.transferred_speed_multiplier *= transferred_speed_multiplier
-	pool.transferred_range_multiplier *= transferred_range_multiplier
-	pool.transferred_size_multiplier *= transferred_size_multiplier
-	pool.transferred_damage_multiplier *= transferred_damage_multiplier
-	pool.transferred_blast_radius_multiplier *= transferred_blast_radius_multiplier
-	pool.transferred_fire_rate_multiplier *= transferred_fire_rate_multiplier
-	pool.modulate = modulate
-	pool.add_child(get_node("Passives").duplicate())
-	get_tree().current_scene.add_child(pool)
-	pool.global_position = global_position
+
+func shoot_current_seed(instantiated_weapon, _desired_direction = desired_direction, pos = global_position):
+	instantiated_weapon.add_child(get_node("Passives").duplicate())
+	super.shoot_current_seed(instantiated_weapon, _desired_direction, pos)

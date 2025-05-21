@@ -6,6 +6,7 @@ const SEED_COLOR = preload("res://Shaders/seed_enemy_bullet_color.gdshader")
 
 var original_seed
 var result
+var weapon_direction
 
 var scene = PackedScene.new()
 
@@ -34,7 +35,8 @@ func spawn_damage_number(damage: float):
 	# check if the scene was packed successfully, and then reflect the shot
 	if result == OK: # reflect the seed, if applicable
 		$AnimatedSprite2D.play("Shoot")
-		instance_seed(scene.instantiate(), global_position.direction_to(player.global_position), \
+		weapon_direction = global_position.direction_to(player.global_position)
+		instance_seed(scene.instantiate(), weapon_direction, \
 				global_position, null, SEED_COLOR)
 		SfxDeconflicter.play(ding_SFX)
 		scene = PackedScene.new()

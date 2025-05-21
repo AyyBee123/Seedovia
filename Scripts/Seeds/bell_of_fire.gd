@@ -30,25 +30,13 @@ func explode():
 	SfxDeconflicter.play(Game.audio_manager.fire_explosion)
 	call_deferred("create_child", explosion)
 	if source == player: # spawn the fire pool only if shot by the player or a player seed
-		var pool = BELL_OF_FIRE_POOL.instantiate()
-		pool.scale *= BLAST_RADIUS
-		pool.desired_direction = direction
-		pool.slot_index = slot_index
-		pool.seed_slot_number = seed_slot_number
-		pool.source = source
-		pool.previous_weapon = previous_weapon
-		pool.target_group = target_group
-		pool.transferred_speed_multiplier *= transferred_speed_multiplier
-		pool.transferred_range_multiplier *= transferred_range_multiplier
-		pool.transferred_size_multiplier *= transferred_size_multiplier
-		pool.transferred_damage_multiplier *= transferred_damage_multiplier
-		pool.transferred_blast_radius_multiplier *= transferred_blast_radius_multiplier
-		pool.transferred_fire_rate_multiplier *= transferred_fire_rate_multiplier
-		pool.modulate = modulate
-		pool.add_child(get_node("Passives").duplicate())
-		call_deferred("create_child", pool)
+		shoot_current_seed(BELL_OF_FIRE_POOL.instantiate(), direction)
 	queue_free.call_deferred()
 
 func create_child(child):
 	get_tree().current_scene.add_child(child)
 	child.global_position = self.global_position
+
+func shoot_current_seed(instantiated_weapon, _desired_direction = desired_direction, pos = global_position):
+	instantiated_weapon.scale *= BLAST_RADIUS
+	super.shoot_current_seed(instantiated_weapon, _desired_direction, pos)

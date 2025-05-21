@@ -116,10 +116,8 @@ func explode():
 		7, 8:
 			num_of_shots = 8
 			SfxDeconflicter.play(Game.audio_manager.pome_mild_explosion)
-	var rotated_direction = [0, PI/num_of_shots] # some variance in the rotation of the shots
-	var random_rotation = rotated_direction.pick_random()
 	for i in num_of_shots:
-		weapon_direction = Vector2.RIGHT.rotated(i * TAU/num_of_shots + random_rotation)
+		weapon_direction = Vector2.RIGHT.rotated(i * TAU/num_of_shots)
 		shoot_next_weapon()
 	var explosion = EXPLOSION.instantiate()
 	explosion.damage = DAMAGE / 10 + 1 / MAX_STACKS * stacks

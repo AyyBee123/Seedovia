@@ -206,3 +206,26 @@ func set_ignore_first_collision():
 
 func get_next_weapon_pos():
 	return global_position
+
+func shoot_current_seed(instantiated_weapon, _desired_direction = desired_direction, pos = global_position):
+	instantiated_weapon.shader = shader
+	instantiated_weapon.collisions = collisions
+	instantiated_weapon.source = source
+	instantiated_weapon.previous_weapon = previous_weapon
+	instantiated_weapon.target_group = target_group
+	instantiated_weapon.desired_direction = _desired_direction
+	instantiated_weapon.slot_index = slot_index
+	instantiated_weapon.seed_slot_number = seed_slot_number
+	instantiated_weapon.set_next_seed_slot_number = set_next_seed_slot_number
+	instantiated_weapon.set_next_seed_slot_index = set_next_seed_slot_index
+	instantiated_weapon.ignore_first_collision = ignore_first_collision
+	instantiated_weapon.transferred_speed_multiplier *= transferred_speed_multiplier
+	instantiated_weapon.transferred_range_multiplier *= transferred_range_multiplier
+	instantiated_weapon.transferred_size_multiplier *= transferred_size_multiplier
+	instantiated_weapon.transferred_damage_multiplier *= transferred_damage_multiplier
+	instantiated_weapon.transferred_blast_radius_multiplier *= transferred_blast_radius_multiplier
+	instantiated_weapon.transferred_fire_rate_multiplier *= transferred_fire_rate_multiplier
+	instantiated_weapon.modulate = modulate
+	get_tree().current_scene.add_child.call_deferred(instantiated_weapon)
+	instantiated_weapon.global_position = pos
+	weapon_fired.emit(instantiated_weapon)

@@ -13,29 +13,7 @@ func _ready():
 		await get_tree().physics_frame
 		var directions = [-SPREAD, SPREAD]
 		for dir in directions:
-			var thorn = WOOD_THORN.instantiate()
-			thorn.shader = shader
-			thorn._spawn_more_thorns = false
-			thorn.collisions = collisions
-			thorn.source = source
-			thorn.previous_weapon = previous_weapon
-			thorn.target_group = target_group
-			thorn.desired_direction = desired_direction.rotated(dir)
-			thorn.slot_index = slot_index
-			thorn.seed_slot_number = seed_slot_number
-			thorn.set_next_seed_slot_number = set_next_seed_slot_number
-			thorn.set_next_seed_slot_index = set_next_seed_slot_index
-			thorn.ignore_first_collision = ignore_first_collision
-			thorn.transferred_speed_multiplier *= transferred_speed_multiplier
-			thorn.transferred_range_multiplier *= transferred_range_multiplier
-			thorn.transferred_size_multiplier *= transferred_size_multiplier
-			thorn.transferred_damage_multiplier *= transferred_damage_multiplier
-			thorn.transferred_blast_radius_multiplier *= transferred_blast_radius_multiplier
-			thorn.transferred_fire_rate_multiplier *= transferred_fire_rate_multiplier
-			thorn.modulate = modulate
-			get_tree().current_scene.add_child.call_deferred(thorn)
-			thorn.global_position = global_position
-			weapon_fired.emit(thorn)
+			shoot_current_seed(WOOD_THORN.instantiate(), desired_direction.rotated(dir))
 		
 		if get_next_weapon():
 			# shoot the next seed alongside the thorns
@@ -70,3 +48,7 @@ func explode():
 func create_child(child):
 	get_tree().current_scene.add_child(child)
 	child.global_position = self.global_position
+
+func shoot_current_seed(instantiated_weapon, _desired_direction = desired_direction, pos = global_position):
+	instantiated_weapon._spawn_more_thorns = false
+	super.shoot_current_seed(instantiated_weapon, _desired_direction, pos)

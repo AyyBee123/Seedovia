@@ -22,29 +22,11 @@ func _ready():
 		await get_tree().physics_frame
 		var number_of_grapes = randi_range(5, 7)
 		for i in number_of_grapes:
-			var grape = GRAPE.instantiate()
-			grape.shader = shader
-			grape._spawn_more_grapes = false
-			grape.source = source
-			grape.previous_weapon = previous_weapon
-			grape.target_group = target_group
-			grape.collisions = collisions
-			grape.desired_direction = desired_direction
-			grape.slot_index = slot_index
-			grape.seed_slot_number = seed_slot_number
-			grape.set_next_seed_slot_number = set_next_seed_slot_number
-			grape.set_next_seed_slot_index = set_next_seed_slot_index
-			grape.ignore_first_collision = ignore_first_collision
-			grape.transferred_speed_multiplier *= transferred_speed_multiplier
-			grape.transferred_range_multiplier *= transferred_range_multiplier
-			grape.transferred_size_multiplier *= transferred_size_multiplier
-			grape.transferred_damage_multiplier *= transferred_damage_multiplier
-			grape.transferred_blast_radius_multiplier *= transferred_blast_radius_multiplier
-			grape.transferred_fire_rate_multiplier *= transferred_fire_rate_multiplier
-			grape.modulate = modulate
-			get_tree().current_scene.add_child.call_deferred(grape)
-			grape.global_position = global_position
-			weapon_fired.emit(grape)
+			shoot_current_seed(GRAPE.instantiate())
+
+func shoot_current_seed(instantiated_weapon, _desired_direction = desired_direction, pos = global_position):
+	instantiated_weapon._spawn_more_grapes = false
+	super.shoot_current_seed(instantiated_weapon, _desired_direction, pos)
 
 func _collide(body):
 	if ignore_first_collision:

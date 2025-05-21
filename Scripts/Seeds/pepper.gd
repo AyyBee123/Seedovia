@@ -50,34 +50,13 @@ func spawn_child_peppers():
 	# split the pepper into 4 smaller peppers with the indicated launch directions
 	var directions = [Vector2.UP, Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT]
 	for direction in directions:
-		var pepper_child = resource_preloader.get_resource("Pepper Child").instantiate()
-		weapon_direction = direction
-		pepper_child.collisions = collisions
-		pepper_child.desired_direction = direction
-		pepper_child.slot_index = slot_index
-		pepper_child.seed_slot_number = seed_slot_number
-		pepper_child.source = source
-		pepper_child.previous_weapon = previous_weapon
-		pepper_child.target_group = target_group
-		pepper_child.slot_index = slot_index
-		pepper_child.seed_slot_number = seed_slot_number
-		pepper_child.set_next_seed_slot_number = set_next_seed_slot_number
-		pepper_child.set_next_seed_slot_index = set_next_seed_slot_index
-		pepper_child.parent = self
-		pepper_child.transferred_speed_multiplier *= transferred_speed_multiplier
-		pepper_child.transferred_range_multiplier *= transferred_range_multiplier
-		pepper_child.transferred_size_multiplier *= transferred_size_multiplier
-		pepper_child.transferred_damage_multiplier *= transferred_damage_multiplier
-		pepper_child.transferred_blast_radius_multiplier *= transferred_blast_radius_multiplier
-		pepper_child.transferred_fire_rate_multiplier *= transferred_fire_rate_multiplier
-		pepper_child.modulate = modulate
-		pepper_child.add_child(get_node("Passives").duplicate())
-		call_deferred("create_child", pepper_child)
+		shoot_current_seed(resource_preloader.get_resource("Pepper Child").instantiate(), direction)
+
+func shoot_current_seed(instantiated_weapon, _desired_direction = desired_direction, pos = global_position):
+	instantiated_weapon.parent = self
+	instantiated_weapon.add_child(get_node("Passives").duplicate())
+	super.shoot_current_seed(instantiated_weapon, _desired_direction, pos)
 
 func create_explosion(explosion):
 	get_tree().current_scene.add_child(explosion)
 	explosion.global_position = self.global_position
-
-func create_child(child):
-	get_tree().current_scene.add_child(child)
-	child.global_position = self.global_position

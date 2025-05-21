@@ -72,23 +72,4 @@ func create_child(child):
 
 func spawn_gold():
 	weapon_direction = Vector2.RIGHT.rotated(randf_range(0, TAU))
-	var gold = GOLD.instantiate()
-	gold.shader = shader
-	gold.source = source
-	gold.previous_weapon = previous_weapon
-	gold.target_group = target_group
-	gold.collisions = collisions
-	gold.desired_direction = weapon_direction
-	gold.slot_index = slot_index
-	gold.seed_slot_number = seed_slot_number
-	gold.ignore_first_collision = ignore_first_collision
-	gold.transferred_speed_multiplier *= transferred_speed_multiplier
-	gold.transferred_range_multiplier *= transferred_range_multiplier
-	gold.transferred_size_multiplier *= transferred_size_multiplier
-	gold.transferred_damage_multiplier *= transferred_damage_multiplier
-	gold.transferred_blast_radius_multiplier *= transferred_blast_radius_multiplier
-	gold.transferred_fire_rate_multiplier *= transferred_fire_rate_multiplier
-	gold.modulate = modulate
-	get_tree().current_scene.add_child.call_deferred(gold)
-	gold.global_position = global_position
-	weapon_fired.emit(gold)
+	shoot_current_seed(GOLD.instantiate(), weapon_direction)

@@ -53,61 +53,39 @@ func range_reached_done():
 		shoot_next_weapon()
 	else:
 		var avocado_seed = AVOCADO_SEED.instantiate()
-		transfer_properties(avocado_seed)
-		avocado_seed.desired_direction = direction
 		avocado_seed.BASE_SPEED = BASE_SPEED
 		avocado_seed.BASE_RANGE = BASE_RANGE * 1.5
 		avocado_seed.BASE_DAMAGE = BASE_DAMAGE * 1.5
 		avocado_seed.BASE_FIRE_RATE = BASE_FIRE_RATE * 1.5
-		get_tree().current_scene.add_child(avocado_seed)
-		avocado_seed.global_position = global_position
+		shoot_current_seed(avocado_seed, direction)
+	
 	# spawn the left side
 	var avocado_left = AVOCADO_LEFT.instantiate()
-	transfer_properties(avocado_left)
-	avocado_left.desired_direction = direction.rotated(-PI/2)
 	avocado_left.BASE_SPEED = BASE_SPEED
 	avocado_left.BASE_RANGE = BASE_RANGE
 	avocado_left.BASE_DAMAGE = BASE_DAMAGE * 0.5
 	avocado_left.BASE_FIRE_RATE = BASE_FIRE_RATE
 	avocado_left.parent_direction = direction
 	avocado_left.angle_sign = -1
-	get_tree().current_scene.add_child(avocado_left)
-	avocado_left.global_position = global_position + 3 * direction.rotated(-PI/2).normalized()
+	shoot_current_seed(avocado_left, direction.rotated(-PI/2), global_position + 3 * direction.rotated(-PI/2).normalized())
+	
 	# spawn the right side
 	var avocado_right = AVOCADO_RIGHT.instantiate()
-	transfer_properties(avocado_right)
-	avocado_right.desired_direction = direction.rotated(PI/2)
 	avocado_right.BASE_SPEED = BASE_SPEED
 	avocado_right.BASE_RANGE = BASE_RANGE
 	avocado_right.BASE_DAMAGE = BASE_DAMAGE * 0.5
 	avocado_right.BASE_FIRE_RATE = BASE_FIRE_RATE
 	avocado_right.parent_direction = direction
 	avocado_right.angle_sign = 1
-	get_tree().current_scene.add_child(avocado_right)
-	avocado_right.global_position = global_position + 3 * direction.rotated(PI/2).normalized()
+	shoot_current_seed(avocado_right, direction.rotated(PI/2), global_position + 3 * direction.rotated(PI/2).normalized())
 	
 	explode()
 	queue_free.call_deferred()
 
-func transfer_properties(seed):
-	seed.scale = scale
-	seed.collisions = collisions
-	seed.source = source
-	seed.previous_weapon = previous_weapon
-	seed.target_group = target_group
-	seed.slot_index = slot_index
-	seed.seed_slot_number = seed_slot_number
-	seed.set_next_seed_slot_number = set_next_seed_slot_number
-	seed.set_next_seed_slot_index = set_next_seed_slot_index
-	seed.transferred_speed_multiplier *= transferred_speed_multiplier
-	seed.transferred_range_multiplier *= transferred_range_multiplier
-	seed.transferred_size_multiplier *= transferred_size_multiplier
-	seed.transferred_damage_multiplier *= transferred_damage_multiplier
-	seed.transferred_blast_radius_multiplier *= transferred_blast_radius_multiplier
-	seed.transferred_fire_rate_multiplier *= transferred_fire_rate_multiplier
-	seed.modulate = modulate
-	seed.shader = shader
+func shoot_current_seed(instantiated_weapon, _desired_direction = desired_direction, pos = global_position):
+	instantiated_weapon.scale = scale
 	if get_node_or_null("Passives"):
-		seed.add_child(get_node("Passives").duplicate())
+		instantiated_weapon.add_child(get_node("Passives").duplicate())
 	if get_node_or_null("Visual Effects"):
-		seed.add_child(get_node("Visual Effects").duplicate())
+		instantiated_weapon.add_child(get_node("Visual Effects").duplicate())
+	super.shoot_current_seed(instantiated_weapon, _desired_direction, pos)
