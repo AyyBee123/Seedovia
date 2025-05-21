@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=73 format=3 uid="uid://dvsl6ntyfxcpx"]
+[gd_resource type="TileSet" load_steps=75 format=3 uid="uid://dvsl6ntyfxcpx"]
 
 [ext_resource type="Texture2D" uid="uid://cvgvhjvhndf2x" path="res://Sprites/Wall/Floor 1 Corner.png" id="1_fgui0"]
 [ext_resource type="Texture2D" uid="uid://rr3d43hfh1xs" path="res://Sprites/Wall/Tile Placeholder.png" id="2_qxw0k"]
@@ -30,6 +30,7 @@
 [ext_resource type="Texture2D" uid="uid://baffxcxsip47m" path="res://Sprites/Ground/Water1.png" id="28_xobca"]
 [ext_resource type="Texture2D" uid="uid://xfiq23uej6yq" path="res://Sprites/Ground/Water2.png" id="29_w2w3h"]
 [ext_resource type="Texture2D" uid="uid://swytll0nj3o4" path="res://Sprites/Ground/Water3.png" id="30_g2iyr"]
+[ext_resource type="Texture2D" uid="uid://nbr3ifg3v0hm" path="res://Sprites/Ground/Floor 2 (1).png" id="31_qxw0k"]
 [ext_resource type="Texture2D" uid="uid://bfowhdxa1dy0y" path="res://Sprites/Wall/Floor 2 Wall.png" id="31_yd1gb"]
 [ext_resource type="Texture2D" uid="uid://c73y4egv64mas" path="res://Sprites/Ground/Shop.png" id="32_vg4v4"]
 [ext_resource type="Texture2D" uid="uid://bs6raq2gpx84a" path="res://Sprites/Wall/Shop.png" id="33_3opcw"]
@@ -231,6 +232,11 @@ texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
 0:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0i3ia"]
+texture = ExtResource("31_qxw0k")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w7kfw"]
 texture = ExtResource("31_yd1gb")
 texture_region_size = Vector2i(128, 128)
@@ -311,3 +317,4 @@ sources/32 = SubResource("TileSetAtlasSource_6wjeu")
 sources/33 = SubResource("TileSetAtlasSource_pdl2w")
 sources/34 = SubResource("TileSetAtlasSource_v78sq")
 sources/35 = SubResource("TileSetAtlasSource_s0pwd")
+sources/36 = SubResource("TileSetAtlasSource_0i3ia")
