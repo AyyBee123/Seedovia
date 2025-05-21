@@ -385,21 +385,21 @@ offset = Vector2(0, -1)
 [node name="CollisionPolygon2D" parent="Enemy Hitbox" index="0"]
 shape = SubResource("CircleShape2D_mcnfn")
 
-[node name="state_machine" type="Node" parent="." index="6"]
+[node name="state_machine" type="Node" parent="." index="5"]
 script = ExtResource("6_t134o")
 metadata/_custom_type_script = "uid://cxh3rckpecdhs"
 
-[node name="Shadow" type="Sprite2D" parent="." index="7"]
+[node name="Shadow" type="Sprite2D" parent="." index="6"]
 z_index = -1
 z_as_relative = false
 position = Vector2(0, 20)
 scale = Vector2(0.86, 0.955)
 texture = ExtResource("7_mcnfn")
 
-[node name="Shoot Time" type="Timer" parent="." index="8"]
+[node name="Shoot Time" type="Timer" parent="." index="7"]
 one_shot = true
 
-[node name="BubblePop" type="AudioStreamPlayer" parent="." index="9"]
+[node name="BubblePop" type="AudioStreamPlayer" parent="." index="8"]
 stream = ExtResource("10_o6rml")
 volume_db = -7.0
 pitch_scale = 0.45

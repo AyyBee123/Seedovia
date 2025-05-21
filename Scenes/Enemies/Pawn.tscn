@@ -1,0 +1,88 @@
+[gd_scene load_steps=14 format=3 uid="uid://c0j4ojpi7p0ru"]
+
+[ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_uica7"]
+[ext_resource type="Resource" uid="uid://bvj8bquahbuey" path="res://Resources/Enemies/pawn.tres" id="2_a17um"]
+[ext_resource type="Script" uid="uid://uxgwpl7vsavb" path="res://Scripts/Enemies/Pawn/pawn.gd" id="2_esetj"]
+[ext_resource type="Shader" uid="uid://dsv0n8bsysyo6" path="res://Shaders/color_tint_shader.gdshader" id="3_065vu"]
+[ext_resource type="Texture2D" uid="uid://uthyfm5sjjjf" path="res://Sprites/Enemies/Chess Pawn.png" id="4_eecr3"]
+[ext_resource type="Texture2D" uid="uid://b65qy7rr414ol" path="res://Sprites/Misc/Statue Shadow.png" id="5_a17um"]
+[ext_resource type="AnimationLibrary" uid="uid://p53aessw25xn" path="res://Animations/Pawn.tres" id="6_esetj"]
+[ext_resource type="AudioStream" uid="uid://mc66wc8mdc1d" path="res://Audio/SFX/Stomp.mp3" id="7_1ounv"]
+[ext_resource type="AudioStream" uid="uid://12krr2r6guun" path="res://Audio/SFX/Jump.mp3" id="8_2gkgn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_065vu"]
+size = Vector2(32, 18)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_esetj"]
+resource_local_to_scene = true
+shader = ExtResource("3_065vu")
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/tint_factor = 0.0
+shader_parameter/fade = 1.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1ounv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_eecr3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eecr3"]
+size = Vector2(32, 18)
+
+[node name="Pawn" groups=["Chess Piece"] instance=ExtResource("1_uica7")]
+scale = Vector2(3, 3)
+script = ExtResource("2_esetj")
+_enemy_stats = ExtResource("2_a17um")
+
+[node name="CollisionPolygon2D" parent="." index="0"]
+shape = SubResource("RectangleShape2D_065vu")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+material = SubResource("ShaderMaterial_esetj")
+sprite_frames = SubResource("SpriteFrames_1ounv")
+offset = Vector2(0, -21)
+
+[node name="CollisionPolygon2D" parent="Enemy Hitbox" index="0"]
+shape = SubResource("RectangleShape2D_eecr3")
+disabled = true
+
+[node name="Health Bar" parent="." index="3"]
+offset_top = -68.0
+offset_bottom = -60.0
+
+[node name="Shadow" type="Sprite2D" parent="." index="5"]
+z_index = -1
+z_as_relative = false
+position = Vector2(0, -4.76837e-07)
+scale = Vector2(1, 1.12)
+texture = ExtResource("5_a17um")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="6"]
+libraries = {
+&"Pawn": ExtResource("6_esetj")
+}
+speed_scale = 1.5
+
+[node name="Idle Time" type="Timer" parent="." index="7"]
+wait_time = 0.5
+one_shot = true
+
+[node name="Stomp" type="AudioStreamPlayer" parent="." index="8"]
+stream = ExtResource("7_1ounv")
+volume_db = -12.0
+pitch_scale = 1.3
+bus = &"SFX"
+
+[node name="Jump" type="AudioStreamPlayer" parent="." index="9"]
+stream = ExtResource("8_2gkgn")
+volume_db = -12.0
+pitch_scale = 1.5
+bus = &"SFX"
+
+[connection signal="animation_started" from="AnimationPlayer" to="." method="_on_animation_player_animation_started"]
+[connection signal="timeout" from="Idle Time" to="." method="_on_idle_time_timeout"]

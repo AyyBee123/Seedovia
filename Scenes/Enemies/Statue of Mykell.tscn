@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c4iasewjfsbsc"]
+[gd_scene load_steps=14 format=3 uid="uid://c4iasewjfsbsc"]
 
 [ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_qyuca"]
 [ext_resource type="Script" uid="uid://chkd3emkcsajw" path="res://Scripts/Enemies/Statue of Mykell/statue_of_mykell.gd" id="2_8xa6b"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://b65qy7rr414ol" path="res://Sprites/Misc/Statue Shadow.png" id="5_siimr"]
 [ext_resource type="AudioStream" uid="uid://12krr2r6guun" path="res://Audio/SFX/Jump.mp3" id="6_yav4k"]
 [ext_resource type="AudioStream" uid="uid://mc66wc8mdc1d" path="res://Audio/SFX/Stomp.mp3" id="7_6xco7"]
+[ext_resource type="AnimationLibrary" uid="uid://d1e2mcgg44ior" path="res://Animations/Statue.tres" id="7_pq0i5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eecoj"]
 size = Vector2(32, 18)
@@ -33,134 +34,8 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y5hri"]
 size = Vector2(32, 18)
 
-[sub_resource type="Animation" id="Animation_48w53"]
-resource_name = "Jump"
-length = 0.7
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.4, 0.7),
-"transitions": PackedFloat32Array(0.25, 2.5, 2.5, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, -35), Vector2(0, -35), Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Health Bar:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.4, 0.7),
-"transitions": PackedFloat32Array(0.25, 2.5, 2.5, 1),
-"update": 0,
-"values": [Vector2(-22, -82), Vector2(-22, -117), Vector2(-22, -117), Vector2(-22, -82)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Enemy Hitbox/CollisionPolygon2D:disabled")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.7),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Shadow:scale")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.4, 0.7),
-"transitions": PackedFloat32Array(0.25, 2.5, 2.5, 1),
-"update": 0,
-"values": [Vector2(1, 1.12), Vector2(0.6, 0.672), Vector2(0.6, 0.672), Vector2(1, 1.12)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Shadow:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.7),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/5/type = "method"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath(".")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.7),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": [],
-"method": &"play_jump"
-}, {
-"args": [],
-"method": &"play_stomp"
-}]
-}
-
-[sub_resource type="Animation" id="Animation_pbecd"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Enemy Hitbox/CollisionPolygon2D:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Shadow:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_wlgn3"]
-_data = {
-&"Jump": SubResource("Animation_48w53"),
-&"RESET": SubResource("Animation_pbecd")
-}
-
 [node name="Statue of Mykell" instance=ExtResource("1_qyuca")]
-scale = Vector2(2, 2)
+scale = Vector2(3, 3)
 script = ExtResource("2_8xa6b")
 _enemy_stats = ExtResource("3_0tdnt")
 
@@ -179,31 +54,31 @@ shape = SubResource("RectangleShape2D_y5hri")
 offset_top = -82.0
 offset_bottom = -74.0
 
-[node name="Shadow" type="Sprite2D" parent="." index="6"]
+[node name="Shadow" type="Sprite2D" parent="." index="5"]
 z_index = -1
 z_as_relative = false
 position = Vector2(0, -4.76837e-07)
 scale = Vector2(1, 1.12)
 texture = ExtResource("5_siimr")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="7"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="6"]
 libraries = {
-"": SubResource("AnimationLibrary_wlgn3")
+&"": ExtResource("7_pq0i5")
 }
 
-[node name="Jump" type="AudioStreamPlayer" parent="." index="8"]
+[node name="Jump" type="AudioStreamPlayer" parent="." index="7"]
 stream = ExtResource("6_yav4k")
 volume_db = -8.0
 pitch_scale = 1.5
 bus = &"SFX"
 
-[node name="Stomp" type="AudioStreamPlayer" parent="." index="9"]
+[node name="Stomp" type="AudioStreamPlayer" parent="." index="8"]
 stream = ExtResource("7_6xco7")
 volume_db = -8.0
 pitch_scale = 1.2
 bus = &"SFX"
 
-[node name="Idle Time" type="Timer" parent="." index="10"]
+[node name="Idle Time" type="Timer" parent="." index="9"]
 wait_time = 1.3
 one_shot = true
 

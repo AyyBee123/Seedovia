@@ -154,7 +154,7 @@ position = Vector2(0, 2.5)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_bnre1")
 
-[node name="Pointer" type="Node2D" parent="." index="6"]
+[node name="Pointer" type="Node2D" parent="." index="5"]
 
 [node name="Marker2D" type="Marker2D" parent="Pointer" index="0"]
 position = Vector2(28.5714, 0)
