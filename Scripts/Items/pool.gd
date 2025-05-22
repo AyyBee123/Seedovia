@@ -78,14 +78,9 @@ var add_pool := true
 
 func _ready():
 	# get list of items
-	if OS.has_feature("demo"):
-		var seed_list = get_all_file_paths("res://Resources/Demo/Seeds/")
-		var talisman_list = get_all_file_paths("res://Resources/Demo/Talismans/")
-		var consumable_list = get_all_file_paths("res://Resources/Demo/Consumables/")
-	else:
-		var seed_list = get_all_file_paths("res://Resources/Items/Seeds/")
-		var talisman_list = get_all_file_paths("res://Resources/Items/Equipment/")
-		var consumable_list = get_all_file_paths("res://Resources/Items/Consumables/")
+	var seed_list = get_all_file_paths("res://Resources/Items/Seeds/")
+	var talisman_list = get_all_file_paths("res://Resources/Items/Equipment/")
+	var consumable_list = get_all_file_paths("res://Resources/Items/Consumables/")
 
 func start():
 	Global.RNG.randomize()
@@ -110,12 +105,6 @@ func start():
 	7: 0, # N/A
 	}
 	
-	if OS.has_feature("demo"):
-		var consumable_pool = ResourceLoader.load("res://Resources/Demo/consumable_pool.tres")
-		var equipment_pool = ResourceLoader.load("res://Resources/Demo/equipment_pool.tres")
-		var passive_pool = ResourceLoader.load("res://Resources/Demo/passive_pool.tres")
-		var seed_pool = ResourceLoader.load("res://Resources/Demo/seed_pool.tres")
-	
 	add_pool = true # add the pool array to the room reward pool
 	populate_pool(equipment_pool, talisman_weights)
 	populate_pool(consumable_pool, consumable_weights)
@@ -133,11 +122,6 @@ func start():
 	passive_pool.pool.clear()
 	populate_pool(passive_pool)
 	shuffle_pool(passive_pool)
-	
-	print(seed_pool)
-	print(equipment_pool)
-	print(consumable_pool)
-	print(passive_pool)
 	
 	add_floors()
 	add_boss_floors()
@@ -163,12 +147,6 @@ func continue_run():
 	6: 0, # unique
 	7: 0, # N/A
 	}
-	
-	if OS.has_feature("demo"):
-		var consumable_pool = ResourceLoader.load("res://Resources/Demo/consumable_pool.tres")
-		var equipment_pool = ResourceLoader.load("res://Resources/Demo/equipment_pool.tres")
-		var passive_pool = ResourceLoader.load("res://Resources/Demo/passive_pool.tres")
-		var seed_pool = ResourceLoader.load("res://Resources/Demo/seed_pool.tres")
 	
 	add_pool = true # add the pool array to the room reward pool
 	populate_pool(equipment_pool, talisman_weights)

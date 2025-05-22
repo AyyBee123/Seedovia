@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://dulvat5tw0bi2" path="res://Scripts/Enemies/Knight/knight.gd" id="2_8dbnn"]
 [ext_resource type="Resource" uid="uid://cr0ob1geke3o6" path="res://Resources/Enemies/knight.tres" id="3_u7dwb"]
 [ext_resource type="Shader" uid="uid://dsv0n8bsysyo6" path="res://Shaders/color_tint_shader.gdshader" id="4_y7bfn"]
-[ext_resource type="Texture2D" uid="uid://b51mpd40rayoo" path="res://Sprites/Enemies/Knight.png" id="5_u7dwb"]
+[ext_resource type="Texture2D" uid="uid://fi7cywxkl0ao" path="res://Sprites/Enemies/Chess Knight.png" id="5_u7dwb"]
 [ext_resource type="Texture2D" uid="uid://b65qy7rr414ol" path="res://Sprites/Misc/Statue Shadow.png" id="6_6blnd"]
 [ext_resource type="AnimationLibrary" uid="uid://bovt0cp0e87e" path="res://Animations/Knight.tres" id="7_axwyl"]
 [ext_resource type="AudioStream" uid="uid://mc66wc8mdc1d" path="res://Audio/SFX/Stomp.mp3" id="8_0a31f"]
