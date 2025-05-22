@@ -11,6 +11,7 @@ radius = 7.0
 
 [node name="Pepper" groups=["Projectile"] instance=ExtResource("1_44bna")]
 position = Vector2(0, -2)
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_c1ca2")
 script = ExtResource("3_15ils")
 BASE_DAMAGE = 40.0

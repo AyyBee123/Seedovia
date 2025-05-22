@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ledtfnmbfqxq" path="res://Scenes/Misc/Visual Effects.tscn" id="4_0ef14"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fu6k5"]
-radius = 9.33333
+radius = 9.0
 
 [node name="PepperChild" type="Sprite2D" groups=["Child", "Pepper Child", "Projectile", "Seed", "Weapon", "Weapon to be Destroyed"]]
 scale = Vector2(0.75, 0.75)
