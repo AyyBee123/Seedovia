@@ -49,6 +49,7 @@ offset = Vector2(-2.5, -21.5)
 
 [node name="CollisionPolygon2D" parent="Enemy Hitbox" index="0"]
 shape = SubResource("RectangleShape2D_eecr3")
+disabled = true
 
 [node name="Health Bar" parent="." index="3"]
 offset_left = -11.0
@@ -58,7 +59,6 @@ offset_bottom = -56.0
 scale = Vector2(0.5, 0.5)
 
 [node name="Shadow" type="Sprite2D" parent="." index="5"]
-visible = false
 z_index = -1
 z_as_relative = false
 position = Vector2(0, -4.76837e-07)
