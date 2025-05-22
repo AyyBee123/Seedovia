@@ -9,6 +9,7 @@ func _ready():
 	cercis.unlocked = true
 	berry.unlocked = true
 	Game.music_manager.play(Game.music_manager.MENU_THEME)
+	seed_list = get_all_file_paths("res://Resources/Items/Seeds/")
 
 func _on_play_button_pressed():
 	Game.audio_manager.play(Game.audio_manager.ui_button)

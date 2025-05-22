@@ -8,10 +8,13 @@ func _ready():
 func trigger(weapon = null):
 	if weapon == null:
 		return
+	if weapon.is_in_group("Cherry Fired"):
+		return
 	# seed repeats after 1/(<current fire rate> x2)
 	await get_tree().create_timer(1.0 / (weapon.FIRE_RATE * 2), false).timeout
 	var weapon_instance = PlayerSeeds.get_weapon(0).instantiate()
 	var location = player.hand.global_position
+	weapon_instance.add_to_group("Cherry Fired")
 	weapon_instance.initial_weapon = true
 	weapon_instance.slot_index = 0
 	weapon_instance.source = player

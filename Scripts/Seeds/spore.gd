@@ -24,9 +24,8 @@ func _ready():
 	super._ready()
 	randomize()
 	# if fired directly by the player or a summon
-	if is_instance_valid(previous_weapon):
-		if previous_weapon == player or previous_weapon.is_in_group("Player Summon"):
-			SPORE_AMOUNT = 5
+	if initial_weapon:
+		SPORE_AMOUNT = 5
 	rotation_speed = randf_range(5, 6)
 	pointer.rotation = desired_direction.angle() + randf_range(-PI/2, PI/2)
 	first_collision_ignored = ignore_first_collision

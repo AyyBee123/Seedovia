@@ -23,7 +23,7 @@ func _physics_process(delta):
 	set_ignore_first_collision()
 
 func update_position(delta):
-	if (previous_weapon == player or previous_weapon.is_in_group("Direct Fire")) and not _released:
+	if initial_weapon and not _released:
 		if mouse_left_down:
 			orbit(delta)
 		else:
