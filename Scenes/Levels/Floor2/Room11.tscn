@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://b26p3qfwvauo4"]
+
+[ext_resource type="PackedScene" uid="uid://b8gxpiw6v8asa" path="res://Scenes/Levels/Floor 2 Base.tscn" id="1_n8ir0"]
+[ext_resource type="Shader" uid="uid://qm3syqtxdolu" path="res://Shaders/circle_transition.gdshader" id="2_0yxfn"]
+[ext_resource type="PackedScene" uid="uid://b50lirnqd7i1t" path="res://Scenes/Enemies/Ice Pot.tscn" id="4_1ymvm"]
+[ext_resource type="PackedScene" uid="uid://36bor5t8tf2w" path="res://Scenes/Enemies/Ethereal Pot.tscn" id="5_vgmk4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0ecxy"]
+resource_local_to_scene = true
+shader = ExtResource("2_0yxfn")
+shader_parameter/circle_size = 0.0
+shader_parameter/circle_position_x = 0.5
+shader_parameter/circle_position_y = 0.695
+
+[node name="Level" instance=ExtResource("1_n8ir0")]
+
+[node name="Circle Transition" parent="." index="6"]
+material = SubResource("ShaderMaterial_0ecxy")
+
+[node name="Ethereal Pot" parent="." index="10" instance=ExtResource("5_vgmk4")]
+position = Vector2(320, -64)
+
+[node name="Ethereal Pot3" parent="." index="11" instance=ExtResource("5_vgmk4")]
+position = Vector2(192, -64)
+starting_angle = 120.0
+
+[node name="Ethereal Pot4" parent="." index="12" instance=ExtResource("5_vgmk4")]
+position = Vector2(256, -192)
+starting_angle = 240.0
+
+[node name="Ice Pot" parent="." index="13" instance=ExtResource("4_1ymvm")]
+position = Vector2(-320, -192)

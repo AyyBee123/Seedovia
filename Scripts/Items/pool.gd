@@ -134,6 +134,11 @@ func start():
 	populate_pool(passive_pool)
 	shuffle_pool(passive_pool)
 	
+	print(seed_pool)
+	print(equipment_pool)
+	print(consumable_pool)
+	print(passive_pool)
+	
 	add_floors()
 	add_boss_floors()
 

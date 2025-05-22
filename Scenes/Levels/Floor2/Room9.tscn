@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://c7w5c1orxx4fj"]
+
+[ext_resource type="PackedScene" uid="uid://b8gxpiw6v8asa" path="res://Scenes/Levels/Floor 2 Base.tscn" id="1_qwdgh"]
+[ext_resource type="Shader" uid="uid://qm3syqtxdolu" path="res://Shaders/circle_transition.gdshader" id="2_2tldq"]
+[ext_resource type="PackedScene" uid="uid://c1gwardl5cd3p" path="res://Scenes/Enemies/Bishop.tscn" id="3_qwdgh"]
+[ext_resource type="PackedScene" uid="uid://0clgydaeshno" path="res://Scenes/Enemies/Obstacles/Wall Face.tscn" id="4_2tldq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0ecxy"]
+resource_local_to_scene = true
+shader = ExtResource("2_2tldq")
+shader_parameter/circle_size = 0.0
+shader_parameter/circle_position_x = 0.5
+shader_parameter/circle_position_y = 0.695
+
+[node name="Level" instance=ExtResource("1_qwdgh")]
+
+[node name="Circle Transition" parent="." index="6"]
+material = SubResource("ShaderMaterial_0ecxy")
+
+[node name="Bishop" parent="." index="10" instance=ExtResource("3_qwdgh")]
+position = Vector2(704, -192)
+
+[node name="Bishop2" parent="." index="11" instance=ExtResource("3_qwdgh")]
+position = Vector2(-704, -192)
+
+[node name="Wall Face" parent="." index="12" instance=ExtResource("4_2tldq")]
+position = Vector2(320, -448)
+
+[node name="Wall Face2" parent="." index="13" instance=ExtResource("4_2tldq")]
+position = Vector2(-320, -448)
+
+[node name="Wall Face3" parent="." index="14" instance=ExtResource("4_2tldq")]
+position = Vector2(-832, 64)
+rotation = -1.5708
+
+[node name="Wall Face4" parent="." index="15" instance=ExtResource("4_2tldq")]
+position = Vector2(832, -64)
+rotation = 1.5708

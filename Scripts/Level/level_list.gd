@@ -37,7 +37,7 @@ func change_room(door):
 	elif door.text == "Boss": # room before the boss room (10th room)
 		next_room = Pool.get_item(Pool.boss_floors[floor_number])
 	elif room_number >= 12: # next floor after the boss room
-		if OS.has_feature("demo"):
+		if OS.has_feature("demo") and floor_number == 1:
 			get_tree().change_scene_to_file("res://Scenes/Misc/Wishlist.tscn")
 			return
 		change_floor()
