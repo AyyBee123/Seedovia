@@ -14,12 +14,10 @@ var move_direction: Vector2
 var angles: Array
 var tween
 var next_pos
-var chess_pieces: Array
 
 func _ready():
 	super._ready()
 	$"Enemy Hitbox/CollisionPolygon2D".disabled = false
-	chess_pieces = get_tree().get_nodes_in_group("Chess Piece")
 	
 	for i in TAU / SPREAD:
 		var angle = SPREAD * i - SPREAD / 2
@@ -68,7 +66,7 @@ func play_stomp():
 	idle_time.start(IDLE_TIME)
 
 func _on_idle_time_timeout():
-	animation_player.play("King/Jump")
+	animation_player.play("Queen/Jump")
 
 func _on_animation_player_animation_started(anim_name):
 	# edge cases to avoid walls
@@ -80,14 +78,20 @@ func _on_animation_player_animation_started(anim_name):
 		move_direction.x *= -1
 	
 	# snap the end position to land on a "grid"
-	var new_pos = snapped(Vector2(128, 128) * move_direction, Vector2(128, 128))
+	var length
+	if move_direction.length() > 1: # diagonal movement
+		length = (roundi(abs(global_position.x - player.global_position.x) / 128) \
+			+ roundi(abs(global_position.y - player.global_position.y) / 128)) / 2
+		if length == 0:
+			length = 1
+	else: # cardinal movement
+		length = Vector2(roundi(abs(global_position.x - player.global_position.x) / 128), \
+			roundi(abs(global_position.y - player.global_position.y) / 128))
+		length = Vector2(max(length.x, 1), max(length.y, 1))
+	
+	# snap the end position to land on a "grid"
+	var new_pos = snapped(Vector2(128, 128) * move_direction * length, Vector2(128, 128))
 	var anim_speed = animation_player.get_animation(anim_name).get_length() / animation_player.speed_scale
 	tween = get_tree().create_tween()
 	tween.tween_property(self, "position", new_pos, anim_speed).as_relative()
 	tween.tween_callback(func(): global_position = snapped(global_position, Vector2(128, 128)) - Vector2(64, 64))
-
-# kill all other chess pieces on death
-func _exit_tree():
-	for piece in chess_pieces:
-		if is_instance_valid(piece):
-			piece.queue_free()

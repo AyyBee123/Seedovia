@@ -1,27 +1,14 @@
-[gd_scene load_steps=15 format=3 uid="uid://dh6rv2hcx174s"]
+[gd_scene load_steps=14 format=3 uid="uid://dh6rv2hcx174s"]
 
 [ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_4k0ge"]
 [ext_resource type="Script" uid="uid://dghamp5grqchp" path="res://Scripts/Enemies/Rook/rook.gd" id="2_4k0ge"]
-[ext_resource type="Script" uid="uid://dplobvcbjid7g" path="res://Scripts/Stats/enemy_stats.gd" id="3_nfqa0"]
+[ext_resource type="Resource" uid="uid://ce1mk2oubbpwf" path="res://Resources/Enemies/rook.tres" id="3_4k0ge"]
 [ext_resource type="Shader" uid="uid://dsv0n8bsysyo6" path="res://Shaders/color_tint_shader.gdshader" id="4_qjeyn"]
 [ext_resource type="Texture2D" uid="uid://cgs564vhuwj7k" path="res://Sprites/Enemies/Chess Rook.png" id="5_4k0ge"]
 [ext_resource type="Texture2D" uid="uid://b65qy7rr414ol" path="res://Sprites/Misc/Statue Shadow.png" id="6_cr44c"]
 [ext_resource type="AnimationLibrary" uid="uid://b4y1f2tsc3hxj" path="res://Animations/Rook.tres" id="7_nfqa0"]
 [ext_resource type="AudioStream" uid="uid://mc66wc8mdc1d" path="res://Audio/SFX/Stomp.mp3" id="8_hgxwe"]
 [ext_resource type="AudioStream" uid="uid://12krr2r6guun" path="res://Audio/SFX/Jump.mp3" id="9_sh1ea"]
-
-[sub_resource type="Resource" id="Resource_v8v54"]
-script = ExtResource("3_nfqa0")
-max_health = 200.0
-speed = 64.0
-fire_rate = 0.0
-damage = 1.0
-acceleration = 1.0
-friction = 1.0
-weapon_damage = 1.0
-weapon_range = 200.0
-weapon_speed = 250.0
-metadata/_custom_type_script = "uid://dplobvcbjid7g"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_065vu"]
 size = Vector2(32, 18)
@@ -50,7 +37,7 @@ size = Vector2(32, 18)
 [node name="Rook" groups=["Chess Piece"] instance=ExtResource("1_4k0ge")]
 scale = Vector2(4, 4)
 script = ExtResource("2_4k0ge")
-_enemy_stats = SubResource("Resource_v8v54")
+_enemy_stats = ExtResource("3_4k0ge")
 
 [node name="CollisionPolygon2D" parent="." index="0"]
 shape = SubResource("RectangleShape2D_065vu")

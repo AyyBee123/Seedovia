@@ -1,27 +1,14 @@
-[gd_scene load_steps=15 format=3 uid="uid://c1gwardl5cd3p"]
+[gd_scene load_steps=14 format=3 uid="uid://c1gwardl5cd3p"]
 
 [ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_lv4ho"]
 [ext_resource type="Script" uid="uid://b45is6ln1jouh" path="res://Scripts/Enemies/Bishop/bishop.gd" id="2_huqfm"]
-[ext_resource type="Script" uid="uid://dplobvcbjid7g" path="res://Scripts/Stats/enemy_stats.gd" id="3_lv4ho"]
+[ext_resource type="Resource" uid="uid://bvnjtposcevq1" path="res://Resources/Enemies/bishop.tres" id="3_lv4ho"]
 [ext_resource type="Shader" uid="uid://dsv0n8bsysyo6" path="res://Shaders/color_tint_shader.gdshader" id="4_45mt4"]
 [ext_resource type="Texture2D" uid="uid://beffbaltxuwvt" path="res://Sprites/Enemies/Chess Bishop.png" id="5_lv4ho"]
 [ext_resource type="Texture2D" uid="uid://b65qy7rr414ol" path="res://Sprites/Misc/Statue Shadow.png" id="6_fo7a3"]
 [ext_resource type="AnimationLibrary" uid="uid://uccl03ppkdad" path="res://Animations/Bishop.tres" id="7_lv4ho"]
 [ext_resource type="AudioStream" uid="uid://mc66wc8mdc1d" path="res://Audio/SFX/Stomp.mp3" id="8_1n0q4"]
 [ext_resource type="AudioStream" uid="uid://12krr2r6guun" path="res://Audio/SFX/Jump.mp3" id="9_qobt3"]
-
-[sub_resource type="Resource" id="Resource_pjces"]
-script = ExtResource("3_lv4ho")
-max_health = 200.0
-speed = 64.0
-fire_rate = 0.0
-damage = 1.0
-acceleration = 1.0
-friction = 1.0
-weapon_damage = 1.0
-weapon_range = 200.0
-weapon_speed = 250.0
-metadata/_custom_type_script = "uid://dplobvcbjid7g"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_065vu"]
 size = Vector2(32, 18)
@@ -50,7 +37,7 @@ size = Vector2(32, 18)
 [node name="Bishop" groups=["Chess Piece"] instance=ExtResource("1_lv4ho")]
 scale = Vector2(4, 4)
 script = ExtResource("2_huqfm")
-_enemy_stats = SubResource("Resource_pjces")
+_enemy_stats = ExtResource("3_lv4ho")
 
 [node name="CollisionPolygon2D" parent="." index="0"]
 shape = SubResource("RectangleShape2D_065vu")
