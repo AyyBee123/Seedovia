@@ -20,11 +20,11 @@ var reward_weight = {
 	# index 0, 1, 2, 3, 4, 5, 6, and 7 are talisman, consumable, seed, money, stat up, 
 	# health up, leaf heart, and heal pools respectively
 	# all of these added up together must equal 1
-	0: 0.04,
+	0: 0.05,
 	1: 0.10,
-	2: 0.04,
-	3: 0.34,
-	4: 0.34,
+	2: 0.05,
+	3: 0.33,
+	4: 0.33,
 	5: 0.03,
 	6: 0.04,
 	7: 0.07
