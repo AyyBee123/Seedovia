@@ -47,3 +47,6 @@ func get_shop_items():
 
 func get_weapons_to_be_destroyed():
 	return get_tree().get_nodes_in_group("Weapon to be Destroyed")
+
+func get_tile_map_size():
+	return Rect2i(-768, -384, 1536, 768)
