@@ -12,12 +12,12 @@ height = 24.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_n3trt"]
 radius = 50.0
 
-[node name="Fertilizer" groups=["Weapon to be Destroyed"] instance=ExtResource("1_iuenw")]
+[node name="Fertilizer" instance=ExtResource("1_iuenw")]
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("2_a3sjy")
 offset = Vector2(0, -4.55)
 script = ExtResource("3_moec4")
-BASE_DAMAGE = 2.0
+BASE_DAMAGE = 1.0
 BASE_FIRE_RATE = 2.0
 BASE_RANGE = 12.5
 BASE_SPEED = 500.0
