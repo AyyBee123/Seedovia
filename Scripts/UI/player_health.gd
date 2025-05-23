@@ -45,7 +45,7 @@ func set_health():
 	current_current_health = player._player_stats.health
 	for i in range(player._player_stats.leaf_hearts): # add leaf hearts
 		var heart_instance = leaf_heart.instantiate()
-		current_health.add_child(heart_instance)
+		max_health.add_child(heart_instance)
 	current_leaf_hearts = player._player_stats.leaf_hearts
 	SignalBus.max_health_changed.emit(max_health.get_child_count())
 

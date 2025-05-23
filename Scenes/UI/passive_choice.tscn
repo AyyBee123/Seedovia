@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dfafxnw5132qr"]
+[gd_scene load_steps=26 format=3 uid="uid://dfafxnw5132qr"]
 
 [ext_resource type="Script" uid="uid://bbqwew0hj1m1p" path="res://Scripts/UI/passive_choice.gd" id="1_7x1m1"]
 [ext_resource type="Texture2D" uid="uid://cmhhfcqibnxtw" path="res://Sprites/Passive UI/Passive Background.png" id="1_ayyp6"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://c71sltkefy26t" path="res://Sprites/Passive UI/Passive Choice Pressed.png" id="5_w603p"]
 [ext_resource type="Texture2D" uid="uid://ck1cqd6wikm0p" path="res://Sprites/Passive UI/Passive Choice Hover.png" id="6_y7fth"]
 [ext_resource type="FontFile" uid="uid://wbj0boqv37y6" path="res://Fonts/Description Font.ttf" id="7_f1dvr"]
+[ext_resource type="Texture2D" uid="uid://cn70skisfblp4" path="res://Sprites/Passive UI/Passive Choice Focused.png" id="7_ncj06"]
 [ext_resource type="Script" uid="uid://bsjv7istqmswh" path="res://Scripts/UI/focus_button.gd" id="7_pu5r7"]
 [ext_resource type="Texture2D" uid="uid://dqiw78ps81daw" path="res://Sprites/Passives/Icons/Hura Crepitans.png" id="8_xdwvq"]
 [ext_resource type="Texture2D" uid="uid://dissosonsok68" path="res://Sprites/Passives/Icons/Fire Flower.png" id="9_ga1yx"]
@@ -118,6 +119,7 @@ layout_mode = 2
 texture_normal = ExtResource("4_3krng")
 texture_pressed = ExtResource("5_w603p")
 texture_hover = ExtResource("6_y7fth")
+texture_focused = ExtResource("7_ncj06")
 script = ExtResource("7_pu5r7")
 
 [node name="PassiveBorder" type="TextureRect" parent="PassiveBackground/GridContainer/Button"]
@@ -186,6 +188,7 @@ layout_mode = 2
 texture_normal = ExtResource("4_3krng")
 texture_pressed = ExtResource("5_w603p")
 texture_hover = ExtResource("6_y7fth")
+texture_focused = ExtResource("7_ncj06")
 
 [node name="PassiveBorder" type="TextureRect" parent="PassiveBackground/GridContainer/Button2"]
 custom_minimum_size = Vector2(44, 44)
@@ -253,6 +256,7 @@ layout_mode = 2
 texture_normal = ExtResource("4_3krng")
 texture_pressed = ExtResource("5_w603p")
 texture_hover = ExtResource("6_y7fth")
+texture_focused = ExtResource("7_ncj06")
 
 [node name="PassiveBorder" type="TextureRect" parent="PassiveBackground/GridContainer/Button3"]
 custom_minimum_size = Vector2(44, 44)

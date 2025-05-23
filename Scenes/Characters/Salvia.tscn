@@ -71,7 +71,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_d3lte")
 }],
-"loop": true,
+"loop": false,
 "name": &"Die",
 "speed": 20.0
 }, {

@@ -52,10 +52,13 @@ func _on_quick_restart_button_pressed():
 	PlayerInventory.seeds.clear()
 	PlayerPassives.passives.clear()
 	PlayerPassives.item_passives.clear()
+	PlayerPassives.starting_passives.clear()
+	PlayerPassives.passive_list.clear()
 	PlayerCharacter.set_inventory()
 	PlayerCharacter.add_passives()
 	SignalBus.entered_new_floor.emit()
 	Pool.start()
+	Global.save_run_data()
 	Global.save_run_room()
 	get_tree().change_scene_to_file("res://Scenes/Levels/Special/Starting Room 1.tscn")
 

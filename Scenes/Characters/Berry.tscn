@@ -71,7 +71,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_j5p5t")
 }],
-"loop": true,
+"loop": false,
 "name": &"Die",
 "speed": 20.0
 }, {
@@ -123,10 +123,10 @@ offset_right = -1459.0
 offset_bottom = -766.0
 scale = Vector2(3.745, 3.745)
 
-[node name="Stats" parent="." index="16" instance=ExtResource("2_vgwbe")]
-
-[node name="Shadow" parent="." index="17"]
+[node name="Shadow" parent="." index="15"]
 position = Vector2(0, 8)
+
+[node name="Stats" parent="." index="16" instance=ExtResource("2_vgwbe")]
 
 [node name="CollisionShape2D" parent="Slow Detect" index="0"]
 position = Vector2(0, 8)

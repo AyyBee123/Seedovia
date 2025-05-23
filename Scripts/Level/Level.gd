@@ -250,6 +250,7 @@ func play_music(soundtrack):
 		Game.music_manager.play(Game.music_manager.SHOP_THEME)
 	else:
 		Game.music_manager.play(soundtrack)
+	Game.music_manager
 
 func check_for_possesions(reward_item):
 	# don't care if there are duplicate consumables

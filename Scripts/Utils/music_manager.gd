@@ -14,7 +14,7 @@ const SHOP_THEME = preload("res://Audio/Music/Shop.ogg")
 
 func play(soundtrack):
 	# do nothing if the same soundtrack is already being played
-	if music.stream == soundtrack:
+	if music.stream == soundtrack and music.playing:
 		return
 	
 	music.playing = false
