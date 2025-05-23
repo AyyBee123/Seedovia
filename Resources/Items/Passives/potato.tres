@@ -8,6 +8,6 @@
 script = ExtResource("1_j7j7d")
 passive_name = "Potato"
 sprite = ExtResource("2_cbkwa")
-description = "Drops a potato that explodes and spawns 8 of your first slot seed when close to an enemy."
+description = "When dashing, drops a potato that explodes and spawns 8 of your first slot seed when close to an enemy."
 passive_ability = ExtResource("1_lkv4p")
 unlocked = true

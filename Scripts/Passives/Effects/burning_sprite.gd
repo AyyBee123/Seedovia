@@ -11,6 +11,7 @@ func _process(delta):
 	var spriteFrames: SpriteFrames = sprite.get_sprite_frames()
 	var currentTexture: Texture2D = spriteFrames.get_frame_texture(animationName, frameIndex)
 	
+	rotation = sprite.rotation
 	texture = currentTexture
 	scale = sprite.scale
 	offset = sprite.offset

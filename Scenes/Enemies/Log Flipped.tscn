@@ -87,7 +87,7 @@ shape = SubResource("RectangleShape2D_gs4ms")
 offset_top = -38.0
 offset_bottom = -30.0
 
-[node name="Left Detect" type="Area2D" parent="." index="6"]
+[node name="Left Detect" type="Area2D" parent="." index="5"]
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Left Detect" index="0"]
@@ -95,7 +95,7 @@ position = Vector2(-6.5, 0.750002)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_o6iww")
 
-[node name="Right Detect" type="Area2D" parent="." index="7"]
+[node name="Right Detect" type="Area2D" parent="." index="6"]
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Right Detect" index="0"]
@@ -103,10 +103,10 @@ position = Vector2(6.5, 0.749998)
 rotation = -1.5708
 shape = SubResource("RectangleShape2D_is03a")
 
-[node name="Right Direction Point" type="Marker2D" parent="." index="8"]
+[node name="Right Direction Point" type="Marker2D" parent="." index="7"]
 position = Vector2(19, 0)
 
-[node name="StateMachine" type="Node" parent="." index="9"]
+[node name="StateMachine" type="Node" parent="." index="8"]
 script = ExtResource("5_johrf")
 
 [connection signal="body_entered" from="Left Detect" to="." method="_on_left_detect_body_entered"]
