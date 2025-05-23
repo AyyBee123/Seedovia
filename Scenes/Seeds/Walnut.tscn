@@ -7,12 +7,12 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_b7ukx"]
 radius = 16.0312
 
-[node name="Walnut" groups=["Projectile", "Weapon to be Destroyed"] instance=ExtResource("1_w40ae")]
+[node name="Walnut" groups=["Projectile"] instance=ExtResource("1_w40ae")]
 scale = Vector2(1.25, 1.25)
 texture = ExtResource("2_hpcgh")
 script = ExtResource("3_mcihx")
 orb_fire_rate_multiplier = 2.0
-BASE_DAMAGE = 30.0
+BASE_DAMAGE = 18.0
 BASE_FIRE_RATE = 2.0
 BASE_RANGE = 750.0
 BASE_SPEED = 200.0

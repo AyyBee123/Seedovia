@@ -10,11 +10,11 @@ radius = 9.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_c3iv6"]
 radius = 17.0294
 
-[node name="Bananarang" groups=["Weapon to be Destroyed"] instance=ExtResource("1_rosip")]
+[node name="Bananarang" instance=ExtResource("1_rosip")]
 texture = ExtResource("2_nol6y")
 offset = Vector2(-4, -4.5)
 script = ExtResource("3_s1k5y")
-BASE_DAMAGE = 11.0
+BASE_DAMAGE = 6.0
 BASE_FIRE_RATE = 9.0
 BASE_RANGE = 175.0
 BASE_SPEED = 500.0

@@ -8,7 +8,7 @@
 radius = 7.0
 height = 20.0
 
-[node name="Pine Cone" groups=["Weapon to be Destroyed"] instance=ExtResource("1_urqx3")]
+[node name="Pine Cone" instance=ExtResource("1_urqx3")]
 scale = Vector2(2, 2)
 texture = ExtResource("2_c14qg")
 offset = Vector2(1.5, 0)

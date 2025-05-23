@@ -37,7 +37,7 @@ animations = [{
 "speed": 8.0
 }]
 
-[node name="Ghost Pepper" groups=["Weapon to be Destroyed"] instance=ExtResource("1_dk4f8")]
+[node name="Ghost Pepper" instance=ExtResource("1_dk4f8")]
 scale = Vector2(2, 2)
 script = ExtResource("2_by00h")
 BASE_DAMAGE = 7.0

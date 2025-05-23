@@ -97,7 +97,7 @@ _data = {
 [node name="Corn" instance=ExtResource("1_qcu64")]
 scale = Vector2(2, 2)
 script = ExtResource("2_2xfam")
-BASE_DAMAGE = 30.0
+BASE_DAMAGE = 20.0
 BASE_FIRE_RATE = 0.5
 BASE_RANGE = 250.0
 BASE_SPEED = 500.0

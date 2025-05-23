@@ -7,12 +7,12 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a6uwp"]
 size = Vector2(18, 56)
 
-[node name="Rainbow" groups=["Weapon to be Destroyed"] instance=ExtResource("1_nxddw")]
+[node name="Rainbow" instance=ExtResource("1_nxddw")]
 scale = Vector2(2, 2)
 texture = ExtResource("3_devqh")
 offset = Vector2(-5, 0)
 script = ExtResource("3_lgwxb")
-BASE_DAMAGE = 30.0
+BASE_DAMAGE = 25.0
 BASE_FIRE_RATE = 0.8
 BASE_RANGE = 450.0
 BASE_SPEED = 300.0

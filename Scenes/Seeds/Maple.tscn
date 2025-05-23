@@ -84,7 +84,7 @@ _data = {
 &"new_animation": SubResource("Animation_mwv3e")
 }
 
-[node name="Maple" groups=["Weapon to be Destroyed"] instance=ExtResource("1_ocymi")]
+[node name="Maple" instance=ExtResource("1_ocymi")]
 z_index = -2
 scale = Vector2(2, 2)
 texture = ExtResource("2_laj06")
@@ -93,7 +93,7 @@ offset = Vector2(0, -20)
 region_enabled = true
 region_rect = Rect2(0, 0, 50, 40)
 script = ExtResource("2_dmcic")
-BASE_DAMAGE = 3.0
+BASE_DAMAGE = 2.0
 BASE_FIRE_RATE = 1.5
 BASE_RANGE = 165.0
 BASE_SPEED = 500.0

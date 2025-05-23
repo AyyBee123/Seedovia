@@ -7,11 +7,11 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_tnb5p"]
 radius = 7.0
 
-[node name="Grape" groups=["Weapon to be Destroyed"] instance=ExtResource("1_s8jl7")]
+[node name="Grape" instance=ExtResource("1_s8jl7")]
 scale = Vector2(2, 2)
 texture = ExtResource("2_tgd4q")
 script = ExtResource("2_cl254")
-BASE_DAMAGE = 6.0
+BASE_DAMAGE = 3.0
 BASE_FIRE_RATE = 1.25
 BASE_RANGE = 150.0
 BASE_SPEED = 1000.0

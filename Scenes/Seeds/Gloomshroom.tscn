@@ -44,7 +44,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_u1o1o"]
 radius = 75.0
 
-[node name="Gloomshroom" groups=["Weapon to be Destroyed"] instance=ExtResource("1_3ypve")]
+[node name="Gloomshroom" instance=ExtResource("1_3ypve")]
 scale = Vector2(2, 2)
 script = ExtResource("2_lpnje")
 BASE_DAMAGE = 2.0

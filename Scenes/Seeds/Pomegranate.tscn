@@ -14,12 +14,12 @@ radius = 11.0
 resource_local_to_scene = true
 radius = 20.0
 
-[node name="Pomegranate" groups=["Weapon to be Destroyed"] instance=ExtResource("1_nv0tn")]
+[node name="Pomegranate" instance=ExtResource("1_nv0tn")]
 position = Vector2(0, -1)
 scale = Vector2(2, 2)
 texture = ExtResource("2_jboq2")
 script = ExtResource("2_udlhv")
-BASE_DAMAGE = 10.0
+BASE_DAMAGE = 3.0
 BASE_FIRE_RATE = 7.0
 BASE_RANGE = 250.0
 BASE_SPEED = 400.0

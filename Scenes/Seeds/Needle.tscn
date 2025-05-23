@@ -8,12 +8,12 @@
 radius = 5.0
 height = 18.0
 
-[node name="Needle" groups=["Weapon to be Destroyed"] instance=ExtResource("1_wd74r")]
+[node name="Needle" instance=ExtResource("1_wd74r")]
 scale = Vector2(2, 2)
 texture = ExtResource("2_73t7b")
 offset = Vector2(5, 0)
 script = ExtResource("3_vsd2a")
-BASE_DAMAGE = 5.0
+BASE_DAMAGE = 4.0
 BASE_FIRE_RATE = 3.0
 BASE_RANGE = 500.0
 BASE_SPEED = 700.0

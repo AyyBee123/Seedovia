@@ -85,7 +85,7 @@ func _collide(body):
 		var knockback_direction = Vector2.RIGHT.rotated(knockback_angle).normalized()
 		var damage = min(DAMAGE * abs(angle_travelled) / 10, DAMAGE * 10)
 		if _was_previous_weapon:
-			damage = DAMAGE * 3
+			damage = DAMAGE * 2
 		if damage < 1: # do nothing if the damage is a very small amount
 			return
 		body.get_parent()._enemy_stats.take_damage(damage)

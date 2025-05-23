@@ -13,11 +13,11 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_akjco"]
 
-[node name="D6" groups=["Projectile", "Weapon to be Destroyed"] instance=ExtResource("1_bmyh6")]
+[node name="D6" groups=["Projectile"] instance=ExtResource("1_bmyh6")]
 scale = Vector2(2, 2)
 texture = ExtResource("2_f03bl")
 script = ExtResource("3_kvhjw")
-BASE_DAMAGE = 40.0
+BASE_DAMAGE = 22.0
 BASE_FIRE_RATE = 2.0
 BASE_RANGE = 500.0
 BASE_SPEED = 325.0

@@ -37,10 +37,10 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Bell of Fire" groups=["Weapon to be Destroyed"] instance=ExtResource("1_8by1s")]
+[node name="Bell of Fire" instance=ExtResource("1_8by1s")]
 scale = Vector2(1.5, 1.5)
 script = ExtResource("2_w1yns")
-BASE_DAMAGE = 25.0
+BASE_DAMAGE = 20.0
 BASE_FIRE_RATE = 0.75
 BASE_RANGE = 300.0
 BASE_SPEED = 200.0

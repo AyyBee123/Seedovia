@@ -59,7 +59,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wwgj5"]
 size = Vector2(89, 69)
 
-[node name="Cow" groups=["Weapon to be Destroyed"] instance=ExtResource("1_8g5d6")]
+[node name="Cow" instance=ExtResource("1_8g5d6")]
 script = ExtResource("3_mbmur")
 BASE_DAMAGE = 10.0
 BASE_FIRE_RATE = 0.65
