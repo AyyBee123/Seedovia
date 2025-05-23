@@ -102,5 +102,4 @@ func add_popup(item, source = "Mouse"):
 
 func remove_popup():
 	if popup != null:
-		remove_child.call_deferred(popup)
 		popup.queue_free()

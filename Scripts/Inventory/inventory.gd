@@ -269,7 +269,7 @@ func right_click_use_item(slot: slot_class):
 				Game.audio_manager.play(Game.audio_manager.use)
 				slot.item.item.on_use() # activate the use effect of the consumable item
 				PlayerInventory.remove_item(slot) # then remove the item from the player inventory dictionary
-				slot.item.queue_free.call_deferred() # then delete the item
+				slot.item.queue_free() # then delete the item
 				slot.remove_popup() # then remove the item description popup
 			"TALISMAN":
 				for inv_slot in talisman_slots:
