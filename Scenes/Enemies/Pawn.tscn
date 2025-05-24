@@ -1,8 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://c0j4ojpi7p0ru"]
+[gd_scene load_steps=13 format=3 uid="uid://c0j4ojpi7p0ru"]
 
 [ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_uica7"]
-[ext_resource type="Resource" uid="uid://bvj8bquahbuey" path="res://Resources/Enemies/pawn.tres" id="2_a17um"]
-[ext_resource type="Script" uid="uid://uxgwpl7vsavb" path="res://Scripts/Enemies/Pawn/pawn.gd" id="2_esetj"]
+[ext_resource type="Script" uid="uid://puf34edlfmxh" path="res://Scripts/Enemies/Pawn/pawn.gd" id="2_esetj"]
 [ext_resource type="Shader" uid="uid://dsv0n8bsysyo6" path="res://Shaders/color_tint_shader.gdshader" id="3_065vu"]
 [ext_resource type="Texture2D" uid="uid://uthyfm5sjjjf" path="res://Sprites/Enemies/Chess Pawn.png" id="4_eecr3"]
 [ext_resource type="Texture2D" uid="uid://b65qy7rr414ol" path="res://Sprites/Misc/Statue Shadow.png" id="5_a17um"]
@@ -37,7 +36,6 @@ size = Vector2(32, 18)
 [node name="Pawn" groups=["Chess Piece"] instance=ExtResource("1_uica7")]
 scale = Vector2(4, 4)
 script = ExtResource("2_esetj")
-_enemy_stats = ExtResource("2_a17um")
 
 [node name="CollisionPolygon2D" parent="." index="0"]
 shape = SubResource("RectangleShape2D_065vu")

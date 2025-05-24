@@ -6,7 +6,7 @@ extends "res://Scripts/Enemies/enemy.gd"
 @onready var idle_time = $"Idle Time"
 @onready var animation_player = $AnimationPlayer
 
-const SPREAD = PI/4
+const SPREAD = PI/2
 
 var IDLE_TIME: float
 var direction: Vector2
@@ -14,12 +14,10 @@ var move_direction: Vector2
 var angles: Array
 var tween
 var next_pos
-var chess_pieces: Array
 
 func _ready():
 	super._ready()
 	$"Enemy Hitbox/CollisionPolygon2D".disabled = false
-	chess_pieces = get_tree().get_nodes_in_group("Chess Piece")
 	
 	for i in TAU / SPREAD:
 		var angle = SPREAD * i - SPREAD / 2
@@ -44,19 +42,11 @@ func _physics_process(delta):
 		angle += TAU
 	
 	if angle >= angles[1] and angle < angles[2]:
-		move_direction = Vector2(1, 1)
-	elif angle >= angles[2] and angle < angles[3]:
 		move_direction = Vector2(0, 1)
-	elif angle >= angles[3] and angle < angles[4]:
-		move_direction = Vector2(-1, 1)
-	elif angle >= angles[4] and angle < angles[5]:
+	elif angle >= angles[2] and angle < angles[3]:
 		move_direction = Vector2(-1, 0)
-	elif angle >= angles[5] and angle < angles[6]:
-		move_direction = Vector2(-1, -1)
-	elif angle >= angles[6] and angle < angles[7]:
+	elif angle >= angles[3] and angle < angles[0]:
 		move_direction = Vector2(0, -1)
-	elif angle >= angles[7] and angle < angles[0]:
-		move_direction = Vector2(1, -1)
 	else:
 		move_direction = Vector2(1, 0)
 
@@ -68,7 +58,7 @@ func play_stomp():
 	idle_time.start(IDLE_TIME)
 
 func _on_idle_time_timeout():
-	animation_player.play("King/Jump")
+	animation_player.play("Pawn/Jump")
 
 func _on_animation_player_animation_started(anim_name):
 	# edge cases to avoid walls
@@ -85,9 +75,3 @@ func _on_animation_player_animation_started(anim_name):
 	tween = get_tree().create_tween()
 	tween.tween_property(self, "position", new_pos, anim_speed).as_relative()
 	tween.tween_callback(func(): global_position = snapped(global_position, Vector2(128, 128)) - Vector2(64, 64))
-
-# kill all other chess pieces on death
-func _exit_tree():
-	for piece in chess_pieces:
-		if is_instance_valid(piece):
-			piece.queue_free()

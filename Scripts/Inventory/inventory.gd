@@ -267,9 +267,9 @@ func right_click_use_item(slot: slot_class):
 		match slot.item.item.category:
 			"CONSUMABLE":
 				Game.audio_manager.play(Game.audio_manager.use)
-				if not slot.item.item.used: # check if item was already used
+				if not slot.item.used: # check if item was already used
 					slot.item.item.on_use() # activate the use effect of the consumable item
-					slot.item.item.used = true # force the item to only be used once
+					slot.item.used = true # force the item to only be used once
 				PlayerInventory.remove_item(slot) # then remove the item from the player inventory dictionary
 				slot.item.queue_free() # then delete the item
 				slot.remove_popup() # then remove the item description popup

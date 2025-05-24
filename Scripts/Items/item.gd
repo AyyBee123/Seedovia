@@ -14,6 +14,7 @@ var player = null
 var hue = 0.0
 var rarity_color
 var nearest_item: bool
+var used: bool = false # for consumable items, to prevent multiple uses at once
 
 func _ready():
 	scale = Vector2.ONE * 2

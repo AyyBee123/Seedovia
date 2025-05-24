@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://chtqdm76u3ha5"]
 
 [ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_oh152"]
-[ext_resource type="Script" uid="uid://uxgwpl7vsavb" path="res://Scripts/Enemies/Pawn/pawn.gd" id="2_60dbf"]
+[ext_resource type="Script" uid="uid://uxgwpl7vsavb" path="res://Scripts/Enemies/King/king.gd" id="2_60dbf"]
 [ext_resource type="Resource" uid="uid://b6b4oncrqdc3m" path="res://Resources/Enemies/king.tres" id="3_oh152"]
 [ext_resource type="Shader" uid="uid://dsv0n8bsysyo6" path="res://Shaders/color_tint_shader.gdshader" id="4_ysnx7"]
 [ext_resource type="Texture2D" uid="uid://bs5ivtnkmwy1t" path="res://Sprites/Enemies/Chess King.png" id="5_60dbf"]

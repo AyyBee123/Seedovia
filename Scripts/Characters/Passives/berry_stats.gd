@@ -17,7 +17,7 @@ func set_stats():
 	player._player_stats.friction = 0.5
 	player._player_stats.luck = 0.0
 	
-	player._player_stats.stats["Fire_Rate"]["x"] = 0.75
+	player._player_stats.stats["Fire_Rate"]["x"] = 0.9
 	player._player_stats.stats["Weapon_Speed"]["x"] = 0.8
 	player._player_stats.stats["Weapon_Range"]["x"] = 1.2
 	player._player_stats.stats["Weapon_Size"]["x"] = 1.1
