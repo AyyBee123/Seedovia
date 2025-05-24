@@ -127,10 +127,10 @@ func _input(event):
 	initialize_talisman()
 	initialize_seeds()
 	
-	if Input.is_action_just_pressed("inventory"):
+	if event.is_action_pressed("inventory") and event.is_pressed():
 		# toggle inventory UI to open/close
 		visible = not visible
-	elif Input.is_action_just_pressed("close_inv") and visible:
+	elif event.is_action_pressed("close_inv") and event.is_pressed() and visible:
 		visible = false
 	
 	if holding_item:
@@ -158,20 +158,20 @@ func _input(event):
 	elif event is InputEventJoypadButton:
 		_isMandK = false
 	# setup the controller navigation for the inventory
-	if Input.is_action_just_pressed("inventory_left"):
+	if event.is_action_pressed("inventory_left") and event.is_pressed():
 		selected_slot_index = max(0, selected_slot_index - 1)
 		selected_slot.global_position = all_slots[selected_slot_index].global_position
 		joystick_item_popup(selected_slot_index)
-	if Input.is_action_just_pressed("inventory_right"):
+	if event.is_action_pressed("inventory_right") and event.is_pressed():
 		selected_slot_index = min(all_slots.size() - 1, selected_slot_index + 1)
 		selected_slot.global_position = all_slots[selected_slot_index].global_position
 		joystick_item_popup(selected_slot_index)
-	if Input.is_action_just_pressed("inventory_up"):
+	if event.is_action_pressed("inventory_up") and event.is_pressed():
 		if selected_slot_index - 4 >= 0 or selected_slot_index == 3:
 			selected_slot_index = max(0, selected_slot_index - 4)
 			selected_slot.global_position = all_slots[selected_slot_index].global_position
 			joystick_item_popup(selected_slot_index)
-	if Input.is_action_just_pressed("inventory_down"):
+	if event.is_action_pressed("inventory_down") and event.is_pressed():
 		if selected_slot_index + 4 < all_slots.size():
 			selected_slot_index = min(all_slots.size() - 1, selected_slot_index + 4)
 			selected_slot.global_position = all_slots[selected_slot_index].global_position

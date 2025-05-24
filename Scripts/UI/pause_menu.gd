@@ -11,7 +11,7 @@ func _ready():
 	Game.audio_manager.play(Game.audio_manager.popup_2)
 
 func _input(event):
-	if event.is_action_pressed("ui_cancel"):
+	if event.is_action_pressed("ui_cancel") and event.is_pressed():
 		if is_instance_valid(settings):
 			return
 		un_pause()

@@ -8,7 +8,7 @@ const DEATH_SCREEN = preload("res://Scenes/UI/Death Screen.tscn")
 var thread
 
 func _input(event):
-	if event.is_action_pressed("pause"):
+	if event.is_action_pressed("pause") and event.is_pressed():
 		if player.get_node("Inventory").visible or player.get_node("Stat Sheet").visible:
 			player.get_node("Inventory").visible = false
 			player.get_node("Stat Sheet").visible = false
