@@ -172,34 +172,22 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../Health Bar:position")
+tracks/1/path = NodePath(".:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-22, -34)]
+"values": [Vector2(0, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath(".:position")
+tracks/2/path = NodePath(".:animation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".:animation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -328,19 +316,19 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Health Bar:position")
+tracks/2/path = NodePath("Enemy Hitbox/CollisionPolygon2D:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-22, -34)]
+"update": 1,
+"values": [false]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Enemy Hitbox/CollisionPolygon2D:disabled")
+tracks/3/path = NodePath("Shadow:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -352,22 +340,10 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Shadow:visible")
+tracks/4/path = NodePath("Shadow:scale")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Shadow:scale")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -437,25 +413,13 @@ tracks/4/keys = {
 "update": 0,
 "values": [Vector2(0, 0), Vector2(0, 0), Vector2(1, 1.25)]
 }
-tracks/5/type = "value"
+tracks/5/type = "audio"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Health Bar:position")
+tracks/5/path = NodePath("Splat")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.6, 0.625, 1.25),
-"transitions": PackedFloat32Array(0.25, 1, 2.2, 1),
-"update": 0,
-"values": [Vector2(-22, -34), Vector2(-22, -184), Vector2(-22, -184), Vector2(-22, -34)]
-}
-tracks/6/type = "audio"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Splat")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
@@ -463,26 +427,26 @@ tracks/6/keys = {
 }],
 "times": PackedFloat32Array(1.13333)
 }
-tracks/6/use_blend = true
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Enemy Hitbox/CollisionPolygon2D:disabled")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
+tracks/5/use_blend = true
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Enemy Hitbox/CollisionPolygon2D:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
 "times": PackedFloat32Array(0, 1.25),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
 }
-tracks/8/type = "method"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath(".")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
 "times": PackedFloat32Array(0, 1.25),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
@@ -519,50 +483,50 @@ frame = 4
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_3yyay")
 
-[node name="state_machine" type="Node" parent="." index="6"]
+[node name="state_machine" type="Node" parent="." index="5"]
 script = ExtResource("5_k1e65")
 
-[node name="Shadow" type="Sprite2D" parent="." index="7"]
+[node name="Shadow" type="Sprite2D" parent="." index="6"]
 visible = false
 z_index = -1
 z_as_relative = false
 scale = Vector2(1, 1.25)
 texture = ExtResource("6_p6at2")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="8"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="7"]
 root_node = NodePath("../AnimatedSprite2D")
 libraries = {
 &"": SubResource("AnimationLibrary_yd317")
 }
 speed_scale = 0.9
 
-[node name="Splat" type="AudioStreamPlayer" parent="." index="9"]
+[node name="Splat" type="AudioStreamPlayer" parent="." index="8"]
 pitch_scale = 1.2
 bus = &"SFX"
 
-[node name="Splat2" type="AudioStreamPlayer" parent="." index="10"]
+[node name="Splat2" type="AudioStreamPlayer" parent="." index="9"]
 volume_db = -5.0
 pitch_scale = 1.2
 bus = &"SFX"
 
-[node name="Pop" type="AudioStreamPlayer" parent="." index="11"]
+[node name="Pop" type="AudioStreamPlayer" parent="." index="10"]
 stream = ExtResource("9_bj36o")
 pitch_scale = 0.85
 bus = &"SFX"
 
-[node name="Jumbo Spawn Animation" type="AnimationPlayer" parent="." index="12"]
+[node name="Jumbo Spawn Animation" type="AnimationPlayer" parent="." index="11"]
 libraries = {
 &"": SubResource("AnimationLibrary_tfc4t")
 }
 
-[node name="Spin Time" type="Timer" parent="." index="13"]
+[node name="Spin Time" type="Timer" parent="." index="12"]
 wait_time = 5.0
 one_shot = true
 
-[node name="Spin Fire Rate" type="Timer" parent="." index="14"]
+[node name="Spin Fire Rate" type="Timer" parent="." index="13"]
 one_shot = true
 
-[node name="Pop Rate" type="Timer" parent="." index="15"]
+[node name="Pop Rate" type="Timer" parent="." index="14"]
 wait_time = 0.05
 one_shot = true
 

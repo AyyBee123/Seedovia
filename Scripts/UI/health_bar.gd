@@ -7,8 +7,15 @@ extends TextureProgressBar
 @export var rate: float = 0.08
 
 var health: float = 0 : set = set_health
+var pos
+
+func _ready():
+	scale = Vector2.ONE / get_parent().scale * 2
+	position.x = -size.x / 2 * scale.x
+	pos = position
 
 func _process(delta):
+	position = pos + get_parent().get_node("AnimatedSprite2D").position
 	show_bar()
 
 func show_bar():
