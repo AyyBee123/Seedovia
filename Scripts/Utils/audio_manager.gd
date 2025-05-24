@@ -55,6 +55,7 @@ extends Node
 @onready var light_impact = $LightImpact
 @onready var ping = $Ping
 @onready var shock = $Shock
+@onready var chip = $Chip
 
 func _ready():
 	SignalBus.play_audio.connect(play)

@@ -10,8 +10,8 @@ var health: float = 0 : set = set_health
 var pos
 
 func _ready():
-	scale = Vector2.ONE / get_parent().scale * 2
-	position.x = -size.x / 2 * scale.x
+	scale = Vector2.ONE / get_parent().scale * 2 # keep the health bar size consistant across all enemies
+	position.x = -size.x / 2 * scale.x # center the health bar
 	pos = position
 
 func _process(delta):
