@@ -1,25 +1,12 @@
-[gd_scene load_steps=13 format=3 uid="uid://c6ptek37unxu5"]
+[gd_scene load_steps=12 format=3 uid="uid://c6ptek37unxu5"]
 
 [ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_qyqhr"]
 [ext_resource type="Shader" uid="uid://dsv0n8bsysyo6" path="res://Shaders/color_tint_shader.gdshader" id="2_75rxm"]
 [ext_resource type="Script" uid="uid://cpo1p0jdmn62p" path="res://Scripts/Enemies/Checker Piece/checker_piece.gd" id="2_q8p5u"]
-[ext_resource type="Script" uid="uid://dplobvcbjid7g" path="res://Scripts/Stats/enemy_stats.gd" id="3_084ff"]
+[ext_resource type="Resource" uid="uid://d2ecdo355ulg3" path="res://Resources/Enemies/checker_piece.tres" id="3_lt085"]
 [ext_resource type="Texture2D" uid="uid://c8xfkqwb4h0ja" path="res://Sprites/Enemies/Checker Piece.png" id="3_q8p5u"]
 [ext_resource type="AnimationLibrary" uid="uid://dhjuotn7lk434" path="res://Animations/Checker.tres" id="6_lt085"]
 [ext_resource type="Texture2D" uid="uid://xxyym547o3vn" path="res://Sprites/Misc/Shadow.png" id="7_uuiw6"]
-
-[sub_resource type="Resource" id="Resource_lt085"]
-script = ExtResource("3_084ff")
-max_health = 100.0
-speed = 64.0
-fire_rate = 0.0
-damage = 1.0
-acceleration = 1.0
-friction = 1.0
-weapon_damage = 1.0
-weapon_range = 200.0
-weapon_speed = 250.0
-metadata/_custom_type_script = "uid://dplobvcbjid7g"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_084ff"]
 size = Vector2(30, 16)
@@ -48,7 +35,7 @@ size = Vector2(30, 16)
 [node name="Checker Piece" instance=ExtResource("1_qyqhr")]
 scale = Vector2(2, 2)
 script = ExtResource("2_q8p5u")
-_enemy_stats = SubResource("Resource_lt085")
+_enemy_stats = ExtResource("3_lt085")
 
 [node name="CollisionPolygon2D" parent="." index="0"]
 shape = SubResource("RectangleShape2D_084ff")

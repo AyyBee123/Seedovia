@@ -340,6 +340,7 @@ offset_bottom = -52.0
 
 [node name="Shadow" type="Sprite2D" parent="." index="6"]
 z_index = -1
+z_as_relative = false
 scale = Vector2(1, 1.25)
 texture = ExtResource("8_mfd4q")
 
