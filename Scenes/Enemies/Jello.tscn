@@ -335,8 +335,8 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_y2118")
 
 [node name="Health Bar" parent="." index="4"]
-offset_top = -60.0
-offset_bottom = -52.0
+offset_top = -89.3333
+offset_bottom = -81.3333
 
 [node name="Shadow" type="Sprite2D" parent="." index="6"]
 z_index = -1

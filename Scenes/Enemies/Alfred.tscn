@@ -81,7 +81,7 @@ frame_progress = 0.730308
 position = Vector2(0, -3.17891e-07)
 shape = SubResource("RectangleShape2D_vckuj")
 
-[node name="Shadow" type="Sprite2D" parent="." index="7"]
+[node name="Shadow" type="Sprite2D" parent="." index="6"]
 z_index = -2
 position = Vector2(0, 22.5)
 scale = Vector2(1, 0.5)

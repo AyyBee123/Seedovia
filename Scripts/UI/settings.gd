@@ -75,6 +75,11 @@ func _on_fullscreen_button_toggled(toggled_on):
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+		DisplayServer.window_set_size(Vector2i(1280, 720))
+		var center_screen = DisplayServer.screen_get_position() + DisplayServer.screen_get_size() / 2
+		var window_size = get_window().get_size_with_decorations()
+		var new_window_position = center_screen - window_size / 2
+		get_window().set_position(new_window_position)
 
 func _on_v_sync_button_toggled(toggled_on):
 	Game.audio_manager.play(Game.audio_manager.ui_button)
@@ -217,6 +222,7 @@ func change_volume(audio, value):
 func _on_save_button_pressed():
 	Game.audio_manager.play(Game.audio_manager.ui_button)
 	# save changes
+	Global.settings.fullscreen = DisplayServer.window_get_mode()
 	Global.settings.auto_equip = %"Auto Equip Button".button_pressed
 	Global.settings.show_timer = %"Timer Button".button_pressed
 	Global.settings.show_damage_numbers = %"Damage Button".button_pressed
@@ -246,6 +252,12 @@ func _on_cancel_button_pressed():
 	Game.audio_manager.play(Game.audio_manager.popup_close_2)
 	#revert settings
 	DisplayServer.window_set_mode(Global.settings.fullscreen)
+	if Global.settings.fullscreen == DisplayServer.WINDOW_MODE_WINDOWED:
+		DisplayServer.window_set_size(Vector2i(1280, 720))
+		var center_screen = DisplayServer.screen_get_position() + DisplayServer.screen_get_size() / 2
+		var window_size = get_window().get_size_with_decorations()
+		var new_window_position = center_screen - window_size / 2
+		get_window().set_position(new_window_position)
 	DisplayServer.window_set_vsync_mode(Global.settings.vsync)
 	
 	change_volume(Game.audio_settings.MASTER_BUS_ID, temp_master)
