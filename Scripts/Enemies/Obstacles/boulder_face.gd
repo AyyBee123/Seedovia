@@ -2,7 +2,7 @@ extends "res://Scripts/Enemies/Obstacles/obstacle.gd"
 
 @export_enum("Bottom Right", "Bottom Left", "Top Right", "Top Left") var starting_direction = 0
 
-@onready var animated_sprite = $AnimatedSprite2D
+@onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var rock_2 = $Rock2
 @onready var stomp = $Stomp
 
@@ -37,14 +37,14 @@ func _physics_process(delta):
 		change_anim()
 
 func change_anim():
-	var current_frame = animated_sprite.get_frame()
-	var current_progress = animated_sprite.get_frame_progress()
+	var current_frame = animated_sprite_2d.get_frame()
+	var current_progress = animated_sprite_2d.get_frame_progress()
 	if direction.x > 0 and direction.y > 0:
-		animated_sprite.play("Bottom-Right")
+		animated_sprite_2d.play("Bottom-Right")
 	elif direction.x < 0 and direction.y > 0:
-		animated_sprite.play("Bottom-Left")
+		animated_sprite_2d.play("Bottom-Left")
 	elif direction.x > 0 and direction.y < 0:
-		animated_sprite.play("Top-Right")
+		animated_sprite_2d.play("Top-Right")
 	else:
-		animated_sprite.play("Top-Left")
-	animated_sprite.set_frame_and_progress(current_frame, current_progress)
+		animated_sprite_2d.play("Top-Left")
+	animated_sprite_2d.set_frame_and_progress(current_frame, current_progress)

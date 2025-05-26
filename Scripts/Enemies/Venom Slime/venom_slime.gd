@@ -1,6 +1,6 @@
 extends "res://Scripts/Enemies/enemy.gd"
 
-@onready var animated_sprite = $AnimatedSprite2D
+@onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var pointer = $Pointer
 @onready var marker_2d = $Pointer/Marker2D
 
@@ -42,17 +42,17 @@ func _physics_process(delta):
 		angle += TAU
 	
 	# get angle between player and self to determine the animation being played
-	var current_frame = animated_sprite.get_frame()
-	var current_progress = animated_sprite.get_frame_progress()
+	var current_frame = animated_sprite_2d.get_frame()
+	var current_progress = animated_sprite_2d.get_frame_progress()
 	if angle >= angles[1] and angle < angles[2]:
-		animated_sprite.play("Front")
+		animated_sprite_2d.play("Front")
 	elif angle >= angles[2] and angle < angles[3]:
-		animated_sprite.play("Left")
+		animated_sprite_2d.play("Left")
 	elif angle >= angles[3] and angle < angles[0]:
-		animated_sprite.play_backwards("Front")
+		animated_sprite_2d.play_backwards("Front")
 	else:
-		animated_sprite.play_backwards("Left")
-	animated_sprite.set_frame_and_progress(current_frame, current_progress)
+		animated_sprite_2d.play_backwards("Left")
+	animated_sprite_2d.set_frame_and_progress(current_frame, current_progress)
 
 	
 	move_and_slide()

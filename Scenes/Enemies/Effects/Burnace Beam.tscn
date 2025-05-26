@@ -1,0 +1,95 @@
+[gd_scene load_steps=13 format=3 uid="uid://cl11p1hccmbnq"]
+
+[ext_resource type="Script" uid="uid://dndlgwgcngh5u" path="res://Scripts/Enemies/Burnace/burnace_beam.gd" id="1_jhe3l"]
+[ext_resource type="Texture2D" uid="uid://ho6rxhq8eyw8" path="res://Sprites/Enemies/Effects/Burnace Beam.png" id="2_8w5ln"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ilgwm"]
+atlas = ExtResource("2_8w5ln")
+region = Rect2(0, 29, 16, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ug2ni"]
+atlas = ExtResource("2_8w5ln")
+region = Rect2(16, 29, 16, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lls2n"]
+atlas = ExtResource("2_8w5ln")
+region = Rect2(32, 29, 16, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g75ae"]
+atlas = ExtResource("2_8w5ln")
+region = Rect2(48, 29, 16, 29)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jqvte"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ilgwm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ug2ni")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lls2n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g75ae")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_66cej"]
+atlas = ExtResource("2_8w5ln")
+region = Rect2(0, 0, 16, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4t5x8"]
+atlas = ExtResource("2_8w5ln")
+region = Rect2(16, 0, 16, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1qh12"]
+atlas = ExtResource("2_8w5ln")
+region = Rect2(32, 0, 16, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iejjp"]
+atlas = ExtResource("2_8w5ln")
+region = Rect2(48, 0, 16, 29)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4gq1u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_66cej")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4t5x8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1qh12")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iejjp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]
+
+[node name="Burnace Beam" type="Node2D"]
+z_index = 4
+z_as_relative = false
+script = ExtResource("1_jhe3l")
+
+[node name="Base" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_jqvte")
+autoplay = "default"
+offset = Vector2(0, -11.5)
+
+[node name="Beam" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 416.569)
+scale = Vector2(2.5, 40.31)
+sprite_frames = SubResource("SpriteFrames_4gq1u")
+offset = Vector2(0, -26)
+
+[connection signal="frame_changed" from="Base" to="." method="_on_base_frame_changed"]

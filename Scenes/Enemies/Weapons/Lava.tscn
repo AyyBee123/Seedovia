@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://c204rybdnwl3c"]
+
+[ext_resource type="Texture2D" uid="uid://dbjixli8gvk11" path="res://Sprites/Enemies/Weapons/Liquid.png" id="1_owj8p"]
+[ext_resource type="Script" uid="uid://f1xqct7jv8ex" path="res://Scripts/Enemies/Weapons/liquid.gd" id="2_oaq5d"]
+[ext_resource type="PackedScene" uid="uid://bkj1rhrntjgyr" path="res://Scenes/Enemies/Weapons/Lava Pop.tscn" id="3_owj8p"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u6ry2"]
+resource_local_to_scene = true
+radius = 28.5
+
+[node name="Lava" type="Sprite2D" groups=["Enemy Weapon"]]
+self_modulate = Color(0.870588, 0.294118, 0.0745098, 1)
+z_index = -2
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_owj8p")
+script = ExtResource("2_oaq5d")
+
+[node name="Pop Rate" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+autostart = true
+
+[node name="Damage Buffer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="Lifetime" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="ResourcePreloader" type="ResourcePreloader" parent="."]
+resources = [PackedStringArray("pop"), [ExtResource("3_owj8p")]]
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4096
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_u6ry2")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
