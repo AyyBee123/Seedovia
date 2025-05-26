@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://wrwcwnd4ec2j"]
+
+[ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_yyvje"]
+[ext_resource type="Texture2D" uid="uid://dnd2mlwhs0usj" path="res://Sprites/Seeds/Platycodon.png" id="2_jbvuo"]
+[ext_resource type="Script" uid="uid://f3pmrrg8ufr8" path="res://Scripts/Seeds/platycodon.gd" id="3_4b26p"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jdu4q"]
+radius = 6.66667
+
+[node name="Platycodon" instance=ExtResource("1_yyvje")]
+scale = Vector2(2, 2)
+texture = ExtResource("2_jbvuo")
+offset = Vector2(0, -1)
+script = ExtResource("3_4b26p")
+BASE_DAMAGE = 8.0
+BASE_FIRE_RATE = 2.0
+BASE_RANGE = 300.0
+BASE_SPEED = 350.0
+BASE_SIZE = 1.0
+BASE_BLAST_RADIUS = 1.15
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource("CircleShape2D_jdu4q")
+
+[node name="Lifetime" type="Timer" parent="." index="3"]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]
