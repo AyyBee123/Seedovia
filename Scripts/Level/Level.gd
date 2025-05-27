@@ -39,6 +39,7 @@ var time_milli_seconds: int:
 
 func _ready():
 	thread = Thread.new()
+	SeedManager.seeds_on_screen.clear()
 	SignalBus.player_die.connect(spawn_death_screen)
 	%"Circle Transition".visible = true # disable it from the editor because it blocks the whole room
 	# very start of the run
