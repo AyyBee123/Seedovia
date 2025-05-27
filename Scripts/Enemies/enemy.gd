@@ -6,7 +6,7 @@ extends CharacterBody2D
 @onready var accumulated_timer_delay = $"Health Bar/Accumulated Timer Delay"
 
 const DAMAGE_COLOR = Color(0.5, 0, 0)
-const IMMUNITY_TIME = 0.0333
+const IMMUNITY_TIME = 0.016667
 
 var original_color
 var accumulated_damage = 0
@@ -37,6 +37,7 @@ func _physics_process(delta):
 	if _enemy_stats.immune: # i-frames
 		if immunity_frame_time >= IMMUNITY_TIME:
 			_enemy_stats.immune = false
+			immunity_frame_time = 0
 		else:
 			immunity_frame_time += delta
 	
