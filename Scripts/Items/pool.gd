@@ -18,6 +18,10 @@ var white_shrub_talisman_pool = ResourceLoader.load("res://Resources/Items/Pools
 
 var accumulated_weight: float # used to determine what item is chosen
 
+var seed_list = get_all_file_paths("res://Resources/Items/Seeds/")
+var talisman_list = get_all_file_paths("res://Resources/Items/Equipment/")
+var consumable_list = get_all_file_paths("res://Resources/Items/Consumables/")
+
 var talisman_weights = {
 	0: 0.40, # common
 	1: 0.35, # uncommon
@@ -75,12 +79,6 @@ var pools: Array
 
 # condition to add specific pools to the array
 var add_pool := true
-
-func _ready():
-	# get list of items
-	var seed_list = get_all_file_paths("res://Resources/Items/Seeds/")
-	var talisman_list = get_all_file_paths("res://Resources/Items/Equipment/")
-	var consumable_list = get_all_file_paths("res://Resources/Items/Consumables/")
 
 func start():
 	Global.RNG.randomize()

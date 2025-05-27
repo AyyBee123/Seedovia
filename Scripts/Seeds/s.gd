@@ -42,7 +42,7 @@ func _collide(body):
 	SfxDeconflicter.play(Game.audio_manager.hit)
 	SfxDeconflicter.play(Game.audio_manager.bubble_pop_2)
 	explode()
-	queue_free.call_deferred()
+	destroy()
 
 func update_position(delta):
 	current_velocity = direction * SPEED

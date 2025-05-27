@@ -33,7 +33,7 @@ func _collide(body):
 	if body.is_in_group("Players"):
 		body._player_stats.take_damage(1)
 		explode()
-		queue_free.call_deferred()
+		destroy()
 	SfxDeconflicter.play(Game.audio_manager.hit_2)
 	is_stuck = true
 	lifetime.start()
@@ -47,7 +47,7 @@ func update_position(delta):
 		BASE_SPEED = 0
 		if is_stuck_to_enemy:
 			if not is_instance_valid(enemy):
-				queue_free()
+				destroy()
 				return
 			global_position = enemy.global_position - distance_to_enemy
 		scale += Vector2.ONE * delta
@@ -83,4 +83,4 @@ func create_child(child):
 	SfxDeconflicter.play(Game.audio_manager.pome_mild_explosion_2)
 	get_tree().current_scene.add_child(child)
 	child.global_position = self.global_position
-	queue_free.call_deferred()
+	destroy()

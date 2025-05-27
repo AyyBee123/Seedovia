@@ -61,6 +61,3 @@ func shoot_next_weapon():
 func create_child(child):
 	get_tree().current_scene.add_child(child)
 	child.global_position = global_position
-
-func destroy():
-	queue_free.call_deferred()

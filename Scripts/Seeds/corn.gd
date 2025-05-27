@@ -6,7 +6,7 @@ extends "res://Scripts/Seeds/seed_template.gd"
 const NUMBER_OF_SEEDS = 6
 var _set_as_visible: bool
 
-#TODO: add functionality to launch the corn to an enemy in front of the player when aim assist is on (or on controller)
+# TODO: add functionality to launch the corn to an enemy in front of the player when aim assist is on (or on controller)
 func _ready():
 	super._ready()
 	visible = false # make the first frame invisible to remove the jitter visual effect
@@ -43,7 +43,7 @@ func explode():
 		for i in NUMBER_OF_SEEDS:
 			weapon_direction = Vector2.RIGHT.rotated(i * TAU/NUMBER_OF_SEEDS)
 			shoot_next_weapon()
-	queue_free.call_deferred()
+	destroy()
 
 func create_explosion(explosion):
 	get_tree().current_scene.add_child(explosion)

@@ -15,7 +15,7 @@ func _physics_process(delta):
 		global_position = object.global_position
 
 func _on_animated_sprite_2d_animation_finished():
-	queue_free()
+	destroy()
 
 func travelled_distance():
 	pass

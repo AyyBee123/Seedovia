@@ -27,6 +27,7 @@ signal has_collided(object) # signal for colliding with an enemy or wall
 @onready var mild_explosion_SFX = $MildExplosion
 
 func _ready():
+	SeedManager.add_projectile(self)
 	previous_weapon.weapon_fired.emit(self)
 	global_position = source_pos
 	spread = deg_to_rad(randf_range(-20,20))
@@ -72,7 +73,7 @@ func explode():
 	if mild_explosion_SFX.playing:
 		visible = false
 		await mild_explosion_SFX.finished
-	queue_free.call_deferred()
+	destroy()
 
 func spawn_child_bananas():
 	# split the banana mine into 3 smaller bananas with the indicated launch directions
@@ -94,3 +95,7 @@ func create_child(child):
 	child.global_position = self.global_position
 	weapon_direction = direction.rotated(spread)
 	weapon_fired.emit(child)
+
+func destroy():
+	SeedManager.seeds_on_screen.erase(self)
+	queue_free.call_deferred()

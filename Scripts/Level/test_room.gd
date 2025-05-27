@@ -20,9 +20,6 @@ func _ready():
 func _physics_process(delta):
 	player = Targets.get_player()
 	count_up(delta)
-	
-	print("Node count: ", get_tree().get_node_count())
-	print(RenderingServer.get_rendering_info(RenderingServer.RENDERING_INFO_TEXTURE_MEM_USED))
 
 func _input(event):
 	if event is InputEventKey:

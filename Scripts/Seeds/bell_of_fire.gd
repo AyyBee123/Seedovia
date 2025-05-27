@@ -31,7 +31,7 @@ func explode():
 	call_deferred("create_child", explosion)
 	if source == player: # spawn the fire pool only if shot by the player or a player seed
 		shoot_current_seed(BELL_OF_FIRE_POOL.instantiate(), direction)
-	queue_free.call_deferred()
+	destroy()
 
 func create_child(child):
 	get_tree().current_scene.add_child(child)

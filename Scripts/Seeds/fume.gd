@@ -37,7 +37,7 @@ func _on_lifetime_timeout():
 	if randf() < 0.175:
 		shoot_next_weapon()
 	explode()
-	queue_free.call_deferred()
+	destroy()
 
 func travelled_distance():
 	pass
@@ -57,7 +57,7 @@ func _collide(body):
 	if randf() < 0.3:
 		shoot_next_weapon()
 	explode()
-	queue_free.call_deferred()
+	destroy()
 
 func explode():
 	var splash = SPLASH.instantiate()

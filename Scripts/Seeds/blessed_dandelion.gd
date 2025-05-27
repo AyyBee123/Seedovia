@@ -78,7 +78,7 @@ func _collide(body):
 	elif body.is_in_group("Players"):
 		body._player_stats.take_damage(1)
 	SfxDeconflicter.play(Game.audio_manager.blessed_dandelion_hit)
-	queue_free.call_deferred()
+	destroy()
 
 func _input(event):
 	if Input.is_action_just_pressed("shoot") and event.is_pressed():

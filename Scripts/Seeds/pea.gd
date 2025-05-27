@@ -23,7 +23,7 @@ func _collide(body):
 	SfxDeconflicter.play(Game.audio_manager.hit)
 	SfxDeconflicter.play(Game.audio_manager.bubble_pop_2)
 	explode()
-	queue_free.call_deferred()
+	destroy()
 
 func update_position(delta):
 	current_velocity = direction * SPEED
@@ -48,7 +48,7 @@ func travelled_distance():
 	total_distance += distance_travelled
 	starting_position = global_position
 	if total_distance >= RANGE:
-		queue_free.call_deferred()
+		destroy()
 
 func get_nearest_enemy(enemy):
 	var enemies = get_tree().get_nodes_in_group("Enemies")

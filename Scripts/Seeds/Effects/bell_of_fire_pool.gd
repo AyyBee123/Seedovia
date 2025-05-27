@@ -59,4 +59,4 @@ func _on_area_2d_area_exited(area):
 func _on_lifetime_timeout():
 	if tween:
 		tween.kill()
-	queue_free()
+	destroy()

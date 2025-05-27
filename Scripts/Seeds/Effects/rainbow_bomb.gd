@@ -50,4 +50,4 @@ func create_child(child):
 
 func _on_timer_timeout():
 	explode(null)
-	weapon.queue_free.call_deferred()
+	weapon.destroy()

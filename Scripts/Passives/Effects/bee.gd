@@ -25,6 +25,7 @@ signal has_collided(object) # signal for colliding with an enemy or wall
 @onready var resource_preloader = $ResourcePreloader
 
 func _ready():
+	SeedManager.add_projectile(self)
 	previous_weapon.weapon_fired.emit(self)
 	global_position = source_pos
 	source_pos = previous_weapon.global_position
@@ -46,7 +47,7 @@ func _on_hitbox_area_entered(area):
 	if area.is_in_group("Enemies"):
 		area.get_parent()._enemy_stats.take_damage(DAMAGE * damage_multiplier)
 	explode()
-	queue_free.call_deferred()
+	destroy()
 
 func explode():
 	var explosion = resource_preloader.get_resource("Splash").instantiate()
@@ -54,7 +55,7 @@ func explode():
 	explosion.source = self
 	explosion.modulate = Color.YELLOW
 	call_deferred("create_child", explosion)
-	queue_free.call_deferred()
+	destroy()
 
 func create_child(child):
 	get_tree().current_scene.add_child(child)
@@ -62,7 +63,7 @@ func create_child(child):
 
 func _on_lifetime_timeout():
 	explode()
-	queue_free.call_deferred()
+	destroy()
 
 func get_nearest_enemy(object):
 	var enemies = Targets.get_enemy_hitboxes()
@@ -85,3 +86,7 @@ func get_nearest_enemy(object):
 					nearest_distance = enemies[i].global_position.distance_squared_to(source_pos)
 					nearest_enemy = enemies[i]
 	return nearest_enemy
+
+func destroy():
+	SeedManager.seeds_on_screen.erase(self)
+	queue_free.call_deferred()

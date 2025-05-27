@@ -13,7 +13,7 @@ func shoot_seed():
 		return
 	var seed_instance = ResourceLoader.load(seed).scene.instantiate()
 	set_weapon_properties(seed_instance, desired_direction, ignore_first_collision, hit_enemy)
-	queue_free.call_deferred()
+	destroy()
 
 func set_weapon_properties(weapon, _desired_direction, _ignore_first_collision = false, _enemy = null):
 	weapon.initial_weapon = false

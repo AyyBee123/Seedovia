@@ -63,7 +63,7 @@ func travelled_distance():
 	if total_distance >= RANGE:
 		SfxDeconflicter.play(Game.audio_manager.spore_pop)
 		explode()
-		queue_free.call_deferred()
+		destroy()
 
 func _on_hitbox_area_entered(area):
 	pass
@@ -85,7 +85,7 @@ func _collide(body):
 	SfxDeconflicter.play(Game.audio_manager.hit)
 	SfxDeconflicter.play(Game.audio_manager.spore_pop)
 	explode()
-	queue_free.call_deferred()
+	destroy()
 
 func shoot_next_weapon():
 	if get_next_weapon() == null or enemy == null: # enemy == null, just in case

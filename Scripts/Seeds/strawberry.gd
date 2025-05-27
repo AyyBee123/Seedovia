@@ -53,7 +53,7 @@ func create_child(child):
 	visible = false
 	get_tree().current_scene.add_child(child)
 	child.global_position = self.global_position
-	queue_free.call_deferred()
+	destroy()
 
 func update_position(delta):
 	var current_velocity: Vector2

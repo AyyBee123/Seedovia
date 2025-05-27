@@ -70,7 +70,7 @@ func _collide(body):
 	SfxDeconflicter.play(Game.audio_manager.bubble_pop_2)
 	shoot_next_weapon()
 	explode()
-	queue_free.call_deferred()
+	destroy()
 
 func shoot_next_weapon():
 	for i in dice_value:
@@ -83,7 +83,7 @@ func travelled_distance():
 	starting_position = global_position
 	if total_distance >= RANGE:
 		shoot_next_weapon()
-		queue_free.call_deferred()
+		destroy()
 
 func get_dice_damage_multiplier() -> float:
 	var dice_damage: float

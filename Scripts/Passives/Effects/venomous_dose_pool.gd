@@ -5,6 +5,9 @@ var enemies_in_area: Array
 var tick_timers: Array
 var tick_rate := 0.125
 
+func _ready():
+	SeedManager.add_projectile(self)
+
 func _physics_process(delta):
 	# damage multiple enemies at a time
 	for i in enemies_in_area.size():
@@ -32,4 +35,8 @@ func _on_area_2d_area_exited(area):
 			tick_timers.remove_at(index)
 
 func _on_lifetime_timeout():
-	queue_free()
+	destroy()
+
+func destroy():
+	SeedManager.seeds_on_screen.erase(self)
+	queue_free.call_deferred()

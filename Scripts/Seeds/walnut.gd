@@ -34,7 +34,7 @@ func _collide(body):
 		body._player_stats.take_damage(1)
 	SfxDeconflicter.play(Game.audio_manager.walnut_hit)
 	explode()
-	queue_free.call_deferred()
+	destroy()
 
 func shoot_next_weapon():
 	super.shoot_next_weapon()

@@ -99,6 +99,7 @@ var transferred_fire_rate_multiplier: float = 1 # fire rate multiplier of the we
 var seed_pool: Array = [] # pool to add the next seed to
 
 func _ready():
+	SeedManager.add_projectile(self)
 	_player_stats = player._player_stats
 	visible = false # avoid "jitter" on the very first frame
 	$Hitbox.set_collision_mask(collisions)
@@ -130,7 +131,7 @@ func travelled_distance():
 	total_distance += distance_travelled
 	starting_position = global_position
 	if total_distance >= RANGE:
-		queue_free.call_deferred()
+		destroy()
 
 func _on_hitbox_area_entered(area):
 	_collide.call_deferred(area)
@@ -147,7 +148,7 @@ func _collide(body):
 		body.get_parent()._enemy_stats.take_damage(DAMAGE)
 	elif body.is_in_group("Players"):
 		body._player_stats.take_damage(1)
-	queue_free.call_deferred()
+	destroy()
 
 func shoot_next_weapon():
 	if get_next_weapon() == null:
@@ -190,6 +191,10 @@ func update_position(delta):
 	current_velocity = direction * SPEED
 	position += current_velocity * delta
 	look_at(global_position + current_velocity)
+
+func destroy():
+	SeedManager.seeds_on_screen.erase(self)
+	queue_free.call_deferred()
 
 func get_next_weapon():
 	if next_weapon:

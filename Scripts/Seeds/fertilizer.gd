@@ -58,7 +58,7 @@ func _on_lifetime_timeout():
 	var weapon = null if PlayerSeeds.seeds.size() <= 1 + slot_index or slot_index >= 2 \
 			else PlayerSeeds.seeds[slot_index + 1]
 	shoot_next_weapon()
-	queue_free.call_deferred()
+	destroy()
 
 func shoot_next_weapon():
 	weapon_direction = Vector2.RIGHT.rotated(randf_range(0, TAU))

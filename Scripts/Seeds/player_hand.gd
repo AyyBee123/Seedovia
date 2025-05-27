@@ -18,5 +18,5 @@ func _collide(body):
 		body._player_stats.take_damage(1)
 	else:
 		SfxDeconflicter.play(quiet_thud_SFX)
-		queue_free()
+		destroy()
 	SfxDeconflicter.play(quiet_thud_SFX)

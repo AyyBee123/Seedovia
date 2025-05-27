@@ -70,4 +70,4 @@ func _on_lifetime_timeout():
 func destroy():
 	if tween:
 		tween.kill()
-	queue_free()
+	queue_free.call_deferred()

@@ -19,7 +19,7 @@ func travelled_distance():
 	distance_threshold += distance_travelled
 	seed_distance_threshold += distance_travelled
 	if total_distance >= RANGE:
-		queue_free.call_deferred()
+		destroy()
 	if distance_threshold >= SUNDER_DIST:
 		explode()
 		distance_threshold = 0
@@ -33,7 +33,7 @@ func _collide(body):
 		ignore_first_collision = false
 		return
 	has_collided.emit(body) # for on-hit effects (ex: burning an enemy on hit)
-	queue_free.call_deferred()
+	destroy()
 
 func explode():
 	var explosion = resource_preloader.get_resource("Non-Weapon Effect Explosion").instantiate()

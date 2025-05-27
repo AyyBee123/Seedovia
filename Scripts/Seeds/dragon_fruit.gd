@@ -33,7 +33,7 @@ func _physics_process(delta):
 		explosion_count += 1
 	
 	if explosion_count >= NUMBER_OF_EXPLOSIONS:
-		queue_free.call_deferred()
+		destroy()
 
 func explode():
 	var explosion = NON_WEAPON_EFFECT_EXPLOSION.instantiate()

@@ -35,7 +35,7 @@ func _collide(body):
 	SfxDeconflicter.play(Game.audio_manager.hit)
 	SfxDeconflicter.play(Game.audio_manager.crunch)
 	explode()
-	queue_free.call_deferred()
+	destroy()
 
 func travelled_distance():
 	distance_travelled = starting_position.distance_to(global_position)
@@ -80,7 +80,7 @@ func range_reached_done():
 	shoot_current_seed(avocado_right, direction.rotated(PI/2), global_position + 3 * direction.rotated(PI/2).normalized())
 	
 	explode()
-	queue_free.call_deferred()
+	destroy()
 
 func shoot_current_seed(instantiated_weapon, _desired_direction = desired_direction, pos = global_position):
 	instantiated_weapon.scale = scale

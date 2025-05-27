@@ -22,7 +22,7 @@ func _collide(body):
 	elif body.is_in_group("Players"):
 		body._player_stats.take_damage(1)
 	else: # hitting a wall will destroy the carrot
-		queue_free()
+		destroy()
 
 func shoot_next_weapon():
 	if get_next_weapon() == null:

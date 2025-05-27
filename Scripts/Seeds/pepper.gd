@@ -41,7 +41,7 @@ func explode():
 	SfxDeconflicter.play(Game.audio_manager.pepper_mild_explosion)
 	call_deferred("create_explosion", explosion)
 	spawn_child_peppers()
-	queue_free.call_deferred()
+	destroy()
 
 func travelled_distance():
 	pass

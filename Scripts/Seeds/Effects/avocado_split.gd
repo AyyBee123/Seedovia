@@ -19,7 +19,7 @@ func _ready():
 		SfxDeconflicter.play(Game.audio_manager.crunch)
 		SfxDeconflicter.play(Game.audio_manager.hit_2)
 		explode()
-		queue_free.call_deferred()
+		destroy()
 	)
 
 func _collide(body):
@@ -36,7 +36,7 @@ func _collide(body):
 	SfxDeconflicter.play(Game.audio_manager.hit)
 	SfxDeconflicter.play(Game.audio_manager.crunch)
 	explode()
-	queue_free.call_deferred()
+	destroy()
 
 func explode():
 	var splash = SPLASH.instantiate()

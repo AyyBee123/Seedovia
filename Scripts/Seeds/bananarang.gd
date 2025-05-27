@@ -57,7 +57,7 @@ func _collide(body):
 		body._player_stats.take_damage(1)
 	if has_stopped:
 		SfxDeconflicter.play(Game.audio_manager.hit)
-		queue_free.call_deferred()
+		destroy()
 	else:
 		has_stopped = true
 	weapon_direction = -direction
@@ -92,13 +92,13 @@ func _on_detect_previous_seed_body_entered(body): # detects the player
 	if not has_stopped:
 		return
 	if body == source:
-		queue_free()
+		destroy()
 
 func _on_detect_previous_seed_area_entered(area): # detects the previous weapon
 	if not has_stopped:
 		return
 	if area.get_parent() == previous_weapon:
-		queue_free()
+		destroy()
 
 func _on_lifetime_timeout():
-	queue_free.call_deferred()
+	destroy()

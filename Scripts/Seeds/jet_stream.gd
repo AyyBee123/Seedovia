@@ -14,7 +14,7 @@ func travelled_distance():
 	distance_to_shoot += distance_travelled
 	starting_position = global_position
 	if total_distance >= RANGE:
-		queue_free.call_deferred()
+		destroy()
 	if get_next_weapon() != null:
 		if distance_to_shoot >= 500.0 / get_next_weapon().instantiate().FIRE_RATE:
 			shoot_next_weapon()
@@ -30,7 +30,7 @@ func _collide(body):
 	elif body.is_in_group("Players"):
 		body._player_stats.take_damage(1)
 	SfxDeconflicter.play(Game.audio_manager.jetstream_hit)
-	queue_free()
+	destroy()
 
 func shoot_next_weapon():
 	if get_next_weapon() == null:

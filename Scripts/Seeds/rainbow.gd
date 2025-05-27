@@ -45,7 +45,7 @@ func travelled_distance():
 	if total_distance >= RANGE:
 		if tween:
 			tween.kill()
-		queue_free.call_deferred()
+		destroy()
 
 func _collide(body):
 	if ignore_first_collision:
@@ -74,4 +74,4 @@ func set_weapon_properties(weapon, _desired_direction, _ignore_first_collision =
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	if tween:
 		tween.kill()
-	queue_free.call_deferred()
+	destroy()

@@ -45,7 +45,7 @@ func travelled_distance():
 	total_distance += distance_travelled
 	starting_position = global_position
 	if total_distance >= RANGE:
-		queue_free.call_deferred()
+		destroy()
 
 func _on_hitbox_area_entered(area):
 	if ignore_first_collision:

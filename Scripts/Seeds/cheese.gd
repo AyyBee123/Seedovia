@@ -36,8 +36,9 @@ func _ready():
 	set_variable_sizes()
 	starting_angle = rotation_degrees
 	angle_travelled = 0.0
-	direction_difference = desired_direction.angle() \
-			- source.global_position.direction_to(source.weapon_direction_marker.global_position).angle()
+	if "weapon_direction_marker" in source:
+		direction_difference = desired_direction.angle() \
+				- source.global_position.direction_to(source.weapon_direction_marker.global_position).angle()
 	if not _was_previous_weapon: # if fired by the player
 		rotation = global_position.angle_to_point(source.weapon_direction_marker.global_position)
 	else:
@@ -51,7 +52,7 @@ func _physics_process(delta):
 		player.fire_rate.start(0.5) # keep starting the timer to prevent another cheese from spawning
 		rect_width = min(RANGE * t, RANGE)
 		if not mouse_left_down:
-			queue_free()
+			destroy()
 	else:
 		rect_width = RANGE
 		animate()
@@ -132,9 +133,9 @@ func update_position(delta):
 func animate():
 	var tween = get_tree().create_tween()
 	tween.tween_property(self,"rotation_degrees", rad_to_deg(desired_direction.angle()) + starting_rotation, 0.075)
-	tween.finished.connect(destroy)
+	tween.finished.connect(decay)
 
-func destroy():
+func decay():
 	if animation_end_lifetime.is_stopped():
 		$Hitbox/CollisionShape2D.set_deferred("disabled", true)
 		animation_end_lifetime.start()
@@ -149,7 +150,7 @@ func _input(event):
 			mouse_left_down = false
 
 func _on_animation_end_lifetime_timeout():
-	queue_free.call_deferred()
+	destroy()
 
 func get_next_weapon_pos():
 	return marker_2d.global_position

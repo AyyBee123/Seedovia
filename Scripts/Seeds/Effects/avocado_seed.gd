@@ -13,7 +13,7 @@ func _collide(body):
 		body._player_stats.take_damage(1)
 	explode()
 	SfxDeconflicter.play(Game.audio_manager.walnut_hit)
-	queue_free.call_deferred()
+	destroy()
 
 func explode():
 	var splash = SPLASH.instantiate()

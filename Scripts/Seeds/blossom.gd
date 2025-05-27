@@ -19,7 +19,7 @@ func _ready():
 		await get_tree().physics_frame
 		blossom.global_position = global_position
 		blossom.visible = true
-		queue_free()
+		destroy()
 
 func _physics_process(delta):
 	super._physics_process(delta)
@@ -63,7 +63,7 @@ func get_nearest_enemy():
 	return nearest_enemy
 
 func _on_lifetime_timeout():
-	queue_free.call_deferred()
+	destroy()
 
 func play_animation():
 	animated_sprite_2d.play("Shoot")

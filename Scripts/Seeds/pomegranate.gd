@@ -74,16 +74,16 @@ func _collide(body):
 	SfxDeconflicter.play(Game.audio_manager.hit)
 	SfxDeconflicter.play(Game.audio_manager.bubble_pop_2)
 	explode()
-	queue_free.call_deferred()
+	destroy()
 
 func _on_pomegranate_hit_area_area_entered(area):
 	if area.get_parent().stacks > stacks: # if the pomegranate is smaller than the one it collided with
 		area.get_parent().num_of_stacks = stacks
-		queue_free()
+		destroy()
 	elif area.get_parent().stacks == stacks: # if they are the same size
 		if area.get_parent().spawn_id < spawn_id: # if the pomegranate is newer than the one it collided with
 			area.get_parent().num_of_stacks = stacks
-			queue_free()
+			destroy()
 		else: # if the pomegranate is older
 			combine()
 	else: # if the pomegranate is bigger
@@ -131,7 +131,7 @@ func explode():
 		explosion.get_node("Area2D").set_collision_layer(16)
 	explosion.modulate = Color("bf214d")
 	call_deferred("create_child", explosion)
-	queue_free.call_deferred()
+	destroy()
 
 func create_child(child):
 	get_tree().current_scene.add_child(child)

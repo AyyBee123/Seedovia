@@ -56,7 +56,7 @@ func _collide(body):
 	SfxDeconflicter.play(Game.audio_manager.hit)
 	SfxDeconflicter.play(Game.audio_manager.bubble_pop_2)
 	explode()
-	queue_free.call_deferred()
+	destroy()
 
 func explode():
 	var splash = SPLASH.instantiate()
@@ -76,5 +76,5 @@ func range_reached_done():
 		shoot_next_weapon()
 		SfxDeconflicter.play(Game.audio_manager.bubble_pop_2)
 		explode()
-		queue_free.call_deferred()
+		destroy()
 	)

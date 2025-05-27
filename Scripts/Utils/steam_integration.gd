@@ -11,5 +11,5 @@ func _init():
 func _ready():
 	Steam.steamInit()
 	
-	id = Steam.getSteamID()
-	steam_name = Steam.getFriendPersonaName(id)
+	#id = Steam.getSteamID()
+	#steam_name = Steam.getFriendPersonaName(id)

@@ -141,7 +141,7 @@ func shrink(delta):
 	scale -= Vector2(delta, delta)
 	if scale <= Vector2.ZERO:
 		noise_SFX.stop()
-		queue_free.call_deferred()
+		destroy()
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	is_shrinking = true

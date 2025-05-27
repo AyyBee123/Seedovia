@@ -26,6 +26,9 @@ signal has_collided(object)
 @onready var resource_preloader := $ResourcePreloader
 @onready var mild_explosion_SFX = $MildExplosion
 
+func _ready():
+	SeedManager.add_projectile(self)
+
 func _physics_process(delta):
 	update_position(delta)
 
@@ -65,10 +68,14 @@ func explode():
 	if mild_explosion_SFX.playing:
 		visible = false
 		await mild_explosion_SFX.finished
-	queue_free.call_deferred()
+	destroy()
 	
 func create_child(child):
 	get_tree().current_scene.add_child(child)
 	child.global_position = self.global_position
 	weapon_direction = direction
 	weapon_fired.emit(child)
+
+func destroy():
+	SeedManager.seeds_on_screen.erase(self)
+	queue_free.call_deferred()

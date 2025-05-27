@@ -1,6 +1,7 @@
 extends "res://Scripts/Seeds/seed_template.gd"
 
 @onready var animated_sprite_2d = $AnimatedSprite2D
+@onready var lifetime = $Lifetime
 
 const POT_FIRE_RATE_MULTIPLIER = 0.25
 const POT_DAMAGE_MULTIPLIER = 0.8
@@ -24,7 +25,7 @@ func _ready():
 		await get_tree().physics_frame
 		pot.global_position = global_position
 		pot.visible = true
-		queue_free()
+		destroy()
 
 func _physics_process(delta):
 	has_next_seed = get_next_weapon() != null
@@ -123,4 +124,4 @@ func travelled_distance():
 	pass
 
 func _on_lifetime_timeout():
-	queue_free()
+	destroy()

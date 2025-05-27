@@ -101,8 +101,5 @@ func bounce(body):
 	else:
 		destroy()
 
-func destroy():
-	queue_free.call_deferred()
-
 func _on_bounce_homing_delay_timeout():
 	is_homing = true

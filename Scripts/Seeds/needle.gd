@@ -34,7 +34,7 @@ func _collide(body):
 	if body.is_in_group("Players"):
 		body._player_stats.take_damage(1)
 		explode()
-		queue_free.call_deferred()
+		destroy()
 	is_stuck = true
 	lifetime.start()
 
@@ -45,7 +45,7 @@ func update_position(delta):
 		BASE_SPEED = 0
 		if is_stuck_to_enemy:
 			if not is_instance_valid(enemy):
-				queue_free()
+				destroy()
 				return
 			global_position = enemy.global_position - distance_to_enemy
 			if tick_rate.is_stopped():
@@ -55,6 +55,8 @@ func update_position(delta):
 				shoot_next_weapon()
 				if get_next_weapon():
 					tick_rate.start(1.0 / get_next_weapon().instantiate().FIRE_RATE)
+				else:
+					tick_rate.start(1.0 / FIRE_RATE)
 
 func shoot_next_weapon():
 	weapon_direction = -direction.rotated(randf_range(-SPREAD, SPREAD))
@@ -79,4 +81,4 @@ func create_child(child):
 	SfxDeconflicter.play(Game.audio_manager.hit)
 	get_tree().current_scene.add_child(child)
 	child.global_position = self.global_position
-	queue_free.call_deferred()
+	destroy()

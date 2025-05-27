@@ -35,7 +35,7 @@ func travelled_distance():
 			spawn_gold()
 		SfxDeconflicter.play(Game.audio_manager.rock)
 		explode()
-		queue_free.call_deferred()
+		destroy()
 
 func _collide(body):
 	if ignore_first_collision:
@@ -54,7 +54,7 @@ func _collide(body):
 	for i in NUMBER_OF_GOLD / 2:
 		spawn_gold()
 	explode()
-	queue_free.call_deferred()
+	destroy()
 
 func explode():
 	var splash = SPLASH.instantiate()

@@ -97,7 +97,7 @@ func die():
 	_is_dying = true
 	scale -= Vector2.ONE * 0.05
 	if scale <= Vector2.ZERO:
-		queue_free.call_deferred()
+		destroy()
 
 func _on_lifetime_timeout():
 	die()

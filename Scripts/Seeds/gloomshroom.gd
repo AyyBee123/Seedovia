@@ -54,7 +54,7 @@ func shoot_next_weapon():
 	fire_rate.start()
 
 func _on_lifetime_timeout():
-	queue_free.call_deferred()
+	destroy()
 
 func _on_depression_area_area_exited(area):
 	if area.is_in_group("Enemies"):
