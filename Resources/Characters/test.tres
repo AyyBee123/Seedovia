@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="character_class" load_steps=8 format=3 uid="uid://bi3hone1ajb7y"]
+[gd_resource type="Resource" script_class="character_class" load_steps=9 format=3 uid="uid://bi3hone1ajb7y"]
 
 [ext_resource type="Texture2D" uid="uid://b0l2iyl00i8xv" path="res://Sprites/Character/Test/Robot1.png" id="1_6x548"]
 [ext_resource type="Script" uid="uid://duh3qswkvpbi5" path="res://Scripts/Characters/character_class.gd" id="2_c1nbs"]
@@ -6,7 +6,8 @@
 [ext_resource type="Script" uid="uid://yr5gdtdbvmoc" path="res://Scripts/Passives/Classes/passive_class.gd" id="4_0b6p8"]
 [ext_resource type="Script" uid="uid://c6ykhgvfkht5x" path="res://Scripts/Stats/seed_stats.gd" id="4_gpsnb"]
 [ext_resource type="Script" uid="uid://n64xabrw5ic3" path="res://Scripts/Items/equipment_item_class.gd" id="5_2xsda"]
-[ext_resource type="Resource" uid="uid://cpavb28jlc2wj" path="res://Resources/Items/Seeds/strawberry.tres" id="6_brxwi"]
+[ext_resource type="Resource" uid="uid://hd2lygavsmq5" path="res://Resources/Items/Seeds/cheese.tres" id="6_ukfth"]
+[ext_resource type="Resource" uid="uid://cpavb28jlc2wj" path="res://Resources/Items/Seeds/strawberry.tres" id="7_5c54g"]
 
 [resource]
 script = ExtResource("2_c1nbs")
@@ -14,7 +15,7 @@ character_name = "Test"
 character_sprite = ExtResource("1_6x548")
 starting_inventory = Array[ExtResource("3_bxj0g")]([])
 starting_talismans = Array[ExtResource("5_2xsda")]([])
-starting_seeds = Array[ExtResource("4_gpsnb")]([ExtResource("6_brxwi")])
+starting_seeds = Array[ExtResource("4_gpsnb")]([ExtResource("6_ukfth"), ExtResource("7_5c54g")])
 starting_passives = Array[ExtResource("4_0b6p8")]([])
 starting_coins = 0
 unlocked = false

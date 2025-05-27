@@ -53,7 +53,8 @@ func update_position(delta):
 				enemy._enemy_stats.take_damage(DAMAGE)
 				SfxDeconflicter.play(Game.audio_manager.hit_2)
 				shoot_next_weapon()
-				tick_rate.start(1.0 / FIRE_RATE)
+				if get_next_weapon():
+					tick_rate.start(1.0 / get_next_weapon().instantiate().FIRE_RATE)
 
 func shoot_next_weapon():
 	weapon_direction = -direction.rotated(randf_range(-SPREAD, SPREAD))

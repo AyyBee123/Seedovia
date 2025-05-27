@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://c3jrhipasuh6l"]
+
+[ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_0u7bj"]
+[ext_resource type="Script" uid="uid://dplobvcbjid7g" path="res://Scripts/Stats/enemy_stats.gd" id="2_a8epy"]
+[ext_resource type="Shader" uid="uid://dsv0n8bsysyo6" path="res://Shaders/color_tint_shader.gdshader" id="3_7j77n"]
+
+[sub_resource type="Resource" id="Resource_v1j6u"]
+script = ExtResource("2_a8epy")
+max_health = 300.0
+speed = 150.0
+fire_rate = 5.0
+damage = 1.0
+acceleration = 1.0
+friction = 1.0
+weapon_damage = 1.0
+weapon_range = 300.0
+weapon_speed = 500.0
+metadata/_custom_type_script = "uid://dplobvcbjid7g"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_23jqd"]
+resource_local_to_scene = true
+shader = ExtResource("3_7j77n")
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/tint_factor = 0.0
+shader_parameter/fade = 1.0
+
+[node name="Chicken" instance=ExtResource("1_0u7bj")]
+_enemy_stats = SubResource("Resource_v1j6u")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+material = SubResource("ShaderMaterial_23jqd")

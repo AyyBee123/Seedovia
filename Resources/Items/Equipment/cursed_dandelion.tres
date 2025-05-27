@@ -11,5 +11,5 @@ properties = Array[String]([])
 special_properties = Array[PackedScene]([ExtResource("2_k35lc")])
 item_name = "Cursed Dandelion"
 texture = ExtResource("3_n13j7")
-description = "The weapon in your second seed slot gains 2 dark flame orbitals."
+description = "The seed in your second seed slot gains 2 dark flame orbitals."
 unlocked = true

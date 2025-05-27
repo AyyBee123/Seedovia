@@ -208,16 +208,17 @@ func transfer_damage(amount):
 	serpent._enemy_stats.take_damage_no_red(amount)
 
 func spawn_damage_number(damage: float):
-	var value = str(round(damage))
-	var pos = global_position
-	var height = 20
-	var spread = 75
-	var damage_text = damage_number.instantiate()
-	get_tree().current_scene.add_child(damage_text)
-	damage_text.global_position = global_position
-	damage_text.set_and_animate_damage(damage, pos, height, spread, damage_color, damage_size)
-	damage_color = Color.WHITE
-	damage_size = 1
+	pass
+	#var value = str(round(damage))
+	#var pos = global_position
+	#var height = 20
+	#var spread = 75
+	#var damage_text = damage_number.instantiate()
+	#get_tree().current_scene.add_child(damage_text)
+	#damage_text.global_position = global_position
+	#damage_text.set_and_animate_damage(damage, pos, height, spread, damage_color, damage_size)
+	#damage_color = Color.WHITE
+	#damage_size = 1
 
 func update_health(new_health):
 	_enemy_stats.set_health(_enemy_stats.max_health)

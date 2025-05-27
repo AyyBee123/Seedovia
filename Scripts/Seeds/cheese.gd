@@ -21,6 +21,7 @@ var total_angle: float = 0.0
 var _initial_shot := true # this is to prevent a seed from firing immediately when spawning the cheese
 var starting_rotation: float = 75.0
 var direction_difference: float # the difference between the initial direction and desired direction (as an angle)
+var initial_angle_threshold
 
 func _ready():
 	if initial_weapon: # if fired by a player
@@ -30,6 +31,7 @@ func _ready():
 		_initial_shot = false
 		rotation_degrees = rad_to_deg(desired_direction.angle()) - starting_rotation
 		angle_threshold = angle_threshold / (FIRE_RATE * 1.7)
+	initial_angle_threshold = angle_threshold
 	super._ready()
 	set_variable_sizes()
 	starting_angle = rotation_degrees
@@ -64,6 +66,8 @@ func rotation_travelled():
 		if not _initial_shot:
 			weapon_direction = Vector2.RIGHT.rotated(rotation)
 			shoot_next_weapon()
+			if get_next_weapon():
+				angle_threshold = initial_angle_threshold / (get_next_weapon().instantiate().FIRE_RATE) * 4
 		else:
 			_initial_shot = false
 
