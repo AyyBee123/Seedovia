@@ -1,21 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://c3jrhipasuh6l"]
+[gd_scene load_steps=17 format=3 uid="uid://c3jrhipasuh6l"]
 
 [ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_0u7bj"]
-[ext_resource type="Script" uid="uid://dplobvcbjid7g" path="res://Scripts/Stats/enemy_stats.gd" id="2_a8epy"]
+[ext_resource type="Script" uid="uid://ocxn77ok256m" path="res://Scripts/Enemies/Chicken/chicken.gd" id="2_7j77n"]
 [ext_resource type="Shader" uid="uid://dsv0n8bsysyo6" path="res://Shaders/color_tint_shader.gdshader" id="3_7j77n"]
+[ext_resource type="Resource" uid="uid://dedoaantcbfej" path="res://Resources/Enemies/chicken.tres" id="3_v1j6u"]
+[ext_resource type="Texture2D" uid="uid://vy0mh2wsing6" path="res://Sprites/Enemies/Chicken.png" id="4_a8epy"]
+[ext_resource type="Texture2D" uid="uid://xxyym547o3vn" path="res://Sprites/Misc/Shadow.png" id="5_7j77n"]
+[ext_resource type="AudioStream" uid="uid://c8faw0bc0ibio" path="res://Audio/SFX/Chicken.mp3" id="7_23jqd"]
+[ext_resource type="AudioStream" uid="uid://dxvs3t6m7coyv" path="res://Audio/SFX/Hit2.mp3" id="8_m6tfa"]
+[ext_resource type="AudioStream" uid="uid://bfcswe4vt2exs" path="res://Audio/SFX/Bubble Pop 2.mp3" id="9_50seu"]
 
-[sub_resource type="Resource" id="Resource_v1j6u"]
-script = ExtResource("2_a8epy")
-max_health = 300.0
-speed = 150.0
-fire_rate = 5.0
-damage = 1.0
-acceleration = 1.0
-friction = 1.0
-weapon_damage = 1.0
-weapon_range = 300.0
-weapon_speed = 500.0
-metadata/_custom_type_script = "uid://dplobvcbjid7g"
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7j77n"]
+size = Vector2(21, 15)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_23jqd"]
 resource_local_to_scene = true
@@ -24,8 +20,83 @@ shader_parameter/color = Color(1, 0, 0, 1)
 shader_parameter/tint_factor = 0.0
 shader_parameter/fade = 1.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_v1j6u"]
+atlas = ExtResource("4_a8epy")
+region = Rect2(0, 0, 34, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_23jqd"]
+atlas = ExtResource("4_a8epy")
+region = Rect2(34, 0, 34, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q1njw"]
+atlas = ExtResource("4_a8epy")
+region = Rect2(68, 0, 34, 36)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m6tfa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v1j6u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_23jqd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q1njw")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 14.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_50seu"]
+size = Vector2(21, 15)
+
 [node name="Chicken" instance=ExtResource("1_0u7bj")]
-_enemy_stats = SubResource("Resource_v1j6u")
+scale = Vector2(2, 2)
+script = ExtResource("2_7j77n")
+_enemy_stats = ExtResource("3_v1j6u")
+
+[node name="CollisionPolygon2D" parent="." index="0"]
+position = Vector2(0, -2.38419e-07)
+shape = SubResource("RectangleShape2D_7j77n")
 
 [node name="AnimatedSprite2D" parent="." index="1"]
 material = SubResource("ShaderMaterial_23jqd")
+sprite_frames = SubResource("SpriteFrames_m6tfa")
+animation = &"Run"
+autoplay = "Run"
+frame_progress = 0.18082
+offset = Vector2(-2.5, 0)
+
+[node name="CollisionPolygon2D" parent="Enemy Hitbox" index="0"]
+shape = SubResource("RectangleShape2D_50seu")
+
+[node name="Shadow" type="Sprite2D" parent="." index="5"]
+z_index = -1
+z_as_relative = false
+position = Vector2(-5.96046e-07, 16)
+scale = Vector2(0.75, 0.666667)
+texture = ExtResource("5_7j77n")
+
+[node name="Chicken" type="AudioStreamPlayer" parent="." index="6"]
+stream = ExtResource("7_23jqd")
+volume_db = -5.0
+pitch_scale = 1.05
+
+[node name="Hit2" type="AudioStreamPlayer" parent="." index="7"]
+stream = ExtResource("8_m6tfa")
+volume_db = -8.0
+pitch_scale = 0.75
+
+[node name="BubblePop2" type="AudioStreamPlayer" parent="." index="8"]
+stream = ExtResource("9_50seu")
+volume_db = -11.0
+pitch_scale = 0.5
+
+[node name="Sound Timer" type="Timer" parent="." index="9"]
+one_shot = true
+
+[connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_looped"]
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
+[connection signal="timeout" from="Sound Timer" to="." method="_on_sound_timer_timeout"]

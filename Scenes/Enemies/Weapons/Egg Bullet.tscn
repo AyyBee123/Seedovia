@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://bkmum8onikn0k"]
+
+[ext_resource type="PackedScene" uid="uid://bbc2vnfngjpdx" path="res://Scenes/Enemies/Weapons/Bullet.tscn" id="1_hptcj"]
+[ext_resource type="Texture2D" uid="uid://cqy485njgw1kk" path="res://Sprites/Enemies/Weapons/Egg Bullet.png" id="2_pnhg7"]
+[ext_resource type="Script" uid="uid://etdvpsv4r2p8" path="res://Scripts/Enemies/Chicken/egg_bullet.gd" id="3_vh6bj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3anch"]
+resource_local_to_scene = true
+radius = 11.0
+
+[node name="Egg Bullet" instance=ExtResource("1_hptcj")]
+scale = Vector2(1, 1)
+texture = ExtResource("2_pnhg7")
+offset = Vector2(0, -2)
+script = ExtResource("3_vh6bj")
+
+[node name="CollisionShape2D" parent="Bullet Hitbox" index="0"]
+shape = SubResource("CircleShape2D_3anch")
