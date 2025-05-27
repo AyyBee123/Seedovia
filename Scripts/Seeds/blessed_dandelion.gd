@@ -52,6 +52,9 @@ func launch(delta):
 	if not _released:
 		_released = true
 		starting_position = global_position
+	if direction == Vector2.ZERO:
+		randomize()
+		direction = Vector2.RIGHT.rotated(randf_range(0, TAU))
 	travelled_distance()
 	
 	current_velocity = direction * SPEED

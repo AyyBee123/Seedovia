@@ -6,8 +6,11 @@ extends CharacterBody2D
 @onready var accumulated_timer_delay = $"Health Bar/Accumulated Timer Delay"
 
 const DAMAGE_COLOR = Color(0.5, 0, 0)
+const IMMUNITY_TIME = 0.0333
+
 var original_color
 var accumulated_damage = 0
+var immunity_frame_time: float = 0
 
 var stats
 var player
@@ -31,6 +34,12 @@ func _ready():
 	_enemy_stats.change_color.connect(change_color)
 
 func _physics_process(delta):
+	if _enemy_stats.immune: # i-frames
+		if immunity_frame_time >= IMMUNITY_TIME:
+			_enemy_stats.immune = false
+		else:
+			immunity_frame_time += delta
+	
 	if player == null: # keep looking for the player until they are found
 		player = Targets.get_player()
 	if is_in_area and damage_buffer.is_stopped() and _enemy_stats.damage > 0:
@@ -59,7 +68,7 @@ func die():
 	
 func update_health(new_health):
 	health_bar.health = new_health
-	
+
 func spawn_damage_number(damage: float):
 	accumulated_damage += damage
 	accumulated_damage_text.text = str(int(round(accumulated_damage)))
