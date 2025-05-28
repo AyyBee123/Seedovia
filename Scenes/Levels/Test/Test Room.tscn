@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=4 uid="uid://bvpg8r7ejtyp2"]
+[gd_scene load_steps=8 format=4 uid="uid://bvpg8r7ejtyp2"]
 
 [ext_resource type="PackedScene" uid="uid://cxoiy0x4nvtaa" path="res://Scenes/Levels/Base Level.tscn" id="1_n4hkv"]
 [ext_resource type="Script" uid="uid://c7p7iikkq6a2d" path="res://Scripts/Level/test_room.gd" id="2_vy0ks"]
 [ext_resource type="Resource" uid="uid://bi3hone1ajb7y" path="res://Resources/Characters/test.tres" id="3_qgfjb"]
 [ext_resource type="Shader" uid="uid://qm3syqtxdolu" path="res://Shaders/circle_transition.gdshader" id="4_oi577"]
 [ext_resource type="PackedScene" uid="uid://bagmkum7q0yxi" path="res://Scenes/Enemies/Dummy.tscn" id="5_eajj7"]
+[ext_resource type="PackedScene" uid="uid://cmnqspf7wpuhq" path="res://Scenes/Enemies/Knife.tscn" id="6_ur5w1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0ecxy"]
 resource_local_to_scene = true
@@ -40,3 +41,6 @@ position = Vector2(-243, -223)
 
 [node name="Dummy3" parent="." index="12" instance=ExtResource("5_eajj7")]
 position = Vector2(-452, -71)
+
+[node name="Knife" parent="." index="13" instance=ExtResource("6_ur5w1")]
+position = Vector2(279, 1)

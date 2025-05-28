@@ -1,0 +1,67 @@
+[gd_scene load_steps=13 format=3 uid="uid://cmnqspf7wpuhq"]
+
+[ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_5bsp8"]
+[ext_resource type="Resource" uid="uid://c2oma6lja5kxv" path="res://Resources/Enemies/knife.tres" id="2_f0fnu"]
+[ext_resource type="Script" uid="uid://cpxa5kdle0ua3" path="res://Scripts/Enemies/Knife/knife.gd" id="2_rakrh"]
+[ext_resource type="Shader" uid="uid://dsv0n8bsysyo6" path="res://Shaders/color_tint_shader.gdshader" id="3_yxc1n"]
+[ext_resource type="Texture2D" uid="uid://w16mwdsauw1v" path="res://Sprites/Enemies/Knife.png" id="4_y3qv7"]
+[ext_resource type="Texture2D" uid="uid://xxyym547o3vn" path="res://Sprites/Misc/Shadow.png" id="5_y8b6n"]
+[ext_resource type="Script" uid="uid://c4hwblwmdltnh" path="res://Scripts/Enemies/Knife/state_machine.gd" id="6_kwsb5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q2lu6"]
+size = Vector2(52, 9)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rakrh"]
+resource_local_to_scene = true
+shader = ExtResource("3_yxc1n")
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/tint_factor = 0.0
+shader_parameter/fade = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0djgu"]
+atlas = ExtResource("4_y3qv7")
+region = Rect2(0, 0, 60, 13)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mslhu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0djgu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rakrh"]
+size = Vector2(52, 9)
+
+[node name="Knife" instance=ExtResource("1_5bsp8")]
+scale = Vector2(2, 2)
+script = ExtResource("2_rakrh")
+_enemy_stats = ExtResource("2_f0fnu")
+
+[node name="CollisionPolygon2D" parent="." index="0"]
+shape = SubResource("RectangleShape2D_q2lu6")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+material = SubResource("ShaderMaterial_rakrh")
+sprite_frames = SubResource("SpriteFrames_mslhu")
+offset = Vector2(1, 1)
+
+[node name="CollisionPolygon2D" parent="Enemy Hitbox" index="0"]
+shape = SubResource("RectangleShape2D_rakrh")
+
+[node name="Shadow" type="Sprite2D" parent="." index="5"]
+z_index = -1
+z_as_relative = false
+position = Vector2(0, 17.5)
+scale = Vector2(1, 1.25)
+texture = ExtResource("5_y8b6n")
+
+[node name="state_machine" type="Node" parent="." index="6"]
+script = ExtResource("6_kwsb5")
+metadata/_custom_type_script = "uid://cxh3rckpecdhs"
+
+[node name="Deceleration" type="Timer" parent="." index="7"]
+one_shot = true

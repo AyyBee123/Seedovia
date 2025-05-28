@@ -71,7 +71,7 @@ offset = Vector2(0, 95)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_0mw3w")
+&"": SubResource("AnimationLibrary_0mw3w")
 }
 
 [node name="Hitbox" type="Area2D" parent="."]
