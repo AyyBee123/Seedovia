@@ -56,6 +56,10 @@ shape = SubResource("CircleShape2D_n3trt")
 [node name="ResourcePreloader" type="ResourcePreloader" parent="." index="7"]
 resources = [PackedStringArray("Stink"), [ExtResource("4_coisv")]]
 
+[node name="Collision Cooldown" type="Timer" parent="." index="9"]
+wait_time = 0.5
+one_shot = true
+
 [connection signal="body_exited" from="Hitbox" to="." method="_on_hitbox_body_exited"]
 [connection signal="timeout" from="Deceleration" to="." method="_on_deceleration_timeout"]
 [connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]

@@ -5,6 +5,7 @@ extends "res://Scripts/Seeds/seed_template.gd"
 @onready var tick_rate = $"Tick Rate"
 @onready var stink_rate = $"Stink Rate"
 @onready var resource_preloader = $ResourcePreloader
+@onready var collision_cooldown = $"Collision Cooldown"
 
 var time_to_live = 5
 var is_in_area := false
@@ -23,7 +24,6 @@ func _ready():
 	await get_tree().physics_frame
 	# spawn the poop behind the player or previous seed
 	global_position += Vector2(-desired_direction.x, desired_direction.y).normalized() * 20
-	
 
 func _physics_process(delta):
 	super._physics_process(delta)
@@ -35,7 +35,9 @@ func _physics_process(delta):
 					enemies_in_area[i]._player_stats.take_damage(1)
 					tick_timers[i].start(tick_rate.wait_time)
 					return
-				has_collided.emit(enemies_in_area[i].get_node("Enemy Hitbox"))
+				if collision_cooldown.is_stopped():
+					has_collided.emit(enemies_in_area[i].get_node("Enemy Hitbox"))
+					collision_cooldown.start()
 				enemies_in_area[i]._enemy_stats.take_damage(DAMAGE)
 				tick_timers[i].start(tick_rate.wait_time * 2.5)
 

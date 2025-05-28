@@ -45,6 +45,14 @@ func _ready():
 		segments.append(segment)
 		lead_segment = segment
 
+func _physics_process(delta):
+	var areas = $"Enemy Hitbox".get_overlapping_areas()
+	if areas.size() > 0:
+		if areas[0].is_in_group("Seed") and not areas[0].is_in_group("Melee"):
+			areas[0].destroy()
+		elif not areas[0].is_in_group("Melee"):
+			areas[0].queue_free()
+
 func idle():
 	velocity = direction * _enemy_stats.speed
 	

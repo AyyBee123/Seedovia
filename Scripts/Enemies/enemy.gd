@@ -22,6 +22,7 @@ var damage_size = 1
 var damage_number = preload("res://Scenes/UI/damage_number.tscn")
 
 func _ready():
+	accumulated_damage_text.visible = false
 	original_color = modulate
 	health_bar = $"Health Bar"
 	_enemy_stats = _enemy_stats.duplicate()

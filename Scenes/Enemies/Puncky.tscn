@@ -169,16 +169,16 @@ autoplay = "Idle"
 [node name="CollisionPolygon2D" parent="Enemy Hitbox" index="0"]
 shape = SubResource("CapsuleShape2D_5b4jp")
 
-[node name="state_machine" type="Node" parent="." index="6"]
+[node name="state_machine" type="Node" parent="." index="5"]
 script = ExtResource("4_gm3wa")
 
-[node name="Shadow" type="Sprite2D" parent="." index="7"]
+[node name="Shadow" type="Sprite2D" parent="." index="6"]
 z_index = -2
 position = Vector2(0, 20)
 scale = Vector2(0.65, 0.65)
 texture = ExtResource("7_qjqm6")
 
-[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." index="8"]
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." index="7"]
 position = Vector2(1.90735e-06, -5.66667)
 scale = Vector2(2.26667, 2.9)
 

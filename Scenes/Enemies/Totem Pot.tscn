@@ -234,25 +234,25 @@ shape = SubResource("RectangleShape2D_8lxph")
 offset_top = -122.0
 offset_bottom = -114.0
 
-[node name="Idle Time" type="Timer" parent="." index="6"]
+[node name="Idle Time" type="Timer" parent="." index="5"]
 wait_time = 2.0
 one_shot = true
 
-[node name="Shadow" type="Sprite2D" parent="." index="7"]
+[node name="Shadow" type="Sprite2D" parent="." index="6"]
 z_index = -1
 z_as_relative = false
 position = Vector2(-5.96046e-08, 9.71428)
 texture = ExtResource("5_0njbv")
 
-[node name="Marker2D" type="Marker2D" parent="." index="8"]
+[node name="Marker2D" type="Marker2D" parent="." index="7"]
 position = Vector2(0, -82.5)
 
-[node name="ChargeUp2" type="AudioStreamPlayer" parent="." index="9"]
+[node name="ChargeUp2" type="AudioStreamPlayer" parent="." index="8"]
 stream = ExtResource("7_v8o71")
 volume_db = -8.0
 bus = &"SFX"
 
-[node name="Launch" type="AudioStreamPlayer" parent="." index="10"]
+[node name="Launch" type="AudioStreamPlayer" parent="." index="9"]
 stream = ExtResource("8_o5knj")
 volume_db = -5.0
 pitch_scale = 1.2
