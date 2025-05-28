@@ -34,13 +34,6 @@ func _ready():
 	_enemy_stats.change_color.connect(change_color)
 
 func _physics_process(delta):
-	if _enemy_stats.immune: # i-frames
-		if immunity_frame_time >= IMMUNITY_TIME:
-			_enemy_stats.immune = false
-			immunity_frame_time = 0
-		else:
-			immunity_frame_time += delta
-	
 	if player == null: # keep looking for the player until they are found
 		player = Targets.get_player()
 	if is_in_area and damage_buffer.is_stopped() and _enemy_stats.damage > 0:

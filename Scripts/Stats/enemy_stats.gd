@@ -47,8 +47,6 @@ func increase_max_health(amount):
 	max_health_changed.emit(max_health)
 
 func take_damage(damage):
-	if immune:
-		return
 	spawn_damage_number.emit(damage * damage_taken_multiplier)
 	change_color.emit()
 	health -= damage * damage_taken_multiplier
@@ -56,7 +54,6 @@ func take_damage(damage):
 	health_changed.emit(health)
 	if health <= 0:
 		health_depleted.emit()
-	immune = true
 
 func take_damage_no_red(damage):
 	health -= damage * damage_taken_multiplier

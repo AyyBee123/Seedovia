@@ -25,7 +25,7 @@ func _get_transition(delta):
 		states.idle:
 			pass
 			if timer.is_stopped() and get_parent().player != null and parent.direction.y == 0:
-				if random_attack == 0 and attack_count >= 2:
+				if random_attack == 0 and attack_count >= 1:
 					return states.charge
 				else:
 					random_attack = random_attack_value()

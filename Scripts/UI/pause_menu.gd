@@ -52,7 +52,6 @@ func _on_quick_restart_button_pressed():
 	PlayerInventory.seeds.clear()
 	PlayerPassives.passives.clear()
 	PlayerPassives.item_passives.clear()
-	PlayerPassives.starting_passives.clear()
 	PlayerPassives.passive_list.clear()
 	PlayerCharacter.set_inventory()
 	PlayerCharacter.add_passives()

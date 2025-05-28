@@ -20,5 +20,4 @@ func add_items(category, player_category):
 
 func add_passives():
 	PlayerPassives.starting_passives = starting_character.starting_passives
-	PlayerPassives.passive_list = starting_character.starting_passives
 	PlayerPassives.starting_passives.append(add_talismans_passive)

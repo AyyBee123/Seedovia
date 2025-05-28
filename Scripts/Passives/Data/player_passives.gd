@@ -3,7 +3,7 @@ extends Node
 @onready var player = get_tree().get_first_node_in_group("Players") # keeps returning null, so I added it to the setget
 var passives: Array
 var item_passives: Array
-var starting_passives: Array
+var starting_passives: Array[passive_class]
 var passive_list: Array # keeps a list of resources to display in the stat sheet
 
 func get_passives(): # get the passives and save them into the current run save file

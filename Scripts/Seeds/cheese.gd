@@ -68,7 +68,7 @@ func rotation_travelled():
 			weapon_direction = Vector2.RIGHT.rotated(rotation)
 			shoot_next_weapon()
 			if get_next_weapon():
-				angle_threshold = initial_angle_threshold / (get_next_weapon().instantiate().FIRE_RATE) * 4
+				angle_threshold = initial_angle_threshold / get_next_weapon().instantiate().FIRE_RATE
 		else:
 			_initial_shot = false
 

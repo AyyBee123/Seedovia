@@ -78,6 +78,10 @@ func _ready():
 		_player_stats.set_health(_player_stats.get_stat("Max_Health"))
 		if PlayerPassives.starting_passives != null: # add starting passives to the player
 			PlayerPassives.add_starting_passives()
+		for p in PlayerPassives.starting_passives:
+			if p.passive_name == "Add Talisman Passives":
+				continue
+			PlayerPassives.passive_list.append(p)
 		PlayerCharacter._is_starting = false
 	else:
 		PlayerPassives.set_passives()
@@ -135,7 +139,7 @@ func _physics_process(delta):
 	var aim_direction = Vector2(Input.get_axis("aim_left", "aim_right"), \
 			Input.get_axis("aim_up", "aim_down")).normalized()
 	
-	if Input.get_last_mouse_velocity() != Vector2.ZERO:
+	if _isMouse:
 		# make player's hand look at mouse
 		$"Rotation Point".look_at(get_global_mouse_position())
 		# make mouse cursor visible

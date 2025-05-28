@@ -6,7 +6,7 @@ class_name player_data extends Resource
 @export var talismans: Dictionary = PlayerInventory.talismans
 @export var seeds: Dictionary = PlayerInventory.seeds
 @export var starting_character: character_class
-@export var starting_passives: Array
+@export var starting_passives: Array[passive_class]
 @export var passives: Array
 @export var passive_list: Array
 @export var item_passives: Array
