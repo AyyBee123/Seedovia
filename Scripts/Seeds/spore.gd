@@ -37,7 +37,6 @@ func _ready():
 		homing_time.start()
 
 func _physics_process(delta):
-	print(ROTATION_SPEED)
 	super._physics_process(delta)
 	if not ignore_first_collision:
 		if $Hitbox.get_overlapping_areas().size() > 0:
