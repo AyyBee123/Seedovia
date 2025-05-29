@@ -53,10 +53,8 @@ func explode():
 	destroy.call_deferred()
 
 func shoot_next_weapon():
-	var directions = [Vector2.UP, Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT]
-	for direction in directions:
-		weapon_direction = direction
-		super.shoot_next_weapon()
+	weapon_direction = direction
+	super.shoot_next_weapon()
 
 func create_child(child):
 	get_tree().current_scene.add_child(child)
