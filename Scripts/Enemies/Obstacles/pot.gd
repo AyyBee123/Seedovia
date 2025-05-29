@@ -7,7 +7,6 @@ extends "res://Scripts/Enemies/Obstacles/obstacle.gd"
 @onready var fire_rate = $"Fire Rate"
 @onready var _state_machine = $StateMachine
 
-
 var forward_direction
 var direction = 1
 var direction_changed := false
@@ -29,7 +28,7 @@ func move_forward():
 		var liquid = resource_preloader.get_resource("Liquid").instantiate()
 		$Liquids.add_child(liquid)
 		$Liquids.move_child(liquid, 0)
-		liquid.damage = _enemy_stats.damage
+		liquid.damage = _enemy_stats.weapon_damage
 		liquid.global_position = global_position
 		fire_rate.start()
 	move_and_slide()

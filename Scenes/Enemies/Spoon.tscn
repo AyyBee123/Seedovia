@@ -185,10 +185,12 @@ texture = ExtResource("7_ew4sh")
 stream = ExtResource("8_37513")
 volume_db = -4.0
 pitch_scale = 0.25
+bus = &"SFX"
 
 [node name="Hit2" type="AudioStreamPlayer" parent="." index="8"]
 stream = ExtResource("9_rda17")
 volume_db = -4.0
 pitch_scale = 0.5
+bus = &"SFX"
 
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]

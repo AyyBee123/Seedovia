@@ -1,0 +1,166 @@
+[gd_scene load_steps=24 format=3 uid="uid://djqekx01f1bps"]
+
+[ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_5vpw6"]
+[ext_resource type="Script" uid="uid://c6plrux2jgtup" path="res://Scripts/Enemies/Fork/fork.gd" id="2_5vpw6"]
+[ext_resource type="Resource" uid="uid://cwd76ssklu8ou" path="res://Resources/Enemies/fork.tres" id="3_g03uk"]
+[ext_resource type="Shader" uid="uid://dsv0n8bsysyo6" path="res://Shaders/color_tint_shader.gdshader" id="3_svkj5"]
+[ext_resource type="Texture2D" uid="uid://ctxbs36pckkda" path="res://Sprites/Enemies/Fork.png" id="4_oo2h1"]
+[ext_resource type="Texture2D" uid="uid://xxyym547o3vn" path="res://Sprites/Misc/Shadow.png" id="6_g03uk"]
+[ext_resource type="AudioStream" uid="uid://diea13yjjynpk" path="res://Audio/SFX/Thud2.mp3" id="7_bkkmv"]
+[ext_resource type="AudioStream" uid="uid://mc66wc8mdc1d" path="res://Audio/SFX/Stomp.mp3" id="8_mjh5f"]
+[ext_resource type="AudioStream" uid="uid://cs4gg4d8pkj6f" path="res://Audio/SFX/Quiet Thud.mp3" id="9_mjh5f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_svkj5"]
+size = Vector2(5.6, 43.6)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tf4yq"]
+resource_local_to_scene = true
+shader = ExtResource("3_svkj5")
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/tint_factor = 0.0
+shader_parameter/fade = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g03uk"]
+atlas = ExtResource("4_oo2h1")
+region = Rect2(0, 0, 20, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tf4yq"]
+atlas = ExtResource("4_oo2h1")
+region = Rect2(20, 0, 20, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bkkmv"]
+atlas = ExtResource("4_oo2h1")
+region = Rect2(40, 0, 20, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mjh5f"]
+atlas = ExtResource("4_oo2h1")
+region = Rect2(60, 0, 20, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tq706"]
+atlas = ExtResource("4_oo2h1")
+region = Rect2(80, 0, 20, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lo7iq"]
+atlas = ExtResource("4_oo2h1")
+region = Rect2(100, 0, 20, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5bg16"]
+atlas = ExtResource("4_oo2h1")
+region = Rect2(120, 0, 20, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5a1no"]
+atlas = ExtResource("4_oo2h1")
+region = Rect2(140, 0, 20, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_34po8"]
+atlas = ExtResource("4_oo2h1")
+region = Rect2(160, 0, 20, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mkxo1"]
+atlas = ExtResource("4_oo2h1")
+region = Rect2(180, 0, 20, 58)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8ik6n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g03uk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tf4yq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bkkmv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mjh5f")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tq706")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lo7iq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5bg16")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5a1no")
+}, {
+"duration": 0.8,
+"texture": SubResource("AtlasTexture_34po8")
+}, {
+"duration": 0.6,
+"texture": SubResource("AtlasTexture_mkxo1")
+}],
+"loop": true,
+"name": &"Slam",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oo2h1"]
+size = Vector2(5.6, 43.6)
+
+[node name="Fork" instance=ExtResource("1_5vpw6")]
+scale = Vector2(2.5, 2.5)
+script = ExtResource("2_5vpw6")
+_enemy_stats = ExtResource("3_g03uk")
+
+[node name="CollisionPolygon2D" parent="." index="0"]
+position = Vector2(4.76837e-08, 2.2)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_svkj5")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+material = SubResource("ShaderMaterial_tf4yq")
+sprite_frames = SubResource("SpriteFrames_8ik6n")
+animation = &"Slam"
+autoplay = "Idle"
+frame_progress = 0.199483
+
+[node name="CollisionPolygon2D" parent="Enemy Hitbox" index="0"]
+position = Vector2(-3.8147e-07, 2.2)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_oo2h1")
+
+[node name="Health Bar" parent="." index="3"]
+offset_top = -38.4
+offset_bottom = -30.4
+
+[node name="Cooldown" type="Timer" parent="." index="5"]
+wait_time = 1.5
+one_shot = true
+autostart = true
+
+[node name="Shadow" type="Sprite2D" parent="." index="6"]
+z_index = -1
+z_as_relative = false
+position = Vector2(2.38419e-07, 28.8)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_g03uk")
+
+[node name="Thud2" type="AudioStreamPlayer" parent="." index="7"]
+stream = ExtResource("7_bkkmv")
+volume_db = -2.0
+pitch_scale = 0.8
+bus = &"SFX"
+
+[node name="Stomp" type="AudioStreamPlayer" parent="." index="8"]
+stream = ExtResource("8_mjh5f")
+volume_db = -5.0
+pitch_scale = 2.0
+bus = &"SFX"
+
+[node name="QuietThud" type="AudioStreamPlayer" parent="." index="9"]
+stream = ExtResource("9_mjh5f")
+volume_db = -2.0
+pitch_scale = 0.75
+bus = &"SFX"
+
+[connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_looped"]
+[connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]

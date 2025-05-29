@@ -44,7 +44,7 @@ func _on_animated_sprite_2d_animation_looped():
 	bubble_pop_SFX.play()
 	
 	var egg = EGG_BULLET.instantiate()
-	egg.damage = _enemy_stats.damage
+	egg.damage = _enemy_stats.weapon_damage
 	egg.range = _enemy_stats.weapon_range
 	egg.speed = _enemy_stats.weapon_speed
 	egg.direction = Vector2(sign(-direction.x), randf_range(-SPREAD, SPREAD)).normalized()

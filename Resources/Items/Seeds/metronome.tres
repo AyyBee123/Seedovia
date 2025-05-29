@@ -7,8 +7,8 @@
 [resource]
 script = ExtResource("1_p52ba")
 scene = ExtResource("1_j21n0")
-rarity = 4
+rarity = 6
 item_name = "Metronome"
 texture = ExtResource("3_5525n")
 description = "Shoots a random seed."
-unlocked = true
+unlocked = false
