@@ -42,8 +42,10 @@ func idle():
 			velocity = _enemy_stats.speed * $Shadow.global_position.direction_to(current_liquid.global_position) \
 					.normalized()
 		
-		if ($Shadow.global_position - current_liquid.global_position).length() <= 28:
+		if ($Shadow.global_position - current_liquid.global_position).length() <= 32:
 			ready_to_scoop = true
+	else:
+		velocity = Vector2.ZERO
 
 func scoop():
 	velocity = Vector2.ZERO
