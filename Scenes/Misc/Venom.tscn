@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://q2e8dw7jy7h4"]
+[gd_scene load_steps=6 format=3 uid="uid://q2e8dw7jy7h4"]
 
 [ext_resource type="Texture2D" uid="uid://daraasvosya4s" path="res://Sprites/Enemies/Effects/Venom.png" id="1_ok20a"]
 [ext_resource type="Shader" uid="uid://tj8i4sicc61c" path="res://Scenes/Misc/color_shift.gdshader" id="1_vkum0"]
+[ext_resource type="Script" uid="uid://f1xqct7jv8ex" path="res://Scripts/Enemies/Weapons/liquid.gd" id="3_04rjw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a3gui"]
 shader = ExtResource("1_vkum0")
@@ -12,111 +13,13 @@ shader_parameter/color = Color(0.251884, 0.110851, 0.242946, 1)
 resource_local_to_scene = true
 radius = 19.1674
 
-[sub_resource type="Animation" id="Animation_ysqfa"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Area2D/CollisionShape2D:disabled")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1.5, 1.5)]
-}
-
-[sub_resource type="Animation" id="Animation_et4w3"]
-resource_name = "new_animation"
-length = 8.0
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(8),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"queue_free"
-}]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Area2D/CollisionShape2D:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(6, 8),
-"transitions": PackedFloat32Array(0.5, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".:scale")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 6, 8),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(2, 2), Vector2(2, 2), Vector2(0.5, 0.5)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_yrqh5"]
-_data = {
-&"RESET": SubResource("Animation_ysqfa"),
-&"new_animation": SubResource("Animation_et4w3")
-}
-
 [node name="Venom" type="Sprite2D" groups=["Liquid"]]
 z_index = -2
 material = SubResource("ShaderMaterial_a3gui")
-scale = Vector2(1.5, 1.5)
+scale = Vector2(2, 2)
 texture = ExtResource("1_ok20a")
 offset = Vector2(3, -2)
+script = ExtResource("3_04rjw")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 4096
@@ -127,8 +30,10 @@ visible = false
 position = Vector2(1.33333, -1.33333)
 shape = SubResource("CircleShape2D_n28ud")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_yrqh5")
-}
-autoplay = "new_animation"
+[node name="Damage Buffer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="Lifetime" type="Timer" parent="."]
+wait_time = 6.0
+one_shot = true

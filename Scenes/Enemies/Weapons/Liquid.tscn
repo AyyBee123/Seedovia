@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://ckespv7sxyjn3"]
 
 [ext_resource type="Texture2D" uid="uid://dbjixli8gvk11" path="res://Sprites/Enemies/Weapons/Liquid.png" id="1_klul5"]
-[ext_resource type="Script" uid="uid://f1xqct7jv8ex" path="res://Scripts/Enemies/Weapons/liquid.gd" id="2_8nvn5"]
+[ext_resource type="Script" uid="uid://b0okjjny6uige" path="res://Scripts/Enemies/Weapons/liquid_with_pop.gd" id="2_lwqh3"]
 [ext_resource type="PackedScene" uid="uid://curmn3ypxaoih" path="res://Scenes/Enemies/Weapons/pop.tscn" id="3_misd4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u6ry2"]
@@ -12,7 +12,7 @@ radius = 28.5
 z_index = -2
 scale = Vector2(2, 2)
 texture = ExtResource("1_klul5")
-script = ExtResource("2_8nvn5")
+script = ExtResource("2_lwqh3")
 
 [node name="Pop Rate" type="Timer" parent="."]
 wait_time = 0.25
