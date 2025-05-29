@@ -16,8 +16,7 @@ func _ready():
 	look_at(global_position + desired_direction)
 	if target_group == "Players":
 		homing_time.start()
-	if get_next_weapon():
-		fire_rate.start(get_next_weapon().instantiate().FIRE_RATE)
+	fire_rate.start()
 
 func _physics_process(delta):
 	super._physics_process(delta)
@@ -29,6 +28,7 @@ func _physics_process(delta):
 		var new_rot = lerp_angle(rotation, rotation_angle, 5 * delta)
 		if is_homing:
 			rotation = new_rot
+	
 	if fire_rate.is_stopped():
 		shoot_next_weapon()
 

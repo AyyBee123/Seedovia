@@ -2,7 +2,6 @@ extends state_machine
 
 var timer = Timer.new()
 var random_attack: int
-var attack_count: int = 0
 
 func _ready():
 	randomize()
@@ -25,10 +24,8 @@ func _get_transition(delta):
 		states.idle:
 			pass
 			if timer.is_stopped() and get_parent().player != null and parent.direction.y == 0:
-				if random_attack == 0 and attack_count >= 1:
+				if random_attack == 0:
 					return states.charge
-				else:
-					random_attack = random_attack_value()
 				if random_attack == 1:
 					return states.jump
 		states.charge:
@@ -49,10 +46,7 @@ func _enter_state(new_state, old_state):
 
 func _exit_state(old_state, new_state):
 	match old_state:
-		states.idle:
-			attack_count += 1
 		states.charge:
-			attack_count = 0
 			random_attack = random_attack_value()
 			set_random_time()
 			parent.z_index = parent.Z_INDEX

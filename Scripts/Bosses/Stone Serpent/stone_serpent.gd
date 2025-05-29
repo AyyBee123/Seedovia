@@ -49,9 +49,13 @@ func _physics_process(delta):
 	super._physics_process(delta)
 	var areas = $"Enemy Hitbox".get_overlapping_areas()
 	if areas.size() > 0:
-		if areas[0].get_parent().is_in_group("Seed") and not areas[0].get_parent().is_in_group("Melee"):
+		if areas[0].get_parent().is_in_group("Melee"):
+			pass
+		elif areas[0].get_parent().is_in_group("Explosion"):
+			areas[0].queue_free()
+		elif areas[0].get_parent().is_in_group("Seed"):
 			areas[0].get_parent().destroy()
-		elif not areas[0].get_parent().is_in_group("Melee"):
+		else:
 			areas[0].get_parent().queue_free()
 
 func idle():
