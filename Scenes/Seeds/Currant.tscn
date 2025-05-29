@@ -24,7 +24,7 @@ shader_parameter/number_of_images = Vector2(1, 1)
 _data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[node name="Currant" instance=ExtResource("1_xhr0c")]
+[node name="Currant" groups=["Homing"] instance=ExtResource("1_xhr0c")]
 texture = ExtResource("2_cdlbp")
 script = ExtResource("3_6ejq5")
 BASE_DAMAGE = 4.0

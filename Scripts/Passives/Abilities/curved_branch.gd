@@ -12,7 +12,9 @@ func _ready():
 	source = get_parent().get_parent()
 	if source == player:
 		player._player_stats.set_stat("Weapon_Range", "+", RANGE_INCREASE)
-	if source.is_in_group("Weapon") and "direction" in source:
+	if source.is_in_group("Homing") and "ROTATION_SPEED" in source:
+		source.ROTATION_SPEED *= 2
+	elif source.is_in_group("Weapon") and "direction" in source:
 		source.rotation = source.direction.angle()
 	source.weapon_fired.connect(transfer_passive)
 
@@ -23,7 +25,9 @@ func _exit_tree():
 func _physics_process(delta):
 	if source == Targets.get_player():
 		return
-	if source.is_in_group("Weapon"):
+	if source.is_in_group("Homing"):
+		return
+	elif source.is_in_group("Weapon"):
 		if get_nearest_enemy():
 			var rotation_angle = source.global_position.direction_to(get_nearest_enemy().global_position)
 			source.direction = source.direction.lerp(rotation_angle,HOMING_STRENGTH * delta)

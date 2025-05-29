@@ -7,7 +7,7 @@ extends "res://Scripts/Seeds/seed_template.gd"
 
 const SPLASH = preload("res://Scenes/Misc/Splash.tscn")
 
-const ROTATION_SPEED = 25
+var ROTATION_SPEED = 25
 const NUMBER_OF_BOUNCES = 1
 
 var is_homing: bool = true

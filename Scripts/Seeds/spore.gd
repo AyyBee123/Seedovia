@@ -8,7 +8,7 @@ extends "res://Scripts/Seeds/seed_template.gd"
 const SPLASH = preload("res://Scenes/Misc/Splash.tscn")
 var SPORE = load("res://Scenes/Seeds/Spore.tscn")
 
-const ROTATION_SPEED = 2
+var ROTATION_SPEED = 2
 var SPORE_AMOUNT = 2
 var spore_amount_spawned: int
 
@@ -37,6 +37,7 @@ func _ready():
 		homing_time.start()
 
 func _physics_process(delta):
+	print(ROTATION_SPEED)
 	super._physics_process(delta)
 	if not ignore_first_collision:
 		if $Hitbox.get_overlapping_areas().size() > 0:

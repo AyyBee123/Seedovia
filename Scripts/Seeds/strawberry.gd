@@ -4,6 +4,8 @@ extends "res://Scripts/Seeds/seed_template.gd"
 @onready var resource_preloader = $ResourcePreloader
 @onready var homing_time = $"Homing Time"
 
+
+var ROTATION_SPEED = 5
 var targeted_enemy = null
 var strawberry_fire_rate_multiplier: float = 0.6
 var explosion_damage_multiplier: float = 2.5
@@ -25,7 +27,7 @@ func _physics_process(delta):
 		enemy_targeted = true
 	elif targeted_enemy:
 		var rotation_angle = global_position.direction_to(targeted_enemy.global_position).angle()
-		var new_rot = lerp_angle(rotation, rotation_angle, 5 * delta)
+		var new_rot = lerp_angle(rotation, rotation_angle, ROTATION_SPEED * delta)
 		if is_homing:
 			rotation = new_rot
 	
