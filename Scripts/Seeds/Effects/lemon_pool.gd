@@ -1,5 +1,7 @@
 extends "res://Scripts/Seeds/seed_template.gd"
 
+@onready var lifetime = $Lifetime
+
 var enemies_in_area: Array
 var tick_timers: Array
 var tick_rate := 0.2

@@ -21,7 +21,7 @@ func _ready():
 func _physics_process(delta):
 	pos = weapon.global_position
 	if _has_lifetime:
-		weapon.lifetime.start() # keep starting the lifetime timer to prevent seed from being destroyed
+		weapon.get_node("Lifetime").start() # keep starting the lifetime timer to prevent seed from being destroyed
 
 func transfer(next_weapon):
 	if not next_weapon.is_in_group("Seed"):
