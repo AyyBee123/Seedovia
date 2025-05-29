@@ -10,18 +10,17 @@ var is_in_area: bool
 var player = null
 var damage: int = 1
 
-
 func _ready():
+	lifetime.start()
 	original_size = scale.x
-
 
 func _physics_process(delta):
 	if lifetime.is_stopped():
 		$Area2D/CollisionShape2D.disabled = true
 		var tween = get_tree().create_tween()
+		tween.tween_callback(func(): remove_from_group("Liquid"))
 		tween.tween_property(self, "modulate", Color(modulate.r, modulate.g, modulate.b, 0), 0.5)
-		if modulate.a == 0:
-			tween.finished.connect(queue_free)
+		tween.tween_callback(queue_free)
 	
 	if pop_rate.is_stopped():
 		var pop = resource_preloader.get_resource("pop").instantiate()

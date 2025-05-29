@@ -8,7 +8,7 @@
 resource_local_to_scene = true
 radius = 28.5
 
-[node name="Liquid" type="Sprite2D" groups=["Enemy Weapon"]]
+[node name="Liquid" type="Sprite2D" groups=["Enemy Weapon", "Liquid"]]
 z_index = -2
 scale = Vector2(2, 2)
 texture = ExtResource("1_klul5")
@@ -26,7 +26,6 @@ one_shot = true
 [node name="Lifetime" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
-autostart = true
 
 [node name="ResourcePreloader" type="ResourcePreloader" parent="."]
 resources = [PackedStringArray("pop"), [ExtResource("3_misd4")]]

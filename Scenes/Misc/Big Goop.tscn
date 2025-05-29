@@ -105,7 +105,7 @@ _data = {
 &"new_animation": SubResource("Animation_et4w3")
 }
 
-[node name="Big Goop" type="Sprite2D" groups=["Slow"]]
+[node name="Big Goop" type="Sprite2D" groups=["Liquid", "Slow"]]
 z_index = -2
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("1_xrn1k")
@@ -120,6 +120,6 @@ shape = SubResource("CircleShape2D_id3jy")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_yrqh5")
+&"": SubResource("AnimationLibrary_yrqh5")
 }
 autoplay = "new_animation"

@@ -105,7 +105,7 @@ _data = {
 &"new_animation": SubResource("Animation_et4w3")
 }
 
-[node name="Liquid Ice" type="Sprite2D"]
+[node name="Liquid Ice" type="Sprite2D" groups=["Liquid"]]
 z_index = -2
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("1_nkt3r")
