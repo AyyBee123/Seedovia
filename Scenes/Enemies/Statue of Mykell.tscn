@@ -68,6 +68,7 @@ texture = ExtResource("5_siimr")
 libraries = {
 &"": ExtResource("7_pq0i5")
 }
+speed_scale = 1.5
 
 [node name="Jump" type="AudioStreamPlayer" parent="." index="7"]
 stream = ExtResource("6_yav4k")
@@ -82,7 +83,8 @@ pitch_scale = 1.2
 bus = &"SFX"
 
 [node name="Idle Time" type="Timer" parent="." index="9"]
-wait_time = 1.3
+wait_time = 1.25
 one_shot = true
 
+[connection signal="animation_started" from="AnimationPlayer" to="." method="_on_animation_player_animation_started"]
 [connection signal="timeout" from="Idle Time" to="." method="_on_idle_time_timeout"]

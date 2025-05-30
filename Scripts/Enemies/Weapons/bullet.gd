@@ -45,7 +45,6 @@ func _on_bullet_hitbox_area_entered(area):
 func update_position(delta):
 	var current_velocity: Vector2 = direction * speed
 	position += current_velocity * delta
-	look_at(global_position + current_velocity)
 
 func initialize_position():
 	if not position_initialized:
