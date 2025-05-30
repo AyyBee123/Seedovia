@@ -1,7 +1,6 @@
 extends Sprite2D
 
 @onready var lifetime = $Lifetime
-@onready var damage_buffer := $"Damage Buffer" # prevents an accidental extra damage call if sitting in enemy hitbox
 
 var original_size: float
 var is_in_area: bool

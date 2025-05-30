@@ -47,8 +47,8 @@ size = Vector2(17, 21.1)
 [node name="Strawberry" groups=["Homing"] instance=ExtResource("1_5xs2v")]
 scale = Vector2(2.5, 2.5)
 script = ExtResource("3_ff0m5")
-BASE_DAMAGE = 15.0
-BASE_FIRE_RATE = 1.0
+BASE_DAMAGE = 14.0
+BASE_FIRE_RATE = 1.25
 BASE_RANGE = 500.0
 BASE_SPEED = 100.0
 BASE_SIZE = 1.0
@@ -74,5 +74,9 @@ resources = [PackedStringArray("Non-Weapon Effect Explosion"), [ExtResource("4_m
 
 [node name="Homing Time" type="Timer" parent="." index="5"]
 one_shot = true
+
+[node name="Area2D" type="Area2D" parent="." index="7"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
 
 [connection signal="timeout" from="Homing Time" to="." method="_on_homing_time_timeout"]

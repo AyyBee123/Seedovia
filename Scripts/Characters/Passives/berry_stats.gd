@@ -7,7 +7,7 @@ func set_stats():
 	
 	player._player_stats.max_health = 4
 	player._player_stats.leaf_hearts = 0
-	player._player_stats.speed = 250.0
+	player._player_stats.speed = 300.0
 	player._player_stats.dash_rate = 1.05
 	player._player_stats.dash_distance = 1850.0
 	player._player_stats.dash_invulnerability = 0.25
@@ -17,11 +17,9 @@ func set_stats():
 	player._player_stats.friction = 0.5
 	player._player_stats.luck = 0.0
 	
-	player._player_stats.stats["Fire_Rate"]["x"] = 0.9
 	player._player_stats.stats["Weapon_Speed"]["x"] = 0.8
 	player._player_stats.stats["Weapon_Range"]["x"] = 1.2
 	player._player_stats.stats["Weapon_Size"]["x"] = 1.1
-	player._player_stats.stats["Weapon_Damage"]["x"] = 0.8
-	player._player_stats.stats["Weapon_Blast_Radius"]["x"] = 1.15
+	player._player_stats.stats["Weapon_Blast_Radius"]["x"] = 1.1
 	
 	player._player_stats.initialize_base_stats()

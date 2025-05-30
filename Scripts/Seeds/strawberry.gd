@@ -7,8 +7,7 @@ extends "res://Scripts/Seeds/seed_template.gd"
 
 var ROTATION_SPEED = 5
 var targeted_enemy = null
-var strawberry_fire_rate_multiplier: float = 0.6
-var explosion_damage_multiplier: float = 2.5
+var strawberry_fire_rate_multiplier: float = 0.5
 var exploded := false
 var is_homing: bool = true
 var enemy_targeted: bool
@@ -24,8 +23,8 @@ func _physics_process(delta):
 	super._physics_process(delta)
 	if targeted_enemy == null and not enemy_targeted: # only home-in on one enemy
 		targeted_enemy = get_nearest_enemy(null)
-		enemy_targeted = true
 	elif targeted_enemy:
+		enemy_targeted = true
 		var rotation_angle = global_position.direction_to(targeted_enemy.global_position).angle()
 		var new_rot = lerp_angle(rotation, rotation_angle, ROTATION_SPEED * delta)
 		if is_homing:
@@ -103,13 +102,15 @@ func get_nearest_enemy(object):
 	for i in enemies.size():
 		if nearest_enemy == null:
 			if is_instance_valid(enemies[i]): # prevents game from crashing if enemy dies to quickly
-				nearest_enemy = enemies[i]
-				nearest_distance = enemies[i].global_position.distance_squared_to(global_position)
+				if global_position.distance_to(enemies[i].global_position) <= RANGE / 2:
+					nearest_enemy = enemies[i]
+					nearest_distance = enemies[i].global_position.distance_squared_to(global_position)
 		else:
 			if is_instance_valid(enemies[i]):
-				if nearest_distance > enemies[i].global_position.distance_squared_to(global_position):
-					nearest_distance = enemies[i].global_position.distance_squared_to(global_position)
-					nearest_enemy = enemies[i]
+				if global_position.distance_to(enemies[i].global_position) <= RANGE/ 2:
+					if nearest_distance > enemies[i].global_position.distance_squared_to(global_position):
+						nearest_distance = enemies[i].global_position.distance_squared_to(global_position)
+						nearest_enemy = enemies[i]
 	return nearest_enemy
 
 func _on_homing_time_timeout():

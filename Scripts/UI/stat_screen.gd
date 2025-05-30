@@ -36,25 +36,25 @@ func _ready():
 	player = Targets.get_player()
 
 func _physics_process(delta):
-	speed_info.text = str(player._player_stats.get_stat("Speed"))
-	dash_rate_info.text = str(player._player_stats.get_stat("Dash_Rate"))
-	dash_distance_info.text = str(player._player_stats.get_stat("Dash_Distance"))
-	dash_invul_info.text = str(player._player_stats.get_stat("Dash_Invulnerability"))
+	speed_info.text = str(roundi(player._player_stats.get_stat("Speed")))
+	dash_rate_info.text = str(roundi(player._player_stats.get_stat("Dash_Rate")))
+	dash_distance_info.text = str(roundi(player._player_stats.get_stat("Dash_Distance")))
+	dash_invul_info.text = str(roundi(player._player_stats.get_stat("Dash_Invulnerability")))
 	
 	damage_info.text = "[right]" + str(roundi(player._player_stats.stats["Weapon_Damage"]["+"] * 100))
-	damage_info_2.text = "[right]" + str(roundi(player._player_stats.stats["Weapon_Damage"]["x"]))
+	damage_info_2.text = "[right]" + str(snapped(player._player_stats.stats["Weapon_Damage"]["x"], 0.01))
 	
 	fire_rate_info.text = "[right]" + str(roundi(player._player_stats.stats["Fire_Rate"]["+"] * 100))
-	fire_rate_info_2.text = "[right]" + str(roundi(player._player_stats.stats["Fire_Rate"]["x"]))
+	fire_rate_info_2.text = "[right]" + str(snapped(player._player_stats.stats["Fire_Rate"]["x"], 0.01))
 	
 	range_info.text = "[right]" + str(roundi(player._player_stats.stats["Weapon_Range"]["+"] * 100))
-	range_info_2.text = "[right]" + str(roundi(player._player_stats.stats["Weapon_Range"]["x"]))
+	range_info_2.text = "[right]" + str(snapped(player._player_stats.stats["Weapon_Range"]["x"], 0.01))
 	
 	proj_speed_info.text = "[right]" + str(roundi(player._player_stats.stats["Weapon_Speed"]["+"] * 100))
-	proj_speed_info_2.text = "[right]" + str(roundi(player._player_stats.stats["Weapon_Speed"]["x"]))
+	proj_speed_info_2.text = "[right]" + str(snapped(player._player_stats.stats["Weapon_Speed"]["x"], 0.01))
 	
 	blast_radius_info.text = "[right]" + str(roundi(player._player_stats.stats["Weapon_Blast_Radius"]["+"] * 100))
-	blast_radius_info_2.text = "[right]" + str(roundi(player._player_stats.stats["Weapon_Blast_Radius"]["x"]))
+	blast_radius_info_2.text = "[right]" + str(snapped(player._player_stats.stats["Weapon_Blast_Radius"]["x"], 0.01))
 	
 	if visible:
 		if up_held:
