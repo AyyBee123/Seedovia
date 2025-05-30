@@ -121,6 +121,7 @@ func _physics_process(delta):
 func check_for_enemies():
 	if get_tree().get_nodes_in_group("Enemy").size() == 0:
 		cleared = true
+		SignalBus.room_cleared.emit()
 		if not doors_spawned:
 			spawn_doors()
 			LevelList.doors_spawned = true

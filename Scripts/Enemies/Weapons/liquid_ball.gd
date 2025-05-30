@@ -6,6 +6,7 @@ var LIQUID
 
 func _ready():
 	super._ready()
+	$AnimationPlayer.speed_scale = randf_range(0.8, 1.1)
 
 func _physics_process(delta):
 	initialize_position()
