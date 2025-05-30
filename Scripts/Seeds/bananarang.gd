@@ -11,6 +11,7 @@ var previous_weapon_position: Vector2
 var position_checked := false
 var direction_changed := false
 var _was_previous_weapon := false
+var seed_shot: bool
 
 func _ready():
 	super._ready()
@@ -84,9 +85,12 @@ func _on_deceleration_timeout():
 	acceleration.start(deceleration.wait_time)
 
 func shoot_next_weapon():
+	if seed_shot:
+		return
 	if get_next_weapon() == null:
 		return
 	set_weapon_properties(get_next_weapon().instantiate(), weapon_direction, true)
+	seed_shot = true
 
 func _on_detect_previous_seed_body_entered(body): # detects the player
 	if not has_stopped:
