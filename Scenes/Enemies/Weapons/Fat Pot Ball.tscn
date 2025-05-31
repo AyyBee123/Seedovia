@@ -1,0 +1,115 @@
+[gd_scene load_steps=8 format=3 uid="uid://bsba02inqxsw5"]
+
+[ext_resource type="Script" uid="uid://bykdk82vn4ycq" path="res://Scripts/Enemies/Fat Pot/fat_pot_ball.gd" id="1_6xksg"]
+[ext_resource type="Texture2D" uid="uid://crov01bas4st7" path="res://Sprites/Enemies/Weapons/Fat Pot Ball.png" id="2_6xksg"]
+[ext_resource type="Texture2D" uid="uid://xxyym547o3vn" path="res://Sprites/Misc/Shadow.png" id="3_ttwb0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c0cji"]
+radius = 14.0
+
+[sub_resource type="Animation" id="Animation_uv385"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -14)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Shadow:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.96875, 1.0625)]
+}
+
+[sub_resource type="Animation" id="Animation_jwh0e"]
+resource_name = "new_animation"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(2.5, 1),
+"update": 0,
+"values": [Vector2(0, -30), Vector2(0, -14)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Shadow:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(2.5, 1),
+"update": 0,
+"values": [Vector2(0.8, 0.877), Vector2(0.96875, 1.0625)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"pop"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c0cji"]
+_data = {
+&"RESET": SubResource("Animation_uv385"),
+&"new_animation": SubResource("Animation_jwh0e")
+}
+
+[node name="Fat Pot Ball" type="Sprite2D"]
+z_index = 5
+script = ExtResource("1_6xksg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -14)
+texture = ExtResource("2_6xksg")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+z_index = -1
+z_as_relative = false
+position = Vector2(-5.29396e-23, 4.76837e-07)
+scale = Vector2(0.96875, 1.0625)
+texture = ExtResource("3_ttwb0")
+
+[node name="Bullet Hitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bullet Hitbox"]
+position = Vector2(0, -14)
+shape = SubResource("CircleShape2D_c0cji")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_c0cji")
+}
+autoplay = "new_animation"
+
+[connection signal="area_entered" from="Bullet Hitbox" to="." method="_on_bullet_hitbox_area_entered"]
+[connection signal="body_entered" from="Bullet Hitbox" to="." method="_on_bullet_hitbox_body_entered"]
