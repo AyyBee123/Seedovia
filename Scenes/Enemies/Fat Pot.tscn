@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://dyqvtx488qcah"]
+[gd_scene load_steps=57 format=3 uid="uid://dyqvtx488qcah"]
 
 [ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_6mfme"]
 [ext_resource type="Script" uid="uid://ff1jf71t7n4a" path="res://Scripts/Enemies/Fat Pot/fat_pot.gd" id="2_hmrf1"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://cy0cj43qjqhm7" path="res://Scripts/Enemies/Fat Pot/state_machine.gd" id="6_rycqd"]
 [ext_resource type="AudioStream" uid="uid://ybovr5cxugmh" path="res://Audio/SFX/Burp.mp3" id="7_s656g"]
 [ext_resource type="AudioStream" uid="uid://12krr2r6guun" path="res://Audio/SFX/Jump.mp3" id="8_s656g"]
+[ext_resource type="Texture2D" uid="uid://xxyym547o3vn" path="res://Sprites/Misc/Shadow.png" id="9_l6tbk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hmrf1"]
 size = Vector2(26, 29)
@@ -449,3 +450,10 @@ bus = &"SFX"
 stream = ExtResource("8_s656g")
 pitch_scale = 1.25
 bus = &"SFX"
+
+[node name="Shadow" type="Sprite2D" parent="." index="9"]
+z_index = -1
+z_as_relative = false
+position = Vector2(0, 7.66667)
+scale = Vector2(1, 1.25)
+texture = ExtResource("9_l6tbk")
