@@ -147,35 +147,38 @@ func _input(event):
 				holding_item.queue_free()
 				holding_item = null
 				drop_delay.start() # delay to prevent shooting while dropping the item to the ground
-	if event is InputEventMouseMotion or event is InputEventMouseButton or event is InputEventKey:
+	if event is InputEventMouseMotion and not event.relative.is_zero_approx():
 		_isMandK = true
-	elif event is InputEventJoypadMotion:
+	elif event is InputEventMouseButton or event is InputEventKey:
+		_isMandK = true
+	if event is InputEventJoypadMotion:
 		# only detect left joystick
-		# TODO: change deadzone to match options menu value
-		if Input.get_vector("left", "right", "up", "down").length() > 0.15 and \
+		if Input.get_vector("left", "right", "up", "down").length() > Global.settings.left_deadzone and \
 				(event.get_axis() == 0 or event.get_axis() == 1):
 			_isMandK = false
 	elif event is InputEventJoypadButton:
 		_isMandK = false
+	
 	# setup the controller navigation for the inventory
-	if event.is_action_pressed("inventory_left") and event.is_pressed():
+	if event.is_action_pressed("inventory_left"):
 		selected_slot_index = max(0, selected_slot_index - 1)
 		selected_slot.global_position = all_slots[selected_slot_index].global_position
 		joystick_item_popup(selected_slot_index)
-	if event.is_action_pressed("inventory_right") and event.is_pressed():
+	if event.is_action_pressed("inventory_right"):
 		selected_slot_index = min(all_slots.size() - 1, selected_slot_index + 1)
 		selected_slot.global_position = all_slots[selected_slot_index].global_position
 		joystick_item_popup(selected_slot_index)
-	if event.is_action_pressed("inventory_up") and event.is_pressed():
+	if event.is_action_pressed("inventory_up"):
 		if selected_slot_index - 4 >= 0 or selected_slot_index == 3:
 			selected_slot_index = max(0, selected_slot_index - 4)
 			selected_slot.global_position = all_slots[selected_slot_index].global_position
 			joystick_item_popup(selected_slot_index)
-	if event.is_action_pressed("inventory_down") and event.is_pressed():
+	if event.is_action_pressed("inventory_down"):
 		if selected_slot_index + 4 < all_slots.size():
 			selected_slot_index = min(all_slots.size() - 1, selected_slot_index + 4)
 			selected_slot.global_position = all_slots[selected_slot_index].global_position
 			joystick_item_popup(selected_slot_index)
+	
 	if not _isMandK:
 		# adding an inventory select button to grab a slot item or slot a holding item
 		if Input.is_action_just_pressed("inventory_select"):

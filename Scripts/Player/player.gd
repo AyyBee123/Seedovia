@@ -359,7 +359,7 @@ func _input(event) -> void:
 			# detect only the right joystick (2 = x_axis, 3 = y_axis)
 			if event.get_axis() == 2 or event.get_axis() == 3:
 				_isMouse = false
-	elif event is InputEventMouseMotion:
+	elif event is InputEventMouseMotion and not event.relative.is_zero_approx():
 		_isMouse = true
 
 func _on_pickup_radius_area_entered(area):
