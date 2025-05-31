@@ -30,6 +30,8 @@ func _collide(body):
 		is_stuck_to_enemy = true
 		enemy = body.get_parent()
 		enemy_hitbox = body
+		enemy._enemy_stats.take_damage(DAMAGE)
+		SfxDeconflicter.play(Game.audio_manager.hit_2)
 		distance_to_enemy = enemy.global_position - global_position
 	if body.is_in_group("Players"):
 		body._player_stats.take_damage(1)
