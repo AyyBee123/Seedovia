@@ -11,4 +11,4 @@ rarity = 2
 item_name = "Pomegranate"
 texture = ExtResource("3_rn2nn")
 description = ""
-unlocked = true
+unlocked = false

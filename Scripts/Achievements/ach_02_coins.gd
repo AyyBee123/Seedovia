@@ -1,6 +1,7 @@
 class_name Ach02Coins extends Achievement
 
 var midas = preload("res://Resources/Characters/midas.tres")
+var fools_gold = preload("res://Resources/Items/Seeds/fools_gold.tres")
 var ach_image = preload("res://Sprites/Achievements/Rich.png")
 
 func _ready():
@@ -38,3 +39,4 @@ func set_progress(_progress) -> void:
 	super.set_progress(_progress)
 	if completed:
 		midas.unlocked = true
+		fools_gold.unlocked = true

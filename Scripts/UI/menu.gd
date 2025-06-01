@@ -3,7 +3,7 @@ extends Control
 const SETTINGS = preload("res://Scenes/UI/Settings.tscn")
 const MENU_SEED = preload("res://Scenes/UI/Menu Seed.tscn")
 const LICENCE_POPUP = preload("res://Scenes/UI/Licence Popup.tscn")
-
+const GRAPES = preload("res://Resources/Items/Seeds/grapes.tres")
 @onready var camera = $"Menu Camera"
 @onready var save_file_select = $"Save File Select"
 @onready var starting_menu = $"Starting Menu"
@@ -19,13 +19,13 @@ var licence_popup
 var seed_list: Array
 
 func _ready():
+	Global.load_achievements()
 	if OS.has_feature("demo"):
 		get_tree().change_scene_to_file.call_deferred("res://Scenes/UI/Demo Menu.tscn")
 	Game.music_manager.play(Game.music_manager.MENU_THEME)
 	seed_list = get_all_file_paths("res://Resources/Items/Seeds/")
 
 func _on_play_button_pressed():
-	$"Save File Select".find_child("Save1").grab_focus()
 	Game.audio_manager.play(Game.audio_manager.ui_button)
 	get_tree().change_scene_to_file("res://Scenes/UI/Main Menu.tscn")
 

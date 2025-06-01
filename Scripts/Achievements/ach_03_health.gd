@@ -1,6 +1,7 @@
 class_name Ach03Health extends Achievement
 
 var berry = preload("res://Resources/Characters/berry.tres")
+var strawberry = preload("res://Resources/Items/Seeds/strawberry.tres")
 var ach_image = preload("res://Sprites/Achievements/Healthy.png")
 
 func _ready():
@@ -38,3 +39,4 @@ func set_progress(_progress) -> void:
 	super.set_progress(_progress)
 	if completed:
 		berry.unlocked = true
+		strawberry.unlocked = true

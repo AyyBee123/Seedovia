@@ -11,4 +11,4 @@ rarity = 4
 item_name = "Fool's Gold"
 texture = ExtResource("3_f8p15")
 description = ""
-unlocked = true
+unlocked = false

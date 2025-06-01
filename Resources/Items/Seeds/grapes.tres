@@ -11,4 +11,4 @@ rarity = 1
 item_name = "Grapes"
 texture = ExtResource("2_ppjdx")
 description = ""
-unlocked = true
+unlocked = false
