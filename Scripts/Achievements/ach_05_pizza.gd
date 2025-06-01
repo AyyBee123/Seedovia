@@ -40,7 +40,7 @@ func _on_topping_killed():
 	Global.save_achievements()
 
 func _on_entered_new_room(number):
-	if not completed and not failed and topping_locations.has(number): # kitchen floor
+	if not completed and not failed and topping_locations.has(number):
 		var index = topping_locations.find(number)
 		if spawned[index]: # check if that topping already spawned
 			return
@@ -56,7 +56,7 @@ func _on_entered_new_floor(number):
 	spawned.clear()
 	
 	Global.RNG.randomize()
-	if number == 0:
+	if number == 2: # kitchen floor
 		toppings.append(TOMATO)
 		toppings.append(MUSHROOM)
 		toppings.append(CHEESE)
