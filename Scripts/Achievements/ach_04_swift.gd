@@ -11,7 +11,7 @@ func _ready():
 		SignalBus.player_damaged.connect(_on_player_damaged)
 		SignalBus.entered_new_floor.connect(_on_entered_new_floor)
 
-func _on_entered_new_floor():
+func _on_entered_new_floor(number):
 	if not LevelList.floor_number == 0 and get_progress() >= get_progress_goal() and not completed:
 		completed = true
 		SignalBus.achievement.emit(self)

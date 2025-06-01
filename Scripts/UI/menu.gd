@@ -26,13 +26,8 @@ func _ready():
 
 func _on_play_button_pressed():
 	$"Save File Select".find_child("Save1").grab_focus()
-	current_pos = 1 # save file select position
 	Game.audio_manager.play(Game.audio_manager.ui_button)
-	if tween:
-		tween.kill()
-	tween = get_tree().create_tween()
-	tween.tween_property(camera, "position", Vector2(0, 1080), 0.5) \
-			.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	get_tree().change_scene_to_file("res://Scenes/UI/Main Menu.tscn")
 
 func _on_back_button_pressed():
 	%"Play Button".grab_focus()

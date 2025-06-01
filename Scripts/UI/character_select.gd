@@ -139,12 +139,12 @@ func select_character():
 	PlayerPassives.passive_list.clear()
 	PlayerCharacter.set_inventory()
 	PlayerCharacter.add_passives()
-	SignalBus.entered_new_floor.emit()
 	Pool.start()
 	Global.save_run_room()
 	change_scene.call_deferred()
 
 func change_scene():
 	thread.wait_to_finish()
-	SignalBus.entered_new_floor.emit()
+	SignalBus.new_run.emit()
+	SignalBus.entered_new_floor.emit(LevelList.floor_number)
 	get_tree().change_scene_to_file("res://Scenes/Levels/Special/Starting Room 1.tscn")

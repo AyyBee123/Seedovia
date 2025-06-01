@@ -10,3 +10,4 @@ extends Node
 @onready var audio_settings = %"Audio Settings"
 @onready var keybind_settings = %KeybindSettings
 @onready var utils = %Utils
+@onready var secrets = %Secrets

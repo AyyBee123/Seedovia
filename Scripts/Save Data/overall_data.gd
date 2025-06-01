@@ -13,6 +13,12 @@ class_name overall_data extends Resource
 @export var ach_03_progress: float
 @export var ach_04_swift: bool
 @export var ach_04_progress: float
+@export var ach_05_pizza: bool
+@export var ach_05_progress: float
+@export var ach_05_toppings: Array
+@export var ach_05_topping_locations: Array
+@export var ach_05_failed: bool
+@export var ach_05_spawned: Array
 
 func get_save_selection_data():
 	last_played = SelectionSaveData.last_played
@@ -41,6 +47,12 @@ func get_achievements():
 	ach_03_progress = Game.achievement_handler.ach_03_health.get_progress()
 	ach_04_swift = Game.achievement_handler.ach_04_swift.completed
 	ach_04_progress = Game.achievement_handler.ach_04_swift.get_progress()
+	ach_05_pizza = Game.achievement_handler.ach_05_pizza.completed
+	ach_05_progress = Game.achievement_handler.ach_05_pizza.get_progress()
+	ach_05_toppings = Game.achievement_handler.ach_05_pizza.toppings
+	ach_05_topping_locations = Game.achievement_handler.ach_05_pizza.topping_locations
+	ach_05_failed = Game.achievement_handler.ach_05_pizza.failed
+	ach_05_spawned = Game.achievement_handler.ach_05_pizza.spawned
 
 func set_achievements():
 	Game.achievement_handler.ach_01_die.completed = ach_01_die
@@ -51,6 +63,12 @@ func set_achievements():
 	Game.achievement_handler.ach_03_health.set_progress(ach_03_progress)
 	Game.achievement_handler.ach_04_swift.completed = ach_04_swift
 	Game.achievement_handler.ach_04_swift.set_progress(ach_04_progress)
+	Game.achievement_handler.ach_05_pizza.completed = ach_05_pizza
+	Game.achievement_handler.ach_05_pizza.set_progress(ach_05_progress)
+	Game.achievement_handler.ach_05_pizza.toppings = ach_05_toppings
+	Game.achievement_handler.ach_05_pizza.topping_locations = ach_05_topping_locations
+	Game.achievement_handler.ach_05_pizza.failed = ach_05_failed
+	Game.achievement_handler.ach_05_pizza.spawned = ach_05_spawned
 
 func reset_achievements():
 	ach_01_die = false
@@ -61,6 +79,8 @@ func reset_achievements():
 	ach_03_progress = 0
 	ach_04_swift = false
 	ach_04_progress = 0
+	ach_05_pizza = false
+	ach_05_progress = 0
 
 func get_achievement(_ach):
 	return _ach

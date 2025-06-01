@@ -2,7 +2,7 @@ extends "res://Scripts/Seeds/seed_template.gd"
 
 const SPLASH = preload("res://Scenes/Misc/Splash.tscn")
 
-@onready var tick_rate = $"Tick Rate"
+@onready var fire_rate = $"Fire Rate"
 @onready var lifetime = $Lifetime
 
 const SPREAD = PI/6
@@ -50,7 +50,7 @@ func update_position(delta):
 				destroy()
 				return
 			global_position = enemy.global_position - distance_to_enemy
-			if tick_rate.is_stopped():
+			if fire_rate.is_stopped():
 				has_collided.emit(enemy_hitbox) # for on-hit effects (ex: burning an enemy on hit)
 				enemy._enemy_stats.take_damage(DAMAGE)
 				SfxDeconflicter.play(Game.audio_manager.hit_2)
@@ -58,14 +58,14 @@ func update_position(delta):
 
 func shoot_next_weapon():
 	if get_next_weapon() == null:
-		tick_rate.start(1.0 / FIRE_RATE)
+		fire_rate.start(1.0 / FIRE_RATE)
 		return
 	weapon_direction = -direction.rotated(randf_range(-SPREAD, SPREAD))
 	set_weapon_properties(get_next_weapon().instantiate(), weapon_direction, true)
 
 func initialize_location(weapon):
 	super.initialize_location(weapon)
-	tick_rate.start(1.0 / weapon.FIRE_RATE)
+	fire_rate.start(1.0 / weapon.FIRE_RATE)
 
 func _on_lifetime_timeout():
 	explode()

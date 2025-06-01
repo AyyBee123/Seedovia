@@ -12,5 +12,9 @@ signal max_health_changed(amount)
 signal coins_saved
 signal pickup_item_recieved(item)
 signal room_cleared
-signal entered_new_floor
+signal entered_new_floor(number)
+signal entered_new_room(number)
+signal new_run
 signal freeing_orphans
+signal topping_saved
+signal topping_killed

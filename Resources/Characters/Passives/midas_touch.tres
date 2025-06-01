@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="passive_class" load_steps=3 format=3 uid="uid://bqbgw6rxmhpbc"]
+[gd_resource type="Resource" script_class="passive_class" load_steps=4 format=3 uid="uid://bqbgw6rxmhpbc"]
 
+[ext_resource type="PackedScene" uid="uid://dbyve63ktcgbu" path="res://Scenes/Characters/Passives/Midas Touch.tscn" id="1_r14q3"]
 [ext_resource type="Script" uid="uid://yr5gdtdbvmoc" path="res://Scripts/Passives/Classes/passive_class.gd" id="1_s3g3y"]
 [ext_resource type="Texture2D" uid="uid://bp638kd4vt6ud" path="res://Sprites/Passives/Icons/Midas Touch.png" id="2_jhv2n"]
 
@@ -8,4 +9,5 @@ script = ExtResource("1_s3g3y")
 passive_name = "Midas' Touch"
 sprite = ExtResource("2_jhv2n")
 description = "Entering a room causes a random golden produce to spawn."
+passive_ability = ExtResource("1_r14q3")
 unlocked = false

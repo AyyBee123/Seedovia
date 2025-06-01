@@ -20,13 +20,13 @@ func _ready():
 	super._ready()
 	set_direction()
 	sound_timer.start(randf_range(3, 6))
-	offset = abs($AnimatedSprite2D.offset)
+	offset = abs($AnimatedSprite2D.offset.x)
 
 func _physics_process(delta):
 	super._physics_process(delta)
 	velocity = direction * _enemy_stats.speed
 	$AnimatedSprite2D.flip_h = direction.x > 0
-	$AnimatedSprite2D.offset = sign(direction.x) * offset
+	$AnimatedSprite2D.offset.x = sign(direction.x) * offset
 	move_and_slide()
 
 func set_direction():

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://u8q4oyt5yxsu"]
+
+[ext_resource type="Script" uid="uid://bmd845pc7p1d1" path="res://Scripts/Characters/Passives/pizza_man_stats.gd" id="1_dak20"]
+
+[node name="PizzaManStats" type="Node"]
+script = ExtResource("1_dak20")

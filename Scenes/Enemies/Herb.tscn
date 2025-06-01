@@ -1,0 +1,156 @@
+[gd_scene load_steps=23 format=3 uid="uid://bqpw7bgv18snd"]
+
+[ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_r5dap"]
+[ext_resource type="Script" uid="uid://bm7d584ksyatu" path="res://Scripts/Enemies/Pizza Topping/pizza_topping.gd" id="2_c736s"]
+[ext_resource type="Resource" uid="uid://teyl1s58uhby" path="res://Resources/Enemies/topping.tres" id="3_m0w4l"]
+[ext_resource type="Shader" uid="uid://dsv0n8bsysyo6" path="res://Shaders/color_tint_shader.gdshader" id="4_qnl7s"]
+[ext_resource type="Texture2D" uid="uid://cml1eokawkj1s" path="res://Sprites/Enemies/Herb.png" id="5_r5dap"]
+[ext_resource type="Texture2D" uid="uid://xxyym547o3vn" path="res://Sprites/Misc/Shadow.png" id="6_prxgj"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f7fs4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7yrjl"]
+resource_local_to_scene = true
+shader = ExtResource("4_qnl7s")
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/tint_factor = 0.0
+shader_parameter/fade = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r5dap"]
+atlas = ExtResource("5_r5dap")
+region = Rect2(272, 0, 34, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w0tp3"]
+atlas = ExtResource("5_r5dap")
+region = Rect2(306, 0, 34, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ofd1k"]
+atlas = ExtResource("5_r5dap")
+region = Rect2(340, 0, 34, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_11lor"]
+atlas = ExtResource("5_r5dap")
+region = Rect2(374, 0, 34, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c736s"]
+atlas = ExtResource("5_r5dap")
+region = Rect2(0, 0, 34, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m0w4l"]
+atlas = ExtResource("5_r5dap")
+region = Rect2(34, 0, 34, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qnl7s"]
+atlas = ExtResource("5_r5dap")
+region = Rect2(68, 0, 34, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xgcg3"]
+atlas = ExtResource("5_r5dap")
+region = Rect2(102, 0, 34, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_prxgj"]
+atlas = ExtResource("5_r5dap")
+region = Rect2(136, 0, 34, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_60i2p"]
+atlas = ExtResource("5_r5dap")
+region = Rect2(170, 0, 34, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q626c"]
+atlas = ExtResource("5_r5dap")
+region = Rect2(204, 0, 34, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5g60r"]
+atlas = ExtResource("5_r5dap")
+region = Rect2(238, 0, 34, 44)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yqt1o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r5dap")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w0tp3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ofd1k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_11lor")
+}],
+"loop": false,
+"name": &"Leave",
+"speed": 14.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c736s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m0w4l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qnl7s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xgcg3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_prxgj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_60i2p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q626c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5g60r")
+}],
+"loop": true,
+"name": &"default",
+"speed": 14.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jrnld"]
+
+[node name="Herb" instance=ExtResource("1_r5dap")]
+scale = Vector2(2, 2)
+script = ExtResource("2_c736s")
+_enemy_stats = ExtResource("3_m0w4l")
+
+[node name="CollisionPolygon2D" parent="." index="0"]
+position = Vector2(0, -7)
+shape = SubResource("CapsuleShape2D_f7fs4")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+material = SubResource("ShaderMaterial_7yrjl")
+sprite_frames = SubResource("SpriteFrames_yqt1o")
+animation = &"Leave"
+autoplay = "default"
+offset = Vector2(0, -5.5)
+
+[node name="CollisionPolygon2D" parent="Enemy Hitbox" index="0"]
+position = Vector2(0, -7)
+shape = SubResource("CapsuleShape2D_jrnld")
+
+[node name="Health Bar" parent="." index="3"]
+offset_top = -38.0
+offset_bottom = -30.0
+
+[node name="Shadow" type="Sprite2D" parent="." index="5"]
+z_index = -1
+z_as_relative = false
+position = Vector2(0, 17)
+scale = Vector2(0.75, 0.875)
+texture = ExtResource("6_prxgj")
+
+[node name="Lifetime" type="Timer" parent="." index="6"]
+wait_time = 8.0
+one_shot = true
+autostart = true
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
+[connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]

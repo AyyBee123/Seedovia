@@ -5,7 +5,7 @@ const COIN = preload("res://Scenes/Coin/Coin.tscn")
 
 
 const ROTATION_SPEED = 6
-const COIN_CHANCE = 0.2
+const COIN_CHANCE = 0.1
 
 var _clockwise: bool
 
@@ -32,13 +32,13 @@ func _collide(body):
 	has_collided.emit(body)
 	if body.is_in_group("Enemies"):
 		body.get_parent()._enemy_stats.take_damage(DAMAGE)
-	elif body.is_in_group("Players"):
-		body._player_stats.take_damage(1)
 		if not body.is_in_group("Dummy") and not body.is_in_group("Players"):
 			if randf() < COIN_CHANCE:
 				var coin = COIN.instantiate()
 				get_tree().current_scene.add_child(coin)
 				coin.global_position = global_position
+	elif body.is_in_group("Players"):
+		body._player_stats.take_damage(1)
 	SfxDeconflicter.play(Game.audio_manager.fools_gold)
 	SfxDeconflicter.play(Game.audio_manager.hit)
 	explode()

@@ -13,7 +13,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("2_73t7b")
 offset = Vector2(5, 0)
 script = ExtResource("3_vsd2a")
-BASE_DAMAGE = 4.0
+BASE_DAMAGE = 2.0
 BASE_FIRE_RATE = 3.0
 BASE_RANGE = 500.0
 BASE_SPEED = 700.0
@@ -25,7 +25,7 @@ position = Vector2(3, 0)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_rrldt")
 
-[node name="Tick Rate" type="Timer" parent="." index="2"]
+[node name="Fire Rate" type="Timer" parent="." index="2"]
 one_shot = true
 
 [node name="Lifetime" type="Timer" parent="." index="3"]

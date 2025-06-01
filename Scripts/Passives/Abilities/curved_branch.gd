@@ -1,7 +1,7 @@
 extends Node
 
 const RANGE_INCREASE = 0.2
-const HOMING_STRENGTH = 2
+const HOMING_STRENGTH = 2.5
 
 var player
 var source

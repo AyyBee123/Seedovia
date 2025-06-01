@@ -7,11 +7,11 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_1sqca"]
 radius = 7.0
 
-[node name="Fool\'s Gold Gold" groups=["Weapon to be Destroyed"] instance=ExtResource("1_hehau")]
+[node name="Fool\'s Gold Gold" instance=ExtResource("1_hehau")]
 scale = Vector2(2, 2)
 texture = ExtResource("2_3fqv8")
 script = ExtResource("3_ssrnr")
-BASE_DAMAGE = 7.0
+BASE_DAMAGE = 8.0
 BASE_RANGE = 175.0
 BASE_SPEED = 400.0
 BASE_SIZE = 1.0

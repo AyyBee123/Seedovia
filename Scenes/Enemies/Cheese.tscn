@@ -1,0 +1,151 @@
+[gd_scene load_steps=23 format=3 uid="uid://dvsirsqv18db6"]
+
+[ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_n1l6w"]
+[ext_resource type="Script" uid="uid://bm7d584ksyatu" path="res://Scripts/Enemies/Pizza Topping/pizza_topping.gd" id="2_go7sc"]
+[ext_resource type="Resource" uid="uid://teyl1s58uhby" path="res://Resources/Enemies/topping.tres" id="3_57kh8"]
+[ext_resource type="Shader" uid="uid://dsv0n8bsysyo6" path="res://Shaders/color_tint_shader.gdshader" id="4_pil3x"]
+[ext_resource type="Texture2D" uid="uid://df30v66dsak45" path="res://Sprites/Enemies/Cheese.png" id="5_n1l6w"]
+[ext_resource type="Texture2D" uid="uid://xxyym547o3vn" path="res://Sprites/Misc/Shadow.png" id="6_po4lk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pn01u"]
+radius = 12.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7yrjl"]
+resource_local_to_scene = true
+shader = ExtResource("4_pil3x")
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/tint_factor = 0.0
+shader_parameter/fade = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n1l6w"]
+atlas = ExtResource("5_n1l6w")
+region = Rect2(296, 0, 37, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_663hw"]
+atlas = ExtResource("5_n1l6w")
+region = Rect2(333, 0, 37, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nj34b"]
+atlas = ExtResource("5_n1l6w")
+region = Rect2(370, 0, 37, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yxsxp"]
+atlas = ExtResource("5_n1l6w")
+region = Rect2(407, 0, 37, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_go7sc"]
+atlas = ExtResource("5_n1l6w")
+region = Rect2(0, 0, 37, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_57kh8"]
+atlas = ExtResource("5_n1l6w")
+region = Rect2(37, 0, 37, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pil3x"]
+atlas = ExtResource("5_n1l6w")
+region = Rect2(74, 0, 37, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p50ty"]
+atlas = ExtResource("5_n1l6w")
+region = Rect2(111, 0, 37, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_po4lk"]
+atlas = ExtResource("5_n1l6w")
+region = Rect2(148, 0, 37, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l4j8k"]
+atlas = ExtResource("5_n1l6w")
+region = Rect2(185, 0, 37, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wj3at"]
+atlas = ExtResource("5_n1l6w")
+region = Rect2(222, 0, 37, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s1ker"]
+atlas = ExtResource("5_n1l6w")
+region = Rect2(259, 0, 37, 35)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yqt1o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n1l6w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_663hw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nj34b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yxsxp")
+}],
+"loop": false,
+"name": &"Leave",
+"speed": 14.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_go7sc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_57kh8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pil3x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p50ty")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_po4lk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l4j8k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wj3at")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s1ker")
+}],
+"loop": true,
+"name": &"default",
+"speed": 14.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bnjrd"]
+radius = 12.0
+
+[node name="Cheese" instance=ExtResource("1_n1l6w")]
+scale = Vector2(2, 2)
+script = ExtResource("2_go7sc")
+_enemy_stats = ExtResource("3_57kh8")
+
+[node name="CollisionPolygon2D" parent="." index="0"]
+shape = SubResource("CircleShape2D_pn01u")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+material = SubResource("ShaderMaterial_7yrjl")
+sprite_frames = SubResource("SpriteFrames_yqt1o")
+animation = &"Leave"
+autoplay = "default"
+
+[node name="CollisionPolygon2D" parent="Enemy Hitbox" index="0"]
+shape = SubResource("CircleShape2D_bnjrd")
+
+[node name="Shadow" type="Sprite2D" parent="." index="5"]
+z_index = -1
+z_as_relative = false
+position = Vector2(0, 17)
+scale = Vector2(0.75, 0.875)
+texture = ExtResource("6_po4lk")
+
+[node name="Lifetime" type="Timer" parent="." index="6"]
+wait_time = 8.0
+one_shot = true
+autostart = true
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
+[connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]

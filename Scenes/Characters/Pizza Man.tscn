@@ -1,0 +1,220 @@
+[gd_scene load_steps=31 format=3 uid="uid://fuondigalwnr"]
+
+[ext_resource type="PackedScene" uid="uid://cu63rxmy71bcg" path="res://Scenes/Player/Player.tscn" id="1_3jq21"]
+[ext_resource type="Script" uid="uid://dkwkpvdvl1rl6" path="res://Scripts/Characters/pizza_man.gd" id="2_cb8pe"]
+[ext_resource type="Texture2D" uid="uid://d11y2kekdr37o" path="res://Sprites/Character/Pizza Man/Pizza Man.png" id="4_ny8v2"]
+[ext_resource type="PackedScene" uid="uid://bqelkwce1mdqp" path="res://Scenes/Inventory/inventory.tscn" id="9_innwy"]
+[ext_resource type="Texture2D" uid="uid://g81uhmdxlfui" path="res://Sprites/Character/Pizza Man/Hand.png" id="9_pjhxl"]
+[ext_resource type="PackedScene" uid="uid://u8q4oyt5yxsu" path="res://Scenes/Characters/Passives/Pizza Man Stats.tscn" id="11_ny8v2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pq0dt"]
+atlas = ExtResource("4_ny8v2")
+region = Rect2(0, 0, 34, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cb8pe"]
+atlas = ExtResource("4_ny8v2")
+region = Rect2(544, 0, 34, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2rkw8"]
+atlas = ExtResource("4_ny8v2")
+region = Rect2(578, 0, 34, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbxkg"]
+atlas = ExtResource("4_ny8v2")
+region = Rect2(612, 0, 34, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7dwd5"]
+atlas = ExtResource("4_ny8v2")
+region = Rect2(646, 0, 34, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3jq21"]
+atlas = ExtResource("4_ny8v2")
+region = Rect2(680, 0, 34, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ny8v2"]
+atlas = ExtResource("4_ny8v2")
+region = Rect2(714, 0, 34, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t7j2k"]
+atlas = ExtResource("4_ny8v2")
+region = Rect2(0, 0, 34, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mj3ml"]
+atlas = ExtResource("4_ny8v2")
+region = Rect2(34, 0, 34, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1mf61"]
+atlas = ExtResource("4_ny8v2")
+region = Rect2(68, 0, 34, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_flthc"]
+atlas = ExtResource("4_ny8v2")
+region = Rect2(102, 0, 34, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_td4d1"]
+atlas = ExtResource("4_ny8v2")
+region = Rect2(136, 0, 34, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_innwy"]
+atlas = ExtResource("4_ny8v2")
+region = Rect2(170, 0, 34, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tvf46"]
+atlas = ExtResource("4_ny8v2")
+region = Rect2(204, 0, 34, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pcfw8"]
+atlas = ExtResource("4_ny8v2")
+region = Rect2(238, 0, 34, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pjhxl"]
+atlas = ExtResource("4_ny8v2")
+region = Rect2(272, 0, 34, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_44kut"]
+atlas = ExtResource("4_ny8v2")
+region = Rect2(306, 0, 34, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dnitb"]
+atlas = ExtResource("4_ny8v2")
+region = Rect2(340, 0, 34, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fvgwq"]
+atlas = ExtResource("4_ny8v2")
+region = Rect2(374, 0, 34, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qchp6"]
+atlas = ExtResource("4_ny8v2")
+region = Rect2(408, 0, 34, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q3283"]
+atlas = ExtResource("4_ny8v2")
+region = Rect2(442, 0, 34, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s6irf"]
+atlas = ExtResource("4_ny8v2")
+region = Rect2(476, 0, 34, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_diuse"]
+atlas = ExtResource("4_ny8v2")
+region = Rect2(510, 0, 34, 45)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ckkwj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pq0dt")
+}],
+"loop": true,
+"name": &"Dash",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cb8pe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2rkw8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tbxkg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7dwd5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3jq21")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ny8v2")
+}],
+"loop": false,
+"name": &"Die",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 24.0,
+"texture": SubResource("AtlasTexture_t7j2k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mj3ml")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1mf61")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_flthc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_td4d1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_innwy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tvf46")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pcfw8")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pjhxl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_44kut")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dnitb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fvgwq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qchp6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q3283")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s6irf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_diuse")
+}],
+"loop": true,
+"name": &"Move",
+"speed": 15.0
+}]
+
+[node name="Pizza Man" instance=ExtResource("1_3jq21")]
+script = ExtResource("2_cb8pe")
+
+[node name="Player Sprite" parent="." index="3"]
+sprite_frames = SubResource("SpriteFrames_ckkwj")
+animation = &"Idle"
+autoplay = "Idle"
+frame_progress = 0.430955
+offset = Vector2(0, 4)
+
+[node name="Hand" parent="Rotation Point/Marker2D" index="0"]
+texture = ExtResource("9_pjhxl")
+
+[node name="Inventory" parent="." index="10" instance=ExtResource("9_innwy")]
+visible = false
+offset_left = -1620.0
+offset_top = -1022.0
+offset_right = -1459.0
+offset_bottom = -766.0
+scale = Vector2(3.745, 3.745)
+
+[node name="Shadow" parent="." index="15"]
+offset = Vector2(0, 8)
+
+[node name="Stats" parent="." index="16" instance=ExtResource("11_ny8v2")]
+
+[connection signal="frame_changed" from="Player Sprite" to="." method="_on_player_sprite_frame_changed"]

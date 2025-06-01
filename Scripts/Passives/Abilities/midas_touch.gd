@@ -3,11 +3,17 @@ extends Node
 const ITEM = preload("res://Scenes/Items/Pickup Item.tscn")
 
 var player
+var produce_spawned: bool
 
 func _ready():
 	SignalBus.room_cleared.connect(give_produce)
 
 func give_produce():
+	if produce_spawned:
+		return
+	
+	produce_spawned = true
+	
 	player = get_parent().get_parent()
 	
 	var resource = Pool.stat_up_pool.pool.pick_random()

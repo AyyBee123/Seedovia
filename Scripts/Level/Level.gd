@@ -78,6 +78,7 @@ func _ready():
 	player = LevelList.player.instantiate()
 	add_child(player)
 	player.global_position = player_pos
+	SignalBus.entered_new_room.emit(LevelList.room_number)
 	Global.load_run_data()
 	Global.load_run_room()
 	Global.load_data()

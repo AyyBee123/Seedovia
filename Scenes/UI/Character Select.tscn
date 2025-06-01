@@ -277,7 +277,7 @@ stretch_mode = 0
 script = ExtResource("3_alya1")
 starting_character = ExtResource("26_8dd2i")
 character_scene = "res://Scenes/Characters/Pizza Man.tscn"
-unlock_method = "Unlocked by discovering a secret."
+unlock_method = "Unlocked by completing the pizza."
 
 [node name="MarginContainer" type="MarginContainer" parent="Characters/Character 7"]
 layout_mode = 0
