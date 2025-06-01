@@ -1,7 +1,7 @@
 extends Node
 
-const RANGE_INCREASE = 0.3
-const HOMING_STRENGTH = 5
+const RANGE_INCREASE = 0.2
+const HOMING_STRENGTH = 2
 
 var player
 var source
@@ -30,7 +30,7 @@ func _physics_process(delta):
 	elif source.is_in_group("Weapon"):
 		if get_nearest_enemy():
 			var rotation_angle = source.global_position.direction_to(get_nearest_enemy().global_position)
-			source.direction = source.direction.lerp(rotation_angle,HOMING_STRENGTH * delta)
+			source.direction = source.direction.lerp(rotation_angle, HOMING_STRENGTH * delta)
 
 func transfer_passive(weapon = null):
 	if weapon == null:

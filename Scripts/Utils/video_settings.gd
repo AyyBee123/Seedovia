@@ -19,7 +19,7 @@ func set_video_settings():
 	else:
 		Engine.max_fps = Global.settings.target_FPS
 	
-	if not ResourceLoader.exists(Global.SETTINGS_PATH): # default values if there is no save file
+	if not FileAccess.file_exists(Global.SETTINGS_PATH): # default values if there is no save file
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
 		Global.settings.screen_shake = true

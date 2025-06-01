@@ -101,7 +101,6 @@ var seed_pool: Array = [] # pool to add the next seed to
 func _init():
 	if not Game.utils.freeing_orphans.is_connected(_free_if_orphaned):
 		Game.utils.freeing_orphans.connect(_free_if_orphaned)
-		print_stack()  # shows what triggered it
 
 func _ready():
 	SeedManager.add_projectile(self)

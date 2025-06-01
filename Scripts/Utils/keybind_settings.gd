@@ -4,7 +4,7 @@ func _ready():
 	set_keybind_settings()
 
 func set_keybind_settings():
-	if not ResourceLoader.exists(Global.SETTINGS_PATH): # default values if there is no save file
+	if not FileAccess.file_exists(Global.SETTINGS_PATH): # default values if there is no save file
 		return
 	Global.load_keybind_settings()
 	

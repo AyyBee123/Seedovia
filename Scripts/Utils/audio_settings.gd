@@ -8,7 +8,7 @@ func _ready():
 	set_audio_volumes()
 
 func set_audio_volumes():
-	if not ResourceLoader.exists(Global.SETTINGS_PATH): # default values if there is no save file
+	if not FileAccess.file_exists(Global.SETTINGS_PATH): # default values if there is no save file
 		AudioServer.set_bus_volume_db(MASTER_BUS_ID, linear_to_db(0.5))
 		AudioServer.set_bus_volume_db(SFX_BUS_ID, linear_to_db(1))
 		AudioServer.set_bus_volume_db(MUSIC_BUS_ID, linear_to_db(1))

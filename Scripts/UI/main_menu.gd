@@ -12,25 +12,15 @@ var settings
 var thread
 
 func _ready():
-	print("hi")
 	Game.music_manager.play(Game.music_manager.MENU_THEME)
 	thread = Thread.new()
-	if ResourceLoader.exists(Global.RUN_SAVE_PATH):
+	if FileAccess.file_exists(Global.RUN_SAVE_PATH):
 		continue_button.disabled = false
 		$"Continue Button/Text".modulate = Color("e7cca0")
 	else:
 		continue_button.disabled = true
 		$"Continue Button/Text".modulate = Color("d2bdaa")
 	Global.load_achievements()
-
-func _process(delta):
-	print((Global.RUN_SAVE_PATH))
-	if ResourceLoader.exists(Global.RUN_SAVE_PATH):
-		continue_button.disabled = false
-		$"Continue Button/Text".modulate = Color("e7cca0")
-	else:
-		continue_button.disabled = true
-		$"Continue Button/Text".modulate = Color("d2bdaa")
 
 func _on_play_button_pressed():
 	Game.audio_manager.play(Game.audio_manager.ui_button)

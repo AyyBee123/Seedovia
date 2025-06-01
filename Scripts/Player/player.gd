@@ -285,7 +285,6 @@ func dash():
 	dash_invulnerability_time.start()
 
 func _on_shoot(weapon, location):
-	print("hi")
 	var weapon_instance = weapon.instantiate()
 	weapon_instance.initial_weapon = true
 	weapon_instance.slot_index = 0
@@ -377,7 +376,6 @@ func add_popup(item):
 	popup = POPUP.instantiate()
 	if item.item.category == "SEED":
 		popup.item = item.item.scene.instantiate()
-	popup.item.queue_free()
 	popup.item_name = item.item.item_name
 	popup.type = item.item.category
 	popup.description = item.item.description
