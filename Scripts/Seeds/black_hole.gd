@@ -95,6 +95,8 @@ func shoot_next_weapon():
 		set_weapon_properties(weapon_instance, Vector2.ZERO)
 
 func initialize_location(weapon):
+	if not get_tree():
+		return
 	get_tree().current_scene.add_child(weapon)
 	weapon.global_position = Vector2(
 		sin(index * deg_to_rad(360.0/NUMBER_OF_ORBITALS)) * radius,

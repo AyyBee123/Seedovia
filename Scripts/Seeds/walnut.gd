@@ -6,16 +6,18 @@ extends "res://Scripts/Seeds/seed_template.gd"
 
 const SPLASH = preload("res://Scenes/Misc/Splash.tscn")
 
+var rotation_rate
+
 func _ready():
 	super._ready()
 	weapon_direction = Vector2(0,-1)
+	rotation_rate = PI/4 * FIRE_RATE * orb_fire_rate_multiplier
 
 func _physics_process(delta):
 	super._physics_process(delta)
-	if get_next_weapon():
-		rotation += PI/4 * orb_fire_rate_multiplier * get_next_weapon().instantiate().FIRE_RATE * delta
-	else:
-		rotation += PI/4 * FIRE_RATE * orb_fire_rate_multiplier * delta
+	if not get_next_weapon():
+		rotation_rate = PI/4 * FIRE_RATE * orb_fire_rate_multiplier
+	rotation += rotation_rate * delta
 	if orb_fire_rate.is_stopped():
 		shoot_next_weapon()
 
@@ -40,9 +42,12 @@ func shoot_next_weapon():
 	super.shoot_next_weapon()
 	if get_next_weapon() == null:
 		return
-	orb_fire_rate.wait_time = 1.0 / (orb_fire_rate_multiplier * get_next_weapon().instantiate().FIRE_RATE)
 	change_direction()
-	orb_fire_rate.start()
+
+func initialize_location(weapon):
+	super.initialize_location(weapon)
+	rotation_rate = PI/4 * orb_fire_rate_multiplier * weapon.FIRE_RATE
+	orb_fire_rate.start(1.0 / (orb_fire_rate_multiplier * weapon.FIRE_RATE))
 
 func change_direction():
 	match weapon_direction:

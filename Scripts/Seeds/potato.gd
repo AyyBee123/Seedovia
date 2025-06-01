@@ -18,12 +18,9 @@ func _physics_process(delta):
 		weapon_direction = direction.rotated(randf_range(-SPREAD, SPREAD))
 		shoot_next_weapon()
 
-func shoot_next_weapon():
-	super.shoot_next_weapon()
-	if get_next_weapon() == null:
-		return
-	fire_rate.wait_time = 1.0 / (FIRE_RATE_MULTIPLIER * get_next_weapon().instantiate().FIRE_RATE)
-	fire_rate.start()
+func initialize_location(weapon):
+	super.initialize_location(weapon)
+	fire_rate.start(1.0 / (FIRE_RATE_MULTIPLIER * weapon.FIRE_RATE))
 
 func update_position(delta):
 	current_velocity = direction * SPEED

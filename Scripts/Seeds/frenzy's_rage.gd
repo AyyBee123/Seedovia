@@ -88,12 +88,14 @@ func shoot_next_weapon():
 		return
 	weapon_direction = Vector2.RIGHT.rotated(randf_range(0, TAU))
 	set_weapon_properties(get_next_weapon().instantiate(), weapon_direction)
-	fire_rate.start(1.0 / (FRENZY_FIRE_RATE_MULTIPLIER * get_next_weapon().instantiate().FIRE_RATE))
 
 func initialize_location(weapon):
+	if not get_tree():
+		return
 	get_tree().current_scene.add_child(weapon)
 	weapon_fired.emit(weapon)
 	weapon.global_position = seed_marker.global_position
+	fire_rate.start(1.0 / (FRENZY_FIRE_RATE_MULTIPLIER * weapon.FIRE_RATE))
 
 func stop_laser():
 	if not _end_played:

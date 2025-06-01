@@ -36,7 +36,7 @@ func _ready():
 	set_variable_sizes()
 	starting_angle = rotation_degrees
 	angle_travelled = 0.0
-	if "weapon_direction_marker" in source:
+	if source != null and "weapon_direction_marker" in source:
 		direction_difference = desired_direction.angle() \
 				- source.global_position.direction_to(source.weapon_direction_marker.global_position).angle()
 	if not _was_previous_weapon: # if fired by the player
@@ -67,15 +67,16 @@ func rotation_travelled():
 		if not _initial_shot:
 			weapon_direction = Vector2.RIGHT.rotated(rotation)
 			shoot_next_weapon()
-			if get_next_weapon():
-				angle_threshold = initial_angle_threshold / get_next_weapon().instantiate().FIRE_RATE
 		else:
 			_initial_shot = false
 
 func initialize_location(weapon):
+	if not get_tree():
+		return
 	get_tree().current_scene.add_child(weapon)
 	weapon_fired.emit(weapon)
 	weapon.global_position = marker_2d.global_position
+	angle_threshold = initial_angle_threshold / (weapon.FIRE_RATE * 0.2)
 
 func set_variable_sizes():
 	middle.region_rect = Rect2(0, 0, rect_width, middle.get_region_rect().size.y)

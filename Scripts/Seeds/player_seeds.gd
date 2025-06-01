@@ -14,6 +14,6 @@ func load_weapons() -> Array:
 		seed_indices.append(i)
 		seeds.append(PlayerInventory.seeds[i].scene)
 	return seeds
-	
+
 func get_weapon(index):
 	return seeds[index]

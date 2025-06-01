@@ -54,7 +54,8 @@ func spawn_child_peppers():
 
 func shoot_current_seed(instantiated_weapon, _desired_direction = desired_direction, pos = global_position):
 	instantiated_weapon.parent = self
-	instantiated_weapon.add_child(get_node("Passives").duplicate())
+	if get_node_or_null("Passives"):
+		instantiated_weapon.add_child(get_node("Passives").duplicate())
 	super.shoot_current_seed(instantiated_weapon, _desired_direction, pos)
 
 func create_explosion(explosion):

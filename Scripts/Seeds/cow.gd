@@ -16,10 +16,7 @@ var alt_direction: float
 func _ready():
 	randomize()
 	super._ready()
-	if get_next_weapon():
-		fire_rate.start(1.0 / (cow_fire_rate_multiplier * get_next_weapon().instantiate().FIRE_RATE))
-	else:
-		fire_rate.start(1)
+	fire_rate.start(0.5)
 
 func _physics_process(delta):
 	super._physics_process(delta)
@@ -45,11 +42,9 @@ func _physics_process(delta):
 		else:
 			alt_direction = 0
 
-func shoot_next_weapon():
-	if get_next_weapon() == null:
-		return
-	super.shoot_next_weapon()
-	fire_rate.start(1.0 / (cow_fire_rate_multiplier * get_next_weapon().instantiate().FIRE_RATE))
+func initialize_location(weapon):
+	super.initialize_location(weapon)
+	fire_rate.start(1.0 / (cow_fire_rate_multiplier * weapon.FIRE_RATE))
 
 func set_direction():
 	if not enemy:
@@ -96,10 +91,10 @@ func get_nearest_enemy():
 		if nearest_enemy == null:
 			if is_instance_valid(enemies[i]): # prevents game from crashing if enemy dies to quickly
 				nearest_enemy = enemies[i]
-				nearest_distance = enemies[i].global_position.distance_squared_to(source.global_position)
+				nearest_distance = enemies[i].global_position.distance_squared_to(global_position)
 		else:
 			if is_instance_valid(enemies[i]):
-				if nearest_distance > enemies[i].global_position.distance_squared_to(source.global_position):
-					nearest_distance = enemies[i].global_position.distance_squared_to(source.global_position)
+				if nearest_distance > enemies[i].global_position.distance_squared_to(global_position):
+					nearest_distance = enemies[i].global_position.distance_squared_to(global_position)
 					nearest_enemy = enemies[i]
 	return nearest_enemy

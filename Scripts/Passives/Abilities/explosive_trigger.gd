@@ -42,6 +42,8 @@ func explode():
 	spawn_explosion.call_deferred(explosion)
 
 func spawn_explosion(explosion):
+	if not get_tree():
+		return
 	get_tree().current_scene.add_child(explosion)
 	explosion.global_position = source.global_position
 	explosion.get_node("AnimatedSprite2D").self_modulate = Color.GOLD

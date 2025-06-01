@@ -13,3 +13,4 @@ signal coins_saved
 signal pickup_item_recieved(item)
 signal room_cleared
 signal entered_new_floor
+signal freeing_orphans

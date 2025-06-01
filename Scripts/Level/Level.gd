@@ -111,6 +111,10 @@ func _ready():
 	await get_tree().physics_frame
 	LevelList.entered_room = true
 	Global.save_run_room()
+	
+	await get_tree().create_timer(0.5).timeout
+	Game.utils.freeing_orphans.emit()
+	print_orphan_nodes()
 
 func _physics_process(delta):
 	$"Run Timer".visible = Global.settings.show_timer

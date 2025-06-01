@@ -91,6 +91,7 @@ func add_popup(item, source = "Mouse"):
 	popup = item_popup.instantiate()
 	if item.item.category == "SEED":
 		popup.item = item.item.scene.instantiate()
+	popup.item.queue_free()
 	popup.item_name = item.item.item_name
 	popup.type = item.item.category
 	popup.description = item.item.description

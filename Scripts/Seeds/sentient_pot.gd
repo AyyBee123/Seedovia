@@ -2,6 +2,7 @@ extends "res://Scripts/Seeds/seed_template.gd"
 
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var lifetime = $Lifetime
+@onready var fire_rate = $"Fire Rate"
 
 const POT_FIRE_RATE_MULTIPLIER = 0.25
 const POT_DAMAGE_MULTIPLIER = 0.8
@@ -13,11 +14,13 @@ var _can_shoot: bool
 var _can_bite: bool
 var radius: float = 50
 var angle := 0.0
+var next_seed
 
 func _ready():
 	super._ready()
 	transferred_damage_multiplier *= POT_DAMAGE_MULTIPLIER
 	radius = $"Shoot Range/CollisionShape2D".shape.radius * scale.x
+	instance_next_seed()
 	if target_group == "Players":
 		var pot = load("res://Scenes/Enemies/Hot Pot.tscn").instantiate()
 		pot.visible = false
@@ -34,8 +37,8 @@ func _physics_process(delta):
 		_can_bite = false
 		_can_shoot = false
 		enemy = get_nearest_enemy(null)
-	if get_next_weapon() and enemy and global_position.distance_to(enemy.global_position) <= \
-				get_next_weapon().instantiate().RANGE:
+	if next_seed and enemy and global_position.distance_to(enemy.global_position) <= \
+				next_seed.RANGE:
 		target = enemy
 		_can_shoot = true
 	else:
@@ -66,10 +69,14 @@ func shoot():
 	animated_sprite_2d.flip_h = false
 	angle += get_physics_process_delta_time()
 	if is_instance_valid(target):
-		if get_next_weapon():
-			animated_sprite_2d.speed_scale = POT_FIRE_RATE_MULTIPLIER * get_next_weapon().instantiate().FIRE_RATE
+		if next_seed:
+			animated_sprite_2d.speed_scale = POT_FIRE_RATE_MULTIPLIER * next_seed.FIRE_RATE
 			if not animated_sprite_2d.animation == "Shoot":
 				animated_sprite_2d.play("Shoot")
+
+func instance_next_seed():
+	if next_seed == null and get_next_weapon() and target_group != "Players":
+		next_seed = get_next_weapon().instantiate()
 
 func bite():
 	current_velocity = Vector2.ZERO
@@ -113,6 +120,13 @@ func _on_animated_sprite_2d_frame_changed():
 		if animated_sprite_2d.frame == 3:
 			target.get_parent()._enemy_stats.take_damage(DAMAGE)
 			SfxDeconflicter.play(Game.audio_manager.sentient_pot_bite)
+
+func shoot_next_weapon():
+	if get_next_weapon() == null:
+		return
+	set_weapon_properties(next_seed, weapon_direction)
+	next_seed = null
+	instance_next_seed()
 
 func update_position(delta):
 	pass

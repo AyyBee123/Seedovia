@@ -102,6 +102,7 @@ func check_seed_slot():
 		var seed = second_seed.instantiate()
 		RANGE = seed.RANGE
 		FIRE_RATE = seed.FIRE_RATE
+		seed.queue_free()
 
 func get_nearest_enemy():
 	var enemies = get_tree().get_nodes_in_group("Enemies")

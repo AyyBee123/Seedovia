@@ -285,6 +285,7 @@ func dash():
 	dash_invulnerability_time.start()
 
 func _on_shoot(weapon, location):
+	print("hi")
 	var weapon_instance = weapon.instantiate()
 	weapon_instance.initial_weapon = true
 	weapon_instance.slot_index = 0
@@ -294,23 +295,18 @@ func _on_shoot(weapon, location):
 	weapon_instance.source = self
 	get_tree().current_scene.add_child(weapon_instance)
 	weapon_instance.global_position = location
-	fire_rate.start()
+	fire_rate.start(1.0 / (weapon_instance.BASE_FIRE_RATE * (1 + _player_stats.stats["Fire_Rate"]["+"]) \
+			* _player_stats.stats["Fire_Rate"]["x"]))
 	weapon_fired.emit(weapon_instance)
 	seed_fired.emit(weapon_instance)
 
 func update_timers():
 	current_weapon = null if PlayerInventory.seeds.size() == 0 else PlayerSeeds.load_weapons()[0]
-	if current_weapon != null:
-		var weapon = current_weapon.instantiate()
-		fire_rate.wait_time = 1.0 / (weapon.BASE_FIRE_RATE * (1 + _player_stats.stats["Fire_Rate"]["+"]) \
-				* _player_stats.stats["Fire_Rate"]["x"])
-	else:
-		# default hand fire rate
-		fire_rate.wait_time = 1.0 / (2 * (1 + _player_stats.stats["Fire_Rate"]["+"]) \
-				* _player_stats.stats["Fire_Rate"]["x"])
 	invulnerability_time.wait_time = _player_stats.get_stat("Invulnerability_Time")
 	dash_cooldown.wait_time = _player_stats.get_stat("Dash_Rate")
 	dash_invulnerability_time.wait_time = _player_stats.get_stat("Dash_Invulnerability")
+
+
 
 func took_damage(amount):
 	if amount == 0 or not can_be_damaged:
@@ -381,6 +377,7 @@ func add_popup(item):
 	popup = POPUP.instantiate()
 	if item.item.category == "SEED":
 		popup.item = item.item.scene.instantiate()
+	popup.item.queue_free()
 	popup.item_name = item.item.item_name
 	popup.type = item.item.category
 	popup.description = item.item.description

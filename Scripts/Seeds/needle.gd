@@ -55,16 +55,17 @@ func update_position(delta):
 				enemy._enemy_stats.take_damage(DAMAGE)
 				SfxDeconflicter.play(Game.audio_manager.hit_2)
 				shoot_next_weapon()
-				if get_next_weapon():
-					tick_rate.start(1.0 / get_next_weapon().instantiate().FIRE_RATE)
-				else:
-					tick_rate.start(1.0 / FIRE_RATE)
 
 func shoot_next_weapon():
-	weapon_direction = -direction.rotated(randf_range(-SPREAD, SPREAD))
 	if get_next_weapon() == null:
+		tick_rate.start(1.0 / FIRE_RATE)
 		return
+	weapon_direction = -direction.rotated(randf_range(-SPREAD, SPREAD))
 	set_weapon_properties(get_next_weapon().instantiate(), weapon_direction, true)
+
+func initialize_location(weapon):
+	super.initialize_location(weapon)
+	tick_rate.start(1.0 / weapon.FIRE_RATE)
 
 func _on_lifetime_timeout():
 	explode()

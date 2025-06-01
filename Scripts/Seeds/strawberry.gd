@@ -82,10 +82,11 @@ func _collide(body):
 func shoot_next_weapon():
 	if get_next_weapon() == null:
 		return
-	fire_rate.wait_time = 1.0 / (strawberry_fire_rate_multiplier \
-			* get_next_weapon().instantiate().FIRE_RATE)
 	set_weapon_properties(get_next_weapon().instantiate(), transform.x)
-	fire_rate.start()
+
+func initialize_location(weapon):
+	super.initialize_location(weapon)
+	fire_rate.start(1.0 / (strawberry_fire_rate_multiplier * weapon.FIRE_RATE))
 
 func get_nearest_enemy(object):
 	var enemies = Targets.get_enemy_hitboxes()

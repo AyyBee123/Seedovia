@@ -35,5 +35,6 @@ func _enter_state(new_state, old_state):
 			parent.animated_sprite_2d.play("Idle")
 		states.shoot:
 			parent.animated_sprite_2d.play("Shoot")
+			parent.instance_next_seed()
 		states.bite:
 			parent.animated_sprite_2d.play("Bite")

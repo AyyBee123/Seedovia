@@ -18,7 +18,7 @@ func _ready():
 	lifetime.start()
 	if previous_weapon != player:
 		_was_previous_weapon = true
-	if source.is_in_group("Enemy"):
+	if source != null and source.is_in_group("Enemy"):
 		$"Detect Previous Seed".set_collision_mask(4)
 
 func update_position(delta):

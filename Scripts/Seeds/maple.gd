@@ -85,14 +85,16 @@ func shoot_next_weapon():
 	if get_next_weapon() == null:
 		return
 	var weapon_instance = get_next_weapon().instantiate()
-	fire_rate.start(1.0 / (SYRUP_FIRE_RATE_MULTIPLIER * get_next_weapon().instantiate().FIRE_RATE))
 	set_weapon_properties(weapon_instance, weapon_direction)
 
 func initialize_location(weapon):
+	if not get_tree():
+		return
 	get_tree().current_scene.add_child(weapon)
 	weapon_fired.emit(weapon)
 	weapon.global_position = Vector2(randf_range(end.global_position.x, global_position.x), \
 			randf_range(end.global_position.y, global_position.y))
+	fire_rate.start(1.0 / (SYRUP_FIRE_RATE_MULTIPLIER * weapon.FIRE_RATE))
 
 func set_lengths():
 	region_rect = Rect2(0, 0, rect_width, 40)

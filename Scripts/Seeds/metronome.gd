@@ -40,6 +40,8 @@ func set_weapon_properties(weapon, _desired_direction, _ignore_first_collision =
 	initialize_location.call_deferred(weapon)
 
 func initialize_location(weapon):
+	if not get_tree():
+		return
 	weapon.remove_child(weapon.get_node("Passives"))
 	weapon.add_child(get_node("Passives").duplicate())
 	get_tree().current_scene.add_child(weapon)

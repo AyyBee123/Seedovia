@@ -32,12 +32,14 @@ func shoot_next_weapon():
 		return
 	weapon_direction = Vector2.RIGHT.rotated(randf_range(0, TAU))
 	super.shoot_next_weapon()
-	fire_rate.start(1.0 / (3 * get_next_weapon().instantiate().FIRE_RATE))
 
 func initialize_location(weapon):
+	if not get_tree():
+		return
 	get_tree().current_scene.add_child(weapon)
 	weapon_fired.emit(weapon)
 	weapon.global_position = global_position + weapon_direction * scale.x / 4 * 64 # 64 is the size of the texture
+	fire_rate.start(1.0 / (3 * weapon.FIRE_RATE))
 
 func _on_area_2d_area_entered(area):
 	if area.is_in_group("Enemies"):

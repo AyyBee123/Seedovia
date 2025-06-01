@@ -56,6 +56,14 @@ extends Node
 @onready var ping = $Ping
 @onready var shock = $Shock
 @onready var chip = $Chip
+@onready var bite = $Bite
+@onready var bite_2 = $Bite2
+@onready var bite_3 = $Bite3
+@onready var bite_4 = $Bite4
+@onready var bite_5 = $Bite5
+@onready var bite_6 = $Bite6
+@onready var bite_7 = $Bite7
+@onready var bite_8 = $Bite8
 
 func _ready():
 	SignalBus.play_audio.connect(play)

@@ -59,9 +59,11 @@ func _physics_process(delta):
 func shoot_next_weapon():
 	if get_next_weapon() == null:
 		return
-	var next_seed = get_next_weapon().instantiate()
-	fire_rate.start(1.0 / (next_seed.FIRE_RATE * FIRE_RATE_MULTIPLIER))
-	set_weapon_properties(next_seed, weapon_direction)
+	set_weapon_properties(get_next_weapon().instantiate(), weapon_direction)
+
+func initialize_location(weapon):
+	super.initialize_location(weapon)
+	fire_rate.start(1.0 / (weapon.FIRE_RATE * FIRE_RATE_MULTIPLIER))
 
 func update_position(delta):
 	rotation = direction.angle()

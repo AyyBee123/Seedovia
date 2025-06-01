@@ -68,8 +68,11 @@ func shoot_next_weapon():
 	if direction == Vector2.ZERO: # direction is sometimes zero
 		direction = Vector2.RIGHT.rotated(randf_range(0, TAU))
 	weapon_direction = direction
-	fire_rate.start(1.0 / (DANDELION_FIRE_RATE * get_next_weapon().instantiate().FIRE_RATE))
 	set_weapon_properties(weapon_instance, weapon_direction)
+
+func initialize_location(weapon):
+	super.initialize_location(weapon)
+	fire_rate.start(1.0 / (DANDELION_FIRE_RATE * weapon.FIRE_RATE))
 
 func _collide(body):
 	if ignore_first_collision:

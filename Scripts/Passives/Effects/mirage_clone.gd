@@ -47,9 +47,12 @@ func _physics_process(delta):
 	global_position = player.global_position + offset
 
 func shoot(seed):
-	var weapon_instance = null if PlayerInventory.seeds.size() == 0 else PlayerSeeds.load_weapons()[0].instantiate()
-	if weapon_instance == null:
+	var weapon = null if PlayerInventory.seeds.size() == 0 else PlayerSeeds.load_weapons()[0]
+	var weapon_instance
+	if weapon == null:
 		weapon_instance = PLAYER_HAND.instantiate()
+	else:
+		weapon_instance = PlayerSeeds.load_weapons()[0].instantiate()
 	weapon_instance.initial_weapon = true
 	weapon_instance.slot_index = 0
 	weapon_instance.previous_weapon = self

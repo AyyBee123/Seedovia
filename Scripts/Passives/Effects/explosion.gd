@@ -8,6 +8,7 @@ var object
 var damage: float
 var DAMAGE: float
 var BLAST_RADIUS: float
+var SIZE: float
 var size: float
 var damage_multiplier = 1
 var source
@@ -18,6 +19,7 @@ var direction: Vector2
 
 func _ready():
 	scale = Vector2.ONE * size
+	SIZE = size
 	$AnimatedSprite2D.play("boom")
 	if object == null:
 		set_physics_process(false)

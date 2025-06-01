@@ -196,6 +196,8 @@ position = Vector2(0, 16)
 scale = Vector2(0.45, 0.5)
 texture = ExtResource("5_ukkwr")
 
+[node name="Fire Rate" type="Timer" parent="." index="9"]
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="area_entered" from="Shoot Range" to="." method="_on_shoot_range_area_entered"]

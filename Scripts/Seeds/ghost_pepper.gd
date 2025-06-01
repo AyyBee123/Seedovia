@@ -35,8 +35,11 @@ func shoot_next_weapon():
 		return
 	var weapon_instance = get_next_weapon().instantiate()
 	weapon_direction = global_position.direction_to(get_nearest_enemy().global_position)
-	fire_rate.start(1.0 / (GHOST_FIRE_RATE_MULTIPLIER * get_next_weapon().instantiate().FIRE_RATE))
 	set_weapon_properties(weapon_instance, weapon_direction)
+
+func initialize_location(weapon):
+	super.initialize_location(weapon)
+	fire_rate.start(1.0 / (GHOST_FIRE_RATE_MULTIPLIER * weapon.FIRE_RATE))
 
 func update_position(delta):
 	current_velocity = direction * SPEED

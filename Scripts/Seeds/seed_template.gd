@@ -98,6 +98,11 @@ var transferred_fire_rate_multiplier: float = 1 # fire rate multiplier of the we
 
 var seed_pool: Array = [] # pool to add the next seed to
 
+func _init():
+	if not Game.utils.freeing_orphans.is_connected(_free_if_orphaned):
+		Game.utils.freeing_orphans.connect(_free_if_orphaned)
+		print_stack()  # shows what triggered it
+
 func _ready():
 	SeedManager.add_projectile(self)
 	_player_stats = player._player_stats
@@ -183,9 +188,12 @@ func set_weapon_properties(weapon, _desired_direction, _ignore_first_collision =
 	initialize_location.call_deferred(weapon)
 
 func initialize_location(weapon):
+	if not get_tree():
+		return
 	get_tree().current_scene.add_child(weapon)
 	weapon_fired.emit(weapon)
 	weapon.global_position = global_position
+	# if the seed depends on the next seed's stats, place the stats here (ex: fire_rate.start(weapon.FIRE_RATE))
 
 func update_position(delta):
 	current_velocity = direction * SPEED
@@ -234,3 +242,7 @@ func shoot_current_seed(instantiated_weapon, _desired_direction = desired_direct
 	get_tree().current_scene.add_child.call_deferred(instantiated_weapon)
 	instantiated_weapon.global_position = pos
 	weapon_fired.emit(instantiated_weapon)
+
+func _free_if_orphaned():
+	if not is_inside_tree():
+		queue_free()

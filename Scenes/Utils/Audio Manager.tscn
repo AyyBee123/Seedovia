@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://usetxd7ii511"]
+[gd_scene load_steps=38 format=3 uid="uid://usetxd7ii511"]
 
 [ext_resource type="Script" uid="uid://boo1w2wkkk0xk" path="res://Scripts/Utils/audio_manager.gd" id="1_bpx0j"]
 [ext_resource type="AudioStream" uid="uid://bpk6gao5jcjkq" path="res://Audio/SFX/Hit.mp3" id="1_qnkjs"]
@@ -36,6 +36,7 @@
 [ext_resource type="AudioStream" uid="uid://cgu8joieuypla" path="res://Audio/SFX/Ping.mp3" id="34_ntjct"]
 [ext_resource type="AudioStream" uid="uid://mvh86beo7jky" path="res://Audio/SFX/Shock.mp3" id="35_ntjct"]
 [ext_resource type="AudioStream" uid="uid://j2whuyhsygep" path="res://Audio/SFX/Chip.mp3" id="36_3p3oy"]
+[ext_resource type="AudioStream" uid="uid://cdej7n4i5l3o3" path="res://Audio/SFX/Bite3.mp3" id="37_0tbrl"]
 
 [node name="Audio Manager" type="Node"]
 script = ExtResource("1_bpx0j")
@@ -335,3 +336,43 @@ bus = &"SFX"
 
 [node name="Chip" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("36_3p3oy")
+
+[node name="Bite" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("37_0tbrl")
+pitch_scale = 1.35
+bus = &"SFX"
+
+[node name="Bite2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("37_0tbrl")
+pitch_scale = 1.25
+bus = &"SFX"
+
+[node name="Bite3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("37_0tbrl")
+pitch_scale = 1.15
+bus = &"SFX"
+
+[node name="Bite4" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("37_0tbrl")
+pitch_scale = 1.05
+bus = &"SFX"
+
+[node name="Bite5" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("37_0tbrl")
+pitch_scale = 0.95
+bus = &"SFX"
+
+[node name="Bite6" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("37_0tbrl")
+pitch_scale = 0.85
+bus = &"SFX"
+
+[node name="Bite7" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("37_0tbrl")
+pitch_scale = 0.75
+bus = &"SFX"
+
+[node name="Bite8" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("37_0tbrl")
+pitch_scale = 0.65
+bus = &"SFX"

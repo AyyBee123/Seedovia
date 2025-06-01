@@ -2,6 +2,7 @@ extends "res://Scripts/Seeds/seed_template.gd"
 
 var enemy
 var distance_to_shoot: float
+var distance = 500
 
 func _ready():
 	super._ready()
@@ -15,8 +16,8 @@ func travelled_distance():
 	starting_position = global_position
 	if total_distance >= RANGE:
 		destroy()
-	if get_next_weapon() != null:
-		if distance_to_shoot >= 500.0 / get_next_weapon().instantiate().FIRE_RATE:
+	if get_next_weapon():
+		if distance_to_shoot >= 500.0 / distance:
 			shoot_next_weapon()
 			distance_to_shoot = 0
 
@@ -39,3 +40,7 @@ func shoot_next_weapon():
 	for rotated_direction in directions:
 		weapon_direction = direction.rotated(rotated_direction)
 		set_weapon_properties(get_next_weapon().instantiate(), weapon_direction)
+
+func initialize_location(weapon):
+	super.initialize_location(weapon)
+	distance = weapon.FIRE_RATE
