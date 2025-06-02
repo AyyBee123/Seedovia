@@ -1,6 +1,6 @@
 extends Node
 
-# %APPDATA%\Roaming\Godot\app_userdata\Roguelike
+# %APPDATA%\Roaming\Godot\app_userdata\Seedovia
 var SAVE_PATH := "user://save_data.res"
 var RUN_SAVE_PATH := "user://current_run.res"
 var SETTINGS_PATH := "user://settings.res"
@@ -28,7 +28,7 @@ func save_run_data():
 		ResourceSaver.save(data, "user://current_run.tres") # for testing purposes
 
 func load_run_data():
-	if not ResourceLoader.exists(RUN_SAVE_PATH):
+	if not FileAccess.file_exists(RUN_SAVE_PATH):
 		return
 	data = ResourceLoader.load(RUN_SAVE_PATH)
 	data.set_character()
@@ -47,18 +47,18 @@ func save_run_room():
 		ResourceSaver.save(data, "user://current_run.tres") # for testing purposes
 
 func load_run_room():
-	if not ResourceLoader.exists(RUN_SAVE_PATH):
+	if not FileAccess.file_exists(RUN_SAVE_PATH):
 		return
 	data = ResourceLoader.load(RUN_SAVE_PATH)
 	data.set_current_room()
 
 func delete_run_data():
-	if not ResourceLoader.exists(RUN_SAVE_PATH):
+	if not FileAccess.file_exists(RUN_SAVE_PATH):
 		return
 	DirAccess.remove_absolute(RUN_SAVE_PATH)
 
 func load_run_data_exists() -> bool:
-	return ResourceLoader.exists(RUN_SAVE_PATH)
+	return FileAccess.file_exists(RUN_SAVE_PATH)
 
 func save_coins():
 	coins_saving = true
@@ -72,7 +72,7 @@ func save_coins():
 func load_data(_path = null):
 	if _path == null:
 		_path = SAVE_PATH
-	if not ResourceLoader.exists(_path):
+	if not FileAccess.file_exists(_path):
 		return
 	super_data = ResourceLoader.load(_path)
 	super_data.set_save_selection_data()
@@ -93,16 +93,16 @@ func save_data():
 		ResourceSaver.save(super_data, "user://save_data.tres") # for testing purposes
 
 func load_data_exists(_data) -> bool:
-	return ResourceLoader.exists(_data)
+	return FileAccess.file_exists(_data)
 
 func delete_data(_path = null, _run_path = null):
 	if _path == null:
 		_path = SAVE_PATH
 	if _run_path == null:
 		_run_path = RUN_SAVE_PATH
-	if ResourceLoader.exists(_path):
+	if FileAccess.file_exists(_path):
 		DirAccess.remove_absolute(_path)
-	if ResourceLoader.exists(_run_path):
+	if FileAccess.file_exists(_run_path):
 		DirAccess.remove_absolute(_run_path)
 	super_data.reset_achievements()
 	super_data.reset_stats()
@@ -122,7 +122,7 @@ func save_achievements():
 func load_achievements(_path = null):
 	if _path == null:
 		_path = SAVE_PATH
-	if not ResourceLoader.exists(_path):
+	if not FileAccess.file_exists(_path):
 		return
 	super_data = ResourceLoader.load(_path)
 	super_data.set_achievements()
@@ -137,36 +137,36 @@ func save_settings():
 		ResourceSaver.save(settings, "user://settings.tres") # for testing purposes
 
 func load_settings():
-	if not ResourceLoader.exists(SETTINGS_PATH):
+	if not FileAccess.file_exists(SETTINGS_PATH):
 		return
 	settings = ResourceLoader.load(SETTINGS_PATH)
 
 func load_game_settings():
-	if not ResourceLoader.exists(SETTINGS_PATH):
+	if not FileAccess.file_exists(SETTINGS_PATH):
 		return
 	settings = ResourceLoader.load(SETTINGS_PATH)
 	settings.set_game_settings()
 
 func load_video_settings():
-	if not ResourceLoader.exists(SETTINGS_PATH):
+	if not FileAccess.file_exists(SETTINGS_PATH):
 		return
 	settings = ResourceLoader.load(SETTINGS_PATH)
 	settings.set_video_settings()
 
 func load_ui_settings():
-	if not ResourceLoader.exists(SETTINGS_PATH):
+	if not FileAccess.file_exists(SETTINGS_PATH):
 		return
 	settings = ResourceLoader.load(SETTINGS_PATH)
 	settings.set_ui_settings()
 
 func load_audio_volumes():
-	if not ResourceLoader.exists(SETTINGS_PATH):
+	if not FileAccess.file_exists(SETTINGS_PATH):
 		return
 	settings = ResourceLoader.load(SETTINGS_PATH)
 	settings.set_audio_volumes()
 
 func load_keybind_settings():
-	if not ResourceLoader.exists(SETTINGS_PATH):
+	if not FileAccess.file_exists(SETTINGS_PATH):
 		return
 	settings = ResourceLoader.load(SETTINGS_PATH)
 	settings.set_inputs()

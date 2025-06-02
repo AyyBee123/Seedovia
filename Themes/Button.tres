@@ -1,0 +1,27 @@
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://b8xxcoi0wo7jf"]
+
+[ext_resource type="Texture2D" uid="uid://chrtmh8xchoct" path="res://Sprites/Pause UI/Pause Menu Choice Disabled.png" id="1_m8r5b"]
+[ext_resource type="Texture2D" uid="uid://2d111phom0jg" path="res://Sprites/Pause UI/Pause Menu Choice Focused.png" id="2_poi7d"]
+[ext_resource type="Texture2D" uid="uid://dmb2vfptumg3l" path="res://Sprites/Pause UI/Pause Menu Choice Hover.png" id="3_l56b2"]
+[ext_resource type="Texture2D" uid="uid://didv5fjskcrdi" path="res://Sprites/Pause UI/Pause Menu Choice.png" id="4_hm5jb"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fj68a"]
+texture = ExtResource("1_m8r5b")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wqr7k"]
+texture = ExtResource("2_poi7d")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r3y3a"]
+texture = ExtResource("3_l56b2")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kr1nf"]
+texture = ExtResource("4_hm5jb")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qnj72"]
+
+[resource]
+Button/styles/disabled = SubResource("StyleBoxTexture_fj68a")
+Button/styles/focus = SubResource("StyleBoxTexture_wqr7k")
+Button/styles/hover = SubResource("StyleBoxTexture_r3y3a")
+Button/styles/normal = SubResource("StyleBoxTexture_kr1nf")
+Button/styles/pressed = SubResource("StyleBoxTexture_qnj72")

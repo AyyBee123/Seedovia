@@ -6,10 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://voseluffsvav" path="res://Scenes/UI/Save File Select.tscn" id="2_v3kjt"]
 [ext_resource type="Texture2D" uid="uid://dmb2vfptumg3l" path="res://Sprites/Pause UI/Pause Menu Choice Hover.png" id="3_s6sq0"]
 [ext_resource type="FontFile" uid="uid://bkn7gmgx1wxgx" path="res://Fonts/Name Font.ttf" id="4_6487p"]
-[ext_resource type="Texture2D" uid="uid://chrtmh8xchoct" path="res://Sprites/Pause UI/Pause Menu Choice Disabled.png" id="5_s6sq0"]
 [ext_resource type="Texture2D" uid="uid://4l3tmn6mja2n" path="res://Sprites/Logo/Logo.png" id="6_6487p"]
+[ext_resource type="Theme" uid="uid://b8xxcoi0wo7jf" path="res://Themes/Button.tres" id="8_2kl40"]
 [ext_resource type="Texture2D" uid="uid://cn70skisfblp4" path="res://Sprites/Passive UI/Passive Choice Focused.png" id="8_g37sx"]
-[ext_resource type="Script" uid="uid://bsjv7istqmswh" path="res://Scripts/UI/focus_button.gd" id="8_vlcut"]
+[ext_resource type="Script" uid="uid://br7m5802lstfe" path="res://Scripts/UI/focus_button_button.gd" id="9_0oyh4"]
 [ext_resource type="Texture2D" uid="uid://cc4qox3sejykw" path="res://Sprites/Menu UI/Grass.png" id="9_3hayu"]
 [ext_resource type="Script" uid="uid://dnu6sks28160q" path="res://Scripts/UI/licence_button.gd" id="12_0oyh4"]
 
@@ -77,12 +77,14 @@ texture = ExtResource("9_3hayu")
 metadata/_edit_use_anchors_ = true
 
 [node name="Save File Select" parent="." instance=ExtResource("2_v3kjt")]
+visible = false
 z_index = 2
 layout_mode = 1
 offset_top = 540.0
 offset_bottom = 1620.0
 
 [node name="Back Button" type="TextureButton" parent="."]
+visible = false
 z_index = 2
 layout_mode = 1
 anchors_preset = 1
@@ -146,118 +148,147 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Play Button" type="TextureButton" parent="Starting Menu/TextureRect"]
+[node name="Play Button" type="Button" parent="Starting Menu/TextureRect"]
 unique_name_in_owner = true
 layout_mode = 1
-offset_left = 600.0
-offset_top = 400.0
-offset_right = 1239.06
-offset_bottom = 550.0
+offset_left = 703.0
+offset_top = 383.0
+offset_right = 1117.0
+offset_bottom = 481.0
 focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath("../Quit Button")
 focus_neighbor_right = NodePath("../Licence Button")
-focus_neighbor_bottom = NodePath("../Settings Button")
-focus_next = NodePath("../Settings Button")
+focus_neighbor_bottom = NodePath("../Continue Button")
+focus_next = NodePath("../Continue Button")
 focus_previous = NodePath("../Quit Button")
-texture_normal = ExtResource("1_5cock")
-texture_pressed = ExtResource("2_t06ot")
-texture_hover = ExtResource("3_s6sq0")
-texture_focused = ExtResource("8_g37sx")
-stretch_mode = 4
-script = ExtResource("8_vlcut")
+theme = ExtResource("8_2kl40")
+script = ExtResource("9_0oyh4")
 
-[node name="Text" type="RichTextLabel" parent="Starting Menu/TextureRect/Play Button"]
+[node name="Text" type="Label" parent="Starting Menu/TextureRect/Play Button"]
 modulate = Color(0.905882, 0.8, 0.627451, 1)
-layout_mode = 0
-offset_left = 3.0
-offset_top = 25.0
-offset_right = 636.0
-offset_bottom = 110.0
-mouse_filter = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_y = 1
 theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 1
 theme_override_constants/shadow_outline_size = 1
-theme_override_fonts/normal_font = ExtResource("4_6487p")
-theme_override_font_sizes/normal_font_size = 64
-bbcode_enabled = true
-text = "[center]Start"
+theme_override_fonts/font = ExtResource("4_6487p")
+theme_override_font_sizes/font_size = 48
+text = "Start"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Settings Button" type="TextureButton" parent="Starting Menu/TextureRect"]
+[node name="Continue Button" type="Button" parent="Starting Menu/TextureRect"]
 unique_name_in_owner = true
-layout_mode = 0
-offset_left = 600.0
-offset_top = 600.0
-offset_right = 1239.06
-offset_bottom = 750.0
+layout_mode = 1
+offset_left = 703.0
+offset_top = 523.0
+offset_right = 1117.0
+offset_bottom = 621.0
 focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath("../Play Button")
 focus_neighbor_right = NodePath("../Licence Button")
+focus_neighbor_bottom = NodePath("../Settings Button")
+focus_next = NodePath("../Settings Button")
+focus_previous = NodePath("../Play Button")
+theme = ExtResource("8_2kl40")
+
+[node name="Text" type="Label" parent="Starting Menu/TextureRect/Continue Button"]
+modulate = Color(0.905882, 0.8, 0.627451, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("4_6487p")
+theme_override_font_sizes/font_size = 48
+text = "Continue"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Settings Button" type="Button" parent="Starting Menu/TextureRect"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.103704
+anchor_bottom = -0.103704
+offset_left = 703.0
+offset_top = 775.0
+offset_right = 1117.0
+offset_bottom = 873.0
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../Continue Button")
+focus_neighbor_right = NodePath("../Licence Button")
 focus_neighbor_bottom = NodePath("../Quit Button")
 focus_next = NodePath("../Quit Button")
-focus_previous = NodePath("../Play Button")
-texture_normal = ExtResource("1_5cock")
-texture_pressed = ExtResource("2_t06ot")
-texture_hover = ExtResource("3_s6sq0")
-texture_disabled = ExtResource("5_s6sq0")
-texture_focused = ExtResource("8_g37sx")
-stretch_mode = 4
+focus_previous = NodePath("../Continue Button")
+theme = ExtResource("8_2kl40")
 metadata/_edit_use_anchors_ = true
 
-[node name="Text" type="RichTextLabel" parent="Starting Menu/TextureRect/Settings Button"]
+[node name="Text" type="Label" parent="Starting Menu/TextureRect/Settings Button"]
 modulate = Color(0.905882, 0.8, 0.627451, 1)
-layout_mode = 0
-offset_left = 3.0
-offset_top = 25.0
-offset_right = 636.0
-offset_bottom = 110.0
-mouse_filter = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_y = 1
 theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 1
 theme_override_constants/shadow_outline_size = 1
-theme_override_fonts/normal_font = ExtResource("4_6487p")
-theme_override_font_sizes/normal_font_size = 64
-bbcode_enabled = true
-text = "[center]Settings"
+theme_override_fonts/font = ExtResource("4_6487p")
+theme_override_font_sizes/font_size = 48
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Quit Button" type="TextureButton" parent="Starting Menu/TextureRect"]
+[node name="Quit Button" type="Button" parent="Starting Menu/TextureRect"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 600.0
-offset_top = 800.0
-offset_right = 1239.06
-offset_bottom = 950.0
+offset_left = 703.0
+offset_top = 803.0
+offset_right = 1117.0
+offset_bottom = 901.0
 focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath("../Settings Button")
 focus_neighbor_right = NodePath("../Licence Button")
 focus_neighbor_bottom = NodePath("../Play Button")
 focus_next = NodePath("../Play Button")
 focus_previous = NodePath("../Settings Button")
-texture_normal = ExtResource("1_5cock")
-texture_pressed = ExtResource("2_t06ot")
-texture_hover = ExtResource("3_s6sq0")
-texture_disabled = ExtResource("5_s6sq0")
-texture_focused = ExtResource("8_g37sx")
-stretch_mode = 4
+theme = ExtResource("8_2kl40")
 metadata/_edit_use_anchors_ = true
 
-[node name="Text" type="RichTextLabel" parent="Starting Menu/TextureRect/Quit Button"]
+[node name="Text" type="Label" parent="Starting Menu/TextureRect/Quit Button"]
 modulate = Color(0.905882, 0.8, 0.627451, 1)
-layout_mode = 0
-offset_left = 3.0
-offset_top = 25.0
-offset_right = 636.0
-offset_bottom = 110.0
-mouse_filter = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_y = 1
 theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 1
 theme_override_constants/shadow_outline_size = 1
-theme_override_fonts/normal_font = ExtResource("4_6487p")
-theme_override_font_sizes/normal_font_size = 64
-bbcode_enabled = true
-text = "[center]Quit to Desktop"
+theme_override_fonts/font = ExtResource("4_6487p")
+theme_override_font_sizes/font_size = 48
+text = "Quit to Desktop"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Licence Button" type="TextureButton" parent="Starting Menu/TextureRect"]
 unique_name_in_owner = true
@@ -318,6 +349,7 @@ autostart = true
 
 [connection signal="pressed" from="Back Button" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="Starting Menu/TextureRect/Play Button" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="Starting Menu/TextureRect/Continue Button" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="Starting Menu/TextureRect/Settings Button" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="Starting Menu/TextureRect/Quit Button" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="Starting Menu/TextureRect/Licence Button" to="." method="_on_licence_button_pressed"]

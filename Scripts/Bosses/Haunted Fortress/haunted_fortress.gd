@@ -127,6 +127,7 @@ func _on_animated_sprite_2d_animation_finished():
 		_state_machine.set_state(_state_machine.states.idle)
 	if animated_sprite_2d.animation == "Suck End":
 		_state_machine.set_state(_state_machine.states.idle)
+		_enemy_stats.damage = 0
 
 func _on_laser_time_timeout():
 	animated_sprite_2d.play("Laser End")

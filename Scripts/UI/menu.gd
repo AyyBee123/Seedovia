@@ -4,14 +4,20 @@ const SETTINGS = preload("res://Scenes/UI/Settings.tscn")
 const MENU_SEED = preload("res://Scenes/UI/Menu Seed.tscn")
 const LICENCE_POPUP = preload("res://Scenes/UI/Licence Popup.tscn")
 const GRAPES = preload("res://Resources/Items/Seeds/grapes.tres")
+const loading_screen_scene = preload("res://Scenes/UI/Loading Screen.tscn")
+const character_select_scene = preload("res://Scenes/UI/Character Select.tscn")
+
 @onready var camera = $"Menu Camera"
 @onready var save_file_select = $"Save File Select"
 @onready var starting_menu = $"Starting Menu"
+@onready var continue_button = %"Continue Button"
 
 @onready var save_pos = save_file_select.position
 @onready var start_pos = starting_menu.position
 
+var loading_screen_scene_instance
 var tween
+var thread
 var current_pos: int = 0
 var settings
 var delete_popup
@@ -24,10 +30,35 @@ func _ready():
 		get_tree().change_scene_to_file.call_deferred("res://Scenes/UI/Demo Menu.tscn")
 	Game.music_manager.play(Game.music_manager.MENU_THEME)
 	seed_list = get_all_file_paths("res://Resources/Items/Seeds/")
+	
+	thread = Thread.new()
+	if FileAccess.file_exists(Global.RUN_SAVE_PATH):
+		continue_button.disabled = false
+		$"Starting Menu/TextureRect/Continue Button/Text".modulate = Color("e7cca0")
+	else:
+		continue_button.disabled = true
+		$"Starting Menu/TextureRect/Continue Button/Text".modulate = Color("d2bdaa")
 
 func _on_play_button_pressed():
 	Game.audio_manager.play(Game.audio_manager.ui_button)
-	get_tree().change_scene_to_file("res://Scenes/UI/Main Menu.tscn")
+	get_tree().change_scene_to_packed(character_select_scene)
+
+func _on_continue_button_pressed():
+	Game.audio_manager.play(Game.audio_manager.ui_button)
+	loading_screen_scene_instance = loading_screen_scene.instantiate()
+	get_tree().current_scene.add_child.call_deferred(loading_screen_scene_instance)
+	thread.start(continue_run)
+
+func continue_run():
+	Global.load_run_data()
+	Global.load_run_room()
+	LevelList.load_char()
+	Pool.continue_run()
+	change_scene.call_deferred()
+
+func change_scene():
+	thread.wait_to_finish()
+	get_tree().change_scene_to_file(LevelList.loaded_current_room)
 
 func _on_back_button_pressed():
 	%"Play Button".grab_focus()
@@ -93,6 +124,7 @@ func _on_seed_spawn_rate_timeout():
 	$"Seed Spawn Rate".start()
 
 func _on_licence_button_pressed():
+	Game.audio_manager.play(Game.audio_manager.ui_button)
 	if get_tree().current_scene.find_child("Licence Popup"): # if a settings scene already exists
 		return
 	licence_popup = LICENCE_POPUP.instantiate()

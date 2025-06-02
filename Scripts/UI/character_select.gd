@@ -1,6 +1,6 @@
 extends Control
 
-var MAIN_MENU = load("res://Scenes/UI/Main Menu.tscn")
+var MAIN_MENU = load("res://Scenes/UI/Menu.tscn")
 const character = preload("res://Scripts/UI/character.gd")
 @onready var characters = %Characters.get_children()
 @onready var starting_items = %"Starting Items".get_children()
@@ -20,6 +20,7 @@ func _ready():
 		button.connect("gui_input", on_input)
 	char = $"Characters/Character 1"
 	display_info()
+	Global.load_achievements()
 
 func _press(char_select: character):
 	Game.audio_manager.play(Game.audio_manager.ui_button)
