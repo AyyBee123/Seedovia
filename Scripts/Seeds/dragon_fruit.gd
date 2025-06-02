@@ -65,6 +65,9 @@ func update_position(delta):
 	current_velocity = direction * SPEED * deceleration.time_left
 	position += current_velocity * delta
 
+func travelled_distance():
+	pass
+
 func _on_deceleration_timeout():
 	delay.start()
 
