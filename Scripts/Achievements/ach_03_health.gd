@@ -17,6 +17,7 @@ func _on_player_max_health_increase(amount):
 		completed = true
 		SignalBus.achievement.emit(self)
 		SignalBus.unlock.emit(berry)
+		SteamIntegration.set_ach("ACH_HEALTH")
 	Global.save_achievements()
 	Global.load_achievements()
 

@@ -16,6 +16,7 @@ func _on_player_death():
 		completed = true
 		SignalBus.achievement.emit(self)
 		SignalBus.unlock.emit(cercis)
+		SteamIntegration.set_ach("ACH_DIE")
 	Global.save_achievements()
 	Global.load_achievements()
 

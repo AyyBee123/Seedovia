@@ -17,6 +17,7 @@ func _on_coin_pickup(amount):
 		completed = true
 		SignalBus.achievement.emit(self)
 		SignalBus.unlock.emit(midas)
+		SteamIntegration.set_ach("ACH_RICH")
 	Global.save_achievements()
 	Global.load_achievements()
 

@@ -13,3 +13,9 @@ func _ready():
 	
 	#id = Steam.getSteamID()
 	#steam_name = Steam.getFriendPersonaName(id)
+
+func set_ach(ach):
+	var status = Steam.getAchievement(ach)
+	if status['achieved']:
+		return
+	Steam.setAchievement(ach)

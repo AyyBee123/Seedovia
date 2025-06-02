@@ -17,6 +17,7 @@ func _on_entered_new_floor(number):
 		completed = true
 		SignalBus.achievement.emit(self)
 		SignalBus.unlock.emit(salvia)
+		SteamIntegration.set_ach("ACH_SWIFT")
 	elif get_progress() < get_progress_goal() and not completed:
 		progress = 1
 	Global.save_achievements()

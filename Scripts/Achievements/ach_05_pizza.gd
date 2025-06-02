@@ -1,7 +1,7 @@
 class_name Ach05Pizza extends Achievement
 
 var pizza_man = preload("res://Resources/Characters/pizza_man.tres")
-var ach_image = preload("res://Sprites/Achievements/Swift.png")
+var ach_image = preload("res://Sprites/Achievements/Pizza.png")
 
 ## the toppings
 const TOMATO = preload("res://Scenes/Enemies/Tomato.tscn")
@@ -33,6 +33,7 @@ func _on_topping_saved():
 		completed = true
 		SignalBus.achievement.emit(self)
 		SignalBus.unlock.emit(pizza_man)
+		SteamIntegration.set_ach("ACH_PIZZA")
 
 func _on_topping_killed():
 	failed = true
