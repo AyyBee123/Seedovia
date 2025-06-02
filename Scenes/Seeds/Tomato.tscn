@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://diuqxcha2mum2"]
+
+[ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_axlhx"]
+[ext_resource type="Texture2D" uid="uid://dw1gg6rj5oc5l" path="res://Sprites/Seeds/Tomato.png" id="2_w0v2a"]
+[ext_resource type="Script" uid="uid://du52bajw1rsdi" path="res://Scripts/Seeds/tomato.gd" id="3_u2dx8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u2dx8"]
+radius = 11.3333
+
+[node name="Tomato" instance=ExtResource("1_axlhx")]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_w0v2a")
+offset = Vector2(0, -2)
+script = ExtResource("3_u2dx8")
+BASE_DAMAGE = 4.0
+BASE_FIRE_RATE = 2.0
+BASE_RANGE = 250.0
+BASE_SPEED = 450.0
+BASE_SIZE = 1.0
+BASE_BLAST_RADIUS = 1.0
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource("CircleShape2D_u2dx8")

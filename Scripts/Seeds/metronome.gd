@@ -1,18 +1,27 @@
 extends "res://Scripts/Seeds/seed_template.gd"
 
+const TOMATO = preload("res://Scenes/Seeds/Tomato.tscn")
+const CHEESE = preload("res://Scenes/Seeds/Cheese.tscn")
+const HERB = preload("res://Scenes/Seeds/Herb.tscn")
+const MUSHROOM = preload("res://Scenes/Seeds/Mushroom.tscn")
+const SAUSAGE = preload("res://Scenes/Seeds/Sausage.tscn")
+
 var random_seed
+var components: Array
 
 func _ready():
+	components.append(TOMATO)
+	components.append(CHEESE)
+	components.append(HERB)
+	components.append(MUSHROOM)
+	components.append(SAUSAGE)
+	
 	super._ready()
 	shoot_seed()
 
 func shoot_seed():
-	var seed = Pool.seed_list.pick_random()
-	if ResourceLoader.load(seed).item_name == "Metronome": # skip metronome (obviously)
-		shoot_seed()
-		return
-	var seed_instance = ResourceLoader.load(seed).scene.instantiate()
-	set_weapon_properties(seed_instance, desired_direction, ignore_first_collision, hit_enemy)
+	var seed = components.pick_random().instantiate()
+	set_weapon_properties(seed, desired_direction, ignore_first_collision, hit_enemy)
 	destroy()
 
 func set_weapon_properties(weapon, _desired_direction, _ignore_first_collision = false, _enemy = null):

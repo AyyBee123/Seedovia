@@ -1,79 +1,25 @@
-[gd_scene load_steps=10 format=3 uid="uid://cj0v58sssauo1"]
+[gd_scene load_steps=5 format=3 uid="uid://cj0v58sssauo1"]
 
-[ext_resource type="Script" uid="uid://bpqjdlr1q2qk4" path="res://Scripts/Seeds/cheese.gd" id="2_dvplf"]
-[ext_resource type="PackedScene" uid="uid://ledtfnmbfqxq" path="res://Scenes/Misc/Visual Effects.tscn" id="2_fujo6"]
-[ext_resource type="Texture2D" uid="uid://dntbbis4dj0n7" path="res://Sprites/Seeds/Cheese Beginning.png" id="2_qbd4b"]
-[ext_resource type="Texture2D" uid="uid://b7cj83djefsmj" path="res://Sprites/Seeds/Cheese Middle.png" id="3_cdqqv"]
-[ext_resource type="Texture2D" uid="uid://dkwidxp4dd4rf" path="res://Sprites/Seeds/Cheese End.png" id="4_tabyy"]
-[ext_resource type="PackedScene" uid="uid://dnjdwsa1miyp1" path="res://Scenes/Seeds/Effects/Knockback.tscn" id="5_swcrf"]
-[ext_resource type="AudioStream" uid="uid://liu0qcjj47pl" path="res://Audio/SFX/Bonk.mp3" id="6_w3sqg"]
-[ext_resource type="AudioStream" uid="uid://mcab4fvfn756" path="res://Audio/SFX/Smack.mp3" id="7_e6s8f"]
+[ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_x14ix"]
+[ext_resource type="Texture2D" uid="uid://bgkulpcjig8mm" path="res://Sprites/Seeds/Cheese.png" id="2_hkr3n"]
+[ext_resource type="Script" uid="uid://g7ey65uqyhh" path="res://Scripts/Seeds/cheese_pizza.gd" id="3_neqti"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_petpg"]
-resource_local_to_scene = true
-size = Vector2(42, 33)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_neqti"]
+size = Vector2(28.5988, 16.4857)
 
-[node name="Cheese" type="Sprite2D" groups=["Melee", "Seed", "Weapon"]]
-z_index = 4
+[node name="Cheese" instance=ExtResource("1_x14ix")]
 scale = Vector2(1.5, 1.5)
-script = ExtResource("2_dvplf")
-BASE_DAMAGE = 10.0
+texture = ExtResource("2_hkr3n")
+offset = Vector2(0, -2)
+script = ExtResource("3_neqti")
+BASE_DAMAGE = 6.0
 BASE_FIRE_RATE = 2.0
-BASE_RANGE = 125.0
-BASE_SPEED = 500.0
-BASE_SIZE = 1.15
-BASE_BLAST_RADIUS = 1.25
+BASE_RANGE = 300.0
+BASE_SPEED = 350.0
+BASE_SIZE = 1.0
+BASE_BLAST_RADIUS = 1.0
 
-[node name="Hitbox" type="Area2D" parent="."]
-collision_layer = 8
-collision_mask = 516
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(21, -0.5)
-shape = SubResource("RectangleShape2D_petpg")
-one_way_collision_margin = 0.0
-
-[node name="Passives" type="Node" parent="."]
-
-[node name="Visual Effects" parent="." instance=ExtResource("2_fujo6")]
-
-[node name="Cheese Beginning" type="Sprite2D" parent="."]
-position = Vector2(1.49012e-08, -0.5)
-texture = ExtResource("2_qbd4b")
-offset = Vector2(3, 0)
-
-[node name="Cheese Middle" type="Sprite2D" parent="."]
-texture_repeat = 2
-position = Vector2(6.5, -1.5)
-texture = ExtResource("3_cdqqv")
-centered = false
-offset = Vector2(0, -16.5)
-region_enabled = true
-region_rect = Rect2(0, 0, 32, 35)
-
-[node name="Cheese End" type="Sprite2D" parent="."]
-position = Vector2(37.5, -0.5)
-texture = ExtResource("4_tabyy")
-offset = Vector2(3, 0)
-
-[node name="Marker2D" type="Marker2D" parent="Cheese End"]
-position = Vector2(4, 0.5)
-
-[node name="Animation end lifetime" type="Timer" parent="."]
-wait_time = 0.5
-one_shot = true
-
-[node name="ResourcePreloader" type="ResourcePreloader" parent="."]
-resources = [PackedStringArray("Knockback"), [ExtResource("5_swcrf")]]
-
-[node name="Bonk" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_w3sqg")
-bus = &"SFX"
-
-[node name="Smack" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_e6s8f")
-pitch_scale = 1.2
-
-[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
-[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
-[connection signal="timeout" from="Animation end lifetime" to="." method="_on_animation_end_lifetime_timeout"]
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2(-1.49012e-08, 0)
+rotation = -0.261799
+shape = SubResource("RectangleShape2D_neqti")

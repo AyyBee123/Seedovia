@@ -1,0 +1,115 @@
+[gd_scene load_steps=9 format=3 uid="uid://stqgttwchd8"]
+
+[ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_dyy6e"]
+[ext_resource type="Texture2D" uid="uid://d23581m6is81" path="res://Sprites/Seeds/Mushroom.png" id="2_dyy6e"]
+[ext_resource type="Script" uid="uid://b2y4yqcrwoil" path="res://Scripts/Seeds/mushroom.gd" id="3_dyy6e"]
+[ext_resource type="Texture2D" uid="uid://3segmo1mb2il" path="res://Sprites/Seeds/Corn Shadow.png" id="4_5yriv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u2dx8"]
+radius = 14.0
+
+[sub_resource type="Animation" id="Animation_ve2rf"]
+resource_name = "new_animation"
+length = 0.3333
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.2, 0.333333),
+"transitions": PackedFloat32Array(0.5, 1, 2, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -20), Vector2(0, -20), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Shadow:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.2, 0.333333),
+"transitions": PackedFloat32Array(0.5, 1, 2, 1),
+"update": 0,
+"values": [Vector2(1.14286, 1.1), Vector2(0.935, 0.9), Vector2(0.935, 0.9), Vector2(1.14286, 1.1)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.3333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"explode"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_hqclh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Shadow:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.14286, 1.1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bsfr0"]
+_data = {
+&"RESET": SubResource("Animation_hqclh"),
+&"new_animation": SubResource("Animation_ve2rf")
+}
+
+[node name="Mushroom" instance=ExtResource("1_dyy6e")]
+scale = Vector2(1.5, 1.5)
+offset = Vector2(0, 0.5)
+script = ExtResource("3_dyy6e")
+BASE_DAMAGE = 3.0
+BASE_FIRE_RATE = 2.0
+BASE_RANGE = 400.0
+BASE_SPEED = 200.0
+BASE_SIZE = 1.0
+BASE_BLAST_RADIUS = 1.0
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource("CircleShape2D_u2dx8")
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="3"]
+texture = ExtResource("2_dyy6e")
+
+[node name="Shadow" type="Sprite2D" parent="." index="4"]
+z_index = -1
+z_as_relative = false
+position = Vector2(0, 12.6667)
+scale = Vector2(1.14286, 1.1)
+texture = ExtResource("4_5yriv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="5"]
+libraries = {
+&"": SubResource("AnimationLibrary_bsfr0")
+}
+autoplay = "new_animation"

@@ -1,7 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://ogthun4u2jm6"]
+[gd_scene load_steps=7 format=3 uid="uid://dkklq12y01ikk"]
 
-[ext_resource type="Texture2D" uid="uid://4d7grxe2rvlu" path="res://Sprites/Seeds/Effects/Lemon Pool.png" id="1_lap0q"]
-[ext_resource type="Script" uid="uid://g1e2rqqx1xs5" path="res://Scripts/Seeds/Effects/lemon_pool.gd" id="2_fdahw"]
+[ext_resource type="Texture2D" uid="uid://ccg77ebjoojcv" path="res://Sprites/Seeds/Effects/Tomato Pool.png" id="1_wg7db"]
+[ext_resource type="Script" uid="uid://g1e2rqqx1xs5" path="res://Scripts/Seeds/Effects/lemon_pool.gd" id="2_yqh17"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fmd5f"]
 radius = 18.0
@@ -104,12 +104,12 @@ _data = {
 &"new_animation": SubResource("Animation_lap0q")
 }
 
-[node name="Lemon Pool" type="Sprite2D" groups=["Weapon Effect", "Weapon to be Destroyed"]]
+[node name="Tomato Pool" type="Sprite2D" groups=["Weapon Effect", "Weapon to be Destroyed"]]
 z_index = -2
 scale = Vector2(2, 2)
-texture = ExtResource("1_lap0q")
-script = ExtResource("2_fdahw")
-BASE_DAMAGE = 3.0
+texture = ExtResource("1_wg7db")
+script = ExtResource("2_yqh17")
+BASE_DAMAGE = 2.0
 BASE_RANGE = 1e+08
 BASE_SPEED = 30.0
 BASE_SIZE = 1.0
@@ -128,6 +128,7 @@ libraries = {
 }
 
 [node name="Lifetime" type="Timer" parent="."]
+wait_time = 1.5
 one_shot = true
 autostart = true
 

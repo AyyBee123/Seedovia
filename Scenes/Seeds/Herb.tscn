@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://ce1ps6ta6mrg5"]
+
+[ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_gvxh7"]
+[ext_resource type="Texture2D" uid="uid://cvi02ip0cvqiq" path="res://Sprites/Seeds/Herb.png" id="2_7aoct"]
+[ext_resource type="Script" uid="uid://bfyg7adtb6c78" path="res://Scripts/Seeds/herb.gd" id="3_7aoct"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qu7vt"]
+radius = 11.0114
+
+[node name="Herb" instance=ExtResource("1_gvxh7")]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_7aoct")
+offset = Vector2(3.5, 0)
+script = ExtResource("3_7aoct")
+BASE_DAMAGE = 2.0
+BASE_FIRE_RATE = 3.333
+BASE_RANGE = 450.0
+BASE_SPEED = 200.0
+BASE_SIZE = 1.0
+BASE_BLAST_RADIUS = 1.0
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2(2, 0)
+shape = SubResource("CircleShape2D_qu7vt")
+
+[node name="Fire Rate" type="Timer" parent="." index="3"]
+wait_time = 0.2
+one_shot = true

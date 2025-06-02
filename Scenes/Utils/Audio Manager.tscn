@@ -1,8 +1,9 @@
-[gd_scene load_steps=38 format=3 uid="uid://usetxd7ii511"]
+[gd_scene load_steps=40 format=3 uid="uid://usetxd7ii511"]
 
 [ext_resource type="Script" uid="uid://boo1w2wkkk0xk" path="res://Scripts/Utils/audio_manager.gd" id="1_bpx0j"]
 [ext_resource type="AudioStream" uid="uid://bpk6gao5jcjkq" path="res://Audio/SFX/Hit.mp3" id="1_qnkjs"]
 [ext_resource type="AudioStream" uid="uid://dviaq07q34iwy" path="res://Audio/SFX/Mild Explosion.mp3" id="2_fp62v"]
+[ext_resource type="AudioStream" uid="uid://mcab4fvfn756" path="res://Audio/SFX/Smack.mp3" id="3_cdpdk"]
 [ext_resource type="AudioStream" uid="uid://chjabrkxsndjf" path="res://Audio/SFX/Bubble Pop.mp3" id="3_olhkt"]
 [ext_resource type="AudioStream" uid="uid://c58aj3yosgiit" path="res://Audio/SFX/Sunder Explosion.mp3" id="5_mgngl"]
 [ext_resource type="AudioStream" uid="uid://dxvs3t6m7coyv" path="res://Audio/SFX/Hit2.mp3" id="6_8awm8"]
@@ -37,6 +38,7 @@
 [ext_resource type="AudioStream" uid="uid://mvh86beo7jky" path="res://Audio/SFX/Shock.mp3" id="35_ntjct"]
 [ext_resource type="AudioStream" uid="uid://j2whuyhsygep" path="res://Audio/SFX/Chip.mp3" id="36_3p3oy"]
 [ext_resource type="AudioStream" uid="uid://cdej7n4i5l3o3" path="res://Audio/SFX/Bite3.mp3" id="37_0tbrl"]
+[ext_resource type="AudioStream" uid="uid://comps6gc1nhci" path="res://Audio/SFX/Boing.mp3" id="39_npdho"]
 
 [node name="Audio Manager" type="Node"]
 script = ExtResource("1_bpx0j")
@@ -48,6 +50,17 @@ bus = &"SFX"
 [node name="Walnut Hit" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_qnkjs")
 pitch_scale = 0.6
+bus = &"SFX"
+
+[node name="Smack" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_cdpdk")
+volume_db = -2.0
+bus = &"SFX"
+
+[node name="Crunch2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_yvn0e")
+volume_db = -2.0
+pitch_scale = 1.5
 bus = &"SFX"
 
 [node name="Jetstream Hit" type="AudioStreamPlayer" parent="."]
@@ -375,4 +388,22 @@ bus = &"SFX"
 [node name="Bite8" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("37_0tbrl")
 pitch_scale = 0.65
+bus = &"SFX"
+
+[node name="Mushroom Boing" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("39_npdho")
+volume_db = -4.0
+pitch_scale = 1.3
+bus = &"SFX"
+
+[node name="Mushroom Boing2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("39_npdho")
+volume_db = -4.0
+pitch_scale = 1.5
+bus = &"SFX"
+
+[node name="Sausage" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("24_2wn4r")
+volume_db = -4.0
+pitch_scale = 1.25
 bus = &"SFX"

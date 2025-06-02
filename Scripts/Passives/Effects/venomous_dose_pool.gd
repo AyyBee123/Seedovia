@@ -1,6 +1,6 @@
 extends Sprite2D
 
-var DAMAGE: float = 4
+var DAMAGE: float = 1
 var enemies_in_area: Array
 var tick_timers: Array
 var tick_rate := 0.125

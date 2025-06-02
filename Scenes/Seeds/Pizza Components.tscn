@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqp2vx6s1nuxu"]
+
+[ext_resource type="Script" uid="uid://bxji18xthkfp1" path="res://Scripts/Seeds/metronome.gd" id="1_hkanj"]
+
+[node name="Pizza Components" type="Sprite2D" groups=["Seed", "Weapon"]]
+script = ExtResource("1_hkanj")
+BASE_FIRE_RATE = 2.0
+BASE_RANGE = 350.0
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+
+[node name="Passives" type="Node" parent="."]

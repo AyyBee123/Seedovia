@@ -52,6 +52,7 @@ extends Node
 @onready var dash = $Dash
 @onready var death = $Death
 @onready var cash = $Cash
+@onready var smack = $Smack
 @onready var light_impact = $LightImpact
 @onready var ping = $Ping
 @onready var shock = $Shock
@@ -64,6 +65,10 @@ extends Node
 @onready var bite_6 = $Bite6
 @onready var bite_7 = $Bite7
 @onready var bite_8 = $Bite8
+@onready var crunch_2 = $Crunch2
+@onready var mushroom_boing = $"Mushroom Boing"
+@onready var mushroom_boing_2 = $"Mushroom Boing2"
+@onready var sausage = $Sausage
 
 func _ready():
 	SignalBus.play_audio.connect(play)

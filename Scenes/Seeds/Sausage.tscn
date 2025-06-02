@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://dpb3ih0vj1ax4"]
+
+[ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_7bbf6"]
+[ext_resource type="Texture2D" uid="uid://g6cg14hpprdt" path="res://Sprites/Seeds/Sausage.png" id="2_7bbf6"]
+[ext_resource type="Script" uid="uid://vayirb4idkif" path="res://Scripts/Seeds/sausage.gd" id="3_7bbf6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u2dx8"]
+radius = 7.33333
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g2vnj"]
+size = Vector2(14.6667, 23.3333)
+
+[node name="Sausage" instance=ExtResource("1_7bbf6")]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_7bbf6")
+offset = Vector2(-3, -0.5)
+script = ExtResource("3_7bbf6")
+BASE_DAMAGE = 5.0
+BASE_FIRE_RATE = 2.0
+BASE_RANGE = 300.0
+BASE_SPEED = 400.0
+BASE_SIZE = 1.0
+BASE_BLAST_RADIUS = 1.0
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2(-6.66667, -9.33333)
+shape = SubResource("CircleShape2D_u2dx8")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hitbox" index="1"]
+position = Vector2(2.38419e-07, 3)
+shape = SubResource("RectangleShape2D_g2vnj")

@@ -1,13 +1,8 @@
 extends "res://Scripts/Seeds/seed_template.gd"
 
-@onready var point_1 = $Point1
-@onready var point_2 = $Point2
-
 const SPLASH = preload("res://Scenes/Misc/Splash.tscn")
-const LEMON_POOL = preload("res://Scenes/Seeds/Effects/Lemon Pool.tscn")
+const TOMATO_POOL = preload("res://Scenes/Seeds/Effects/Tomato Pool.tscn")
 
-var pos
-var point
 var rotate_dir
 
 func _ready():
@@ -24,7 +19,8 @@ func _collide(body):
 		body.get_parent()._enemy_stats.take_damage(DAMAGE)
 	elif body.is_in_group("Players"):
 		body._player_stats.take_damage(1)
-	shoot_next_weapon()
+	for i in 2:
+		shoot_next_weapon()
 	SfxDeconflicter.play(Game.audio_manager.hit)
 	SfxDeconflicter.play(Game.audio_manager.maple_splat)
 	
@@ -39,17 +35,9 @@ func update_position(delta):
 func shoot_next_weapon():
 	if get_next_weapon() == null:
 		return
-	point = [point_1, point_2].pick_random()
-	weapon_direction = global_position.direction_to(point.global_position)
+	weapon_direction = Vector2.RIGHT.rotated(randf_range(0, TAU))
 	set_weapon_properties(get_next_weapon().instantiate(), weapon_direction, true)
 
-func initialize_location(weapon_instance):
-	if not get_tree():
-		return
-	get_tree().current_scene.add_child(weapon_instance)
-	weapon_instance.global_position = point.global_position
-	weapon_fired.emit(weapon_instance)
-	
 func travelled_distance():
 	distance_travelled = starting_position.distance_to(global_position)
 	total_distance += distance_travelled
@@ -61,7 +49,7 @@ func explode():
 	var splash = SPLASH.instantiate()
 	splash.size = 0.24 * SIZE
 	splash.source = self
-	splash.modulate = Color("ffff3f")
+	splash.modulate = Color("9e302a")
 	call_deferred("create_child", splash)
 	call_deferred("create_pool")
 
@@ -70,8 +58,8 @@ func create_child(child):
 	child.global_position = self.global_position
 
 func create_pool():
-	shoot_current_seed(LEMON_POOL.instantiate())
-	var pool = LEMON_POOL.instantiate()
+	shoot_current_seed(TOMATO_POOL.instantiate())
+	var pool = TOMATO_POOL.instantiate()
 
 func shoot_current_seed(instantiated_weapon, _desired_direction = desired_direction, pos = global_position):
 	instantiated_weapon.add_child(get_node("Passives").duplicate())
