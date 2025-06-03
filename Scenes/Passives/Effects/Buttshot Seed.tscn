@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://b41j85vmttxqx"]
-
-[ext_resource type="Script" uid="uid://dnmi2va346gdw" path="res://Scripts/Passives/Effects/buttshot_seed.gd" id="1_r28ue"]
-
-[node name="Buttshot Seed" type="Node"]
-script = ExtResource("1_r28ue")

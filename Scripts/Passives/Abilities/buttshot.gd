@@ -1,7 +1,5 @@
 extends "res://Scripts/Passives/Classes/passive_chance.gd"
 
-const BUTTSHOT_SEED = preload("res://Scenes/Passives/Effects/Buttshot Seed.tscn")
-
 var source
 
 func _ready():
@@ -14,6 +12,24 @@ func _ready():
 func trigger(weapon = null):
 	if weapon.is_in_group("Buttshot Weapon"): # prevent duplicates
 		return
-	var shot = BUTTSHOT_SEED.instantiate()
-	shot.source = source
-	weapon.get_node("Passives").add_child(shot)
+	if weapon == null:
+		return
+	if not weapon.is_in_group("Seed"):
+		return
+	var duplicate_seed = weapon.duplicate()
+	duplicate_seed.desired_direction = -weapon.desired_direction
+	duplicate_seed.slot_index = weapon.slot_index
+	duplicate_seed.previous_weapon = source
+	duplicate_seed.seed_slot_number = weapon.seed_slot_number
+	duplicate_seed.source = Targets.get_player()
+	duplicate_seed.add_to_group("Buttshot Weapon")
+	duplicate_seed.modulate.a = weapon.modulate.a
+	duplicate_seed.transferred_speed_multiplier *= weapon.transferred_speed_multiplier
+	duplicate_seed.transferred_range_multiplier *= weapon.transferred_range_multiplier
+	duplicate_seed.transferred_size_multiplier *= weapon.transferred_size_multiplier
+	duplicate_seed.transferred_damage_multiplier *= weapon.transferred_damage_multiplier
+	duplicate_seed.transferred_blast_radius_multiplier *= weapon.transferred_blast_radius_multiplier
+	duplicate_seed.transferred_fire_rate_multiplier *= weapon.transferred_fire_rate_multiplier
+	get_tree().current_scene.add_child(duplicate_seed)
+	duplicate_seed.global_position = source.global_position - weapon.desired_direction * 15
+	source.weapon_fired.emit(duplicate_seed)
