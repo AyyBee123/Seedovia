@@ -59,17 +59,6 @@ func _physics_process(delta):
 		if collision:
 			velocity = velocity.bounce(collision.get_normal())
 			launch_direction = velocity.normalized()
-	
-	var areas = $"Enemy Hitbox".get_overlapping_areas()
-	if areas.size() > 0:
-		if areas[0].get_parent().is_in_group("Melee"):
-			pass
-		elif areas[0].get_parent().is_in_group("Explosion"):
-			areas[0].queue_free()
-		elif areas[0].get_parent().is_in_group("Seed"):
-			areas[0].get_parent().destroy()
-		else:
-			areas[0].get_parent().queue_free()
 
 func idle():
 	velocity = direction * speed
