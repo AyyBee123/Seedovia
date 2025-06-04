@@ -19,8 +19,8 @@ const SETTINGS = preload("res://Scenes/UI/Settings.tscn")
 const MENU_SEED = preload("res://Scenes/UI/Menu Seed.tscn")
 const LICENCE_POPUP = preload("res://Scenes/UI/Licence Popup.tscn")
 
-@onready var camera = $"Menu Camera"
-@onready var starting_menu = $"Starting Menu"
+@onready var camera = %"Menu Camera"
+@onready var starting_menu = %"Starting Menu"
 
 @onready var start_pos = starting_menu.position
 

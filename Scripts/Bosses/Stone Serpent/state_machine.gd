@@ -58,9 +58,9 @@ func random_attack_value():
 	return randi_range(0, 1)
 
 func set_random_time():
-	timer.start(randf_range(7, 10))
+	timer.start(randf_range(3, 4))
 
 func create_timer():
 	add_child(timer)
 	timer.one_shot = true
-	timer.start(randf_range(4, 6))
+	timer.start(randf_range(3, 4))

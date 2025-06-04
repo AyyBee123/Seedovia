@@ -381,7 +381,7 @@ func add_popup(item):
 	popup.description = item.item.description
 	popup.rarity = item.item.rarity
 	popup.inventory = inventory
-	popup.player = true
+	popup.player = self
 	add_child.call_deferred(popup)
 
 func _on_pickup(_item):

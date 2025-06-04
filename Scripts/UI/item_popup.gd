@@ -72,6 +72,7 @@ func _process(delta):
 
 func set_pos():
 	if player:
+		global_position.y = player.global_position.y + %Box.size.y / 4
 		return
 	var inventory_y_pos = inventory.global_position.y
 	var inventory_height = inventory.find_child("Inventory Screen").size.y * inventory.scale.y

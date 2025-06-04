@@ -62,6 +62,7 @@ script = ExtResource("1_ehj1f")
 metadata/_edit_use_anchors_ = true
 
 [node name="Menu Camera" type="Camera2D" parent="."]
+unique_name_in_owner = true
 offset = Vector2(960, 540)
 
 [node name="Grass" type="TextureRect" parent="."]
@@ -77,6 +78,7 @@ texture = ExtResource("2_7rdtu")
 metadata/_edit_use_anchors_ = true
 
 [node name="Starting Menu" type="Control" parent="."]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
