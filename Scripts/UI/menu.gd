@@ -39,10 +39,8 @@ func _ready():
 	
 	thread = Thread.new()
 	
-	await get_tree().create_timer(0.5).timeout
-	Global.load_data()
-	Global.load_achievements()
-	
+	#await get_tree().process_frame
+	#Global.load_achievements()
 
 func _on_play_button_pressed():
 	Game.audio_manager.play(Game.audio_manager.ui_button)

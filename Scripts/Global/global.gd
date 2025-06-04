@@ -14,6 +14,9 @@ var RNG: RandomNumberGenerator
 var loaded_room_file: String
 var coins_saving: bool
 
+func _ready() -> void:
+	SignalBus.initialized_achievements.connect(load_achievements)
+
 func save_run_data():
 	data.get_character()
 	data.get_coins()
