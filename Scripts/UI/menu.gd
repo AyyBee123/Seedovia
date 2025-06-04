@@ -38,9 +38,6 @@ func _ready():
 		continue_button.get_node("Text").modulate = Color("d2bdaa")
 	
 	thread = Thread.new()
-	
-	#await get_tree().process_frame
-	#Global.load_achievements()
 
 func _on_play_button_pressed():
 	Game.audio_manager.play(Game.audio_manager.ui_button)
