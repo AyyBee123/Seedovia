@@ -47,10 +47,10 @@ func _physics_process(delta):
 func _on_enter_radius_body_entered(body):
 	if body.is_in_group("Players"):
 		# prevents held item from being deleted when moving to a new room
-		if body.get_node("Inventory").holding_item:
-			PlayerInventory.add_item(body.get_node("Inventory").holding_item.item, body, self)
-			body.get_node("Inventory").holding_item.queue_free()
-			body.get_node("Inventory").holding_item = null
+		if body.find_child("Inventory").holding_item:
+			PlayerInventory.add_item(body.find_child("Inventory").holding_item.item, body, self)
+			body.find_child("Inventory").holding_item.queue_free()
+			body.find_child("Inventory").holding_item = null
 		transition_scene = true
 
 func change_scene():

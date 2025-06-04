@@ -115,10 +115,8 @@ texture = ExtResource("7_jnuxc")
 [node name="Stats" parent="." index="10" instance=ExtResource("8_helbd")]
 script = ExtResource("9_hxi2s")
 
-[node name="Inventory" parent="." index="11" instance=ExtResource("8_1cxct")]
-visible = false
-offset_left = -1620.0
-offset_top = -1022.0
-offset_right = -1620.0
-offset_bottom = -1022.0
-scale = Vector2(3.745, 3.745)
+[node name="Inventory" parent="Inventory Canvas" index="0" instance=ExtResource("8_1cxct")]
+offset_left = -632.0
+offset_top = -476.0
+offset_right = -471.0
+offset_bottom = -220.0

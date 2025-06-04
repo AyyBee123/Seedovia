@@ -5,7 +5,7 @@ var item = null
 var slot_index: int
 var popup = null
 
-@onready var player = $"../../../.."
+@onready var player = Targets.get_player()
 @onready var inventory = $"../../.."
 var item_popup = preload("res://Scenes/UI/Item Popup.tscn")
 

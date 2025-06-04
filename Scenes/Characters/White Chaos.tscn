@@ -118,15 +118,7 @@ texture = ExtResource("8_qnhjt")
 
 [node name="Stats" parent="." index="10" instance=ExtResource("9_l3n00")]
 
-[node name="Inventory" parent="." index="11" instance=ExtResource("9_jjp27")]
-visible = false
-offset_left = -1620.0
-offset_top = -1022.0
-offset_right = -1620.0
-offset_bottom = -1022.0
-scale = Vector2(3.745, 3.745)
-
-[node name="Shadow" parent="." index="16"]
+[node name="Shadow" parent="." index="15"]
 position = Vector2(0, 10.5)
 
 [node name="CollisionShape2D" parent="Slow Detect" index="0"]
@@ -137,3 +129,9 @@ position = Vector2(0, 10.5)
 
 [node name="CollisionShape2D" parent="Slippery Detect" index="0"]
 position = Vector2(0, 10.5)
+
+[node name="Inventory" parent="Inventory Canvas" index="0" instance=ExtResource("9_jjp27")]
+offset_left = -632.0
+offset_top = -476.0
+offset_right = -476.0
+offset_bottom = -220.0

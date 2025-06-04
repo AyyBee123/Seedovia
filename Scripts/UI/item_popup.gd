@@ -10,6 +10,7 @@ var detailed_description
 var rarity
 var inventory
 var source # check if the popup was created by the mouse hover or a controller
+var player
 var slot # check if the popup is from a slot in the inventory (null if not)
 static var hue = 0.0
 var mystic_color
@@ -70,6 +71,8 @@ func _process(delta):
 	set_pos()
 
 func set_pos():
+	if player:
+		return
 	var inventory_y_pos = inventory.global_position.y
 	var inventory_height = inventory.find_child("Inventory Screen").size.y * inventory.scale.y
 	# if the popup's position is higher than the inventory screen's

@@ -121,10 +121,8 @@ texture = ExtResource("7_ecyii")
 
 [node name="Stats" parent="." index="10" instance=ExtResource("8_r2sah")]
 
-[node name="Inventory" parent="." index="11" instance=ExtResource("9_4nl8q")]
-visible = false
-offset_left = -1620.0
-offset_top = -1022.0
-offset_right = -1459.0
-offset_bottom = -766.0
-scale = Vector2(3.745, 3.745)
+[node name="Inventory" parent="Inventory Canvas" index="0" instance=ExtResource("9_4nl8q")]
+offset_left = -632.0
+offset_top = -476.0
+offset_right = -476.0
+offset_bottom = -220.0

@@ -7,6 +7,7 @@ var temp_master
 var temp_sfx
 var temp_music
 var default_focus
+const PADDING_TAB_NAME = 16
 
 func _unhandled_input(event):
 	if event.is_action_pressed("ui_cancel"):
@@ -68,6 +69,17 @@ func _ready():
 	temp_master = %MasterSlider.value
 	temp_sfx = %SFXSlider.value
 	temp_music = %MusicSlider.value
+	
+	for tab_index in range(0, %TabContainer.get_tab_count()):
+		var tab_title = %TabContainer.get_tab_title(tab_index)
+
+		var tab_name_size = tab_title.length()
+		var half_pad = ceil((PADDING_TAB_NAME + tab_name_size) / 2.0)
+		var tab_title_padded = '%*s' % [half_pad, tab_title]
+
+		tab_title_padded = '%-*s' % [PADDING_TAB_NAME, tab_title_padded]
+
+		%TabContainer.set_tab_title(tab_index, tab_title_padded)
 
 func _on_fullscreen_button_toggled(toggled_on):
 	Game.audio_manager.play(Game.audio_manager.ui_button)

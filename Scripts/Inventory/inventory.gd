@@ -1,7 +1,7 @@
 extends Control
 
 const slot_class = preload("res://Scripts/Inventory/inventory_slot.gd")
-@onready var player = $".."
+@onready var player = Targets.get_player()
 @onready var inventory_slots = $"Inventory Screen/Inventory Slots".get_children()
 @onready var talisman_slots = $"Inventory Screen/Talisman Slots".get_children()
 @onready var seed_slots = $"Inventory Screen/Seed Slots".get_children()

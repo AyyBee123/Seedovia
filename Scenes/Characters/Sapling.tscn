@@ -111,12 +111,10 @@ autoplay = "Idle"
 [node name="Hand" parent="Rotation Point/Marker2D" index="0"]
 texture = ExtResource("7_cs58s")
 
-[node name="Inventory" parent="." index="10" instance=ExtResource("8_ag58w")]
-visible = false
-offset_left = -1620.0
-offset_top = -1022.0
-offset_right = -1459.0
-offset_bottom = -766.0
-scale = Vector2(3.745, 3.745)
+[node name="Stats" parent="." index="15" instance=ExtResource("2_ag84k")]
 
-[node name="Stats" parent="." index="16" instance=ExtResource("2_ag84k")]
+[node name="Inventory" parent="Inventory Canvas" index="0" instance=ExtResource("8_ag58w")]
+offset_left = -632.0
+offset_top = -476.0
+offset_right = -476.0
+offset_bottom = -220.0

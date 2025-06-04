@@ -204,17 +204,15 @@ offset = Vector2(0, 4)
 [node name="Hand" parent="Rotation Point/Marker2D" index="0"]
 texture = ExtResource("9_pjhxl")
 
-[node name="Inventory" parent="." index="10" instance=ExtResource("9_innwy")]
-visible = false
-offset_left = -1620.0
-offset_top = -1022.0
-offset_right = -1459.0
-offset_bottom = -766.0
-scale = Vector2(3.745, 3.745)
-
-[node name="Shadow" parent="." index="15"]
+[node name="Shadow" parent="." index="14"]
 offset = Vector2(0, 8)
 
-[node name="Stats" parent="." index="16" instance=ExtResource("11_ny8v2")]
+[node name="Stats" parent="." index="15" instance=ExtResource("11_ny8v2")]
+
+[node name="Inventory" parent="Inventory Canvas" index="0" instance=ExtResource("9_innwy")]
+offset_left = -632.0
+offset_top = -476.0
+offset_right = -476.0
+offset_bottom = -220.0
 
 [connection signal="frame_changed" from="Player Sprite" to="." method="_on_player_sprite_frame_changed"]

@@ -32,8 +32,8 @@ func _input(event):
 			add_child(console)
 	
 	if Input.is_action_just_pressed("esc"):
-		if player.get_node("Inventory").visible or player.get_node("Stat Sheet").visible:
-			player.get_node("Inventory").visible = false
+		if player.find_child("Inventory").visible or player.get_node("Stat Sheet").visible:
+			player.find_child("Inventory").visible = false
 			player.get_node("Stat Sheet").visible = false
 		elif get_node_or_null("Console"):
 			get_node("Console").queue_free()

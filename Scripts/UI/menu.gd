@@ -7,9 +7,9 @@ const GRAPES = preload("res://Resources/Items/Seeds/grapes.tres")
 const loading_screen_scene = preload("res://Scenes/UI/Loading Screen.tscn")
 const character_select_scene = preload("res://Scenes/UI/Character Select.tscn")
 
-@onready var camera = $"Menu Camera"
-@onready var save_file_select = $"Save File Select"
-@onready var starting_menu = $"Starting Menu"
+@onready var camera = %"Menu Camera"
+@onready var save_file_select = %"Save File Select"
+@onready var starting_menu = %"Starting Menu"
 @onready var continue_button = %"Continue Button"
 
 @onready var save_pos = save_file_select.position
@@ -25,19 +25,24 @@ var licence_popup
 var seed_list: Array
 
 func _ready():
-	Global.load_achievements()
 	if OS.has_feature("demo"):
 		get_tree().change_scene_to_file.call_deferred("res://Scenes/UI/Demo Menu.tscn")
 	Game.music_manager.play(Game.music_manager.MENU_THEME)
 	seed_list = get_all_file_paths("res://Resources/Items/Seeds/")
 	
-	thread = Thread.new()
 	if FileAccess.file_exists(Global.RUN_SAVE_PATH):
 		continue_button.disabled = false
-		$"Starting Menu/TextureRect/Continue Button/Text".modulate = Color("e7cca0")
+		continue_button.get_node("Text").modulate = Color("e7cca0")
 	else:
 		continue_button.disabled = true
-		$"Starting Menu/TextureRect/Continue Button/Text".modulate = Color("d2bdaa")
+		continue_button.get_node("Text").modulate = Color("d2bdaa")
+	
+	thread = Thread.new()
+	
+	await get_tree().create_timer(0.5).timeout
+	Global.load_data()
+	Global.load_achievements()
+	
 
 func _on_play_button_pressed():
 	Game.audio_manager.play(Game.audio_manager.ui_button)
@@ -100,7 +105,7 @@ func spawn_seed():
 		return
 	var menu_seed = MENU_SEED.instantiate()
 	menu_seed.texture = ResourceLoader.load(seed).texture
-	get_tree().current_scene.add_child(menu_seed)
+	$CanvasLayer.add_child(menu_seed)
 	menu_seed.position = Vector2(randf_range(0, 1920), -100)
 
 func get_all_file_paths(path: String) -> Array[String]:
@@ -121,7 +126,7 @@ func get_all_file_paths(path: String) -> Array[String]:
 
 func _on_seed_spawn_rate_timeout():
 	spawn_seed()
-	$"Seed Spawn Rate".start()
+	%"Seed Spawn Rate".start()
 
 func _on_licence_button_pressed():
 	Game.audio_manager.play(Game.audio_manager.ui_button)
