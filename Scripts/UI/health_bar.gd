@@ -26,9 +26,6 @@ func set_health(new_health):
 	health = min(damage_bar.max_value, new_health)
 	damage_bar.value = health
 	
-	if health <= 0: # if entity dies
-		queue_free()
-	
 	if health < previous_health: # if entity takes damage
 		delay.start()
 	else: #healing
