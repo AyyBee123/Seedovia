@@ -29,6 +29,7 @@ func _ready():
 		get_tree().change_scene_to_file.call_deferred("res://Scenes/UI/Demo Menu.tscn")
 	Game.music_manager.play(Game.music_manager.MENU_THEME)
 	seed_list = get_all_file_paths("res://Resources/Items/Seeds/")
+	Global.load_achievements()
 	
 	if FileAccess.file_exists(Global.RUN_SAVE_PATH):
 		continue_button.disabled = false

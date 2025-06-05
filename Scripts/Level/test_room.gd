@@ -9,6 +9,7 @@ var starting_stats: player_stats = preload("res://Resources/Characters/Stats/bas
 @export var character_scene: String
 
 func _ready():
+	Global.load_achievements()
 	Global.RNG = RandomNumberGenerator.new()
 	select_character()
 	# spawn the player character

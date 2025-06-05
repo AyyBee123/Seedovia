@@ -371,22 +371,19 @@ shape = SubResource("RectangleShape2D_vp2bu")
 
 [node name="Pos1" type="Marker2D" parent="." index="1"]
 position = Vector2(0, -20)
-scale = Vector2(1, 1)
 
 [node name="Pos2" type="Marker2D" parent="." index="2"]
 position = Vector2(0, -36)
-scale = Vector2(1, 1)
 
 [node name="Pos3" type="Marker2D" parent="." index="3"]
 position = Vector2(0, -52)
-scale = Vector2(1, 1)
 
 [node name="AnimatedSprite2D" parent="." index="4"]
 material = SubResource("ShaderMaterial_83fbi")
 sprite_frames = SubResource("SpriteFrames_5q5y1")
 animation = &"3 Scoop"
 autoplay = "3 Scoop"
-frame_progress = 0.377239
+frame_progress = 0.0917134
 offset = Vector2(0, -32)
 
 [node name="CollisionPolygon2D" parent="Enemy Hitbox" index="0"]

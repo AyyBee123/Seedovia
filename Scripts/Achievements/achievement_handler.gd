@@ -17,10 +17,3 @@ func _ready():
 	add_child(ach_04_swift)
 	ach_05_pizza = Ach05Pizza.new()
 	add_child(ach_05_pizza)
-	
-	await get_tree().process_frame # ensures all ach children are ready
-	
-	if not ach_01_die:
-		push_error("Achievement handler or nodes not ready.")
-		return
-	SignalBus.initialized_achievements.emit()

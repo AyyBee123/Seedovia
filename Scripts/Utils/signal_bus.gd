@@ -5,7 +5,6 @@ signal player_die
 signal player_damaged(damage)
 signal achievement(ach)
 signal unlock(item)
-signal initialized_achievements
 signal ach_popup_finished
 signal coin_pickup(amount)
 signal inventory_changed

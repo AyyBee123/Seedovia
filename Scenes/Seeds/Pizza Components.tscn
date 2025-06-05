@@ -4,7 +4,7 @@
 
 [node name="Pizza Components" type="Sprite2D" groups=["Seed", "Weapon"]]
 script = ExtResource("1_hkanj")
-BASE_FIRE_RATE = 3.0
+BASE_FIRE_RATE = 3.333
 BASE_RANGE = 300.0
 
 [node name="Hitbox" type="Area2D" parent="."]
