@@ -22,3 +22,11 @@ func _enter_state(new_state, old_state):
 	match new_state:
 		states.idle:
 			parent.animated_sprite_2d.play(str(parent.NUMBER_OF_SCOOPS) + " Scoop")
+		states.die:
+			parent._enemy_stats.damage_taken_multiplier = 0
+
+func _exit_state(old_state, new_state):
+	match old_state:
+		states.die:
+			parent._enemy_stats.damage_taken_multiplier = 1
+			parent.get_node("Health Bar").pos.y += 16

@@ -386,7 +386,7 @@ material = SubResource("ShaderMaterial_83fbi")
 sprite_frames = SubResource("SpriteFrames_5q5y1")
 animation = &"3 Scoop"
 autoplay = "3 Scoop"
-frame = 12
+frame_progress = 0.377239
 offset = Vector2(0, -32)
 
 [node name="CollisionPolygon2D" parent="Enemy Hitbox" index="0"]
