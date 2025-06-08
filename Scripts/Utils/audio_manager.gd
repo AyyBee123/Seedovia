@@ -69,6 +69,7 @@ extends Node
 @onready var mushroom_boing = $"Mushroom Boing"
 @onready var mushroom_boing_2 = $"Mushroom Boing2"
 @onready var sausage = $Sausage
+@onready var cake_return = $CakeReturn
 
 func _ready():
 	SignalBus.play_audio.connect(play)

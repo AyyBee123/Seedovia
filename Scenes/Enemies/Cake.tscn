@@ -1,0 +1,253 @@
+[gd_scene load_steps=31 format=3 uid="uid://b44i1p7xvbbqg"]
+
+[ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_gs4gd"]
+[ext_resource type="Script" uid="uid://b3hl13ace8xgo" path="res://Scripts/Enemies/Cake/cake.gd" id="2_a4e8u"]
+[ext_resource type="Shader" uid="uid://dsv0n8bsysyo6" path="res://Shaders/color_tint_shader.gdshader" id="2_wi38w"]
+[ext_resource type="Resource" uid="uid://byt454j7qf40w" path="res://Resources/Enemies/cake.tres" id="3_erkv6"]
+[ext_resource type="Script" uid="uid://c348wim877upp" path="res://Scripts/Enemies/Cake/state_machine.gd" id="4_erkv6"]
+[ext_resource type="Texture2D" uid="uid://c8bnpevmufmd2" path="res://Sprites/Enemies/Cake.png" id="5_6rup6"]
+[ext_resource type="AudioStream" uid="uid://b3hkb1bwhswrk" path="res://Audio/SFX/Heal.mp3" id="7_q178b"]
+[ext_resource type="AudioStream" uid="uid://dere14panpulp" path="res://Audio/SFX/Drop.mp3" id="8_a8qe1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a8qe1"]
+radius = 25.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6rup6"]
+radius = 8.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a4e8u"]
+resource_local_to_scene = true
+shader = ExtResource("2_wi38w")
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/tint_factor = 0.0
+shader_parameter/fade = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4qvu6"]
+atlas = ExtResource("5_6rup6")
+region = Rect2(192, 0, 64, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q178b"]
+atlas = ExtResource("5_6rup6")
+region = Rect2(256, 0, 64, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a8qe1"]
+atlas = ExtResource("5_6rup6")
+region = Rect2(320, 0, 64, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w42dy"]
+atlas = ExtResource("5_6rup6")
+region = Rect2(384, 0, 64, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_we23i"]
+atlas = ExtResource("5_6rup6")
+region = Rect2(448, 0, 64, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5o8at"]
+atlas = ExtResource("5_6rup6")
+region = Rect2(512, 0, 64, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ajcyh"]
+atlas = ExtResource("5_6rup6")
+region = Rect2(576, 0, 64, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3f0ky"]
+atlas = ExtResource("5_6rup6")
+region = Rect2(640, 0, 64, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mts2u"]
+atlas = ExtResource("5_6rup6")
+region = Rect2(0, 0, 64, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n4g8v"]
+atlas = ExtResource("5_6rup6")
+region = Rect2(64, 0, 64, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_606in"]
+atlas = ExtResource("5_6rup6")
+region = Rect2(128, 0, 64, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6rup6"]
+atlas = ExtResource("5_6rup6")
+region = Rect2(704, 0, 64, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yj3dv"]
+atlas = ExtResource("5_6rup6")
+region = Rect2(768, 0, 64, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5xacj"]
+atlas = ExtResource("5_6rup6")
+region = Rect2(832, 0, 64, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8xydj"]
+atlas = ExtResource("5_6rup6")
+region = Rect2(896, 0, 64, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d64rk"]
+atlas = ExtResource("5_6rup6")
+region = Rect2(960, 0, 64, 52)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yj3dv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4qvu6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q178b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a8qe1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w42dy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_we23i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w42dy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_we23i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w42dy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_we23i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w42dy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_we23i")
+}],
+"loop": false,
+"name": &"Charge",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5o8at")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ajcyh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3f0ky")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ajcyh")
+}],
+"loop": true,
+"name": &"Fire",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mts2u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n4g8v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_606in")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n4g8v")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6rup6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yj3dv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5xacj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8xydj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d64rk")
+}],
+"loop": false,
+"name": &"Return",
+"speed": 12.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4qvu6"]
+radius = 8.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q178b"]
+radius = 25.0
+
+[node name="Cake" instance=ExtResource("1_gs4gd")]
+scale = Vector2(2.5, 2.5)
+script = ExtResource("2_a4e8u")
+_enemy_stats = ExtResource("3_erkv6")
+
+[node name="CakeCollisionShape" type="CollisionShape2D" parent="." index="0"]
+shape = SubResource("CircleShape2D_a8qe1")
+
+[node name="CollisionPolygon2D" parent="." index="1"]
+position = Vector2(0, -8)
+shape = SubResource("CircleShape2D_6rup6")
+
+[node name="AnimatedSprite2D" parent="." index="2"]
+material = SubResource("ShaderMaterial_a4e8u")
+sprite_frames = SubResource("SpriteFrames_yj3dv")
+animation = &"Charge"
+autoplay = "Idle"
+frame = 10
+frame_progress = 1.0
+
+[node name="CollisionPolygon2D" parent="Enemy Hitbox" index="0"]
+position = Vector2(0, -8)
+shape = SubResource("CircleShape2D_4qvu6")
+
+[node name="Health Bar" parent="." index="4"]
+offset_top = -40.4
+offset_bottom = -32.4
+
+[node name="state_machine" type="Node" parent="." index="6"]
+script = ExtResource("4_erkv6")
+metadata/_custom_type_script = "uid://cxh3rckpecdhs"
+
+[node name="Heal" type="AudioStreamPlayer" parent="." index="7"]
+stream = ExtResource("7_q178b")
+bus = &"SFX"
+
+[node name="Heal2" type="AudioStreamPlayer" parent="." index="8"]
+stream = ExtResource("7_q178b")
+pitch_scale = 1.2
+bus = &"SFX"
+
+[node name="Heal3" type="AudioStreamPlayer" parent="." index="9"]
+stream = ExtResource("7_q178b")
+pitch_scale = 1.5
+bus = &"SFX"
+
+[node name="Drop" type="AudioStreamPlayer" parent="." index="10"]
+stream = ExtResource("8_a8qe1")
+volume_db = -3.0
+pitch_scale = 0.75
+bus = &"SFX"
+
+[node name="Cake Hitbox" type="Area2D" parent="." index="11"]
+collision_layer = 4
+collision_mask = 11
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cake Hitbox" index="0"]
+shape = SubResource("CircleShape2D_q178b")
+
+[node name="Sound Delay" type="Timer" parent="." index="12"]
+wait_time = 0.2
+one_shot = true
+
+[connection signal="timeout" from="Sound Delay" to="." method="_on_sound_delay_timeout"]

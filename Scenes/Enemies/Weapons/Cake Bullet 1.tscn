@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://cohh3lowqtgd6"]
+
+[ext_resource type="PackedScene" uid="uid://bbc2vnfngjpdx" path="res://Scenes/Enemies/Weapons/Bullet.tscn" id="1_mw1f7"]
+[ext_resource type="Texture2D" uid="uid://nkxejawkl1cd" path="res://Sprites/Enemies/Weapons/Cake Bullet 1.png" id="2_vsf17"]
+[ext_resource type="Script" uid="uid://q2mfhmme6paj" path="res://Scripts/Enemies/Weapons/cake_bullet.gd" id="3_vsf17"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kja0j"]
+size = Vector2(17, 25)
+
+[node name="Cake Bullet 1" instance=ExtResource("1_mw1f7")]
+texture = ExtResource("2_vsf17")
+script = ExtResource("3_vsf17")
+
+[node name="Bullet Hitbox" parent="." index="0"]
+collision_mask = 7
+
+[node name="CollisionShape2D" parent="Bullet Hitbox" index="0"]
+position = Vector2(4.76837e-07, 1)
+shape = SubResource("RectangleShape2D_kja0j")
+
+[node name="Acceleration" type="Timer" parent="." index="1"]
+one_shot = true
+autostart = true
+
+[node name="Return Delay" type="Timer" parent="." index="2"]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="timeout" from="Acceleration" to="." method="_on_acceleration_timeout"]
+[connection signal="timeout" from="Return Delay" to="." method="_on_return_delay_timeout"]
