@@ -17,7 +17,7 @@ func _ready():
 func _physics_process(delta):
 	super._physics_process(delta)
 	
-	direction = global_position.direction_to(player.global_position).normalized()
+	direction = global_position.direction_to(player.global_position)
 	
 	if player:
 		if player.global_position > global_position: # to the right of Gungo
@@ -39,7 +39,7 @@ func _on_animated_sprite_2d_animation_finished():
 func _on_animated_sprite_2d_frame_changed():
 	if animated_sprite_2d.animation == "Shoot":
 		if animated_sprite_2d.frame == 4:
-			var bullet_direction = marker_2d.global_position.direction_to(player.global_position).normalized()
+			var bullet_direction = marker_2d.global_position.direction_to(player.global_position)
 			var angles = [-PI/6, 0, PI/6]
 			for i in angles:
 				var bullet_instance = BULLET.instantiate()

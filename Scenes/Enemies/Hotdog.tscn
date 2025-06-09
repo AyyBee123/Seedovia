@@ -1,0 +1,116 @@
+[gd_scene load_steps=15 format=3 uid="uid://bqcirvhu05s0b"]
+
+[ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_6kbya"]
+[ext_resource type="Script" uid="uid://b5uhnf8n1koey" path="res://Scripts/Enemies/Hotdog/hotdog.gd" id="2_ov5bo"]
+[ext_resource type="Texture2D" uid="uid://p5svgbumvdhy" path="res://Sprites/Enemies/Hotdog.png" id="3_akuf4"]
+[ext_resource type="Resource" uid="uid://b5lq5i1une0uh" path="res://Resources/Enemies/hotdog.tres" id="3_ov5bo"]
+[ext_resource type="Shader" uid="uid://dsv0n8bsysyo6" path="res://Shaders/color_tint_shader.gdshader" id="4_0upkt"]
+[ext_resource type="Texture2D" uid="uid://b8smy6pntxxs4" path="res://Sprites/Enemies/Hotdog Buns.png" id="5_j1x64"]
+[ext_resource type="Script" uid="uid://b0wmo0ype6ayj" path="res://Scripts/Enemies/Hotdog/state_machine.gd" id="6_wnati"]
+[ext_resource type="AudioStream" uid="uid://bh2mf3th8824m" path="res://Audio/SFX/Stretch.mp3" id="8_j1x64"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ov5bo"]
+radius = 17.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iss25"]
+resource_local_to_scene = true
+shader = ExtResource("4_0upkt")
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/tint_factor = 0.0
+shader_parameter/fade = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tpls3"]
+atlas = ExtResource("5_j1x64")
+region = Rect2(0, 0, 44, 38)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ql61a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tpls3")
+}],
+"loop": true,
+"name": &"Default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nnj0j"]
+size = Vector2(58, 10)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_akuf4"]
+radius = 17.0294
+
+[node name="Hotdog" instance=ExtResource("1_6kbya")]
+scale = Vector2(2, 2)
+script = ExtResource("2_ov5bo")
+_enemy_stats = ExtResource("3_ov5bo")
+
+[node name="CollisionPolygon2D" parent="." index="0"]
+position = Vector2(0, 0.5)
+shape = SubResource("CircleShape2D_ov5bo")
+
+[node name="HotdogSprite" type="Sprite2D" parent="." index="1"]
+unique_name_in_owner = true
+texture = ExtResource("3_akuf4")
+region_enabled = true
+region_rect = Rect2(8, 0, 46, 16)
+
+[node name="AnimatedSprite2D" parent="." index="2"]
+material = SubResource("ShaderMaterial_iss25")
+sprite_frames = SubResource("SpriteFrames_ql61a")
+animation = &"Default"
+frame_progress = 0.764076
+
+[node name="Left" type="Sprite2D" parent="AnimatedSprite2D" index="0"]
+unique_name_in_owner = true
+position = Vector2(-27, 0)
+texture = ExtResource("3_akuf4")
+region_enabled = true
+region_rect = Rect2(0, 0, 8, 16)
+
+[node name="Right" type="Sprite2D" parent="AnimatedSprite2D" index="1"]
+unique_name_in_owner = true
+position = Vector2(27, 0)
+texture = ExtResource("3_akuf4")
+region_enabled = true
+region_rect = Rect2(54, 0, 8, 16)
+
+[node name="Hotdog Hitbox" type="Area2D" parent="AnimatedSprite2D" index="2"]
+collision_layer = 4
+collision_mask = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Hotdog Hitbox" index="0"]
+unique_name_in_owner = true
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_nnj0j")
+
+[node name="CollisionPolygon2D" parent="Enemy Hitbox" index="0"]
+position = Vector2(0, 0.5)
+shape = SubResource("CircleShape2D_akuf4")
+
+[node name="Health Bar" parent="." index="4"]
+offset_top = -37.0
+offset_bottom = -29.0
+
+[node name="state_machine" type="Node" parent="." index="6"]
+script = ExtResource("6_wnati")
+metadata/_custom_type_script = "uid://cxh3rckpecdhs"
+
+[node name="Spin Time" type="Timer" parent="." index="7"]
+wait_time = 5.0
+one_shot = true
+
+[node name="Spin Deceleration" type="Timer" parent="." index="8"]
+one_shot = true
+
+[node name="Spin Acceleration" type="Timer" parent="." index="9"]
+one_shot = true
+
+[node name="Stretch" type="AudioStreamPlayer" parent="." index="10"]
+stream = ExtResource("8_j1x64")
+volume_db = -4.0
+pitch_scale = 0.75
+bus = &"SFX"
+
+[connection signal="body_entered" from="AnimatedSprite2D/Hotdog Hitbox" to="." method="_on_hotdog_hitbox_body_entered"]
+[connection signal="body_exited" from="AnimatedSprite2D/Hotdog Hitbox" to="." method="_on_hotdog_hitbox_body_exited"]

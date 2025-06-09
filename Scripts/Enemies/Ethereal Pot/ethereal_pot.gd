@@ -48,7 +48,7 @@ func _on_animated_sprite_2d_frame_changed():
 			bullet.range = _enemy_stats.weapon_range
 			bullet.speed = _enemy_stats.weapon_speed
 			bullet.scale = Vector2.ONE
-			bullet.direction = global_position.direction_to(player.global_position).normalized()
+			bullet.direction = global_position.direction_to(player.global_position)
 			get_tree().current_scene.add_child(bullet)
 			bullet.global_position = global_position
 			whiff_SFX.play()

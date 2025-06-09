@@ -23,7 +23,7 @@ var number_of_slices: int = 0
 
 func idle():
 	if player:
-		velocity = global_position.direction_to(player.global_position).normalized() * _enemy_stats.speed
+		velocity = global_position.direction_to(player.global_position) * _enemy_stats.speed
 	
 	move_and_slide()
 

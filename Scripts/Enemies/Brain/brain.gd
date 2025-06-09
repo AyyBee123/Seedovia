@@ -47,6 +47,6 @@ func shoot_bullet():
 	bullet_instance.damage = _enemy_stats.weapon_damage
 	bullet_instance.range = _enemy_stats.weapon_range
 	bullet_instance.speed = _enemy_stats.weapon_speed
-	bullet_instance.direction = global_position.direction_to(player.global_position).normalized()
+	bullet_instance.direction = global_position.direction_to(player.global_position)
 	get_tree().current_scene.add_child(bullet_instance)
 	bullet_instance.global_position = $"Rotation Point/Marker2D".global_position

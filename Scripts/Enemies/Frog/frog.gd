@@ -22,7 +22,7 @@ func _physics_process(delta):
 	super._physics_process(delta)
 
 func walk():
-	var direction = global_position.direction_to(player.global_position).normalized()
+	var direction = global_position.direction_to(player.global_position)
 	
 	$AnimatedSprite2D.flip_h = direction.x < 0
 	

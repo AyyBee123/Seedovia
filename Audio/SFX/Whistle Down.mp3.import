@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bg6egeh1qinku"
+path="res://.godot/imported/Whistle Down.mp3-50371b45d84a8632d240097ed8630de2.mp3str"
+
+[deps]
+
+source_file="res://Audio/SFX/Whistle Down.mp3"
+dest_files=["res://.godot/imported/Whistle Down.mp3-50371b45d84a8632d240097ed8630de2.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
