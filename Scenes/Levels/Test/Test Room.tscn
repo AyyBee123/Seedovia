@@ -1,12 +1,11 @@
-[gd_scene load_steps=9 format=4 uid="uid://bvpg8r7ejtyp2"]
+[gd_scene load_steps=8 format=4 uid="uid://bvpg8r7ejtyp2"]
 
 [ext_resource type="PackedScene" uid="uid://cxoiy0x4nvtaa" path="res://Scenes/Levels/Base Level.tscn" id="1_n4hkv"]
 [ext_resource type="Script" uid="uid://c7p7iikkq6a2d" path="res://Scripts/Level/test_room.gd" id="2_vy0ks"]
 [ext_resource type="Resource" uid="uid://bi3hone1ajb7y" path="res://Resources/Characters/test.tres" id="3_qgfjb"]
 [ext_resource type="Shader" uid="uid://qm3syqtxdolu" path="res://Shaders/circle_transition.gdshader" id="4_oi577"]
 [ext_resource type="PackedScene" uid="uid://bagmkum7q0yxi" path="res://Scenes/Enemies/Dummy.tscn" id="5_eajj7"]
-[ext_resource type="PackedScene" uid="uid://cbuah6sadw4a4" path="res://Scenes/Enemies/Bookworm.tscn" id="6_ur5w1"]
-[ext_resource type="PackedScene" uid="uid://bl7yfmhdjfd5l" path="res://Scenes/Bosses/Stone Serpent.tscn" id="7_pqnhn"]
+[ext_resource type="PackedScene" uid="uid://yjbr0frt6d2y" path="res://Scenes/Enemies/Brain.tscn" id="6_ur5w1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0ecxy"]
 resource_local_to_scene = true
@@ -43,8 +42,6 @@ position = Vector2(-393, -159)
 [node name="Dummy3" parent="." index="10" instance=ExtResource("5_eajj7")]
 position = Vector2(-601, -47)
 
-[node name="Bookworm" parent="." index="11" instance=ExtResource("6_ur5w1")]
-position = Vector2(231, -143)
-
-[node name="Stone Serpent" parent="." index="12" instance=ExtResource("7_pqnhn")]
-position = Vector2(-553, -255)
+[node name="Brain" parent="." index="11" instance=ExtResource("6_ur5w1")]
+position = Vector2(255, -135)
+rotation = 3.14159
