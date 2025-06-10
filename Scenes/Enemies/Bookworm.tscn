@@ -1,0 +1,143 @@
+[gd_scene load_steps=18 format=3 uid="uid://cbuah6sadw4a4"]
+
+[ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_tbeqp"]
+[ext_resource type="Script" uid="uid://cg768my2flq2n" path="res://Scripts/Enemies/Bookworm/bookworm.gd" id="2_qiltr"]
+[ext_resource type="Resource" uid="uid://bvapnyq2kayi" path="res://Resources/Enemies/bookworm.tres" id="3_7yn3n"]
+[ext_resource type="Shader" uid="uid://dsv0n8bsysyo6" path="res://Shaders/color_tint_shader.gdshader" id="3_gkrle"]
+[ext_resource type="Texture2D" uid="uid://c5n56wqc418u4" path="res://Sprites/Enemies/Bookworm Head.png" id="5_bo8de"]
+[ext_resource type="Texture2D" uid="uid://xxyym547o3vn" path="res://Sprites/Misc/Shadow.png" id="6_7yn3n"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7yn3n"]
+resource_local_to_scene = true
+shader = ExtResource("3_gkrle")
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/tint_factor = 0.0
+shader_parameter/fade = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ns77"]
+atlas = ExtResource("5_bo8de")
+region = Rect2(0, 0, 26, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w7tlr"]
+atlas = ExtResource("5_bo8de")
+region = Rect2(182, 0, 26, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0qe7u"]
+atlas = ExtResource("5_bo8de")
+region = Rect2(26, 0, 26, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o2exl"]
+atlas = ExtResource("5_bo8de")
+region = Rect2(156, 0, 26, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dgghy"]
+atlas = ExtResource("5_bo8de")
+region = Rect2(52, 0, 26, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cm6na"]
+atlas = ExtResource("5_bo8de")
+region = Rect2(104, 0, 26, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oc2cj"]
+atlas = ExtResource("5_bo8de")
+region = Rect2(130, 0, 26, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p3wa2"]
+atlas = ExtResource("5_bo8de")
+region = Rect2(78, 0, 26, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_53a18"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ns77")
+}],
+"loop": true,
+"name": &"Down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w7tlr")
+}],
+"loop": true,
+"name": &"Down-Left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0qe7u")
+}],
+"loop": true,
+"name": &"Down-Right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o2exl")
+}],
+"loop": true,
+"name": &"Left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dgghy")
+}],
+"loop": true,
+"name": &"Right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cm6na")
+}],
+"loop": true,
+"name": &"Up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oc2cj")
+}],
+"loop": true,
+"name": &"Up-Left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p3wa2")
+}],
+"loop": true,
+"name": &"Up-Right",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4jxqs"]
+
+[node name="Bookworm" instance=ExtResource("1_tbeqp")]
+z_as_relative = false
+y_sort_enabled = false
+scale = Vector2(2, 2)
+script = ExtResource("2_qiltr")
+_enemy_stats = ExtResource("3_7yn3n")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+material = SubResource("ShaderMaterial_7yn3n")
+sprite_frames = SubResource("SpriteFrames_53a18")
+animation = &"Up-Right"
+
+[node name="CollisionPolygon2D" parent="Enemy Hitbox" index="0"]
+shape = SubResource("CircleShape2D_4jxqs")
+
+[node name="Pointer" type="Node2D" parent="." index="5"]
+
+[node name="Marker2D" type="Marker2D" parent="Pointer" index="0"]
+position = Vector2(28.5714, 0)
+
+[node name="Shadow" type="Sprite2D" parent="." index="6"]
+z_index = -1
+z_as_relative = false
+position = Vector2(0, 16)
+scale = Vector2(0.59375, 0.75)
+texture = ExtResource("6_7yn3n")

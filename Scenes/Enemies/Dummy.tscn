@@ -40,6 +40,7 @@ height = 56.0
 
 [node name="Dummy" type="CharacterBody2D"]
 z_index = 3
+y_sort_enabled = true
 collision_layer = 0
 script = ExtResource("1_i8axt")
 _enemy_stats = ExtResource("2_3p7vb")
