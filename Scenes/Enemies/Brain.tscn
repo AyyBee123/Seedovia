@@ -68,7 +68,7 @@ material = SubResource("ShaderMaterial_luwh5")
 position = Vector2(0, -0.5)
 sprite_frames = SubResource("SpriteFrames_jybnn")
 autoplay = "default"
-frame_progress = 0.63056
+frame_progress = 0.194584
 
 [node name="Enemy Hitbox" parent="." index="2"]
 collision_mask = 11
