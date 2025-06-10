@@ -56,6 +56,7 @@ func take_damage(damage):
 		health_depleted.emit()
 
 func take_damage_no_red(damage):
+	spawn_damage_number.emit(damage * damage_taken_multiplier)
 	health -= damage * damage_taken_multiplier
 	health = max(0, health)
 	health_changed.emit(health)

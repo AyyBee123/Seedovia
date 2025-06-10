@@ -37,7 +37,6 @@ func _ready():
 	$"Enemy Hitbox/Side".set_deferred("disabled", direction.x == 0)
 	$"Enemy Hitbox/Down".set_deferred("disabled", direction.y == 0)
 	_enemy_stats.spawn_damage_number.connect(transfer_damage)
-	_enemy_stats.spawn_damage_number.connect(spawn_damage_number)
 	_enemy_stats.health_changed.connect(update_health)
 	_enemy_stats.change_color.connect(change_color)
 

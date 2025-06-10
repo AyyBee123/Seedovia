@@ -1,10 +1,18 @@
-[gd_scene load_steps=8 format=3 uid="uid://cf0avrqcglx3"]
+[gd_scene load_steps=10 format=3 uid="uid://cf0avrqcglx3"]
 
 [ext_resource type="PackedScene" uid="uid://b4qv2oi4vbgws" path="res://Scenes/Enemies/Obstacles/Obstacle.tscn" id="1_rx645"]
 [ext_resource type="Script" uid="uid://dexi74jprk7wl" path="res://Scripts/Enemies/Bookworm/bookworm_body.gd" id="2_haal5"]
 [ext_resource type="Resource" uid="uid://dwvwdba67tvy" path="res://Resources/Enemies/Obstacles/bookworm_body.tres" id="3_00xwk"]
 [ext_resource type="Texture2D" uid="uid://6fplqfpedbac" path="res://Sprites/Enemies/Bookworm Body.png" id="3_y77d6"]
 [ext_resource type="Texture2D" uid="uid://xxyym547o3vn" path="res://Sprites/Misc/Shadow.png" id="4_1417c"]
+[ext_resource type="Shader" uid="uid://dsv0n8bsysyo6" path="res://Shaders/color_tint_shader.gdshader" id="4_in3i8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5py5c"]
+resource_local_to_scene = true
+shader = ExtResource("4_in3i8")
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/tint_factor = 0.0
+shader_parameter/fade = 1.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1417c"]
 animations = [{
@@ -27,7 +35,10 @@ script = ExtResource("2_haal5")
 _enemy_stats = ExtResource("3_00xwk")
 
 [node name="AnimatedSprite2D" parent="." index="1"]
+material = SubResource("ShaderMaterial_5py5c")
 sprite_frames = SubResource("SpriteFrames_1417c")
+
+[node name="Enemy Hitbox" parent="." index="2" groups=["Enemies"]]
 
 [node name="CollisionShape2D" parent="Enemy Hitbox" index="0"]
 shape = SubResource("CircleShape2D_00xwk")
