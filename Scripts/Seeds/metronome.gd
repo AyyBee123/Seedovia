@@ -44,6 +44,8 @@ func initialize_location(weapon):
 		return
 	weapon.remove_child(weapon.get_node("Passives"))
 	weapon.add_child(get_node("Passives").duplicate())
+	weapon.remove_child(weapon.get_node("Visual Effects"))
+	weapon.add_child(get_node("Visual Effects").duplicate())
 	get_tree().current_scene.add_child(weapon)
 	weapon.global_position = global_position
 

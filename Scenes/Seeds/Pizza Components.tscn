@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dqp2vx6s1nuxu"]
+[gd_scene load_steps=3 format=3 uid="uid://dqp2vx6s1nuxu"]
 
 [ext_resource type="Script" uid="uid://bmheqk7kerd6s" path="res://Scripts/Seeds/pizza_components.gd" id="1_hkanj"]
+[ext_resource type="PackedScene" uid="uid://ledtfnmbfqxq" path="res://Scenes/Misc/Visual Effects.tscn" id="2_ppjev"]
 
 [node name="Pizza Components" type="Sprite2D" groups=["Seed", "Weapon"]]
 script = ExtResource("1_hkanj")
@@ -12,3 +13,5 @@ BASE_RANGE = 300.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 
 [node name="Passives" type="Node" parent="."]
+
+[node name="Visual Effects" parent="." instance=ExtResource("2_ppjev")]

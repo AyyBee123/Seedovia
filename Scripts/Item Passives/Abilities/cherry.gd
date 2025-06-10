@@ -36,6 +36,8 @@ func trigger(weapon = null):
 	weapon_instance.transferred_fire_rate_multiplier *= weapon.transferred_fire_rate_multiplier
 	# seed repeats after 1/(<current fire rate> x2)
 	await get_tree().create_timer(1.0 / (weapon.FIRE_RATE * 2), false).timeout
+	if not weapon_instance:
+		return
 	get_tree().current_scene.add_child(weapon_instance)
 	weapon_instance.global_position = location
 	source.weapon_fired.emit(weapon_instance)

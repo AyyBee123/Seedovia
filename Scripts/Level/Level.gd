@@ -188,7 +188,7 @@ func give_reward():
 	await get_tree().create_timer(0.5, false).timeout
 	if Global.next_reward == null: # just in case
 		return
-	if Global.next_reward.pool_name == "Talisman" or Global.next_reward.pool_name == "Die" \
+	if Global.next_reward.pool_name == "Talisman" or Global.next_reward.pool_name == "Dice" \
 			or Global.next_reward.pool_name == "Seed":
 		var item = resource_preloader.get_resource("Item").instantiate()
 		item.set_item(Pool.get_item(Pool.pools[Pool.pools.find(Global.next_reward)]))

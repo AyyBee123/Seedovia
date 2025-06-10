@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://c7yhwdv848nww"]
+[gd_scene load_steps=3 format=3 uid="uid://c7yhwdv848nww"]
 
 [ext_resource type="Script" uid="uid://bxji18xthkfp1" path="res://Scripts/Seeds/metronome.gd" id="2_lxk1q"]
+[ext_resource type="PackedScene" uid="uid://ledtfnmbfqxq" path="res://Scenes/Misc/Visual Effects.tscn" id="2_oikx8"]
 
 [node name="Metronome" type="Sprite2D" groups=["Seed", "Weapon"]]
 script = ExtResource("2_lxk1q")
@@ -12,3 +13,5 @@ BASE_RANGE = 300.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 
 [node name="Passives" type="Node" parent="."]
+
+[node name="Visual Effects" parent="." instance=ExtResource("2_oikx8")]
