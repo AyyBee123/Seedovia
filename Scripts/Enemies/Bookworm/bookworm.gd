@@ -30,6 +30,7 @@ func _ready():
 		else:
 			segment.leading_segment = self
 		size -= 0.05
+		segment.MIN_DISTANCE = MIN_DISTANCE * size + 2
 		segment.scale = scale * size
 		get_tree().current_scene.add_child.call_deferred(segment)
 		segment.global_position = global_position

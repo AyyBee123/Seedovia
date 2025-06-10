@@ -4,6 +4,7 @@ var point: Vector2
 var leading_segment
 var direction: Vector2
 var source
+var MIN_DISTANCE
 
 func _ready():
 	super._ready()
@@ -15,10 +16,10 @@ func _physics_process(delta):
 		queue_free()
 		return
 	
-	if global_position.distance_to(leading_segment.global_position) >= source.MIN_DISTANCE:
+	if global_position.distance_to(leading_segment.global_position) >= MIN_DISTANCE:
 		direction = global_position.direction_to(leading_segment.global_position)
 		velocity = direction * source._enemy_stats.speed
-	elif global_position.distance_to(leading_segment.global_position) >= source.MIN_DISTANCE:
+	elif global_position.distance_to(leading_segment.global_position) >= MIN_DISTANCE * 2:
 		direction = global_position.direction_to(leading_segment.global_position)
 		velocity = direction * source._enemy_stats.speed * 1.15
 	else:
