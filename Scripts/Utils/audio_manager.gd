@@ -70,6 +70,12 @@ extends Node
 @onready var mushroom_boing_2 = $"Mushroom Boing2"
 @onready var sausage = $Sausage
 @onready var cake_return = $CakeReturn
+@onready var laser_whoosh = $LaserWhoosh
+@onready var laser_whoosh_2 = $LaserWhoosh2
+@onready var laser_whoosh_3 = $LaserWhoosh3
+@onready var laser_whoosh_4 = $LaserWhoosh4
+@onready var laser_shot = $LaserShot
+@onready var big_laser = $BigLaser
 
 func _ready():
 	SignalBus.play_audio.connect(play)

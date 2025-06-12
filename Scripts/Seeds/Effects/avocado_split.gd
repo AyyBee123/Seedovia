@@ -10,7 +10,7 @@ func _ready():
 	super._ready()
 	look_at(parent_direction)
 	tween = get_tree().create_tween()
-	tween.tween_property(self, "rotation", PI/2 * angle_sign, 0.3).as_relative()
+	tween.tween_interval(0.3)
 	tween.tween_property(self, "direction", Vector2.ZERO, 0.1).set_ease(Tween.EASE_OUT)
 	tween.tween_interval(0.1)
 	tween.tween_callback(func():
@@ -21,6 +21,9 @@ func _ready():
 		explode()
 		destroy()
 	)
+
+func _physics_process(delta):
+	super._physics_process(delta)
 
 func _collide(body):
 	if ignore_first_collision:

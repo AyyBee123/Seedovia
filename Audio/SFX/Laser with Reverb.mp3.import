@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dcqbw8fg8l8kd"
+path="res://.godot/imported/Laser with Reverb.mp3-d7d6748a2b1b89f097bc7d584b7a0bcd.mp3str"
+
+[deps]
+
+source_file="res://Audio/SFX/Laser with Reverb.mp3"
+dest_files=["res://.godot/imported/Laser with Reverb.mp3-d7d6748a2b1b89f097bc7d584b7a0bcd.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

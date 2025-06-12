@@ -5,4 +5,4 @@ func _ready():
 	super._ready()
 
 func trigger(weapon):
-	weapon.DAMAGE *= 1.2
+	weapon.BASE_DAMAGE *= 1.2

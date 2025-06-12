@@ -1,0 +1,130 @@
+[gd_scene load_steps=17 format=3 uid="uid://b8o6el5r70ueh"]
+
+[ext_resource type="PackedScene" uid="uid://bfapejv6ymqws" path="res://Scenes/Bosses/Boss.tscn" id="1_6s764"]
+[ext_resource type="Script" uid="uid://ba2wtdjavlnr" path="res://Scripts/Bosses/Infinity/infinity.gd" id="2_6vig7"]
+[ext_resource type="Resource" uid="uid://dxxs6nyxemyxx" path="res://Resources/Bosses/infinity.tres" id="3_6vig7"]
+[ext_resource type="Script" uid="uid://dhqxpdpm2cw82" path="res://Scripts/Bosses/Infinity/state_machine.gd" id="4_6vig7"]
+[ext_resource type="Shader" uid="uid://dsv0n8bsysyo6" path="res://Shaders/color_tint_shader.gdshader" id="4_vwlsq"]
+[ext_resource type="Texture2D" uid="uid://b3mdpt4y3q6ie" path="res://Sprites/Bosses/Infinity/Infinity.png" id="5_jf2td"]
+[ext_resource type="Texture2D" uid="uid://byxqhvd60jyc1" path="res://Sprites/Misc/Big Shadow.png" id="6_2whbu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0h7yk"]
+resource_local_to_scene = true
+shader = ExtResource("4_vwlsq")
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/tint_factor = 0.0
+shader_parameter/fade = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6vig7"]
+atlas = ExtResource("5_jf2td")
+region = Rect2(65, 0, 65, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cadcy"]
+atlas = ExtResource("5_jf2td")
+region = Rect2(130, 0, 65, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vwlsq"]
+atlas = ExtResource("5_jf2td")
+region = Rect2(195, 0, 65, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jf2td"]
+atlas = ExtResource("5_jf2td")
+region = Rect2(260, 0, 65, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2whbu"]
+atlas = ExtResource("5_jf2td")
+region = Rect2(0, 0, 65, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_on0a0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6vig7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cadcy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vwlsq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jf2td")
+}],
+"loop": false,
+"name": &"Dash",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2whbu")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jf2td")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vwlsq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cadcy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6vig7")
+}],
+"loop": false,
+"name": &"Reverse Dash",
+"speed": 12.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6vig7"]
+radius = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cadcy"]
+radius = 16.0
+
+[node name="Infinity" instance=ExtResource("1_6s764")]
+script = ExtResource("2_6vig7")
+_enemy_stats = ExtResource("3_6vig7")
+
+[node name="StateMachine" parent="." index="0"]
+script = ExtResource("4_6vig7")
+
+[node name="AnimatedSprite2D" parent="." index="2"]
+material = SubResource("ShaderMaterial_0h7yk")
+sprite_frames = SubResource("SpriteFrames_on0a0")
+animation = &"Reverse Dash"
+autoplay = "Idle"
+
+[node name="CollisionPolygon2D" parent="Enemy Hitbox" index="0"]
+position = Vector2(-16, 0)
+shape = SubResource("CircleShape2D_6vig7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy Hitbox" index="1"]
+position = Vector2(16, 0)
+shape = SubResource("CircleShape2D_cadcy")
+
+[node name="Shadow" type="Sprite2D" parent="." index="8"]
+z_index = -1
+z_as_relative = false
+position = Vector2(0, 21.3333)
+scale = Vector2(0.711111, 0.47059)
+texture = ExtResource("6_2whbu")
+
+[node name="Fire Rate" type="Timer" parent="." index="9"]
+wait_time = 0.333
+one_shot = true
+
+[node name="Dash Rate" type="Timer" parent="." index="10"]
+wait_time = 0.5
+one_shot = true
+
+[node name="Dash Time" type="Timer" parent="." index="11"]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="timeout" from="Dash Rate" to="." method="_on_dash_rate_timeout"]
