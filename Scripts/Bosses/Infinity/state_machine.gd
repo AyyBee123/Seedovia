@@ -10,7 +10,6 @@ func _ready():
 	add_state("idle")
 	add_state("charge")
 	add_state("fire")
-	add_state("spawn")
 	add_state("dash")
 	random_attack = random_attack_value()
 	set_state.call_deferred(states.idle)

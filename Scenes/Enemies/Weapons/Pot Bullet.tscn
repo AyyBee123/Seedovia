@@ -1,0 +1,68 @@
+[gd_scene load_steps=11 format=3 uid="uid://dfakn4c7gs8b3"]
+
+[ext_resource type="PackedScene" uid="uid://bbc2vnfngjpdx" path="res://Scenes/Enemies/Weapons/Bullet.tscn" id="1_bga6n"]
+[ext_resource type="Script" uid="uid://p06hqyh13w2g" path="res://Scripts/Enemies/Weapons/pot_bullet.gd" id="2_m705e"]
+[ext_resource type="Texture2D" uid="uid://cxuhl5pel6ggv" path="res://Sprites/Bosses/Cook Pot/Cook Pot Pot.png" id="2_swapu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m705e"]
+resource_local_to_scene = true
+radius = 24.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b0bkj"]
+atlas = ExtResource("2_swapu")
+region = Rect2(0, 0, 60, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hs8eu"]
+atlas = ExtResource("2_swapu")
+region = Rect2(60, 0, 60, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kbkb7"]
+atlas = ExtResource("2_swapu")
+region = Rect2(120, 0, 60, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ajht1"]
+atlas = ExtResource("2_swapu")
+region = Rect2(180, 0, 60, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oy7ok"]
+atlas = ExtResource("2_swapu")
+region = Rect2(240, 0, 60, 53)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_507h3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b0bkj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hs8eu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kbkb7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ajht1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oy7ok")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="Pot Bullet" instance=ExtResource("1_bga6n")]
+texture = null
+script = ExtResource("2_m705e")
+
+[node name="CollisionShape2D" parent="Bullet Hitbox" index="0"]
+shape = SubResource("CircleShape2D_m705e")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="1"]
+sprite_frames = SubResource("SpriteFrames_507h3")
+autoplay = "default"
+frame_progress = 0.482612
+
+[node name="Fire Rate" type="Timer" parent="." index="2"]
+wait_time = 0.2
+one_shot = true

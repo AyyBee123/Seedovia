@@ -1,0 +1,199 @@
+[gd_scene load_steps=26 format=3 uid="uid://qjmy7imei4ys"]
+
+[ext_resource type="PackedScene" uid="uid://bfapejv6ymqws" path="res://Scenes/Bosses/Boss.tscn" id="1_2cr2e"]
+[ext_resource type="Script" uid="uid://r70ws6ek705o" path="res://Scripts/Bosses/Cook Pot/cook_pot.gd" id="2_5tii1"]
+[ext_resource type="Resource" uid="uid://em6l4m46lwtf" path="res://Resources/Bosses/cook_pot.tres" id="3_5tii1"]
+[ext_resource type="Script" uid="uid://cmxf2wg3p8nkp" path="res://Scripts/Bosses/Cook Pot/state_machine.gd" id="3_fnknb"]
+[ext_resource type="Shader" uid="uid://dsv0n8bsysyo6" path="res://Shaders/color_tint_shader.gdshader" id="4_qq5py"]
+[ext_resource type="Texture2D" uid="uid://cv2s3xm0sn2lb" path="res://Sprites/Bosses/Cook Pot/Cook Pot.png" id="6_qq5py"]
+[ext_resource type="Texture2D" uid="uid://dxsb6y3bbn4fb" path="res://Sprites/Bosses/Jumbo/Shadow.png" id="7_l4lu3"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qq5py"]
+radius = 16.0
+height = 90.6667
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l4lu3"]
+resource_local_to_scene = true
+shader = ExtResource("4_qq5py")
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/tint_factor = 0.0
+shader_parameter/fade = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fc0my"]
+atlas = ExtResource("6_qq5py")
+region = Rect2(0, 0, 114, 131)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jwqaf"]
+atlas = ExtResource("6_qq5py")
+region = Rect2(114, 0, 114, 131)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kxj6h"]
+atlas = ExtResource("6_qq5py")
+region = Rect2(228, 0, 114, 131)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qq5py"]
+atlas = ExtResource("6_qq5py")
+region = Rect2(798, 0, 114, 131)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l4lu3"]
+atlas = ExtResource("6_qq5py")
+region = Rect2(912, 0, 114, 131)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c8lt4"]
+atlas = ExtResource("6_qq5py")
+region = Rect2(1026, 0, 114, 131)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ry2mp"]
+atlas = ExtResource("6_qq5py")
+region = Rect2(342, 0, 114, 131)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_07hvh"]
+atlas = ExtResource("6_qq5py")
+region = Rect2(1140, 0, 114, 131)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vybsn"]
+atlas = ExtResource("6_qq5py")
+region = Rect2(1254, 0, 114, 131)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2q0v"]
+atlas = ExtResource("6_qq5py")
+region = Rect2(1368, 0, 114, 131)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_huocf"]
+atlas = ExtResource("6_qq5py")
+region = Rect2(342, 0, 114, 131)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jwd25"]
+atlas = ExtResource("6_qq5py")
+region = Rect2(456, 0, 114, 131)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u2d5w"]
+atlas = ExtResource("6_qq5py")
+region = Rect2(570, 0, 114, 131)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vvm5l"]
+atlas = ExtResource("6_qq5py")
+region = Rect2(684, 0, 114, 131)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c8lt4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fc0my")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jwqaf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kxj6h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jwqaf")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qq5py")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l4lu3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c8lt4")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_ry2mp")
+}],
+"loop": true,
+"name": &"Jump",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_07hvh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vybsn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2q0v")
+}],
+"loop": false,
+"name": &"Pots",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2q0v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vybsn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_07hvh")
+}],
+"loop": false,
+"name": &"Reverse Pots",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.2,
+"texture": SubResource("AtlasTexture_huocf")
+}, {
+"duration": 1.4,
+"texture": SubResource("AtlasTexture_jwd25")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_u2d5w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vvm5l")
+}],
+"loop": true,
+"name": &"Spit",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l4lu3"]
+radius = 16.0
+height = 90.6667
+
+[node name="Cook Pot" instance=ExtResource("1_2cr2e")]
+script = ExtResource("2_5tii1")
+_enemy_stats = ExtResource("3_5tii1")
+
+[node name="StateMachine" parent="." index="0"]
+script = ExtResource("3_fnknb")
+
+[node name="CollisionPolygon2D" parent="." index="1"]
+position = Vector2(5.68434e-14, 16)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_qq5py")
+
+[node name="AnimatedSprite2D" parent="." index="2"]
+material = SubResource("ShaderMaterial_l4lu3")
+sprite_frames = SubResource("SpriteFrames_c8lt4")
+animation = &"Jump"
+frame_progress = 0.728522
+offset = Vector2(0, -25.5)
+
+[node name="CollisionPolygon2D" parent="Enemy Hitbox" index="0"]
+position = Vector2(4.73695e-15, 16)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_l4lu3")
+
+[node name="Shadow" type="Sprite2D" parent="." index="8"]
+z_index = -1
+z_as_relative = false
+position = Vector2(-1.13687e-13, 37.3333)
+scale = Vector2(0.761905, 0.727273)
+texture = ExtResource("7_l4lu3")
+
+[node name="Fire Rate" type="Timer" parent="." index="9"]
+
+[connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_looped"]
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
+[connection signal="timeout" from="Fire Rate" to="." method="_on_fire_rate_timeout"]
