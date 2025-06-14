@@ -225,11 +225,13 @@ shape = SubResource("CircleShape2D_xaecl")
 [node name="Rock2" type="AudioStreamPlayer" parent="." index="4"]
 stream = ExtResource("6_mn3g8")
 pitch_scale = 0.75
+bus = &"SFX"
 
 [node name="Stomp" type="AudioStreamPlayer" parent="." index="5"]
 stream = ExtResource("6_1jpac")
 volume_db = -5.0
 pitch_scale = 0.75
+bus = &"SFX"
 
 [node name="Shadow" type="Sprite2D" parent="." index="6"]
 z_index = -1

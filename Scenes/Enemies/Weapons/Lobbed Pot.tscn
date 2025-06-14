@@ -1,0 +1,137 @@
+[gd_scene load_steps=9 format=3 uid="uid://buq65n1wd7pup"]
+
+[ext_resource type="PackedScene" uid="uid://bbc2vnfngjpdx" path="res://Scenes/Enemies/Weapons/Bullet.tscn" id="1_xjr3f"]
+[ext_resource type="Texture2D" uid="uid://cxuhl5pel6ggv" path="res://Sprites/Bosses/Cook Pot/Cook Pot Pot.png" id="2_gr1bm"]
+[ext_resource type="Script" uid="uid://b50uvtcibfemn" path="res://Scripts/Enemies/Weapons/lobbed_pot.gd" id="3_gr1bm"]
+[ext_resource type="Texture2D" uid="uid://xxyym547o3vn" path="res://Sprites/Misc/Shadow.png" id="4_nwwtj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nwwtj"]
+radius = 25.0
+
+[sub_resource type="Animation" id="Animation_vslqc"]
+resource_name = "new_animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6, 1),
+"transitions": PackedFloat32Array(0.5, 1, 2, 1),
+"update": 0,
+"values": [Vector2(0, -45), Vector2(0, -150), Vector2(0, -150), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -6.28319]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Shadow:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6, 1),
+"transitions": PackedFloat32Array(0.5, 1, 2, 1),
+"update": 0,
+"values": [Vector2(1.2, 0.684), Vector2(0.6, 0.342), Vector2(0.6, 0.342), Vector2(1.58, 0.9)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"break_pot"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_m6x1y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Shadow:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.58, 0.9)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qxexo"]
+_data = {
+&"RESET": SubResource("Animation_m6x1y"),
+&"new_animation": SubResource("Animation_vslqc")
+}
+
+[node name="Lobbed Pot" instance=ExtResource("1_xjr3f")]
+z_index = 5
+scale = Vector2(1, 1)
+texture = null
+hframes = 5
+script = ExtResource("3_gr1bm")
+
+[node name="Bullet Hitbox" parent="." index="0"]
+collision_mask = 1
+
+[node name="CollisionShape2D" parent="Bullet Hitbox" index="0"]
+shape = SubResource("CircleShape2D_nwwtj")
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_gr1bm")
+hframes = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
+libraries = {
+&"": SubResource("AnimationLibrary_qxexo")
+}
+autoplay = "new_animation"
+
+[node name="Shadow" type="Sprite2D" parent="." index="3"]
+z_index = -1
+z_as_relative = false
+position = Vector2(0, 25)
+scale = Vector2(1.58, 0.9)
+texture = ExtResource("4_nwwtj")

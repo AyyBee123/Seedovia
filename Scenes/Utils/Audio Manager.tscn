@@ -411,6 +411,18 @@ volume_db = -4.0
 pitch_scale = 1.25
 bus = &"SFX"
 
+[node name="Sausage2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("24_2wn4r")
+volume_db = -4.0
+pitch_scale = 1.75
+bus = &"SFX"
+
+[node name="Sausage3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("24_2wn4r")
+volume_db = -4.0
+pitch_scale = 0.5
+bus = &"SFX"
+
 [node name="CakeReturn" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_70u3o")
 volume_db = -8.0
@@ -450,4 +462,14 @@ bus = &"SFX"
 stream = ExtResource("42_dy1yg")
 volume_db = -2.0
 pitch_scale = 1.1
+bus = &"SFX"
+
+[node name="Rock3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_o11or")
+pitch_scale = 0.75
+bus = &"SFX"
+
+[node name="Rock4" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_o11or")
+pitch_scale = 0.5
 bus = &"SFX"

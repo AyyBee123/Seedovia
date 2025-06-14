@@ -76,6 +76,10 @@ extends Node
 @onready var laser_whoosh_4 = $LaserWhoosh4
 @onready var laser_shot = $LaserShot
 @onready var big_laser = $BigLaser
+@onready var rock_3 = $Rock3
+@onready var rock_4 = $Rock4
+@onready var sausage_2 = $Sausage2
+@onready var sausage_3 = $Sausage3
 
 func _ready():
 	SignalBus.play_audio.connect(play)

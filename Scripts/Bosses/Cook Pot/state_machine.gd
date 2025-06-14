@@ -54,6 +54,11 @@ func _enter_state(new_state, old_state):
 			parent.fire_rate.start()
 			pot_time.start()
 
+func _exit_state(old_state, new_state):
+	match old_state:
+		states.pots:
+			parent.fire_rate.stop()
+
 func create_timer():
 	add_child(timer)
 	timer.one_shot = true

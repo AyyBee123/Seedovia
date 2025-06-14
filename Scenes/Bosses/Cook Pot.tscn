@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://qjmy7imei4ys"]
+[gd_scene load_steps=27 format=3 uid="uid://qjmy7imei4ys"]
 
 [ext_resource type="PackedScene" uid="uid://bfapejv6ymqws" path="res://Scenes/Bosses/Boss.tscn" id="1_2cr2e"]
 [ext_resource type="Script" uid="uid://r70ws6ek705o" path="res://Scripts/Bosses/Cook Pot/cook_pot.gd" id="2_5tii1"]
@@ -7,6 +7,7 @@
 [ext_resource type="Shader" uid="uid://dsv0n8bsysyo6" path="res://Shaders/color_tint_shader.gdshader" id="4_qq5py"]
 [ext_resource type="Texture2D" uid="uid://cv2s3xm0sn2lb" path="res://Sprites/Bosses/Cook Pot/Cook Pot.png" id="6_qq5py"]
 [ext_resource type="Texture2D" uid="uid://dxsb6y3bbn4fb" path="res://Sprites/Bosses/Jumbo/Shadow.png" id="7_l4lu3"]
+[ext_resource type="AudioStream" uid="uid://mc66wc8mdc1d" path="res://Audio/SFX/Stomp.mp3" id="8_l4lu3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qq5py"]
 radius = 16.0
@@ -193,6 +194,17 @@ scale = Vector2(0.761905, 0.727273)
 texture = ExtResource("7_l4lu3")
 
 [node name="Fire Rate" type="Timer" parent="." index="9"]
+wait_time = 0.25
+one_shot = true
+
+[node name="Pot Spawn" type="Marker2D" parent="." index="10"]
+position = Vector2(0, -45)
+
+[node name="Stomp" type="AudioStreamPlayer" parent="." index="11"]
+stream = ExtResource("8_l4lu3")
+volume_db = -2.0
+pitch_scale = 0.75
+bus = &"SFX"
 
 [connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_looped"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
