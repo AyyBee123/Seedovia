@@ -8,7 +8,7 @@ extends "res://Scripts/Seeds/seed_template.gd"
 const SPLASH = preload("res://Scenes/Misc/Splash.tscn")
 
 var ROTATION_SPEED = 25
-const NUMBER_OF_BOUNCES = 1
+const NUMBER_OF_BOUNCES = 2
 
 var is_homing: bool = true
 var rotation_speed: float
@@ -27,7 +27,7 @@ func update_position(delta):
 		targeted_enemy = get_nearest_enemy(null)
 	
 	if targeted_enemy and is_homing:
-		direction = global_position.direction_to(targeted_enemy.global_position).normalized()
+		direction = global_position.direction_to(targeted_enemy.global_position)
 		pointer.rotation = lerp_angle(pointer.rotation, direction.angle(), rotation_speed * delta)
 	
 	current_velocity = global_position.direction_to(marker_2d.global_position) * SPEED

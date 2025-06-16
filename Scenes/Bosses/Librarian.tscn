@@ -1,0 +1,214 @@
+[gd_scene load_steps=29 format=3 uid="uid://cm280tywp4ygn"]
+
+[ext_resource type="PackedScene" uid="uid://bfapejv6ymqws" path="res://Scenes/Bosses/Boss.tscn" id="1_7xyyb"]
+[ext_resource type="Shader" uid="uid://dsv0n8bsysyo6" path="res://Shaders/color_tint_shader.gdshader" id="2_cpivr"]
+[ext_resource type="Script" uid="uid://bq72ijv7v5yjf" path="res://Scripts/Bosses/Librarian/librarian.gd" id="2_mlgoq"]
+[ext_resource type="Resource" uid="uid://b0urplf2ia30e" path="res://Resources/Bosses/librarian.tres" id="3_3mexn"]
+[ext_resource type="Script" uid="uid://be40d4xg2vpfm" path="res://Scripts/Bosses/Librarian/state_machine.gd" id="4_ds648"]
+[ext_resource type="Texture2D" uid="uid://c1o8oa5tq1un8" path="res://Sprites/Bosses/Librarian/Librarian.png" id="6_2sf4e"]
+[ext_resource type="Texture2D" uid="uid://dxsb6y3bbn4fb" path="res://Sprites/Bosses/Jumbo/Shadow.png" id="7_3mexn"]
+[ext_resource type="AudioStream" uid="uid://3xpoa6f4ugx" path="res://Audio/SFX/Laser Whoosh.mp3" id="8_2sf4e"]
+[ext_resource type="AudioStream" uid="uid://dcqbw8fg8l8kd" path="res://Audio/SFX/Laser with Reverb.mp3" id="9_mqcr2"]
+[ext_resource type="AudioStream" uid="uid://ybughw11latf" path="res://Audio/SFX/Sparkle.mp3" id="10_mqcr2"]
+[ext_resource type="AudioStream" uid="uid://bfcswe4vt2exs" path="res://Audio/SFX/Bubble Pop 2.mp3" id="11_h5qe0"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ds648"]
+radius = 22.0
+height = 100.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_atsy1"]
+resource_local_to_scene = true
+shader = ExtResource("2_cpivr")
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/tint_factor = 0.0
+shader_parameter/fade = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mqcr2"]
+atlas = ExtResource("6_2sf4e")
+region = Rect2(728, 0, 91, 167)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h5qe0"]
+atlas = ExtResource("6_2sf4e")
+region = Rect2(819, 0, 91, 167)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ceo73"]
+atlas = ExtResource("6_2sf4e")
+region = Rect2(910, 0, 91, 167)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lcnwc"]
+atlas = ExtResource("6_2sf4e")
+region = Rect2(1001, 0, 91, 167)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4m6t3"]
+atlas = ExtResource("6_2sf4e")
+region = Rect2(364, 0, 91, 167)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_brsm2"]
+atlas = ExtResource("6_2sf4e")
+region = Rect2(455, 0, 91, 167)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lja1f"]
+atlas = ExtResource("6_2sf4e")
+region = Rect2(546, 0, 91, 167)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dkmnx"]
+atlas = ExtResource("6_2sf4e")
+region = Rect2(637, 0, 91, 167)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j4g4q"]
+atlas = ExtResource("6_2sf4e")
+region = Rect2(0, 0, 91, 167)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_soqvp"]
+atlas = ExtResource("6_2sf4e")
+region = Rect2(91, 0, 91, 167)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kyyry"]
+atlas = ExtResource("6_2sf4e")
+region = Rect2(182, 0, 91, 167)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2pv38"]
+atlas = ExtResource("6_2sf4e")
+region = Rect2(273, 0, 91, 167)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_asdwt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mqcr2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h5qe0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ceo73")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lcnwc")
+}],
+"loop": true,
+"name": &"Eye",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4m6t3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_brsm2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lja1f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dkmnx")
+}],
+"loop": false,
+"name": &"Eye Open",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j4g4q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_soqvp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kyyry")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2pv38")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 8.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2sf4e"]
+radius = 22.0
+height = 100.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3mexn"]
+size = Vector2(128, 72)
+
+[node name="Librarian" instance=ExtResource("1_7xyyb")]
+scale = Vector2(2, 2)
+script = ExtResource("2_mlgoq")
+_enemy_stats = ExtResource("3_3mexn")
+
+[node name="StateMachine" parent="." index="0"]
+script = ExtResource("4_ds648")
+
+[node name="CollisionPolygon2D" parent="." index="1"]
+position = Vector2(0, 18)
+shape = SubResource("CapsuleShape2D_ds648")
+
+[node name="AnimatedSprite2D" parent="." index="2"]
+material = SubResource("ShaderMaterial_atsy1")
+sprite_frames = SubResource("SpriteFrames_asdwt")
+animation = &"Idle"
+autoplay = "Idle"
+frame_progress = 0.882035
+offset = Vector2(0, -10)
+
+[node name="CollisionPolygon2D" parent="Enemy Hitbox" index="0"]
+position = Vector2(0, 18)
+shape = SubResource("CapsuleShape2D_2sf4e")
+
+[node name="Shadow" type="Sprite2D" parent="." index="8"]
+z_index = -1
+z_as_relative = false
+position = Vector2(0, 77.3333)
+scale = Vector2(0.55, 1)
+texture = ExtResource("7_3mexn")
+
+[node name="Staff Marker" type="Marker2D" parent="." index="9"]
+position = Vector2(64, 0)
+
+[node name="Broom Marker" type="Marker2D" parent="." index="10"]
+position = Vector2(-64, 0)
+
+[node name="Eye Marker" type="Marker2D" parent="." index="11"]
+position = Vector2(0, -52)
+
+[node name="Charge Detect" type="Area2D" parent="." index="12"]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Charge Detect" index="0"]
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_3mexn")
+
+[node name="Eye Time" type="Timer" parent="." index="13"]
+wait_time = 1.5
+one_shot = true
+
+[node name="Broom Fire Rate" type="Timer" parent="." index="14"]
+wait_time = 0.05
+one_shot = true
+
+[node name="LaserWhoosh" type="AudioStreamPlayer" parent="." index="15"]
+stream = ExtResource("8_2sf4e")
+pitch_scale = 2.0
+bus = &"SFX"
+
+[node name="LaserWithReverb" type="AudioStreamPlayer" parent="." index="16"]
+stream = ExtResource("9_mqcr2")
+volume_db = 5.0
+pitch_scale = 0.75
+bus = &"SFX"
+
+[node name="Sparkle" type="AudioStreamPlayer" parent="." index="17"]
+stream = ExtResource("10_mqcr2")
+pitch_scale = 1.5
+bus = &"SFX"
+
+[node name="BubblePop2" type="AudioStreamPlayer" parent="." index="18"]
+stream = ExtResource("11_h5qe0")
+pitch_scale = 0.75
+bus = &"SFX"
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="body_entered" from="Charge Detect" to="." method="_on_charge_detect_body_entered"]
+[connection signal="timeout" from="Eye Time" to="." method="_on_eye_time_timeout"]
+[connection signal="timeout" from="Broom Fire Rate" to="." method="_on_broom_fire_rate_timeout"]

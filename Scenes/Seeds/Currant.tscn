@@ -27,7 +27,7 @@ point_count = 2
 [node name="Currant" groups=["Homing"] instance=ExtResource("1_xhr0c")]
 texture = ExtResource("2_cdlbp")
 script = ExtResource("3_6ejq5")
-BASE_DAMAGE = 4.0
+BASE_DAMAGE = 3.0
 BASE_FIRE_RATE = 5.0
 BASE_RANGE = 1000.0
 BASE_SPEED = 700.0

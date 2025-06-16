@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://p3i7ytvwwvqo"]
+
+[ext_resource type="PackedScene" uid="uid://bbc2vnfngjpdx" path="res://Scenes/Enemies/Weapons/Bullet.tscn" id="1_rxjy8"]
+[ext_resource type="Script" uid="uid://d3q3vev5v0ksx" path="res://Scripts/Enemies/Weapons/homing_bullet.gd" id="2_wui3j"]
+[ext_resource type="Script" uid="uid://bnanub3nonyxi" path="res://Scripts/Misc/trail.gd" id="3_qvh3w"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v8h03"]
+resource_local_to_scene = true
+radius = 9.0
+
+[sub_resource type="Curve" id="Curve_vjchl"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="Small Homing Bullet" instance=ExtResource("1_rxjy8")]
+scale = Vector2(1, 1)
+script = ExtResource("2_wui3j")
+
+[node name="CollisionShape2D" parent="Bullet Hitbox" index="0"]
+shape = SubResource("CircleShape2D_v8h03")
+
+[node name="Homing Timer" type="Timer" parent="." index="1"]
+one_shot = true
+
+[node name="Homing Delay" type="Timer" parent="." index="2"]
+one_shot = true
+autostart = true
+
+[node name="Pointer" type="Node2D" parent="." index="3"]
+unique_name_in_owner = true
+
+[node name="Marker2D" type="Marker2D" parent="Pointer" index="0"]
+unique_name_in_owner = true
+position = Vector2(3, 0)
+
+[node name="Trail" type="Line2D" parent="." index="4"]
+show_behind_parent = true
+width_curve = SubResource("Curve_vjchl")
+default_color = Color(1, 0, 0, 1)
+texture_mode = 2
+joint_mode = 2
+script = ExtResource("3_qvh3w")
+MAX_LENGTH = 6
+
+[connection signal="timeout" from="Homing Timer" to="." method="_on_homing_timer_timeout"]
+[connection signal="timeout" from="Homing Delay" to="." method="_on_homing_delay_timeout"]
