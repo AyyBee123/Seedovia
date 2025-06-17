@@ -2,16 +2,36 @@ extends "res://Scripts/Bosses/boss.gd"
 
 @onready var lunacy_projectile := preload("res://Scenes/Enemies/Weapons/Lunacy Projectile.tscn")
 @onready var tooth_projectile := preload("res://Scenes/Enemies/Weapons/Tooth.tscn")
+
 @onready var fire_rate := $"Fire Rate"
+@onready var fire_rate_frenzy = $"Fire Rate Frenzy"
+@onready var fire_rate_laser = $"Fire Rate Laser"
+@onready var laser_fire_rate = $"Lasers/Fire Rate"
+@onready var fire_rate_mouth = $"Fire Rate Mouth"
+@onready var mouth_delay = $"Mouth Delay"
 @onready var animation_player = $AnimationPlayer
-@onready var animated_sprite_2d = $AnimatedSprite2D
+@export var animated_sprite_2d: Node
 @onready var lunacy_duration = $"Lunacy Duration"
+@onready var frenzy_duration = $"Frenzy Duration"
 @onready var laser_animation = $"Lasers/Laser Animation"
+@onready var mouth_duration = $"Mouth Duration"
 @onready var tooth_positions = $"Tooth Positions".get_children()
+@onready var mouth_marker = $"Mouth Marker"
+@onready var mouth_marker_2 = $"Mouth Marker2"
 @onready var space_laser_SFX = $SpaceLaser
 @onready var space_laser_noise_SFX = $SpaceLaserNoise
 @onready var bubble_pop_SFX = $BubblePop
 @onready var disappear_SFX = $Disappear
+@onready var horse_SFX = $Horse
+@onready var clock_tick = $ClockTick
+@onready var clock_tick_2 = $ClockTick2
+@onready var _state_machine = $StateMachine
+
+const BULLET = preload("res://Scenes/Enemies/Weapons/Bullet.tscn")
+const LASER_WARNING = preload("res://Scenes/Misc/Laser Warning.tscn")
+const HORSE_BULLET = preload("res://Scenes/Enemies/Weapons/Horse Bullet.tscn")
+
+const NUMBER_OF_BULLETS = 8
 
 var lunacy_proj_pool := []
 var teeth_pool := []
@@ -23,13 +43,23 @@ var fade: float = 1
 var _in_lunacy: bool
 var _used_WTF: bool
 var _reappear_sound_played: bool
+var tween
+var starting_pos: Vector2
 
 var teeth_finished: bool
 var what_finished: bool
 var laser_finished: bool
 var tahw_finished: bool
 var lunacy_almost_finished: bool
+var frenzy_almost_finished: bool
 var lunacy_finished: bool
+
+func _ready():
+	randomize()
+	super._ready()
+	
+	await get_tree().physics_frame
+	starting_pos = global_position
 
 func _physics_process(delta):
 	super._physics_process(delta)
@@ -39,15 +69,20 @@ func idle():
 	lunacy_almost_finished = false
 	$Lasers.visible = false
 	_reappear_sound_played = false
+	global_position = starting_pos
 
 func teeth():
 	pass
 
 func what():
 	_used_WTF = true
+	global_position = starting_pos
 
 func what_idle():
-	pass
+	laser_finished = false
+	frenzy_duration.stop()
+	frenzy_almost_finished = false
+	global_position = starting_pos
 
 func laser():
 	$Lasers.visible = true
@@ -62,6 +97,37 @@ func finish_laser():
 
 func tahw():
 	pass
+
+func frenzy():
+	tween = get_tree().create_tween()
+	tween.tween_callback(func(): disappear_SFX.play())
+	tween.tween_property(self, "global_position:x", 2500, 1.5).set_ease(Tween.EASE_OUT)
+	tween.parallel().tween_property(self, "rotation", 2 * TAU, 1.5).set_ease(Tween.EASE_OUT).as_relative()
+	tween.parallel().tween_property(self, "fade", 0, 0.5)
+	tween.tween_callback(func():
+		rotation = 0
+		global_position.x = -2500
+		$"Enemy Hitbox/CollisionPolygon2D".disabled = true
+		fire_rate_frenzy.start()
+		fire_rate_laser.start()
+	)
+	tween.tween_interval(frenzy_duration.wait_time)
+	tween.tween_callback(func():
+		fire_rate_frenzy.stop()
+		fire_rate_laser.stop()
+	)
+	tween.tween_interval(1)
+	tween.tween_callback(func(): $"Enemy Hitbox/CollisionPolygon2D".disabled = false)
+	tween.tween_property(self, "global_position:x", starting_pos.x, 1.5).set_ease(Tween.EASE_IN)
+	tween.parallel().tween_property(self, "rotation", TAU, 1.5).set_ease(Tween.EASE_IN).as_relative()
+	tween.parallel().tween_property(self, "fade", 1, 0.5)
+	tween.tween_callback(func():
+		rotation = 0
+		_state_machine.set_state(_state_machine.states.what_idle)
+	)
+
+func set_shader():
+	animated_sprite_2d.material.set("shader_parameter/fade", fade)
 
 func lunacy():
 	animated_sprite_2d.material.set("shader_parameter/fade", fade)
@@ -97,6 +163,11 @@ func _on_animated_sprite_2d_animation_finished():
 		tahw_finished = true
 	if animated_sprite_2d.animation == "Laser Beginning":
 		animated_sprite_2d.play("Laser")
+	if animated_sprite_2d.animation == "Mouth Open":
+		animated_sprite_2d.play("Mouth")
+		mouth_delay.start()
+	if animated_sprite_2d.animation == "Mouth Close":
+		_state_machine.set_state(_state_machine.states.what_idle)
 
 func _on_animated_sprite_2d_frame_changed():
 	if animated_sprite_2d.animation == "WTF":
@@ -148,11 +219,7 @@ func add_to_pool(object: Node2D, object_pool: Array) -> void:
 ## pull the object from the pool and use it in the scene (when firing a projectile, for instance)
 func pull_lunacy_from_pool() -> Node2D:
 	var object: Node2D
-	if lunacy_proj_pool.is_empty():
-		object = lunacy_projectile.instantiate()
-	else:
-		object = lunacy_proj_pool[0]
-		lunacy_proj_pool.remove_at(0)
+	object = lunacy_projectile.instantiate()
 	object.source = self
 	object.global_position = Vector2(pos_x, pos_y)
 	object._used_WTF = _used_WTF
@@ -201,10 +268,7 @@ func fire_lunacy():
 			pos_y = randi_range(-3, 2) * 128 + 64
 	
 	var proj = pull_lunacy_from_pool()
-	if not proj.get_parent(): # if it's not already added as a child
-		get_tree().current_scene.add_child(proj)
-	else:
-		proj._ready()
+	get_tree().current_scene.add_child(proj)
 
 func spawn_damage_number(damage: float):
 	if _in_lunacy:
@@ -221,3 +285,70 @@ func play_noise_sound():
 
 func change_name(new_name):
 	boss_name.text = new_name
+
+func _on_frenzy_duration_timeout():
+	pass # Replace with function body.
+
+func _on_fire_rate_frenzy_timeout():
+	pos = "LEFT"
+	pos_x = -1050
+	pos_y = randi_range(-3, 2) * 128 + 64
+	
+	var proj = pull_lunacy_from_pool()
+	proj.scale *= 0.5
+	proj.SPEED = 500
+	get_tree().current_scene.add_child(proj)
+	
+	fire_rate_frenzy.start()
+
+func _on_fire_rate_laser_timeout():
+	var laser = LASER_WARNING.instantiate()
+	get_tree().current_scene.add_child(laser)
+	laser.global_position.y = randf_range(-378, 378)
+	
+	fire_rate_laser.start()
+
+func play_tick():
+	clock_tick.play()
+
+func play_tick_2():
+	clock_tick_2.play()
+
+func toggle_mouth_hitbox(_bool):
+	$"Enemy Hitbox/MouthCollision".disabled = not _bool
+	$"Enemy Hitbox/CollisionPolygon2D".disabled = _bool
+
+func _exit_tree():
+	if tween:
+		tween.kill()
+
+func _on_mouth_duration_timeout():
+	animated_sprite_2d.play("Mouth Close")
+
+func _on_fire_rate_mouth_timeout():
+	var bullet = HORSE_BULLET.instantiate()
+	bullet.damage = _enemy_stats.weapon_damage
+	bullet.range = _enemy_stats.weapon_range
+	bullet.speed = _enemy_stats.weapon_speed * 3
+	bullet.direction = Vector2.DOWN
+	get_tree().current_scene.add_child(bullet)
+	var m = mouth_marker.global_position
+	var m2 = mouth_marker_2.global_position
+	bullet.global_position = Vector2(randf_range(m2.x, m.x), randf_range(m.y, m2.y))
+	fire_rate_mouth.start()
+
+func _on_fire_rate_timeout():
+	for i in NUMBER_OF_BULLETS:
+		var bullet = BULLET.instantiate()
+		bullet.damage = _enemy_stats.weapon_damage
+		bullet.range = _enemy_stats.weapon_range
+		bullet.speed = _enemy_stats.weapon_speed * 1.5
+		bullet.ignore_first_collision = true
+		bullet.direction = Vector2.RIGHT.rotated(PI / (NUMBER_OF_BULLETS - 1) * i)
+		get_tree().current_scene.add_child(bullet)
+		bullet.global_position = $Lasers.global_position
+	laser_fire_rate.start()
+
+func _on_mouth_delay_timeout():
+	horse_SFX.play()
+	mouth_duration.start()

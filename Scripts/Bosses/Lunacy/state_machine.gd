@@ -13,6 +13,8 @@ func _ready():
 	add_state("what_idle")
 	add_state("tahw")
 	add_state("lunacy")
+	add_state("frenzy")
+	add_state("mouth")
 	set_state.call_deferred(states.idle)
 	# the random attacks are set up in the get_transition function
 	random_attack = random_attack_value()
@@ -32,6 +34,8 @@ func _state_logic(delta):
 		parent.tahw()
 	if state == states.lunacy:
 		parent.lunacy()
+	if state == states.frenzy:
+		parent.set_shader()
 
 func _get_transition(delta):
 	match state:
@@ -40,9 +44,11 @@ func _get_transition(delta):
 				if random_attack == 0:
 					return states.teeth
 				if random_attack == 1:
-					return states.what
-				if random_attack == 2:
 					return states.lunacy
+				if random_attack == 2:
+					return states.what
+				if random_attack == 3:
+					random_attack = random_attack_value()
 		states.teeth:
 			if parent.teeth_finished:
 				parent.teeth_finished = false
@@ -55,11 +61,15 @@ func _get_transition(delta):
 			if parent.laser_finished:
 				return states.what_idle
 		states.what_idle:
-			if timer.is_stopped() and not parent.laser_finished:
-				return states.laser
-			if timer.is_stopped() and parent.laser_finished:
-				parent.laser_finished = false
-				return states.tahw
+			if timer.is_stopped():
+				if random_attack == 0:
+					return states.laser
+				if random_attack == 1:
+					return states.mouth
+				if random_attack == 2:
+					return states.frenzy
+				if random_attack == 3:
+					return states.tahw
 		states.tahw:
 			if parent.tahw_finished:
 				parent.tahw_finished = false
@@ -74,45 +84,50 @@ func _enter_state(new_state, old_state):
 	match new_state:
 		states.idle:
 			parent.animated_sprite_2d.play("Idle")
+			random_attack = random_attack_value()
+			set_random_time()
 		states.teeth:
 			parent.animated_sprite_2d.play("Teeth")
 		states.what:
 			parent.animated_sprite_2d.play("WTF")
 		states.laser:
+			parent._on_fire_rate_timeout()
 			parent.animated_sprite_2d.play("Laser Beginning")
 		states.what_idle:
 			parent.animated_sprite_2d.play("WTF Idle")
+			random_attack = random_attack_value()
+			set_random_time()
 		states.tahw:
 			parent.animated_sprite_2d.play("FTW")
 		states.lunacy:
 			parent.disappear_SFX.play()
+		states.frenzy:
+			parent.frenzy()
+		states.mouth:
+			parent.fire_rate_mouth.start()
+			parent.animated_sprite_2d.play("Mouth Open")
+			parent.toggle_mouth_hitbox(true)
 
 func _exit_state(old_state, new_state):
 	match old_state:
-		states.teeth:
-			random_attack = random_attack_value()
-			set_random_time()
-		states.lunacy:
-			random_attack = random_attack_value()
-			set_random_time()
 		states.tahw:
-			random_attack = random_attack_value()
-			set_random_time()
 			parent.change_name("Lunacy")
 		states.what:
-			set_random_time()
 			parent.change_name("Frenzy")
 		states.laser:
+			parent.laser_fire_rate.stop()
 			parent.space_laser_noise_SFX.stop()
-			timer.start(1)
+		states.mouth:
+			parent.fire_rate_mouth.stop()
+			parent.toggle_mouth_hitbox(false)
 
 func random_attack_value():
-	return randi_range(0, 2)
+	return randi_range(0, 3)
 
 func set_random_time():
-	timer.start(randf_range(1,2.5))
+	timer.start(randf_range(1.5, 2.5))
 
 func create_timer():
 	add_child(timer)
 	timer.one_shot = true
-	timer.start(randf_range(2,3))
+	timer.start(randf_range(2, 3))

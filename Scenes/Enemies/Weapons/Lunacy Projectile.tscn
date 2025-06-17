@@ -12,58 +12,58 @@ shader_parameter/color = Color(1, 0, 0, 1)
 shader_parameter/tint_factor = 0.0
 shader_parameter/fade = 1.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_o1pve"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_lhyhs"]
 atlas = ExtResource("1_aadnl")
-region = Rect2(0, 0, 154, 121)
+region = Rect2(0, 0, 512, 145)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_li0xo"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_dgqyf"]
 atlas = ExtResource("1_aadnl")
-region = Rect2(154, 0, 154, 121)
+region = Rect2(512, 0, 512, 145)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_008h2"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_4xa32"]
 atlas = ExtResource("1_aadnl")
-region = Rect2(308, 0, 154, 121)
+region = Rect2(1024, 0, 512, 145)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ifkvl"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_dfoyf"]
 atlas = ExtResource("1_aadnl")
-region = Rect2(462, 0, 154, 121)
+region = Rect2(1536, 0, 512, 145)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tl6m5"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_wtjqo"]
 atlas = ExtResource("1_aadnl")
-region = Rect2(4004, 0, 154, 121)
+region = Rect2(13312, 0, 512, 145)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6vegl"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_hq0ee"]
 atlas = ExtResource("1_aadnl")
-region = Rect2(4158, 0, 154, 121)
+region = Rect2(13824, 0, 512, 145)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_k6c4r"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_mn6ph"]
 atlas = ExtResource("1_aadnl")
-region = Rect2(4312, 0, 154, 121)
+region = Rect2(14336, 0, 512, 145)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_eukig"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_orv2n"]
 atlas = ExtResource("1_aadnl")
-region = Rect2(4466, 0, 154, 121)
+region = Rect2(14848, 0, 512, 145)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6wnss"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_o1pve")
+"texture": SubResource("AtlasTexture_lhyhs")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_li0xo")
+"texture": SubResource("AtlasTexture_dgqyf")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_008h2")
+"texture": SubResource("AtlasTexture_4xa32")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ifkvl")
+"texture": SubResource("AtlasTexture_dfoyf")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_008h2")
+"texture": SubResource("AtlasTexture_4xa32")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_li0xo")
+"texture": SubResource("AtlasTexture_dgqyf")
 }],
 "loop": true,
 "name": &"Normal",
@@ -71,22 +71,22 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tl6m5")
+"texture": SubResource("AtlasTexture_wtjqo")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6vegl")
+"texture": SubResource("AtlasTexture_hq0ee")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_k6c4r")
+"texture": SubResource("AtlasTexture_mn6ph")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_eukig")
+"texture": SubResource("AtlasTexture_orv2n")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_k6c4r")
+"texture": SubResource("AtlasTexture_mn6ph")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6vegl")
+"texture": SubResource("AtlasTexture_hq0ee")
 }],
 "loop": true,
 "name": &"WTF",
@@ -97,11 +97,13 @@ animations = [{
 radius = 54.037
 
 [node name="Lunacy Projectile" type="AnimatedSprite2D"]
-z_index = 3
+z_index = 4
 material = SubResource("ShaderMaterial_v8wfy")
 scale = Vector2(1.175, 1.175)
 sprite_frames = SubResource("SpriteFrames_6wnss")
-animation = &"Normal"
+animation = &"WTF"
+frame_progress = 0.686164
+offset = Vector2(0, 10)
 script = ExtResource("2_jhixh")
 _enemy_stats = ExtResource("3_c34ba")
 

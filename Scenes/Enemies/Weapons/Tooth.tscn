@@ -10,7 +10,7 @@ size = Vector2(13, 7)
 size = Vector2(13, 7)
 
 [node name="Tooth" type="CharacterBody2D"]
-z_index = 3
+z_index = 5
 y_sort_enabled = true
 scale = Vector2(3, 3)
 collision_layer = 0

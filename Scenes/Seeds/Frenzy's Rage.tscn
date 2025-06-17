@@ -13,62 +13,62 @@ radius = 30.0
 resource_local_to_scene = true
 radius = 50.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_iljhr"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ccuj3"]
 atlas = ExtResource("2_y7r0y")
-region = Rect2(4004, 0, 154, 121)
+region = Rect2(13312, 0, 512, 145)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gvo4n"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_t5dnd"]
 atlas = ExtResource("2_y7r0y")
-region = Rect2(4158, 0, 154, 121)
+region = Rect2(13824, 0, 512, 145)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qvrng"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_rvkga"]
 atlas = ExtResource("2_y7r0y")
-region = Rect2(4312, 0, 154, 121)
+region = Rect2(14336, 0, 512, 145)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wybsl"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_086ao"]
 atlas = ExtResource("2_y7r0y")
-region = Rect2(4466, 0, 154, 121)
+region = Rect2(14848, 0, 512, 145)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3gmas"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_b40d6"]
 atlas = ExtResource("2_y7r0y")
-region = Rect2(4928, 0, 154, 121)
+region = Rect2(16384, 0, 512, 145)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0cf0r"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_852wv"]
 atlas = ExtResource("2_y7r0y")
-region = Rect2(5082, 0, 154, 121)
+region = Rect2(16896, 0, 512, 145)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kdvj8"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_sspbo"]
 atlas = ExtResource("2_y7r0y")
-region = Rect2(5236, 0, 154, 121)
+region = Rect2(17408, 0, 512, 145)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7pv38"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_yquod"]
 atlas = ExtResource("2_y7r0y")
-region = Rect2(4620, 0, 154, 121)
+region = Rect2(15360, 0, 512, 145)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_j7j0u"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_32jby"]
 atlas = ExtResource("2_y7r0y")
-region = Rect2(4774, 0, 154, 121)
+region = Rect2(15872, 0, 512, 145)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_j3j4c"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_iljhr")
+"texture": SubResource("AtlasTexture_ccuj3")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gvo4n")
+"texture": SubResource("AtlasTexture_t5dnd")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qvrng")
+"texture": SubResource("AtlasTexture_rvkga")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wybsl")
+"texture": SubResource("AtlasTexture_086ao")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qvrng")
+"texture": SubResource("AtlasTexture_rvkga")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gvo4n")
+"texture": SubResource("AtlasTexture_t5dnd")
 }],
 "loop": true,
 "name": &"Idle",
@@ -76,16 +76,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3gmas")
+"texture": SubResource("AtlasTexture_b40d6")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0cf0r")
+"texture": SubResource("AtlasTexture_852wv")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_kdvj8")
+"texture": SubResource("AtlasTexture_sspbo")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0cf0r")
+"texture": SubResource("AtlasTexture_852wv")
 }],
 "loop": true,
 "name": &"Laser",
@@ -93,10 +93,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7pv38")
+"texture": SubResource("AtlasTexture_yquod")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_j7j0u")
+"texture": SubResource("AtlasTexture_32jby")
 }],
 "loop": false,
 "name": &"Laser Beginning",
@@ -104,10 +104,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_j7j0u")
+"texture": SubResource("AtlasTexture_yquod")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7pv38")
+"texture": SubResource("AtlasTexture_32jby")
 }],
 "loop": false,
 "name": &"Laser End",
@@ -159,8 +159,10 @@ shape = SubResource("CircleShape2D_7aaft")
 rotation = 3.14159
 scale = Vector2(0.55, 0.55)
 sprite_frames = SubResource("SpriteFrames_j3j4c")
-animation = &"Laser"
+animation = &"Idle"
 autoplay = "Idle"
+frame_progress = 0.126606
+offset = Vector2(0, 10)
 
 [connection signal="area_entered" from="Laser Area" to="." method="_on_laser_area_area_entered"]
 [connection signal="area_exited" from="Laser Area" to="." method="_on_laser_area_area_exited"]

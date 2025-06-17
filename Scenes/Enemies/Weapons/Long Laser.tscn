@@ -1,0 +1,126 @@
+[gd_scene load_steps=12 format=3 uid="uid://c83j5wlyhqjwq"]
+
+[ext_resource type="Texture2D" uid="uid://bnci24akyvubs" path="res://Sprites/Bosses/Lunacy/Laser.png" id="1_260g5"]
+[ext_resource type="Script" uid="uid://jgn76qo8udyo" path="res://Scripts/Enemies/Weapons/long_laser.gd" id="2_qamku"]
+[ext_resource type="AudioStream" uid="uid://ctg2p1xvcqdpc" path="res://Audio/SFX/Laser Shot.mp3" id="3_ait8x"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ik7d"]
+atlas = ExtResource("1_260g5")
+region = Rect2(0, 0, 18, 590)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3qs6u"]
+atlas = ExtResource("1_260g5")
+region = Rect2(18, 0, 18, 590)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m5dwi"]
+atlas = ExtResource("1_260g5")
+region = Rect2(36, 0, 18, 590)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ckjh5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ik7d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3qs6u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m5dwi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ohbmc"]
+size = Vector2(14, 588.8)
+
+[sub_resource type="Animation" id="Animation_r2bge"]
+resource_name = "new_animation"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 5), Vector2(2, 5), Vector2(0, 5)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"play_laser"
+}, {
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_vd514"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, 5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hvyh1"]
+_data = {
+&"RESET": SubResource("Animation_vd514"),
+&"new_animation": SubResource("Animation_r2bge")
+}
+
+[node name="Laser" type="AnimatedSprite2D"]
+z_index = 5
+rotation = 1.5708
+scale = Vector2(2, 5)
+sprite_frames = SubResource("SpriteFrames_ckjh5")
+autoplay = "default"
+frame_progress = 0.00768199
+script = ExtResource("2_qamku")
+
+[node name="LaserShot" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ait8x")
+pitch_scale = 1.5
+bus = &"SFX"
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, -1.2207e-05)
+shape = SubResource("RectangleShape2D_ohbmc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_hvyh1")
+}
+autoplay = "new_animation"
+
+[node name="Damage Buffer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_exited" from="Hitbox" to="." method="_on_hitbox_body_exited"]

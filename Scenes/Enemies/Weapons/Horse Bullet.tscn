@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://dap7mlf853fiq"]
+
+[ext_resource type="PackedScene" uid="uid://bbc2vnfngjpdx" path="res://Scenes/Enemies/Weapons/Bullet.tscn" id="1_nrq65"]
+[ext_resource type="Texture2D" uid="uid://bf0q38qgdd10a" path="res://Sprites/Bosses/Lunacy/Horse Projectile.png" id="2_kmi02"]
+[ext_resource type="Script" uid="uid://c2mk40strh1rg" path="res://Scripts/Enemies/Weapons/horse_bullet.gd" id="3_kmi02"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tff65"]
+size = Vector2(35.3333, 19.3333)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6r8si"]
+radius = 6.66667
+
+[node name="Horse Bullet" instance=ExtResource("1_nrq65")]
+z_index = 5
+scale = Vector2(2, 2)
+texture = ExtResource("2_kmi02")
+script = ExtResource("3_kmi02")
+
+[node name="CollisionShape2D" parent="Bullet Hitbox" index="0"]
+position = Vector2(2.33333, -3)
+shape = SubResource("RectangleShape2D_tff65")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Bullet Hitbox" index="1"]
+position = Vector2(-22, -12)
+shape = SubResource("CircleShape2D_6r8si")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." index="1"]
+position = Vector2(-1.90735e-06, -5.66244e-07)
+scale = Vector2(3.33333, 2.33333)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

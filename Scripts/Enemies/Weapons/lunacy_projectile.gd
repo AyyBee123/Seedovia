@@ -1,6 +1,6 @@
 extends AnimatedSprite2D
 
-const SPEED := 150.0
+var SPEED := 150.0
 
 @export var _enemy_stats: enemy_stats
 
@@ -10,6 +10,7 @@ var player
 var damage := 1
 var rotation_direction
 var _used_WTF: bool
+var face_index = -1
 
 func _ready():
 	_enemy_stats = _enemy_stats.duplicate()
@@ -44,11 +45,7 @@ func _physics_process(delta):
 	update_position(delta)
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
-	if is_instance_valid(source):
-		source.add_to_pool(self, source.lunacy_proj_pool)
-	set_process(false)
-	set_physics_process(false)
-	hide()
+	queue_free()
 
 func update_position(delta):
 	var current_velocity: Vector2 = direction * SPEED
