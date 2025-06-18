@@ -1,0 +1,61 @@
+[gd_scene load_steps=8 format=3 uid="uid://cwslrklqk1f0r"]
+
+[ext_resource type="PackedScene" uid="uid://bbc2vnfngjpdx" path="res://Scenes/Enemies/Weapons/Bullet.tscn" id="1_7gfyc"]
+[ext_resource type="Script" uid="uid://d3q3vev5v0ksx" path="res://Scripts/Enemies/Weapons/homing_bullet.gd" id="2_ndi81"]
+[ext_resource type="Texture2D" uid="uid://dbndd6ydngnhe" path="res://Sprites/Enemies/Weapons/Fly Bullet.png" id="3_ndi81"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v8h03"]
+resource_local_to_scene = true
+radius = 9.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_chucu"]
+atlas = ExtResource("3_ndi81")
+region = Rect2(0, 0, 56, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fnxus"]
+atlas = ExtResource("3_ndi81")
+region = Rect2(56, 0, 56, 27)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1anuq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_chucu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fnxus")
+}],
+"loop": true,
+"name": &"default",
+"speed": 16.0
+}]
+
+[node name="Fly Bullet" instance=ExtResource("1_7gfyc")]
+scale = Vector2(0.75, 0.75)
+texture = null
+script = ExtResource("2_ndi81")
+
+[node name="CollisionShape2D" parent="Bullet Hitbox" index="0"]
+shape = SubResource("CircleShape2D_v8h03")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="1"]
+sprite_frames = SubResource("SpriteFrames_1anuq")
+autoplay = "default"
+frame_progress = 0.944736
+offset = Vector2(0, -2.5)
+
+[node name="Homing Timer" type="Timer" parent="." index="2"]
+one_shot = true
+
+[node name="Homing Delay" type="Timer" parent="." index="3"]
+one_shot = true
+
+[node name="Pointer" type="Node2D" parent="." index="4"]
+unique_name_in_owner = true
+
+[node name="Marker2D" type="Marker2D" parent="Pointer" index="0"]
+unique_name_in_owner = true
+position = Vector2(3, 0)
+
+[connection signal="timeout" from="Homing Timer" to="." method="_on_homing_timer_timeout"]
+[connection signal="timeout" from="Homing Delay" to="." method="_on_homing_delay_timeout"]

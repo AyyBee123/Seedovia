@@ -6,6 +6,7 @@ extends "res://Scripts/Enemies/Weapons/bullet.gd"
 @onready var homing_delay = $"Homing Delay"
 
 var home_time: float
+var home_delay: float
 var homing: bool = false
 var rotation_speed: float
 
@@ -14,6 +15,9 @@ func _ready():
 	pointer.rotation = direction.angle()
 	if home_time > 0:
 		homing_timer.wait_time = home_time
+	if home_delay > 0:
+		homing_delay.wait_time = home_delay
+	homing_delay.start()
 
 func _physics_process(delta):
 	super._physics_process(delta)
