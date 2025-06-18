@@ -7,6 +7,7 @@ extends "res://Scripts/Seeds/seed_template.gd"
 
 const SPLASH = preload("res://Scenes/Misc/Splash.tscn")
 
+const NEXT_SEED_CHANCE = 0.2
 var ROTATION_SPEED = 25
 const NUMBER_OF_BOUNCES = 2
 
@@ -41,17 +42,13 @@ func _collide(body):
 	if body.is_in_group("Enemies"):
 		body.get_parent()._enemy_stats.take_damage(DAMAGE)
 		has_collided.emit(body)
+		if randf() < NEXT_SEED_CHANCE:
+			weapon_direction = Vector2.RIGHT.rotated(randf_range(0, TAU))
+			shoot_next_weapon()
 		SfxDeconflicter.play(Game.audio_manager.hit)
 		SfxDeconflicter.play(Game.audio_manager.spore_pop)
 		explode()
 		bounce(body)
-	elif body.is_in_group("Players"):
-		body._player_stats.take_damage(1)
-		has_collided.emit(body)
-		SfxDeconflicter.play(Game.audio_manager.hit)
-		SfxDeconflicter.play(Game.audio_manager.spore_pop)
-		explode()
-		destroy()
 
 func get_nearest_enemy(enemy):
 	var enemies = get_tree().get_nodes_in_group("Enemies")

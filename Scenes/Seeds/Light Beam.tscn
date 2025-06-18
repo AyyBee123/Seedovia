@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://dueu3yucmqg7n"]
+
+[ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_di2k5"]
+[ext_resource type="Texture2D" uid="uid://cfqhchw4ad823" path="res://Sprites/Enemies/Light Beam.png" id="2_g111t"]
+[ext_resource type="Script" uid="uid://bolldctptbykk" path="res://Scripts/Seeds/light_beam.gd" id="3_8eyxf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7hiup"]
+size = Vector2(16, 12)
+
+[node name="Light Beam" instance=ExtResource("1_di2k5")]
+scale = Vector2(300, 1)
+texture = ExtResource("2_g111t")
+script = ExtResource("3_8eyxf")
+BASE_DAMAGE = 3.0
+BASE_FIRE_RATE = 1.0
+BASE_RANGE = 9999.0
+BASE_SPEED = 1.0
+BASE_SIZE = 1.0
+BASE_BLAST_RADIUS = 1.0
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2(-1.58946e-08, 0)
+shape = SubResource("RectangleShape2D_7hiup")

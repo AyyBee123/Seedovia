@@ -2,13 +2,9 @@ extends "res://Scripts/Enemies/enemy.gd"
 
 @onready var ding_SFX = $Ding
 
-const SEED_COLOR = preload("res://Shaders/seed_enemy_bullet_color.gdshader")
+const BULLET = preload("res://Scenes/Enemies/Weapons/Bullet.tscn")
 
-var original_seed
-var result
 var weapon_direction
-
-var scene = PackedScene.new()
 
 func _physics_process(delta):
 	super._physics_process(delta)
@@ -18,29 +14,21 @@ func _physics_process(delta):
 	
 	move_and_slide()
 
-func _on_enemy_hitbox_area_entered(area):
-	if area.get_parent().is_in_group("Seed"):
-		# get the seed and its position before hitting the mirror
-		original_seed = area.get_parent()
-		result = scene.pack(original_seed)
-
 func spawn_damage_number(damage: float):
 	super.spawn_damage_number(damage)
 	if damage >= _enemy_stats.health: # don't shoot if the next hit causes the mirror to die
 		return
-	if original_seed:
-		if is_instance_valid(original_seed):
-			original_seed.queue_free.call_deferred()
-		original_seed = null
-	# check if the scene was packed successfully, and then reflect the shot
-	if result == OK: # reflect the seed, if applicable
-		$AnimatedSprite2D.play("Shoot")
-		weapon_direction = global_position.direction_to(player.global_position)
-		instance_seed(scene.instantiate(), weapon_direction, \
-				global_position, null, SEED_COLOR)
-		SfxDeconflicter.play(ding_SFX)
-		scene = PackedScene.new()
-		result = null
+	
+	var bullet = BULLET.instantiate()
+	bullet.damage = _enemy_stats.weapon_damage
+	bullet.range = _enemy_stats.weapon_range
+	bullet.speed = _enemy_stats.weapon_speed
+	bullet.direction = global_position.direction_to(player.global_position)
+	get_tree().current_scene.add_child.call_deferred(bullet)
+	bullet.global_position = global_position + bullet.direction * 10
+	
+	$AnimatedSprite2D.play("Shoot")
+	SfxDeconflicter.play(ding_SFX)
 
 func _on_animated_sprite_2d_animation_finished():
 	$AnimatedSprite2D.play("Idle")

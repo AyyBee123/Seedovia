@@ -10,6 +10,6 @@ scene = ExtResource("1_afuay")
 rarity = 4
 item_name = "Currant"
 texture = ExtResource("3_e6k3a")
-description = "Does not shoot the next seed."
+description = ""
 unlocked = true
 metadata/_custom_type_script = "uid://c6ykhgvfkht5x"

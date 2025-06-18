@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://usetxd7ii511"]
+[gd_scene load_steps=44 format=3 uid="uid://usetxd7ii511"]
 
 [ext_resource type="Script" uid="uid://boo1w2wkkk0xk" path="res://Scripts/Utils/audio_manager.gd" id="1_bpx0j"]
 [ext_resource type="AudioStream" uid="uid://bpk6gao5jcjkq" path="res://Audio/SFX/Hit.mp3" id="1_qnkjs"]
@@ -42,6 +42,7 @@
 [ext_resource type="AudioStream" uid="uid://3xpoa6f4ugx" path="res://Audio/SFX/Laser Whoosh.mp3" id="40_ca470"]
 [ext_resource type="AudioStream" uid="uid://ctg2p1xvcqdpc" path="res://Audio/SFX/Laser Shot.mp3" id="41_ho3tb"]
 [ext_resource type="AudioStream" uid="uid://dormygwbg7tox" path="res://Audio/SFX/Big Laser.mp3" id="42_dy1yg"]
+[ext_resource type="AudioStream" uid="uid://bbbyt5s82anlc" path="res://Audio/SFX/Light Beam.mp3" id="43_dy1yg"]
 
 [node name="Audio Manager" type="Node"]
 script = ExtResource("1_bpx0j")
@@ -472,4 +473,10 @@ bus = &"SFX"
 [node name="Rock4" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_o11or")
 pitch_scale = 0.5
+bus = &"SFX"
+
+[node name="LightBeam" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("43_dy1yg")
+volume_db = -6.0
+pitch_scale = 1.25
 bus = &"SFX"
