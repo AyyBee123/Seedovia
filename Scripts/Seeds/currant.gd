@@ -50,6 +50,11 @@ func _collide(body):
 		explode()
 		bounce(body)
 
+func shoot_next_weapon():
+	if get_next_weapon() == null:
+		return
+	set_weapon_properties(get_next_weapon().instantiate(), weapon_direction, true)
+
 func get_nearest_enemy(enemy):
 	var enemies = get_tree().get_nodes_in_group("Enemies")
 	if target_group == "Players":
