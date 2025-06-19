@@ -10,7 +10,7 @@ extends "res://Scripts/Enemies/Obstacles/obstacle.gd"
 const BULLET = preload("res://Scenes/Enemies/Weapons/Bullet.tscn")
 
 var target
-var radius: float = 65
+var radius: float = 100
 var angle = 0
 
 func _ready():
