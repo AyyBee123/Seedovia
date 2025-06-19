@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="enemy_stats" load_steps=2 format=3 uid="uid://12p3nnp6xyi5"]
+
+[ext_resource type="Script" uid="uid://dplobvcbjid7g" path="res://Scripts/Stats/enemy_stats.gd" id="1_stlok"]
+
+[resource]
+script = ExtResource("1_stlok")
+max_health = 1.0
+speed = 3.0
+fire_rate = 1.0
+damage = 1.0
+acceleration = 1.0
+friction = 1.0
+weapon_damage = 1.0
+weapon_range = 200.0
+weapon_speed = 400.0
+metadata/_custom_type_script = "uid://dplobvcbjid7g"

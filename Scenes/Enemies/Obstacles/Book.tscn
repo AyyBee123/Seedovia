@@ -1,0 +1,64 @@
+[gd_scene load_steps=10 format=3 uid="uid://cembkve7uyvat"]
+
+[ext_resource type="PackedScene" uid="uid://b4qv2oi4vbgws" path="res://Scenes/Enemies/Obstacles/Obstacle.tscn" id="1_60d5v"]
+[ext_resource type="Script" uid="uid://bok2j0lxvakv7" path="res://Scripts/Enemies/Obstacles/book.gd" id="2_fn7iv"]
+[ext_resource type="Texture2D" uid="uid://vqjwg4ylnxea" path="res://Sprites/Enemies/Book.png" id="2_sweus"]
+[ext_resource type="Resource" uid="uid://12p3nnp6xyi5" path="res://Resources/Enemies/Obstacles/book.tres" id="3_fn7iv"]
+[ext_resource type="Texture2D" uid="uid://xxyym547o3vn" path="res://Sprites/Misc/Shadow.png" id="5_nrqxh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fn7iv"]
+size = Vector2(33, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nrqxh"]
+atlas = ExtResource("2_sweus")
+region = Rect2(0, 0, 35, 50)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kk4vc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nrqxh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jfu8s"]
+size = Vector2(33, 48)
+
+[node name="Book" instance=ExtResource("1_60d5v")]
+scale = Vector2(1.25, 1.25)
+script = ExtResource("2_fn7iv")
+enemy_number = 0
+starting_angle = 0.0
+_enemy_stats = ExtResource("3_fn7iv")
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource("RectangleShape2D_fn7iv")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+sprite_frames = SubResource("SpriteFrames_kk4vc")
+
+[node name="Enemy Hitbox" parent="." index="2"]
+collision_layer = 512
+
+[node name="CollisionShape2D" parent="Enemy Hitbox" index="0"]
+shape = SubResource("RectangleShape2D_jfu8s")
+
+[node name="Fire Rate" type="Timer" parent="." index="4"]
+one_shot = true
+autostart = true
+
+[node name="Marker2D" type="Marker2D" parent="." index="5"]
+position = Vector2(0.5, -7)
+
+[node name="Shadow" type="Sprite2D" parent="." index="6"]
+modulate = Color(1, 1, 1, 0.509804)
+z_index = -1
+z_as_relative = false
+position = Vector2(0, 32)
+scale = Vector2(1, 0.8555)
+texture = ExtResource("5_nrqxh")
+
+[connection signal="timeout" from="Fire Rate" to="." method="_on_fire_rate_timeout"]

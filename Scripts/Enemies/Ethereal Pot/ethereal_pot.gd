@@ -11,7 +11,6 @@ extends "res://Scripts/Enemies/Obstacles/obstacle.gd"
 const BULLET = preload("res://Scenes/Enemies/Weapons/Bullet.tscn")
 
 var target
-var enemy_id: int
 var radius: float = 65
 var speed: float
 var angle = 0
