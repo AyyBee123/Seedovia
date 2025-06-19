@@ -274,7 +274,7 @@ position = Vector2(0, 76.5)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="0"]
 shape = SubResource("CapsuleShape2D_sywo7")
 
-[node name="AnimatedSprite2D" parent="." index="1"]
+[node name="AnimatedSprite2D" parent="." index="2"]
 position = Vector2(10, -6)
 sprite_frames = SubResource("SpriteFrames_vyxg7")
 animation = &"Charge Down"
