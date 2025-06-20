@@ -1,0 +1,106 @@
+[gd_scene load_steps=17 format=3 uid="uid://pkif3pwinpv4"]
+
+[ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_yvqhc"]
+[ext_resource type="Script" uid="uid://dp67yjarwy2bd" path="res://Scripts/Enemies/Mad Book/mad_book.gd" id="2_lw6kg"]
+[ext_resource type="Shader" uid="uid://dsv0n8bsysyo6" path="res://Shaders/color_tint_shader.gdshader" id="3_ceb64"]
+[ext_resource type="Resource" uid="uid://daayht487wu81" path="res://Resources/Enemies/mad_book.tres" id="3_lw6kg"]
+[ext_resource type="Texture2D" uid="uid://bfw0adiotqggi" path="res://Sprites/Enemies/Mad Book.png" id="5_ceb64"]
+[ext_resource type="Script" uid="uid://bg8do524uy5sb" path="res://Scripts/Enemies/Mad Book/state_machine.gd" id="6_nxp12"]
+[ext_resource type="Texture2D" uid="uid://b65qy7rr414ol" path="res://Sprites/Misc/Statue Shadow.png" id="7_ilh8p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ceb64"]
+size = Vector2(33, 48)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nxp12"]
+resource_local_to_scene = true
+shader = ExtResource("3_ceb64")
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/tint_factor = 0.0
+shader_parameter/fade = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nxp12"]
+atlas = ExtResource("5_ceb64")
+region = Rect2(0, 0, 35, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ilh8p"]
+atlas = ExtResource("5_ceb64")
+region = Rect2(35, 0, 35, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_10c88"]
+atlas = ExtResource("5_ceb64")
+region = Rect2(70, 0, 35, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ixl3m"]
+atlas = ExtResource("5_ceb64")
+region = Rect2(105, 0, 35, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gjths"]
+atlas = ExtResource("5_ceb64")
+region = Rect2(140, 0, 35, 52)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tnl6r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nxp12")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ilh8p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_10c88")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ilh8p")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ixl3m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gjths")
+}],
+"loop": false,
+"name": &"Mad",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nxp12"]
+size = Vector2(33, 48)
+
+[node name="Mad Book" instance=ExtResource("1_yvqhc")]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("2_lw6kg")
+_enemy_stats = ExtResource("3_lw6kg")
+
+[node name="CollisionPolygon2D" parent="." index="0"]
+shape = SubResource("RectangleShape2D_ceb64")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+material = SubResource("ShaderMaterial_nxp12")
+sprite_frames = SubResource("SpriteFrames_tnl6r")
+animation = &"Idle"
+autoplay = "Idle"
+frame_progress = 0.986307
+
+[node name="CollisionPolygon2D" parent="Enemy Hitbox" index="0"]
+shape = SubResource("RectangleShape2D_nxp12")
+
+[node name="Health Bar" parent="." index="3"]
+offset_top = -42.0
+offset_bottom = -34.0
+
+[node name="state_machine" type="Node" parent="." index="5"]
+script = ExtResource("6_nxp12")
+metadata/_custom_type_script = "uid://cxh3rckpecdhs"
+
+[node name="Shadow" type="Sprite2D" parent="." index="6"]
+z_index = -1
+z_as_relative = false
+position = Vector2(0, 31.3333)
+scale = Vector2(1, 0.6)
+texture = ExtResource("7_ilh8p")

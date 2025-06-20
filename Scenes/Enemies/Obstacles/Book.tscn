@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://bok2j0lxvakv7" path="res://Scripts/Enemies/Obstacles/book.gd" id="2_fn7iv"]
 [ext_resource type="Texture2D" uid="uid://vqjwg4ylnxea" path="res://Sprites/Enemies/Book.png" id="2_sweus"]
 [ext_resource type="Resource" uid="uid://12p3nnp6xyi5" path="res://Resources/Enemies/Obstacles/book.tres" id="3_fn7iv"]
-[ext_resource type="Texture2D" uid="uid://xxyym547o3vn" path="res://Sprites/Misc/Shadow.png" id="5_nrqxh"]
+[ext_resource type="Texture2D" uid="uid://b65qy7rr414ol" path="res://Sprites/Misc/Statue Shadow.png" id="5_nrqxh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fn7iv"]
 size = Vector2(33, 48)
@@ -54,11 +54,10 @@ autostart = true
 position = Vector2(0.5, -7)
 
 [node name="Shadow" type="Sprite2D" parent="." index="6"]
-modulate = Color(1, 1, 1, 0.509804)
 z_index = -1
 z_as_relative = false
-position = Vector2(0, 32)
-scale = Vector2(1, 0.8555)
+position = Vector2(0, 31.3333)
+scale = Vector2(1, 0.6)
 texture = ExtResource("5_nrqxh")
 
 [connection signal="timeout" from="Fire Rate" to="." method="_on_fire_rate_timeout"]

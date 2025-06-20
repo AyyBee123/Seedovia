@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://b7pxb5hyuydtp"]
+
+[ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_gv8d4"]
+[ext_resource type="Script" uid="uid://ctdnim6t4matq" path="res://Scripts/Enemies/Lightning Staff/lightning_staff.gd" id="2_k0jxb"]
+[ext_resource type="Shader" uid="uid://dsv0n8bsysyo6" path="res://Shaders/color_tint_shader.gdshader" id="2_siayt"]
+[ext_resource type="Script" uid="uid://dplobvcbjid7g" path="res://Scripts/Stats/enemy_stats.gd" id="3_aek5k"]
+
+[sub_resource type="Resource" id="Resource_2tfov"]
+script = ExtResource("3_aek5k")
+max_health = 400.0
+speed = 0.0
+fire_rate = 3.0
+damage = 1.0
+acceleration = 1.0
+friction = 1.0
+weapon_damage = 1.0
+weapon_range = 0.0
+weapon_speed = 0.0
+metadata/_custom_type_script = "uid://dplobvcbjid7g"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k0jxb"]
+resource_local_to_scene = true
+shader = ExtResource("2_siayt")
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/tint_factor = 0.0
+shader_parameter/fade = 1.0
+
+[node name="Lightning Staff" instance=ExtResource("1_gv8d4")]
+script = ExtResource("2_k0jxb")
+_enemy_stats = SubResource("Resource_2tfov")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+material = SubResource("ShaderMaterial_k0jxb")

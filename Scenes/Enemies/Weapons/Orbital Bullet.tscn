@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://d2n1rn1ml6pp4"]
+
+[ext_resource type="PackedScene" uid="uid://bbc2vnfngjpdx" path="res://Scenes/Enemies/Weapons/Bullet.tscn" id="1_htdh0"]
+[ext_resource type="Script" uid="uid://wgpeha2lnopd" path="res://Scripts/Enemies/Weapons/orbital_bullet.gd" id="2_p0nlm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p0nlm"]
+resource_local_to_scene = true
+radius = 9.0
+
+[node name="Orbital Bullet" instance=ExtResource("1_htdh0")]
+script = ExtResource("2_p0nlm")
+
+[node name="Bullet Hitbox" parent="." index="0"]
+collision_mask = 2
+
+[node name="CollisionShape2D" parent="Bullet Hitbox" index="0"]
+shape = SubResource("CircleShape2D_p0nlm")
