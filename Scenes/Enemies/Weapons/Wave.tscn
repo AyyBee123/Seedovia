@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://ck5l22sg8ft08"]
+
+[ext_resource type="PackedScene" uid="uid://bbc2vnfngjpdx" path="res://Scenes/Enemies/Weapons/Bullet.tscn" id="1_2ygtf"]
+[ext_resource type="Texture2D" uid="uid://cntpeeatlb47d" path="res://Sprites/Enemies/Weapons/Wave.png" id="2_j4pn0"]
+[ext_resource type="Script" uid="uid://cth8o8qb2xc5d" path="res://Scripts/Enemies/Weapons/wave.gd" id="2_o63nu"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_su2fi"]
+points = PackedVector2Array(7.5, -9, 7.5, 9, -4, 25, -12, 28.6667, -6, 5.33333, -6, -4.66667, -12, -28.667, -4, -25)
+
+[node name="Wave" instance=ExtResource("1_2ygtf")]
+texture = ExtResource("2_j4pn0")
+offset = Vector2(-4, 0)
+script = ExtResource("2_o63nu")
+
+[node name="CollisionShape2D" parent="Bullet Hitbox" index="0"]
+position = Vector2(2.38419e-07, 0)
+shape = SubResource("ConvexPolygonShape2D_su2fi")

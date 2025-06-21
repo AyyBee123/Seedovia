@@ -1,0 +1,127 @@
+[gd_scene load_steps=20 format=3 uid="uid://dbseaupjry8fk"]
+
+[ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_0xt0f"]
+[ext_resource type="Script" uid="uid://b501emoun3nwf" path="res://Scripts/Enemies/Apprentice/apprentice.gd" id="2_w87vm"]
+[ext_resource type="Resource" uid="uid://dtfo2qud2demu" path="res://Resources/Enemies/apprentice.tres" id="3_6rkqw"]
+[ext_resource type="Shader" uid="uid://dsv0n8bsysyo6" path="res://Shaders/color_tint_shader.gdshader" id="3_ld45u"]
+[ext_resource type="Texture2D" uid="uid://wijmtc80bb46" path="res://Sprites/Enemies/Apprentice.png" id="4_6rkqw"]
+[ext_resource type="Script" uid="uid://kjiyd0mak7yd" path="res://Scripts/Enemies/Apprentice/state_machine.gd" id="6_k6ng6"]
+[ext_resource type="Texture2D" uid="uid://xxyym547o3vn" path="res://Sprites/Misc/Shadow.png" id="7_6rkqw"]
+[ext_resource type="AudioStream" uid="uid://3xpoa6f4ugx" path="res://Audio/SFX/Laser Whoosh.mp3" id="8_k6ng6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ld45u"]
+size = Vector2(22, 57)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k6ng6"]
+resource_local_to_scene = true
+shader = ExtResource("3_ld45u")
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/tint_factor = 0.0
+shader_parameter/fade = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k6if5"]
+atlas = ExtResource("4_6rkqw")
+region = Rect2(0, 0, 47, 69)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gsq47"]
+atlas = ExtResource("4_6rkqw")
+region = Rect2(47, 0, 47, 69)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mi0gb"]
+atlas = ExtResource("4_6rkqw")
+region = Rect2(94, 0, 47, 69)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3yp3k"]
+atlas = ExtResource("4_6rkqw")
+region = Rect2(141, 0, 47, 69)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0xt0f"]
+atlas = ExtResource("4_6rkqw")
+region = Rect2(188, 0, 47, 69)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w87vm"]
+atlas = ExtResource("4_6rkqw")
+region = Rect2(235, 0, 47, 69)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ld45u"]
+atlas = ExtResource("4_6rkqw")
+region = Rect2(282, 0, 47, 69)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_644j3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k6if5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gsq47")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mi0gb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3yp3k")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0xt0f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w87vm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ld45u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w87vm")
+}],
+"loop": false,
+"name": &"Slash",
+"speed": 15.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6rkqw"]
+size = Vector2(22, 57)
+
+[node name="Apprentice" instance=ExtResource("1_0xt0f")]
+scale = Vector2(2, 2)
+script = ExtResource("2_w87vm")
+_enemy_stats = ExtResource("3_6rkqw")
+
+[node name="CollisionPolygon2D" parent="." index="0"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_ld45u")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+material = SubResource("ShaderMaterial_k6ng6")
+sprite_frames = SubResource("SpriteFrames_644j3")
+animation = &"Slash"
+autoplay = "Idle"
+offset = Vector2(8.5, -4)
+
+[node name="CollisionPolygon2D" parent="Enemy Hitbox" index="0"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_6rkqw")
+
+[node name="Health Bar" parent="." index="3"]
+offset_top = -54.0
+offset_bottom = -46.0
+
+[node name="state_machine" type="Node" parent="." index="5"]
+script = ExtResource("6_k6ng6")
+metadata/_custom_type_script = "uid://cxh3rckpecdhs"
+
+[node name="Shadow" type="Sprite2D" parent="." index="6"]
+z_index = -1
+z_as_relative = false
+position = Vector2(0, 34)
+scale = Vector2(0.75, 0.8)
+texture = ExtResource("7_6rkqw")
+
+[node name="LaserWhoosh" type="AudioStreamPlayer" parent="." index="7"]
+stream = ExtResource("8_k6ng6")
+pitch_scale = 3.0

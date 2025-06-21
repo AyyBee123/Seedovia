@@ -176,7 +176,6 @@ position = Vector2(0, -52)
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Charge Detect" index="0"]
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_3mexn")
 
 [node name="Eye Time" type="Timer" parent="." index="13"]
