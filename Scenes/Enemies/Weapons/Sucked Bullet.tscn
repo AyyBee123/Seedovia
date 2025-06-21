@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjki73kxeulc"]
+
+[ext_resource type="PackedScene" uid="uid://bbc2vnfngjpdx" path="res://Scenes/Enemies/Weapons/Bullet.tscn" id="1_oe3al"]
+[ext_resource type="Script" uid="uid://cf8n3e7diq3i5" path="res://Scripts/Enemies/Weapons/sucked_bullet.gd" id="2_yhcmc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ovd1o"]
+resource_local_to_scene = true
+radius = 9.0
+
+[node name="Sucked Bullet" instance=ExtResource("1_oe3al")]
+script = ExtResource("2_yhcmc")
+
+[node name="Bullet Hitbox" parent="." index="0"]
+collision_mask = 7
+
+[node name="CollisionShape2D" parent="Bullet Hitbox" index="0"]
+shape = SubResource("CircleShape2D_ovd1o")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." index="1"]
+position = Vector2(-4.76837e-07, -4.76837e-07)
+scale = Vector2(1.26667, 1.26667)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

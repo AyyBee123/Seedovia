@@ -3,7 +3,6 @@ extends state_machine
 const COOLDOWN_TIME = 2
 
 var timer = Timer.new()
-var slash_time = Timer.new()
 
 func _ready():
 	add_state("idle")

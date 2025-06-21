@@ -1,0 +1,52 @@
+[gd_scene load_steps=10 format=3 uid="uid://cvc51uvggnkej"]
+
+[ext_resource type="PackedScene" uid="uid://b4qv2oi4vbgws" path="res://Scenes/Enemies/Obstacles/Obstacle.tscn" id="1_3lxch"]
+[ext_resource type="Script" uid="uid://byeh2skfxl8tl" path="res://Scripts/Enemies/Deathworm/deathworm_body.gd" id="2_rlxq6"]
+[ext_resource type="Resource" uid="uid://ughugvwoffdc" path="res://Resources/Enemies/deathworm.tres" id="3_3lxch"]
+[ext_resource type="Shader" uid="uid://dsv0n8bsysyo6" path="res://Shaders/color_tint_shader.gdshader" id="4_2vkww"]
+[ext_resource type="Texture2D" uid="uid://dkyug1fv36yiy" path="res://Sprites/Enemies/Deathworm Body.png" id="5_3lxch"]
+[ext_resource type="Texture2D" uid="uid://xxyym547o3vn" path="res://Sprites/Misc/Shadow.png" id="6_vq0bv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5py5c"]
+resource_local_to_scene = true
+shader = ExtResource("4_2vkww")
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/tint_factor = 0.0
+shader_parameter/fade = 1.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1417c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_3lxch")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_00xwk"]
+radius = 13.5093
+
+[node name="Deathworm Body" instance=ExtResource("1_3lxch")]
+z_index = 3
+z_as_relative = false
+scale = Vector2(2.5, 2.5)
+script = ExtResource("2_rlxq6")
+_enemy_stats = ExtResource("3_3lxch")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+material = SubResource("ShaderMaterial_5py5c")
+sprite_frames = SubResource("SpriteFrames_1417c")
+
+[node name="Enemy Hitbox" parent="." index="2" groups=["Enemies"]]
+
+[node name="CollisionShape2D" parent="Enemy Hitbox" index="0"]
+shape = SubResource("CircleShape2D_00xwk")
+
+[node name="Shadow" type="Sprite2D" parent="." index="4"]
+z_index = -1
+z_as_relative = false
+position = Vector2(0, 18.5)
+scale = Vector2(0.85, 0.75)
+texture = ExtResource("6_vq0bv")

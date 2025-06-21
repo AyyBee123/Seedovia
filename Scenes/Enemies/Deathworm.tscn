@@ -1,0 +1,163 @@
+[gd_scene load_steps=21 format=3 uid="uid://pllgo8xk3mig"]
+
+[ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_f60ki"]
+[ext_resource type="Script" uid="uid://ct6cw6aq5gxhx" path="res://Scripts/Enemies/deathworm.gd" id="2_ldcpv"]
+[ext_resource type="Script" uid="uid://dplobvcbjid7g" path="res://Scripts/Stats/enemy_stats.gd" id="3_80p1f"]
+[ext_resource type="Shader" uid="uid://dsv0n8bsysyo6" path="res://Shaders/color_tint_shader.gdshader" id="4_kqrw2"]
+[ext_resource type="Texture2D" uid="uid://vktxmffvbduq" path="res://Sprites/Enemies/Deathworm.png" id="5_80p1f"]
+[ext_resource type="Texture2D" uid="uid://xxyym547o3vn" path="res://Sprites/Misc/Shadow.png" id="6_kqrw2"]
+[ext_resource type="Script" uid="uid://b5yxwbu2jhdci" path="res://Scripts/Enemies/Deathworm/state_machine.gd" id="7_kqrw2"]
+[ext_resource type="AudioStream" uid="uid://btibpopk3es2g" path="res://Audio/SFX/Vacuum.mp3" id="8_gwct4"]
+
+[sub_resource type="Resource" id="Resource_gwct4"]
+script = ExtResource("3_80p1f")
+max_health = 850.0
+speed = 375.0
+fire_rate = 0.0
+damage = 1.0
+acceleration = 0.15
+friction = 0.025
+weapon_damage = 1.0
+weapon_range = 999999.0
+weapon_speed = 500.0
+metadata/_custom_type_script = "uid://dplobvcbjid7g"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dan3h"]
+resource_local_to_scene = true
+shader = ExtResource("4_kqrw2")
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/tint_factor = 0.0
+shader_parameter/fade = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gwct4"]
+atlas = ExtResource("5_80p1f")
+region = Rect2(0, 0, 37, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kqrw2"]
+atlas = ExtResource("5_80p1f")
+region = Rect2(111, 0, 37, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dan3h"]
+atlas = ExtResource("5_80p1f")
+region = Rect2(0, 0, 37, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t25he"]
+atlas = ExtResource("5_80p1f")
+region = Rect2(37, 0, 37, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a8cs0"]
+atlas = ExtResource("5_80p1f")
+region = Rect2(74, 0, 37, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ocmf"]
+atlas = ExtResource("5_80p1f")
+region = Rect2(111, 0, 37, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_noq1d"]
+atlas = ExtResource("5_80p1f")
+region = Rect2(148, 0, 37, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wj07y"]
+atlas = ExtResource("5_80p1f")
+region = Rect2(185, 0, 37, 37)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5ocmf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gwct4")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kqrw2")
+}],
+"loop": true,
+"name": &"Idle Back",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dan3h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t25he")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a8cs0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t25he")
+}],
+"loop": true,
+"name": &"Suck",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ocmf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_noq1d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wj07y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_noq1d")
+}],
+"loop": true,
+"name": &"Suck Back",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_noq1d"]
+radius = 15.0
+
+[node name="Deathworm" instance=ExtResource("1_f60ki")]
+scale = Vector2(2.5, 2.5)
+script = ExtResource("2_ldcpv")
+_enemy_stats = SubResource("Resource_gwct4")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+material = SubResource("ShaderMaterial_dan3h")
+sprite_frames = SubResource("SpriteFrames_5ocmf")
+animation = &"Suck"
+autoplay = "Idle"
+
+[node name="CollisionPolygon2D" parent="Enemy Hitbox" index="0"]
+shape = SubResource("CircleShape2D_noq1d")
+
+[node name="Health Bar" parent="." index="3"]
+offset_top = -32.4
+offset_bottom = -24.4
+
+[node name="Pointer" type="Node2D" parent="." index="5"]
+
+[node name="Marker2D" type="Marker2D" parent="Pointer" index="0"]
+position = Vector2(28.5714, 0)
+
+[node name="Shadow" type="Sprite2D" parent="." index="6"]
+z_index = -1
+z_as_relative = false
+position = Vector2(0, 20)
+scale = Vector2(0.9, 0.75)
+texture = ExtResource("6_kqrw2")
+
+[node name="state_machine" type="Node" parent="." index="7"]
+script = ExtResource("7_kqrw2")
+metadata/_custom_type_script = "uid://cxh3rckpecdhs"
+
+[node name="Fire Rate" type="Timer" parent="." index="8"]
+wait_time = 0.15
+one_shot = true
+
+[node name="Vacuum" type="AudioStreamPlayer" parent="." index="9"]
+stream = ExtResource("8_gwct4")
+volume_db = -4.0
+pitch_scale = 0.5
+
+[connection signal="timeout" from="Fire Rate" to="." method="_on_fire_rate_timeout"]
