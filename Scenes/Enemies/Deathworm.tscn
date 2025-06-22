@@ -1,7 +1,7 @@
 [gd_scene load_steps=21 format=3 uid="uid://pllgo8xk3mig"]
 
 [ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_f60ki"]
-[ext_resource type="Script" uid="uid://ct6cw6aq5gxhx" path="res://Scripts/Enemies/deathworm.gd" id="2_ldcpv"]
+[ext_resource type="Script" uid="uid://ct6cw6aq5gxhx" path="res://Scripts/Enemies/Deathworm/deathworm.gd" id="2_ldcpv"]
 [ext_resource type="Script" uid="uid://dplobvcbjid7g" path="res://Scripts/Stats/enemy_stats.gd" id="3_80p1f"]
 [ext_resource type="Shader" uid="uid://dsv0n8bsysyo6" path="res://Shaders/color_tint_shader.gdshader" id="4_kqrw2"]
 [ext_resource type="Texture2D" uid="uid://vktxmffvbduq" path="res://Sprites/Enemies/Deathworm.png" id="5_80p1f"]

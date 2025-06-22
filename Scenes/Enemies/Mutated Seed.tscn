@@ -1,0 +1,101 @@
+[gd_scene load_steps=15 format=3 uid="uid://txl4dtdkxfle"]
+
+[ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_u2wxd"]
+[ext_resource type="Script" uid="uid://jxlqatkwccav" path="res://Scripts/Enemies/Mutated Seed/mutated_seed.gd" id="2_20usx"]
+[ext_resource type="Shader" uid="uid://dsv0n8bsysyo6" path="res://Shaders/color_tint_shader.gdshader" id="3_5xqyq"]
+[ext_resource type="Resource" uid="uid://bh7m6uickkbju" path="res://Resources/Enemies/mutated_seed.tres" id="3_20usx"]
+[ext_resource type="Script" uid="uid://c0k8gvdeu0cpq" path="res://Scripts/Enemies/Mutated Seed/state_machine.gd" id="4_v8mg5"]
+[ext_resource type="Texture2D" uid="uid://dlqkhsdq1d5w7" path="res://Sprites/Enemies/Mutated Seed.png" id="5_5xqyq"]
+[ext_resource type="AudioStream" uid="uid://b5dj37ibsu7ig" path="res://Audio/SFX/Crunch.mp3" id="7_v8mg5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5xqyq"]
+size = Vector2(26, 30)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_83rc5"]
+resource_local_to_scene = true
+shader = ExtResource("3_5xqyq")
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/tint_factor = 0.0
+shader_parameter/fade = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v8mg5"]
+atlas = ExtResource("5_5xqyq")
+region = Rect2(49, 0, 49, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_83rc5"]
+atlas = ExtResource("5_5xqyq")
+region = Rect2(98, 0, 49, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ixemw"]
+atlas = ExtResource("5_5xqyq")
+region = Rect2(0, 0, 49, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_whldm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v8mg5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_83rc5")
+}],
+"loop": false,
+"name": &"Chase",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ixemw")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v8mg5"]
+size = Vector2(26, 30)
+
+[node name="Mutated Seed" instance=ExtResource("1_u2wxd")]
+scale = Vector2(2, 2)
+script = ExtResource("2_20usx")
+_enemy_stats = ExtResource("3_20usx")
+
+[node name="CollisionPolygon2D" parent="." index="0"]
+shape = SubResource("RectangleShape2D_5xqyq")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+material = SubResource("ShaderMaterial_83rc5")
+position = Vector2(-2.5, 2)
+sprite_frames = SubResource("SpriteFrames_whldm")
+animation = &"Chase"
+autoplay = "Idle"
+frame = 1
+frame_progress = 1.0
+
+[node name="CollisionPolygon2D" parent="Enemy Hitbox" index="0"]
+shape = SubResource("RectangleShape2D_v8mg5")
+
+[node name="Health Bar" parent="." index="3"]
+offset_top = -36.0
+offset_bottom = -28.0
+
+[node name="state_machine" type="Node" parent="." index="5"]
+script = ExtResource("4_v8mg5")
+metadata/_custom_type_script = "uid://cxh3rckpecdhs"
+
+[node name="Fire Rate" type="Timer" parent="." index="6"]
+wait_time = 0.1
+one_shot = true
+
+[node name="Crunch" type="AudioStreamPlayer" parent="." index="7"]
+stream = ExtResource("7_v8mg5")
+volume_db = -8.0
+pitch_scale = 1.75
+bus = &"SFX"
+
+[node name="Pointer" type="Node2D" parent="." index="8"]
+
+[node name="Marker2D" type="Marker2D" parent="Pointer" index="0"]
+position = Vector2(28.5714, 0)
+
+[connection signal="timeout" from="Fire Rate" to="." method="_on_fire_rate_timeout"]
