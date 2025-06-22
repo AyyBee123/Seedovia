@@ -28,6 +28,8 @@ func _ready():
 	super._ready()
 	Z_INDEX = z_index
 	direction = Vector2(-1, 0)
+	$"Enemy Hitbox/Down".disabled = true
+	$"Enemy Hitbox/Up".disabled = true
 	randomize()
 	for i in NUMBER_OF_SEGMENTS:
 		var segment = STONE_SERPENT_SEGMENT.instantiate()

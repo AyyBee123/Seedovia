@@ -1,0 +1,217 @@
+[gd_scene load_steps=25 format=3 uid="uid://bhgdr4m8h2q8j"]
+
+[ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_20nv5"]
+[ext_resource type="Script" uid="uid://bc88b5rj8gr5h" path="res://Scripts/Enemies/Chomp-chomp/chomp_chomp.gd" id="2_agi5e"]
+[ext_resource type="Shader" uid="uid://dsv0n8bsysyo6" path="res://Shaders/color_tint_shader.gdshader" id="2_g5bp7"]
+[ext_resource type="Texture2D" uid="uid://x0a6jfwm756k" path="res://Sprites/Enemies/Chomp-chomp.png" id="3_agi5e"]
+[ext_resource type="Resource" uid="uid://bc1emqteabq4d" path="res://Resources/Enemies/chomp_chomp.tres" id="3_l3753"]
+[ext_resource type="AudioStream" uid="uid://bbf8bm1rbtxsh" path="res://Audio/SFX/Bite2.mp3" id="6_l3753"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l3753"]
+resource_local_to_scene = true
+shader = ExtResource("2_g5bp7")
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/tint_factor = 0.0
+shader_parameter/fade = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_48ojp"]
+atlas = ExtResource("3_agi5e")
+region = Rect2(448, 0, 56, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sev7l"]
+atlas = ExtResource("3_agi5e")
+region = Rect2(504, 0, 56, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pdyqr"]
+atlas = ExtResource("3_agi5e")
+region = Rect2(560, 0, 56, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gwwhg"]
+atlas = ExtResource("3_agi5e")
+region = Rect2(616, 0, 56, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_55xyf"]
+atlas = ExtResource("3_agi5e")
+region = Rect2(0, 0, 56, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sebtg"]
+atlas = ExtResource("3_agi5e")
+region = Rect2(56, 0, 56, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3vjkn"]
+atlas = ExtResource("3_agi5e")
+region = Rect2(112, 0, 56, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1q7nd"]
+atlas = ExtResource("3_agi5e")
+region = Rect2(168, 0, 56, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_re5jt"]
+atlas = ExtResource("3_agi5e")
+region = Rect2(224, 0, 56, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r2qmc"]
+atlas = ExtResource("3_agi5e")
+region = Rect2(280, 0, 56, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_80fug"]
+atlas = ExtResource("3_agi5e")
+region = Rect2(336, 0, 56, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5uc1y"]
+atlas = ExtResource("3_agi5e")
+region = Rect2(392, 0, 56, 55)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iq671"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_48ojp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sev7l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pdyqr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gwwhg")
+}],
+"loop": true,
+"name": &"Down",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_55xyf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sebtg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3vjkn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1q7nd")
+}],
+"loop": true,
+"name": &"Side",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_re5jt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r2qmc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_80fug")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5uc1y")
+}],
+"loop": true,
+"name": &"Up",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_agi5e"]
+radius = 8.4
+height = 39.2
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l3753"]
+radius = 13.0
+height = 40.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_48ojp"]
+radius = 11.0
+height = 27.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sev7l"]
+resource_local_to_scene = true
+size = Vector2(2, 2)
+
+[node name="Chomp-chomp" instance=ExtResource("1_20nv5")]
+scale = Vector2(2.5, 2.5)
+script = ExtResource("2_agi5e")
+_enemy_stats = ExtResource("3_l3753")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+material = SubResource("ShaderMaterial_l3753")
+sprite_frames = SubResource("SpriteFrames_iq671")
+animation = &"Side"
+autoplay = "Side"
+frame_progress = 0.746643
+offset = Vector2(-8, -8)
+
+[node name="Side" type="CollisionShape2D" parent="Enemy Hitbox" index="1"]
+unique_name_in_owner = true
+position = Vector2(-12, -3.6)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_agi5e")
+
+[node name="Up" type="CollisionShape2D" parent="Enemy Hitbox" index="2"]
+unique_name_in_owner = true
+position = Vector2(0, -11.6)
+shape = SubResource("CapsuleShape2D_l3753")
+
+[node name="Down" type="CollisionShape2D" parent="Enemy Hitbox" index="3"]
+unique_name_in_owner = true
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_48ojp")
+
+[node name="Health Bar" parent="." index="3"]
+offset_top = -45.2
+offset_bottom = -37.2
+
+[node name="Bite2" type="AudioStreamPlayer" parent="." index="5"]
+stream = ExtResource("6_l3753")
+volume_db = -4.0
+pitch_scale = 2.0
+bus = &"SFX"
+
+[node name="Detect Up" type="Area2D" parent="." index="6"]
+position = Vector2(6.25278e-12, -36)
+rotation = -3.14159
+collision_layer = 0
+
+[node name="Detect Up" type="CollisionShape2D" parent="Detect Up" index="0"]
+shape = SubResource("RectangleShape2D_sev7l")
+
+[node name="Detect Down" type="Area2D" parent="." index="7"]
+position = Vector2(0, -58)
+rotation = -3.14159
+collision_layer = 0
+
+[node name="Detect Down" type="CollisionShape2D" parent="Detect Down" index="0"]
+position = Vector2(1.10501e-05, -78.4)
+rotation = 3.14159
+shape = SubResource("RectangleShape2D_sev7l")
+
+[node name="Detect Right" type="Area2D" parent="." index="8"]
+position = Vector2(0, -58)
+rotation = -3.14159
+collision_layer = 0
+
+[node name="Detect Right" type="CollisionShape2D" parent="Detect Right" index="0"]
+position = Vector2(-36, -58)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_sev7l")
+
+[node name="Detect Left" type="Area2D" parent="." index="9"]
+position = Vector2(0, -58)
+rotation = -3.14159
+collision_layer = 0
+
+[node name="Detect Left" type="CollisionShape2D" parent="Detect Left" index="0"]
+position = Vector2(35.9999, -58)
+rotation = -1.5708
+shape = SubResource("RectangleShape2D_sev7l")
+
+[connection signal="animation_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_changed"]
+[connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_looped"]
+[connection signal="body_entered" from="Detect Up" to="." method="_on_detect_up_body_entered"]
+[connection signal="body_entered" from="Detect Down" to="." method="_on_detect_down_body_entered"]
+[connection signal="body_entered" from="Detect Right" to="." method="_on_detect_right_body_entered"]
+[connection signal="body_entered" from="Detect Left" to="." method="_on_detect_left_body_entered"]
