@@ -159,5 +159,6 @@ one_shot = true
 stream = ExtResource("8_gwct4")
 volume_db = -4.0
 pitch_scale = 0.5
+bus = &"SFX"
 
 [connection signal="timeout" from="Fire Rate" to="." method="_on_fire_rate_timeout"]
