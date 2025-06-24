@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bsb35lcd8lwyq"]
+[gd_scene load_steps=29 format=3 uid="uid://bsb35lcd8lwyq"]
 
 [ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_060oy"]
 [ext_resource type="Shader" uid="uid://dsv0n8bsysyo6" path="res://Shaders/color_tint_shader.gdshader" id="2_bid1r"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://xxyym547o3vn" path="res://Sprites/Misc/Shadow.png" id="4_0r8v0"]
 [ext_resource type="Script" uid="uid://vsdau7i483ku" path="res://Scripts/Enemies/Slime/state_machine.gd" id="6_m40q1"]
 [ext_resource type="AudioStream" uid="uid://bnwgdhdobsrbm" path="res://Audio/SFX/Splat2.mp3" id="8_trbp4"]
+[ext_resource type="AudioStream" uid="uid://caljmag43g88" path="res://Audio/SFX/Splat3.mp3" id="8_vp0jb"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mo5ki"]
 radius = 11.0
@@ -268,20 +269,17 @@ tracks/7/path = NodePath("..")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0.1, 0.8, 0.8333, 0.833433, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0.1, 0.8, 0.8333, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "values": [{
-"args": [NodePath("Splat2")],
-"method": &"play_sound"
+"args": [],
+"method": &"play_splat_3"
 }, {
 "args": [false],
 "method": &"set_move"
 }, {
-"args": [NodePath("Splat")],
-"method": &"play_sound"
-}, {
-"args": [NodePath("LaserShot")],
-"method": &"play_sound"
+"args": [],
+"method": &"play_splat_3"
 }, {
 "args": [],
 "method": &"jump_finished"
@@ -526,6 +524,7 @@ pitch_scale = 1.2
 bus = &"SFX"
 
 [node name="Splat2" type="AudioStreamPlayer" parent="." index="9"]
+stream = ExtResource("8_vp0jb")
 volume_db = -5.0
 pitch_scale = 1.2
 bus = &"SFX"

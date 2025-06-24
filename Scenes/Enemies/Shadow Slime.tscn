@@ -6,6 +6,7 @@
 [ext_resource type="Shader" uid="uid://dsv0n8bsysyo6" path="res://Shaders/color_tint_shader.gdshader" id="4_77536"]
 [ext_resource type="Texture2D" uid="uid://4xpa7o6qjfh0" path="res://Sprites/Enemies/Shadow Slime.png" id="5_dvitd"]
 [ext_resource type="Script" uid="uid://b0b0dk8w77sck" path="res://Scripts/Enemies/Shadow Slime/state_machine.gd" id="6_osfji"]
+[ext_resource type="Animation" uid="uid://c652ervqkc53u" path="res://Animations/Shadow Slime.res" id="7_31u8p"]
 [ext_resource type="AudioStream" uid="uid://caljmag43g88" path="res://Audio/SFX/Splat3.mp3" id="7_ls8bg"]
 [ext_resource type="AudioStream" uid="uid://bnwgdhdobsrbm" path="res://Audio/SFX/Splat2.mp3" id="8_31u8p"]
 [ext_resource type="Texture2D" uid="uid://xxyym547o3vn" path="res://Sprites/Misc/Shadow.png" id="9_pf4cj"]
@@ -214,124 +215,10 @@ tracks/5/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_jn043"]
-resource_name = "new_animation"
-length = 0.9
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.5, 0.8, 0.833333, 0.866667, 0.9),
-"transitions": PackedFloat32Array(1e+06, 1e+06, 1e+06, 1e+06, 1e+06, 1e+06, 1e+06, 1e+06, 1e+06),
-"update": 1,
-"values": [4, 5, 4, 3, 4, 3, 2, 1, 0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../Health Bar:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.433337, 0.8333),
-"transitions": PackedFloat32Array(1, 0.5, 2, 1),
-"update": 0,
-"values": [Vector2(-22, -34), Vector2(-22, -170), Vector2(-22, -180), Vector2(-22, -34)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.36667, 0.8),
-"transitions": PackedFloat32Array(1e+06, 0.5, 2, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, -70), Vector2(0, -100), Vector2(0, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../Shadow:scale")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.15, 0.433333, 0.76667, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(1, 1.25), Vector2(1, 1.25), Vector2(0.5, 0.626), Vector2(0.5, 0.626), Vector2(1, 1.25), Vector2(1, 1.25)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../Shadow:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0.1, 0.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath(".:animation")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.9),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [&"Jump", &"Idle"]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("../Enemy Hitbox/CollisionPolygon2D:disabled")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [false, true, false]
-}
-tracks/7/type = "method"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("..")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0.1, 0.8, 0.8333, 0.833433, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"values": [{
-"args": [NodePath("Splat2")],
-"method": &"play_sound"
-}, {
-"args": [],
-"method": &"shoot"
-}, {
-"args": [NodePath("Splat")],
-"method": &"play_sound"
-}, {
-"args": [NodePath("LaserShot")],
-"method": &"play_sound"
-}, {
-"args": [],
-"method": &"jump_finished"
-}]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yd317"]
 _data = {
 &"RESET": SubResource("Animation_tuuym"),
-&"new_animation": SubResource("Animation_jn043")
+&"new_animation": ExtResource("7_31u8p")
 }
 
 [node name="Shadow Slime" instance=ExtResource("1_4u4c5")]
@@ -386,7 +273,7 @@ bus = &"SFX"
 
 [node name="LaserShot" type="AudioStreamPlayer" parent="." index="10"]
 stream = ExtResource("10_osfji")
-volume_db = -4.0
+volume_db = -2.0
 pitch_scale = 2.0
 bus = &"SFX"
 

@@ -251,6 +251,7 @@ material = SubResource("ShaderMaterial_x4lav")
 sprite_frames = SubResource("SpriteFrames_dq0ym")
 animation = &"Idle"
 autoplay = "Idle"
+frame = 4
 offset = Vector2(0, -41)
 
 [node name="CollisionPolygon2D" parent="Enemy Hitbox" index="0"]
