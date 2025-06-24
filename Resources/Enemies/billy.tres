@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="enemy_stats" load_steps=2 format=3 uid="uid://ojd34s44kpem"]
+
+[ext_resource type="Script" uid="uid://dplobvcbjid7g" path="res://Scripts/Stats/enemy_stats.gd" id="1_1wk3t"]
+
+[resource]
+script = ExtResource("1_1wk3t")
+max_health = 1250.0
+speed = 150.0
+fire_rate = 0.0
+damage = 1.0
+acceleration = 1.0
+friction = 1.0
+weapon_damage = 1.0
+weapon_range = 500.0
+weapon_speed = 350.0
+metadata/_custom_type_script = "uid://dplobvcbjid7g"
