@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dueu3yucmqg7n"]
 
 [ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_di2k5"]
-[ext_resource type="Texture2D" uid="uid://cfqhchw4ad823" path="res://Sprites/Enemies/Light Beam.png" id="2_g111t"]
+[ext_resource type="Texture2D" uid="uid://cfqhchw4ad823" path="res://Sprites/Seeds/Light Beam.png" id="2_g111t"]
 [ext_resource type="Script" uid="uid://bolldctptbykk" path="res://Scripts/Seeds/light_beam.gd" id="3_8eyxf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7hiup"]
