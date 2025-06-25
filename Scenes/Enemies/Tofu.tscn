@@ -1,0 +1,77 @@
+[gd_scene load_steps=14 format=3 uid="uid://ccoe4607ptora"]
+
+[ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_0g6b2"]
+[ext_resource type="Script" uid="uid://dmvw21hy17o8r" path="res://Scripts/Enemies/Tofu/tofu.gd" id="2_5jgy4"]
+[ext_resource type="Resource" uid="uid://i1ej8tjjhv0q" path="res://Resources/Enemies/tofu.tres" id="3_5jgy4"]
+[ext_resource type="Shader" uid="uid://dsv0n8bsysyo6" path="res://Shaders/color_tint_shader.gdshader" id="3_axjc5"]
+[ext_resource type="Texture2D" uid="uid://ca73nrkmwlilf" path="res://Sprites/Enemies/Tofu.png" id="4_mh17o"]
+[ext_resource type="Script" uid="uid://dsnbq15cqi8cw" path="res://Scripts/Enemies/Tofu/state_machine.gd" id="5_vi8bo"]
+[ext_resource type="AudioStream" uid="uid://bh2mf3th8824m" path="res://Audio/SFX/Stretch.mp3" id="7_axjc5"]
+[ext_resource type="AudioStream" uid="uid://beekv7p4wawy5" path="res://Audio/SFX/Whip.mp3" id="8_mh17o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mh17o"]
+size = Vector2(32, 55)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ipgcm"]
+resource_local_to_scene = true
+shader = ExtResource("3_axjc5")
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/tint_factor = 0.0
+shader_parameter/fade = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mlw1b"]
+atlas = ExtResource("4_mh17o")
+region = Rect2(0, 0, 36, 58)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ssvf0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mlw1b")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5jgy4"]
+size = Vector2(32, 55)
+
+[node name="Tofu" instance=ExtResource("1_0g6b2")]
+scale = Vector2(2, 2)
+script = ExtResource("2_5jgy4")
+_enemy_stats = ExtResource("3_5jgy4")
+
+[node name="CollisionPolygon2D" parent="." index="0"]
+shape = SubResource("RectangleShape2D_mh17o")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+material = SubResource("ShaderMaterial_ipgcm")
+sprite_frames = SubResource("SpriteFrames_ssvf0")
+
+[node name="CollisionPolygon2D" parent="Enemy Hitbox" index="0"]
+shape = SubResource("RectangleShape2D_5jgy4")
+
+[node name="Health Bar" parent="." index="3"]
+offset_top = -54.0
+offset_bottom = -46.0
+
+[node name="state_machine" type="Node" parent="." index="5"]
+script = ExtResource("5_vi8bo")
+metadata/_custom_type_script = "uid://cxh3rckpecdhs"
+
+[node name="Stretch" type="AudioStreamPlayer" parent="." index="6"]
+stream = ExtResource("7_axjc5")
+volume_db = -4.0
+
+[node name="Whip" type="AudioStreamPlayer" parent="." index="7"]
+stream = ExtResource("8_mh17o")
+volume_db = -8.0
+pitch_scale = 1.25
+
+[node name="Cooldown Time" type="Timer" parent="." index="8"]
+wait_time = 0.75
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Cooldown Time" to="." method="_on_cooldown_time_timeout"]
