@@ -1,6 +1,6 @@
 extends state_machine
 
-const COOLDOWN_TIME = 2
+const COOLDOWN_TIME = 1.5
 const SHADOW_TIME = 1.5
 
 var timer = Timer.new()

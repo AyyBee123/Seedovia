@@ -84,6 +84,7 @@ func _on_animated_sprite_2d_animation_finished():
 		animated_sprite_2d.visible = false
 		
 		var exp = ENEMY_EXPLOSION.instantiate()
+		exp.damage = _enemy_stats.weapon_damage
 		exp.size = 1.3
 		exp.modulate = "eeeaca"
 		exp.z_index = z_index + 1

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cakwnxx6repi4"
+path="res://.godot/imported/Plate Break.mp3-af63c131c74e8610006fec5681f08e42.mp3str"
+
+[deps]
+
+source_file="res://Audio/SFX/Plate Break.mp3"
+dest_files=["res://.godot/imported/Plate Break.mp3-af63c131c74e8610006fec5681f08e42.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
