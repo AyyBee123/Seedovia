@@ -11,6 +11,7 @@ var start: bool
 var direction: Vector2
 
 func _ready():
+	randomize()
 	super._ready()
 	global_position = Vector2(0, 330)
 

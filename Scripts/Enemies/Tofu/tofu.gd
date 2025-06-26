@@ -19,6 +19,7 @@ var move_direction: Vector2
 var distance: float
 
 func _ready():
+	randomize()
 	super._ready()
 	
 	for i in TAU / SPREAD:

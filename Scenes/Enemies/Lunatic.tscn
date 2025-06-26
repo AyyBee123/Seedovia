@@ -1,0 +1,118 @@
+[gd_scene load_steps=18 format=3 uid="uid://nb8hitb4fe1q"]
+
+[ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_umy4a"]
+[ext_resource type="Script" uid="uid://43kksqbqidu7" path="res://Scripts/Enemies/Lunatic/lunatic.gd" id="2_bj0o1"]
+[ext_resource type="Resource" uid="uid://c2f7utrke868p" path="res://Resources/Enemies/lunatic.tres" id="3_b6pvq"]
+[ext_resource type="Shader" uid="uid://dsv0n8bsysyo6" path="res://Shaders/color_tint_shader.gdshader" id="4_wwacq"]
+[ext_resource type="Texture2D" uid="uid://bks7otu7a3g1g" path="res://Sprites/Enemies/Lunatic Sapling.png" id="5_bj0o1"]
+[ext_resource type="Texture2D" uid="uid://ddgxcie3ifp3j" path="res://Sprites/Enemies/Effects/Lunatic Sapling Hand.png" id="6_b6pvq"]
+[ext_resource type="Texture2D" uid="uid://xxyym547o3vn" path="res://Sprites/Misc/Shadow.png" id="7_wwacq"]
+[ext_resource type="AudioStream" uid="uid://ctg2p1xvcqdpc" path="res://Audio/SFX/Laser Shot.mp3" id="8_wwacq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b6pvq"]
+size = Vector2(12, 20)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yfh3x"]
+resource_local_to_scene = true
+shader = ExtResource("4_wwacq")
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/tint_factor = 0.0
+shader_parameter/fade = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wwacq"]
+atlas = ExtResource("5_bj0o1")
+region = Rect2(0, 0, 26, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lcxud"]
+atlas = ExtResource("5_bj0o1")
+region = Rect2(26, 0, 26, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bdcio"]
+atlas = ExtResource("5_bj0o1")
+region = Rect2(52, 0, 26, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yfh3x"]
+atlas = ExtResource("5_bj0o1")
+region = Rect2(78, 0, 26, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lposd"]
+atlas = ExtResource("5_bj0o1")
+region = Rect2(104, 0, 26, 33)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_niqk2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wwacq")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lcxud")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bdcio")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yfh3x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lposd")
+}],
+"loop": true,
+"name": &"Move",
+"speed": 9.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eq57i"]
+size = Vector2(12, 20)
+
+[node name="Lunatic" instance=ExtResource("1_umy4a")]
+scale = Vector2(2, 2)
+script = ExtResource("2_bj0o1")
+_enemy_stats = ExtResource("3_b6pvq")
+
+[node name="CollisionPolygon2D" parent="." index="0"]
+shape = SubResource("RectangleShape2D_b6pvq")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+material = SubResource("ShaderMaterial_yfh3x")
+position = Vector2(0, -5.5)
+sprite_frames = SubResource("SpriteFrames_niqk2")
+animation = &"Move"
+autoplay = "Idle"
+frame_progress = 0.949783
+
+[node name="CollisionPolygon2D" parent="Enemy Hitbox" index="0"]
+shape = SubResource("RectangleShape2D_eq57i")
+
+[node name="Health Bar" parent="." index="3"]
+offset_top = -36.0
+offset_bottom = -28.0
+
+[node name="Rotation Point" type="Marker2D" parent="." index="5"]
+use_parent_material = true
+
+[node name="Hand" type="Sprite2D" parent="Rotation Point" index="0"]
+use_parent_material = true
+position = Vector2(8, 0)
+texture = ExtResource("6_b6pvq")
+
+[node name="Fire Rate" type="Timer" parent="." index="6"]
+wait_time = 0.75
+one_shot = true
+
+[node name="Shadow" type="Sprite2D" parent="." index="7"]
+z_index = -1
+z_as_relative = false
+position = Vector2(0, 10)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("7_wwacq")
+
+[node name="LaserShot" type="AudioStreamPlayer" parent="." index="8"]
+stream = ExtResource("8_wwacq")
+volume_db = -4.0
+pitch_scale = 1.75
