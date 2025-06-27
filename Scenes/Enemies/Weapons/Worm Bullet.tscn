@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://botwfp2h71qgj"]
+
+[ext_resource type="PackedScene" uid="uid://bbc2vnfngjpdx" path="res://Scenes/Enemies/Weapons/Bullet.tscn" id="1_ylwml"]
+[ext_resource type="Script" uid="uid://cbctlsyc8fh8p" path="res://Scripts/Enemies/Weapons/worm_bullet.gd" id="2_02sa0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_02sa0"]
+resource_local_to_scene = true
+radius = 9.0
+
+[node name="Worm Bullet" instance=ExtResource("1_ylwml")]
+script = ExtResource("2_02sa0")
+
+[node name="CollisionShape2D" parent="Bullet Hitbox" index="0"]
+shape = SubResource("CircleShape2D_02sa0")
+
+[node name="Spawn Delay" type="Timer" parent="." index="1"]
+wait_time = 0.1
+one_shot = true
+autostart = true
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." index="2"]
+position = Vector2(-9.53674e-07, -1.19209e-07)
+scale = Vector2(1.2, 1.2)
+
+[connection signal="timeout" from="Spawn Delay" to="." method="_on_spawn_delay_timeout"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
