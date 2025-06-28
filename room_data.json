@@ -1,0 +1,277 @@
+{
+	"res://Scenes/Levels/Floor1 Boss/Haunted Fortress 1.tscn": {
+		"floor": "Floor1 Boss",
+		"type": "Boss Room",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor1 Boss/Mushroom Baron 1.tscn": {
+		"floor": "Floor1 Boss",
+		"type": "Boss Room",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor1/Room1.tscn": {
+		"floor": "Floor1",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor1/Room10.tscn": {
+		"floor": "Floor1",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor1/Room11.tscn": {
+		"floor": "Floor1",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor1/Room12.tscn": {
+		"floor": "Floor1",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor1/Room13.tscn": {
+		"floor": "Floor1",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor1/Room14.tscn": {
+		"floor": "Floor1",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor1/Room15.tscn": {
+		"floor": "Floor1",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor1/Room16.tscn": {
+		"floor": "Floor1",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor1/Room17.tscn": {
+		"floor": "Floor1",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor1/Room18.tscn": {
+		"floor": "Floor1",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor1/Room19.tscn": {
+		"floor": "Floor1",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor1/Room2.tscn": {
+		"floor": "Floor1",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor1/Room20.tscn": {
+		"floor": "Floor1",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor1/Room3.tscn": {
+		"floor": "Floor1",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor1/Room4.tscn": {
+		"floor": "Floor1",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor1/Room5.tscn": {
+		"floor": "Floor1",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor1/Room6.tscn": {
+		"floor": "Floor1",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor1/Room7.tscn": {
+		"floor": "Floor1",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor1/Room8.tscn": {
+		"floor": "Floor1",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor1/Room9.tscn": {
+		"floor": "Floor1",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor2 Boss/Infinity 1.tscn": {
+		"floor": "Floor2 Boss",
+		"type": "Boss Room",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor2 Boss/Stone Serpent 1.tscn": {
+		"floor": "Floor2 Boss",
+		"type": "Boss Room",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor2/Room1.tscn": {
+		"floor": "Floor2",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor2/Room10.tscn": {
+		"floor": "Floor2",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor2/Room11.tscn": {
+		"floor": "Floor2",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor2/Room12.tscn": {
+		"floor": "Floor2",
+		"type": "Level",
+		"weight": 0.05
+	},
+	"res://Scenes/Levels/Floor2/Room2.tscn": {
+		"floor": "Floor2",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor2/Room3.tscn": {
+		"floor": "Floor2",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor2/Room4.tscn": {
+		"floor": "Floor2",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor2/Room5.tscn": {
+		"floor": "Floor2",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor2/Room6.tscn": {
+		"floor": "Floor2",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor2/Room7.tscn": {
+		"floor": "Floor2",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor2/Room8.tscn": {
+		"floor": "Floor2",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor2/Room9.tscn": {
+		"floor": "Floor2",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor3 Boss/Cook Pot 1.tscn": {
+		"floor": "Floor3 Boss",
+		"type": "Boss Room",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor3 Boss/Jumbo 1.tscn": {
+		"floor": "Floor3 Boss",
+		"type": "Boss Room",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor3/Room1.tscn": {
+		"floor": "Floor3",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor3/Room2.tscn": {
+		"floor": "Floor3",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor3/Room3.tscn": {
+		"floor": "Floor3",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor3/Room4.tscn": {
+		"floor": "Floor3",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor4 Boss/Librarian 1.tscn": {
+		"floor": "Floor4 Boss",
+		"type": "Boss Room",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor4 Boss/Mad Hat 1.tscn": {
+		"floor": "Floor4 Boss",
+		"type": "Boss Room",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor4/Room1.tscn": {
+		"floor": "Floor4",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor5 Boss/Floor 5 Base.tscn": {
+		"floor": "Floor5 Boss",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor5/Floor 5 Base.tscn": {
+		"floor": "Floor5",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Special/Passive Room.tscn": {
+		"floor": "Special",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Special/Shop.tscn": {
+		"floor": "Special",
+		"type": "Shop",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Special/Starting Room 1.tscn": {
+		"floor": "Special",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Special/Starting Room 2.tscn": {
+		"floor": "Special",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Special/Starting Room 3.tscn": {
+		"floor": "Special",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Special/Starting Room 4.tscn": {
+		"floor": "Special",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Special/Starting Room 5.tscn": {
+		"floor": "Special",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Test/Test Room.tscn": {
+		"floor": "Test",
+		"type": "Level",
+		"weight": 1.0
+	}
+}

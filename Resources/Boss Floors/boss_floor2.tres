@@ -6,4 +6,4 @@
 script = ExtResource("1_623sh")
 floor_number = 2
 pool_name = "Boss Floor 2"
-path = "res://Scenes/Levels/Floor2 Boss/"
+path = "res://Scenes/Levels/Floor2 Boss"

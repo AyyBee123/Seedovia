@@ -22,6 +22,8 @@ var seed_list = get_all_file_paths("res://Resources/Items/Seeds/")
 var talisman_list = get_all_file_paths("res://Resources/Items/Equipment/")
 var consumable_list = get_all_file_paths("res://Resources/Items/Consumables/")
 
+var room_weights = {}
+
 var talisman_weights = {
 	0: 0.40, # common
 	1: 0.35, # uncommon
@@ -79,6 +81,9 @@ var pools: Array
 
 # condition to add specific pools to the array
 var add_pool := true
+
+func _ready():
+	room_weights = load_room_weights()
 
 func start():
 	Global.RNG.randomize()
@@ -205,10 +210,10 @@ func populate_pool(pool: Resource, weight: Dictionary = {}):
 				pool.total_weight = accumulated_weight
 		elif "Floor" in pool.pool_name: # rooms
 			var room = room_resource.new()
-			var scene = item.instantiate()
-			room.weight = scene.weight
+			var info = room_weights[resource_path]
+			room.weight = info.get("weight", 1.0)
+			print(room.weight)
 			room.scene = item
-			scene.queue_free()
 			accumulated_weight += room.weight
 			room.acc_weight = accumulated_weight
 			pool.total_weight = accumulated_weight
@@ -285,3 +290,20 @@ func get_item(pool: Resource):
 func repopulate_pool(pool: Resource):
 	pool.pool = pool.full_pool.duplicate()
 	shuffle_pool(pool)
+
+func load_room_weights() -> Dictionary:
+	var path = "res://room_data.json"
+	if not FileAccess.file_exists(path):
+		push_error("room_data.json not found")
+		return {}
+
+	var file := FileAccess.open(path, FileAccess.READ)
+	var json_text := file.get_as_text()
+	file.close()
+
+	var json = JSON.parse_string(json_text)
+	if typeof(json) != TYPE_DICTIONARY:
+		push_error("Failed to parse JSON as dictionary")
+		return {}
+
+	return json  # This is a dictionary with scene paths as keys
