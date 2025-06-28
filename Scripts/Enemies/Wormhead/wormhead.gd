@@ -5,7 +5,7 @@ extends "res://Scripts/Enemies/enemy.gd"
 
 const WORM_BULLET = preload("res://Scenes/Enemies/Weapons/Worm Bullet.tscn")
 
-const NUMBER_OF_BULLETS = 8
+const NUMBER_OF_BULLETS = 6
 const change_dir_chance = 0.01
 
 var spawned_bullet_amount: int
