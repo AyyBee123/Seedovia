@@ -203,13 +203,26 @@ func populate_pool(pool: Resource, weight: Dictionary = {}):
 				item.acc_weight = accumulated_weight
 				# take the current total item weight and assign it to the item pool
 				pool.total_weight = accumulated_weight
+		elif "Floor" in pool.pool_name: # rooms
+			var room = room_resource.new()
+			var scene = item.instantiate()
+			room.weight = scene.weight
+			room.scene = item
+			scene.queue_free()
+			accumulated_weight += room.weight
+			room.acc_weight = accumulated_weight
+			pool.total_weight = accumulated_weight
+			resource_path = room
 		elif "weight" in item: # consumables and pickups
 			accumulated_weight += item.weight
 			# take the current accumulated weight and assign it to the item
 			item.acc_weight = accumulated_weight
 			# take the current total item weight and assign it to the item pool
 			pool.total_weight = accumulated_weight
-		pool.pool.append(ResourceLoader.load(resource_path))
+		if resource_path is String:
+			pool.pool.append(ResourceLoader.load(resource_path))
+		elif resource_path is Resource:
+			pool.pool.append(resource_path)
 	pool.full_pool = pool.pool.duplicate()
 	if add_pool:
 		pools.append(pool)
@@ -255,7 +268,12 @@ func get_item(pool: Resource):
 	if pool == passive_pool: # passive pool
 		var item = pool.pool.pop_front()
 		return item
-	elif pool != consumable_pool and pool != equipment_pool and pool != seed_pool: # floor pools
+	elif "Floor" in pool.pool_name: # floor pools
+		var roll: float = Global.RNG.randf_range(0.0, pool.total_weight)
+		for item in pool.pool:
+			if item.acc_weight > roll:
+				return item.scene
+	elif pool != consumable_pool and pool != equipment_pool and pool != seed_pool: # misc (coins, golden produce, etc.)
 		var item = pool.pool.pick_random()
 		return item
 	else: # talisman, seed, and consumable pools

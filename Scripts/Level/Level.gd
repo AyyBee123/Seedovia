@@ -3,6 +3,8 @@ extends Node2D
 @onready var resource_preloader := $ResourcePreloader
 @onready var circle_transition = %"Circle Transition"
 
+@export var weight: float = 1.0
+
 const DEATH_SCREEN = preload("res://Scenes/UI/Death Screen.tscn")
 
 var thread
