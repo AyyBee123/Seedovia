@@ -212,7 +212,6 @@ func populate_pool(pool: Resource, weight: Dictionary = {}):
 			var room = room_resource.new()
 			var info = room_weights[resource_path]
 			room.weight = info.get("weight", 1.0)
-			print(room.weight)
 			room.scene = item
 			accumulated_weight += room.weight
 			room.acc_weight = accumulated_weight
