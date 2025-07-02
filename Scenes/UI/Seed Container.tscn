@@ -1,0 +1,36 @@
+[gd_scene load_steps=2 format=3 uid="uid://dah0mmhg3g30k"]
+
+[ext_resource type="Texture2D" uid="uid://sep6pbvd6l8q" path="res://Sprites/UI/Victory Seed Border.png" id="1_p3mn6"]
+
+[node name="PassiveContainer" type="GridContainer"]
+offset_right = 44.0
+offset_bottom = 44.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TextureRect" type="NinePatchRect" parent="."]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("1_p3mn6")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Image" type="TextureRect" parent="TextureRect/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2

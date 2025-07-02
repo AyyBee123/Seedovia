@@ -15,6 +15,7 @@ const SPARKLE = preload("res://Scenes/Misc/Sparkle.tscn")
 var _player_stats: player_stats = preload("res://Resources/Characters/Stats/base_stats.tres")
 
 @onready var _state_machine = $StateMachine
+@onready var player_sprite = $"Player Sprite"
 @onready var stats = get_node("Stats")
 @onready var fire_rate := $"Bullets Per Second"
 @onready var invulnerability_time := $"Invulnerability Time"
@@ -265,16 +266,12 @@ func stop():
 func die():
 	if is_dead:
 		return
-	velocity = Vector2.ZERO
 	is_dead = true
-	hand.visible = false
 	_state_machine.set_state(_state_machine.states.die)
-	$"Player Sprite".play("Die")
-	Game.audio_manager.play(Game.audio_manager.death)
-	Global.save_data()
-	Global.delete_run_data()
 
 func dash():
+	if is_dead:
+		return
 	$"Player Sprite".play("Dash")
 	can_be_damaged = false
 	velocity = velocity.lerp((input_direction.normalized() if input_direction else Vector2(0,1)) \

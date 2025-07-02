@@ -35,7 +35,14 @@ func _get_transition(delta):
 	return null
 
 func _enter_state(new_state, old_state):
-	pass
+	match new_state:
+		states.die:
+			parent.velocity = Vector2.ZERO
+			parent.hand.visible = false
+			parent.player_sprite.play("Die")
+			Game.audio_manager.play(Game.audio_manager.death)
+			Global.save_data()
+			Global.delete_run_data()
 
 func _exit_state(old_state, new_state):
 	pass
