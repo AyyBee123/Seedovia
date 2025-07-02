@@ -8,6 +8,7 @@ class_name character_class extends Resource
 @export var starting_passives: Array[passive_class] # Passives the character starts with
 @export var starting_coins: int = 0 # the number of coins the character starts with
 @export var unlocked: bool = true # determines if the character is unlocked by default or if it needs to be unlocked
+@export var hidden: bool = false # determines if the character is shown with the unlock condition if locked
 
 func get_texture() -> Texture:
 	return character_sprite

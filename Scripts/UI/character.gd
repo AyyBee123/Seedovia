@@ -16,6 +16,8 @@ func _ready():
 		self_modulate = Color("b9b9b9")
 		$"MarginContainer/Character".modulate = Color.BLACK
 		mouse_default_cursor_shape = 0
+		if starting_character.hidden:
+			visible = false
 
 func _physics_process(delta):
 	starting_character.unlocked
