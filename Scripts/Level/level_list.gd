@@ -2,6 +2,8 @@ extends Node
 
 @onready var player = preload("res://Scenes/Player/Player.tscn")
 
+const FIFTH_FLOOR = 5
+
 var floor = ResourceLoader.load("res://Resources/Current Floor/floor.tres")
 var floor_number: int
 var _entered_new_floor: bool
@@ -22,6 +24,7 @@ var character_scene_file_path: String
 var shop_items_spawned: bool
 var elapsed_time: float
 var room_type: String
+
 # TODO: add character variable that gets the character scene add preloads it when choosing a character
 
 func load_char():
@@ -30,6 +33,7 @@ func load_char():
 func change_room(door):
 	Global.save_run_data()
 	Global.save_time_played()
+	
 	if door.text == "Passive": # 5th room is the passive room
 		next_room = ResourceLoader.load("res://Scenes/Levels/Special/Passive Room.tscn")
 	elif door.text == "Shop": # one of the 8th rooms is always a shop
@@ -71,4 +75,7 @@ func change_floor():
 	items_on_ground.clear()
 	Pool.repopulate_weighted_pools()
 	SignalBus.entered_new_floor.emit(floor_number)
+	if floor_number >= FIFTH_FLOOR: # also check if floor 6 is unlocked when it's added
+		get_tree().change_scene_to_file("res://Scenes/UI/Victory Screen.tscn")
+		return
 	next_room = ResourceLoader.load("res://Scenes/Levels/Special/Starting Room " + str(floor_number + 1) + ".tscn")

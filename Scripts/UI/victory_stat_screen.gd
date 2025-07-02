@@ -37,9 +37,6 @@ func _ready():
 	add_child(player)
 	player.global_position = Vector2(0, 330)
 	player.process_mode = Node.PROCESS_MODE_DISABLED
-	Global.load_run_data()
-	Global.load_run_room()
-	Global.load_data()
 
 func _physics_process(delta):
 	speed_info.text = str(roundi(player._player_stats.get_stat("Speed")))

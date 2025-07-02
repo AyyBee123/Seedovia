@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ci4yokqhq4bnm"]
+[gd_scene load_steps=11 format=3 uid="uid://ci4yokqhq4bnm"]
 
 [ext_resource type="Script" uid="uid://f2r2snh02ft8" path="res://Scripts/UI/victory_screen.gd" id="1_m1qso"]
 [ext_resource type="FontFile" uid="uid://bkn7gmgx1wxgx" path="res://Fonts/Name Font.ttf" id="1_y1cyp"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://b8ji8ip7j3auo" path="res://Scripts/UI/victory_passive_screen.gd" id="7_dtj5s"]
 [ext_resource type="Script" uid="uid://jl57f57utfm5" path="res://Scripts/UI/victory_seed_sheet.gd" id="8_7imkn"]
 [ext_resource type="Script" uid="uid://8blqyckvjwe6" path="res://Scripts/UI/victory_talisman_sheet.gd" id="9_ver3j"]
+[ext_resource type="Theme" uid="uid://b8xxcoi0wo7jf" path="res://Themes/Button.tres" id="10_ceni5"]
 
 [node name="Victory Screen" type="Control"]
 z_index = 30
@@ -44,6 +45,26 @@ theme_override_font_sizes/font_size = 64
 text = "Victory?"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Run Timer" type="RichTextLabel" parent="CanvasLayer"]
+unique_name_in_owner = true
+z_index = 8
+anchors_preset = -1
+anchor_left = 0.108
+anchor_top = 0.081
+anchor_right = 0.29
+anchor_bottom = 0.129
+offset_left = 8.64
+offset_top = 0.519997
+offset_right = 7.19995
+offset_bottom = -0.320007
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/normal_font = ExtResource("6_7imkn")
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
 
 [node name="Background" type="NinePatchRect" parent="CanvasLayer"]
 unique_name_in_owner = true
@@ -795,3 +816,41 @@ scroll_active = false
 [node name="Talismans" type="HBoxContainer" parent="CanvasLayer/Background/MarginContainer4/ScrollContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+
+[node name="Menu Button" type="Button" parent="CanvasLayer/Background"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.272569
+anchor_top = -1.22377
+anchor_right = -0.291035
+anchor_bottom = -1.22377
+offset_left = 703.0
+offset_top = 803.0
+offset_right = 1117.0
+offset_bottom = 901.0
+scale = Vector2(0.47, 0.47)
+theme = ExtResource("10_ceni5")
+metadata/_edit_use_anchors_ = true
+
+[node name="Text" type="Label" parent="CanvasLayer/Background/Menu Button"]
+modulate = Color(0.905882, 0.8, 0.627451, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("1_y1cyp")
+theme_override_font_sizes/font_size = 48
+text = "Main Menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="CanvasLayer/Background/Menu Button" to="." method="_on_menu_button_pressed"]

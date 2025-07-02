@@ -1,4 +1,3 @@
-@tool
 extends Node2D
 
 @onready var resource_preloader := $ResourcePreloader
@@ -169,7 +168,10 @@ func spawn_doors(): # -785 to 785 = 1570 (size of level in x-axis) # -400 is the
 		elif LevelList.room_number == 11:
 			door.set_reward("Boss", ResourceLoader.load("res://Sprites/Reward Images/Boss.png"))
 		elif LevelList.room_number == 12:
-			door.set_reward("Next Floor", ResourceLoader.load("res://Sprites/Reward Images/Next Floor.png"))
+			if LevelList.floor_number >= LevelList.FIFTH_FLOOR - 1: # also check if floor 6 is unlocked when it's added
+				door.set_reward("Victory?", ResourceLoader.load("res://Sprites/Reward Images/Next Floor.png"))
+			else:
+				door.set_reward("Next Floor", ResourceLoader.load("res://Sprites/Reward Images/Next Floor.png"))
 		door.position = Vector2(0, -384)
 		return
 	var door_pos = [-1, 0, 1]
