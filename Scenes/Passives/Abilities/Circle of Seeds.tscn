@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d1wu4p64vs744"]
+
+[ext_resource type="Script" uid="uid://bgjrnnr36181i" path="res://Scripts/Passives/Abilities/circle_of_seeds.gd" id="1_63l2o"]
+
+[node name="Circle of Seeds" type="Node"]
+script = ExtResource("1_63l2o")

@@ -8,6 +8,7 @@ signal unlock(item)
 signal ach_popup_finished
 signal coin_pickup(amount)
 signal inventory_changed
+signal inventory_item_moved
 signal max_health_changed(amount)
 signal coins_saved
 signal pickup_item_recieved(item)

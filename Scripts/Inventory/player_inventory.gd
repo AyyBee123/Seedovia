@@ -91,6 +91,7 @@ func add_item_to_empty_slot(item: item_instance, slot: slot_class):
 		seeds[slot.slot_index] = item.item
 	else: # equipment
 		talismans[slot.slot_index] = item.item
+	SignalBus.inventory_item_moved.emit()
 
 func remove_item(slot: slot_class):
 	if slot.slot_type == slot_class.slot_types.INVENTORY:
@@ -99,6 +100,7 @@ func remove_item(slot: slot_class):
 		seeds.erase(slot.slot_index)
 	else: # talisman
 		talismans.erase(slot.slot_index)
+	SignalBus.inventory_item_moved.emit()
 
 func get_empty_slot_index():
 	for i in range(NUM_INVENTORY_SLOTS):

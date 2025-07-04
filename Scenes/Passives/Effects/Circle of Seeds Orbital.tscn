@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://djrqs5yc2xweh"]
+
+[ext_resource type="Texture2D" uid="uid://xxyym547o3vn" path="res://Sprites/Misc/Shadow.png" id="1_2td2e"]
+[ext_resource type="Script" uid="uid://dnywnw01pnn4e" path="res://Scripts/Passives/Effects/circle_of_seeds_orbital.gd" id="1_25ykc"]
+
+[node name="Circle of Seeds Orbital" type="Sprite2D" groups=["Player Summon"]]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_25ykc")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+z_index = -1
+z_as_relative = false
+position = Vector2(0, 10.6667)
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("1_2td2e")
+
+[node name="Fire Rate" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+autostart = true

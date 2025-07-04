@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="passive_class" load_steps=4 format=3 uid="uid://qwmpqypkj6nj"]
+
+[ext_resource type="Script" uid="uid://yr5gdtdbvmoc" path="res://Scripts/Passives/Classes/passive_class.gd" id="1_5d8ks"]
+[ext_resource type="PackedScene" uid="uid://d1wu4p64vs744" path="res://Scenes/Passives/Abilities/Circle of Seeds.tscn" id="1_8xul3"]
+[ext_resource type="Texture2D" uid="uid://b33dc2qarqs1u" path="res://Sprites/Passives/Icons/Circle of Seeds.png" id="2_xcuj8"]
+
+[resource]
+script = ExtResource("1_5d8ks")
+passive_name = "Circle of Seeds"
+sprite = ExtResource("2_xcuj8")
+description = "Creates a copy of your seeds that orbit around the you and shoot at nearby enemies. Shots have 50% damage and size."
+passive_ability = ExtResource("1_8xul3")
+unlocked = true
+metadata/_custom_type_script = "uid://yr5gdtdbvmoc"
