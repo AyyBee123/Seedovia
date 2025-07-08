@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://c6s35fe1hpwpc"]
+
+[ext_resource type="PackedScene" uid="uid://bnmmkf6q27svc" path="res://Scenes/Levels/Floor 3 Base.tscn" id="1_t1gta"]
+[ext_resource type="Shader" uid="uid://qm3syqtxdolu" path="res://Shaders/circle_transition.gdshader" id="2_w2cvb"]
+[ext_resource type="PackedScene" uid="uid://clh0s4bqe6krq" path="res://Scenes/Enemies/Jellocream.tscn" id="3_t1gta"]
+[ext_resource type="PackedScene" uid="uid://bjwe43k0tlcdg" path="res://Scenes/Enemies/Jellofish.tscn" id="4_w2cvb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0ecxy"]
+resource_local_to_scene = true
+shader = ExtResource("2_w2cvb")
+shader_parameter/circle_size = 0.0
+shader_parameter/circle_position_x = 0.5
+shader_parameter/circle_position_y = 0.695
+
+[node name="Level" instance=ExtResource("1_t1gta")]
+
+[node name="Circle Transition" parent="." index="6"]
+material = SubResource("ShaderMaterial_0ecxy")
+
+[node name="Jellocream" parent="." index="8" instance=ExtResource("3_t1gta")]
+position = Vector2(0, -256)
+
+[node name="Jellofish" parent="." index="9" instance=ExtResource("4_w2cvb")]
+position = Vector2(-640, -256)
+
+[node name="Jellofish2" parent="." index="10" instance=ExtResource("4_w2cvb")]
+position = Vector2(640, -256)

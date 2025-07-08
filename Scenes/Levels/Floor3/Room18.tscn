@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://i4anwsjgeqy7"]
+
+[ext_resource type="PackedScene" uid="uid://bnmmkf6q27svc" path="res://Scenes/Levels/Floor 3 Base.tscn" id="1_xefs8"]
+[ext_resource type="Shader" uid="uid://qm3syqtxdolu" path="res://Shaders/circle_transition.gdshader" id="2_ojgcu"]
+[ext_resource type="PackedScene" uid="uid://nugyieleg8w1" path="res://Scenes/Enemies/Obstacles/Pot.tscn" id="3_3jxyy"]
+[ext_resource type="PackedScene" uid="uid://c3jrhipasuh6l" path="res://Scenes/Enemies/Chicken.tscn" id="3_teupq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0ecxy"]
+resource_local_to_scene = true
+shader = ExtResource("2_ojgcu")
+shader_parameter/circle_size = 0.0
+shader_parameter/circle_position_x = 0.5
+shader_parameter/circle_position_y = 0.695
+
+[node name="Level" instance=ExtResource("1_xefs8")]
+
+[node name="Circle Transition" parent="." index="6"]
+material = SubResource("ShaderMaterial_0ecxy")
+
+[node name="Pot" parent="." index="8" instance=ExtResource("3_3jxyy")]
+position = Vector2(704, 0)
+
+[node name="Pot2" parent="." index="9" instance=ExtResource("3_3jxyy")]
+position = Vector2(0, -320)
+rotation = 1.5708
+
+[node name="Chicken" parent="." index="10" instance=ExtResource("3_teupq")]
+position = Vector2(-448, -192)
+
+[node name="Chicken2" parent="." index="11" instance=ExtResource("3_teupq")]
+position = Vector2(448, -192)

@@ -14,7 +14,7 @@ func _ready():
 	
 	match starting_direction:
 		0:
-			direction = Vector2i(1, 1)
+			direction = Vector2(1, 1)
 		1:
 			direction = Vector2(-1, 1)
 		2:

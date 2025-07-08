@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://detkrnpbem03c"]
+
+[ext_resource type="PackedScene" uid="uid://bnawmyjsajle3" path="res://Scenes/Levels/Floor 1 Base.tscn" id="1_boorw"]
+[ext_resource type="Shader" uid="uid://qm3syqtxdolu" path="res://Shaders/circle_transition.gdshader" id="2_tstm6"]
+[ext_resource type="PackedScene" uid="uid://cwhuabj3fk773" path="res://Scenes/Enemies/Bomb Pot.tscn" id="3_boorw"]
+[ext_resource type="PackedScene" uid="uid://yu7uvatddfo7" path="res://Scenes/Enemies/Obstacles/Taiko.tscn" id="4_tstm6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0ecxy"]
+resource_local_to_scene = true
+shader = ExtResource("2_tstm6")
+shader_parameter/circle_size = 0.0
+shader_parameter/circle_position_x = 0.5
+shader_parameter/circle_position_y = 0.695
+
+[node name="Level" instance=ExtResource("1_boorw")]
+
+[node name="Circle Transition" parent="." index="6"]
+material = SubResource("ShaderMaterial_0ecxy")
+
+[node name="Bomb Pot" parent="." index="8" instance=ExtResource("3_boorw")]
+position = Vector2(-576, -192)
+
+[node name="Bomb Pot2" parent="." index="9" instance=ExtResource("3_boorw")]
+position = Vector2(512, -192)
+
+[node name="Taiko" parent="." index="10" instance=ExtResource("4_tstm6")]
+position = Vector2(576, 0)
+direction = Vector2(-1, 0)
+
+[node name="Taiko2" parent="." index="11" instance=ExtResource("4_tstm6")]
+position = Vector2(-576, 0)
+direction = Vector2(1, 0)

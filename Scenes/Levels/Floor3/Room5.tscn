@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://vmqtbuulue1s"]
+
+[ext_resource type="PackedScene" uid="uid://bnmmkf6q27svc" path="res://Scenes/Levels/Floor 3 Base.tscn" id="1_i62g6"]
+[ext_resource type="Shader" uid="uid://qm3syqtxdolu" path="res://Shaders/circle_transition.gdshader" id="2_wphxc"]
+[ext_resource type="PackedScene" uid="uid://ddlrhmpvqk5hg" path="res://Scenes/Enemies/Burnace.tscn" id="3_t20lr"]
+[ext_resource type="PackedScene" uid="uid://cru8r3iv5q6ta" path="res://Scenes/Enemies/Spoon.tscn" id="4_i62g6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0ecxy"]
+resource_local_to_scene = true
+shader = ExtResource("2_wphxc")
+shader_parameter/circle_size = 0.0
+shader_parameter/circle_position_x = 0.5
+shader_parameter/circle_position_y = 0.695
+
+[node name="Level" instance=ExtResource("1_i62g6")]
+
+[node name="Circle Transition" parent="." index="6"]
+material = SubResource("ShaderMaterial_0ecxy")
+
+[node name="Burnace" parent="." index="8" instance=ExtResource("3_t20lr")]
+position = Vector2(704, -320)
+
+[node name="Spoon" parent="." index="9" instance=ExtResource("4_i62g6")]
+position = Vector2(704, -192)
+
+[node name="Spoon2" parent="." index="10" instance=ExtResource("4_i62g6")]
+position = Vector2(576, -320)

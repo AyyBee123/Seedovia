@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://cpoe0ur28hv7p"]
+
+[ext_resource type="PackedScene" uid="uid://chj80f72y8sfx" path="res://Scenes/Levels/Floor 4 Base.tscn" id="1_ym86m"]
+[ext_resource type="Shader" uid="uid://qm3syqtxdolu" path="res://Shaders/circle_transition.gdshader" id="2_pwo6g"]
+[ext_resource type="PackedScene" uid="uid://ch4r6sgqekbjw" path="res://Scenes/Enemies/Frog Face.tscn" id="3_ym86m"]
+[ext_resource type="PackedScene" uid="uid://pkif3pwinpv4" path="res://Scenes/Enemies/Mad Book.tscn" id="4_pwo6g"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g0nn0"]
+resource_local_to_scene = true
+shader = ExtResource("2_pwo6g")
+shader_parameter/circle_size = 0.0
+shader_parameter/circle_position_x = 0.5
+shader_parameter/circle_position_y = 0.695
+
+[node name="Level" instance=ExtResource("1_ym86m")]
+
+[node name="Circle Transition" parent="." index="6"]
+material = SubResource("ShaderMaterial_g0nn0")
+
+[node name="Frog Face" parent="." index="9" instance=ExtResource("3_ym86m")]
+position = Vector2(-576, -192)
+
+[node name="Frog Face2" parent="." index="10" instance=ExtResource("3_ym86m")]
+position = Vector2(576, -192)
+
+[node name="Mad Book" parent="." index="11" instance=ExtResource("4_pwo6g")]
+position = Vector2(0, -256)

@@ -32,3 +32,12 @@ func travelled_distance():
 func change_radius(_radius):
 	new_radius = _radius
 	t = 0
+
+func _collide(body):
+	if ignore_first_collision:
+		return
+	if body.is_in_group("Players"):
+		player = body
+		if not player.can_be_damaged:
+			return
+		player._player_stats.take_damage(damage)

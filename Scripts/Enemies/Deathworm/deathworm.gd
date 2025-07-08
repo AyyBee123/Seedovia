@@ -54,7 +54,7 @@ func _physics_process(delta):
 		direction = global_position.direction_to(player.global_position)
 		pointer.rotation = lerp_angle(pointer.rotation, direction.angle(), rotation_speed * delta)
 	
-	speed_multi = min(speed_multi + delta, 1)
+	speed_multi = min(speed_multi + delta * 0.5, 1)
 
 func idle():
 	if sin(pointer.rotation) > 0:

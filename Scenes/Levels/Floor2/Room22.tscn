@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://dbqwr71jqmewg"]
+
+[ext_resource type="PackedScene" uid="uid://b8gxpiw6v8asa" path="res://Scenes/Levels/Floor 2 Base.tscn" id="1_005qa"]
+[ext_resource type="Shader" uid="uid://qm3syqtxdolu" path="res://Shaders/circle_transition.gdshader" id="2_o0ssq"]
+[ext_resource type="PackedScene" uid="uid://myke5hm2rm0g" path="res://Scenes/Enemies/Queen.tscn" id="3_005qa"]
+[ext_resource type="PackedScene" uid="uid://cws31owdkv5jp" path="res://Scenes/Enemies/Obstacles/Boulder Face.tscn" id="4_o0ssq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0ecxy"]
+resource_local_to_scene = true
+shader = ExtResource("2_o0ssq")
+shader_parameter/circle_size = 0.0
+shader_parameter/circle_position_x = 0.5
+shader_parameter/circle_position_y = 0.695
+
+[node name="Level" instance=ExtResource("1_005qa")]
+weight = 0.05
+
+[node name="Circle Transition" parent="." index="6"]
+material = SubResource("ShaderMaterial_0ecxy")
+
+[node name="Queen" parent="." index="8" instance=ExtResource("3_005qa")]
+position = Vector2(-704, -192)
+
+[node name="Queen2" parent="." index="9" instance=ExtResource("3_005qa")]
+position = Vector2(704, 192)
+
+[node name="Boulder Face" parent="." index="10" instance=ExtResource("4_o0ssq")]
+position = Vector2(-320, 256)
+starting_direction = 3

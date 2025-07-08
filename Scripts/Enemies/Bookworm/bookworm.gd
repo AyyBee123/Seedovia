@@ -17,6 +17,7 @@ var segments: Array
 var leading_segment
 var size = 1
 var speed_multi = 0.25
+var tween
 
 func _ready():
 	super._ready()
@@ -83,6 +84,10 @@ func _physics_process(delta):
 		pointer.rotation = lerp_angle(pointer.rotation, direction.angle(), rotation_speed * delta)
 		velocity = global_position.direction_to(marker_2d.global_position) * _enemy_stats.speed * speed_multi
 	
-	speed_multi = min(speed_multi + delta, 1)
+	speed_multi = min(speed_multi + delta * 0.25, 1)
 	
 	move_and_slide()
+
+func _exit_tree():
+	if tween:
+		tween.kill()

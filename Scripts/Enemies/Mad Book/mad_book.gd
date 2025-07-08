@@ -38,4 +38,6 @@ func mad():
 
 func set_radius(_radius):
 	for bullet in bullets:
+		if not is_instance_valid(bullet):
+			continue
 		bullet.change_radius(_radius)

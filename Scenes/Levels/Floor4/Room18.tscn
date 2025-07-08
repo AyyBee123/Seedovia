@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://dsy7y4eq7uuco"]
+
+[ext_resource type="PackedScene" uid="uid://chj80f72y8sfx" path="res://Scenes/Levels/Floor 4 Base.tscn" id="1_p2m0k"]
+[ext_resource type="Shader" uid="uid://qm3syqtxdolu" path="res://Shaders/circle_transition.gdshader" id="2_s1e70"]
+[ext_resource type="PackedScene" uid="uid://dbseaupjry8fk" path="res://Scenes/Enemies/Apprentice.tscn" id="3_pjdiq"]
+[ext_resource type="PackedScene" uid="uid://cembkve7uyvat" path="res://Scenes/Enemies/Obstacles/Book.tscn" id="4_s1e70"]
+[ext_resource type="PackedScene" uid="uid://v83k1cr4mxd0" path="res://Scenes/Enemies/Desolate Mirror.tscn" id="5_pjdiq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g0nn0"]
+resource_local_to_scene = true
+shader = ExtResource("2_s1e70")
+shader_parameter/circle_size = 0.0
+shader_parameter/circle_position_x = 0.5
+shader_parameter/circle_position_y = 0.695
+
+[node name="Level" instance=ExtResource("1_p2m0k")]
+
+[node name="Circle Transition" parent="." index="6"]
+material = SubResource("ShaderMaterial_g0nn0")
+
+[node name="Apprentice" parent="." index="9" instance=ExtResource("3_pjdiq")]
+position = Vector2(0, -128)
+
+[node name="Book" parent="." index="10" instance=ExtResource("4_s1e70")]
+position = Vector2(-128, -128)
+
+[node name="Book2" parent="." index="11" instance=ExtResource("4_s1e70")]
+position = Vector2(128, -128)
+starting_angle = 180.0
+
+[node name="Desolate Mirror" parent="." index="12" instance=ExtResource("5_pjdiq")]
+position = Vector2(-576, 64)
+
+[node name="Desolate Mirror2" parent="." index="13" instance=ExtResource("5_pjdiq")]
+position = Vector2(576, 64)

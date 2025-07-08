@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://11208pjv2a7x"]
+
+[ext_resource type="PackedScene" uid="uid://chj80f72y8sfx" path="res://Scenes/Levels/Floor 4 Base.tscn" id="1_14qrq"]
+[ext_resource type="Shader" uid="uid://qm3syqtxdolu" path="res://Shaders/circle_transition.gdshader" id="2_kwbpf"]
+[ext_resource type="PackedScene" uid="uid://cbuah6sadw4a4" path="res://Scenes/Enemies/Bookworm.tscn" id="3_14qrq"]
+[ext_resource type="PackedScene" uid="uid://pkif3pwinpv4" path="res://Scenes/Enemies/Mad Book.tscn" id="4_kwbpf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g0nn0"]
+resource_local_to_scene = true
+shader = ExtResource("2_kwbpf")
+shader_parameter/circle_size = 0.0
+shader_parameter/circle_position_x = 0.5
+shader_parameter/circle_position_y = 0.695
+
+[node name="Level" instance=ExtResource("1_14qrq")]
+
+[node name="Circle Transition" parent="." index="6"]
+material = SubResource("ShaderMaterial_g0nn0")
+
+[node name="Bookworm" parent="." index="9" instance=ExtResource("3_14qrq")]
+position = Vector2(-576, -256)
+
+[node name="Mad Book" parent="." index="10" instance=ExtResource("4_kwbpf")]
+position = Vector2(576, -256)
+
+[node name="Mad Book2" parent="." index="11" instance=ExtResource("4_kwbpf")]
+position = Vector2(576, 256)

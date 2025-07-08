@@ -74,7 +74,57 @@
 		"type": "Level",
 		"weight": 1.0
 	},
+	"res://Scenes/Levels/Floor1/Room21.tscn": {
+		"floor": "Floor1",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor1/Room22.tscn": {
+		"floor": "Floor1",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor1/Room23.tscn": {
+		"floor": "Floor1",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor1/Room24.tscn": {
+		"floor": "Floor1",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor1/Room25.tscn": {
+		"floor": "Floor1",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor1/Room26.tscn": {
+		"floor": "Floor1",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor1/Room27.tscn": {
+		"floor": "Floor1",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor1/Room28.tscn": {
+		"floor": "Floor1",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor1/Room29.tscn": {
+		"floor": "Floor1",
+		"type": "Level",
+		"weight": 1.0
+	},
 	"res://Scenes/Levels/Floor1/Room3.tscn": {
+		"floor": "Floor1",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor1/Room30.tscn": {
 		"floor": "Floor1",
 		"type": "Level",
 		"weight": 1.0
@@ -139,10 +189,80 @@
 		"type": "Level",
 		"weight": 0.05
 	},
+	"res://Scenes/Levels/Floor2/Room13.tscn": {
+		"floor": "Floor2",
+		"type": "Level",
+		"weight": 0.05
+	},
+	"res://Scenes/Levels/Floor2/Room14.tscn": {
+		"floor": "Floor2",
+		"type": "Level",
+		"weight": 0.05
+	},
+	"res://Scenes/Levels/Floor2/Room15.tscn": {
+		"floor": "Floor2",
+		"type": "Level",
+		"weight": 0.05
+	},
+	"res://Scenes/Levels/Floor2/Room16.tscn": {
+		"floor": "Floor2",
+		"type": "Level",
+		"weight": 0.05
+	},
+	"res://Scenes/Levels/Floor2/Room17.tscn": {
+		"floor": "Floor2",
+		"type": "Level",
+		"weight": 0.05
+	},
+	"res://Scenes/Levels/Floor2/Room18.tscn": {
+		"floor": "Floor2",
+		"type": "Level",
+		"weight": 0.05
+	},
+	"res://Scenes/Levels/Floor2/Room19.tscn": {
+		"floor": "Floor2",
+		"type": "Level",
+		"weight": 0.05
+	},
 	"res://Scenes/Levels/Floor2/Room2.tscn": {
 		"floor": "Floor2",
 		"type": "Level",
 		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor2/Room20.tscn": {
+		"floor": "Floor2",
+		"type": "Level",
+		"weight": 0.05
+	},
+	"res://Scenes/Levels/Floor2/Room21.tscn": {
+		"floor": "Floor2",
+		"type": "Level",
+		"weight": 0.05
+	},
+	"res://Scenes/Levels/Floor2/Room22.tscn": {
+		"floor": "Floor2",
+		"type": "Level",
+		"weight": 0.05
+	},
+	"res://Scenes/Levels/Floor2/Room23.tscn": {
+		"floor": "Floor2",
+		"type": "Level",
+		"weight": 0.05
+	},
+	"res://Scenes/Levels/Floor2/Room24.tscn": {
+		"floor": "Floor2",
+		"type": "Level",
+		"weight": 0.05
+	},
+	"res://Scenes/Levels/Floor2/Room25.tscn": {
+		"floor": "Floor2",
+		"type": "Level",
+		"weight": 0.05
+	},
+	"res://Scenes/Levels/Floor2/Room26.tscn": {
+		"floor": "Floor2",
+		"type": "Level",
+		"weight": 0.05
 	},
 	"res://Scenes/Levels/Floor2/Room3.tscn": {
 		"floor": "Floor2",
@@ -194,7 +314,87 @@
 		"type": "Level",
 		"weight": 1.0
 	},
+	"res://Scenes/Levels/Floor3/Room10.tscn": {
+		"floor": "Floor3",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor3/Room11.tscn": {
+		"floor": "Floor3",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor3/Room12.tscn": {
+		"floor": "Floor3",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor3/Room13.tscn": {
+		"floor": "Floor3",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor3/Room14.tscn": {
+		"floor": "Floor3",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor3/Room15.tscn": {
+		"floor": "Floor3",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor3/Room16.tscn": {
+		"floor": "Floor3",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor3/Room17.tscn": {
+		"floor": "Floor3",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor3/Room18.tscn": {
+		"floor": "Floor3",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor3/Room19.tscn": {
+		"floor": "Floor3",
+		"type": "Level",
+		"weight": 1.0
+	},
 	"res://Scenes/Levels/Floor3/Room2.tscn": {
+		"floor": "Floor3",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor3/Room20.tscn": {
+		"floor": "Floor3",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor3/Room21.tscn": {
+		"floor": "Floor3",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor3/Room22.tscn": {
+		"floor": "Floor3",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor3/Room23.tscn": {
+		"floor": "Floor3",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor3/Room24.tscn": {
+		"floor": "Floor3",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor3/Room25.tscn": {
 		"floor": "Floor3",
 		"type": "Level",
 		"weight": 1.0
@@ -205,6 +405,31 @@
 		"weight": 1.0
 	},
 	"res://Scenes/Levels/Floor3/Room4.tscn": {
+		"floor": "Floor3",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor3/Room5.tscn": {
+		"floor": "Floor3",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor3/Room6.tscn": {
+		"floor": "Floor3",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor3/Room7.tscn": {
+		"floor": "Floor3",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor3/Room8.tscn": {
+		"floor": "Floor3",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor3/Room9.tscn": {
 		"floor": "Floor3",
 		"type": "Level",
 		"weight": 1.0
@@ -224,12 +449,192 @@
 		"type": "Level",
 		"weight": 1.0
 	},
+	"res://Scenes/Levels/Floor4/Room10.tscn": {
+		"floor": "Floor4",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor4/Room11.tscn": {
+		"floor": "Floor4",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor4/Room12.tscn": {
+		"floor": "Floor4",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor4/Room13.tscn": {
+		"floor": "Floor4",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor4/Room14.tscn": {
+		"floor": "Floor4",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor4/Room15.tscn": {
+		"floor": "Floor4",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor4/Room16.tscn": {
+		"floor": "Floor4",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor4/Room17.tscn": {
+		"floor": "Floor4",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor4/Room18.tscn": {
+		"floor": "Floor4",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor4/Room19.tscn": {
+		"floor": "Floor4",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor4/Room2.tscn": {
+		"floor": "Floor4",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor4/Room20.tscn": {
+		"floor": "Floor4",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor4/Room3.tscn": {
+		"floor": "Floor4",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor4/Room4.tscn": {
+		"floor": "Floor4",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor4/Room5.tscn": {
+		"floor": "Floor4",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor4/Room6.tscn": {
+		"floor": "Floor4",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor4/Room7.tscn": {
+		"floor": "Floor4",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor4/Room8.tscn": {
+		"floor": "Floor4",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor4/Room9.tscn": {
+		"floor": "Floor4",
+		"type": "Level",
+		"weight": 1.0
+	},
 	"res://Scenes/Levels/Floor5 Boss/Floor 5 Base.tscn": {
 		"floor": "Floor5 Boss",
 		"type": "Level",
 		"weight": 1.0
 	},
-	"res://Scenes/Levels/Floor5/Floor 5 Base.tscn": {
+	"res://Scenes/Levels/Floor5/Room1.tscn": {
+		"floor": "Floor5",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor5/Room10.tscn": {
+		"floor": "Floor5",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor5/Room11.tscn": {
+		"floor": "Floor5",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor5/Room12.tscn": {
+		"floor": "Floor5",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor5/Room13.tscn": {
+		"floor": "Floor5",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor5/Room14.tscn": {
+		"floor": "Floor5",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor5/Room15.tscn": {
+		"floor": "Floor5",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor5/Room16.tscn": {
+		"floor": "Floor5",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor5/Room17.tscn": {
+		"floor": "Floor5",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor5/Room18.tscn": {
+		"floor": "Floor5",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor5/Room2.tscn": {
+		"floor": "Floor5",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor5/Room3.tscn": {
+		"floor": "Floor5",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor5/Room4.tscn": {
+		"floor": "Floor5",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor5/Room5.tscn": {
+		"floor": "Floor5",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor5/Room6.tscn": {
+		"floor": "Floor5",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor5/Room7.tscn": {
+		"floor": "Floor5",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor5/Room8.tscn": {
+		"floor": "Floor5",
+		"type": "Level",
+		"weight": 1.0
+	},
+	"res://Scenes/Levels/Floor5/Room9.tscn": {
 		"floor": "Floor5",
 		"type": "Level",
 		"weight": 1.0

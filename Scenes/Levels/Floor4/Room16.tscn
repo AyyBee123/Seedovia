@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://dhnn4psqnf5ri"]
+
+[ext_resource type="PackedScene" uid="uid://chj80f72y8sfx" path="res://Scenes/Levels/Floor 4 Base.tscn" id="1_r3u8a"]
+[ext_resource type="Shader" uid="uid://qm3syqtxdolu" path="res://Shaders/circle_transition.gdshader" id="2_nfoiv"]
+[ext_resource type="PackedScene" uid="uid://dbseaupjry8fk" path="res://Scenes/Enemies/Apprentice.tscn" id="3_f2w7v"]
+[ext_resource type="PackedScene" uid="uid://ch4r6sgqekbjw" path="res://Scenes/Enemies/Frog Face.tscn" id="4_yqevf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g0nn0"]
+resource_local_to_scene = true
+shader = ExtResource("2_nfoiv")
+shader_parameter/circle_size = 0.0
+shader_parameter/circle_position_x = 0.5
+shader_parameter/circle_position_y = 0.695
+
+[node name="Level" instance=ExtResource("1_r3u8a")]
+
+[node name="Circle Transition" parent="." index="6"]
+material = SubResource("ShaderMaterial_g0nn0")
+
+[node name="Apprentice" parent="." index="9" instance=ExtResource("3_f2w7v")]
+position = Vector2(576, -64)
+
+[node name="Apprentice2" parent="." index="10" instance=ExtResource("3_f2w7v")]
+position = Vector2(-576, -64)
+
+[node name="Frog Face" parent="." index="11" instance=ExtResource("4_yqevf")]
+position = Vector2(0, -256)

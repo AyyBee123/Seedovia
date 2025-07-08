@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://dqbt2ac1q7363"]
+
+[ext_resource type="PackedScene" uid="uid://bnawmyjsajle3" path="res://Scenes/Levels/Floor 1 Base.tscn" id="1_f80du"]
+[ext_resource type="Shader" uid="uid://qm3syqtxdolu" path="res://Shaders/circle_transition.gdshader" id="2_8ngfo"]
+[ext_resource type="PackedScene" uid="uid://f1csqvgtqoj5" path="res://Scenes/Enemies/Malignant Seed.tscn" id="3_8bdjc"]
+[ext_resource type="PackedScene" uid="uid://inbvexnx3t21" path="res://Scenes/Enemies/Hot Pot.tscn" id="4_f80du"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0ecxy"]
+resource_local_to_scene = true
+shader = ExtResource("2_8ngfo")
+shader_parameter/circle_size = 0.0
+shader_parameter/circle_position_x = 0.5
+shader_parameter/circle_position_y = 0.695
+
+[node name="Level" instance=ExtResource("1_f80du")]
+
+[node name="Circle Transition" parent="." index="6"]
+material = SubResource("ShaderMaterial_0ecxy")
+
+[node name="Malignant Seed" parent="." index="8" instance=ExtResource("3_8bdjc")]
+position = Vector2(-256, -192)
+
+[node name="Malignant Seed2" parent="." index="9" instance=ExtResource("3_8bdjc")]
+position = Vector2(256, 128)
+x_direction = -1
+y_direction = -1
+
+[node name="Hot Pot" parent="." index="10" instance=ExtResource("4_f80du")]
+position = Vector2(-256, 128)
+
+[node name="Hot Pot2" parent="." index="11" instance=ExtResource("4_f80du")]
+position = Vector2(256, -192)

@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://dtkyjtmuw75yq"]
+
+[ext_resource type="PackedScene" uid="uid://b8gxpiw6v8asa" path="res://Scenes/Levels/Floor 2 Base.tscn" id="1_bvwse"]
+[ext_resource type="Shader" uid="uid://qm3syqtxdolu" path="res://Shaders/circle_transition.gdshader" id="2_2758r"]
+[ext_resource type="PackedScene" uid="uid://bgp0jvhp4e40j" path="res://Scenes/Enemies/Gungo.tscn" id="3_bvwse"]
+[ext_resource type="PackedScene" uid="uid://36bor5t8tf2w" path="res://Scenes/Enemies/Ethereal Pot.tscn" id="4_2758r"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0ecxy"]
+resource_local_to_scene = true
+shader = ExtResource("2_2758r")
+shader_parameter/circle_size = 0.0
+shader_parameter/circle_position_x = 0.5
+shader_parameter/circle_position_y = 0.695
+
+[node name="Level" instance=ExtResource("1_bvwse")]
+weight = 0.05
+
+[node name="Circle Transition" parent="." index="6"]
+material = SubResource("ShaderMaterial_0ecxy")
+
+[node name="Gungo" parent="." index="8" instance=ExtResource("3_bvwse")]
+position = Vector2(-448, -192)
+
+[node name="Gungo2" parent="." index="9" instance=ExtResource("3_bvwse")]
+position = Vector2(448, -192)
+
+[node name="Ethereal Pot" parent="." index="10" instance=ExtResource("4_2758r")]
+position = Vector2(-576, -192)
+
+[node name="Ethereal Pot2" parent="." index="11" instance=ExtResource("4_2758r")]
+position = Vector2(320, -192)
+enemy_number = 1

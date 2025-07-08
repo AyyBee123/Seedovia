@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://dpv38n0bege7c"]
+
+[ext_resource type="PackedScene" uid="uid://chj80f72y8sfx" path="res://Scenes/Levels/Floor 4 Base.tscn" id="1_pj5sr"]
+[ext_resource type="Shader" uid="uid://qm3syqtxdolu" path="res://Shaders/circle_transition.gdshader" id="2_sd8kq"]
+[ext_resource type="PackedScene" uid="uid://yjbr0frt6d2y" path="res://Scenes/Enemies/Brain.tscn" id="3_pj5sr"]
+[ext_resource type="PackedScene" uid="uid://dvvwxr5wc32sf" path="res://Scenes/Enemies/Eye.tscn" id="4_sd8kq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g0nn0"]
+resource_local_to_scene = true
+shader = ExtResource("2_sd8kq")
+shader_parameter/circle_size = 0.0
+shader_parameter/circle_position_x = 0.5
+shader_parameter/circle_position_y = 0.695
+
+[node name="Level" instance=ExtResource("1_pj5sr")]
+
+[node name="Circle Transition" parent="." index="6"]
+material = SubResource("ShaderMaterial_g0nn0")
+
+[node name="Brain" parent="." index="9" instance=ExtResource("3_pj5sr")]
+position = Vector2(-744, -344)
+rotation = 1.5708
+
+[node name="Brain2" parent="." index="10" instance=ExtResource("3_pj5sr")]
+position = Vector2(744, 344)
+rotation = 4.71239
+
+[node name="Eye" parent="." index="11" instance=ExtResource("4_sd8kq")]
+position = Vector2(-448, -192)
+
+[node name="Eye2" parent="." index="12" instance=ExtResource("4_sd8kq")]
+position = Vector2(448, -192)

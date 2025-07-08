@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://bcb6e64iohq10"]
+
+[ext_resource type="PackedScene" uid="uid://bnmmkf6q27svc" path="res://Scenes/Levels/Floor 3 Base.tscn" id="1_bj6kq"]
+[ext_resource type="Shader" uid="uid://qm3syqtxdolu" path="res://Shaders/circle_transition.gdshader" id="2_qba77"]
+[ext_resource type="PackedScene" uid="uid://dyqvtx488qcah" path="res://Scenes/Enemies/Fat Pot.tscn" id="3_sm7o4"]
+[ext_resource type="PackedScene" uid="uid://clh0s4bqe6krq" path="res://Scenes/Enemies/Jellocream.tscn" id="4_q1odf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0ecxy"]
+resource_local_to_scene = true
+shader = ExtResource("2_qba77")
+shader_parameter/circle_size = 0.0
+shader_parameter/circle_position_x = 0.5
+shader_parameter/circle_position_y = 0.695
+
+[node name="Level" instance=ExtResource("1_bj6kq")]
+
+[node name="Circle Transition" parent="." index="6"]
+material = SubResource("ShaderMaterial_0ecxy")
+
+[node name="Fat Pot" parent="." index="8" instance=ExtResource("3_sm7o4")]
+position = Vector2(704, 0)
+
+[node name="Fat Pot2" parent="." index="9" instance=ExtResource("3_sm7o4")]
+position = Vector2(-704, 0)
+
+[node name="Jellocream" parent="." index="10" instance=ExtResource("4_q1odf")]
+position = Vector2(0, -256)

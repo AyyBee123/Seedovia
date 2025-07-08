@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://708x1yvp5wi"]
+
+[ext_resource type="PackedScene" uid="uid://bnawmyjsajle3" path="res://Scenes/Levels/Floor 1 Base.tscn" id="1_7tgqd"]
+[ext_resource type="Shader" uid="uid://qm3syqtxdolu" path="res://Shaders/circle_transition.gdshader" id="2_nu6xn"]
+[ext_resource type="PackedScene" uid="uid://dwwm0dx1f3y23" path="res://Scenes/Enemies/Frog Vertical.tscn" id="3_7tgqd"]
+[ext_resource type="PackedScene" uid="uid://cqg68mxfdsxm4" path="res://Scenes/Enemies/Totem Pot.tscn" id="4_nu6xn"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0ecxy"]
+resource_local_to_scene = true
+shader = ExtResource("2_nu6xn")
+shader_parameter/circle_size = 0.0
+shader_parameter/circle_position_x = 0.5
+shader_parameter/circle_position_y = 0.695
+
+[node name="Level" instance=ExtResource("1_7tgqd")]
+
+[node name="Circle Transition" parent="." index="6"]
+material = SubResource("ShaderMaterial_0ecxy")
+
+[node name="Frog" parent="." index="8" instance=ExtResource("3_7tgqd")]
+position = Vector2(760, 192)
+flipped = true
+
+[node name="Frog2" parent="." index="9" instance=ExtResource("3_7tgqd")]
+position = Vector2(-752, -192)
+
+[node name="Totem Pot" parent="." index="10" instance=ExtResource("4_nu6xn")]
+position = Vector2(-704, 256)
+
+[node name="Totem Pot2" parent="." index="11" instance=ExtResource("4_nu6xn")]
+position = Vector2(704, -256)

@@ -185,6 +185,7 @@ height = 35.0
 [node name="Frog" instance=ExtResource("1_bcfd2")]
 scale = Vector2(2, 2)
 script = ExtResource("2_qn2m3")
+flipped = false
 _enemy_stats = ExtResource("3_e83oa")
 
 [node name="CollisionPolygon2D" parent="." index="0"]
@@ -207,14 +208,14 @@ shape = SubResource("CapsuleShape2D_e83oa")
 offset_top = -36.0
 offset_bottom = -28.0
 
-[node name="Down" type="Marker2D" parent="." index="6"]
+[node name="Down" type="Marker2D" parent="." index="5"]
 position = Vector2(0, 20.5)
 
-[node name="state_machine" type="Node" parent="." index="7"]
+[node name="state_machine" type="Node" parent="." index="6"]
 script = ExtResource("5_e83oa")
 metadata/_custom_type_script = "uid://cxh3rckpecdhs"
 
-[node name="Launch Delay" type="Timer" parent="." index="8"]
+[node name="Launch Delay" type="Timer" parent="." index="7"]
 one_shot = true
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://brojmhed33el1"]
+
+[ext_resource type="PackedScene" uid="uid://chj80f72y8sfx" path="res://Scenes/Levels/Floor 4 Base.tscn" id="1_wb7bb"]
+[ext_resource type="Shader" uid="uid://qm3syqtxdolu" path="res://Shaders/circle_transition.gdshader" id="2_y7y85"]
+[ext_resource type="PackedScene" uid="uid://v83k1cr4mxd0" path="res://Scenes/Enemies/Desolate Mirror.tscn" id="3_wb7bb"]
+[ext_resource type="PackedScene" uid="uid://ch4r6sgqekbjw" path="res://Scenes/Enemies/Frog Face.tscn" id="4_y7y85"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g0nn0"]
+resource_local_to_scene = true
+shader = ExtResource("2_y7y85")
+shader_parameter/circle_size = 0.0
+shader_parameter/circle_position_x = 0.5
+shader_parameter/circle_position_y = 0.695
+
+[node name="Level" instance=ExtResource("1_wb7bb")]
+
+[node name="Circle Transition" parent="." index="6"]
+material = SubResource("ShaderMaterial_g0nn0")
+
+[node name="Desolate Mirror" parent="." index="9" instance=ExtResource("3_wb7bb")]
+position = Vector2(-640, -256)
+
+[node name="Desolate Mirror2" parent="." index="10" instance=ExtResource("3_wb7bb")]
+position = Vector2(640, 256)
+
+[node name="Frog Face" parent="." index="11" instance=ExtResource("4_y7y85")]
+position = Vector2(-640, 256)
+
+[node name="Frog Face2" parent="." index="12" instance=ExtResource("4_y7y85")]
+position = Vector2(640, -256)

@@ -4,6 +4,8 @@ extends "res://Scripts/Enemies/enemy.gd"
 @onready var launch_delay = $"Launch Delay"
 @onready var _state_machine = $state_machine
 
+@export var flipped := false
+
 const FROG_TONGUE = preload("res://Scenes/Enemies/Effects/Frog Tongue.tscn")
 const BULLET = preload("res://Scenes/Enemies/Weapons/Bullet.tscn")
 
@@ -16,6 +18,8 @@ var fall_direction: Vector2
 
 func _ready():
 	super._ready()
+	if flipped:
+		$AnimatedSprite2D.rotate(PI)
 	fall_direction = Vector2.DOWN.rotated($AnimatedSprite2D.rotation)
 
 func _physics_process(delta):

@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://be8iy7x5kltec"]
+
+[ext_resource type="PackedScene" uid="uid://bnmmkf6q27svc" path="res://Scenes/Levels/Floor 3 Base.tscn" id="1_w6ng6"]
+[ext_resource type="Shader" uid="uid://qm3syqtxdolu" path="res://Shaders/circle_transition.gdshader" id="2_1dhkl"]
+[ext_resource type="PackedScene" uid="uid://ddlrhmpvqk5hg" path="res://Scenes/Enemies/Burnace.tscn" id="3_avo2w"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0ecxy"]
+resource_local_to_scene = true
+shader = ExtResource("2_1dhkl")
+shader_parameter/circle_size = 0.0
+shader_parameter/circle_position_x = 0.5
+shader_parameter/circle_position_y = 0.695
+
+[node name="Level" instance=ExtResource("1_w6ng6")]
+
+[node name="Circle Transition" parent="." index="6"]
+material = SubResource("ShaderMaterial_0ecxy")
+
+[node name="Burnace" parent="." index="8" instance=ExtResource("3_avo2w")]
+position = Vector2(-704, -320)
+
+[node name="Burnace2" parent="." index="9" instance=ExtResource("3_avo2w")]
+position = Vector2(704, -320)

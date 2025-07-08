@@ -1,0 +1,28 @@
+[gd_scene load_steps=7 format=3 uid="uid://c2cxp5cnfo50u"]
+
+[ext_resource type="PackedScene" uid="uid://bnawmyjsajle3" path="res://Scenes/Levels/Floor 1 Base.tscn" id="1_xaw14"]
+[ext_resource type="Shader" uid="uid://qm3syqtxdolu" path="res://Shaders/circle_transition.gdshader" id="2_ommdw"]
+[ext_resource type="PackedScene" uid="uid://dro5juqd1bdju" path="res://Scenes/Enemies/Log Vertical.tscn" id="3_ommdw"]
+[ext_resource type="PackedScene" uid="uid://26iqs3vqaiqq" path="res://Scenes/Enemies/Log Vertical Flipped.tscn" id="4_6n8md"]
+[ext_resource type="PackedScene" uid="uid://d4j1lfex5tqx0" path="res://Scenes/Enemies/Clay Potato.tscn" id="5_46kyb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0ecxy"]
+resource_local_to_scene = true
+shader = ExtResource("2_ommdw")
+shader_parameter/circle_size = 0.0
+shader_parameter/circle_position_x = 0.5
+shader_parameter/circle_position_y = 0.695
+
+[node name="Level" instance=ExtResource("1_xaw14")]
+
+[node name="Circle Transition" parent="." index="6"]
+material = SubResource("ShaderMaterial_0ecxy")
+
+[node name="Log" parent="." index="8" instance=ExtResource("3_ommdw")]
+position = Vector2(-384, -360)
+
+[node name="Log2" parent="." index="9" instance=ExtResource("4_6n8md")]
+position = Vector2(320, 360)
+
+[node name="Clay Potato" parent="." index="10" instance=ExtResource("5_46kyb")]
+position = Vector2(0, -64)

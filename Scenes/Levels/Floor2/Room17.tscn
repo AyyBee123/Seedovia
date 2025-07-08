@@ -1,0 +1,36 @@
+[gd_scene load_steps=7 format=3 uid="uid://bo2nw0ljj326p"]
+
+[ext_resource type="PackedScene" uid="uid://b8gxpiw6v8asa" path="res://Scenes/Levels/Floor 2 Base.tscn" id="1_ialy0"]
+[ext_resource type="Shader" uid="uid://qm3syqtxdolu" path="res://Shaders/circle_transition.gdshader" id="2_syk5v"]
+[ext_resource type="PackedScene" uid="uid://cws31owdkv5jp" path="res://Scenes/Enemies/Obstacles/Boulder Face.tscn" id="3_pcslp"]
+[ext_resource type="PackedScene" uid="uid://dj1ddsajfhcn4" path="res://Scenes/Enemies/Knight.tscn" id="4_syk5v"]
+[ext_resource type="PackedScene" uid="uid://0clgydaeshno" path="res://Scenes/Enemies/Obstacles/Wall Face.tscn" id="5_pcslp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0ecxy"]
+resource_local_to_scene = true
+shader = ExtResource("2_syk5v")
+shader_parameter/circle_size = 0.0
+shader_parameter/circle_position_x = 0.5
+shader_parameter/circle_position_y = 0.695
+
+[node name="Level" instance=ExtResource("1_ialy0")]
+weight = 0.05
+
+[node name="Circle Transition" parent="." index="6"]
+material = SubResource("ShaderMaterial_0ecxy")
+
+[node name="Boulder Face" parent="." index="8" instance=ExtResource("3_pcslp")]
+position = Vector2(256, -256)
+starting_direction = 3
+
+[node name="Knight" parent="." index="9" instance=ExtResource("4_syk5v")]
+position = Vector2(-576, -192)
+
+[node name="Knight2" parent="." index="10" instance=ExtResource("4_syk5v")]
+position = Vector2(448, -192)
+
+[node name="Wall Face" parent="." index="11" instance=ExtResource("5_pcslp")]
+position = Vector2(-448, -448)
+
+[node name="Wall Face2" parent="." index="12" instance=ExtResource("5_pcslp")]
+position = Vector2(384, -448)

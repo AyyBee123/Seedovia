@@ -19,3 +19,4 @@ starting_seeds = Array[ExtResource("5_unxmy")]([null, ExtResource("5_mrh61")])
 starting_passives = Array[ExtResource("4_rx6rl")]([ExtResource("5_qslf7")])
 starting_coins = 0
 unlocked = false
+hidden = false

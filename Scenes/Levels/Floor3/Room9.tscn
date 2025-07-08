@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://butv0yfn4ephg"]
+
+[ext_resource type="PackedScene" uid="uid://bnmmkf6q27svc" path="res://Scenes/Levels/Floor 3 Base.tscn" id="1_utalx"]
+[ext_resource type="Shader" uid="uid://qm3syqtxdolu" path="res://Shaders/circle_transition.gdshader" id="2_sc5xi"]
+[ext_resource type="PackedScene" uid="uid://cmnqspf7wpuhq" path="res://Scenes/Enemies/Knife.tscn" id="3_utalx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0ecxy"]
+resource_local_to_scene = true
+shader = ExtResource("2_sc5xi")
+shader_parameter/circle_size = 0.0
+shader_parameter/circle_position_x = 0.5
+shader_parameter/circle_position_y = 0.695
+
+[node name="Level" instance=ExtResource("1_utalx")]
+
+[node name="Circle Transition" parent="." index="6"]
+material = SubResource("ShaderMaterial_0ecxy")
+
+[node name="Knife" parent="." index="8" instance=ExtResource("3_utalx")]
+position = Vector2(-640, -128)
+
+[node name="Knife2" parent="." index="9" instance=ExtResource("3_utalx")]
+position = Vector2(640, -128)
+
+[node name="Knife3" parent="." index="10" instance=ExtResource("3_utalx")]
+position = Vector2(0, -256)
