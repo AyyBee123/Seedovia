@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://osy6rmb6m51o"]
+
+[ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_j4u63"]
+[ext_resource type="Script" uid="uid://dk3hw8t4whmv2" path="res://Scripts/Seeds/vea_pea.gd" id="2_pyb48"]
+
+[node name="Vea Pea" instance=ExtResource("1_j4u63")]
+script = ExtResource("2_pyb48")
+BASE_DAMAGE = 5.0
+BASE_FIRE_RATE = 2.0
+BASE_RANGE = 250.0
+BASE_SPEED = 500.0
+BASE_SIZE = 1.0
+BASE_BLAST_RADIUS = 1.0
