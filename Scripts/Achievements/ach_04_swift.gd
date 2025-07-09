@@ -2,6 +2,7 @@ class_name Ach04Swift extends Achievement
 
 var salvia = preload("res://Resources/Characters/salvia.tres")
 var pom = preload("res://Resources/Items/Seeds/pomegranate.tres")
+var mirage = preload("res://Resources/Items/Passives/mirage.tres")
 var ach_image = preload("res://Sprites/Achievements/Swift.png")
 
 func _ready():
@@ -46,4 +47,5 @@ func set_progress(_progress) -> void:
 	super.set_progress(_progress)
 	if completed:
 		salvia.unlocked = true
+		mirage.unlocked = true
 		pom.unlocked = true

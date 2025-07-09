@@ -2,8 +2,8 @@ class_name Ach01Die extends Achievement
 
 var cercis = preload("res://Resources/Characters/cercis.tres")
 var grapes = preload("res://Resources/Items/Seeds/grapes.tres")
+var shadow_summons = preload("res://Resources/Items/Passives/shadow_summons.tres")
 var ach_image = preload("res://Sprites/Achievements/Die.png")
-
 func _ready():
 	name = "Ach01Die"
 	
@@ -39,4 +39,5 @@ func set_progress(_progress) -> void:
 	super.set_progress(_progress)
 	if completed:
 		cercis.unlocked = true
+		shadow_summons.unlocked = true
 		grapes.unlocked = true
