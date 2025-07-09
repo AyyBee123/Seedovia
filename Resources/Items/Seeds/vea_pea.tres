@@ -11,4 +11,4 @@ rarity = 2
 item_name = "Vea Pea"
 texture = ExtResource("3_d3gww")
 description = ""
-unlocked = true
+unlocked = false

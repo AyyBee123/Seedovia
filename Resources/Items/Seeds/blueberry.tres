@@ -7,9 +7,9 @@
 [resource]
 script = ExtResource("1_gck0y")
 scene = ExtResource("1_jejn6")
-rarity = 3
+rarity = 2
 item_name = "Blueberry"
 texture = ExtResource("3_gwkvq")
 description = ""
-unlocked = true
+unlocked = false
 metadata/_custom_type_script = "uid://c6ykhgvfkht5x"

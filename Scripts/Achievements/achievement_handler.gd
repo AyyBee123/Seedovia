@@ -6,6 +6,7 @@ var ach_03_health: Ach03Health
 var ach_04_swift: Ach04Swift
 var ach_05_pizza: Ach05Pizza
 var ach_06_veapea: Ach06VeaPea
+var ach_07_blueberry: Ach07Blueberry
 
 func _ready():
 	ach_01_die = Ach01Die.new()
@@ -20,3 +21,5 @@ func _ready():
 	add_child(ach_05_pizza)
 	ach_06_veapea = Ach06VeaPea.new()
 	add_child(ach_06_veapea)
+	ach_07_blueberry = Ach07Blueberry.new()
+	add_child(ach_07_blueberry)
