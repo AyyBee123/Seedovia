@@ -81,6 +81,7 @@ extends Node
 @onready var sausage_2 = $Sausage2
 @onready var sausage_3 = $Sausage3
 @onready var light_beam = $LightBeam
+@onready var blueberry_mild_explosion = $"Blueberry MildExplosion"
 
 func _ready():
 	SignalBus.play_audio.connect(play)

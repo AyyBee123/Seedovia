@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=3 uid="uid://tmr8vsn10p7m"]
+
+[ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_kqxr5"]
+[ext_resource type="Texture2D" uid="uid://b3m7jl2hwu84k" path="res://Sprites/Seeds/Blueberry.png" id="2_kqxr5"]
+[ext_resource type="Script" uid="uid://ufefty7g2bj" path="res://Scripts/Seeds/blueberry.gd" id="3_threh"]
+[ext_resource type="Texture2D" uid="uid://xxyym547o3vn" path="res://Sprites/Misc/Shadow.png" id="4_depq5"]
+[ext_resource type="Texture2D" uid="uid://b8skd7e3l3vbd" path="res://Sprites/Seeds/Effects/Trail Texture Blueberry.png" id="6_kqxr5"]
+[ext_resource type="Script" uid="uid://bnanub3nonyxi" path="res://Scripts/Misc/trail.gd" id="7_1ooug"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6ejq5"]
+radius = 8.0
+
+[sub_resource type="Curve" id="Curve_0jeof"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="Blueberry" groups=["Homing"] instance=ExtResource("1_kqxr5")]
+texture = ExtResource("2_kqxr5")
+script = ExtResource("3_threh")
+BASE_DAMAGE = 3.0
+BASE_FIRE_RATE = 10.0
+BASE_RANGE = 150.0
+BASE_SPEED = 750.0
+BASE_SIZE = 0.75
+BASE_BLAST_RADIUS = 0.5
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource("CircleShape2D_6ejq5")
+
+[node name="Shadow" type="Sprite2D" parent="." index="3"]
+z_index = -1
+z_as_relative = false
+position = Vector2(3.55271e-15, 10)
+scale = Vector2(0.445, 0.408)
+texture = ExtResource("4_depq5")
+
+[node name="Pointer" type="Node2D" parent="." index="4"]
+unique_name_in_owner = true
+
+[node name="Marker2D" type="Marker2D" parent="Pointer" index="0"]
+unique_name_in_owner = true
+position = Vector2(3, 0)
+
+[node name="Trail" type="Line2D" parent="." index="5"]
+width_curve = SubResource("Curve_0jeof")
+texture = ExtResource("6_kqxr5")
+texture_mode = 2
+joint_mode = 2
+script = ExtResource("7_1ooug")
+MAX_LENGTH = 6
+
+[node name="Lifetime" type="Timer" parent="." index="6"]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]

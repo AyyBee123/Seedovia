@@ -19,6 +19,8 @@ class_name overall_data extends Resource
 @export var ach_05_topping_locations: Array
 @export var ach_05_failed: bool
 @export var ach_05_spawned: Array
+@export var ach_06_veapea: bool
+@export var ach_06_progress: float
 
 func get_save_selection_data():
 	last_played = SelectionSaveData.last_played
@@ -53,6 +55,8 @@ func get_achievements():
 	ach_05_topping_locations = Game.achievement_handler.ach_05_pizza.topping_locations
 	ach_05_failed = Game.achievement_handler.ach_05_pizza.failed
 	ach_05_spawned = Game.achievement_handler.ach_05_pizza.spawned
+	ach_06_veapea = Game.achievement_handler.ach_06_veapea.completed
+	ach_06_progress = Game.achievement_handler.ach_06_veapea.get_progress()
 
 func set_achievements():
 	Game.achievement_handler.ach_01_die.completed = ach_01_die
@@ -69,6 +73,8 @@ func set_achievements():
 	Game.achievement_handler.ach_05_pizza.topping_locations = ach_05_topping_locations
 	Game.achievement_handler.ach_05_pizza.failed = ach_05_failed
 	Game.achievement_handler.ach_05_pizza.spawned = ach_05_spawned
+	Game.achievement_handler.ach_06_veapea.completed = ach_06_veapea
+	Game.achievement_handler.ach_06_veapea.set_progress(ach_06_progress)
 
 func reset_achievements():
 	ach_01_die = false

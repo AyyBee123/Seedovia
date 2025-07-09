@@ -4,14 +4,15 @@ var vea_pea = preload("res://Resources/Items/Seeds/vea_pea.tres")
 var ach_image = preload("res://Sprites/Achievements/Swift.png")
 
 func _ready():
-	name = "Ach04Swift"
+	name = "Ach06VeaPea"
 	
 	if not completed:
 		progress = 1
 		SignalBus.entered_new_floor.connect(_on_entered_new_floor)
 
 func _on_entered_new_floor(number):
-	if LevelList.floor_number == 4 and get_progress() >= get_progress_goal() and not completed:
+	if LevelList.floor_number == 4 and PlayerCharacter.starting_character.character_name == "Sapling" \
+			and get_progress() >= get_progress_goal() and not completed:
 		completed = true
 		SignalBus.achievement.emit(self)
 		SignalBus.unlock.emit(vea_pea)

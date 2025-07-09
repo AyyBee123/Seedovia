@@ -114,6 +114,12 @@ volume_db = -12.0
 pitch_scale = 2.0
 bus = &"SFX"
 
+[node name="Blueberry MildExplosion" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_fp62v")
+volume_db = -16.0
+pitch_scale = 2.5
+bus = &"SFX"
+
 [node name="Pepper Child MildExplosion" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_fp62v")
 volume_db = -6.0
