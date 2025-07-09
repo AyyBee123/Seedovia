@@ -269,7 +269,7 @@ tracks/7/path = NodePath("..")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0.1, 0.101, 0.8, 0.8333, 0.9),
+"times": PackedFloat32Array(0.1, 0.101, 0.8, 0.81, 0.9),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "values": [{
 "args": [],
@@ -282,7 +282,7 @@ tracks/7/keys = {
 "method": &"set_move"
 }, {
 "args": [],
-"method": &"play_splat_3"
+"method": &"play_splat_2"
 }, {
 "args": [],
 "method": &"jump_finished"
@@ -437,40 +437,25 @@ tracks/4/keys = {
 "update": 1,
 "values": [true, false]
 }
-tracks/5/type = "audio"
+tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Splat")
+tracks/5/path = NodePath("Enemy Hitbox/CollisionPolygon2D:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("8_trbp4")
-}],
-"times": PackedFloat32Array(1)
-}
-tracks/5/use_blend = true
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Enemy Hitbox/CollisionPolygon2D:disabled")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
 }
-tracks/7/type = "method"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath(".")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -522,13 +507,15 @@ texture = ExtResource("4_0r8v0")
 [node name="state_machine" type="Node" parent="." index="7"]
 script = ExtResource("6_m40q1")
 
-[node name="Splat" type="AudioStreamPlayer" parent="." index="8"]
+[node name="Splat2" type="AudioStreamPlayer" parent="." index="8"]
+stream = ExtResource("8_vp0jb")
+volume_db = -5.0
 pitch_scale = 1.2
 bus = &"SFX"
 
-[node name="Splat2" type="AudioStreamPlayer" parent="." index="9"]
-stream = ExtResource("8_vp0jb")
-volume_db = -5.0
+[node name="Splat" type="AudioStreamPlayer" parent="." index="9"]
+stream = ExtResource("8_trbp4")
+volume_db = -3.0
 pitch_scale = 1.2
 bus = &"SFX"
 

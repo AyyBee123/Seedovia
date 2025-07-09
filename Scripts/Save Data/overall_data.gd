@@ -23,6 +23,8 @@ class_name overall_data extends Resource
 @export var ach_06_progress: float
 @export var ach_07_blueberry: bool
 @export var ach_07_progress: float
+@export var ach_08_goldbasket: bool
+@export var ach_08_progress: float
 
 func get_save_selection_data():
 	last_played = SelectionSaveData.last_played
@@ -61,6 +63,8 @@ func get_achievements():
 	ach_06_progress = Game.achievement_handler.ach_06_veapea.get_progress()
 	ach_07_blueberry = Game.achievement_handler.ach_07_blueberry.completed
 	ach_07_progress = Game.achievement_handler.ach_07_blueberry.get_progress()
+	ach_08_goldbasket = Game.achievement_handler.ach_08_goldbasket.completed
+	ach_08_progress = Game.achievement_handler.ach_08_goldbasket.get_progress()
 
 func set_achievements():
 	Game.achievement_handler.ach_01_die.completed = ach_01_die
@@ -81,6 +85,8 @@ func set_achievements():
 	Game.achievement_handler.ach_06_veapea.set_progress(ach_06_progress)
 	Game.achievement_handler.ach_07_blueberry.completed = ach_07_blueberry
 	Game.achievement_handler.ach_07_blueberry.set_progress(ach_07_progress)
+	Game.achievement_handler.ach_08_goldbasket.completed = ach_08_goldbasket
+	Game.achievement_handler.ach_08_goldbasket.set_progress(ach_08_progress)
 
 func reset_achievements():
 	ach_01_die = false
@@ -93,6 +99,12 @@ func reset_achievements():
 	ach_04_progress = 0
 	ach_05_pizza = false
 	ach_05_progress = 0
+	ach_06_veapea = false
+	ach_06_progress = 0
+	ach_07_blueberry = false
+	ach_07_progress = 0
+	ach_08_goldbasket = false
+	ach_08_progress = 0
 
 func get_achievement(_ach):
 	return _ach

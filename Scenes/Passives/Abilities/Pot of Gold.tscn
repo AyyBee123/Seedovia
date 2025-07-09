@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dainvrqjb61om"]
+
+[ext_resource type="Script" uid="uid://deb8rm85gs40w" path="res://Scripts/Passives/Abilities/pot_of_gold.gd" id="1_ht6hl"]
+
+[node name="Pot of Gold" type="Node"]
+script = ExtResource("1_ht6hl")
