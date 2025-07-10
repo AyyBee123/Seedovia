@@ -2,10 +2,11 @@ extends Line2D
 
 @export var MAX_LENGTH: int = 250
 var points_queue: Array
+var offset := Vector2.ZERO
 
 func _physics_process(delta):
 	# enqueue point to the current position
-	var pos: Vector2 = get_parent().global_position
+	var pos: Vector2 = get_parent().global_position - offset
 	points_queue.push_back(pos)
 	
 	# dequeue points if there are too many

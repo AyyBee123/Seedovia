@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cumv8660k4lfk"]
+
+[ext_resource type="Script" uid="uid://ro6n2xpnje7j" path="res://Scripts/Passives/Abilities/shade_slash.gd" id="1_kg7tr"]
+
+[node name="Shade Slash" type="Node"]
+script = ExtResource("1_kg7tr")

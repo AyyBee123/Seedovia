@@ -1,10 +1,11 @@
-[gd_scene load_steps=44 format=3 uid="uid://usetxd7ii511"]
+[gd_scene load_steps=47 format=3 uid="uid://usetxd7ii511"]
 
 [ext_resource type="Script" uid="uid://boo1w2wkkk0xk" path="res://Scripts/Utils/audio_manager.gd" id="1_bpx0j"]
 [ext_resource type="AudioStream" uid="uid://bpk6gao5jcjkq" path="res://Audio/SFX/Hit.mp3" id="1_qnkjs"]
 [ext_resource type="AudioStream" uid="uid://dviaq07q34iwy" path="res://Audio/SFX/Mild Explosion.mp3" id="2_fp62v"]
 [ext_resource type="AudioStream" uid="uid://mcab4fvfn756" path="res://Audio/SFX/Smack.mp3" id="3_cdpdk"]
 [ext_resource type="AudioStream" uid="uid://chjabrkxsndjf" path="res://Audio/SFX/Bubble Pop.mp3" id="3_olhkt"]
+[ext_resource type="AudioStream" uid="uid://6ac0t3n4kdwi" path="res://Audio/SFX/Whoosh.mp3" id="4_cp025"]
 [ext_resource type="AudioStream" uid="uid://c58aj3yosgiit" path="res://Audio/SFX/Sunder Explosion.mp3" id="5_mgngl"]
 [ext_resource type="AudioStream" uid="uid://dxvs3t6m7coyv" path="res://Audio/SFX/Hit2.mp3" id="6_8awm8"]
 [ext_resource type="AudioStream" uid="uid://bnwgdhdobsrbm" path="res://Audio/SFX/Splat2.mp3" id="7_hi1cj"]
@@ -43,6 +44,8 @@
 [ext_resource type="AudioStream" uid="uid://ctg2p1xvcqdpc" path="res://Audio/SFX/Laser Shot.mp3" id="41_ho3tb"]
 [ext_resource type="AudioStream" uid="uid://dormygwbg7tox" path="res://Audio/SFX/Big Laser.mp3" id="42_dy1yg"]
 [ext_resource type="AudioStream" uid="uid://bbbyt5s82anlc" path="res://Audio/SFX/Light Beam.mp3" id="43_dy1yg"]
+[ext_resource type="AudioStream" uid="uid://d32siogok0rhg" path="res://Audio/SFX/Slash.mp3" id="44_43mhl"]
+[ext_resource type="AudioStream" uid="uid://cgh0gagp6lrj" path="res://Audio/SFX/Slash2.mp3" id="46_kwqkp"]
 
 [node name="Audio Manager" type="Node"]
 script = ExtResource("1_bpx0j")
@@ -60,6 +63,17 @@ bus = &"SFX"
 stream = ExtResource("3_cdpdk")
 volume_db = -2.0
 bus = &"SFX"
+
+[node name="Smack2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_cdpdk")
+volume_db = -2.0
+pitch_scale = 1.35
+bus = &"SFX"
+
+[node name="Whoosh" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_cp025")
+volume_db = -8.0
+pitch_scale = 1.25
 
 [node name="Crunch2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_yvn0e")
@@ -486,3 +500,13 @@ stream = ExtResource("43_dy1yg")
 volume_db = -6.0
 pitch_scale = 1.25
 bus = &"SFX"
+
+[node name="Slash" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("44_43mhl")
+volume_db = -2.0
+pitch_scale = 1.25
+bus = &"SFX"
+
+[node name="Slash2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("46_kwqkp")
+volume_db = -8.0

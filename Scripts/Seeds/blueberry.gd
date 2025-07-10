@@ -17,7 +17,7 @@ var t: float
 func _ready():
 	super._ready()
 	randomize()
-	lifetime.start(randf_range(0.25, 0.5))
+	lifetime.start(randf_range(0.25, 0.5) * sqrt(RANGE / 150))
 	starting_rotation = PI/2 if randf() < 0.5 else -PI/2
 	BASE_RANGE = BASE_RANGE * randf_range(0.25, 1.75)
 	# divide by a small number to prevent the shot from going backwards
@@ -29,9 +29,6 @@ func update_position(delta):
 	
 	t += delta * 75 / RANGE # the more range, the longer it takes to finish rotating
 	pointer.rotation = lerp_angle(pointer.rotation, direction.rotated(-starting_rotation).angle(), t)
-	
-	if is_equal_approx(pointer.rotation, direction.rotated(-starting_rotation).angle()):
-		explode()
 
 func travelled_distance():
 	pass

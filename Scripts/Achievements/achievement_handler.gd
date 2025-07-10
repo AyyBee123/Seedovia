@@ -8,6 +8,7 @@ var ach_05_pizza: Ach05Pizza
 var ach_06_veapea: Ach06VeaPea
 var ach_07_blueberry: Ach07Blueberry
 var ach_08_goldbasket: Ach08GoldBasket
+var ach_09_shadeslash: Ach09ShadeSlash
 
 func _ready():
 	ach_01_die = Ach01Die.new()
@@ -26,3 +27,5 @@ func _ready():
 	add_child(ach_07_blueberry)
 	ach_08_goldbasket = Ach08GoldBasket.new()
 	add_child(ach_08_goldbasket)
+	ach_09_shadeslash = Ach09ShadeSlash.new()
+	add_child(ach_09_shadeslash)
