@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://cqw4j3d47agi1"]
+
+[ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_m5t3e"]
+[ext_resource type="Script" uid="uid://e0kcm36s4p5j" path="res://Scripts/Seeds/wavy_shroom.gd" id="2_abo6d"]
+[ext_resource type="Texture2D" uid="uid://bnj0bixfnrc27" path="res://Sprites/Seeds/Wavy-shroom.png" id="3_ixhp4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d844c"]
+size = Vector2(32, 52)
+
+[node name="Wavy-shroom" instance=ExtResource("1_m5t3e")]
+script = ExtResource("2_abo6d")
+BASE_DAMAGE = 12.0
+BASE_FIRE_RATE = 1.0
+BASE_RANGE = 500.0
+BASE_SPEED = 100.0
+BASE_SIZE = 1.0
+BASE_BLAST_RADIUS = 1.0
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_d844c")
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="3"]
+rotation = 1.5708
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_ixhp4")
+
+[node name="Spawn Delay" type="Timer" parent="." index="4"]
+wait_time = 0.5
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Spawn Delay" to="." method="_on_spawn_delay_timeout"]

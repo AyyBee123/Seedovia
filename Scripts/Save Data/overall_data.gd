@@ -27,6 +27,8 @@ class_name overall_data extends Resource
 @export var ach_08_progress: float
 @export var ach_09_shadeslash: bool
 @export var ach_09_progress: float
+@export var ach_10_wavyshroom: bool
+@export var ach_10_progress: float
 
 func get_save_selection_data():
 	last_played = SelectionSaveData.last_played
@@ -69,6 +71,8 @@ func get_achievements():
 	ach_08_progress = Game.achievement_handler.ach_08_goldbasket.get_progress()
 	ach_09_shadeslash = Game.achievement_handler.ach_09_shadeslash.completed
 	ach_09_progress = Game.achievement_handler.ach_09_shadeslash.get_progress()
+	ach_10_wavyshroom = Game.achievement_handler.ach_10_wavyshroom.completed
+	ach_10_progress = Game.achievement_handler.ach_10_wavyshroom.get_progress()
 
 func set_achievements():
 	Game.achievement_handler.ach_01_die.completed = ach_01_die
@@ -93,6 +97,8 @@ func set_achievements():
 	Game.achievement_handler.ach_08_goldbasket.set_progress(ach_08_progress)
 	Game.achievement_handler.ach_09_shadeslash.completed = ach_09_shadeslash
 	Game.achievement_handler.ach_09_shadeslash.set_progress(ach_09_progress)
+	Game.achievement_handler.ach_10_wavyshroom.completed = ach_10_wavyshroom
+	Game.achievement_handler.ach_10_wavyshroom.set_progress(ach_10_progress)
 
 func reset_achievements():
 	ach_01_die = false
@@ -113,6 +119,8 @@ func reset_achievements():
 	ach_08_progress = 0
 	ach_09_shadeslash = false
 	ach_09_progress = 0
+	ach_10_wavyshroom = false
+	ach_10_progress = 0
 
 func get_achievement(_ach):
 	return _ach
