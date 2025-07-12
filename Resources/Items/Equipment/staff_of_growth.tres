@@ -11,5 +11,5 @@ properties = Array[String](["-20% Weapon_Speed"])
 special_properties = Array[PackedScene]([ExtResource("2_rs0yg")])
 item_name = "Staff of Growth"
 texture = ExtResource("3_pr73a")
-description = "Your seeds have a 5% chance, every 0.1 seconds, to shoot the seed in the first inventory slot in a random direction."
+description = "Your seeds have a 2% chance, every 0.1 seconds, to shoot the seed in the first inventory slot in a random direction."
 unlocked = true

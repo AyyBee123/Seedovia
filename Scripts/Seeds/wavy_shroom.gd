@@ -1,8 +1,5 @@
 extends "res://Scripts/Seeds/seed_template.gd"
 
-@onready var hitbox = $Hitbox
-@onready var sprite = $Sprite2D
-
 const WAVY_SHROOM = preload("res://Scenes/Seeds/Wavy-shroom.tscn")
 
 const FREQUENCY = 3
@@ -13,9 +10,11 @@ var shroom_number: int = 1
 var t: float
 var pos: Vector2
 var amp_sign: int = -1
+var first_collision_ignored: bool
 
 func _ready():
 	super._ready()
+	first_collision_ignored = ignore_first_collision
 	BASE_RANGE *= 2
 	await get_tree().physics_frame
 	pos = global_position
@@ -37,6 +36,25 @@ func update_position(delta):
 	
 	position = pos + forward_offset + wave_offset
 
+func _collide(body):
+	if ignore_first_collision:
+		ignore_first_collision = false
+		return
+	has_collided.emit(body) # for on-hit effects (ex: burning an enemy on hit)
+	if body.is_in_group("Enemies"):
+		body.get_parent()._enemy_stats.take_damage(DAMAGE)
+	elif body.is_in_group("Players"):
+		body._player_stats.take_damage(1)
+	SfxDeconflicter.play(Game.audio_manager.hit)
+	match shroom_number:
+		1:
+			SfxDeconflicter.play(Game.audio_manager.crunch_wavy)
+		2:
+			SfxDeconflicter.play(Game.audio_manager.crunch_wavy_2)
+		3:
+			SfxDeconflicter.play(Game.audio_manager.crunch_wavy_3)
+	destroy()
+
 func _on_spawn_delay_timeout():
 	if shroom_number < NUMBER_OF_SHROOMS:
 		shoot_current_seed(WAVY_SHROOM.instantiate(), desired_direction, pos)
@@ -53,7 +71,7 @@ func shoot_current_seed(instantiated_weapon, _desired_direction = desired_direct
 	instantiated_weapon.seed_slot_number = seed_slot_number
 	instantiated_weapon.set_next_seed_slot_number = set_next_seed_slot_number
 	instantiated_weapon.set_next_seed_slot_index = set_next_seed_slot_index
-	instantiated_weapon.ignore_first_collision = ignore_first_collision
+	instantiated_weapon.ignore_first_collision = first_collision_ignored
 	instantiated_weapon.transferred_speed_multiplier *= transferred_speed_multiplier
 	instantiated_weapon.transferred_range_multiplier *= transferred_range_multiplier
 	instantiated_weapon.transferred_size_multiplier *= transferred_size_multiplier
@@ -61,17 +79,8 @@ func shoot_current_seed(instantiated_weapon, _desired_direction = desired_direct
 	instantiated_weapon.transferred_blast_radius_multiplier *= transferred_blast_radius_multiplier
 	instantiated_weapon.transferred_fire_rate_multiplier *= transferred_fire_rate_multiplier
 	instantiated_weapon.modulate = modulate
+	weapon_direction = _desired_direction
 	get_tree().current_scene.add_child.call_deferred(instantiated_weapon)
 	instantiated_weapon.modulate.a = modulate.a / 2
 	instantiated_weapon.global_position = pos
 	weapon_fired.emit(instantiated_weapon)
-
-func initialize_location(weapon):
-	if not get_tree():
-		return
-	get_tree().current_scene.add_child(weapon)
-	weapon_fired.emit(weapon)
-	weapon.global_position = sprite.global_position
-
-func get_next_weapon_pos():
-	return sprite.global_position

@@ -238,6 +238,7 @@ func shoot_current_seed(instantiated_weapon, _desired_direction = desired_direct
 	instantiated_weapon.transferred_blast_radius_multiplier *= transferred_blast_radius_multiplier
 	instantiated_weapon.transferred_fire_rate_multiplier *= transferred_fire_rate_multiplier
 	instantiated_weapon.modulate = modulate
+	weapon_direction = _desired_direction
 	get_tree().current_scene.add_child.call_deferred(instantiated_weapon)
 	instantiated_weapon.global_position = pos
 	weapon_fired.emit(instantiated_weapon)

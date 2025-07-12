@@ -20,8 +20,6 @@ var origin_point
 var first_collision_ignored: bool
 
 func _ready():
-	if not is_in_group("Seed"): # if it's from an enemy
-		letter_list.clear()
 	super._ready()
 	fire_delay.start(0.1)
 	first_collision_ignored = ignore_first_collision
@@ -72,11 +70,12 @@ func _on_fire_delay_timeout():
 	if is_instance_valid(previous_weapon):
 		dir = previous_weapon.weapon_direction
 		origin_point = previous_weapon.global_position
+	if dir.is_equal_approx(Vector2.ZERO):
+		dir = direction
 	shoot_current_seed(letters[letter_list[current_letter]].instantiate(), dir, origin_point)
 
 func shoot_current_seed(instantiated_weapon, _desired_direction = desired_direction, pos = global_position):
 	instantiated_weapon.current_letter = current_letter + 1
-	
 	instantiated_weapon.shader = shader
 	instantiated_weapon.collisions = collisions
 	instantiated_weapon.source = source
@@ -95,6 +94,7 @@ func shoot_current_seed(instantiated_weapon, _desired_direction = desired_direct
 	instantiated_weapon.transferred_blast_radius_multiplier *= transferred_blast_radius_multiplier
 	instantiated_weapon.transferred_fire_rate_multiplier *= transferred_fire_rate_multiplier
 	instantiated_weapon.modulate = modulate
+	weapon_direction = _desired_direction
 	get_tree().current_scene.add_child.call_deferred(instantiated_weapon)
 	instantiated_weapon.global_position = pos
 	weapon_fired.emit(instantiated_weapon)

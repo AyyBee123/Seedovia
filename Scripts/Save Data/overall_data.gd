@@ -29,6 +29,8 @@ class_name overall_data extends Resource
 @export var ach_09_progress: float
 @export var ach_10_wavyshroom: bool
 @export var ach_10_progress: float
+@export var ach_11_metronome: bool
+@export var ach_11_progress: float
 
 func get_save_selection_data():
 	last_played = SelectionSaveData.last_played
@@ -73,6 +75,8 @@ func get_achievements():
 	ach_09_progress = Game.achievement_handler.ach_09_shadeslash.get_progress()
 	ach_10_wavyshroom = Game.achievement_handler.ach_10_wavyshroom.completed
 	ach_10_progress = Game.achievement_handler.ach_10_wavyshroom.get_progress()
+	ach_11_metronome = Game.achievement_handler.ach_11_metronome.completed
+	ach_11_progress = Game.achievement_handler.ach_11_metronome.get_progress()
 
 func set_achievements():
 	Game.achievement_handler.ach_01_die.completed = ach_01_die
@@ -99,6 +103,8 @@ func set_achievements():
 	Game.achievement_handler.ach_09_shadeslash.set_progress(ach_09_progress)
 	Game.achievement_handler.ach_10_wavyshroom.completed = ach_10_wavyshroom
 	Game.achievement_handler.ach_10_wavyshroom.set_progress(ach_10_progress)
+	Game.achievement_handler.ach_11_metronome.completed = ach_11_metronome
+	Game.achievement_handler.ach_11_metronome.set_progress(ach_11_progress)
 
 func reset_achievements():
 	ach_01_die = false
@@ -121,6 +127,8 @@ func reset_achievements():
 	ach_09_progress = 0
 	ach_10_wavyshroom = false
 	ach_10_progress = 0
+	ach_11_metronome = false
+	ach_11_progress = 0
 
 func get_achievement(_ach):
 	return _ach

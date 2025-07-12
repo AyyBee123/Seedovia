@@ -86,6 +86,9 @@ extends Node
 @onready var smack_2 = $Smack2
 @onready var whoosh = $Whoosh
 @onready var slash_2 = $Slash2
+@onready var crunch_wavy = $"Crunch Wavy"
+@onready var crunch_wavy_2 = $"Crunch Wavy2"
+@onready var crunch_wavy_3 = $"Crunch Wavy3"
 
 func _ready():
 	SignalBus.play_audio.connect(play)
