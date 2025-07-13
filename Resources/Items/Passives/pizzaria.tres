@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="passive_class" load_steps=4 format=3 uid="uid://yy2xmtqiujt7"]
+
+[ext_resource type="Script" uid="uid://yr5gdtdbvmoc" path="res://Scripts/Passives/Classes/passive_class.gd" id="1_fuiem"]
+[ext_resource type="PackedScene" uid="uid://vl2jud1l261" path="res://Scenes/Passives/Abilities/Pizzaria.tscn" id="1_pqkc3"]
+[ext_resource type="Texture2D" uid="uid://cwutlbqpg25q7" path="res://Sprites/Passives/Icons/Pizzaria.png" id="3_bq7m5"]
+
+[resource]
+script = ExtResource("1_fuiem")
+passive_name = "Pizzaria"
+sprite = ExtResource("3_bq7m5")
+description = "10% chance to spawn a pizza topping that shoots their respective seed at enemies. Their seeds shoot themselves once."
+passive_ability = ExtResource("1_pqkc3")
+unlocked = false
+metadata/_custom_type_script = "uid://yr5gdtdbvmoc"

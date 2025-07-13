@@ -1,6 +1,7 @@
 class_name Ach05Pizza extends Achievement
 
 var pizza_man = preload("res://Resources/Characters/pizza_man.tres")
+var pizzaria = preload("res://Resources/Items/Passives/pizzaria.tres")
 var ach_image = preload("res://Sprites/Achievements/Pizza.png")
 
 ## the toppings
@@ -98,3 +99,4 @@ func set_progress(_progress) -> void:
 	super.set_progress(_progress)
 	if completed:
 		pizza_man.unlocked = true
+		pizzaria.unlocked = true

@@ -60,6 +60,7 @@ func _on_spawn_delay_timeout():
 		shoot_current_seed(WAVY_SHROOM.instantiate(), desired_direction, pos)
 
 func shoot_current_seed(instantiated_weapon, _desired_direction = desired_direction, pos = global_position):
+	weapon_direction = _desired_direction
 	instantiated_weapon.shroom_number = shroom_number + 1
 	instantiated_weapon.shader = shader
 	instantiated_weapon.collisions = collisions
@@ -79,7 +80,6 @@ func shoot_current_seed(instantiated_weapon, _desired_direction = desired_direct
 	instantiated_weapon.transferred_blast_radius_multiplier *= transferred_blast_radius_multiplier
 	instantiated_weapon.transferred_fire_rate_multiplier *= transferred_fire_rate_multiplier
 	instantiated_weapon.modulate = modulate
-	weapon_direction = _desired_direction
 	get_tree().current_scene.add_child.call_deferred(instantiated_weapon)
 	instantiated_weapon.modulate.a = modulate.a / 2
 	instantiated_weapon.global_position = pos

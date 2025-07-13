@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://vl2jud1l261"]
+
+[ext_resource type="Script" uid="uid://byctnn1xwvbv5" path="res://Scripts/Passives/Abilities/pizzaria.gd" id="1_blygx"]
+
+[node name="Pizzaria" type="Node"]
+script = ExtResource("1_blygx")

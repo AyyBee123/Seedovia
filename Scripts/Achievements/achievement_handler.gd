@@ -11,6 +11,7 @@ var ach_08_goldbasket: Ach08GoldBasket
 var ach_09_shadeslash: Ach09ShadeSlash
 var ach_10_wavyshroom: Ach10WavyShroom
 var ach_11_metronome: Ach11Metronome
+var ach_12_pizzadisc: Ach12PizzaDisc
 
 func _ready():
 	ach_01_die = Ach01Die.new()
@@ -35,3 +36,5 @@ func _ready():
 	add_child(ach_10_wavyshroom)
 	ach_11_metronome = Ach11Metronome.new()
 	add_child(ach_11_metronome)
+	ach_12_pizzadisc = Ach12PizzaDisc.new()
+	add_child(ach_12_pizzadisc)

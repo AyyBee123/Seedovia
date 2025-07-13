@@ -1,0 +1,131 @@
+[gd_scene load_steps=16 format=3 uid="uid://ld1japm55y1v"]
+
+[ext_resource type="Script" uid="uid://c2b6yrwg54538" path="res://Scripts/Passives/Effects/pizzaria_topping.gd" id="1_ovktc"]
+[ext_resource type="PackedScene" uid="uid://dpb3ih0vj1ax4" path="res://Scenes/Seeds/Sausage.tscn" id="2_ovktc"]
+[ext_resource type="Texture2D" uid="uid://j4yio0rj8w" path="res://Sprites/Enemies/Sausage.png" id="3_41x3w"]
+[ext_resource type="Texture2D" uid="uid://xxyym547o3vn" path="res://Sprites/Misc/Shadow.png" id="4_3ybn7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eecoc"]
+atlas = ExtResource("3_41x3w")
+region = Rect2(408, 0, 34, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ybn7"]
+atlas = ExtResource("3_41x3w")
+region = Rect2(0, 0, 34, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_51psr"]
+atlas = ExtResource("3_41x3w")
+region = Rect2(34, 0, 34, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0khsf"]
+atlas = ExtResource("3_41x3w")
+region = Rect2(68, 0, 34, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bhs0r"]
+atlas = ExtResource("3_41x3w")
+region = Rect2(102, 0, 34, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vpb5x"]
+atlas = ExtResource("3_41x3w")
+region = Rect2(136, 0, 34, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_icmee"]
+atlas = ExtResource("3_41x3w")
+region = Rect2(170, 0, 34, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oxqti"]
+atlas = ExtResource("3_41x3w")
+region = Rect2(204, 0, 34, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l3ubx"]
+atlas = ExtResource("3_41x3w")
+region = Rect2(238, 0, 34, 49)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_swvaw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eecoc")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ybn7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_51psr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0khsf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bhs0r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vpb5x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_icmee")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oxqti")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l3ubx")
+}],
+"loop": true,
+"name": &"Move",
+"speed": 14.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k7e3a"]
+
+[node name="Sausage" type="CharacterBody2D" groups=["Pizzaria", "Player Summon"]]
+z_index = 3
+scale = Vector2(1.5, 1.5)
+collision_layer = 16384
+collision_mask = 16385
+script = ExtResource("1_ovktc")
+pizza_seed = ExtResource("2_ovktc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(-1, 1)
+sprite_frames = SubResource("SpriteFrames_swvaw")
+animation = &"Idle"
+autoplay = "Idle"
+frame_progress = 0.685148
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.19209e-07, -1.19209e-07)
+shape = SubResource("CircleShape2D_k7e3a")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, 3.5)
+
+[node name="Hand" type="Sprite2D" parent="Marker2D" groups=["Summon"]]
+unique_name_in_owner = true
+position = Vector2(6, 0)
+
+[node name="Weapon Direction" type="Marker2D" parent="Marker2D"]
+position = Vector2(19, 0)
+
+[node name="Fire Rate" type="Timer" parent="."]
+one_shot = true
+
+[node name="Lifetime" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[node name="Shadow" type="Sprite2D" parent="."]
+z_index = -1
+z_as_relative = false
+position = Vector2(0, 23.3333)
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("4_3ybn7")
+
+[connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]

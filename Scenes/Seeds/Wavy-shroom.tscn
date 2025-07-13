@@ -10,7 +10,7 @@ size = Vector2(32, 52)
 [node name="Wavy-shroom" instance=ExtResource("1_m5t3e")]
 script = ExtResource("2_abo6d")
 BASE_DAMAGE = 12.0
-BASE_FIRE_RATE = 1.0
+BASE_FIRE_RATE = 0.667
 BASE_RANGE = 500.0
 BASE_SPEED = 100.0
 BASE_SIZE = 1.0

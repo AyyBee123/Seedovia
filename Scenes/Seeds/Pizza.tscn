@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://6cckbh1nidsx"]
+
+[ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_iu6j5"]
+[ext_resource type="Texture2D" uid="uid://gw5mqcsswqmt" path="res://Sprites/Seeds/Pizza.png" id="2_7yo7e"]
+[ext_resource type="Script" uid="uid://be4h3ook2gerl" path="res://Scripts/Seeds/pizza.gd" id="2_kmqcu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pfsul"]
+radius = 17.0294
+
+[node name="Pizza Disc" instance=ExtResource("1_iu6j5")]
+scale = Vector2(2, 2)
+texture = ExtResource("2_7yo7e")
+script = ExtResource("2_kmqcu")
+BASE_DAMAGE = 15.0
+BASE_FIRE_RATE = 0.5
+BASE_RANGE = 300.0
+BASE_SPEED = 300.0
+BASE_SIZE = 1.0
+BASE_BLAST_RADIUS = 1.0
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource("CircleShape2D_pfsul")
+
+[node name="Deceleration" type="Timer" parent="." index="3"]
+wait_time = 0.75
+one_shot = true
+
+[node name="Lifetime" type="Timer" parent="." index="4"]
+wait_time = 7.0
+one_shot = true
+
+[node name="Fire Rate" type="Timer" parent="." index="5"]
+one_shot = true
+
+[node name="Rotation Speed" type="Timer" parent="." index="6"]
+one_shot = true
+
+[connection signal="timeout" from="Deceleration" to="." method="_on_deceleration_timeout"]
+[connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]

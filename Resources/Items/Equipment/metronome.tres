@@ -13,6 +13,7 @@ item_name = "Metronome"
 texture = ExtResource("3_lx43y")
 description = "+20% Fire Rate
 
-Chance for you and your seeds to fire a random seed when firing a seed."
+3% chance to fire a 
+random seed upon firing a seed."
 unlocked = true
 metadata/_custom_type_script = "uid://n64xabrw5ic3"
