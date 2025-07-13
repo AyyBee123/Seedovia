@@ -12,6 +12,7 @@ var ach_09_shadeslash: Ach09ShadeSlash
 var ach_10_wavyshroom: Ach10WavyShroom
 var ach_11_metronome: Ach11Metronome
 var ach_12_pizzadisc: Ach12PizzaDisc
+var ach_13_whitechaos: Ach13WhiteChaos
 
 func _ready():
 	ach_01_die = Ach01Die.new()
@@ -38,3 +39,5 @@ func _ready():
 	add_child(ach_11_metronome)
 	ach_12_pizzadisc = Ach12PizzaDisc.new()
 	add_child(ach_12_pizzadisc)
+	ach_13_whitechaos = Ach13WhiteChaos.new()
+	add_child(ach_13_whitechaos)
