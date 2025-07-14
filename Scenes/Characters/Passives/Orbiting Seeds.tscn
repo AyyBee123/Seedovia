@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dje3ar3fp3reb"]
+
+[ext_resource type="Script" uid="uid://c2l6ogqbyd8ua" path="res://Scripts/Characters/Passives/orbiting_seeds.gd" id="1_kto8i"]
+
+[node name="Orbiting Seeds" type="Node"]
+script = ExtResource("1_kto8i")

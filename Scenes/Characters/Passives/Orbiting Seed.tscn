@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cdqyew0htr4c"]
+
+[ext_resource type="Script" uid="uid://ces4hmau6jovj" path="res://Scripts/Characters/Passives/orbiting_seed.gd" id="1_ggjkb"]
+
+[node name="Orbiting Seed" type="Node2D"]
+script = ExtResource("1_ggjkb")
+
+[node name="Fire Rate" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Fire Rate" to="." method="_on_fire_rate_timeout"]

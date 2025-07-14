@@ -83,7 +83,7 @@ func select_new_same_rarity(_item):
 	if pool == null:
 		return _item
 	_item = ResourceLoader.load(pool.pick_random())
-	while _item.rarity != rarity and not _item.unlocked:
+	while _item.rarity == rarity and not _item.unlocked:
 		_item = ResourceLoader.load(pool.pick_random())
 	return _item
 

@@ -23,9 +23,6 @@ func _ready():
 
 func get_passive():
 	var item = Pool.get_item(Pool.passive_pool)
-	if not item.unlocked:
-		get_passive()
-		return
 	return item
 
 func give_item(item):

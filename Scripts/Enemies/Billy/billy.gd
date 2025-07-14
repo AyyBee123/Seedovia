@@ -18,6 +18,7 @@ const SPREAD = PI/8
 var _can_move: bool = false: set = set_move
 var direction: Vector2
 var _jumping: bool
+var is_dead: bool
 
 func _ready():
 	super._ready()
@@ -52,6 +53,9 @@ func jump_finished():
 	_jumping = false
 
 func die():
+	if is_dead:
+		return
+	is_dead = true
 	$"Enemy Hitbox/CollisionPolygon2D".set_deferred("disabled", true)
 	$"Health Bar".visible = false
 	_state_machine.set_state(_state_machine.states.death)

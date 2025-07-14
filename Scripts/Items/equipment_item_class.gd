@@ -7,3 +7,6 @@ var category := "TALISMAN"
 var was_already_equipped := false # this is to not abuse getting healed each time the item is equipped
 var add_stats := false # this is to add the stats and item passives when the character starts with talismans
 var acc_weight: float
+
+func get_texture() -> Texture:
+	return texture

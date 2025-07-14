@@ -106,7 +106,6 @@ func _ready():
 	SeedManager.add_projectile(self)
 	_player_stats = player._player_stats
 	visible = false # avoid "jitter" on the very first frame
-	$Hitbox.set_collision_mask(collisions)
 	scale = scale * SIZE
 	direction = desired_direction.normalized()
 	if shader:

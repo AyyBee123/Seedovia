@@ -80,7 +80,7 @@ func stop():
 
 func shoot(seed):
 	var weapon_instance = seed.instantiate()
-	weapon_instance.initial_weapon = true
+	weapon_instance.initial_weapon = false
 	weapon_instance.previous_weapon = self
 	weapon_instance.source = self
 	weapon_instance.seed_slot_number = 1

@@ -33,6 +33,10 @@ func new_unlock(_unlock):
 		popup.get_node("%Sprite").texture = _unlock.get_texture()
 		popup.get_node("%Name").text = "New Character Unlocked"
 		popup.get_node("%Title").text = _unlock.character_name
+	elif _unlock is passive_class:
+		popup.get_node("%Sprite").texture = _unlock.get_texture()
+		popup.get_node("%Name").text = "New Passive Unlocked"
+		popup.get_node("%Title").text = _unlock.passive_name
 	else:
 		popup.get_node("%Sprite").texture = _unlock.get_texture()
 		popup.get_node("%Name").text = "New %s Unlocked" % _unlock.category

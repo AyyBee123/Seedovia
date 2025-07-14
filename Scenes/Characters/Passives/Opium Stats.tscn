@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cnra4087f5hte"]
+
+[ext_resource type="Script" uid="uid://bd4rtqgcut018" path="res://Scripts/Characters/Passives/opium_stats.gd" id="1_3wvov"]
+
+[node name="OpiumStats" type="Node"]
+script = ExtResource("1_3wvov")

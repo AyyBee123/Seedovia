@@ -2,7 +2,7 @@ extends Node
 
 @onready var player = preload("res://Scenes/Player/Player.tscn")
 
-const FIFTH_FLOOR = 5
+const FIFTH_FLOOR: int = 5
 
 var floor = ResourceLoader.load("res://Resources/Current Floor/floor.tres")
 var floor_number: int
@@ -24,6 +24,7 @@ var character_scene_file_path: String
 var shop_items_spawned: bool
 var elapsed_time: float
 var room_type: String
+var victory: bool
 
 # TODO: add character variable that gets the character scene add preloads it when choosing a character
 
@@ -41,13 +42,13 @@ func change_room(door):
 	elif door.text == "Boss": # room before the boss room (10th room)
 		next_room = Pool.get_item(Pool.boss_floors[floor_number])
 	elif room_number >= 12: # next floor after the boss room
-		if OS.has_feature("demo") and floor_number == 1:
-			get_tree().change_scene_to_file("res://Scenes/Misc/Wishlist.tscn")
-			return
 		change_floor()
 	else:
 		next_room = Pool.get_item(Pool.floors[floor_number])
 	get_tree().change_scene_to_packed(next_room)
+	if victory:
+		victory = false
+		return
 	doors_spawned = false
 	current_reward_given = false
 	entered_room = false
@@ -75,7 +76,11 @@ func change_floor():
 	items_on_ground.clear()
 	Pool.repopulate_weighted_pools()
 	SignalBus.entered_new_floor.emit(floor_number)
-	if floor_number >= FIFTH_FLOOR: # also check if floor 6 is unlocked when it's added
-		get_tree().change_scene_to_file("res://Scenes/UI/Victory Screen.tscn")
+	print(floor_number)
+	# load the victory screen if floor = floor 5
+	if floor_number == FIFTH_FLOOR: # also check if floor 6 is unlocked when it's added
+		next_room = ResourceLoader.load("res://Scenes/UI/Victory Screen.tscn")
+		victory = true
 		return
+	# load the next floor
 	next_room = ResourceLoader.load("res://Scenes/Levels/Special/Starting Room " + str(floor_number + 1) + ".tscn")

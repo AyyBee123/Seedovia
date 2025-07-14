@@ -1,0 +1,154 @@
+[gd_scene load_steps=20 format=3 uid="uid://bc48f70xrpkgg"]
+
+[ext_resource type="PackedScene" uid="uid://cu63rxmy71bcg" path="res://Scenes/Player/Player.tscn" id="1_1qcde"]
+[ext_resource type="Texture2D" uid="uid://o7txphmldst1" path="res://Sprites/Character/Opium/Opium2.png" id="2_1qcde"]
+[ext_resource type="Script" uid="uid://dmykrjtgqlku7" path="res://Scripts/Characters/opium.gd" id="2_ikel7"]
+[ext_resource type="Texture2D" uid="uid://c686nyyt1e4ph" path="res://Sprites/Character/Death.png" id="3_jnoq1"]
+[ext_resource type="Texture2D" uid="uid://cwa5d5p55qxu3" path="res://Sprites/Character/Opium/Opium3.png" id="4_ikel7"]
+[ext_resource type="Texture2D" uid="uid://ckm07xe1eauq2" path="res://Sprites/Character/Opium/Opium4.png" id="5_jnoq1"]
+[ext_resource type="Texture2D" uid="uid://e10s6crdgep1" path="res://Sprites/Character/Opium/Opium5.png" id="6_cstgg"]
+[ext_resource type="Texture2D" uid="uid://dnke3w3p87ibb" path="res://Sprites/Character/Opium/Opium6.png" id="7_dpp34"]
+[ext_resource type="Texture2D" uid="uid://itypoqpav34r" path="res://Sprites/Character/Opium/Opium7.png" id="8_yhj2w"]
+[ext_resource type="PackedScene" uid="uid://cnra4087f5hte" path="res://Scenes/Characters/Passives/Opium Stats.tscn" id="10_ikel7"]
+[ext_resource type="PackedScene" uid="uid://bqelkwce1mdqp" path="res://Scenes/Inventory/inventory.tscn" id="10_l2del"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s6pdc"]
+atlas = ExtResource("3_jnoq1")
+region = Rect2(0, 0, 26, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ae0e1"]
+atlas = ExtResource("3_jnoq1")
+region = Rect2(26, 0, 26, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4oa0i"]
+atlas = ExtResource("3_jnoq1")
+region = Rect2(52, 0, 26, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ph6bo"]
+atlas = ExtResource("3_jnoq1")
+region = Rect2(78, 0, 26, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pihy3"]
+atlas = ExtResource("3_jnoq1")
+region = Rect2(104, 0, 26, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3omib"]
+atlas = ExtResource("3_jnoq1")
+region = Rect2(130, 0, 26, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yfotw"]
+atlas = ExtResource("3_jnoq1")
+region = Rect2(156, 0, 26, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ckkwj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_1qcde")
+}],
+"loop": true,
+"name": &"Dash",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s6pdc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ae0e1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4oa0i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ph6bo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pihy3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3omib")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yfotw")
+}],
+"loop": false,
+"name": &"Die",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_1qcde")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ikel7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_jnoq1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_cstgg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_dpp34")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_yhj2w")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_1qcde")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ikel7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_jnoq1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_cstgg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_dpp34")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_yhj2w")
+}],
+"loop": true,
+"name": &"Move",
+"speed": 14.0
+}]
+
+[node name="Opium" instance=ExtResource("1_1qcde")]
+script = ExtResource("2_ikel7")
+
+[node name="Player Sprite" parent="." index="3"]
+sprite_frames = SubResource("SpriteFrames_ckkwj")
+animation = &"Idle"
+autoplay = "Idle"
+frame_progress = 0.507416
+
+[node name="Shadow" parent="." index="14"]
+position = Vector2(0, 16)
+scale = Vector2(0.5, 0.5)
+
+[node name="Stats" parent="." index="15" instance=ExtResource("10_ikel7")]
+
+[node name="CollisionShape2D" parent="Slow Detect" index="0"]
+disabled = true
+
+[node name="CollisionShape2D" parent="Ground Damage Detect" index="0"]
+disabled = true
+
+[node name="CollisionShape2D" parent="Slippery Detect" index="0"]
+disabled = true
+
+[node name="Inventory" parent="Inventory Canvas" index="0" instance=ExtResource("10_l2del")]
+offset_left = -632.0
+offset_top = -476.0
+offset_right = -476.0
+offset_bottom = -220.0

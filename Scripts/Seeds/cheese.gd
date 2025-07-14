@@ -107,22 +107,6 @@ func _collide(body):
 		if not body.get_parent().find_child(knockback_scene.name):
 			# add node to the enemy that gives velocity/position change and makes them take damage if they hit a wall
 			body.get_parent().add_child(knockback_scene)
-	elif body.is_in_group("Players"):
-		var knockback_angle = rotation + PI/2 * sign(angle_travelled)
-		var knockback_direction = Vector2.RIGHT.rotated(knockback_angle).normalized()
-		body._player_stats.take_damage(1)
-		if randi_range(1, 100) == 100: # 1 in 100 chance to play a bonk SFX
-			SfxDeconflicter.play(bonk_SFX)
-		else:
-			SfxDeconflicter.play(smack_SFX)
-		# add a node to the enemy that knocks them back when hit by the block of cheese
-		var knockback_scene = resource_preloader.get_resource("Knockback").instantiate()
-		knockback_scene.knockback_direction = knockback_direction
-		knockback_scene.knockback_speed = min(abs(angle_travelled) * 50, 1250)
-		knockback_scene.damage = 0
-		if not body.find_child(knockback_scene.name):
-			# add node to the enemy that gives velocity/position change and makes them take damage if they hit a wall
-			body.add_child(knockback_scene)
 
 func update_position(delta):
 	if not _was_previous_weapon:
