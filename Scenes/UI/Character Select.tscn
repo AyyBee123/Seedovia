@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://8lh64evv6imw"]
+[gd_scene load_steps=33 format=3 uid="uid://8lh64evv6imw"]
 
 [ext_resource type="Script" uid="uid://uybucfv2vxti" path="res://Scripts/UI/character_select.gd" id="1_jmjmr"]
 [ext_resource type="Texture2D" uid="uid://dwwsiyabyqc6l" path="res://Sprites/Menu UI/Soil Background.png" id="2_4vqgb"]
@@ -28,7 +28,9 @@
 [ext_resource type="Texture2D" uid="uid://chrtmh8xchoct" path="res://Sprites/Pause UI/Pause Menu Choice Disabled.png" id="22_ewud7"]
 [ext_resource type="Resource" uid="uid://dwrfrsw3ypvma" path="res://Resources/Characters/salvia.tres" id="22_hylud"]
 [ext_resource type="Texture2D" uid="uid://dx8dxbrx5ua06" path="res://Sprites/Character/Salvia/Salvia1.png" id="23_nqihi"]
+[ext_resource type="Resource" uid="uid://cp1vaaexvionn" path="res://Resources/Characters/opium.tres" id="26_0kve2"]
 [ext_resource type="Resource" uid="uid://b5kotn62lieol" path="res://Resources/Characters/pizza_man.tres" id="26_8dd2i"]
+[ext_resource type="Texture2D" uid="uid://ob7m6b8l7cn5" path="res://Sprites/Character/Opium/Opium1.png" id="27_fnoks"]
 [ext_resource type="Texture2D" uid="uid://bvpmyy87fn87v" path="res://Sprites/Character/Pizza Man/Pizza Man1.png" id="27_h8twm"]
 
 [node name="Character Select" type="Control"]
@@ -263,6 +265,34 @@ mouse_filter = 2
 layout_mode = 2
 mouse_filter = 2
 texture = ExtResource("23_nqihi")
+stretch_mode = 5
+
+[node name="Character 8" type="TextureButton" parent="Characters"]
+custom_minimum_size = Vector2(192, 192)
+layout_mode = 2
+texture_normal = ExtResource("7_2sg52")
+texture_pressed = ExtResource("8_snfop")
+texture_hover = ExtResource("9_ewud7")
+texture_disabled = ExtResource("8_dew5b")
+texture_focused = ExtResource("12_nqihi")
+stretch_mode = 0
+script = ExtResource("3_alya1")
+starting_character = ExtResource("26_0kve2")
+character_scene = "res://Scenes/Characters/Opium.tscn"
+unlock_method = "temp"
+
+[node name="MarginContainer" type="MarginContainer" parent="Characters/Character 8"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 6.0
+offset_right = 178.0
+offset_bottom = 178.0
+mouse_filter = 2
+
+[node name="Character" type="TextureRect" parent="Characters/Character 8/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("27_fnoks")
 stretch_mode = 5
 
 [node name="Character 7" type="TextureButton" parent="Characters"]
@@ -617,5 +647,6 @@ autostart = true
 [connection signal="pressed" from="Characters/Character 4" to="Characters/Character 4" method="_on_pressed"]
 [connection signal="pressed" from="Characters/Character 5" to="Characters/Character 5" method="_on_pressed"]
 [connection signal="pressed" from="Characters/Character 6" to="Characters/Character 6" method="_on_pressed"]
+[connection signal="pressed" from="Characters/Character 8" to="Characters/Character 8" method="_on_pressed"]
 [connection signal="pressed" from="Characters/Character 7" to="Characters/Character 7" method="_on_pressed"]
 [connection signal="pressed" from="Play Button" to="." method="_on_play_button_pressed"]

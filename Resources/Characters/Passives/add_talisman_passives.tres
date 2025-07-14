@@ -10,5 +10,5 @@ passive_name = "Add Talisman Passives"
 sprite = ExtResource("3_3p0fq")
 description = "-"
 passive_ability = ExtResource("1_xb4wx")
-unlocked = true
+unlocked = false
 metadata/_custom_type_script = "uid://yr5gdtdbvmoc"

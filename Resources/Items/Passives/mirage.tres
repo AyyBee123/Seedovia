@@ -10,5 +10,5 @@ passive_name = "Mirage"
 sprite = ExtResource("2_05wst")
 description = "Create 2 copies of yourself that shoot when you do. They each deal 25% of your damage."
 passive_ability = ExtResource("1_bm44d")
-unlocked = true
+unlocked = false
 metadata/_custom_type_script = "uid://yr5gdtdbvmoc"

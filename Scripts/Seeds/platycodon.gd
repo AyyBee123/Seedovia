@@ -52,6 +52,15 @@ func update_position(delta):
 			global_position = enemy.global_position - distance_to_enemy
 		scale += Vector2.ONE * delta
 
+func travelled_distance():
+	if is_stuck:
+		return
+	distance_travelled = starting_position.distance_to(global_position)
+	total_distance += distance_travelled
+	starting_position = global_position
+	if total_distance >= RANGE:
+		destroy()
+
 func explode():
 	var explosion = NON_WEAPON_EFFECT_EXPLOSION.instantiate()
 	if get_node_or_null("Passives"):

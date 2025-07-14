@@ -303,8 +303,6 @@ func update_timers():
 	dash_cooldown.wait_time = _player_stats.get_stat("Dash_Rate")
 	dash_invulnerability_time.wait_time = _player_stats.get_stat("Dash_Invulnerability")
 
-
-
 func took_damage(amount):
 	if amount == 0 or not can_be_damaged:
 		return

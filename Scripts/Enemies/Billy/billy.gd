@@ -52,7 +52,7 @@ func jump_finished():
 	_jumping = false
 
 func die():
-	$"Enemy Hitbox/CollisionPolygon2D".disabled = true
+	$"Enemy Hitbox/CollisionPolygon2D".set_deferred("disabled", true)
 	$"Health Bar".visible = false
 	_state_machine.set_state(_state_machine.states.death)
 

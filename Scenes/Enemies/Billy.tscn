@@ -267,8 +267,8 @@ libraries = {
 speed_scale = 1.25
 
 [node name="Health Bar" parent="." index="4"]
-offset_top = -60.0
-offset_bottom = -52.0
+offset_top = -90.0
+offset_bottom = -82.0
 
 [node name="state_machine" type="Node" parent="." index="6"]
 script = ExtResource("5_kqjgc")

@@ -8,7 +8,7 @@
 script = ExtResource("1_5d8ks")
 passive_name = "Circle of Seeds"
 sprite = ExtResource("2_xcuj8")
-description = "Creates a copy of your seeds that orbit around the you and shoot at nearby enemies. Shots have 50% damage and size."
+description = "Creates a copy of your seeds that orbit around you and shoot at nearby enemies. Shots have 50% damage and size."
 passive_ability = ExtResource("1_8xul3")
-unlocked = true
+unlocked = false
 metadata/_custom_type_script = "uid://yr5gdtdbvmoc"

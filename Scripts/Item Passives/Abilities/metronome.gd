@@ -41,6 +41,6 @@ func trigger(weapon = null):
 	seed_instance.slot_index = 3 # to not fire any other seeds
 	seed_instance.add_to_group("Metronome Seed")
 	get_tree().current_scene.add_child.call_deferred(seed_instance)
-	source.weapon_fired.emit(seed_instance)
 	await get_tree().physics_frame # in case the seed still needs to set its position
+	source.weapon_fired.emit(seed_instance)
 	seed_instance.global_position = source.next_weapon_pos

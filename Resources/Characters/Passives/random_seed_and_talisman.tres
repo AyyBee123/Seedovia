@@ -10,5 +10,5 @@ passive_name = "Random Seed & Talisman"
 sprite = ExtResource("3_y6ecs")
 description = "Grants a random seed and a random talisman at the start of the run."
 passive_ability = ExtResource("1_0eftk")
-unlocked = true
+unlocked = false
 metadata/_custom_type_script = "uid://yr5gdtdbvmoc"

@@ -15,5 +15,5 @@ description = "+20% Fire Rate
 
 3% chance to fire a 
 random seed upon firing a seed."
-unlocked = true
+unlocked = false
 metadata/_custom_type_script = "uid://n64xabrw5ic3"

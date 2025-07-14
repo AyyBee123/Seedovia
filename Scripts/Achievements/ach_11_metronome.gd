@@ -11,7 +11,7 @@ func _ready():
 		SignalBus.entered_new_floor.connect(_on_entered_new_floor)
 
 func _on_entered_new_floor(number):
-	if LevelList.floor_number == 4 and PlayerCharacter.starting_character.character_name == "?" \
+	if LevelList.floor_number == 5 and PlayerCharacter.starting_character.character_name == "?" \
 			and get_progress() >= get_progress_goal() and not completed:
 		completed = true
 		SignalBus.achievement.emit(self)

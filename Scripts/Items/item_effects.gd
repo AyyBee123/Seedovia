@@ -45,7 +45,7 @@ func select_new_rarity_item(_item, _rarity):
 		pool = Pool.talisman_list
 	if pool == null:
 		return _item
-	while _item.rarity != _rarity:
+	while _item.rarity != _rarity and not _item.unlocked:
 		_item = ResourceLoader.load(pool.pick_random())
 	return _item
 
@@ -83,7 +83,7 @@ func select_new_same_rarity(_item):
 	if pool == null:
 		return _item
 	_item = ResourceLoader.load(pool.pick_random())
-	while _item.rarity != rarity:
+	while _item.rarity != rarity and not _item.unlocked:
 		_item = ResourceLoader.load(pool.pick_random())
 	return _item
 

@@ -25,6 +25,9 @@ var SPEED: float = 600
 var ACCELERATION: float = 0.075
 var FRICTION: float = 0.05
 
+func _ready():
+	player = Targets.get_player()
+
 func _physics_process(delta):
 	# orbit around the player
 	var speed = 2
@@ -37,6 +40,9 @@ func _physics_process(delta):
 	targeted_enemy = get_nearest_enemy()
 	
 	if fire_rate.is_stopped() and targeted_enemy and global_position.distance_to(targeted_enemy.global_position) <= RANGE:
+		if scene == null:
+			fire_rate.start(0.1)
+			return
 		var seed = scene.instantiate()
 		weapon_direction = global_position.direction_to(targeted_enemy.global_position)
 		seed.initial_weapon = true

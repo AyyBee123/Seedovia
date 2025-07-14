@@ -12,4 +12,4 @@ item_name = "Heart-Shaped Rose"
 texture = ExtResource("2_dbwj5")
 description = "2x Max Health
 +1 Max Health"
-unlocked = true
+unlocked = false

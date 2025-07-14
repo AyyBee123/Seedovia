@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="character_class" load_steps=8 format=3 uid="uid://b5kotn62lieol"]
+[gd_resource type="Resource" script_class="character_class" load_steps=9 format=3 uid="uid://b5kotn62lieol"]
 
 [ext_resource type="Texture2D" uid="uid://bvpmyy87fn87v" path="res://Sprites/Character/Pizza Man/Pizza Man1.png" id="1_usxxm"]
 [ext_resource type="Script" uid="uid://duh3qswkvpbi5" path="res://Scripts/Characters/character_class.gd" id="2_gpps1"]
 [ext_resource type="Script" uid="uid://cgysrio745xbn" path="res://Scripts/Items/item_class.gd" id="3_x121p"]
+[ext_resource type="Resource" uid="uid://yy2xmtqiujt7" path="res://Resources/Items/Passives/pizzaria.tres" id="5_f3ekg"]
 [ext_resource type="Script" uid="uid://yr5gdtdbvmoc" path="res://Scripts/Passives/Classes/passive_class.gd" id="5_fgbfn"]
 [ext_resource type="Script" uid="uid://c6ykhgvfkht5x" path="res://Scripts/Stats/seed_stats.gd" id="6_d6j37"]
 [ext_resource type="Resource" uid="uid://i7hc156qnuet" path="res://Resources/Items/Seeds/pizza_components.tres" id="6_usxxm"]
@@ -15,7 +16,7 @@ character_sprite = ExtResource("1_usxxm")
 starting_inventory = Array[ExtResource("3_x121p")]([])
 starting_talismans = Array[ExtResource("8_4f731")]([])
 starting_seeds = Array[ExtResource("6_d6j37")]([ExtResource("6_usxxm")])
-starting_passives = Array[ExtResource("5_fgbfn")]([])
+starting_passives = Array[ExtResource("5_fgbfn")]([ExtResource("5_f3ekg")])
 starting_coins = 0
 unlocked = false
 hidden = true
