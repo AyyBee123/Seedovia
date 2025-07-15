@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("1_flm65")
 scene = ExtResource("1_g848j")
-rarity = 1
+rarity = 2
 item_name = "Pizza Disc"
 texture = ExtResource("3_04vkk")
 description = ""
