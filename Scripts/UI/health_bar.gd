@@ -8,6 +8,7 @@ extends TextureProgressBar
 
 var health: float = 0 : set = set_health
 var pos
+var hide: bool # called from the enemy script to force the health bar to be hidden
 
 func _ready():
 	scale = Vector2.ONE / get_parent().scale * 2 # keep the health bar size consistant across all enemies
@@ -19,6 +20,9 @@ func _process(delta):
 	show_bar()
 
 func show_bar():
+	if hide:
+		visible = false
+		return
 	visible = Global.settings.show_damage_numbers # toggle visibility based on the health bar setting
 
 func set_health(new_health):
