@@ -1,0 +1,80 @@
+[gd_scene load_steps=11 format=3 uid="uid://bgq6nvhmxp6x1"]
+
+[ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_qcfhh"]
+[ext_resource type="Texture2D" uid="uid://dn4nt8ew3l0o4" path="res://Sprites/Seeds/Shrub Bush.png" id="2_l0wen"]
+[ext_resource type="Script" uid="uid://crktt553ucqpy" path="res://Scripts/Seeds/shrub_bush.gd" id="3_l0wen"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l0wen"]
+atlas = ExtResource("2_l0wen")
+region = Rect2(48, 0, 16, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u1bip"]
+atlas = ExtResource("2_l0wen")
+region = Rect2(0, 0, 16, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_37n7w"]
+atlas = ExtResource("2_l0wen")
+region = Rect2(16, 0, 16, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3dnr5"]
+atlas = ExtResource("2_l0wen")
+region = Rect2(32, 0, 16, 44)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yv7kh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l0wen")
+}],
+"loop": true,
+"name": &"Default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u1bip")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_37n7w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3dnr5")
+}],
+"loop": false,
+"name": &"Deflect",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u1bip"]
+size = Vector2(8, 36)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l0wen"]
+size = Vector2(10, 38)
+
+[node name="Shrub Bush" instance=ExtResource("1_qcfhh")]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("3_l0wen")
+BASE_DAMAGE = 9.0
+BASE_FIRE_RATE = 3.0
+BASE_RANGE = 400.0
+BASE_SPEED = 150.0
+BASE_SIZE = 1.1
+BASE_BLAST_RADIUS = 1.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_yv7kh")
+animation = &"Default"
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource("RectangleShape2D_u1bip")
+
+[node name="Bullet Hitbox" type="Area2D" parent="." index="4"]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bullet Hitbox" index="0"]
+position = Vector2(0, -3.17891e-07)
+shape = SubResource("RectangleShape2D_l0wen")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="area_entered" from="Bullet Hitbox" to="." method="_on_bullet_hitbox_area_entered"]

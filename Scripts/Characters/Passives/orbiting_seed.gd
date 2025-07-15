@@ -4,7 +4,7 @@ extends Node2D
 
 const RADIUS = 65
 const RADIUS_MULTIPLIER = 3
-const SPEED_MULTIPLIER = 1.5
+const SPEED_MULTIPLIER = 2
 var LERP_AMOUNT = 0.05
 
 var seed
@@ -46,8 +46,7 @@ func _physics_process(delta):
 		if "lifetime" in weapon_instance:
 			weapon_instance.lifetime.start()
 		weapon_instance.global_position = global_position
-		weapon_instance.desired_direction = player.global_position.direction_to(global_position)
-		weapon_instance.look_at(global_position + weapon_instance.desired_direction)
+		weapon_instance.direction = player.global_position.direction_to(global_position)
 	else:
 		if fire_rate.is_stopped():
 			fire_rate.start(1.0 / max(FIRE_RATE, 1))
@@ -79,6 +78,8 @@ func set_item():
 	weapon_instance.source = player
 	FIRE_RATE = weapon_instance.FIRE_RATE
 	SPEED = weapon_instance.SPEED / 100.0
+	if weapon_instance.has_method("shrub_bush"):
+		SPEED = weapon_instance.SPEED / 50.0
 	get_tree().current_scene.add_child(weapon_instance)
 	weapon_instance.global_position = global_position
 

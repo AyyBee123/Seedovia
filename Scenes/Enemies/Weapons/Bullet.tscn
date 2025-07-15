@@ -7,13 +7,13 @@
 resource_local_to_scene = true
 radius = 9.0
 
-[node name="Bullet" type="Sprite2D" groups=["Enemy Weapon"]]
+[node name="Bullet" type="Sprite2D" groups=["Enemy Projectile", "Enemy Weapon"]]
 z_index = 4
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_u24ko")
 script = ExtResource("1_v1qs5")
 
-[node name="Bullet Hitbox" type="Area2D" parent="."]
+[node name="Bullet Hitbox" type="Area2D" parent="." groups=["Enemy Projectile"]]
 collision_layer = 16
 collision_mask = 3
 

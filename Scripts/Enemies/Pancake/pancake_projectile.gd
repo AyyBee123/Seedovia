@@ -72,9 +72,12 @@ func return_pancake():
 	returned = true
 
 func destroy():
-	source.projectile_count += 1
 	queue_free()
 
 func _on_pancake_detect_area_entered(area):
 	if returned and area.get_parent() == source:
 		destroy()
+
+func _exit_tree():
+	if source:
+		source.projectile_count += 1

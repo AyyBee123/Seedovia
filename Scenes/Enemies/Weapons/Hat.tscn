@@ -12,7 +12,7 @@ y_sort_enabled = true
 texture = ExtResource("1_umftc")
 script = ExtResource("2_yowre")
 
-[node name="Bullet Hitbox" type="Area2D" parent="."]
+[node name="Bullet Hitbox" type="Area2D" parent="." groups=["Enemy Projectile"]]
 collision_layer = 16
 collision_mask = 2
 

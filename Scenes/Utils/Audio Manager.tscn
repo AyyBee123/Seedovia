@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://usetxd7ii511"]
+[gd_scene load_steps=48 format=3 uid="uid://usetxd7ii511"]
 
 [ext_resource type="Script" uid="uid://boo1w2wkkk0xk" path="res://Scripts/Utils/audio_manager.gd" id="1_bpx0j"]
 [ext_resource type="AudioStream" uid="uid://bpk6gao5jcjkq" path="res://Audio/SFX/Hit.mp3" id="1_qnkjs"]
@@ -46,6 +46,7 @@
 [ext_resource type="AudioStream" uid="uid://bbbyt5s82anlc" path="res://Audio/SFX/Light Beam.mp3" id="43_dy1yg"]
 [ext_resource type="AudioStream" uid="uid://d32siogok0rhg" path="res://Audio/SFX/Slash.mp3" id="44_43mhl"]
 [ext_resource type="AudioStream" uid="uid://cgh0gagp6lrj" path="res://Audio/SFX/Slash2.mp3" id="46_kwqkp"]
+[ext_resource type="AudioStream" uid="uid://bvvorvktbr0qx" path="res://Audio/SFX/Ding.mp3" id="47_fn42b"]
 
 [node name="Audio Manager" type="Node"]
 script = ExtResource("1_bpx0j")
@@ -527,4 +528,9 @@ bus = &"SFX"
 stream = ExtResource("10_yvn0e")
 volume_db = -20.0
 pitch_scale = 0.75
+bus = &"SFX"
+
+[node name="Ding" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("47_fn42b")
+pitch_scale = 1.1
 bus = &"SFX"

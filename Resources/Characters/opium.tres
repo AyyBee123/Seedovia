@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://c6ykhgvfkht5x" path="res://Scripts/Stats/seed_stats.gd" id="4_26056"]
 [ext_resource type="Script" uid="uid://n64xabrw5ic3" path="res://Scripts/Items/equipment_item_class.gd" id="5_0f461"]
 [ext_resource type="Resource" uid="uid://c6b4rud654ixm" path="res://Resources/Characters/Passives/orbiting_seeds.tres" id="5_26056"]
-[ext_resource type="Resource" uid="uid://cuy80aorwngdg" path="res://Resources/Items/Seeds/pea.tres" id="6_26056"]
+[ext_resource type="Resource" uid="uid://d3etrg327pmoe" path="res://Resources/Items/Seeds/shrub_bush.tres" id="7_26056"]
 
 [resource]
 script = ExtResource("1_y5pcj")
@@ -15,7 +15,7 @@ character_name = "Opium"
 character_sprite = ExtResource("1_k1oir")
 starting_inventory = Array[ExtResource("2_5xhqs")]([])
 starting_talismans = Array[ExtResource("5_0f461")]([])
-starting_seeds = Array[ExtResource("4_26056")]([ExtResource("6_26056")])
+starting_seeds = Array[ExtResource("4_26056")]([ExtResource("7_26056")])
 starting_passives = Array[ExtResource("3_k1oir")]([ExtResource("5_26056")])
 starting_coins = 3
 unlocked = false
