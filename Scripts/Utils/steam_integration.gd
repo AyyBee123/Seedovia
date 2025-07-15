@@ -35,17 +35,13 @@ func set_ach(ach: String):
 	else:
 		print("Failed to store stats")
 
-func set_progress(ach: String, value):
+func set_progress(stat: String, value):
 	if not steam_ready:
 		print("Steam not initialized!")
 		return
+	if Steam.setStatInt(stat, value):
+		print("Set int stat ", stat, "to ", value)
 	
-	if typeof(value) == TYPE_INT:
-		if Steam.setStatInt(ach, value):
-			print("Set int stat", ach, "to", value)
-	elif typeof(value) == TYPE_FLOAT:
-		if Steam.setStatFloat(ach, value):
-			print("Set float stat", ach, "to", value)
 	if Steam.storeStats():
 		print("Stats stored to Steam")
 	else:

@@ -14,7 +14,7 @@ func _on_item_sold(amount):
 	progress += 1
 	
 	# update steam progress
-	SteamIntegration.set_progress("ACH_SELL", progress)
+	SteamIntegration.set_progress("STAT_PROGRESS", progress)
 	
 	if get_progress() >= get_progress_goal() and not completed:
 		completed = true
