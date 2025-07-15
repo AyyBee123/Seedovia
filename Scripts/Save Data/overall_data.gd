@@ -35,6 +35,10 @@ class_name overall_data extends Resource
 @export var ach_12_progress: float
 @export var ach_13_whitechaos: bool
 @export var ach_13_progress: float
+@export var ach_14_sell: bool
+@export var ach_14_progress: float
+@export var ach_15_circleofseeds: bool
+@export var ach_15_progress: float
 
 func get_save_selection_data():
 	last_played = SelectionSaveData.last_played
@@ -85,6 +89,10 @@ func get_achievements():
 	ach_12_progress = Game.achievement_handler.ach_12_pizzadisc.get_progress()
 	ach_13_whitechaos = Game.achievement_handler.ach_13_whitechaos.completed
 	ach_13_progress = Game.achievement_handler.ach_13_whitechaos.get_progress()
+	ach_14_sell = Game.achievement_handler.ach_14_sell.completed
+	ach_14_progress = Game.achievement_handler.ach_14_sell.get_progress()
+	ach_15_circleofseeds = Game.achievement_handler.ach_15_circleofseeds.completed
+	ach_15_progress = Game.achievement_handler.ach_15_circleofseeds.get_progress()
 
 func set_achievements():
 	Game.achievement_handler.ach_01_die.completed = ach_01_die
@@ -117,6 +125,10 @@ func set_achievements():
 	Game.achievement_handler.ach_12_pizzadisc.set_progress(ach_12_progress)
 	Game.achievement_handler.ach_13_whitechaos.completed = ach_13_whitechaos
 	Game.achievement_handler.ach_13_whitechaos.set_progress(ach_13_progress)
+	Game.achievement_handler.ach_14_sell.completed = ach_14_sell
+	Game.achievement_handler.ach_14_sell.set_progress(ach_14_progress)
+	Game.achievement_handler.ach_15_circleofseeds.completed = ach_15_circleofseeds
+	Game.achievement_handler.ach_15_circleofseeds.set_progress(ach_15_progress)
 
 func reset_achievements():
 	ach_01_die = false
@@ -145,6 +157,10 @@ func reset_achievements():
 	ach_12_progress = 0
 	ach_13_whitechaos = false
 	ach_13_progress = 0
+	ach_14_sell = false
+	ach_14_progress = 0
+	ach_15_circleofseeds = false
+	ach_15_progress = 0
 
 func get_achievement(_ach):
 	return _ach

@@ -279,7 +279,7 @@ stretch_mode = 0
 script = ExtResource("3_alya1")
 starting_character = ExtResource("26_0kve2")
 character_scene = "res://Scenes/Characters/Opium.tscn"
-unlock_method = "temp"
+unlock_method = "Sell 30 items."
 
 [node name="MarginContainer" type="MarginContainer" parent="Characters/Character 8"]
 layout_mode = 0

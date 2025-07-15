@@ -31,7 +31,7 @@ func explode():
 	var splash = SPLASH.instantiate()
 	splash.size = 0.3 * SIZE
 	splash.source = self
-	splash.modulate = Color("7d29a7")
+	splash.modulate = Color("59a029")
 	call_deferred("create_child", splash)
 
 func create_child(child):

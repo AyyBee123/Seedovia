@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="passive_class" load_steps=4 format=3 uid="uid://byw0ue7pok7en"]
+
+[ext_resource type="PackedScene" uid="uid://bffhaxwlnobvw" path="res://Scenes/Passives/Abilities/Mirage.tscn" id="1_ahj48"]
+[ext_resource type="Script" uid="uid://yr5gdtdbvmoc" path="res://Scripts/Passives/Classes/passive_class.gd" id="2_ihtsj"]
+[ext_resource type="Texture2D" uid="uid://mka64qt3mhk6" path="res://Sprites/Passives/Icons/Mirage.png" id="3_41eii"]
+
+[resource]
+script = ExtResource("2_ihtsj")
+passive_name = "Mirage+"
+sprite = ExtResource("3_41eii")
+description = "Create 4 copies of yourself that shoot when you do. They each deal 25% of your damage."
+passive_ability = ExtResource("1_ahj48")
+unlocked = false
+metadata/_custom_type_script = "uid://yr5gdtdbvmoc"

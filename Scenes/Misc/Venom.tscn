@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://q2e8dw7jy7h4"]
 
 [ext_resource type="Texture2D" uid="uid://daraasvosya4s" path="res://Sprites/Enemies/Effects/Venom.png" id="1_ok20a"]
-[ext_resource type="Shader" uid="uid://tj8i4sicc61c" path="res://Scenes/Misc/color_shift.gdshader" id="1_vkum0"]
+[ext_resource type="Shader" uid="uid://tj8i4sicc61c" path="res://Shaders/color_shift.gdshader" id="1_vkum0"]
 [ext_resource type="Script" uid="uid://f1xqct7jv8ex" path="res://Scripts/Enemies/Weapons/liquid.gd" id="3_04rjw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a3gui"]

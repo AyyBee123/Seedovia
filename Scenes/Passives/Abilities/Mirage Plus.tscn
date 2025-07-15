@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dpfckftkh2ppg"]
+
+[ext_resource type="Script" uid="uid://bx7esi603crtd" path="res://Scripts/Passives/Abilities/mirage_plus.gd" id="1_8b5i7"]
+
+[node name="Mirage Plus" type="Node"]
+script = ExtResource("1_8b5i7")

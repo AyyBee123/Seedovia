@@ -13,6 +13,8 @@ var ach_10_wavyshroom: Ach10WavyShroom
 var ach_11_metronome: Ach11Metronome
 var ach_12_pizzadisc: Ach12PizzaDisc
 var ach_13_whitechaos: Ach13WhiteChaos
+var ach_14_sell: Ach14Sell
+var ach_15_circleofseeds: Ach15CircleOfSeeds
 
 func _ready():
 	ach_01_die = Ach01Die.new()
@@ -41,3 +43,7 @@ func _ready():
 	add_child(ach_12_pizzadisc)
 	ach_13_whitechaos = Ach13WhiteChaos.new()
 	add_child(ach_13_whitechaos)
+	ach_14_sell = Ach14Sell.new()
+	add_child(ach_14_sell)
+	ach_15_circleofseeds = Ach15CircleOfSeeds.new()
+	add_child(ach_15_circleofseeds)

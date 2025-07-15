@@ -1,11 +1,13 @@
-[gd_resource type="Resource" script_class="passive_class" load_steps=3 format=3 uid="uid://c6b4rud654ixm"]
+[gd_resource type="Resource" script_class="passive_class" load_steps=4 format=3 uid="uid://c6b4rud654ixm"]
 
 [ext_resource type="Script" uid="uid://yr5gdtdbvmoc" path="res://Scripts/Passives/Classes/passive_class.gd" id="1_r0bfp"]
 [ext_resource type="PackedScene" uid="uid://dje3ar3fp3reb" path="res://Scenes/Characters/Passives/Orbiting Seeds.tscn" id="1_rxq57"]
+[ext_resource type="Texture2D" uid="uid://x57kwpj3btw" path="res://Sprites/Passives/Icons/Orbiting Seeds.png" id="3_3f217"]
 
 [resource]
 script = ExtResource("1_r0bfp")
 passive_name = "Orbiting Seeds"
+sprite = ExtResource("3_3f217")
 description = "Cannot directly shoot seeds. 3 of your first seed orbit around you. Hold the fire button to expand the radius."
 passive_ability = ExtResource("1_rxq57")
 unlocked = false

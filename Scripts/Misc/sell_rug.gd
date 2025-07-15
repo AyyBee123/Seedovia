@@ -32,6 +32,7 @@ func sell_item(item):
 	get_tree().current_scene.add_child(sell)
 	sell.global_position = player.global_position
 	sell.set_and_animate_price(price * SELL_VALUE_MULTIPLIER)
+	SignalBus.item_sold.emit(price * SELL_VALUE_MULTIPLIER)
 	
 	for i in 8:
 		player.spawn_sparkle(Color("edb800"))
