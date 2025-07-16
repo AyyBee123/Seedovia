@@ -100,6 +100,8 @@ func set_spawned_item(_seed):
 
 func _on_fire_rate_timeout():
 	set_item()
+	if not seed: # prevent the weapon_fired signal from triggering if there are no seeds
+		return
 	player.weapon_fired.emit(weapon_instance)
 	if player == Targets.get_player():
 		player.seed_fired.emit(weapon_instance)

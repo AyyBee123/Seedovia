@@ -10,12 +10,15 @@ var offset: Vector2
 func _ready():
 	randomize()
 	weapon_instance = get_parent()
-	if orbital.weapon_instance:
+	if orbital.weapon_instance != weapon_instance:
 		offset = Vector2(randf_range(-1, 1), randf_range(-1, 1)) * MAX_OFFSET
 	
 	SignalBus.inventory_item_moved.connect(weapon_instance.destroy)
 
 func _physics_process(delta):
+	if not orbital:
+		weapon_instance.destroy()
+		return
 	if not weapon_instance.is_in_group("Seed"):
 		return
 	# give the seed infinite range and lifetime
