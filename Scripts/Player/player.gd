@@ -384,6 +384,7 @@ func _on_pickup(_item):
 	_item.queue_free()
 	await get_tree().process_frame
 	ItemCheck.check_for_pickup_items()
+	SignalBus.inventory_changed.emit()
 	await get_tree().create_timer(0.5).timeout
 	Global.save_run_data()
 	Global.save_run_room()

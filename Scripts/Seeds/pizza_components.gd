@@ -22,6 +22,7 @@ func _ready():
 func shoot_seed():
 	var seed = components.pick_random().instantiate()
 	set_weapon_properties(seed, desired_direction, ignore_first_collision, hit_enemy)
+	seed_spawned.emit(seed)
 	destroy()
 
 func set_weapon_properties(weapon, _desired_direction, _ignore_first_collision = false, _enemy = null):

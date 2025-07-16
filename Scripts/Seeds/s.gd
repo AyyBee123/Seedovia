@@ -72,7 +72,9 @@ func _on_fire_delay_timeout():
 		origin_point = previous_weapon.global_position
 	if dir.is_equal_approx(Vector2.ZERO):
 		dir = direction
-	shoot_current_seed(letters[letter_list[current_letter]].instantiate(), dir, origin_point)
+	var weapon = letters[letter_list[current_letter]].instantiate()
+	shoot_current_seed(weapon, dir, origin_point)
+	seed_spawned.emit(weapon)
 
 func shoot_current_seed(instantiated_weapon, _desired_direction = desired_direction, pos = global_position):
 	instantiated_weapon.current_letter = current_letter + 1

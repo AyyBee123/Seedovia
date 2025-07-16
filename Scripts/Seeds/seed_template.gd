@@ -2,6 +2,7 @@ extends Sprite2D
 
 signal weapon_fired(weapon) # signal for firing the next seed
 signal has_collided(object) # signal for colliding with an enemy or wall
+signal seed_spawned(seed) # to trigger passives that need the spawned seed (ex: orbiting seeds)
 
 @onready var player = Targets.get_player()
 var _player_stats

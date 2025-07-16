@@ -22,7 +22,9 @@ func _ready():
 		await get_tree().physics_frame
 		var number_of_grapes = randi_range(5, 7)
 		for i in number_of_grapes:
-			shoot_current_seed(GRAPE.instantiate())
+			var weapon = GRAPE.instantiate()
+			shoot_current_seed(weapon)
+			seed_spawned.emit(weapon)
 
 func shoot_current_seed(instantiated_weapon, _desired_direction = desired_direction, pos = global_position):
 	instantiated_weapon._spawn_more_grapes = false

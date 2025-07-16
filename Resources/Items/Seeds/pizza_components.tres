@@ -10,6 +10,6 @@ scene = ExtResource("1_vgm0p")
 rarity = 2
 item_name = "Pizza Components"
 texture = ExtResource("3_7sju6")
-description = "Shoots 1 of 5 Pizza Components."
+description = "Shoots 1 of 5 Pizza Components at random."
 unlocked = false
 metadata/_custom_type_script = "uid://c6ykhgvfkht5x"

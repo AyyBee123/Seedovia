@@ -137,7 +137,9 @@ func _on_fire_delay_timeout():
 	else:
 		pos = origin_point
 	if spore_amount_spawned < SPORE_AMOUNT:
-		shoot_current_seed(SPORE.instantiate(), desired_direction, pos)
+		var weapon = SPORE.instantiate()
+		shoot_current_seed(weapon, desired_direction, pos)
+		seed_spawned.emit(weapon)
 
 func _on_homing_time_timeout():
 	is_homing = false

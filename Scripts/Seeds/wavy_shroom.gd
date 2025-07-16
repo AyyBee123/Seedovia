@@ -58,6 +58,7 @@ func _collide(body):
 func _on_spawn_delay_timeout():
 	if shroom_number < NUMBER_OF_SHROOMS:
 		shoot_current_seed(WAVY_SHROOM.instantiate(), desired_direction, pos)
+		seed_spawned.emit(seed)
 
 func shoot_current_seed(instantiated_weapon, _desired_direction = desired_direction, pos = global_position):
 	weapon_direction = _desired_direction

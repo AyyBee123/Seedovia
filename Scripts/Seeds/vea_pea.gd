@@ -15,6 +15,7 @@ func shoot_seed(_pos: Vector2):
 	var seed = PEA.instantiate()
 	pos = _pos
 	set_weapon_properties(seed, desired_direction, ignore_first_collision, hit_enemy)
+	seed_spawned.emit(seed)
 
 func set_weapon_properties(weapon, _desired_direction, _ignore_first_collision = false, _enemy = null):
 	weapon.initial_weapon = false

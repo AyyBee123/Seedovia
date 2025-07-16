@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="character_class" load_steps=9 format=3 uid="uid://cp1vaaexvionn"]
+[gd_resource type="Resource" script_class="character_class" load_steps=11 format=3 uid="uid://cp1vaaexvionn"]
 
 [ext_resource type="Texture2D" uid="uid://ob7m6b8l7cn5" path="res://Sprites/Character/Opium/Opium1.png" id="1_k1oir"]
 [ext_resource type="Script" uid="uid://duh3qswkvpbi5" path="res://Scripts/Characters/character_class.gd" id="1_y5pcj"]
@@ -7,7 +7,9 @@
 [ext_resource type="Script" uid="uid://c6ykhgvfkht5x" path="res://Scripts/Stats/seed_stats.gd" id="4_26056"]
 [ext_resource type="Script" uid="uid://n64xabrw5ic3" path="res://Scripts/Items/equipment_item_class.gd" id="5_0f461"]
 [ext_resource type="Resource" uid="uid://c6b4rud654ixm" path="res://Resources/Characters/Passives/orbiting_seeds.tres" id="5_26056"]
+[ext_resource type="Resource" uid="uid://chqfn7nuxjown" path="res://Resources/Items/Passives/shadow_summons.tres" id="6_c7nle"]
 [ext_resource type="Resource" uid="uid://d3etrg327pmoe" path="res://Resources/Items/Seeds/shrub_bush.tres" id="7_26056"]
+[ext_resource type="Resource" uid="uid://455jdkpyecn6" path="res://Resources/Items/Passives/mirage.tres" id="7_b4j20"]
 
 [resource]
 script = ExtResource("1_y5pcj")
@@ -16,7 +18,7 @@ character_sprite = ExtResource("1_k1oir")
 starting_inventory = Array[ExtResource("2_5xhqs")]([])
 starting_talismans = Array[ExtResource("5_0f461")]([])
 starting_seeds = Array[ExtResource("4_26056")]([ExtResource("7_26056")])
-starting_passives = Array[ExtResource("3_k1oir")]([ExtResource("5_26056")])
+starting_passives = Array[ExtResource("3_k1oir")]([ExtResource("5_26056"), ExtResource("6_c7nle"), ExtResource("7_b4j20")])
 starting_coins = 3
 unlocked = false
 hidden = false

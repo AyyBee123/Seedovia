@@ -14,6 +14,7 @@ func _ready():
 		var directions = [-SPREAD, SPREAD]
 		for dir in directions:
 			shoot_current_seed(WOOD_THORN.instantiate(), desired_direction.rotated(dir))
+			seed_spawned.emit(seed)
 		
 		if get_next_weapon():
 			# shoot the next seed alongside the thorns

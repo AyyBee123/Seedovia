@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpuhj45cclr8c"]
+
+[ext_resource type="Script" uid="uid://rtv7gr8oqc3p" path="res://Scripts/Passives/Effects/orbiting_seed_orbital.gd" id="1_bokyh"]
+
+[node name="Orbiting Seed Orbital" type="Node"]
+script = ExtResource("1_bokyh")
