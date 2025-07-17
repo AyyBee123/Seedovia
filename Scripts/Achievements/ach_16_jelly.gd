@@ -17,7 +17,7 @@ func _on_enemy_defeat(enemy):
 	progress += 1
 	
 	# update steam progress
-	SteamIntegration.set_progress("STAT_PROGRESS", progress)
+	SteamIntegration.set_progress("STAT_JELLY", progress)
 	
 	if get_progress() >= get_progress_goal() and not completed:
 		completed = true
