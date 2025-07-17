@@ -20,3 +20,4 @@ signal freeing_orphans
 signal topping_saved
 signal topping_killed
 signal item_sold(amount)
+signal enemy_defeated(enemy)

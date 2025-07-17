@@ -18,6 +18,7 @@ var health_bar
 var is_in_area := false
 var damage_color = Color.WHITE
 var damage_size = 1
+var is_dead: bool
 
 var damage_number = preload("res://Scenes/UI/damage_number.tscn")
 
@@ -57,9 +58,13 @@ func _on_enemy_hitbox_body_entered(body):
 		is_in_area = true
 
 func die():
+	if is_dead:
+		return
+	is_dead = true
+	SignalBus.enemy_defeated.emit(self)
 	process_mode = 4 # = Mode: Disabled
 	queue_free.call_deferred()
-	
+
 func update_health(new_health):
 	health_bar.health = new_health
 
