@@ -16,6 +16,7 @@ var ach_13_whitechaos: Ach13WhiteChaos
 var ach_14_sell: Ach14Sell
 var ach_15_circleofseeds: Ach15CircleOfSeeds
 var ach_16_jelly: Ach16Jelly
+var ach_17_drip: Ach17Drip
 
 func _ready():
 	ach_01_die = Ach01Die.new()
@@ -50,3 +51,5 @@ func _ready():
 	add_child(ach_15_circleofseeds)
 	ach_16_jelly = Ach16Jelly.new()
 	add_child(ach_16_jelly)
+	ach_17_drip = Ach17Drip.new()
+	add_child(ach_17_drip)

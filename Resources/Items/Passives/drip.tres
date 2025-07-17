@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="passive_class" load_steps=4 format=3 uid="uid://dvx4vwdye5e5p"]
+
+[ext_resource type="Script" uid="uid://yr5gdtdbvmoc" path="res://Scripts/Passives/Classes/passive_class.gd" id="1_3e77p"]
+[ext_resource type="PackedScene" uid="uid://b22q71u8ktioc" path="res://Scenes/Passives/Abilities/Drip.tscn" id="1_slqft"]
+[ext_resource type="Texture2D" uid="uid://507kuhke4tir" path="res://Sprites/Passives/Icons/Drip.png" id="3_wimee"]
+
+[resource]
+script = ExtResource("1_3e77p")
+passive_name = "Drip"
+sprite = ExtResource("3_wimee")
+description = "Walking leaves trail of damaging liquid."
+passive_ability = ExtResource("1_slqft")
+unlocked = false
+metadata/_custom_type_script = "uid://yr5gdtdbvmoc"

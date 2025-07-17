@@ -41,6 +41,8 @@ class_name overall_data extends Resource
 @export var ach_15_progress: float
 @export var ach_16_jelly: bool
 @export var ach_16_progress: float
+@export var ach_17_drip: bool
+@export var ach_17_progress: float
 
 func get_save_selection_data():
 	last_played = SelectionSaveData.last_played
@@ -97,6 +99,8 @@ func get_achievements():
 	ach_15_progress = Game.achievement_handler.ach_15_circleofseeds.get_progress()
 	ach_16_jelly = Game.achievement_handler.ach_16_jelly.completed
 	ach_16_progress = Game.achievement_handler.ach_16_jelly.get_progress()
+	ach_17_drip = Game.achievement_handler.ach_17_drip.completed
+	ach_17_progress = Game.achievement_handler.ach_17_drip.get_progress()
 
 func set_achievements():
 	Game.achievement_handler.ach_01_die.completed = ach_01_die
@@ -135,6 +139,8 @@ func set_achievements():
 	Game.achievement_handler.ach_15_circleofseeds.set_progress(ach_15_progress)
 	Game.achievement_handler.ach_16_jelly.completed = ach_16_jelly
 	Game.achievement_handler.ach_16_jelly.set_progress(ach_16_progress)
+	Game.achievement_handler.ach_17_drip.completed = ach_17_drip
+	Game.achievement_handler.ach_17_drip.set_progress(ach_17_progress)
 
 func reset_achievements():
 	ach_01_die = false
@@ -169,6 +175,8 @@ func reset_achievements():
 	ach_15_progress = 0
 	ach_16_jelly = false
 	ach_16_progress = 0
+	ach_17_drip = false
+	ach_17_progress = 0
 
 func get_achievement(_ach):
 	return _ach

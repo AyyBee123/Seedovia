@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b22q71u8ktioc"]
+
+[ext_resource type="Script" uid="uid://dc8px44v0nwq4" path="res://Scripts/Passives/Abilities/drip.gd" id="1_0icky"]
+
+[node name="Drip" type="Node"]
+script = ExtResource("1_0icky")

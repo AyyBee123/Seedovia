@@ -9,6 +9,6 @@ weight = 0.5
 shop_price = 30
 item_name = "Red D6"
 texture = ExtResource("2_16jy7")
-description = "Rerolls an item to a new one of the same type and rarity."
+description = "Rerolls items on the ground to a new one of the same type and rarity."
 unlocked = true
 metadata/_custom_type_script = "uid://dp8qdf854o3ob"

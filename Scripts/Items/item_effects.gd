@@ -55,8 +55,8 @@ func decrease_rarity():
 		var new_rarity = item.item.rarity - 1 # decrease rarity by 1
 		if item.item.category == "SEED" and new_rarity <= 0:
 			new_rarity = 6
-		if item.item.category == "TALISMAN" and new_rarity <= 0:
-			new_rarity = 5 # there are no mystic rarity talismans
+		if item.item.category == "TALISMAN" and new_rarity <= 0: # there are no mystic rarity talismans
+			new_rarity = 5
 		item.set_item(select_new_rarity_item(item.item, new_rarity))
 	ItemCheck.check_for_items()
 	await get_tree().create_timer(0.5).timeout
