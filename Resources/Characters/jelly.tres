@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="character_class" load_steps=9 format=3 uid="uid://cvn3fxs0wcxxi"]
+
+[ext_resource type="Texture2D" uid="uid://bbqhf7hb1mcwf" path="res://Sprites/Character/Jelly/Jelly1.png" id="1_5gas3"]
+[ext_resource type="Script" uid="uid://duh3qswkvpbi5" path="res://Scripts/Characters/character_class.gd" id="2_whih3"]
+[ext_resource type="Script" uid="uid://cgysrio745xbn" path="res://Scripts/Items/item_class.gd" id="3_xwcwq"]
+[ext_resource type="Script" uid="uid://yr5gdtdbvmoc" path="res://Scripts/Passives/Classes/passive_class.gd" id="5_0xjwo"]
+[ext_resource type="Resource" uid="uid://dvt3jb0gddv6s" path="res://Resources/Items/Passives/mitosis.tres" id="5_a24vl"]
+[ext_resource type="Resource" uid="uid://cpqoexukux3br" path="res://Resources/Items/Seeds/duplex.tres" id="6_5gas3"]
+[ext_resource type="Script" uid="uid://c6ykhgvfkht5x" path="res://Scripts/Stats/seed_stats.gd" id="6_t15rd"]
+[ext_resource type="Script" uid="uid://n64xabrw5ic3" path="res://Scripts/Items/equipment_item_class.gd" id="8_a7q8d"]
+
+[resource]
+script = ExtResource("2_whih3")
+character_name = "Jelly"
+character_sprite = ExtResource("1_5gas3")
+starting_inventory = Array[ExtResource("3_xwcwq")]([])
+starting_talismans = Array[ExtResource("8_a7q8d")]([])
+starting_seeds = Array[ExtResource("6_t15rd")]([ExtResource("6_5gas3")])
+starting_passives = Array[ExtResource("5_0xjwo")]([ExtResource("5_a24vl")])
+starting_coins = 0
+unlocked = false
+hidden = false

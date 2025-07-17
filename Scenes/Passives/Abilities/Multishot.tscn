@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cqngxgns8i4uc"]
+
+[ext_resource type="Script" uid="uid://dnty4sqri5ls1" path="res://Scripts/Passives/Abilities/multishot.gd" id="1_q7e02"]
+
+[node name="Multi-shot" type="Node"]
+script = ExtResource("1_q7e02")

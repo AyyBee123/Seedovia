@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="passive_class" load_steps=4 format=3 uid="uid://byw0ue7pok7en"]
 
-[ext_resource type="PackedScene" uid="uid://bffhaxwlnobvw" path="res://Scenes/Passives/Abilities/Mirage.tscn" id="1_ahj48"]
+[ext_resource type="PackedScene" uid="uid://dpfckftkh2ppg" path="res://Scenes/Passives/Abilities/Mirage Plus.tscn" id="1_ahj48"]
 [ext_resource type="Script" uid="uid://yr5gdtdbvmoc" path="res://Scripts/Passives/Classes/passive_class.gd" id="2_ihtsj"]
 [ext_resource type="Texture2D" uid="uid://mka64qt3mhk6" path="res://Sprites/Passives/Icons/Mirage.png" id="3_41eii"]
 

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="passive_class" load_steps=3 format=3 uid="uid://dvt3jb0gddv6s"]
+
+[ext_resource type="Script" uid="uid://yr5gdtdbvmoc" path="res://Scripts/Passives/Classes/passive_class.gd" id="1_myxpl"]
+[ext_resource type="PackedScene" uid="uid://cqngxgns8i4uc" path="res://Scenes/Passives/Abilities/Multishot.tscn" id="1_tj7ag"]
+
+[resource]
+script = ExtResource("1_myxpl")
+passive_name = "Mitosis"
+description = "+10% chance to directly fire an extra seed for every filled red heart."
+passive_ability = ExtResource("1_tj7ag")
+unlocked = false
+metadata/_custom_type_script = "uid://yr5gdtdbvmoc"

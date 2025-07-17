@@ -2,6 +2,8 @@ extends "res://Scripts/Enemies/enemy.gd"
 
 const FRAMES_TO_CHANGE_DIR: int = 16
 
+
+
 var frames: int = 0
 var direction: Vector2
 var offset

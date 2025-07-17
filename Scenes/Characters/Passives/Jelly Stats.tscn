@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bnb63bwxamxm5"]
+
+[ext_resource type="Script" uid="uid://isg8cds4nuc5" path="res://Scripts/Characters/Passives/jelly_stats.gd" id="1_a36rk"]
+
+[node name="JellyStats" type="Node"]
+script = ExtResource("1_a36rk")

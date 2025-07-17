@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://d2b2uaxh6eege"]
+
+[ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_s0rbx"]
+[ext_resource type="Texture2D" uid="uid://le5w1v3uyyl1" path="res://Sprites/Seeds/Duplex.png" id="2_5dmxg"]
+[ext_resource type="Script" uid="uid://bm763smps0bjb" path="res://Scripts/Seeds/duplex.gd" id="3_nh5wc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c76xu"]
+radius = 13.0
+
+[node name="Duplex" instance=ExtResource("1_s0rbx")]
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("2_5dmxg")
+script = ExtResource("3_nh5wc")
+BASE_DAMAGE = 9.0
+BASE_FIRE_RATE = 2.0
+BASE_RANGE = 150.0
+BASE_SPEED = 400.0
+BASE_SIZE = 1.0
+BASE_BLAST_RADIUS = 1.0
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource("CircleShape2D_c76xu")

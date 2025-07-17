@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://8lh64evv6imw"]
+[gd_scene load_steps=35 format=3 uid="uid://8lh64evv6imw"]
 
 [ext_resource type="Script" uid="uid://uybucfv2vxti" path="res://Scripts/UI/character_select.gd" id="1_jmjmr"]
 [ext_resource type="Texture2D" uid="uid://dwwsiyabyqc6l" path="res://Sprites/Menu UI/Soil Background.png" id="2_4vqgb"]
@@ -32,6 +32,8 @@
 [ext_resource type="Resource" uid="uid://b5kotn62lieol" path="res://Resources/Characters/pizza_man.tres" id="26_8dd2i"]
 [ext_resource type="Texture2D" uid="uid://ob7m6b8l7cn5" path="res://Sprites/Character/Opium/Opium1.png" id="27_fnoks"]
 [ext_resource type="Texture2D" uid="uid://bvpmyy87fn87v" path="res://Sprites/Character/Pizza Man/Pizza Man1.png" id="27_h8twm"]
+[ext_resource type="Resource" uid="uid://cvn3fxs0wcxxi" path="res://Resources/Characters/jelly.tres" id="28_836ky"]
+[ext_resource type="Texture2D" uid="uid://bbqhf7hb1mcwf" path="res://Sprites/Character/Jelly/Jelly1.png" id="29_o8u82"]
 
 [node name="Character Select" type="Control"]
 layout_mode = 3
@@ -167,7 +169,7 @@ stretch_mode = 0
 script = ExtResource("3_alya1")
 starting_character = ExtResource("10_q0efv")
 character_scene = "res://Scenes/Characters/White Chaos.tscn"
-unlock_method = "Defeat the Floor 5 Boss."
+unlock_method = "Complete Floor 5."
 
 [node name="MarginContainer" type="MarginContainer" parent="Characters/Character 3"]
 layout_mode = 0
@@ -295,6 +297,34 @@ mouse_filter = 2
 texture = ExtResource("27_fnoks")
 stretch_mode = 5
 
+[node name="Character 9" type="TextureButton" parent="Characters"]
+custom_minimum_size = Vector2(192, 192)
+layout_mode = 2
+texture_normal = ExtResource("7_2sg52")
+texture_pressed = ExtResource("8_snfop")
+texture_hover = ExtResource("9_ewud7")
+texture_disabled = ExtResource("8_dew5b")
+texture_focused = ExtResource("12_nqihi")
+stretch_mode = 0
+script = ExtResource("3_alya1")
+starting_character = ExtResource("28_836ky")
+character_scene = "res://Scenes/Characters/Jelly.tscn"
+unlock_method = "Defeat Jumbo 5 times."
+
+[node name="MarginContainer" type="MarginContainer" parent="Characters/Character 9"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 6.0
+offset_right = 178.0
+offset_bottom = 178.0
+mouse_filter = 2
+
+[node name="Character" type="TextureRect" parent="Characters/Character 9/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("29_o8u82")
+stretch_mode = 5
+
 [node name="Character 7" type="TextureButton" parent="Characters"]
 custom_minimum_size = Vector2(192, 192)
 layout_mode = 2
@@ -307,7 +337,7 @@ stretch_mode = 0
 script = ExtResource("3_alya1")
 starting_character = ExtResource("26_8dd2i")
 character_scene = "res://Scenes/Characters/Pizza Man.tscn"
-unlock_method = "Unlocked by completing the pizza."
+unlock_method = "Complete the pizza."
 
 [node name="MarginContainer" type="MarginContainer" parent="Characters/Character 7"]
 layout_mode = 0
@@ -648,5 +678,6 @@ autostart = true
 [connection signal="pressed" from="Characters/Character 5" to="Characters/Character 5" method="_on_pressed"]
 [connection signal="pressed" from="Characters/Character 6" to="Characters/Character 6" method="_on_pressed"]
 [connection signal="pressed" from="Characters/Character 8" to="Characters/Character 8" method="_on_pressed"]
+[connection signal="pressed" from="Characters/Character 9" to="Characters/Character 9" method="_on_pressed"]
 [connection signal="pressed" from="Characters/Character 7" to="Characters/Character 7" method="_on_pressed"]
 [connection signal="pressed" from="Play Button" to="." method="_on_play_button_pressed"]

@@ -1,0 +1,121 @@
+[gd_scene load_steps=19 format=3 uid="uid://m5icgm5kcskb"]
+
+[ext_resource type="PackedScene" uid="uid://cu63rxmy71bcg" path="res://Scenes/Player/Player.tscn" id="1_mrrtx"]
+[ext_resource type="Texture2D" uid="uid://bbqhf7hb1mcwf" path="res://Sprites/Character/Jelly/Jelly1.png" id="2_mrrtx"]
+[ext_resource type="Texture2D" uid="uid://c686nyyt1e4ph" path="res://Sprites/Character/Death.png" id="3_qn2hq"]
+[ext_resource type="Texture2D" uid="uid://bpumt0fy5xgba" path="res://Sprites/Character/Jelly/Jelly2.png" id="4_yy0js"]
+[ext_resource type="Texture2D" uid="uid://kxn75xhshwxw" path="res://Sprites/Character/Jelly/Jelly3.png" id="5_qn2hq"]
+[ext_resource type="Texture2D" uid="uid://bv2jo1sxtndry" path="res://Sprites/Character/Jelly/Jelly4.png" id="6_0h7ps"]
+[ext_resource type="Texture2D" uid="uid://bvgxrvkdo2yl4" path="res://Sprites/Character/Jelly/Jelly5.png" id="7_8pyxe"]
+[ext_resource type="Texture2D" uid="uid://b20q0mbklwlcm" path="res://Sprites/Character/Jelly/Hand.png" id="8_32r40"]
+[ext_resource type="PackedScene" uid="uid://bnb63bwxamxm5" path="res://Scenes/Characters/Passives/Jelly Stats.tscn" id="9_mrrtx"]
+[ext_resource type="PackedScene" uid="uid://bqelkwce1mdqp" path="res://Scenes/Inventory/inventory.tscn" id="10_rlhvx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s6pdc"]
+atlas = ExtResource("3_qn2hq")
+region = Rect2(0, 0, 26, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ae0e1"]
+atlas = ExtResource("3_qn2hq")
+region = Rect2(26, 0, 26, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4oa0i"]
+atlas = ExtResource("3_qn2hq")
+region = Rect2(52, 0, 26, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ph6bo"]
+atlas = ExtResource("3_qn2hq")
+region = Rect2(78, 0, 26, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pihy3"]
+atlas = ExtResource("3_qn2hq")
+region = Rect2(104, 0, 26, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3omib"]
+atlas = ExtResource("3_qn2hq")
+region = Rect2(130, 0, 26, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yfotw"]
+atlas = ExtResource("3_qn2hq")
+region = Rect2(156, 0, 26, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ckkwj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_mrrtx")
+}],
+"loop": true,
+"name": &"Dash",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s6pdc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ae0e1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4oa0i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ph6bo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pihy3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3omib")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yfotw")
+}],
+"loop": false,
+"name": &"Die",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_mrrtx")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_yy0js")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_qn2hq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_0h7ps")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_8pyxe")
+}],
+"loop": true,
+"name": &"Move",
+"speed": 9.0
+}]
+
+[node name="Jelly" instance=ExtResource("1_mrrtx")]
+
+[node name="Player Sprite" parent="." index="3"]
+sprite_frames = SubResource("SpriteFrames_ckkwj")
+animation = &"Move"
+autoplay = "Idle"
+frame_progress = 0.631635
+
+[node name="Hand" parent="Rotation Point/Marker2D" index="0"]
+texture = ExtResource("8_32r40")
+
+[node name="Stats" parent="." index="15" instance=ExtResource("9_mrrtx")]
+
+[node name="Inventory" parent="Inventory Canvas" index="0" instance=ExtResource("10_rlhvx")]
+offset_left = -632.0
+offset_top = -476.0
+offset_right = -476.0
+offset_bottom = -220.0
