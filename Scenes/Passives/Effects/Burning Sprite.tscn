@@ -11,4 +11,5 @@ shader_parameter/fade = 0.3
 
 [node name="Burning Sprite" type="Sprite2D"]
 material = SubResource("ShaderMaterial_kp207")
+use_parent_material = true
 script = ExtResource("2_6mcbg")

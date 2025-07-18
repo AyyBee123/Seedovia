@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cfawqjxpypxg6" path="res://Scripts/Seeds/Effects/slow_sprite.gd" id="2_yig72"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kp207"]
+resource_local_to_scene = true
 shader = ExtResource("1_katqk")
 shader_parameter/color = Color(0.709804, 0.890196, 0.870588, 1)
 shader_parameter/tint_factor = 1.0
