@@ -76,7 +76,6 @@ func change_floor():
 	items_on_ground.clear()
 	Pool.repopulate_weighted_pools()
 	SignalBus.entered_new_floor.emit(floor_number)
-	print(floor_number)
 	# load the victory screen if floor = floor 5
 	if floor_number == FIFTH_FLOOR: # also check if floor 6 is unlocked when it's added
 		next_room = ResourceLoader.load("res://Scenes/UI/Victory Screen.tscn")
