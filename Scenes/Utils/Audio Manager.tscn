@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://usetxd7ii511"]
+[gd_scene load_steps=53 format=3 uid="uid://usetxd7ii511"]
 
 [ext_resource type="Script" uid="uid://boo1w2wkkk0xk" path="res://Scripts/Utils/audio_manager.gd" id="1_bpx0j"]
 [ext_resource type="AudioStream" uid="uid://bpk6gao5jcjkq" path="res://Audio/SFX/Hit.mp3" id="1_qnkjs"]
@@ -47,6 +47,11 @@
 [ext_resource type="AudioStream" uid="uid://d32siogok0rhg" path="res://Audio/SFX/Slash.mp3" id="44_43mhl"]
 [ext_resource type="AudioStream" uid="uid://cgh0gagp6lrj" path="res://Audio/SFX/Slash2.mp3" id="46_kwqkp"]
 [ext_resource type="AudioStream" uid="uid://bvvorvktbr0qx" path="res://Audio/SFX/Ding.mp3" id="47_fn42b"]
+[ext_resource type="AudioStream" uid="uid://b86eo7e5ae1et" path="res://Audio/SFX/Freeze.mp3" id="48_towm0"]
+[ext_resource type="AudioStream" uid="uid://dvbrsd88e0q1w" path="res://Audio/SFX/Crack.mp3" id="49_5llfd"]
+[ext_resource type="AudioStream" uid="uid://cikc00h0xpf08" path="res://Audio/SFX/Slow.mp3" id="50_b0ptq"]
+[ext_resource type="AudioStream" uid="uid://rofk3rxma003" path="res://Audio/SFX/Glass Break.mp3" id="51_b0ptq"]
+[ext_resource type="AudioStream" uid="uid://drgd53glfyr3j" path="res://Audio/SFX/Shatter.mp3" id="52_viic8"]
 
 [node name="Audio Manager" type="Node"]
 script = ExtResource("1_bpx0j")
@@ -194,7 +199,7 @@ bus = &"SFX"
 
 [node name="BubblePop3" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_70u3o")
-volume_db = -8.0
+volume_db = -4.0
 pitch_scale = 0.9
 bus = &"SFX"
 
@@ -213,7 +218,7 @@ bus = &"SFX"
 
 [node name="Hit4" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_8awm8")
-volume_db = -6.0
+volume_db = -4.0
 pitch_scale = 1.5
 bus = &"SFX"
 
@@ -545,4 +550,31 @@ bus = &"SFX"
 [node name="Ding" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("47_fn42b")
 pitch_scale = 1.1
+bus = &"SFX"
+
+[node name="Freeze" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("48_towm0")
+pitch_scale = 1.2
+bus = &"SFX"
+
+[node name="Ice Crack" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("49_5llfd")
+volume_db = -2.0
+pitch_scale = 2.0
+bus = &"SFX"
+
+[node name="Slow" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("50_b0ptq")
+volume_db = 6.0
+bus = &"SFX"
+
+[node name="GlassBreak" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("51_b0ptq")
+volume_db = -5.0
+pitch_scale = 0.9
+bus = &"SFX"
+
+[node name="Shatter" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("52_viic8")
+volume_db = 2.0
 bus = &"SFX"

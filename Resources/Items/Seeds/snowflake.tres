@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="seed_class" load_steps=4 format=3 uid="uid://dri1h3l6scm4"]
+
+[ext_resource type="Script" uid="uid://c6ykhgvfkht5x" path="res://Scripts/Stats/seed_stats.gd" id="1_6ngma"]
+[ext_resource type="PackedScene" uid="uid://cacd56ltjuacn" path="res://Scenes/Seeds/Snowflake.tscn" id="1_nwcrx"]
+[ext_resource type="Texture2D" uid="uid://bjo4wf0ghoeit" path="res://Sprites/Seeds (Inventory)/Snowflake.png" id="3_1rp2f"]
+
+[resource]
+script = ExtResource("1_6ngma")
+scene = ExtResource("1_nwcrx")
+rarity = 1
+item_name = "Snowflake"
+texture = ExtResource("3_1rp2f")
+description = ""
+unlocked = true
+metadata/_custom_type_script = "uid://c6ykhgvfkht5x"

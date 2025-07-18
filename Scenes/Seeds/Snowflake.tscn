@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://cacd56ltjuacn"]
+
+[ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_pdy2o"]
+[ext_resource type="Script" uid="uid://dkfe353p3gaqc" path="res://Scripts/Seeds/snowflake.gd" id="2_l251k"]
+[ext_resource type="Texture2D" uid="uid://kxjlb661lw30" path="res://Sprites/Seeds/Snowflake.png" id="2_vm1p4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u0jvs"]
+radius = 13.0
+
+[node name="Snowflake" instance=ExtResource("1_pdy2o")]
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("2_vm1p4")
+script = ExtResource("2_l251k")
+BASE_DAMAGE = 8.0
+BASE_FIRE_RATE = 2.0
+BASE_RANGE = 300.0
+BASE_SPEED = 200.0
+BASE_SIZE = 1.0
+BASE_BLAST_RADIUS = 1.0
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource("CircleShape2D_u0jvs")

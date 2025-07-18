@@ -92,6 +92,11 @@ extends Node
 @onready var ding = $Ding
 @onready var bubble_pop_3 = $BubblePop3
 @onready var hit_4 = $Hit4
+@onready var freeze = $Freeze
+@onready var ice_crack = $"Ice Crack"
+@onready var slow = $Slow
+@onready var glass_break = $GlassBreak
+@onready var shatter = $Shatter
 
 func _ready():
 	SignalBus.play_audio.connect(play)
