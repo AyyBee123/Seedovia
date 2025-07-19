@@ -41,4 +41,3 @@ func set_progress(_progress) -> void:
 	if completed:
 		doom.unlocked = true
 		SteamIntegration.set_ach("ACH_DOOM")
-		
