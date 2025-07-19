@@ -204,8 +204,8 @@ func get_health(was_equipped: bool):
 		health = current_health
 
 func get_stat(stat: String):
-	return stats[stat]["x"] * temp_stats[stat]["x"] * stats[stat]["base"] \
-			+ temp_stats[stat]["base"] * (1 + stats[stat]["+"] + temp_stats[stat]["+"])
+	return stats[stat]["x"] * temp_stats[stat]["x"] * (stats[stat]["base"] \
+			+ temp_stats[stat]["base"]) * (1 + stats[stat]["+"] + temp_stats[stat]["+"])
 
 func get_seed_stat(stat: String):
 	return stats[stat]["x"] * stats[stat]["base"] * (1 + stats[stat]["+"])
