@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="equipment_item_class" load_steps=3 format=3 uid="uid://c38h6fjtjieep"]
+
+[ext_resource type="Script" uid="uid://n64xabrw5ic3" path="res://Scripts/Items/equipment_item_class.gd" id="1_ssmlt"]
+[ext_resource type="Texture2D" uid="uid://ugr63y57bq4a" path="res://Sprites/Talismans/Purple Mango.png" id="2_5bqgn"]
+
+[resource]
+script = ExtResource("1_ssmlt")
+rarity = 2
+properties = Array[String](["+15% Weapon_Damage", "+15% Fire_Rate", "+15% Weapon_Range", "+15% Weapon_Speed", "+15% Weapon_Size", "+15% Weapon_Blast_Radius", "+15% Speed", "-15% Dash_Rate", "+15% Dash_Distance"])
+special_properties = Array[PackedScene]([])
+item_name = "Purple Mango"
+texture = ExtResource("2_5bqgn")
+description = "+15% to all stats"
+unlocked = true
+metadata/_custom_type_script = "uid://n64xabrw5ic3"
