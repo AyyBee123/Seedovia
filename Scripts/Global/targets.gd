@@ -27,6 +27,14 @@ func get_items():
 			new_array.append(i)
 	return new_array
 
+func get_rarity_items():
+	var new_array = []
+	for i in get_tree().current_scene.get_children():
+		if i.is_in_group("Item"):
+			if i.item and i.item.rarity != 7: # get items that are not a consumable
+				new_array.append(i)
+	return new_array
+
 func get_pickup_items():
 	return get_tree().get_nodes_in_group("Pickup Item")
 

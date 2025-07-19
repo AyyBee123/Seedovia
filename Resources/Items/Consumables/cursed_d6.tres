@@ -9,6 +9,6 @@ weight = 0.075
 shop_price = 125
 item_name = "Cursed D6"
 texture = ExtResource("2_peade")
-description = "Decreases the rarity of items on the ground by 1 tier, rerolling it to a new item of the same type."
+description = "Decreases the rarity of a random item on the ground by 1 tier, rerolling it to a new item of the same type."
 unlocked = true
 metadata/_custom_type_script = "uid://dp8qdf854o3ob"

@@ -19,6 +19,7 @@ var sprite
 
 func _ready():
 	enemy = get_parent()
+	enemy._enemy_stats.spawn_damage_number.connect(burst)
 	normal_speed = enemy._enemy_stats.speed
 	normal_animation_speed = enemy.get_node("AnimatedSprite2D").speed_scale
 	sprite = SLOW_SPRITE.instantiate()
@@ -27,15 +28,7 @@ func _ready():
 func slow():
 	#check if enemy is frozen
 	if is_frozen:
-		# explode
-		is_frozen = false
-		# make a sound
-		explode()
-		SfxDeconflicter.play(Game.audio_manager.glass_break)
-		SfxDeconflicter.play(Game.audio_manager.shatter)
-		queue_free()
 		return
-	
 	duration.start() # reset the slow duration
 	stacks += 1 # add 1 stack of slow (makes the enemy slower)
 	enemy._enemy_stats.speed *= (1 - SLOW_FACTOR * stacks) # slow down enemy's movement speed
@@ -48,6 +41,18 @@ func slow():
 		enemy.get_node("AnimatedSprite2D").pause()
 		duration.start(4)
 		is_frozen = true
+
+func burst(amount):
+	#check if enemy is frozen
+	if not is_frozen:
+		return
+	# explode
+	is_frozen = false
+	# make a sound
+	explode()
+	SfxDeconflicter.play(Game.audio_manager.glass_break)
+	SfxDeconflicter.play(Game.audio_manager.shatter)
+	queue_free()
 
 func explode():
 	var explosion = NON_WEAPON_EFFECT_EXPLOSION.instantiate()

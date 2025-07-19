@@ -1,46 +1,46 @@
-[gd_scene load_steps=15 format=3 uid="uid://ba1ll7vkpaxef"]
+[gd_scene load_steps=15 format=3 uid="uid://bgl6qiu65686y"]
 
-[ext_resource type="Script" uid="uid://cwb2ktulkbldp" path="res://Scripts/Seeds/Effects/non_weapon_effect_explosion.gd" id="1_3immx"]
-[ext_resource type="Texture2D" uid="uid://cgykm81v6v4hq" path="res://Sprites/Passives/Effects/Explosion.png" id="2_ibgff"]
+[ext_resource type="Script" uid="uid://cwb2ktulkbldp" path="res://Scripts/Seeds/Effects/non_weapon_effect_explosion.gd" id="1_bltmk"]
+[ext_resource type="Texture2D" uid="uid://cgykm81v6v4hq" path="res://Sprites/Passives/Effects/Explosion.png" id="2_gg3um"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w3ufp"]
-atlas = ExtResource("2_ibgff")
+atlas = ExtResource("2_gg3um")
 region = Rect2(0, 0, 80, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gsqa7"]
-atlas = ExtResource("2_ibgff")
+atlas = ExtResource("2_gg3um")
 region = Rect2(80, 0, 80, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fvuvf"]
-atlas = ExtResource("2_ibgff")
+atlas = ExtResource("2_gg3um")
 region = Rect2(160, 0, 80, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vyk17"]
-atlas = ExtResource("2_ibgff")
+atlas = ExtResource("2_gg3um")
 region = Rect2(240, 0, 80, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_35yrm"]
-atlas = ExtResource("2_ibgff")
+atlas = ExtResource("2_gg3um")
 region = Rect2(320, 0, 80, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8aj67"]
-atlas = ExtResource("2_ibgff")
+atlas = ExtResource("2_gg3um")
 region = Rect2(400, 0, 80, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wvhy2"]
-atlas = ExtResource("2_ibgff")
+atlas = ExtResource("2_gg3um")
 region = Rect2(480, 0, 80, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8ispk"]
-atlas = ExtResource("2_ibgff")
+atlas = ExtResource("2_gg3um")
 region = Rect2(560, 0, 80, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6webg"]
-atlas = ExtResource("2_ibgff")
+atlas = ExtResource("2_gg3um")
 region = Rect2(640, 0, 80, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mpgys"]
-atlas = ExtResource("2_ibgff")
+atlas = ExtResource("2_gg3um")
 region = Rect2(720, 0, 80, 80)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0ois1"]
@@ -86,7 +86,7 @@ radius = 20.0111
 
 [node name="Explosion" type="Sprite2D" groups=["Explosion", "Weapon"]]
 z_index = 4
-script = ExtResource("1_3immx")
+script = ExtResource("1_bltmk")
 BASE_SIZE = 1.0
 BASE_BLAST_RADIUS = 1.0
 

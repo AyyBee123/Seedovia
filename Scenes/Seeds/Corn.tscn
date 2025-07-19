@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://b5hfifvvvjvx2" path="res://Scripts/Seeds/corn.gd" id="2_2xfam"]
 [ext_resource type="Texture2D" uid="uid://3segmo1mb2il" path="res://Sprites/Seeds/Corn Shadow.png" id="3_2rl77"]
 [ext_resource type="Texture2D" uid="uid://ckpccoca8fbkv" path="res://Sprites/Seeds/Corn.png" id="4_ffa2p"]
-[ext_resource type="PackedScene" uid="uid://ba1ll7vkpaxef" path="res://Scenes/Passives/Effects/Non-Weapon Effect Explosion.tscn" id="5_tb6fi"]
+[ext_resource type="PackedScene" uid="uid://bgl6qiu65686y" path="res://Scenes/Passives/Effects/Non-Weapon Effect Explosion.tscn" id="5_eqrr1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hbguc"]
 radius = 2.06155
@@ -120,7 +120,7 @@ monitoring = false
 shape = SubResource("CircleShape2D_hbguc")
 
 [node name="ResourcePreloader" type="ResourcePreloader" parent="." index="4"]
-resources = [PackedStringArray("Non-Weapon Effect Explosion"), [ExtResource("5_tb6fi")]]
+resources = [PackedStringArray("Non-Weapon Effect Explosion"), [ExtResource("5_eqrr1")]]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="5"]
 root_node = NodePath("../ResourcePreloader")

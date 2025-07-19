@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d00hhfhe03cx7"]
+
+[ext_resource type="Script" uid="uid://bxyjk8pcl814a" path="res://Scripts/Characters/Passives/alp_stats.gd" id="1_a1hk0"]
+
+[node name="AlpStats" type="Node"]
+script = ExtResource("1_a1hk0")

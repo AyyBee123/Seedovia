@@ -1,0 +1,123 @@
+[gd_scene load_steps=20 format=3 uid="uid://buui641mudi4h"]
+
+[ext_resource type="PackedScene" uid="uid://cu63rxmy71bcg" path="res://Scenes/Player/Player.tscn" id="1_w34ej"]
+[ext_resource type="Script" uid="uid://cgow0lcep601y" path="res://Scripts/Characters/alp.gd" id="2_0cigo"]
+[ext_resource type="Texture2D" uid="uid://bbu7daukg54ub" path="res://Sprites/Character/Alp/Alp1.png" id="2_w34ej"]
+[ext_resource type="Texture2D" uid="uid://da21rtgps7pfd" path="res://Sprites/Character/Alp/Death.png" id="3_0cigo"]
+[ext_resource type="Texture2D" uid="uid://bi7wyj7brgy5g" path="res://Sprites/Character/Alp/Alp2.png" id="4_rr157"]
+[ext_resource type="Texture2D" uid="uid://5tqah8xvi0sh" path="res://Sprites/Character/Alp/Alp3.png" id="5_7j823"]
+[ext_resource type="Texture2D" uid="uid://c1sjmvl1gfi47" path="res://Sprites/Character/Alp/Alp4.png" id="6_tfikd"]
+[ext_resource type="Texture2D" uid="uid://d32y80abilwvm" path="res://Sprites/Character/Alp/Alp5.png" id="7_xiaxv"]
+[ext_resource type="Texture2D" uid="uid://c6oc43amxhj6d" path="res://Sprites/Character/Alp/Hand.png" id="8_pyi82"]
+[ext_resource type="PackedScene" uid="uid://d00hhfhe03cx7" path="res://Scenes/Characters/Passives/Alp Stats.tscn" id="9_avm01"]
+[ext_resource type="PackedScene" uid="uid://hquq741iqlwf" path="res://Scenes/Inventory/Alp Inventory.tscn" id="11_0cigo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8hvgs"]
+atlas = ExtResource("3_0cigo")
+region = Rect2(0, 0, 26, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cp3m4"]
+atlas = ExtResource("3_0cigo")
+region = Rect2(26, 0, 26, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2lyrd"]
+atlas = ExtResource("3_0cigo")
+region = Rect2(52, 0, 26, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_88r35"]
+atlas = ExtResource("3_0cigo")
+region = Rect2(78, 0, 26, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k6xli"]
+atlas = ExtResource("3_0cigo")
+region = Rect2(104, 0, 26, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_emra2"]
+atlas = ExtResource("3_0cigo")
+region = Rect2(130, 0, 26, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gf0kd"]
+atlas = ExtResource("3_0cigo")
+region = Rect2(156, 0, 26, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ckkwj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_w34ej")
+}],
+"loop": true,
+"name": &"Dash",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8hvgs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cp3m4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2lyrd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_88r35")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k6xli")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_emra2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gf0kd")
+}],
+"loop": false,
+"name": &"Die",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_w34ej")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_rr157")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_7j823")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_tfikd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_xiaxv")
+}],
+"loop": true,
+"name": &"Move",
+"speed": 8.0
+}]
+
+[node name="Alp" instance=ExtResource("1_w34ej")]
+script = ExtResource("2_0cigo")
+
+[node name="Player Sprite" parent="." index="3"]
+sprite_frames = SubResource("SpriteFrames_ckkwj")
+animation = &"Move"
+autoplay = "Idle"
+frame_progress = 0.0378086
+
+[node name="Hand" parent="Rotation Point/Marker2D" index="0"]
+texture = ExtResource("8_pyi82")
+
+[node name="Stats" parent="." index="15" instance=ExtResource("9_avm01")]
+
+[node name="Inventory" parent="Inventory Canvas" index="0" instance=ExtResource("11_0cigo")]
+offset_left = -632.0
+offset_top = -476.0
+offset_right = -471.0
+offset_bottom = -220.0

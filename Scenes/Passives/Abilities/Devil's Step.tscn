@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwpen22nwjdi0"]
+
+[ext_resource type="Script" uid="uid://b4e8pdrx6sli2" path="res://Scripts/Passives/Abilities/devils_step.gd" id="1_gb535"]
+
+[node name="Devil\'s Step" type="Node"]
+script = ExtResource("1_gb535")

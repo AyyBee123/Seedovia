@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="seed_class" load_steps=4 format=3 uid="uid://cqg6ee3mmsl0j"]
+
+[ext_resource type="PackedScene" uid="uid://ba1ll7vkpaxef" path="res://Scenes/Seeds/Blood Burst.tscn" id="1_lgfnn"]
+[ext_resource type="Script" uid="uid://c6ykhgvfkht5x" path="res://Scripts/Stats/seed_stats.gd" id="2_wshg8"]
+[ext_resource type="Texture2D" uid="uid://krslk62gjrhe" path="res://Sprites/Seeds (Inventory)/Blood Burst.png" id="3_lgfnn"]
+
+[resource]
+script = ExtResource("2_wshg8")
+scene = ExtResource("1_lgfnn")
+rarity = 2
+item_name = "Blood Burst"
+texture = ExtResource("3_lgfnn")
+description = ""
+unlocked = true

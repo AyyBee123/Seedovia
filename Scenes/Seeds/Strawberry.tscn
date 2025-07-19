@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_5xs2v"]
 [ext_resource type="Texture2D" uid="uid://dpv7ru8ple5ht" path="res://Sprites/Seeds/Strawberry.png" id="2_6hqge"]
 [ext_resource type="Script" uid="uid://cceb8iws8yuni" path="res://Scripts/Seeds/strawberry.gd" id="3_ff0m5"]
-[ext_resource type="PackedScene" uid="uid://ba1ll7vkpaxef" path="res://Scenes/Passives/Effects/Non-Weapon Effect Explosion.tscn" id="4_m5mg3"]
+[ext_resource type="PackedScene" uid="uid://bgl6qiu65686y" path="res://Scenes/Passives/Effects/Non-Weapon Effect Explosion.tscn" id="4_m5mg3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6xlna"]
 atlas = ExtResource("2_6hqge")

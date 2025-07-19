@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://usetxd7ii511"]
+[gd_scene load_steps=54 format=3 uid="uid://usetxd7ii511"]
 
 [ext_resource type="Script" uid="uid://boo1w2wkkk0xk" path="res://Scripts/Utils/audio_manager.gd" id="1_bpx0j"]
 [ext_resource type="AudioStream" uid="uid://bpk6gao5jcjkq" path="res://Audio/SFX/Hit.mp3" id="1_qnkjs"]
@@ -52,6 +52,7 @@
 [ext_resource type="AudioStream" uid="uid://cikc00h0xpf08" path="res://Audio/SFX/Slow.mp3" id="50_b0ptq"]
 [ext_resource type="AudioStream" uid="uid://rofk3rxma003" path="res://Audio/SFX/Glass Break.mp3" id="51_b0ptq"]
 [ext_resource type="AudioStream" uid="uid://drgd53glfyr3j" path="res://Audio/SFX/Shatter.mp3" id="52_viic8"]
+[ext_resource type="AudioStream" uid="uid://cq6mr1mitfojs" path="res://Audio/SFX/8-bit Boom.mp3" id="53_viic8"]
 
 [node name="Audio Manager" type="Node"]
 script = ExtResource("1_bpx0j")
@@ -578,3 +579,8 @@ bus = &"SFX"
 stream = ExtResource("52_viic8")
 volume_db = 2.0
 bus = &"SFX"
+
+[node name="8-bitBoom" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("53_viic8")
+volume_db = -20.0
+pitch_scale = 1.2

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bg0xjmkfe0uqd" path="res://Scenes/Seeds/Seed.tscn" id="1_e8fhm"]
 [ext_resource type="Script" uid="uid://dgoqcsy34nvl8" path="res://Scripts/Seeds/sunder.gd" id="2_i74ag"]
-[ext_resource type="PackedScene" uid="uid://ba1ll7vkpaxef" path="res://Scenes/Passives/Effects/Non-Weapon Effect Explosion.tscn" id="3_moi4x"]
+[ext_resource type="PackedScene" uid="uid://bgl6qiu65686y" path="res://Scenes/Passives/Effects/Non-Weapon Effect Explosion.tscn" id="3_rmke5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o1sj4"]
 radius = 2.0
@@ -23,4 +23,4 @@ collision_mask = 1
 shape = SubResource("CircleShape2D_o1sj4")
 
 [node name="ResourcePreloader" type="ResourcePreloader" parent="." index="2"]
-resources = [PackedStringArray("Non-Weapon Effect Explosion"), [ExtResource("3_moi4x")]]
+resources = [PackedStringArray("Non-Weapon Effect Explosion"), [ExtResource("3_rmke5")]]

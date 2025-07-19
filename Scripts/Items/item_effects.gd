@@ -6,32 +6,23 @@ func spawn_passive_menu():
 	get_tree().current_scene.add_child(passive_menu.instantiate())
 
 func dupe_items():
-	var items = Targets.get_all_items()
-	var coins = Targets.get_coins()
-	for item in items:
-		if item.item.item_name == "Rainbow D6":
-			continue
-		var duped_item = item.duplicate()
-		get_tree().current_scene.add_child(duped_item)
-		duped_item.global_position = item.global_position + Vector2.RIGHT * 32
-	for item in coins:
-		var duped_item = item.duplicate()
-		get_tree().current_scene.add_child(duped_item)
-		duped_item.global_position = item.global_position + Vector2.RIGHT * 32
+	var item = Targets.get_all_items().pick_random()
+	var duped_item = item.duplicate()
+	get_tree().current_scene.add_child(duped_item)
+	duped_item.global_position = item.global_position + Vector2.RIGHT * 32
 	ItemCheck.check_for_items()
 	ItemCheck.check_for_coins()
 	await get_tree().create_timer(0.5).timeout
 	Global.save_run_room()
 
 func increase_rarity():
-	var items = Targets.get_all_items()
-	for item in items:
-		var new_rarity = item.item.rarity + 1 # increase rarity by 1
-		if item.item.category == "SEED" and new_rarity > 6:
-			new_rarity = 0
-		if item.item.category == "TALISMAN" and new_rarity > 5: # there are no mystic rarity talismans
-			new_rarity = 0
-		item.set_item(select_new_rarity_item(item.item, new_rarity))
+	var item = Targets.get_rarity_items().pick_random()
+	var new_rarity = item.item.rarity + 1 # increase rarity by 1
+	if item.item.category == "SEED" and new_rarity > 6:
+		new_rarity = 0
+	if item.item.category == "TALISMAN" and new_rarity > 5: # there are no mystic rarity talismans
+		new_rarity = 0
+	item.set_item(select_new_rarity_item(item.item, new_rarity))
 	ItemCheck.check_for_items()
 	await get_tree().create_timer(0.5).timeout
 	Global.save_run_room()
@@ -50,22 +41,20 @@ func select_new_rarity_item(_item, _rarity):
 	return _item
 
 func decrease_rarity():
-	var items = Targets.get_all_items()
-	for item in items:
-		var new_rarity = item.item.rarity - 1 # decrease rarity by 1
-		if item.item.category == "SEED" and new_rarity <= 0:
-			new_rarity = 6
-		if item.item.category == "TALISMAN" and new_rarity <= 0: # there are no mystic rarity talismans
-			new_rarity = 5
-		item.set_item(select_new_rarity_item(item.item, new_rarity))
+	var item = Targets.get_rarity_items().pick_random()
+	var new_rarity = item.item.rarity - 1 # decrease rarity by 1
+	if item.item.category == "SEED" and new_rarity <= 0:
+		new_rarity = 6
+	if item.item.category == "TALISMAN" and new_rarity <= 0: # there are no mystic rarity talismans
+		new_rarity = 5
+	item.set_item(select_new_rarity_item(item.item, new_rarity))
 	ItemCheck.check_for_items()
 	await get_tree().create_timer(0.5).timeout
 	Global.save_run_room()
 
 func reroll_same_rarity():
-	var items = Targets.get_all_items()
-	for item in items:
-		item.set_item(select_new_same_rarity(item.item))
+	var item = Targets.get_rarity_items().pick_random()
+	item.set_item(select_new_same_rarity(item.item))
 	ItemCheck.check_for_items()
 	await get_tree().create_timer(0.5).timeout
 	Global.save_run_room()

@@ -269,7 +269,6 @@ func right_click_use_item(slot: slot_class):
 	if slot.slot_type == slot_class.slot_types.INVENTORY:
 		match slot.item.item.category:
 			"CONSUMABLE":
-				Game.audio_manager.play(Game.audio_manager.use)
 				if not slot.item.used: # check if item was already used
 					slot.item.item.on_use() # activate the use effect of the consumable item
 					slot.item.used = true # force the item to only be used once

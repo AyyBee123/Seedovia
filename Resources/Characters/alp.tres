@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="character_class" load_steps=11 format=3 uid="uid://ci76k0dxcm7k8"]
+
+[ext_resource type="Texture2D" uid="uid://bbu7daukg54ub" path="res://Sprites/Character/Alp/Alp1.png" id="1_i75yk"]
+[ext_resource type="Script" uid="uid://duh3qswkvpbi5" path="res://Scripts/Characters/character_class.gd" id="2_c1ucl"]
+[ext_resource type="Script" uid="uid://cgysrio745xbn" path="res://Scripts/Items/item_class.gd" id="3_wc2c3"]
+[ext_resource type="Resource" uid="uid://dgaqrqiqvn8jf" path="res://Resources/Items/Consumables/cursed_d6.tres" id="4_euvdg"]
+[ext_resource type="Resource" uid="uid://dgbtn1s8kwcal" path="res://Resources/Items/Passives/devils_step_plus.tres" id="5_i75yk"]
+[ext_resource type="Script" uid="uid://yr5gdtdbvmoc" path="res://Scripts/Passives/Classes/passive_class.gd" id="5_ma0ge"]
+[ext_resource type="Resource" uid="uid://c4uomd0l52hvy" path="res://Resources/Heal/apple.tres" id="5_wc2c3"]
+[ext_resource type="Script" uid="uid://c6ykhgvfkht5x" path="res://Scripts/Stats/seed_stats.gd" id="6_lc7b2"]
+[ext_resource type="Resource" uid="uid://cqg6ee3mmsl0j" path="res://Resources/Items/Seeds/blood_burst.tres" id="7_wc2c3"]
+[ext_resource type="Script" uid="uid://n64xabrw5ic3" path="res://Scripts/Items/equipment_item_class.gd" id="8_xd6gd"]
+
+[resource]
+script = ExtResource("2_c1ucl")
+character_name = "Alp"
+character_sprite = ExtResource("1_i75yk")
+starting_inventory = Array[ExtResource("3_wc2c3")]([ExtResource("4_euvdg"), ExtResource("5_wc2c3")])
+starting_talismans = Array[ExtResource("8_xd6gd")]([])
+starting_seeds = Array[ExtResource("6_lc7b2")]([null, null, ExtResource("7_wc2c3")])
+starting_passives = Array[ExtResource("5_ma0ge")]([ExtResource("5_i75yk")])
+starting_coins = 1
+unlocked = false
+hidden = false

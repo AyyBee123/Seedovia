@@ -6522,12 +6522,6 @@ position = Vector2(34, 16)
 rotation = 1.5708
 texture = ExtResource("5_k6cdb")
 
-[node name="Texture" type="TextureRect" parent="Inventory Screen/Seed Slots/Slot2"]
-layout_mode = 0
-offset_right = 32.0
-offset_bottom = 32.0
-texture = ExtResource("6_hrdna")
-
 [node name="Slot3" type="Panel" parent="Inventory Screen/Seed Slots"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2

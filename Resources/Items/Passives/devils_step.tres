@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="passive_class" load_steps=4 format=3 uid="uid://c57frp5tx71qi"]
+
+[ext_resource type="Script" uid="uid://yr5gdtdbvmoc" path="res://Scripts/Passives/Classes/passive_class.gd" id="1_1i00l"]
+[ext_resource type="PackedScene" uid="uid://bwpen22nwjdi0" path="res://Scenes/Passives/Abilities/Devil's Step.tscn" id="1_xrejo"]
+[ext_resource type="Texture2D" uid="uid://dkrr2cukelyym" path="res://Sprites/Passives/Icons/Devil's Step.png" id="3_nv5rr"]
+
+[resource]
+script = ExtResource("1_1i00l")
+passive_name = "Devil's Step"
+sprite = ExtResource("3_nv5rr")
+description = "Walking shoots the seed in the 3rd slot, that deals 50% of it's normal damage, towards a nearby enemy."
+passive_ability = ExtResource("1_xrejo")
+unlocked = false
+metadata/_custom_type_script = "uid://yr5gdtdbvmoc"
