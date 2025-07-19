@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="passive_class" load_steps=4 format=3 uid="uid://ca7862ifockcg"]
+[gd_resource type="Resource" script_class="passive_class" load_steps=4 format=3 uid="uid://chfrgh5ag7hb7"]
 
 [ext_resource type="PackedScene" uid="uid://bnoiir88s2wns" path="res://Scenes/Passives/Abilities/Hura Crepitans.tscn" id="1_6q6la"]
 [ext_resource type="Script" uid="uid://yr5gdtdbvmoc" path="res://Scripts/Passives/Classes/passive_class.gd" id="1_cebd8"]

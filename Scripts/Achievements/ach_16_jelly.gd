@@ -23,7 +23,6 @@ func _on_enemy_defeat(enemy):
 		completed = true
 		SignalBus.achievement.emit(self)
 		SignalBus.unlock.emit(jelly)
-		SteamIntegration.set_ach("ACH_JELLY")
 	Global.save_achievements()
 	Global.load_achievements()
 
@@ -48,3 +47,5 @@ func set_progress(_progress) -> void:
 		jelly.unlocked = true
 		duplex.unlocked = true
 		mitosis.unlocked = true
+		SteamIntegration.set_progress("STAT_JELLY", get_progress_goal())
+		SteamIntegration.set_ach("ACH_JELLY")

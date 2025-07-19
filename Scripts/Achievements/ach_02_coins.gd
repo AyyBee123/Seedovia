@@ -17,7 +17,6 @@ func _on_coin_pickup(amount):
 		completed = true
 		SignalBus.achievement.emit(self)
 		SignalBus.unlock.emit(midas)
-		SteamIntegration.set_ach("ACH_RICH")
 	Global.save_achievements()
 	Global.load_achievements()
 
@@ -41,3 +40,4 @@ func set_progress(_progress) -> void:
 	if completed:
 		midas.unlocked = true
 		fools_gold.unlocked = true
+		SteamIntegration.set_ach("ACH_RICH")

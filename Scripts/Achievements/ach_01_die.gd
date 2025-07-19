@@ -16,7 +16,6 @@ func _on_player_death():
 		completed = true
 		SignalBus.achievement.emit(self)
 		SignalBus.unlock.emit(cercis)
-		SteamIntegration.set_ach("ACH_DIE")
 	Global.save_achievements()
 	Global.load_achievements()
 
@@ -41,3 +40,4 @@ func set_progress(_progress) -> void:
 		cercis.unlocked = true
 		shadow_summons.unlocked = true
 		grapes.unlocked = true
+		SteamIntegration.set_ach("ACH_DIE")

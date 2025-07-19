@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://8lh64evv6imw"]
+[gd_scene load_steps=37 format=3 uid="uid://8lh64evv6imw"]
 
 [ext_resource type="Script" uid="uid://uybucfv2vxti" path="res://Scripts/UI/character_select.gd" id="1_jmjmr"]
 [ext_resource type="Texture2D" uid="uid://dwwsiyabyqc6l" path="res://Sprites/Menu UI/Soil Background.png" id="2_4vqgb"]
@@ -34,6 +34,8 @@
 [ext_resource type="Texture2D" uid="uid://bvpmyy87fn87v" path="res://Sprites/Character/Pizza Man/Pizza Man1.png" id="27_h8twm"]
 [ext_resource type="Resource" uid="uid://cvn3fxs0wcxxi" path="res://Resources/Characters/jelly.tres" id="28_836ky"]
 [ext_resource type="Texture2D" uid="uid://bbqhf7hb1mcwf" path="res://Sprites/Character/Jelly/Jelly1.png" id="29_o8u82"]
+[ext_resource type="Resource" uid="uid://ci76k0dxcm7k8" path="res://Resources/Characters/alp.tres" id="30_apdhx"]
+[ext_resource type="Texture2D" uid="uid://bbu7daukg54ub" path="res://Sprites/Character/Alp/Alp1.png" id="31_oc6vi"]
 
 [node name="Character Select" type="Control"]
 layout_mode = 3
@@ -323,6 +325,34 @@ mouse_filter = 2
 layout_mode = 2
 mouse_filter = 2
 texture = ExtResource("29_o8u82")
+stretch_mode = 5
+
+[node name="Character 10" type="TextureButton" parent="Characters"]
+custom_minimum_size = Vector2(192, 192)
+layout_mode = 2
+texture_normal = ExtResource("7_2sg52")
+texture_pressed = ExtResource("8_snfop")
+texture_hover = ExtResource("9_ewud7")
+texture_disabled = ExtResource("8_dew5b")
+texture_focused = ExtResource("12_nqihi")
+stretch_mode = 0
+script = ExtResource("3_alya1")
+starting_character = ExtResource("30_apdhx")
+character_scene = "res://Scenes/Characters/Alp.tscn"
+unlock_method = "Defeat 500 enemies."
+
+[node name="MarginContainer" type="MarginContainer" parent="Characters/Character 10"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 6.0
+offset_right = 178.0
+offset_bottom = 178.0
+mouse_filter = 2
+
+[node name="Character" type="TextureRect" parent="Characters/Character 10/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("31_oc6vi")
 stretch_mode = 5
 
 [node name="Character 7" type="TextureButton" parent="Characters"]
@@ -679,5 +709,6 @@ autostart = true
 [connection signal="pressed" from="Characters/Character 6" to="Characters/Character 6" method="_on_pressed"]
 [connection signal="pressed" from="Characters/Character 8" to="Characters/Character 8" method="_on_pressed"]
 [connection signal="pressed" from="Characters/Character 9" to="Characters/Character 9" method="_on_pressed"]
+[connection signal="pressed" from="Characters/Character 10" to="Characters/Character 10" method="_on_pressed"]
 [connection signal="pressed" from="Characters/Character 7" to="Characters/Character 7" method="_on_pressed"]
 [connection signal="pressed" from="Play Button" to="." method="_on_play_button_pressed"]

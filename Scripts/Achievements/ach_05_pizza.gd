@@ -35,7 +35,6 @@ func _on_topping_saved():
 		completed = true
 		SignalBus.achievement.emit(self)
 		SignalBus.unlock.emit(pizza_man)
-		SteamIntegration.set_ach("ACH_PIZZA")
 
 func _on_topping_killed():
 	failed = true
@@ -102,3 +101,4 @@ func set_progress(_progress) -> void:
 		pizza_man.unlocked = true
 		pizzaria.unlocked = true
 		pizza_components.unlocked = true
+		SteamIntegration.set_ach("ACH_PIZZA")

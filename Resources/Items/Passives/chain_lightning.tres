@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="passive_class" load_steps=4 format=3 uid="uid://di7m3fc85mihi"]
+[gd_resource type="Resource" script_class="passive_class" load_steps=4 format=3 uid="uid://cf1fc8138tjfl"]
 
 [ext_resource type="PackedScene" uid="uid://dqhcxj0bjmwkg" path="res://Scenes/Passives/Abilities/Chain Lightning.tscn" id="1_8evn8"]
 [ext_resource type="Script" uid="uid://yr5gdtdbvmoc" path="res://Scripts/Passives/Classes/passive_class.gd" id="1_jwyld"]

@@ -43,6 +43,10 @@ class_name overall_data extends Resource
 @export var ach_16_progress: float
 @export var ach_17_drip: bool
 @export var ach_17_progress: float
+@export var ach_18_monster: bool
+@export var ach_18_progress: float
+@export var ach_19_doom: bool
+@export var ach_19_progress: float
 
 func get_save_selection_data():
 	last_played = SelectionSaveData.last_played
@@ -101,6 +105,10 @@ func get_achievements():
 	ach_16_progress = Game.achievement_handler.ach_16_jelly.get_progress()
 	ach_17_drip = Game.achievement_handler.ach_17_drip.completed
 	ach_17_progress = Game.achievement_handler.ach_17_drip.get_progress()
+	ach_18_monster = Game.achievement_handler.ach_18_monster.completed
+	ach_18_progress = Game.achievement_handler.ach_18_monster.get_progress()
+	ach_19_doom = Game.achievement_handler.ach_19_doom.completed
+	ach_19_progress = Game.achievement_handler.ach_19_doom.get_progress()
 
 func set_achievements():
 	Game.achievement_handler.ach_01_die.completed = ach_01_die
@@ -141,6 +149,10 @@ func set_achievements():
 	Game.achievement_handler.ach_16_jelly.set_progress(ach_16_progress)
 	Game.achievement_handler.ach_17_drip.completed = ach_17_drip
 	Game.achievement_handler.ach_17_drip.set_progress(ach_17_progress)
+	Game.achievement_handler.ach_18_monster.completed = ach_18_monster
+	Game.achievement_handler.ach_18_monster.set_progress(ach_18_progress)
+	Game.achievement_handler.ach_19_doom.completed = ach_19_doom
+	Game.achievement_handler.ach_19_doom.set_progress(ach_19_progress)
 
 func reset_achievements():
 	ach_01_die = false
@@ -177,6 +189,10 @@ func reset_achievements():
 	ach_16_progress = 0
 	ach_17_drip = false
 	ach_17_progress = 0
+	ach_18_monster = false
+	ach_18_progress = 0
+	ach_19_doom = false
+	ach_19_progress = 0
 
 func get_achievement(_ach):
 	return _ach

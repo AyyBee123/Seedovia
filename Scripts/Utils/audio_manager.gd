@@ -98,6 +98,7 @@ extends Node
 @onready var glass_break = $GlassBreak
 @onready var shatter = $Shatter
 @onready var _8_bit_boom = $"8-bitBoom"
+@onready var slash_3 = $Slash3
 
 func _ready():
 	SignalBus.play_audio.connect(play)

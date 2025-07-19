@@ -1,0 +1,89 @@
+[gd_scene load_steps=11 format=3 uid="uid://cf5eg22tx565j"]
+
+[ext_resource type="Texture2D" uid="uid://o5km3n1r4yjy" path="res://Sprites/Passives/Effects/Doom.png" id="1_efh3t"]
+[ext_resource type="Script" uid="uid://bq8rfbuojkxbn" path="res://Scripts/Passives/Effects/doom_sword.gd" id="2_kfil0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sea0l"]
+atlas = ExtResource("1_efh3t")
+region = Rect2(0, 0, 29, 51)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l4cpb"]
+atlas = ExtResource("1_efh3t")
+region = Rect2(29, 0, 29, 51)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a8oxi"]
+atlas = ExtResource("1_efh3t")
+region = Rect2(58, 0, 29, 51)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3nsrh"]
+atlas = ExtResource("1_efh3t")
+region = Rect2(87, 0, 29, 51)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jhgbk"]
+atlas = ExtResource("1_efh3t")
+region = Rect2(116, 0, 29, 51)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y5gk2"]
+atlas = ExtResource("1_efh3t")
+region = Rect2(145, 0, 29, 51)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qexeh"]
+atlas = ExtResource("1_efh3t")
+region = Rect2(174, 0, 29, 51)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_scym8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sea0l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l4cpb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a8oxi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l4cpb")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l4cpb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a8oxi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3nsrh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jhgbk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y5gk2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qexeh")
+}],
+"loop": false,
+"name": &"Slash",
+"speed": 18.0
+}]
+
+[node name="Doom Sword" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_scym8")
+animation = &"Slash"
+autoplay = "Idle"
+offset = Vector2(0, -14.5)
+script = ExtResource("2_kfil0")
+
+[node name="Duration" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
+[connection signal="timeout" from="Duration" to="." method="_on_duration_timeout"]

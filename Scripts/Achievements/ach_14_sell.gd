@@ -20,7 +20,6 @@ func _on_item_sold(amount):
 		completed = true
 		SignalBus.achievement.emit(self)
 		SignalBus.unlock.emit(opium)
-		SteamIntegration.set_ach("ACH_SELL")
 	Global.save_achievements()
 	Global.load_achievements()
 
@@ -44,3 +43,5 @@ func set_progress(_progress) -> void:
 	if completed:
 		opium.unlocked = true
 		shrub_bush.unlocked = true
+		SteamIntegration.set_progress("STAT_SELL", get_progress_goal())
+		SteamIntegration.set_ach("ACH_SELL")

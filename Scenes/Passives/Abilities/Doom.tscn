@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1jumagxvsf1b"]
+
+[ext_resource type="Script" uid="uid://d1xvqdkxp38m4" path="res://Scripts/Passives/Abilities/doom.gd" id="1_egq3h"]
+
+[node name="Doom" type="Node"]
+script = ExtResource("1_egq3h")

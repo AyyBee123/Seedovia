@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8gx4jcmcxsho"]
+
+[ext_resource type="Script" uid="uid://dg1pag335edmc" path="res://Scripts/Passives/Effects/doomed.gd" id="1_hdgi5"]
+
+[node name="Doomed" type="Node"]
+script = ExtResource("1_hdgi5")
+
+[node name="Duration" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Duration" to="." method="_on_duration_timeout"]

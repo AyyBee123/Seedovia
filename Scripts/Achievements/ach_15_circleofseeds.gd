@@ -16,7 +16,6 @@ func _on_entered_new_floor(number):
 		completed = true
 		SignalBus.achievement.emit(self)
 		SignalBus.unlock.emit(circle_of_seeds)
-		SteamIntegration.set_ach("ACH_CIRCLEOFSEEDS")
 	elif get_progress() < get_progress_goal() and not completed:
 		progress = 1
 	Global.save_achievements()
@@ -41,3 +40,4 @@ func set_progress(_progress) -> void:
 	super.set_progress(_progress)
 	if completed:
 		circle_of_seeds.unlocked = true
+		SteamIntegration.set_ach("ACH_CIRCLEOFSEEDS")

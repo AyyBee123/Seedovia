@@ -9,6 +9,7 @@ var original_contact_damage
 var time = Timer.new()
 var is_dashing: bool
 var sprite
+var DAMAGE: float = 50
 
 func _ready():
 	player = get_parent().get_parent()
@@ -18,8 +19,9 @@ func _ready():
 	time.wait_time = 0.25
 	
 	time.timeout.connect(slash_timeout)
-	player.contact_damage_dealt.connect(slash_contact)
-	player.dashed.connect(slash)
+	player.has_collided.connect(slash_contact)
+	if player == Targets.get_player():
+		player.dashed.connect(slash)
 
 func slash():
 	time.start()
@@ -40,8 +42,7 @@ func slash():
 	splash.global_position = player.global_position
 	
 	if not is_dashing:
-		original_contact_damage = player._player_stats.contact_damage # get contact damage before dashing
-		player._player_stats.contact_damage += player.DAMAGE * 2
+		
 		is_dashing = true # prevent stacking the damage if dashing too fast
 
 func slash_contact(enemy):
@@ -51,7 +52,14 @@ func slash_contact(enemy):
 	Game.audio_manager.play(Game.audio_manager.slash)
 	Game.audio_manager.play(Game.audio_manager.smack_2)
 	
-	if is_instance_valid(enemy):
+	Targets.get_camera().add_trauma(0.2)
+	
+	if is_instance_valid(enemy) and (enemy.is_in_group("Enemy") or enemy.is_in_group("Dummies")):
+		# deal damage to the enemy
+		var _player = Targets.get_player()
+		enemy._enemy_stats.take_damage(DAMAGE * (1 + _player._player_stats.stats["Weapon_Damage"]["+"]) \
+				* _player._player_stats.stats["Weapon_Damage"]["x"])
+		
 		var splash = SPLASH.instantiate()
 		splash.size = 0.5
 		splash.source = player
@@ -61,8 +69,6 @@ func slash_contact(enemy):
 		splash.global_position = player.global_position
 
 func slash_timeout():
-	player._player_stats.contact_damage = original_contact_damage
-	
 	if sprite:
 		sprite.queue_free()
 		sprite = null

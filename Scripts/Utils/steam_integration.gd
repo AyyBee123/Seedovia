@@ -26,9 +26,9 @@ func set_ach(ach: String):
 		return # already unlocked
 
 	if Steam.setAchievement(ach):
-		print("Achievement", ach, "unlocked")
+		print("Achievement ", ach, " unlocked")
 	else:
-		print("Failed to unlock achievement", ach)
+		print("Failed to unlock achievement ", ach)
 
 	if Steam.storeStats():
 		print("Stats stored successfully")
@@ -40,7 +40,7 @@ func set_progress(stat: String, value):
 		print("Steam not initialized!")
 		return
 	if Steam.setStatInt(stat, value):
-		print("Set int stat ", stat, "to ", value)
+		print("Set int stat ", stat, " to ", value)
 	
 	if Steam.storeStats():
 		print("Stats stored to Steam")

@@ -5,7 +5,6 @@ signal weapon_fired(weapon)
 signal dashed
 signal has_collided(object)
 signal seed_fired(seed) # for immediately fired seeds (for the mirage passive)
-signal contact_damage_dealt(enemy)
 
 var POPUP = load("res://Scenes/UI/Item Popup.tscn") # retarded-ass engine breaks when putting preload here
 const PLAYER_HAND = preload("res://Scenes/Seeds/Player Hand.tscn")
@@ -57,10 +56,10 @@ var _isMouse := true
 var _isKeyboard := true
 
 # stats mainly for passives
-var DAMAGE = 10
+var DAMAGE = 50
 var SPEED = 500
 var RANGE = 250
-var FIRE_RATE = 10
+var FIRE_RATE = 1
 var BLAST_RADIUS = 1
 var SIZE = 1
 
@@ -420,7 +419,4 @@ func _on_player_sprite_animation_finished():
 
 func _on_contact_area_area_entered(area):
 	if area.is_in_group("Enemies"):
-		if _player_stats.contact_damage <= 0:
-			return
-		area.get_parent()._enemy_stats.take_damage(_player_stats.contact_damage)
-		contact_damage_dealt.emit(area.get_parent())
+		has_collided.emit(area.get_parent())

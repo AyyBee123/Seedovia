@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="passive_class" load_steps=4 format=3 uid="uid://bmf2k4avolflx"]
+
+[ext_resource type="PackedScene" uid="uid://b1jumagxvsf1b" path="res://Scenes/Passives/Abilities/Doom.tscn" id="1_sld3c"]
+[ext_resource type="Script" uid="uid://yr5gdtdbvmoc" path="res://Scripts/Passives/Classes/passive_class.gd" id="1_uim1e"]
+[ext_resource type="Texture2D" uid="uid://bvyfuybxgqq42" path="res://Sprites/Passives/Icons/Doom.png" id="3_gf8au"]
+
+[resource]
+script = ExtResource("1_uim1e")
+passive_name = "Doom"
+sprite = ExtResource("3_gf8au")
+description = "Damaging enemies creates a dagger that floats above them. The sword falls after 1 second, dealing the accumulated damage during that period."
+passive_ability = ExtResource("1_sld3c")
+unlocked = false
+metadata/_custom_type_script = "uid://yr5gdtdbvmoc"

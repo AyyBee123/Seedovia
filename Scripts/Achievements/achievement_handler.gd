@@ -17,6 +17,8 @@ var ach_14_sell: Ach14Sell
 var ach_15_circleofseeds: Ach15CircleOfSeeds
 var ach_16_jelly: Ach16Jelly
 var ach_17_drip: Ach17Drip
+var ach_18_monster: Ach18Monster
+var ach_19_doom: Ach19Doom
 
 func _ready():
 	ach_01_die = Ach01Die.new()
@@ -53,3 +55,7 @@ func _ready():
 	add_child(ach_16_jelly)
 	ach_17_drip = Ach17Drip.new()
 	add_child(ach_17_drip)
+	ach_18_monster = Ach18Monster.new()
+	add_child(ach_18_monster)
+	ach_19_doom = Ach19Doom.new()
+	add_child(ach_19_doom)

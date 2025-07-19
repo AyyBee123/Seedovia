@@ -90,66 +90,82 @@ var stats := {
 
 var temp_stats := {
 	"Max_Health": {
+		"base": 0.0,
 		"+": 0,
 		"x": 1
 	},
 	"Speed": {
+		"base": 0.0,
 		"+": 0.0,
 		"x": 1.0
 	},
 	"Dash_Rate": {
+		"base": 0.0,
 		"+": 0.0,
 		"x": 1.0
 	},
 	"Dash_Distance": {
+		"base": 0.0,
 		"+": 0.0,
 		"x": 1.0
 	},
 	"Dash_Invulnerability": {
+		"base": 0.0,
 		"+": 0.0,
 		"x": 1.0
 	},
 	"Fire_Rate": {
+		"base": 0.0,
 		"+": 0.0,
 		"x": 1.0
 	},
 	"Contact_Damage": {
+		"base": 0.0,
 		"+": 0.0,
 		"x": 1.0
 	},
 	"Invulnerability_Time": {
+		"base": 0.0,
 		"+": 0.0,
 		"x": 1.0
 	},
 	"Acceleration": {
+		"base": 0.0,
 		"+": 0.0,
 		"x": 1.0
 	},
 	"Friction": {
+		"base": 0.0,
 		"+": 0.0,
 		"x": 1.0
 	},
 	"Weapon_Speed": {
+		"base": 0.0,
 		"+": 0.0,
 		"x": 1.0
 	},
 	"Weapon_Range": {
+		"base": 0.0,
 		"+": 0.0,
 		"x": 1.0
 	},
 	"Weapon_Size": {
+		"base": 0.0,
 		"+": 0.0,
 		"x": 1.0
 	},
 	"Weapon_Damage": {
+		"base": 0.0,
 		"+": 0.0,
 		"x": 1.0
 	},
 	"Weapon_Blast_Radius": {
+		"base": 0.0,
 		"+": 0.0,
 		"x": 1.0
 	},
 	"Luck": {
+		"base": 0.0,
 		"+": 0.0,
 		"x": 1.0
 	},
@@ -188,7 +204,8 @@ func get_health(was_equipped: bool):
 		health = current_health
 
 func get_stat(stat: String):
-	return stats[stat]["x"] * temp_stats[stat]["x"] * (stats[stat]["base"] + stats[stat]["+"] + temp_stats[stat]["+"])
+	return stats[stat]["x"] * temp_stats[stat]["x"] * stats[stat]["base"] \
+			+ temp_stats[stat]["base"] * (1 + stats[stat]["+"] + temp_stats[stat]["+"])
 
 func get_seed_stat(stat: String):
 	return stats[stat]["x"] * stats[stat]["base"] * (1 + stats[stat]["+"])
@@ -204,6 +221,8 @@ func set_temp_stat(stat: String, operation: String, amount):
 		temp_stats[stat][operation] += amount
 	elif operation == "x":
 		temp_stats[stat][operation] *= amount
+	elif operation == "base":
+		temp_stats[stat][operation] += amount
 
 func update_stat(stat: String, was_equipped: bool, old_stat_value):
 	if stat == "Max_Health":
@@ -221,6 +240,7 @@ func update_stat(stat: String, was_equipped: bool, old_stat_value):
 
 func reset_temp_stats():
 	for stat in temp_stats.keys():
+		temp_stats[stat]["base"] = 0
 		temp_stats[stat]["+"] = 0
 		temp_stats[stat]["x"] = 1
 
