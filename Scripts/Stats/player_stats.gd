@@ -241,6 +241,7 @@ func update_stat(stat: String, was_equipped: bool, old_stat_value):
 func reset_temp_stats():
 	for stat in temp_stats.keys():
 		temp_stats[stat]["base"] = 0
+		temp_stats[stat]["flat"] = 0
 		temp_stats[stat]["+"] = 0
 		temp_stats[stat]["x"] = 1
 

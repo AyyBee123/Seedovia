@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://berr5pye7tf11"]
+
+[ext_resource type="Script" uid="uid://dkploxm4s6cgo" path="res://Scripts/Item Passives/Abilities/catalyst_effect.gd" id="1_coqee"]
+
+[node name="Catalyst Effect" type="Node"]
+script = ExtResource("1_coqee")

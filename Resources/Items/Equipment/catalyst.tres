@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="equipment_item_class" load_steps=4 format=3 uid="uid://cp6smwulyb8wp"]
+
+[ext_resource type="Script" uid="uid://n64xabrw5ic3" path="res://Scripts/Items/equipment_item_class.gd" id="1_pr7tl"]
+[ext_resource type="PackedScene" uid="uid://berr5pye7tf11" path="res://Scenes/Item Passives/Abilities/Catalyst Effect.tscn" id="2_cf3jv"]
+[ext_resource type="Texture2D" uid="uid://bumsxcijsy77d" path="res://Sprites/Talismans/Catalyst.png" id="2_pr7tl"]
+
+[resource]
+script = ExtResource("1_pr7tl")
+rarity = 0
+properties = Array[String]([])
+special_properties = Array[PackedScene]([ExtResource("2_cf3jv")])
+item_name = "Catalyst"
+texture = ExtResource("2_pr7tl")
+description = "+2 base damage to all seeds."
+unlocked = true
+metadata/_custom_type_script = "uid://n64xabrw5ic3"
