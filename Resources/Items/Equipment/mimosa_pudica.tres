@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="equipment_item_class" load_steps=3 format=3 uid="uid://bdkadh7i8ul86"]
+
+[ext_resource type="Script" uid="uid://n64xabrw5ic3" path="res://Scripts/Items/equipment_item_class.gd" id="1_ree1s"]
+[ext_resource type="Texture2D" uid="uid://bwvajef5ei7bp" path="res://Sprites/Talismans/Mimosa Pudica.png" id="2_ree1s"]
+
+[resource]
+script = ExtResource("1_ree1s")
+rarity = 1
+properties = Array[String](["0.2x Weapon_Speed", "+10% Weapon_Size", "+10% Weapon_Blast_Radius"])
+special_properties = Array[PackedScene]([])
+item_name = "Mimosa Pudica"
+texture = ExtResource("2_ree1s")
+description = "+15% Seed Size
++15% Blast Radius
+0.2x Seed Speed"
+unlocked = true
+metadata/_custom_type_script = "uid://n64xabrw5ic3"

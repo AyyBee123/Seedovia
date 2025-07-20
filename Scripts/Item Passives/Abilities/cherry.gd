@@ -29,12 +29,6 @@ func trigger(weapon = null):
 		weapon_instance.desired_direction = location.direction_to(source.weapon_direction_marker.global_position)
 	else:
 		weapon_instance.desired_direction = weapon.desired_direction
-	weapon_instance.transferred_speed_multiplier *= weapon.transferred_speed_multiplier
-	weapon_instance.transferred_range_multiplier *= weapon.transferred_range_multiplier
-	weapon_instance.transferred_size_multiplier *= weapon.transferred_size_multiplier
-	weapon_instance.transferred_damage_multiplier *= weapon.transferred_damage_multiplier
-	weapon_instance.transferred_blast_radius_multiplier *= weapon.transferred_blast_radius_multiplier
-	weapon_instance.transferred_fire_rate_multiplier *= weapon.transferred_fire_rate_multiplier
 	# seed repeats after 1/(<current fire rate> x2)
 	await get_tree().create_timer(1.0 / (weapon.FIRE_RATE * 2), false).timeout
 	if not weapon_instance:

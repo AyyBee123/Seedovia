@@ -135,15 +135,6 @@ func check_for_enemies():
 			if get_tree().current_scene.name == "Boss Room":
 				Game.music_manager.play(Game.music_manager.BOSS_THEME_END)
 			thread.start(give_reward)
-			LevelList.current_reward_given = true
-			LevelList.loaded_room_is_cleared = cleared
-			await get_tree().create_timer(0.5).timeout # buffer to allow the item to register in the level
-			ItemCheck.check_for_items()
-			ItemCheck.check_for_coins()
-			ItemCheck.check_for_pickup_items()
-			Global.save_run_data()
-			Global.save_run_room()
-			Global.save_data()
 
 func spawn_doors(): # -785 to 785 = 1570 (size of level in x-axis) # -400 is the y-position for the door(s)
 	Global.load_run_room()
@@ -246,6 +237,15 @@ func give_reward():
 			# spawn item in the middle of the screen
 			item.global_position = $Camera2D.global_position
 	Global.next_reward = null
+	LevelList.current_reward_given = true
+	LevelList.loaded_room_is_cleared = cleared
+	await get_tree().create_timer(0.5).timeout # buffer to allow the item to register in the level
+	ItemCheck.check_for_items()
+	ItemCheck.check_for_coins()
+	ItemCheck.check_for_pickup_items()
+	Global.save_run_data()
+	Global.save_run_room()
+	Global.save_data()
 	finish.call_deferred()
 
 func finish():

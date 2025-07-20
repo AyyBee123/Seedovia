@@ -24,12 +24,6 @@ func trigger(weapon = null):
 	duplicate_seed.source = Targets.get_player()
 	duplicate_seed.add_to_group("Buttshot Weapon")
 	duplicate_seed.modulate.a = weapon.modulate.a
-	duplicate_seed.transferred_speed_multiplier *= weapon.transferred_speed_multiplier
-	duplicate_seed.transferred_range_multiplier *= weapon.transferred_range_multiplier
-	duplicate_seed.transferred_size_multiplier *= weapon.transferred_size_multiplier
-	duplicate_seed.transferred_damage_multiplier *= weapon.transferred_damage_multiplier
-	duplicate_seed.transferred_blast_radius_multiplier *= weapon.transferred_blast_radius_multiplier
-	duplicate_seed.transferred_fire_rate_multiplier *= weapon.transferred_fire_rate_multiplier
 	get_tree().current_scene.add_child(duplicate_seed)
 	duplicate_seed.global_position = source.global_position - weapon.desired_direction * 15
 	source.weapon_fired.emit(duplicate_seed)

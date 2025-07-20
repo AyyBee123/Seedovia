@@ -48,12 +48,6 @@ func trigger(weapon = null):
 	weapon_instance.seed_slot_number = weapon.seed_slot_number
 	var angle = randf_range(-SPREAD, SPREAD)
 	weapon_instance.desired_direction = weapon.desired_direction.rotated(angle)
-	weapon_instance.transferred_speed_multiplier *= weapon.transferred_speed_multiplier
-	weapon_instance.transferred_range_multiplier *= weapon.transferred_range_multiplier
-	weapon_instance.transferred_size_multiplier *= weapon.transferred_size_multiplier
-	weapon_instance.transferred_damage_multiplier *= weapon.transferred_damage_multiplier
-	weapon_instance.transferred_blast_radius_multiplier *= weapon.transferred_blast_radius_multiplier
-	weapon_instance.transferred_fire_rate_multiplier *= weapon.transferred_fire_rate_multiplier
 	if not weapon_instance:
 		return
 	get_tree().current_scene.add_child(weapon_instance)

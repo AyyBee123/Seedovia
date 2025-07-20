@@ -11,5 +11,5 @@ rarity = 0
 item_name = "Shrub Bush"
 texture = ExtResource("3_i7nib")
 description = "Blocks enemy projectiles."
-unlocked = true
+unlocked = false
 metadata/_custom_type_script = "uid://c6ykhgvfkht5x"
