@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://db45f8pijp6jj"]
+
+[ext_resource type="Script" uid="uid://cfk2waxal8vx2" path="res://Scripts/Item Passives/Abilities/unbreakable_pot_effect.gd" id="1_6mtbx"]
+
+[node name="Unbreakable Pot Effect" type="Node"]
+script = ExtResource("1_6mtbx")

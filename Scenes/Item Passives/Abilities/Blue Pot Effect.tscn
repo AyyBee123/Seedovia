@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqe405psvvnce"]
+
+[ext_resource type="Script" uid="uid://rjgrs80ih4iy" path="res://Scripts/Item Passives/Abilities/blue_pot_effect.gd" id="1_162di"]
+
+[node name="Blue Pot Effect" type="Node"]
+script = ExtResource("1_162di")
