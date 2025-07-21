@@ -12,6 +12,7 @@ const BLAST_RADIUS = 1.75
 var stacks: int = 0
 var normal_speed: float
 var normal_animation_speed: float
+var normal_animation_player_speed: float
 var normal_color
 var enemy
 var is_frozen: bool
@@ -22,6 +23,8 @@ func _ready():
 	enemy._enemy_stats.spawn_damage_number.connect(burst)
 	normal_speed = enemy._enemy_stats.speed
 	normal_animation_speed = enemy.get_node("AnimatedSprite2D").speed_scale
+	if enemy.get_node_or_null("AnimationPlayer"):
+		normal_animation_player_speed = enemy.get_node("AnimationPlayer").speed_scale
 	sprite = SLOW_SPRITE.instantiate()
 	enemy.add_child(sprite)
 
@@ -33,6 +36,9 @@ func slow():
 	stacks += 1 # add 1 stack of slow (makes the enemy slower)
 	enemy._enemy_stats.speed *= (1 - SLOW_FACTOR * stacks) # slow down enemy's movement speed
 	enemy.get_node("AnimatedSprite2D").speed_scale *= (1 - SLOW_FACTOR * stacks) # slow down the enemy's animation speed
+	if enemy.get_node_or_null("AnimationPlayer"):
+		# slow down the enemy's animation player speed
+		enemy.get_node("AnimationPlayer").speed_scale *= (1 - SLOW_FACTOR * stacks)
 	if sprite:
 		sprite.material.set("shader_parameter/fade", stacks * (SLOW_FACTOR - 0.05))
 	if stacks >= int(1.0 / SLOW_FACTOR):
@@ -73,8 +79,11 @@ func _on_duration_timeout():
 	queue_free()
 
 func _exit_tree():
+	# retunr all the speed scales to normal
 	enemy._enemy_stats.speed = normal_speed
 	enemy.get_node("AnimatedSprite2D").speed_scale = normal_animation_speed
 	enemy.get_node("AnimatedSprite2D").play()
+	if enemy.get_node_or_null("AnimationPlayer"):
+		enemy.get_node("AnimationPlayer").speed_scale = normal_animation_player_speed
 	if sprite:
 		sprite.queue_free()
