@@ -204,6 +204,9 @@ func get_health(was_equipped: bool):
 		health = current_health
 
 func get_stat(stat: String):
+	if stat == "Max_Health":
+		return stats[stat]["x"] * temp_stats[stat]["x"] * (stats[stat]["base"] \
+			+ temp_stats[stat]["base"] + stats[stat]["+"] + temp_stats[stat]["+"])
 	return stats[stat]["x"] * temp_stats[stat]["x"] * (stats[stat]["base"] \
 			+ temp_stats[stat]["base"]) * (1 + stats[stat]["+"] + temp_stats[stat]["+"])
 

@@ -53,5 +53,3 @@ func trigger(weapon = null):
 	get_tree().current_scene.add_child(weapon_instance)
 	weapon_instance.global_position = location
 	source.weapon_fired.emit(weapon_instance)
-	if source == player:
-		source.seed_fired.emit(weapon_instance)

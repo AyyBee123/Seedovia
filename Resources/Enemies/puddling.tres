@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_qek8y")
-max_health = 60.0
+max_health = 300.0
 speed = 100.0
 fire_rate = 7.0
 damage = 1.0

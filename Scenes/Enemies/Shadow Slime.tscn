@@ -1,8 +1,8 @@
-[gd_scene load_steps=29 format=3 uid="uid://drq53ys8ktpgx"]
+[gd_scene load_steps=28 format=3 uid="uid://drq53ys8ktpgx"]
 
 [ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_4u4c5"]
 [ext_resource type="Script" uid="uid://olxi1yjvw8i2" path="res://Scripts/Enemies/Shadow Slime/shadow_slime.gd" id="2_6d1v1"]
-[ext_resource type="Script" uid="uid://dplobvcbjid7g" path="res://Scripts/Stats/enemy_stats.gd" id="3_beshe"]
+[ext_resource type="Resource" uid="uid://b4odh3lch07ol" path="res://Resources/Enemies/shadow_slime.tres" id="3_ls8bg"]
 [ext_resource type="Shader" uid="uid://dsv0n8bsysyo6" path="res://Shaders/color_tint_shader.gdshader" id="4_77536"]
 [ext_resource type="Texture2D" uid="uid://4xpa7o6qjfh0" path="res://Sprites/Enemies/Shadow Slime.png" id="5_dvitd"]
 [ext_resource type="Script" uid="uid://b0b0dk8w77sck" path="res://Scripts/Enemies/Shadow Slime/state_machine.gd" id="6_osfji"]
@@ -11,19 +11,6 @@
 [ext_resource type="AudioStream" uid="uid://bnwgdhdobsrbm" path="res://Audio/SFX/Splat2.mp3" id="8_31u8p"]
 [ext_resource type="Texture2D" uid="uid://xxyym547o3vn" path="res://Sprites/Misc/Shadow.png" id="9_pf4cj"]
 [ext_resource type="AudioStream" uid="uid://ctg2p1xvcqdpc" path="res://Audio/SFX/Laser Shot.mp3" id="10_osfji"]
-
-[sub_resource type="Resource" id="Resource_bokyo"]
-script = ExtResource("3_beshe")
-max_health = 500.0
-speed = 250.0
-fire_rate = 0.0
-damage = 1.0
-acceleration = 0.15
-friction = 0.03
-weapon_damage = 1.0
-weapon_range = 400.0
-weapon_speed = 500.0
-metadata/_custom_type_script = "uid://dplobvcbjid7g"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_osfji"]
 radius = 11.0
@@ -224,7 +211,7 @@ _data = {
 [node name="Shadow Slime" instance=ExtResource("1_4u4c5")]
 scale = Vector2(1.75, 1.75)
 script = ExtResource("2_6d1v1")
-_enemy_stats = SubResource("Resource_bokyo")
+_enemy_stats = ExtResource("3_ls8bg")
 
 [node name="CollisionPolygon2D" parent="." index="0"]
 position = Vector2(0, -4)

@@ -1,26 +1,13 @@
-[gd_scene load_steps=21 format=3 uid="uid://pllgo8xk3mig"]
+[gd_scene load_steps=20 format=3 uid="uid://pllgo8xk3mig"]
 
 [ext_resource type="PackedScene" uid="uid://b2yef1t2humjd" path="res://Scenes/Enemies/Enemy.tscn" id="1_f60ki"]
 [ext_resource type="Script" uid="uid://ct6cw6aq5gxhx" path="res://Scripts/Enemies/Deathworm/deathworm.gd" id="2_ldcpv"]
-[ext_resource type="Script" uid="uid://dplobvcbjid7g" path="res://Scripts/Stats/enemy_stats.gd" id="3_80p1f"]
+[ext_resource type="Resource" uid="uid://c0cemooww6hkk" path="res://Resources/Enemies/deathworm.tres" id="3_gwct4"]
 [ext_resource type="Shader" uid="uid://dsv0n8bsysyo6" path="res://Shaders/color_tint_shader.gdshader" id="4_kqrw2"]
 [ext_resource type="Texture2D" uid="uid://vktxmffvbduq" path="res://Sprites/Enemies/Deathworm.png" id="5_80p1f"]
 [ext_resource type="Texture2D" uid="uid://xxyym547o3vn" path="res://Sprites/Misc/Shadow.png" id="6_kqrw2"]
 [ext_resource type="Script" uid="uid://b5yxwbu2jhdci" path="res://Scripts/Enemies/Deathworm/state_machine.gd" id="7_kqrw2"]
 [ext_resource type="AudioStream" uid="uid://btibpopk3es2g" path="res://Audio/SFX/Vacuum.mp3" id="8_gwct4"]
-
-[sub_resource type="Resource" id="Resource_gwct4"]
-script = ExtResource("3_80p1f")
-max_health = 1500.0
-speed = 375.0
-fire_rate = 0.0
-damage = 1.0
-acceleration = 0.15
-friction = 0.025
-weapon_damage = 1.0
-weapon_range = 999999.0
-weapon_speed = 500.0
-metadata/_custom_type_script = "uid://dplobvcbjid7g"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dan3h"]
 resource_local_to_scene = true
@@ -120,7 +107,7 @@ radius = 15.0
 [node name="Deathworm" instance=ExtResource("1_f60ki")]
 scale = Vector2(2.5, 2.5)
 script = ExtResource("2_ldcpv")
-_enemy_stats = SubResource("Resource_gwct4")
+_enemy_stats = ExtResource("3_gwct4")
 
 [node name="AnimatedSprite2D" parent="." index="1"]
 material = SubResource("ShaderMaterial_dan3h")

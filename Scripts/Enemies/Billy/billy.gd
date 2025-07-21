@@ -51,12 +51,12 @@ func play_splat_3():
 func jump_finished():
 	_jumping = false
 
-func die():
-	if _state_machine.state == _state_machine.states.death:
-		return
-	$"Enemy Hitbox/CollisionPolygon2D".set_deferred("disabled", true)
-	$"Health Bar".hide = true
-	_state_machine.set_state(_state_machine.states.death)
+#func die():
+	#if _state_machine.state == _state_machine.states.death:
+		#return
+	#$"Enemy Hitbox/CollisionPolygon2D".set_deferred("disabled", true)
+	#$"Health Bar".hide = true
+	#_state_machine.set_state(_state_machine.states.death)
 
 func shoot():
 	Targets.get_camera().add_trauma(0.25)

@@ -23,8 +23,8 @@ func _ready():
 	else:
 		animated_sprite = "AnimatedSprite2D"
 		frames = [1, 3]
-	
-	source.get_node(animated_sprite).frame_changed.connect(_on_animated_sprite_frame_changed)
+	if source.get_node_or_null(animated_sprite):
+		source.get_node(animated_sprite).frame_changed.connect(_on_animated_sprite_frame_changed)
 
 func _on_animated_sprite_frame_changed():
 	if source.get_node_or_null(animated_sprite):

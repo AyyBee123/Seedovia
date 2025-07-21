@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b4qv2oi4vbgws" path="res://Scenes/Enemies/Obstacles/Obstacle.tscn" id="1_3lxch"]
 [ext_resource type="Script" uid="uid://byeh2skfxl8tl" path="res://Scripts/Enemies/Deathworm/deathworm_body.gd" id="2_rlxq6"]
-[ext_resource type="Resource" uid="uid://ughugvwoffdc" path="res://Resources/Enemies/deathworm.tres" id="3_3lxch"]
+[ext_resource type="Resource" uid="uid://ughugvwoffdc" path="res://Resources/Enemies/Obstacles/deathworm_body.tres" id="3_3lxch"]
 [ext_resource type="Shader" uid="uid://dsv0n8bsysyo6" path="res://Shaders/color_tint_shader.gdshader" id="4_2vkww"]
 [ext_resource type="Texture2D" uid="uid://dkyug1fv36yiy" path="res://Sprites/Enemies/Deathworm Body.png" id="5_3lxch"]
 [ext_resource type="Texture2D" uid="uid://xxyym547o3vn" path="res://Sprites/Misc/Shadow.png" id="6_vq0bv"]
