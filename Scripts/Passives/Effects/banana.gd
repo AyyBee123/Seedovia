@@ -8,6 +8,7 @@ var weapon_direction: Vector2
 var source_pos
 var previous_weapon
 var damage_multiplier
+var initial_weapon
 
 var DAMAGE: float
 var BLAST_RADIUS: float

@@ -31,6 +31,9 @@ func _input(event):
 				return
 			var console = CONSOLE.instantiate()
 			add_child(console)
+		
+		if event.keycode == KEY_0 and event.pressed:
+			get_tree().change_scene_to_file("res://Scenes/UI/Victory Screen.tscn")
 	
 	if Input.is_action_just_pressed("esc"):
 		if player.find_child("Inventory").visible or player.get_node("Stat Sheet").visible:

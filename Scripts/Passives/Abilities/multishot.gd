@@ -32,6 +32,8 @@ func chance_to_trigger(weapon = null):
 func trigger(weapon = null):
 	if weapon == null:
 		return
+	if not weapon.is_in_group("Seed"):
+		return
 	if weapon.is_in_group("Duplicated Seed"):
 		return
 	var weapon_instance = weapon.duplicate()

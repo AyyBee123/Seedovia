@@ -6426,6 +6426,7 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_7ppds")
 script = ExtResource("4_isqha")
 
 [node name="Talisman Slots" type="GridContainer" parent="Inventory Screen"]
+layout_mode = 0
 offset_left = 8.0
 offset_top = 87.0
 offset_right = 148.0
@@ -6457,6 +6458,7 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_7ppds")
 script = ExtResource("4_isqha")
 
 [node name="Seed Slots" type="GridContainer" parent="Inventory Screen"]
+layout_mode = 0
 offset_left = 29.0
 offset_top = 31.0
 offset_right = 133.0
@@ -6536,6 +6538,7 @@ text = "3
 
 [node name="Seeds Label" type="RichTextLabel" parent="Inventory Screen"]
 modulate = Color(0.905882, 0.8, 0.627451, 1)
+layout_mode = 0
 offset_left = 8.0
 offset_top = 6.0
 offset_right = 85.0
@@ -6552,6 +6555,7 @@ text = "Seeds
 
 [node name="Talismans Label" type="RichTextLabel" parent="Inventory Screen"]
 modulate = Color(0.905882, 0.8, 0.627451, 1)
+layout_mode = 0
 offset_left = 8.0
 offset_top = 72.0
 offset_right = 85.0
@@ -6568,6 +6572,7 @@ text = "Talismans
 
 [node name="Inventory Label" type="RichTextLabel" parent="Inventory Screen"]
 modulate = Color(0.905882, 0.8, 0.627451, 1)
+layout_mode = 0
 offset_left = 8.0
 offset_top = 129.0
 offset_right = 85.0
@@ -6582,6 +6587,7 @@ theme_override_font_sizes/normal_font_size = 16
 text = "Inventory"
 
 [node name="ColorRect" type="ColorRect" parent="Inventory Screen"]
+layout_mode = 0
 offset_left = 8.0
 offset_top = 68.0
 offset_right = 148.0
@@ -6589,6 +6595,7 @@ offset_bottom = 69.0
 color = Color(0.376471, 0.188235, 0.164706, 1)
 
 [node name="ColorRect2" type="ColorRect" parent="Inventory Screen"]
+layout_mode = 0
 offset_left = 8.0
 offset_top = 124.0
 offset_right = 148.0
@@ -6598,6 +6605,7 @@ color = Color(0.376471, 0.188235, 0.164706, 1)
 [node name="Selected Slot" type="TextureRect" parent="."]
 visible = false
 custom_minimum_size = Vector2(32, 32)
+layout_mode = 0
 offset_left = 11.0
 offset_top = 144.0
 offset_right = 44.0

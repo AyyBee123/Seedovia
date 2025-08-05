@@ -11,6 +11,8 @@ func _ready():
 func trigger(weapon = null):
 	if weapon == null:
 		return
+	if not weapon.is_in_group("Seed"):
+		return
 	if weapon.is_in_group("Cherry Fired"):
 		return
 	var weapon_instance = weapon.duplicate()

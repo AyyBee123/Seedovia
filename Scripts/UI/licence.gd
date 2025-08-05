@@ -3,7 +3,7 @@ extends Control
 var default_focus
 
 func _ready():
-	%Label.text = Engine.get_license_text()
+	%Label.text = Engine.get_copyright_info()
 
 func _input(event):
 	if event is InputEventJoypadButton and event.pressed:

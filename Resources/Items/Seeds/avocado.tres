@@ -11,4 +11,4 @@ rarity = 1
 item_name = "Avocado"
 texture = ExtResource("3_nkodl")
 description = ""
-unlocked = true
+unlocked = false

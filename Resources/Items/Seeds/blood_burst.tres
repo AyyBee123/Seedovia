@@ -11,4 +11,4 @@ rarity = 2
 item_name = "Blood Burst"
 texture = ExtResource("3_lgfnn")
 description = ""
-unlocked = true
+unlocked = false

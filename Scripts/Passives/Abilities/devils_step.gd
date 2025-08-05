@@ -51,6 +51,8 @@ func step():
 		pos = source.global_position
 	if get_nearest_enemy():
 		weapon_instance.desired_direction = pos.direction_to(get_nearest_enemy().global_position)
+	else:
+		weapon_instance.desired_direction = Vector2.RIGHT.rotated(randf_range(0, TAU))
 	weapon_direction = weapon_instance.desired_direction
 	get_tree().current_scene.add_child(weapon_instance)
 	weapon_instance.global_position = pos

@@ -100,7 +100,7 @@ func display_info():
 		starting_items[2].get_node("Info").text = starting_passives[0].passive_name
 	if starting_passives.size() > 1:
 		for i in starting_passives.size() - 1: # exclude the first element in the array
-			starting_items[2].get_node("Info").text += ", " + starting_passives[i+1].instantiate().passive_name
+			starting_items[2].get_node("Info").text += ", " + starting_passives[i+1].passive_name
 	
 	# starting inventory
 	var starting_inventory = starting_character.starting_inventory.filter(func(value): return value != null)
